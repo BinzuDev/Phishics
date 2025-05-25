@@ -4,7 +4,8 @@ render_mode depth_draw_always; //transparency works but cant see other body part
 render_mode cull_disabled;
 
 uniform sampler2D noise_tex;
-uniform vec4 bubble_color: source_color;
+//uniform vec4 bubble_color: source_color;
+uniform sampler2D clothes_texture : source_color;
 uniform float height_multiplier = 0.2;
 uniform float noise_sample_size = 0.1;
 uniform float animation_speed = 0.1;
@@ -32,5 +33,6 @@ void fragment(){
 	//ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
 	SPECULAR = height;
 	ALPHA = fresnel(NORMAL, INV_VIEW_MATRIX);
-	ALBEDO = bubble_color.rgb;
+	vec4 tex_color = texture(clothes_texture, UV);
+	ALBEDO = tex_color.rgb;
 }

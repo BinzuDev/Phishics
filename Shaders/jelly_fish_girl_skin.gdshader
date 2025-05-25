@@ -9,6 +9,7 @@ uniform float height_multiplier = 0.2;
 uniform float noise_sample_size = 0.1;
 uniform float animation_speed = 0.1;
 uniform float transparency = 0.2;
+uniform sampler2D underwear_texture : source_color;
 
 varying float height;
 
@@ -25,12 +26,26 @@ float fresnel(vec3 normal, mat4 camera_matrix){
 
 void vertex(){
 	height = texture(noise_tex, VERTEX.xz * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
+	height = (height + 1.0) * 0.5; //code that makes her grow less on average
+	height = pow(height, 5.0);     //when you increase the height multiplier
 	VERTEX += NORMAL * height * height_multiplier * 0.1;
 }
 
 void fragment(){
-	//ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
-	SPECULAR = height;
-	ALPHA = fresnel(NORMAL, INV_VIEW_MATRIX);
-	ALBEDO = bubble_color.rgb;
+	
+	// CUSTOM CODE //
+	vec4 mask_color = texture(underwear_texture, UV);
+	float threshold = 0.5;
+	bool is_black = mask_color.r <= 0.2 && mask_color.g >= 0.8 && mask_color.b >= 0.8;
+	bool is_no_tex = mask_color.r == 1.0 && mask_color.g == 1.0 && mask_color.b == 1.0;
+	
+    if (is_black || is_no_tex) {
+		ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
+		SPECULAR = height;
+		ALPHA = fresnel(NORMAL, INV_VIEW_MATRIX);
+		ALBEDO = bubble_color.rgb;
+    } else {
+        ALBEDO = mask_color.rgb;
+    }
+	
 }
