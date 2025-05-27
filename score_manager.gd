@@ -271,7 +271,7 @@ func change_rank(amount: int, meterPercentage: float):
 		if styleRank == P:
 			MusicManager.play_track(3, 1)
 		if styleRank == PSSS:
-			MusicManager.play_track(4, 1, true)
+			MusicManager.play_track(4, 1)
 	
 	## Ranking down
 	if amount < 0:

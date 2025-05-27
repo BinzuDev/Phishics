@@ -20,7 +20,7 @@ func stop_track(trackIndex : int):
 		tracks[trackIndex].get_stream_playback().switch_to_clip(0)
 
 
-func play_track(trackIndex : int, clipIndex : int, randomize : bool = false):
+func play_track(trackIndex : int, clipIndex : int):
 	
 	if trackIndex <= 3:
 		tracks[trackIndex].get_stream_playback().switch_to_clip(clipIndex)

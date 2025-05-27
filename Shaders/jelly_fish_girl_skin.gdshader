@@ -1,7 +1,7 @@
 shader_type spatial;
 
 render_mode depth_draw_always; //transparency works but cant see other body parts through
-//render_mode cull_disabled;
+
 
 uniform sampler2D noise_tex;
 uniform vec4 bubble_color: source_color;
@@ -36,10 +36,10 @@ void fragment(){
 	// CUSTOM CODE //
 	vec4 mask_color = texture(underwear_texture, UV);
 	float threshold = 0.5;
-	bool is_black = mask_color.r <= 0.2 && mask_color.g >= 0.8 && mask_color.b >= 0.8;
+	bool is_black = mask_color.r <= 0.5 && mask_color.g >= 0.5 && mask_color.b >= 0.5;
 	bool is_no_tex = mask_color.r == 1.0 && mask_color.g == 1.0 && mask_color.b == 1.0;
 	
-    if (is_black || is_no_tex) {
+    if (is_black) {
 		ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
 		SPECULAR = height;
 		ALPHA = fresnel(NORMAL, INV_VIEW_MATRIX);
