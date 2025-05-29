@@ -85,7 +85,7 @@ curve = SubResource("Curve3D_34pw1")
 
 [node name="PathFollowJellyfish" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.0189312, -4.68538e-06, 0.999681, 4.54716e-13, 0.999915, 4.68597e-06, -0.999751, -8.87214e-08, 0.0189298, 0.0119416, 0.00572038, 0.00269127)
+transform = Transform3D(0.0189312, -4.68539e-06, 0.999681, 2.27358e-13, 0.999915, 4.68597e-06, -0.999751, -8.87217e-08, 0.0189298, 0.0119416, 0.00572038, 0.00269127)
 
 [node name="JellyfishArea" type="Area3D" parent="Path3D/PathFollowJellyfish"]
 unique_name_in_owner = true
