@@ -946,7 +946,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="back wall" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(2.56685e-13, -7.89428e-08, -181.213, -134.342, -7.89428e-08, 0, -5.87228e-06, 1.806, -7.92105e-06, 62.4837, -5.78919, -54.18)
+transform = Transform3D(2.56673e-13, -7.89392e-08, -181.205, -134.336, -7.89392e-08, 0, -5.87201e-06, 1.80592, -7.92069e-06, 62.4837, -5.78919, -54.18)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -3032,4 +3032,4 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 27.8756, 29.6617, 62
 transform = Transform3D(0.358437, 0, -0.348601, 0, 0.5, 0, 0.348601, 0, 0.358437, -13.5503, 0, -3.39736)
 
 [node name="Jellyfish" parent="." instance=ExtResource("41_i76hq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 30, 48)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9521, 12.6963, 21.5495)
