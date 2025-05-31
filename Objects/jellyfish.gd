@@ -1,6 +1,8 @@
-extends Node3D
+extends PathFollow3D
 
 @export var speed = 5
+@export var PathFollow: PathFollow3D
+var TruePos = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,8 +13,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	TruePos = position.y
+	print(TruePos)
+	
+	
 	#makes him move
-	%PathFollowJellyfish.progress += speed * _delta
+	progress += speed * _delta
 	
 	#sin
 	#var time = 0
@@ -22,7 +28,7 @@ func _process(_delta: float) -> void:
 	#position.y = sin(time * frequency) * amplitude
 	  
 	#checks amount reached in path
-	if %PathFollowJellyfish.progress_ratio >= 0.3:
+	if progress_ratio >= 0.3:
 		print("Reached over 30% of the path")
 	
 

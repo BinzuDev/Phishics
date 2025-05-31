@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=94 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -292,6 +292,22 @@ albedo_texture = ExtResource("18_sehqq")
 albedo_color = Color(0.490196, 0.619608, 0.584314, 1)
 albedo_texture = ExtResource("35_5g6ug")
 disable_receive_shadows = true
+
+[sub_resource type="Curve3D" id="Curve3D_i76hq"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.10682, 0.312191, -1.41056, 0, 0, 0, 0, 0, 0, 4.48305, 3.15885, -2.34805, 0, 0, 0, 0, 0, 0, -2.43656, 2.47354, -0.335878, 0, 0, 0, 0, 0, 0, -3.69044, -0.320401, 1.0558, 0, 0, 0, 0, 0, 0, 0.527587, -3.36523, 1.25859),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_7pnea"]
+closed = true
+_data = {
+"points": PackedVector3Array(-0.16047, 0, -3.73093, 0.16047, 0, 3.73093, -9.00834, -0.795094, 0.556206, -5.33563, 0, -0.200588, 5.33563, 0, 0.200588, -0.74671, 1.54931, 8.40996, -0.224714, 0, 6.09761, 0.224714, 0, -6.09761, 8.80462, -1.61395, 1.66916, 7.14092, 0, 0.32094, -7.14092, 0, -0.32094, -1.59305, 2.35323, -6.83708),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Node3D" type="Node3D"]
 process_mode = 3
@@ -3032,5 +3048,16 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 27.8756, 29.6617, 62
 [node name="squidhouse" parent="." instance=ExtResource("40_vcw38")]
 transform = Transform3D(0.358437, 0, -0.348601, 0, 0.5, 0, 0.348601, 0, 0.358437, -13.5503, 0, -3.39736)
 
-[node name="Jellyfish" parent="." instance=ExtResource("41_i76hq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9521, 12.6963, 21.5495)
+[node name="PathJF" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7901, 13.5144, 19.2387)
+curve = SubResource("Curve3D_i76hq")
+
+[node name="Jellyfish" parent="PathJF" instance=ExtResource("41_i76hq")]
+transform = Transform3D(0.832548, 0.515113, 0.203763, -5.96046e-08, 0.367835, -0.92989, -0.553951, 0.774177, 0.306241, 5.10682, 0.312191, -1.41056)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.844, 14.9438, 1.05568)
+curve = SubResource("Curve3D_7pnea")
+
+[node name="PathFollowJellyfish" parent="Path3D" instance=ExtResource("41_i76hq")]
+transform = Transform3D(-0.99899, 0, -0.042965, 0, 0.999915, 0, 0.0429672, 0, -0.998938, -9.00834, -0.795094, 0.556206)
