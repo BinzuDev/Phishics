@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnede8a35520b"
-path="res://.godot/imported/clothes_texture_BACKUP.png-44b059734b06f7acc5c3e39337ee0e87.ctex"
+uid="uid://d3veaiuap3uox"
+path="res://.godot/imported/fishybusiness.png-0b52312e119201a60ad054f8c2e92bd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Models/slime_girl/clothes_texture_BACKUP.png"
-dest_files=["res://.godot/imported/clothes_texture_BACKUP.png-44b059734b06f7acc5c3e39337ee0e87.ctex"]
+source_file="res://Skins/fishybusiness.png"
+dest_files=["res://.godot/imported/fishybusiness.png-0b52312e119201a60ad054f8c2e92bd9.ctex"]
 
 [params]
 

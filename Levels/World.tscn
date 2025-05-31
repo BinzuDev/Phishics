@@ -294,6 +294,7 @@ albedo_texture = ExtResource("35_5g6ug")
 disable_receive_shadows = true
 
 [node name="Node3D" type="Node3D"]
+process_mode = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
