@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdch0kedotgbr" path="res://Sprites/jellyfishsquish2.png" id="3_bldx5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_34pw1"]
-radius = 2.02203
+radius = 4.20304
 
 [sub_resource type="Animation" id="Animation_qkjab"]
 resource_name = "Jellyfish"
@@ -95,3 +95,5 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_w0s7j")
 }
+
+[connection signal="body_entered" from="JellyfishArea" to="." method="_on_jellyfish_area_body_entered"]

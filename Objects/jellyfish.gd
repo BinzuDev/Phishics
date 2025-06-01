@@ -14,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	TruePos = position.y
-	print(TruePos)
+	#print(TruePos)
 	
 	
 	#makes him move
@@ -32,9 +32,9 @@ func _process(_delta: float) -> void:
 		print("Reached over 30% of the path")
 	
 
-
-func _on_body_entered(body: Node3D) -> void:
+func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 	#hopping on jellyfish
+	print("bounce")
 	if body is player and body.diving:
 		body.linear_velocity = Vector3.ZERO
 		body.apply_central_impulse(Vector3.UP * 50)
