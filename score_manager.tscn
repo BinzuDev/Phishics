@@ -638,7 +638,6 @@ libraries = {
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 1509.0
 offset_top = 355.0
 offset_right = 1775.0

@@ -6,7 +6,8 @@ var checkpoint_pos: Vector3 # i like men too teeheehee
 
 #camera
 var targetCamAngle: Vector3
-var targetCamPos: Vector3
+var targetCamOffset : Vector3
+var targetCamDist: float
 var camSpeed: float = 0.2
 var cameraOverride: bool = false
 
@@ -155,9 +156,9 @@ func _physics_process(_delta: float) -> void:
 		if closest != null:
 			if closestLastFrame != closest:
 				closestLastFrame = closest
-				$reticle/sfx.play()
 				if !$reticle.visible: #only play the animation when it first appears
 					$reticle/reticleAnimation.play("reticle_appear1")
+					$reticle/sfx.play()
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			$reticle.rotation_degrees += 3
 			var newScale = sin(flopTimer*0.157) * 0.15 + 1
@@ -218,7 +219,8 @@ func _physics_process(_delta: float) -> void:
 		diving = false
 		homing = false
 	
-	if homing: ##Speed smear
+	##Speed smear
+	if homing: 
 		$homing/smear.visible = true
 		var smearLength = global_position.distance_to(posLastFrame)
 		#print(smearLength)
@@ -233,6 +235,8 @@ func _physics_process(_delta: float) -> void:
 	$homing/area.rotation_degrees.z = 20 * Input.get_axis("left", "right")
 	$homing/area.rotation_degrees.x = 20 * Input.get_axis("back", "forward")
 	
+	
+	## Diving/homing end ##
 	
 	
 	
@@ -261,47 +265,63 @@ func _physics_process(_delta: float) -> void:
 		angular_velocity = Vector3.ZERO
 		
 	
-	## Camera
+	
+	################
+	##   CAMERA   ##
+	################
 	#fov
 	%cam.fov = lerp(%cam.fov, 80.0, 0.1)   
 	if %cam.fov > 79.99:
 		%cam.fov = 80
+	
 	#camera controller areas
 	if $detectCamSwitch.has_overlapping_areas():
 		var area = $detectCamSwitch.get_overlapping_areas()[0]
 		targetCamAngle = area.newCameraAngle
+		targetCamOffset = area.newCameraOffset
+		targetCamDist = area.newCameraDistance
+		if area.target != null:
+			%camera_target.global_position = area.target.global_position
+			targetCamOffset = %camera_target.position
+			targetCamOffset += area.newCameraOffset
 		camSpeed = area.rate
 		cameraOverride = true #so you cant move the cam manually in switch areas
 	elif cameraOverride == false:
-		targetCamAngle = Vector3(0,0,0) #default camera settings
-		targetCamPos  = Vector3(0,0,0)
+		targetCamAngle = Vector3(-30,0,0) #default camera settings
+		targetCamOffset  = Vector3(0,0.58,0)
+		targetCamDist = 5.2
 		camSpeed = 0.2
+		#lower camera when close to a ceiling
+		if %ceilDetect.is_colliding():
+			var dist = global_position.distance_to(%ceilDetect.get_collision_point())
+			targetCamOffset.y = 0.58 - (4 - dist)
+		
+	
 	
 	#Manual camera control
 	if Input.is_action_pressed("camera") and !cameraOverride:
-		if Input.is_action_pressed("right"): 
-			targetCamAngle.y -= 30
-			targetCamPos = Vector3(2.5, 0, 0.6)
+		if get_input_axis() != Vector2.ZERO:
 			cameraOverride = true
-		elif Input.is_action_pressed("left"):
-			targetCamAngle.y += 30
-			targetCamPos = Vector3(-2.5, 0, 0.6)
-			cameraOverride = true
+		if get_input_axis().x != 0:
+			var LR = Input.get_axis("right", "left")
+			targetCamAngle.y = 30 * LR
+			targetCamOffset = Vector3(-2.5*LR, 0.58, 0.6)
 		elif Input.is_action_pressed("forward"):
 			targetCamAngle.x += 40
-			targetCamPos = Vector3(0, 2.3, -1.5)
-			cameraOverride = true
+			targetCamOffset = Vector3(0, 2.3, -1.5)
 		elif Input.is_action_pressed("back"):
 			targetCamAngle.x -= 15
-			targetCamPos = Vector3(0,-0.7,3.5)
-			cameraOverride = true
+			targetCamOffset = Vector3(0,-0.7,3.5)
 	
 	if !Input.is_action_pressed("camera"): #reset camera when you let go of C
 		cameraOverride = false
 	
-	%camMove.rotation_degrees = %camMove.rotation_degrees.lerp(targetCamAngle, camSpeed) 
-	%camMove.position = %camMove.position.lerp(targetCamPos, camSpeed)
 	
+	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) 
+	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed)
+	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed)   
+	
+	#%camFocus.global_position = camLockOnTarget.global_position
 	
 	
 	## Audio (flopping sfx) ##
@@ -429,7 +449,13 @@ func _physics_process(_delta: float) -> void:
 ## This functions takes in a vector, and rotates it so that forward points
 ## towards where the camera is looking
 func rotate_by_cam(vector : Vector3):
-	return vector.rotated(Vector3(0,1,0), %camMove.rotation.y)
+	return vector.rotated(Vector3(0,1,0), %cam.global_rotation.y)
+
+## Returns a Vector2D based on which arrow keys are pressed
+func get_input_axis():
+	var x = Input.get_axis("right", "left")
+	var y = Input.get_axis("forward", "back")
+	return Vector2(x,y)
 
 ##Temporarily change the FOV of the camera for a zoom-in impact effect
 func set_fov(newFov:float):

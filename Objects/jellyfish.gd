@@ -29,7 +29,8 @@ func _process(_delta: float) -> void:
 	  
 	#checks amount reached in path
 	if progress_ratio >= 0.3:
-		print("Reached over 30% of the path")
+		pass
+		#print("Reached over 30% of the path")
 	
 
 func _on_jellyfish_area_body_entered(body: Node3D) -> void:

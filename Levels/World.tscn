@@ -310,7 +310,6 @@ _data = {
 point_count = 4
 
 [node name="Node3D" type="Node3D"]
-process_mode = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
@@ -1797,8 +1796,8 @@ transform = Transform3D(1.73709, 0.99122, 0, -0.991221, 1.73709, 0, 0, 0, 2, 172
 strength = 35.0
 
 [node name="BoostRing17" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(0.15792, 0.578845, 0, -0.578845, 0.15792, 0, 0, 0, 0.6, 25.5984, -0.012846, 26.1895)
-strength = 12.0
+transform = Transform3D(0.198704, 0.566142, 0, -0.566142, 0.198704, 0, 0, 0, 0.6, 26.6647, -0.012846, 26.1895)
+strength = 14.0
 
 [node name="BoostRing18" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-0.0410114, -0.0797996, 0.593254, -0.53365, 0.274259, 0, -0.271175, -0.52765, -0.0897212, 72.3709, 9.79218, 0.158049)
@@ -2154,7 +2153,8 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 79.96,
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("22_dcke8")
-newCameraAngle = Vector3(30, -90, 0)
+newCameraAngle = Vector3(0, -90, 0)
+newCameraOffset = Vector3(0, 0, 0)
 rate = 1.0
 metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
@@ -2401,7 +2401,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("22_dcke8")
-newCameraAngle = Vector3(-55, 0, 0)
+newCameraAngle = Vector3(-88, 0, 0)
 metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lookDown"]
@@ -3061,5 +3061,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="Path3D" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.99899, 0, -0.042965, 0, 0.999915, 0, 0.0429672, 0, -0.998938, -9.00834, -0.795094, 0.556206)
+transform = Transform3D(-0.998987, 0, -0.042965, 0, 0.999915, 0, 0.0429671, 0, -0.998938, -9.00834, -0.795094, 0.556206)
 speed = 4

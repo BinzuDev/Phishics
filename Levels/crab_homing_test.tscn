@@ -11,13 +11,13 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1c1wt"]
 panorama = ExtResource("1_cdwid")
 
-[sub_resource type="Sky" id="Sky_jsk3o"]
+[sub_resource type="Sky" id="Sky_4xlq2"]
 sky_material = SubResource("PanoramaSkyMaterial_1c1wt")
 
 [sub_resource type="Environment" id="Environment_2ilbj"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_jsk3o")
+sky = SubResource("Sky_4xlq2")
 fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
