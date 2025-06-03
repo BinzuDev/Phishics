@@ -1,3 +1,4 @@
+@icon("res://icons/crab.png")
 class_name enemy
 extends RigidBody3D
 
@@ -15,7 +16,7 @@ var speed := 2
 var hp := 2
 var shiny :bool = false
 
-
+var crackedSprite
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,14 @@ func _ready() -> void:
 	#enemy type loads
 	if enemyType == Enum1.Horse_Shoe:
 		$CrabSprite.texture = load("res://Sprites/crabs/horseshoecrab.png")
+	
+	#preload cracked sprite
+	var sprite_name = $CrabSprite.texture.resource_path.get_file().get_basename()
+	var cracked_path = "res://Sprites/crabs/" + sprite_name + "cracked.png"
+	
+	#checks if name exists then changes sprite to sprite name + cracked
+	if ResourceLoader.exists(cracked_path):
+		crackedSprite = load(cracked_path)
 	
 	
 	
@@ -104,7 +113,9 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		
 
 
+## When the fish and crab touch eachother
 func _on_bump_body_entered(body: Node3D) -> void:
+	
 	
 	#horsehoe crabs can only be damaged if diving
 	if enemyType == Enum1.Horse_Shoe and not body.diving:
@@ -137,8 +148,9 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			#Upwards force
 			body.apply_central_impulse((-body.linear_velocity.normalized() + Vector3.UP * 0.5) * push_force)
 			#
-		
-	if body.linear_velocity.length() > 2 or body.isTipSpinning:
+	
+	
+	if body.linear_velocity.length() >= 2 or body.isTipSpinning:
 		
 		if enemyType == Enum1.Regular_Crab: #regular crab logic
 			#player pushing
@@ -153,11 +165,9 @@ func _on_bump_body_entered(body: Node3D) -> void:
 		
 		
 		
-		
-		
 		if hp > 0:
-			#Audio for bumps
 			
+			#Audio for bumps
 			if enemyType == Enum1.Horse_Shoe and body.diving:
 				$AudioStreamPlayer3D.play()
 			
@@ -210,28 +220,17 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			elif shiny:
 				$CrabSprite.modulate = Color(0.0, 0.29, 0.47, 1)
 			
-			
-			
-			#crack sprite
+		
+		
+		#cracked sprite
 		if hp <= 1: 
-			#stores current sprite name
-			var sprite_name = $CrabSprite.texture.resource_path.get_file().get_basename()
-			var cracked_path = "res://Sprites/crabs/" + sprite_name + "cracked.png"
-			
-			#checks if name exists then changes sprite to sprite name + cracked
-			if ResourceLoader.exists(cracked_path):
-				$CrabSprite.texture = load(cracked_path)
-			
-			
-			
-			
+			$CrabSprite.texture = crackedSprite
 		
-		
-		
-		
-		
-		
-		
+	
+	
+
+
+
 	#make sure crabs get launched up when diving
 	#DOES NOT WORK RN...
 	#if body.diving:

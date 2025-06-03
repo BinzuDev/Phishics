@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4dxj4fndsxi4"]
+[gd_scene load_steps=18 format=3 uid="uid://4dxj4fndsxi4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_srmx3"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_6umug"]
@@ -40,6 +40,13 @@ albedo_color = Color(0.766666, 0, 1, 1)
 text = "camera target point
 "
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hri8x"]
+shading_mode = 0
+
+[sub_resource type="TextMesh" id="TextMesh_a0y6q"]
+text = "anti ceiling clipping camera testing area"
+font_size = 23
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -66,6 +73,19 @@ metadata/_edit_group_ = true
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform14"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform14/StaticBody3D"]
+shape = SubResource("BoxShape3D_vr4k2")
+
+[node name="Platform15" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.6212, -0.899001, 0, 8.97168, 1.56531, 0, 0, 0, 9.8371, -19.1483, 4.2922, 18.5793)
+material_override = ExtResource("3_hri8x")
+material_overlay = ExtResource("4_a0y6q")
+mesh = SubResource("BoxMesh_4se4h")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform15/StaticBody3D"]
 shape = SubResource("BoxShape3D_vr4k2")
 
 [node name="lookDown" type="MeshInstance3D" parent="."]
@@ -121,3 +141,8 @@ mesh = SubResource("TextMesh_6umug")
 
 [node name="BoostRing" parent="." instance=ExtResource("6_hri8x")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -17.9592, 0.893039, 2.14416)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6671, 5.64364, 24.026)
+material_override = SubResource("StandardMaterial3D_hri8x")
+mesh = SubResource("TextMesh_a0y6q")

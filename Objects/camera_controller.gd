@@ -1,3 +1,4 @@
+@icon("res://icons/cam_areas.png")
 class_name CameraController
 extends Area3D
 

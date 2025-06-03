@@ -72,15 +72,15 @@ point_count = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_40mal"]
 height = 3.5
-radius = 3.5
+radius = 3.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mdn8s"]
-height = 8.0
-radius = 6.0
+height = 7.0
+radius = 5.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6h88e"]
-height = 30.0
-radius = 8.0
+height = 50.0
+radius = 7.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipqbp"]
 shading_mode = 0
@@ -488,7 +488,7 @@ top_level = true
 
 [node name="ceilDetect" type="RayCast3D" parent="cameraAnchor"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(1, 2.13613e-10, 5.2108e-13, -2.13613e-10, 0.999988, 0.0048869, 5.2108e-13, -0.0048869, 0.999988, 0, 0, 1)
 target_position = Vector3(0, 4, 0)
 
 [node name="camera_target" type="Node3D" parent="cameraAnchor"]
@@ -600,17 +600,17 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="top" type="CollisionShape3D" parent="homing/area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, 0)
 shape = SubResource("CylinderShape3D_40mal")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="middle" type="CollisionShape3D" parent="homing/area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0235224, -10, -0.0987368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, -1)
 shape = SubResource("CylinderShape3D_mdn8s")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="bottom" type="CollisionShape3D" parent="homing/area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -2)
 shape = SubResource("CylinderShape3D_6h88e")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
@@ -784,5 +784,5 @@ stream = ExtResource("25_dhdhv")
 max_polyphony = 5
 bus = &"fishsfx"
 
-[connection signal="body_entered" from="." to="." method="checkpoint"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="checkpoint"]

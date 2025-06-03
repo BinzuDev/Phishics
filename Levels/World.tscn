@@ -321,7 +321,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7522, 30.8277, 67.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3662, 30.7018, 67.8841)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -1798,6 +1798,7 @@ strength = 35.0
 [node name="BoostRing17" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.198704, 0.566142, 0, -0.566142, 0.198704, 0, 0, 0, 0.6, 26.6647, -0.012846, 26.1895)
 strength = 14.0
+targetableByHoming = false
 
 [node name="BoostRing18" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-0.0410114, -0.0797996, 0.593254, -0.53365, 0.274259, 0, -0.271175, -0.52765, -0.0897212, 72.3709, 9.79218, 0.158049)
@@ -3048,6 +3049,17 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 27.8756, 29.6617, 62
 [node name="squidhouse" parent="." instance=ExtResource("40_vcw38")]
 transform = Transform3D(0.358437, 0, -0.348601, 0, 0.5, 0, 0.348601, 0, 0.358437, -13.5503, 0, -3.39736)
 
+[node name="Jellyfish2" parent="." instance=ExtResource("41_i76hq")]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 15.6925, 25.1399, -0.506655)
+speed = 3
+hSpeedMultiplier = 1.8
+
+[node name="Jellyfish3" parent="." instance=ExtResource("41_i76hq")]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 22.1179, 29.5632, -47.5942)
+speed = 3
+bounceForce = 100
+hSpeedMultiplier = 1.0
+
 [node name="PathJF" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7901, 13.5144, 19.2387)
 curve = SubResource("Curve3D_i76hq")
@@ -3055,11 +3067,15 @@ curve = SubResource("Curve3D_i76hq")
 [node name="Jellyfish" parent="PathJF" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.83255, 0.51511, 0.203761, 0, 0.367833, -0.92989, -0.553947, 0.77418, 0.306241, 5.10682, 0.312191, -1.41056)
 speed = 3
+bounceForce = 50
+hSpeedMultiplier = 0.0
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="Path3D" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.998987, 0, -0.042965, 0, 0.999915, 0, 0.0429671, 0, -0.998938, -9.00834, -0.795094, 0.556206)
+transform = Transform3D(-0.998985, 0, -0.042965, 0, 0.999915, 0, 0.042967, 0, -0.998938, -9.00834, -0.795094, 0.556206)
 speed = 4
+bounceForce = 5
+hSpeedMultiplier = 1.5

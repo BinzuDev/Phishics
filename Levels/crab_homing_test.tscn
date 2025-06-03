@@ -227,7 +227,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.454, 0.614754, 45.0438)
 [node name="CameraController" type="Area3D" parent="crabTestArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.067, 0, 76.3045)
 script = ExtResource("6_fbcg4")
-newCameraAngle = Vector3(-35, 0, 0)
+newCameraDistance = 30.0
 metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crabTestArea/CameraController"]

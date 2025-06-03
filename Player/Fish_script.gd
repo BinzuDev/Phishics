@@ -1,3 +1,4 @@
+@icon("res://icons/fish.png")
 class_name player 
 extends RigidBody3D
 
@@ -10,6 +11,7 @@ var targetCamOffset : Vector3
 var targetCamDist: float
 var camSpeed: float = 0.2
 var cameraOverride: bool = false
+var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
 
 #other trick variables
 var tiplanding : bool = false
@@ -20,16 +22,17 @@ var height : float = 0 ##stores how for away you are to the nearest floor
 var fishCooldown : int = 0
 var diving := false
 var homing := false
+var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the homing area has been empty
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
 var lastUsedBoost
 
 
 #MOVEMENT CONSTS
-const torque_impulse = Vector3(-1.5, 0, 0)  #front-back rotation speed
+const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
 const torque_side = Vector3(0, 0, 1.5)     #left-right rotation speed
-const jump = Vector3(0, 9, 0)              #jump strength                                                      
-const accel : float = 1.5                  #acceleration speed
+const JUMP_STRENGTH = Vector3(0, 9, 0)     #jump strength                                                      
+const ACCEL : float = 1.5                  #acceleration speed
 
 #TIMING VARS
 var timeSinceJump : int = 0
@@ -44,6 +47,7 @@ func _ready() -> void:
 	ScoreManager.fish = self
 
 func _physics_process(_delta: float) -> void:
+	
 	#splash screen fadeout
 	if flopTimer >= 5: #skip the first couple of frames for lag
 		$UI/splashScreen.modulate.a -= 0.05
@@ -51,24 +55,24 @@ func _physics_process(_delta: float) -> void:
 	## Movement
 	if Input.is_action_just_pressed("forward"):
 		apply_torque_impulse(rotate_by_cam(torque_impulse))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
+		apply_impulse(rotate_by_cam(Vector3(0, 0, -ACCEL)))
 	
 	if Input.is_action_just_pressed("back"):
 		apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
+		apply_impulse(rotate_by_cam(Vector3(0, 0, ACCEL)))
 	
 	if Input.is_action_just_pressed("right"):
 		apply_torque_impulse(rotate_by_cam(torque_side * -1))
-		apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
+		apply_impulse(rotate_by_cam(Vector3(ACCEL, 0, 0)))
 	 
 	if Input.is_action_just_pressed("left"):
 		apply_torque_impulse(rotate_by_cam(torque_side))
-		apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
+		apply_impulse(rotate_by_cam(Vector3(-ACCEL, 0, 0)))
 	
 	
 		###############
 		##  Jumping  ##
-	timeSinceJump += 1
+	timeSinceJump += 1 #so you cant jump twice in a row when spamming
 	if Input.is_action_just_pressed("jump"):
 		if timeSinceJump > 20 and $floorDetection.is_colliding():
 			timeSinceJump = 0
@@ -80,30 +84,27 @@ func _physics_process(_delta: float) -> void:
 			$JumpPuff.restart()
 			$JumpPuff.emitting = true
 			
+			#apply vertical speed
+			apply_impulse(JUMP_STRENGTH)
+			if get_input_axis() == Vector2.ZERO:
+				apply_torque_impulse(rotate_by_cam(torque_impulse)) #flop forward
+			
 			#mid Air extra control
-			var pressingKey = false
-			var boost = (accel * 3) + clamp(angular_velocity.length()*0.1, 0, 12)
+			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.1, 0, 12)
 			
 			if Input.is_action_pressed("forward"):
 				apply_torque_impulse(rotate_by_cam(torque_impulse))
 				apply_impulse(rotate_by_cam(Vector3(0, 0, -boost))) #extra acceleration
-				pressingKey = true
 			if Input.is_action_pressed("back"):
-				apply_torque_impulse(rotate_by_cam(torque_impulse * -2)) #-2 so it actually flips backwards
+				apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
 				apply_impulse(rotate_by_cam(Vector3(0, 0, boost)))
-				pressingKey = true
 			if Input.is_action_pressed("right"):
 				apply_torque_impulse(rotate_by_cam(torque_side * -1))
 				apply_impulse(rotate_by_cam(Vector3(boost, 0, 0)))
-				pressingKey = true
 			if Input.is_action_pressed("left"):
 				apply_torque_impulse(rotate_by_cam(torque_side))
 				apply_impulse(rotate_by_cam(Vector3(-boost, 0, 0)))
-				pressingKey = true
 			
-			#apply vertical speed
-			apply_impulse(jump)
-			apply_torque_impulse(rotate_by_cam(torque_impulse)) #flop forward
 			
 			
 			## Style Meter and jump related tricks
@@ -118,15 +119,16 @@ func _physics_process(_delta: float) -> void:
 				ScoreManager.reset_airspin()
 				#play_trick_sfx("uncommon")
 			
-			if not pressingKey: #High Jump
-				var xtraYspd = clamp(angular_velocity.length()*0.3, 0, 30)
+			
+			if get_input_axis() == Vector2.ZERO: #High Jump
+				var xtraYspd = clamp(angular_velocity.length()*0.35, 0, 35)
 				
 				apply_impulse(rotate_by_cam(Vector3(0, xtraYspd, 0)))
-				#print("HIGH JUMP, speed: ", linear_velocity.length())
+				
+				print("high jump! spd: ", linear_velocity.length(), " xtra: ", xtraYspd )
 				
 				if linear_velocity.length() > 12: #Points
 					ScoreManager.give_points(500, 1, true, "HIGH JUMP", "uncommon")
-					#play_trick_sfx("uncommon")
 			else:
 				var hspeed = linear_velocity #get your speed
 				hspeed.y = 0  #remove your vertical speed from the equation
@@ -134,7 +136,6 @@ func _physics_process(_delta: float) -> void:
 				#print("LONG JUMP, speed: ", hspeed)
 				if linear_velocity.length() > 12:
 					ScoreManager.give_points(200, 1, true, "LONG JUMP", "uncommon")
-					#play_trick_sfx("uncommon")
 				
 	
 	## Super Jump tricks
@@ -166,12 +167,21 @@ func _physics_process(_delta: float) -> void:
 			$reticle.visible = true
 			$reticle.position.y = clamp($reticle.position.y, 0, 1080)
 			$reticle.position.x = clamp($reticle.position.x, 0, 1920)
+			if $reticle.position.y == 1080:
+				homingLookDown = true
 		else:
 			$reticle.visible = false
 			closestLastFrame = null
 	else:
 		$reticle.visible = false
 		closestLastFrame = null
+	
+	if !$homing/area.has_overlapping_areas() or height < 3:
+		timeSinceNoTargets += 1
+	else:
+		timeSinceNoTargets = 0 
+	if timeSinceNoTargets > 15:
+		homingLookDown = false
 	
 	
 	## Diving
@@ -207,13 +217,12 @@ func _physics_process(_delta: float) -> void:
 			print("look at enemy: ", $homing/smear.rotation_degrees)
 			#stupid hacky solution, ask binzu about it if you dont understand
 			var diff = abs($homing/smear/leftSide.global_position.x - $homing/smear/rightSide.global_position.x)
-			print(diff)
+			#print(diff)
 			if diff < 0.7:
 				$homing/smear.rotation_degrees.z = 90
-				print("SMEAR FIX")
+				#print("SMEAR FIX")
 			homing = true
 			$diveSFX.play()
-	
 	
 	if get_contact_count() >= 1 or linear_velocity.y > -5: #otherwise dive can persist if you bounce 
 		diving = false
@@ -230,10 +239,10 @@ func _physics_process(_delta: float) -> void:
 		$homing/smear.visible = false
 	
 	## Influence direction of homing
-	%homingTarget.position.x = 4 * Input.get_axis("left", "right")
-	%homingTarget.position.z = 4 * Input.get_axis("forward", "back")
-	$homing/area.rotation_degrees.z = 20 * Input.get_axis("left", "right")
-	$homing/area.rotation_degrees.x = 20 * Input.get_axis("back", "forward")
+	%homingTarget.position.x = 5 * Input.get_axis("left", "right")
+	%homingTarget.position.z = 5 * Input.get_axis("forward", "back")
+	$homing/area.rotation_degrees.z = 25 * Input.get_axis("left", "right")
+	$homing/area.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
 	
 	
 	## Diving/homing end ##
@@ -292,11 +301,11 @@ func _physics_process(_delta: float) -> void:
 		targetCamDist = 5.2
 		camSpeed = 0.2
 		#lower camera when close to a ceiling
-		if %ceilDetect.is_colliding():
-			var dist = global_position.distance_to(%ceilDetect.get_collision_point())
+		if %ceilDetect.is_colliding():                                   #clamp min to 1
+			var dist = max(%ceilDetect.get_collision_point().y - global_position.y, 1)
 			targetCamOffset.y = 0.58 - (4 - dist)
 		
-	
+	 
 	
 	#Manual camera control
 	if Input.is_action_pressed("camera") and !cameraOverride:
@@ -317,11 +326,17 @@ func _physics_process(_delta: float) -> void:
 		cameraOverride = false
 	
 	
-	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) 
-	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed)
-	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed)   
 	
+	##Slowly pan the camera towards the desired location
+	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) #angle of focus
+	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed) #Position of focus
+	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
 	#%camFocus.global_position = camLockOnTarget.global_position
+	var targetTilt = 0.0
+	if homingLookDown and !$detectCamSwitch.has_overlapping_areas():
+		targetTilt = -20.0
+	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, 0.1)
+	
 	
 	
 	## Audio (flopping sfx) ##
@@ -402,7 +417,7 @@ func _physics_process(_delta: float) -> void:
 	fishCooldown += 1
 	if Input.is_action_just_pressed("FIsh"):
 		$FIsh.play()
-		if height > 8 and abs(linear_velocity.y) < 5 and fishCooldown > 60:
+		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			global.freezeframe = 20
 			get_tree().paused = true
 			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
@@ -435,13 +450,16 @@ func _physics_process(_delta: float) -> void:
 	#DEBUG_INFO
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
-	"height: ", height, "\n",
-	"linear velocity: ", linear_velocity, "\n",
-	"linear length: ", linear_velocity.length(), "\n",
-	"angular velocity: ", angular_velocity, "\n",
-	"angular length: ", angular_velocity.length(), "\n",
+	"height: ", snapped(height, 0.01), "\n",
+	"linear velocity: ", snapped(linear_velocity, Vector3(0.01,0.01,0.01)), "\n",
+	"speed: ",  snapped(linear_velocity.length(), 0.01), "\n",
+	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
+	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
 	"diving: ", diving, "\n",
-	"raycast: ", $homing/raycast.get_collider()
+	"target: ", get_collider_name($homing/raycast), "\n",
+	"camera rc: ", get_collider_name(%ceilDetect), "\n",
+	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
+	"homingLookDown: ", homingLookDown
 	)
 	
 
@@ -451,10 +469,20 @@ func _physics_process(_delta: float) -> void:
 func rotate_by_cam(vector : Vector3):
 	return vector.rotated(Vector3(0,1,0), %cam.global_rotation.y)
 
+##Helps with clarity when debugging
+func get_collider_name(c):
+	if !c.is_colliding():
+		return ""
+	else:
+		return str(c.get_collider().name, " (", c.get_collider().get_parent().name, ")")
+	
+
 ## Returns a Vector2D based on which arrow keys are pressed
+## X:  Left: -1  Right: 1       Y:  Down: -1  Up: 1
+## result is 0 if both or neither are pressed
 func get_input_axis():
-	var x = Input.get_axis("right", "left")
-	var y = Input.get_axis("forward", "back")
+	var x = Input.get_axis("left", "right")
+	var y = Input.get_axis("back", "forward")
 	return Vector2(x,y)
 
 ##Temporarily change the FOV of the camera for a zoom-in impact effect
