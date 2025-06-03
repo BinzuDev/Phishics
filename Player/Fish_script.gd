@@ -239,10 +239,25 @@ func _physics_process(_delta: float) -> void:
 		$homing/smear.visible = false
 	
 	## Influence direction of homing
-	%homingTarget.position.x = 5 * Input.get_axis("left", "right")
-	%homingTarget.position.z = 5 * Input.get_axis("forward", "back")
-	$homing/area.rotation_degrees.z = 25 * Input.get_axis("left", "right")
-	$homing/area.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
+	var lerpSpeed := 0.06
+	
+	if get_input_axis():
+		lerpSpeed = 1
+	else:
+		lerpSpeed += 0.0001
+	
+	
+	%homingTarget.position.x = lerp(%homingTarget.position.x, 5 * Input.get_axis("left", "right"), lerpSpeed)
+	%homingTarget.position.z = lerp(%homingTarget.position.z, 5 * Input.get_axis("forward", "back"), lerpSpeed)
+	$homing/area.rotation_degrees.z = lerp($homing/area.rotation_degrees.z, 25 * Input.get_axis("left", "right"), lerpSpeed)
+	#$homing/area.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
+	$homing/area.rotation_degrees.x = lerp($homing/area.rotation_degrees.x, 25 * Input.get_axis("back", "forward"), lerpSpeed)
+
+	
+	
+	
+	
+	
 	
 	
 	## Diving/homing end ##
