@@ -15,6 +15,7 @@ var homingLookDown : bool = false ##used to make the cam tilt down when chaining
 
 #other trick variables
 var tiplanding : bool = false
+var tipLandAntiCheese : int = 0
 var heldByEel : bool = false
 var isTipSpinning : bool = false
 var superJumpTimer : int = -1
@@ -86,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 			
 			#apply vertical speed
 			apply_impulse(JUMP_STRENGTH)
-			if get_input_axis() == Vector2.ZERO:
+			if !get_input_axis():
 				apply_torque_impulse(rotate_by_cam(torque_impulse)) #flop forward
 			
 			#mid Air extra control
@@ -120,7 +121,7 @@ func _physics_process(_delta: float) -> void:
 				#play_trick_sfx("uncommon")
 			
 			
-			if get_input_axis() == Vector2.ZERO: #High Jump
+			if !get_input_axis(): #High Jump
 				var xtraYspd = clamp(angular_velocity.length()*0.35, 0, 35)
 				
 				apply_impulse(rotate_by_cam(Vector3(0, xtraYspd, 0)))
@@ -167,7 +168,7 @@ func _physics_process(_delta: float) -> void:
 			$reticle.visible = true
 			$reticle.position.y = clamp($reticle.position.y, 0, 1080)
 			$reticle.position.x = clamp($reticle.position.x, 0, 1920)
-			if $reticle.position.y == 1080:
+			if $reticle.position.y >= 1000 and homing:
 				homingLookDown = true
 		else:
 			$reticle.visible = false
@@ -228,6 +229,14 @@ func _physics_process(_delta: float) -> void:
 		diving = false
 		homing = false
 	
+	#x0 when homing, x1 otherwise
+	#if homing:
+		#gravity_scale = 0.0
+	#else:
+		#gravity_scale = 1.5
+	#gravity_scale = !int(homing)
+	
+	
 	##Speed smear
 	if homing: 
 		$homing/smear.visible = true
@@ -240,25 +249,14 @@ func _physics_process(_delta: float) -> void:
 	
 	## Influence direction of homing
 	var lerpSpeed := 0.06
-	
 	if get_input_axis():
-		lerpSpeed = 1
-	else:
-		lerpSpeed += 0.0001
-	
+		lerpSpeed = 0.5
 	
 	%homingTarget.position.x = lerp(%homingTarget.position.x, 5 * Input.get_axis("left", "right"), lerpSpeed)
 	%homingTarget.position.z = lerp(%homingTarget.position.z, 5 * Input.get_axis("forward", "back"), lerpSpeed)
-	$homing/area.rotation_degrees.z = lerp($homing/area.rotation_degrees.z, 25 * Input.get_axis("left", "right"), lerpSpeed)
+	$homing/area.rotation_degrees.z = lerp($homing/area.rotation_degrees.z, 28 * Input.get_axis("left", "right"), lerpSpeed)
+	$homing/area.rotation_degrees.x = lerp($homing/area.rotation_degrees.x, 28 * Input.get_axis("back", "forward"), lerpSpeed)
 	#$homing/area.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
-	$homing/area.rotation_degrees.x = lerp($homing/area.rotation_degrees.x, 25 * Input.get_axis("back", "forward"), lerpSpeed)
-
-	
-	
-	
-	
-	
-	
 	
 	## Diving/homing end ##
 	
@@ -324,7 +322,7 @@ func _physics_process(_delta: float) -> void:
 	
 	#Manual camera control
 	if Input.is_action_pressed("camera") and !cameraOverride:
-		if get_input_axis() != Vector2.ZERO:
+		if get_input_axis():
 			cameraOverride = true
 		if get_input_axis().x != 0:
 			var LR = Input.get_axis("right", "left")
@@ -349,7 +347,7 @@ func _physics_process(_delta: float) -> void:
 	#%camFocus.global_position = camLockOnTarget.global_position
 	var targetTilt = 0.0
 	if homingLookDown and !$detectCamSwitch.has_overlapping_areas():
-		targetTilt = -20.0
+		targetTilt = -24.0
 	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, 0.1)
 	
 	
@@ -397,6 +395,10 @@ func _physics_process(_delta: float) -> void:
 	## Tipspin
 	isTipSpinning = false
 	if get_side_count() == 1 and ($trickRC/tail.is_colliding() or $trickRC/head.is_colliding()):
+		tipLandAntiCheese += 1
+	else:
+		tipLandAntiCheese = 0
+	if tipLandAntiCheese >= 5: 
 		if linear_velocity.length() > 0.5 and angular_velocity.length() > 10:
 			isTipSpinning = true
 			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN")
@@ -462,6 +464,9 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
+	
+	
+	
 	#DEBUG_INFO
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
@@ -474,7 +479,8 @@ func _physics_process(_delta: float) -> void:
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
-	"homingLookDown: ", homingLookDown
+	"homingLookDown: ", homingLookDown, "\n",
+	"gravity scale: ", gravity_scale
 	)
 	
 
@@ -492,9 +498,14 @@ func get_collider_name(c):
 		return str(c.get_collider().name, " (", c.get_collider().get_parent().name, ")")
 	
 
+func detailed_name(object):
+	return str(object.name, " (", object.get_parent().name, ")")
+
+
 ## Returns a Vector2D based on which arrow keys are pressed
 ## X:  Left: -1  Right: 1       Y:  Down: -1  Up: 1
-## result is 0 if both or neither are pressed
+## Result is 0 if both or neither are pressed.
+## You can also use it as a boolean: no input == false, any input == true
 func get_input_axis():
 	var x = Input.get_axis("left", "right")
 	var y = Input.get_axis("back", "forward")
@@ -534,18 +545,31 @@ func force_position(newPos : Vector3):
 
 func get_closest_target():
 	var crabs = $homing/area.get_overlapping_areas()
+	var detectedCrabs = []
 	
-	##Find which homing target is the closest
-	var closest = crabs[0]
+	## Weed out all of the crabs behind a walls
 	for crab in crabs:
-		if %homingTarget.global_position.distance_to(crab.global_position) < %homingTarget.global_position.distance_to(closest.global_position):
-			if crab.priority >= closest.priority:
+		var direction = global_position.direction_to(crab.global_position)
+		$homing/raycast.target_position = direction*5
+		$homing/raycast.force_raycast_update()
+		if $homing/raycast.get_collider() == crab:
+			detectedCrabs.append(crab)
+	
+	if detectedCrabs.is_empty(): ## If every crab is behind a wall
+		return null
+	if detectedCrabs.size() == 1: ## Skip the sorting algo if theres only 1 left
+		return detectedCrabs[0]
+	
+	## Find which remaining target is the closest
+	var closest = detectedCrabs[0]
+	for crab in detectedCrabs:
+		#if the crab is nearer than the previous closest
+		if %homingTarget.global_position.distance_to(crab.global_position) <= %homingTarget.global_position.distance_to(closest.global_position):
+			if crab.priority >= closest.priority: #if the crab has >= priority than previous closest
 				closest = crab
 	
+	#so debbing rc looks at the correct crab
 	var direction = global_position.direction_to(closest.global_position)
 	$homing/raycast.target_position = direction*5
-	$homing/raycast.force_raycast_update()
-	if $homing/raycast.get_collider() is StaticBody3D:
-		closest = null
-		print("THE CLOSEST TARGET IS BEHIND A WALL: ", $homing/raycast.get_collider())
+	
 	return closest

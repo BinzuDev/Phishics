@@ -87,8 +87,8 @@ update_rotation = false
 
 [node name="Area3D" type="Area3D" parent="."]
 top_level = true
-collision_layer = 19
-collision_mask = 19
+collision_layer = 0
+collision_mask = 2
 
 [node name="EnemeyDetect" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1.28364, 0, 0, 0, 1.28364, 0, 0, 0, 1.28364, 0, 0, 0)

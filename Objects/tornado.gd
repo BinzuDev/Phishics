@@ -1,3 +1,5 @@
+@icon("res://icons/tornado.png")
+class_name tornado
 extends Node3D
 
 var timer : int = 0

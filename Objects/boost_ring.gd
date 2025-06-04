@@ -1,6 +1,6 @@
 @icon("res://icons/boost_ring.png")
 @tool #this makes it so code can run in the editor
-class_name boost
+class_name boostRing
 extends Area3D
 
 @onready var particles = $ring/CPUParticles3D

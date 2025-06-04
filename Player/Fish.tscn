@@ -76,11 +76,11 @@ radius = 3.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mdn8s"]
 height = 7.0
-radius = 5.5
+radius = 6.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6h88e"]
 height = 50.0
-radius = 7.5
+radius = 8.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipqbp"]
 shading_mode = 0
@@ -555,29 +555,35 @@ scale_amount_curve = SubResource("Curve_j6575")
 
 [node name="trickRC" type="Node3D" parent="."]
 
-[node name="left" type="RayCast3D" parent="trickRC"]
+[node name="under" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 target_position = Vector3(0, -0.4, 0)
+collision_mask = 17
 
-[node name="right" type="RayCast3D" parent="trickRC"]
+[node name="top" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
 target_position = Vector3(0, 0.4, 0)
+collision_mask = 17
 
 [node name="head" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 target_position = Vector3(-0.3, 0, 0)
+collision_mask = 17
 
 [node name="tail" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 target_position = Vector3(0.3, 0, 0)
+collision_mask = 17
 
-[node name="top" type="RayCast3D" parent="trickRC"]
+[node name="belly" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.243617)
 target_position = Vector3(0, 0, 0.3)
+collision_mask = 17
 
-[node name="under" type="RayCast3D" parent="trickRC"]
+[node name="back" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24)
 target_position = Vector3(0, 0, -0.3)
+collision_mask = 17
 
 [node name="detectCamSwitch" type="Area3D" parent="."]
 collision_layer = 0
@@ -596,6 +602,7 @@ top_level = true
 
 [node name="area" type="Area3D" parent="homing"]
 unique_name_in_owner = true
+rotation_order = 1
 collision_layer = 0
 collision_mask = 32
 
@@ -605,12 +612,12 @@ shape = SubResource("CylinderShape3D_40mal")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="middle" type="CollisionShape3D" parent="homing/area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, -1.5)
 shape = SubResource("CylinderShape3D_mdn8s")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="bottom" type="CollisionShape3D" parent="homing/area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -2.5)
 shape = SubResource("CylinderShape3D_6h88e")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
@@ -643,9 +650,9 @@ mesh = SubResource("SphereMesh_lt56d")
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = 8.0
-offset_top = 106.0
+offset_top = 12.0
 offset_right = 274.0
-offset_bottom = 353.0
+offset_bottom = 259.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_nmgcd")
 
