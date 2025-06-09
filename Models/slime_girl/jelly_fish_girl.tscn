@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bux6hpnbpl32l"]
-
-[ext_resource type="PackedScene" uid="uid://lnnw2gtmesme" path="res://Models/slime_girl/jelly_fish_girl.glb" id="1_6itln"]
-
-[node name="jelly_fish_girl" instance=ExtResource("1_6itln")]
