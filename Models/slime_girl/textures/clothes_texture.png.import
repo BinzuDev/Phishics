@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://issqlo1dl3bd"
-path.s3tc="res://.godot/imported/underwear_texture.png-bf32eb33acc49713c7741de6502bb699.s3tc.ctex"
+uid="uid://cagkue1mxc5vn"
+path.s3tc="res://.godot/imported/clothes_texture.png-b91c0e6cac96493780689d92a6fcb803.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/slime_girl/underwear_texture.png"
-dest_files=["res://.godot/imported/underwear_texture.png-bf32eb33acc49713c7741de6502bb699.s3tc.ctex"]
+source_file="res://Models/slime_girl/textures/clothes_texture.png"
+dest_files=["res://.godot/imported/clothes_texture.png-b91c0e6cac96493780689d92a6fcb803.s3tc.ctex"]
 
 [params]
 

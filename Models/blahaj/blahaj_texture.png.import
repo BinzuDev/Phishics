@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2h8qdcoxc43x"
-path.s3tc="res://.godot/imported/clothes_texture.png-cd1d432098c04b6b6c4fb9cfafb9cee9.s3tc.ctex"
+uid="uid://gqopt4c54n5j"
+path.s3tc="res://.godot/imported/blahaj_texture.png-e53458b3116d5277bb74879eada24ea0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/slime_girl/clothes_texture.png"
-dest_files=["res://.godot/imported/clothes_texture.png-cd1d432098c04b6b6c4fb9cfafb9cee9.s3tc.ctex"]
+source_file="res://Models/blahaj/blahaj_texture.png"
+dest_files=["res://.godot/imported/blahaj_texture.png-e53458b3116d5277bb74879eada24ea0.s3tc.ctex"]
 
 [params]
 

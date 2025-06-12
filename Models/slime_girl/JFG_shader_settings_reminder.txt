@@ -1,0 +1,22 @@
+SKIN:
+render priority 1
+shader: jfg_skin.gdshader
+NoiseTexture2D:
+  seemless
+  FastNoiseLite
+	Simplex
+	Frequency 0.02
+
+bubble color: #00ffff
+height: 0.3
+noise size: 0.8
+animspd: 0.4
+transparency: 0.5
+
+CLOTHES:
+render priority -3
+noise texture: (copy from skin)
+height: 0.4
+noise size: 0.8
+animspd: 0.4
+transparency: 0

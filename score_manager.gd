@@ -129,12 +129,6 @@ func _physics_process(_delta: float) -> void:
 	if idle: #lose rank quickly when you stop moving EXCEPT IF YOU TIPLANDED (set in fish.gd)
 		ScoreManager.styleDecreaseRate = 0.5 
 	
-	 
-	#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
-	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
-	#combine styleScore and the current combo to create the final styleMeter value  
-	styleMeter = styleScore + points*mult
-	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
 	
 	
 	## Rank up
@@ -154,6 +148,14 @@ func _physics_process(_delta: float) -> void:
 	## Rank down
 	if styleMeter < rankRequirements[styleRank] and styleRank > D:
 		ScoreManager.change_rank(-1, 0.5)
+	
+	#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
+	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
+	#combine styleScore and the current combo to create the final styleMeter value  
+	styleMeter = styleScore + points*mult
+	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
+	
+	
 	
 	
 	
@@ -255,7 +257,6 @@ func change_rank(amount: int, meterPercentage: float):
 	%rank.frame = 7-styleRank #set image
 	var middle = (rankRequirements[styleRank+1]-rankRequirements[styleRank])*meterPercentage + rankRequirements[styleRank]
 	styleScore = middle - (points*mult)
-	
 	
 	## Ranking up
 	if amount > 0: 

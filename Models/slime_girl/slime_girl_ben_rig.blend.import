@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckpa2qqutroo7"
-path="res://.godot/imported/slime_girl_finished_bones.blend-c2d80c2cd51b7350309040c17d138fb4.scn"
+uid="uid://opvxw5l75nfk"
+path="res://.godot/imported/slime_girl_ben_rig.blend-487a4db5e6076ac457ecd8107108065c.scn"
 
 [deps]
 
-source_file="res://Models/slime_girl/slime_girl_finished_bones.blend"
-dest_files=["res://.godot/imported/slime_girl_finished_bones.blend-c2d80c2cd51b7350309040c17d138fb4.scn"]
+source_file="res://Models/slime_girl/slime_girl_ben_rig.blend"
+dest_files=["res://.godot/imported/slime_girl_ben_rig.blend-487a4db5e6076ac457ecd8107108065c.scn"]
 
 [params]
 

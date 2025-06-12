@@ -1,0 +1,117 @@
+[gd_scene load_steps=17 format=3 uid="uid://cxysf74uku1hr"]
+
+[ext_resource type="PackedScene" uid="uid://cu4hc71ja43t" path="res://Models/slime_girl/models/JFG_glb_model_test.glb" id="1_06gw8"]
+[ext_resource type="Shader" uid="uid://db4tpgrv8uij0" path="res://Shaders/jelly_fish_girl_skin.gdshader" id="2_dpj85"]
+[ext_resource type="Texture2D" uid="uid://b8xxgpeimaaqn" path="res://Models/slime_girl/textures/underwear_texture.png" id="3_1v76v"]
+[ext_resource type="Shader" uid="uid://dpxq38qrq8x5d" path="res://Shaders/jelly_fish_girl_clothes.gdshader" id="4_1v76v"]
+[ext_resource type="Texture2D" uid="uid://c7xc2hf1prwej" path="res://Models/slime_girl/textures/face_test 2.png" id="4_gggs4"]
+[ext_resource type="Shader" uid="uid://cenb80p7eh8b5" path="res://Shaders/jelly_fish_girl_hair.gdshader" id="5_45gao"]
+[ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/slime_girl/textures/clothes_texture.png" id="5_gggs4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
+noise_type = 0
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45gao"]
+seamless = true
+noise = SubResource("FastNoiseLite_gggs4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ix4d7"]
+render_priority = -1
+shader = ExtResource("2_dpj85")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/bubble_color = Color(0, 0.85, 0.85, 1)
+shader_parameter/height_multiplier = 0.3
+shader_parameter/noise_sample_size = 0.8
+shader_parameter/animation_speed = 0.4
+shader_parameter/transparency = 0.3
+shader_parameter/underwear_texture = ExtResource("3_1v76v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45gao"]
+transparency = 1
+no_depth_test = true
+albedo_texture = ExtResource("4_gggs4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3xnw"]
+render_priority = -2
+shader = ExtResource("5_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/bubble_color = Color(0.258, 0, 0.36, 1)
+shader_parameter/height_multiplier = 0.2
+shader_parameter/noise_sample_size = 3.0
+shader_parameter/animation_speed = 0.3
+shader_parameter/transparency = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1uuhj"]
+render_priority = -2
+shader = ExtResource("5_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/bubble_color = Color(0.799, 0.33, 1, 1)
+shader_parameter/height_multiplier = 0.2
+shader_parameter/noise_sample_size = 3.0
+shader_parameter/animation_speed = 0.3
+shader_parameter/transparency = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45gao"]
+render_priority = -3
+shader = ExtResource("4_1v76v")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/clothes_texture = ExtResource("5_gggs4")
+shader_parameter/height_multiplier = 0.4
+shader_parameter/noise_sample_size = 0.8
+shader_parameter/animation_speed = 0.4
+shader_parameter/transparency = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v76v"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+albedo_texture = ExtResource("5_gggs4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2r2km"]
+render_priority = -1
+shader = ExtResource("5_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/bubble_color = Color(1, 0.03, 1, 1)
+shader_parameter/height_multiplier = 0.07
+shader_parameter/noise_sample_size = 3.0
+shader_parameter/animation_speed = 0.3
+shader_parameter/transparency = 1.01
+
+[node name="JFG_glb_model_test" instance=ExtResource("1_06gw8")]
+
+[node name="Body" parent="Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_ix4d7")
+
+[node name="face" parent="Skeleton3D" index="1"]
+material_override = SubResource("StandardMaterial3D_45gao")
+
+[node name="hair" parent="Skeleton3D" index="2"]
+material_override = SubResource("ShaderMaterial_j3xnw")
+
+[node name="hair_ears" parent="Skeleton3D" index="3"]
+material_override = SubResource("ShaderMaterial_j3xnw")
+
+[node name="hair_ears_001" parent="Skeleton3D" index="4"]
+material_override = SubResource("ShaderMaterial_j3xnw")
+
+[node name="hat" parent="Skeleton3D" index="5"]
+material_override = SubResource("ShaderMaterial_1uuhj")
+
+[node name="Head" parent="Skeleton3D" index="6"]
+material_override = SubResource("ShaderMaterial_ix4d7")
+
+[node name="Shirt" parent="Skeleton3D" index="7"]
+material_override = SubResource("ShaderMaterial_45gao")
+
+[node name="shoes" parent="Skeleton3D" index="8"]
+material_override = SubResource("StandardMaterial3D_1v76v")
+
+[node name="shoes_001" parent="Skeleton3D" index="9"]
+material_override = SubResource("StandardMaterial3D_1v76v")
+
+[node name="skirt" parent="Skeleton3D" index="10"]
+material_override = SubResource("ShaderMaterial_45gao")
+
+[node name="tentacle_hair_013" parent="Skeleton3D" index="11"]
+material_override = SubResource("ShaderMaterial_2r2km")
