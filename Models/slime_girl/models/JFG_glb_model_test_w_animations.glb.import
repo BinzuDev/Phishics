@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds0uryu8antl7"
-path="res://.godot/imported/JFG_gltf_model_test.gltf-6e52a4273d4b0653f2a976bd6512a650.scn"
+uid="uid://dw5liouu38okr"
+path="res://.godot/imported/JFG_glb_model_test_w_animations.glb-17738bd7a16cfbd14e6bca212d89adea.scn"
 
 [deps]
 
-source_file="res://Models/slime_girl/models/JFG_gltf_model_test.gltf"
-dest_files=["res://.godot/imported/JFG_gltf_model_test.gltf-6e52a4273d4b0653f2a976bd6512a650.scn"]
+source_file="res://Models/slime_girl/models/JFG_glb_model_test_w_animations.glb"
+dest_files=["res://.godot/imported/JFG_glb_model_test_w_animations.glb-17738bd7a16cfbd14e6bca212d89adea.scn"]
 
 [params]
 
