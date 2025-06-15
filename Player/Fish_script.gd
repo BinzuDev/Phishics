@@ -569,7 +569,7 @@ func get_closest_target():
 				closest = crab
 	
 	#so debbing rc looks at the correct crab
-	var direction = global_position.direction_to(closest.global_position)
-	$homing/raycast.target_position = direction*5
+	var rcDirection = global_position.direction_to(closest.global_position)
+	$homing/raycast.target_position = rcDirection*5
 	
 	return closest

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://byeq4c0xycfjc"]
+
+[ext_resource type="Shader" uid="uid://dpxq38qrq8x5d" path="res://Shaders/jelly_fish_girl_clothes.gdshader" id="1_1hcwk"]
+[ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/slime_girl/textures/clothes_texture.png" id="2_doy3e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
+noise_type = 0
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45gao"]
+seamless = true
+noise = SubResource("FastNoiseLite_gggs4")
+
+[resource]
+render_priority = -3
+shader = ExtResource("1_1hcwk")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/clothes_texture = ExtResource("2_doy3e")
+shader_parameter/height_multiplier = 0.4
+shader_parameter/noise_sample_size = 0.8
+shader_parameter/animation_speed = 0.4
+shader_parameter/transparency = 0.0

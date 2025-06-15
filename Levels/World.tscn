@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=94 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -41,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://s0x1m1riut7j" path="res://Objects/ramenbowl.tscn" id="39_fpk0g"]
 [ext_resource type="PackedScene" uid="uid://df7v6ishj1qjd" path="res://Objects/squidhouse.tscn" id="40_vcw38"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="41_i76hq"]
-[ext_resource type="PackedScene" uid="uid://cxysf74uku1hr" path="res://Models/slime_girl/models/jfg_glb_model_test.tscn" id="42_7pnea"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -3079,6 +3078,3 @@ curve = SubResource("Curve3D_7pnea")
 transform = Transform3D(-0.998983, 0, -0.042965, 0, 0.999915, 0, 0.0429669, 0, -0.998938, -9.00834, -0.795094, 0.556206)
 speed = 4
 bounceForce = 30
-
-[node name="JFG_glb_model_test" parent="." instance=ExtResource("42_7pnea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3893, 29.4735, 64.8701)

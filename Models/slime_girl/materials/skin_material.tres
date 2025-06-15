@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dtensr1tt2svp"]
+
+[ext_resource type="Shader" uid="uid://db4tpgrv8uij0" path="res://Shaders/jelly_fish_girl_skin.gdshader" id="1_qfi0n"]
+[ext_resource type="Texture2D" uid="uid://b8xxgpeimaaqn" path="res://Models/slime_girl/textures/underwear_texture.png" id="2_2uw1e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
+noise_type = 0
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45gao"]
+seamless = true
+noise = SubResource("FastNoiseLite_gggs4")
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_qfi0n")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/bubble_color = Color(0, 0.85, 0.85, 1)
+shader_parameter/height_multiplier = 0.3
+shader_parameter/noise_sample_size = 0.8
+shader_parameter/animation_speed = 0.4
+shader_parameter/transparency = 0.3
+shader_parameter/underwear_texture = ExtResource("2_2uw1e")

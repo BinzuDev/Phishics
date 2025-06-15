@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dn053hppdbos0"
+uid="uid://cpkdo6em1dr3i"
 path="res://.godot/imported/jelly_fish_girl.glb-f916d1faca7630404dee978df60d26e8.scn"
 
 [deps]
@@ -29,9 +29,9 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
-animation/import_rest_as_RESET=false
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=true
 import_script/path=""
 _subresources={}
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=0
