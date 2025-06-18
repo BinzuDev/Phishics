@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://igkx2qpnjl6x"]
+[gd_scene load_steps=10 format=3 uid="uid://igkx2qpnjl6x"]
 
 [ext_resource type="Script" uid="uid://cjh4npyqcxtf2" path="res://Objects/jellyfish.gd" id="1_34pw1"]
 [ext_resource type="Texture2D" uid="uid://bgpp2xr858vcn" path="res://Sprites/jellyfish.png" id="1_yvkaf"]
 [ext_resource type="Texture2D" uid="uid://cdch0kedotgbr" path="res://Sprites/jellyfishsquish2.png" id="3_bldx5"]
+[ext_resource type="AudioStream" uid="uid://bp34qykvpfnfo" path="res://Sounds/JFJump.ogg" id="4_qkjab"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_34pw1"]
 radius = 4.78696
@@ -69,6 +70,11 @@ _data = {
 &"RESET": SubResource("Animation_c7hmj")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c7hmj"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_qkjab")
+
 [node name="PathFollowJellyfish" type="PathFollow3D"]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 0, 0, 0)
 script = ExtResource("1_34pw1")
@@ -95,5 +101,10 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_w0s7j")
 }
+
+[node name="AudioJF" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_c7hmj")
+volume_db = 1.0
 
 [connection signal="body_entered" from="JellyfishArea" to="." method="_on_jellyfish_area_body_entered"]

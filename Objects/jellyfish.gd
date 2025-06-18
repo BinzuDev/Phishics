@@ -49,3 +49,6 @@ func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 		body.linear_velocity.z *= hSpeedMultiplier
 		#body.linear_velocity = Vector3.ZERO
 		#body.apply_central_impulse(Vector3.UP * 50)
+	#TRICK
+	ScoreManager.give_points(1000, 1, true, "JELLY JUMP")
+	%AudioJF.play()

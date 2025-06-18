@@ -2,6 +2,8 @@
 class_name player 
 extends RigidBody3D
 
+#jump check
+@export var canJump: bool = true
 
 var checkpoint_pos: Vector3 # i like men too teeheehee
 
@@ -74,7 +76,7 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and canJump:
 		if timeSinceJump > 20 and $floorDetection.is_colliding():
 			timeSinceJump = 0
 			#audio

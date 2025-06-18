@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1o2qjlo1hir6"]
+
+[ext_resource type="Script" uid="uid://m43onb6ua21w" path="res://jump_toggle.gd" id="1_r1v1h"]
+[ext_resource type="Material" uid="uid://c1y6pcmembpvq" path="res://Particles/bubble_particle.tres" id="2_dt6si"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dt6si"]
+radius = 0.918762
+
+[sub_resource type="SphereMesh" id="SphereMesh_r1v1h"]
+material = ExtResource("2_dt6si")
+
+[node name="jumpToggle" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_r1v1h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_dt6si")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_r1v1h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
