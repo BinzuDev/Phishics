@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7xc2hf1prwej"
-path.s3tc="res://.godot/imported/face_test 2.png-480e6d9d5c79909bd6ee17dd2a90d2dc.s3tc.ctex"
+uid="uid://dj6hhi6bw6gki"
+path.s3tc="res://.godot/imported/face_test.png-4a079ad11eca321fcefebb4a3591ebb8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/slime_girl/textures/face_test 2.png"
-dest_files=["res://.godot/imported/face_test 2.png-480e6d9d5c79909bd6ee17dd2a90d2dc.s3tc.ctex"]
+source_file="res://Models/JFG/textures/face_test.png"
+dest_files=["res://.godot/imported/face_test.png-4a079ad11eca321fcefebb4a3591ebb8.s3tc.ctex"]
 
 [params]
 

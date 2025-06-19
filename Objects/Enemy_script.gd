@@ -194,7 +194,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			
 			if $FloorCast/airshot.is_colliding():
 				if hp > 0:
-					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK")
+					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK", "", false)
 			else:
 				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT")
 				ScoreManager.play_trick_sfx("rare")

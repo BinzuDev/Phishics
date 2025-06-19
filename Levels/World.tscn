@@ -2503,6 +2503,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4821, 47.3582, -51.1012)
 skeleton = NodePath("../..")
 
+[node name="worm16" parent="worms" instance=ExtResource("16_e1uki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3318, 35.4946, -25.8374)
+skeleton = NodePath("../..")
+
 [node name="worm8" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3677, 27.3784, -51.4375)
 skeleton = NodePath("../..")
@@ -3079,7 +3083,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="Path3D" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.998982, 0, -0.042965, 0, 0.999915, 0, 0.0429669, 0, -0.998938, -9.00834, -0.795094, 0.556206)
+transform = Transform3D(-0.998981, 0, -0.042965, 0, 0.999915, 0, 0.0429668, 0, -0.998938, -9.00834, -0.795094, 0.556206)
 speed = 4
 bounceForce = 30
 

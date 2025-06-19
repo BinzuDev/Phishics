@@ -66,10 +66,14 @@ func _on_body_entered(body: Node3D) -> void:
 		body.apply_impulse(distance*3)
 		
 		ScoreManager.reset_airspin()
-		if body is player and body.lastUsedBoost != self:
-			body.lastUsedBoost = self
-			ScoreManager.give_points(500, 1, true, "BOOST")
+		if body is player: # and body.lastUsedBoost != self
+			if body.lastUsedBoost == self:
+				ScoreManager.give_points(500, 1, true, "BOOST", "")
+				ScoreManager.give_points(0, 0, true, "BOOST", "")
+			else: #dont lower the freshness if you use multiple DIFFERENT boosts
+				ScoreManager.give_points(500, 1, true, "BOOST", "", false)
 			ScoreManager.play_trick_sfx("rare")
+			body.lastUsedBoost = self
 		#body.play_random_trick()
 		
 		#sound 

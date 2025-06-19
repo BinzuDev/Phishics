@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://f0pvf0l0due2"
-path.s3tc="res://.godot/imported/Disgusted.png-55353eeae5cae1b86ef10805d9596f90.s3tc.ctex"
+path.s3tc="res://.godot/imported/Disgusted.png-474d9dc805ab3c5a18b1bcf9487717e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/JFGfaces/Disgusted.png"
-dest_files=["res://.godot/imported/Disgusted.png-55353eeae5cae1b86ef10805d9596f90.s3tc.ctex"]
+source_file="res://Models/JFG/faces/Disgusted.png"
+dest_files=["res://.godot/imported/Disgusted.png-474d9dc805ab3c5a18b1bcf9487717e5.s3tc.ctex"]
 
 [params]
 

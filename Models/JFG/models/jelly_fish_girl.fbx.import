@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ds435j43fpcd6"
-path="res://.godot/imported/jelly_fish_girl.fbx-8068ccfeb477e3b2b3b674eec952f410.scn"
+path="res://.godot/imported/jelly_fish_girl.fbx-32feef74b870e73105470832f3fd3519.scn"
 
 [deps]
 
-source_file="res://Models/slime_girl/models/jelly_fish_girl.fbx"
-dest_files=["res://.godot/imported/jelly_fish_girl.fbx-8068ccfeb477e3b2b3b674eec952f410.scn"]
+source_file="res://Models/JFG/models/jelly_fish_girl.fbx"
+dest_files=["res://.godot/imported/jelly_fish_girl.fbx-32feef74b870e73105470832f3fd3519.scn"]
 
 [params]
 

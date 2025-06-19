@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnrci5bn4room"
-path="res://.godot/imported/BLINK.png-52187709c66e5e7f173ed91539598566.ctex"
+uid="uid://b36siujidwirc"
+path.s3tc="res://.godot/imported/NEUTRAL.png-23d466c75bacfc86022c75b64272d136.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Sprites/JFGfaces/BLINK.png"
-dest_files=["res://.godot/imported/BLINK.png-52187709c66e5e7f173ed91539598566.ctex"]
+source_file="res://Models/JFG/faces/NEUTRAL.png"
+dest_files=["res://.godot/imported/NEUTRAL.png-23d466c75bacfc86022c75b64272d136.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

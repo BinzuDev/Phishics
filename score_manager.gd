@@ -18,6 +18,9 @@ var rankRequirements = [0, 100000, 250000, 500000, 900000, 1500000, 2350000, 350
 var rankAnimTimer : float = 0 #animation timer for the rank movement
 var idle : bool = false
 
+var trickHistory = [] #stores your previous 10 tricks
+var freshness : int
+
 ## Combo variables
 var combo_dict = {} #stores all of the types of tricks you've done this combo
 var comboTimer : float = 0.0 #timer that ticks down, ends combo when it reaches 0
@@ -71,7 +74,7 @@ func _physics_process(_delta: float) -> void:
 			elif airSpinRank == 9:
 				give_points(500, 5, true, "AIRSPIN")
 			elif airSpinRank >= 1 and airSpinRank <= 7:
-				give_points(200, 1, true, "AIRSPIN")
+				give_points(200, 1, true, "AIRSPIN", "", false)
 		
 	
 	## Airspin UI
@@ -182,6 +185,17 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_button"):
 		give_points(100000000, 1, true, "debug")
 	
+	## Fresh Meter ##
+	%freshWarning.visible = false
+	%freshBonus.visible = false
+	if trickHistory.size() >= 9:
+		if freshness <= 2:
+			%freshWarning.visible = true
+		if freshness >= 7:
+			%freshBonus.visible = true
+		
+	
+	
 	#DEBUG_INFO
 	%debugLabel.text = str(
 	"styleScore: ", styleScore, "\n",
@@ -192,8 +206,10 @@ func _physics_process(_delta: float) -> void:
 	"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
 	"airSpinAmount: ", airSpinAmount, "\n",
 	"airSpinRank: ", airSpinRank, "\n",
-	"airSpinHighestRank: ", airSpinHighestRank
+	"airSpinHighestRank: ", airSpinHighestRank, "\n",
 	)
+	
+	%debugLabel2.text = str(trickHistory, "\nfreshness: ", freshness)
 
 
 
@@ -204,12 +220,28 @@ func _physics_process(_delta: float) -> void:
 ######################
 
 ##Give the player points, mult, and chose if you want to refresh the combo timer
-func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trickName: String = "", rarity: String = ""):
-	points += addPoints
-	mult += addMult      
+func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trickName: String = "", rarity: String = "", affectFreshness: bool = true):
+	
 					  #let the airspin reset timer but ONLY when theres no combo yet
 	if resetTimer or (trickName == "AIRSPIN" and mult == addMult):
-		comboTimer = max(comboReset, comboTimer) #dont crop timer if bigger than maximum (ex: post dunking)
+		
+		if affectFreshness or trickHistory.count(trickName) == 0:
+			if trickName != "AIRSPIN": #special exception for airspin
+				trickHistory.append(trickName) #add the trick to the list of previous tricks
+		if trickHistory.size() >= 10:
+			trickHistory.remove_at(0) #remove the oldest one in the list when theres 10
+		update_freshness()
+		#if your freshness is ok OR you haven't even done 10 tricks yet
+		if freshness >= 3 or trickHistory.size() < 9:
+			comboTimer = max(comboReset, comboTimer) #dont crop timer if bigger than maximum (ex: post dunking)
+			#if you want to give a timer bonus, manually set comboTimer to a high value right before give_points()
+	
+	if freshness >= 7: ##Double your pts and mult if you're super fresh!
+		addPoints *= 2
+		addMult *= 2
+	
+	points += addPoints
+	mult += addMult
 	
 	if resetTimer or addMult > 0:
 		$UI/comboScore.scale = Vector2(1.2, 1.2) #make the PTSxMULT ui grow
@@ -248,6 +280,19 @@ func end_combo():
 	airSpinHighestRank = 0
 	%comboText.text = ""
 	combo_dict.clear()
+
+
+func update_freshness():
+	var uniqueTricks = []
+	for value in trickHistory:
+		if uniqueTricks.count(value) == 0: #if that trick hasnt been detected yet
+			uniqueTricks.append(value) #add that to the list of unique detected tricks
+	freshness = uniqueTricks.size()
+	if trickHistory.count("BOOST") > 3:
+		freshness = 1
+	
+
+
 
 
 ##meterPercentage decides where the meter start from on the next rank, on a scale of 0.0 to 1.0

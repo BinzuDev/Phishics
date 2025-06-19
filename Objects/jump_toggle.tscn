@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1o2qjlo1hir6"]
 
-[ext_resource type="Script" uid="uid://m43onb6ua21w" path="res://jump_toggle.gd" id="1_r1v1h"]
+[ext_resource type="Script" uid="uid://m43onb6ua21w" path="res://Objects/jump_toggle.gd" id="1_r1v1h"]
 [ext_resource type="Material" uid="uid://c1y6pcmembpvq" path="res://Particles/bubble_particle.tres" id="2_dt6si"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dt6si"]

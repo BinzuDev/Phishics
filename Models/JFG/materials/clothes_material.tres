@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://byeq4c0xycfjc"]
 
 [ext_resource type="Shader" uid="uid://dpxq38qrq8x5d" path="res://Shaders/jelly_fish_girl_clothes.gdshader" id="1_1hcwk"]
-[ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/slime_girl/textures/clothes_texture.png" id="2_doy3e"]
+[ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/JFG/textures/clothes_texture.png" id="2_doy3e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
 noise_type = 0

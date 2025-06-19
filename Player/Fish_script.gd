@@ -403,7 +403,7 @@ func _physics_process(_delta: float) -> void:
 	if tipLandAntiCheese >= 5: 
 		if linear_velocity.length() > 0.5 and angular_velocity.length() > 10:
 			isTipSpinning = true
-			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN")
+			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN", "", false)
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
 				ScoreManager.give_points(0, 1, true, "")
 		
