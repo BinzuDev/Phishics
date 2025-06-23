@@ -121,7 +121,7 @@ skeleton = NodePath("../..")
 shape = SubResource("SphereShape3D_j0mkc")
 
 [node name="sphere2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.72922e-06, 0, -39.56, 0, 39.56, 0, 39.56, 0, -1.72922e-06, -2.48776, -18.0398, -70.8737)
+transform = Transform3D(-1.72922e-06, 0, -39.56, 0, 39.56, 0, 39.56, 0, -1.72922e-06, -2.48776, -18.1525, -70.8737)
 material_override = SubResource("StandardMaterial3D_mscth")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("SphereMesh_e312d")
