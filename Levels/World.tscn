@@ -46,13 +46,13 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
 
-[sub_resource type="Sky" id="Sky_wvw3a"]
+[sub_resource type="Sky" id="Sky_7pnea"]
 sky_material = SubResource("PanoramaSkyMaterial_53g8k")
 
 [sub_resource type="Environment" id="Environment_v72nc"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_wvw3a")
+sky = SubResource("Sky_7pnea")
 fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
@@ -3083,7 +3083,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="Path3D" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.998981, 0, -0.042965, 0, 0.999915, 0, 0.0429668, 0, -0.998938, -9.00834, -0.795094, 0.556206)
+transform = Transform3D(-0.99898, 0, -0.042965, 0, 0.999915, 0, 0.0429668, 0, -0.998938, -9.00834, -0.795094, 0.556206)
 speed = 4
 bounceForce = 30
 

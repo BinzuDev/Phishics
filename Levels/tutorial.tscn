@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=3 uid="uid://dkidvdubjn0p"]
+
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_gdvy0"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_hga2d"]
+[ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="5_hga2d"]
+[ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="6_mscth"]
+[ext_resource type="PackedScene" uid="uid://cf81w8s7c7kox" path="res://Objects/pillar.tscn" id="7_j0mkc"]
+[ext_resource type="Texture2D" uid="uid://bgeyga2o4k8mo" path="res://Textures/concrete.png" id="8_lojvt"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
+panorama = ExtResource("1_i6m5q")
+
+[sub_resource type="Sky" id="Sky_wvw3a"]
+sky_material = SubResource("PanoramaSkyMaterial_lalqu")
+
+[sub_resource type="Environment" id="Environment_0xeif"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_wvw3a")
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mscth"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e312d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mscth"]
+albedo_color = Color(0.266667, 0, 0.172549, 1)
+albedo_texture = ExtResource("5_hga2d")
+uv1_scale = Vector3(0.13, 0.13, 0.13)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_e312d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j0mkc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avars"]
+albedo_color = Color(0.490196, 0.619608, 0.584314, 1)
+albedo_texture = ExtResource("8_lojvt")
+disable_receive_shadows = true
+
+[node name="Tutorial" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xeif")
+
+[node name="fish" parent="." instance=ExtResource("2_lalqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.26472, -0.717042)
+gravity_scale = 1.5
+canJump = false
+
+[node name="Platform21" type="MeshInstance3D" parent="."]
+transform = Transform3D(-45.8666, 0, -1.53072, 0, 33.2223, 0, 0.48193, 0, -145.683, 1.12136, -23.118, -64.1148)
+material_override = ExtResource("3_gdvy0")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("BoxMesh_mscth")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform21/StaticBody3D"]
+shape = SubResource("BoxShape3D_e312d")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -33.573)
+text = "ARROW KEYS TO FLIP AROUND"
+font_size = 39
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -103.147)
+text = "SPACE KEY TO FLOP OVER"
+font_size = 39
+
+[node name="sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, -13.8996, -13.7071, -53.4314)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="sphere5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 0.484121, -16.9183, -53.4314)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere5/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="sphere6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 0.484121, -14.6536, -60.7044)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere6/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="sphere2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.72922e-06, 0, -39.56, 0, 39.56, 0, 39.56, 0, -1.72922e-06, -2.48776, -18.0398, -70.8737)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere2/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="sphere3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 10.914, -15.6344, -59.7454)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere3/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="sphere4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 14.37, -15.6344, -70.6229)
+material_override = SubResource("StandardMaterial3D_mscth")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("SphereMesh_e312d")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sphere4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere4/StaticBody3D"]
+shape = SubResource("SphereShape3D_j0mkc")
+
+[node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -1.25604, -3.50345, -103.665)
+visible = false
+Enables_jump = true
+
+[node name="Pillar4" parent="." instance=ExtResource("7_j0mkc")]
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.83473, -9.96835, -110.267)
+material_override = SubResource("StandardMaterial3D_avars")
+
+[node name="Pillar7" parent="." instance=ExtResource("7_j0mkc")]
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.000569315, 0.829499, 0.558509, -0.00221433, -0.558507, 0.829497, 0.83473, -10.8751, -104.698)
+material_override = SubResource("StandardMaterial3D_avars")
+
+[node name="Pillar5" parent="." instance=ExtResource("7_j0mkc")]
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.83473, -8.32234, -114.762)
+material_override = SubResource("StandardMaterial3D_avars")
+
+[node name="Pillar6" parent="." instance=ExtResource("7_j0mkc")]
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.842621, -6.94076, -119.384)
+material_override = SubResource("StandardMaterial3D_avars")
