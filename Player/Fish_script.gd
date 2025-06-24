@@ -120,6 +120,7 @@ func _physics_process(_delta: float) -> void:
 			if !$nearFloor.is_colliding():
 				ScoreManager.give_points(800,1, true, "WALL JUMP", "uncommon")
 				ScoreManager.reset_airspin()
+				print("Airspin reset by walljump")
 				#play_trick_sfx("uncommon")
 			
 			
@@ -463,9 +464,7 @@ func _physics_process(_delta: float) -> void:
 	#reset when touching the floor
 	if get_contact_count() > 0 and $nearFloor.is_colliding(): 
 		ScoreManager.reset_airspin()
-	
-	
-	
+		
 	
 	
 	

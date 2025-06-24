@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=58 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
+[ext_resource type="AudioStream" uid="uid://dhn0knconkx21" path="res://Sounds/shotgun_og.ogg" id="27_lt56d"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -795,6 +796,9 @@ process_mode = 3
 stream = ExtResource("25_dhdhv")
 max_polyphony = 5
 bus = &"fishsfx"
+
+[node name="AudioDebug" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_lt56d")
 
 [connection signal="body_entered" from="." to="." method="checkpoint"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

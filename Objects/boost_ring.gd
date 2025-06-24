@@ -65,8 +65,9 @@ func _on_body_entered(body: Node3D) -> void:
 		body.apply_torque_impulse(distance)
 		body.apply_impulse(distance*3)
 		
-		ScoreManager.reset_airspin()
+		
 		if body is player: # and body.lastUsedBoost != self
+			ScoreManager.reset_airspin()
 			if body.lastUsedBoost == self:
 				ScoreManager.give_points(500, 1, true, "BOOST", "")
 				ScoreManager.give_points(0, 0, true, "BOOST", "")

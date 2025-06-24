@@ -73,6 +73,7 @@ func _physics_process(_delta: float) -> void:
 					comboTimer += 100
 			elif airSpinRank == 9:
 				give_points(500, 5, true, "AIRSPIN")
+				give_points(0,0, true, "freshASbonus")
 			elif airSpinRank >= 1 and airSpinRank <= 7:
 				give_points(200, 1, true, "AIRSPIN", "", false)
 		
@@ -185,25 +186,17 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_button"):
 		give_points(100000000, 1, true, "debug")
 	
-	## Fresh Meter ##
-	%freshWarning.visible = false
-	%freshBonus.visible = false
-	if trickHistory.size() >= 9:
-		if freshness <= 2:
-			%freshWarning.visible = true
-		if freshness >= 7:
-			%freshBonus.visible = true
-		
+	
 	
 	
 	#DEBUG_INFO
 	%debugLabel.text = str(
-	"styleScore: ", styleScore, "\n",
-	"combo: ", points*mult, "\n",
-	"styleMeter: ", styleMeter, "\n",
-	"prev rank: ", rankRequirements[styleRank], "\n",
-	"next rank: ", rankRequirements[styleRank+1], "\n",
-	"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
+	#"styleScore: ", styleScore, "\n",
+	#"combo: ", points*mult, "\n",
+	#"styleMeter: ", styleMeter, "\n",
+	#"prev rank: ", rankRequirements[styleRank], "\n",
+	#"next rank: ", rankRequirements[styleRank+1], "\n",
+	#"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
 	"airSpinAmount: ", airSpinAmount, "\n",
 	"airSpinRank: ", airSpinRank, "\n",
 	"airSpinHighestRank: ", airSpinHighestRank, "\n",
@@ -247,7 +240,9 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 		$UI/comboScore.scale = Vector2(1.2, 1.2) #make the PTSxMULT ui grow
 	
 	## Create/increase the trick
-	if trickName != "": #dont add it to the list if the trick has no name
+	if trickName == "" or (addPoints == 0 and addMult == 0) : #dont add it to the list if the trick has no name
+		pass
+	else:
 		if !combo_dict.has(trickName): #create the trick if it doesnt exist
 			combo_dict[trickName] = [addPoints, addMult]
 			if rarity == "uncommon": #play sfx only the first time it gets added
@@ -283,13 +278,36 @@ func end_combo():
 
 
 func update_freshness():
+	var freshBefore = freshness
 	var uniqueTricks = []
 	for value in trickHistory:
 		if uniqueTricks.count(value) == 0: #if that trick hasnt been detected yet
 			uniqueTricks.append(value) #add that to the list of unique detected tricks
 	freshness = uniqueTricks.size()
-	if trickHistory.count("BOOST") > 3:
+	if trickHistory.count("BOOST") >= 5:
 		freshness = 1
+	
+	
+	
+	## UI
+	%freshWarning.visible = false
+	%freshBonus.visible = false
+	%maxFresh.visible = false
+	if trickHistory.size() >= 9:
+		if freshness <= 2:
+			%freshWarning.visible = true
+			if freshBefore >= 3:
+				$lowFreshness.play()
+		if freshness == 7 or freshness == 8:
+			%freshBonus.visible = true
+			if freshBefore <= 6:
+				$highFreshness.play()
+		if freshness == 9:
+			%maxFresh.visible = true
+			if freshBefore <= 8:
+				$maxFreshness.play()
+				give_points(10000, 2, false, "MAX FRESHNESS")
+	
 	
 
 
@@ -362,9 +380,10 @@ func play_trick_sfx(type: String):
 func airSpinUIgrow():
 	$UI/airSpin.scale += Vector2(0.12, 0.12)
 
-func reset_airspin(): # also used by boost ring
+func reset_airspin(): #also used by boost ring
 	airSpinAmount = 0
 	airSpinRank = 0
+	
 
 func reset_everything():
 	reset_airspin()
@@ -375,6 +394,8 @@ func reset_everything():
 	styleMeter = 0
 	styleScore = 0
 	finalScore = 0
+	freshness = 0
+	trickHistory = []
 	%rank.frame = 7
 	%rankBG.frame = 7
 	

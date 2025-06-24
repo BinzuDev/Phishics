@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=81 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://score_manager.gd" id="1_vublb"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="3_uvms0"]
@@ -54,6 +54,8 @@
 [ext_resource type="AudioStream" uid="uid://d1mnm1fx20bk" path="res://Sounds/style_ranks/Phishics3.ogg" id="53_rlhha"]
 [ext_resource type="AudioStream" uid="uid://cvo4j1k3x2blu" path="res://Sounds/style_ranks/PhishicSS1.ogg" id="54_nylqd"]
 [ext_resource type="AudioStream" uid="uid://dnphskcuvtm1c" path="res://Sounds/style_ranks/PhishicSSS1.ogg" id="55_5su7l"]
+[ext_resource type="AudioStream" uid="uid://bw6p02hutkg8" path="res://Sounds/tricks/low_freshness.ogg" id="55_g3jka"]
+[ext_resource type="AudioStream" uid="uid://tyhasv5d7ppk" path="res://Sounds/tricks/unused/airhorn2.ogg" id="56_ndf8x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7cib2"]
 font = ExtResource("4_bfd2b")
@@ -74,6 +76,13 @@ font_size = 52
 font_color = Color(1, 0, 0.9, 1)
 outline_size = 20
 outline_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kiqt"]
+font = ExtResource("4_bfd2b")
+font_size = 62
+font_color = Color(0, 1, 1, 1)
+outline_size = 20
+outline_color = Color(1, 0, 0.683333, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5htxl"]
 font = ExtResource("4_bfd2b")
@@ -553,6 +562,7 @@ theme_override_constants/margin_top = 121
 
 [node name="freshWarning" type="Label" parent="UI/freshMargin"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "LOW FRESHNESS WARNING"
@@ -561,10 +571,20 @@ horizontal_alignment = 1
 
 [node name="freshBonus" type="Label" parent="UI/freshMargin"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "FRESHNESS BONUS!!"
 label_settings = SubResource("LabelSettings_ndf8x")
+horizontal_alignment = 1
+
+[node name="maxFresh" type="Label" parent="UI/freshMargin"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MAXIMUM FRESHNESS!!"
+label_settings = SubResource("LabelSettings_8kiqt")
 horizontal_alignment = 1
 
 [node name="comboBarMargin" type="MarginContainer" parent="UI"]
@@ -679,10 +699,11 @@ libraries = {
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 1509.0
-offset_top = 355.0
-offset_right = 1775.0
-offset_bottom = 602.0
+offset_left = 9.0
+offset_top = 82.0
+offset_right = 275.0
+offset_bottom = 329.0
+scale = Vector2(3, 3)
 text = "debug info"
 label_settings = SubResource("LabelSettings_g3jka")
 
@@ -759,3 +780,12 @@ bus = &"rankUp"
 [node name="phishicsss" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_o5qv3")
 bus = &"rankUp"
+
+[node name="lowFreshness" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("55_g3jka")
+
+[node name="highFreshness" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_jkrp3")
+
+[node name="maxFreshness" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("56_ndf8x")
