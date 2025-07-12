@@ -313,7 +313,7 @@ point_count = 4
 [node name="Node3D" type="Node3D"]
 
 [node name="jumpToggle" parent="." instance=ExtResource("42_7pnea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8398, 29.8325, 65.4639)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6728, 29.8325, 65.4639)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
@@ -3088,5 +3088,5 @@ speed = 4
 bounceForce = 30
 
 [node name="jumpToggle2" parent="." instance=ExtResource("42_7pnea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2155, 29.8325, 65.4639)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0485, 29.8325, 65.4639)
 Enables_jump = true

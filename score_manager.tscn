@@ -699,11 +699,10 @@ libraries = {
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 9.0
-offset_top = 82.0
-offset_right = 275.0
-offset_bottom = 329.0
-scale = Vector2(3, 3)
+offset_left = 1525.0
+offset_top = 415.0
+offset_right = 1791.0
+offset_bottom = 662.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_g3jka")
 

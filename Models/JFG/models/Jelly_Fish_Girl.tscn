@@ -2095,7 +2095,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionCapsule3D" type="SpringBoneCollisionCapsule3D" parent="Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(0, 1.11759e-08, -1, 0.0369412, -0.999318, -9.31323e-09, -0.999317, -0.0369412, -1.19209e-07, 0.125505, 0.970102, 0.0473263)
+transform = Transform3D(0, 0, -1, 0.0369412, -0.999317, 3.72529e-09, -0.999317, -0.0369412, -1.19209e-07, 0.125505, 0.9701, 0.0473263)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -2103,7 +2103,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="SpringBoneCollisionCapsule3D2" type="SpringBoneCollisionCapsule3D" parent="Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(-0.452299, 0.0167199, 0.89171, -0.0369412, -0.999317, -1.11759e-08, 0.891101, -0.0329409, 0.452608, -0.143104, 0.970102, 0.0431155)
+transform = Transform3D(0, 0, 1, -0.0369412, -0.999317, 3.72529e-09, 0.999317, -0.0369412, -1.19209e-07, -0.125505, 0.9701, 0.0473263)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)

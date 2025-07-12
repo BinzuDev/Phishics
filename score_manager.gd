@@ -191,15 +191,15 @@ func _physics_process(_delta: float) -> void:
 	
 	#DEBUG_INFO
 	%debugLabel.text = str(
-	#"styleScore: ", styleScore, "\n",
-	#"combo: ", points*mult, "\n",
-	#"styleMeter: ", styleMeter, "\n",
-	#"prev rank: ", rankRequirements[styleRank], "\n",
-	#"next rank: ", rankRequirements[styleRank+1], "\n",
-	#"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
-	"airSpinAmount: ", airSpinAmount, "\n",
-	"airSpinRank: ", airSpinRank, "\n",
-	"airSpinHighestRank: ", airSpinHighestRank, "\n",
+	"styleScore: ", styleScore, "\n",
+	"combo: ", points*mult, "\n",
+	"styleMeter: ", styleMeter, "\n",
+	"prev rank: ", rankRequirements[styleRank], "\n",
+	"next rank: ", rankRequirements[styleRank+1], "\n",
+	"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
+	#"airSpinAmount: ", airSpinAmount, "\n",
+	#"airSpinRank: ", airSpinRank, "\n",
+	#"airSpinHighestRank: ", airSpinHighestRank, "\n",
 	)
 	
 	%debugLabel2.text = str(trickHistory, "\nfreshness: ", freshness)
