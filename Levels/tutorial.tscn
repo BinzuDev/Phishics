@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=18 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_gdvy0"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_hga2d"]
 [ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="6_mscth"]
-[ext_resource type="PackedScene" uid="uid://cf81w8s7c7kox" path="res://Objects/pillar.tscn" id="7_j0mkc"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="8_j0mkc"]
-[ext_resource type="Texture2D" uid="uid://bgeyga2o4k8mo" path="res://Textures/concrete.png" id="8_lojvt"]
+[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_lojvt"]
+[ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="9_lojvt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -31,14 +31,13 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e312d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avars"]
-albedo_color = Color(0.490196, 0.619608, 0.584314, 1)
-albedo_texture = ExtResource("8_lojvt")
-disable_receive_shadows = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_e312d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0mkc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lojvt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avars"]
 
 [node name="Tutorial" type="Node3D"]
 
@@ -57,7 +56,7 @@ gravity_scale = 1.5
 canJump = false
 
 [node name="Platform21" type="MeshInstance3D" parent="."]
-transform = Transform3D(-45.8666, 0, -1.53072, 0, 33.2223, 0, 0.48193, 0, -145.683, 1.12136, -23.118, -64.1148)
+transform = Transform3D(-45.6483, 0, -2.22411, 0, 33.2223, 0, 0.479636, 0, -211.675, 1.12136, -23.118, -76.7945)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_mscth")
@@ -69,35 +68,28 @@ shape = SubResource("BoxShape3D_e312d")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -33.573)
-text = "ARROW KEYS TO FLIP AROUND"
+text = "ARROW KEYS TO FLIP AROUND
+(USE MOMENTUM TO MOVE)"
+font_size = 39
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(4.95532, 0, 0, 0, 4.15054, 2.68754, 0, -3.36884, 3.31115, 1.879, 2.78109, -126.591)
+text = "PRESS \"D\" TO DIVE
+(DIVING ABOVE CRABS WILL MURDER THEM)
+"
 font_size = 39
 
 [node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(10.086, 0, 0, 0, 6.68957, 10.5636, 0, -4.11545, 17.1709, -0.176477, -3.1745, -82.2838)
+transform = Transform3D(10.086, 0, 0, 0, 6.68957, 10.5636, 0, -4.11545, 17.1709, -0.176477, -0.603838, -82.5153)
 text = "SPACE KEY TO FLOP OVER
-(USE YOUR MOMENTUM)"
+(ALSO WITH MOMENTUM)
+"
 font_size = 39
 
 [node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -1.25604, -3.50345, -103.665)
 visible = false
 Enables_jump = true
-
-[node name="Pillar4" parent="." instance=ExtResource("7_j0mkc")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.83473, -9.96835, -110.267)
-material_override = SubResource("StandardMaterial3D_avars")
-
-[node name="Pillar7" parent="." instance=ExtResource("7_j0mkc")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.000569315, 0.829499, 0.558509, -0.00221433, -0.558507, 0.829497, 0.83473, -10.8751, -104.698)
-material_override = SubResource("StandardMaterial3D_avars")
-
-[node name="Pillar5" parent="." instance=ExtResource("7_j0mkc")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.83473, -8.32234, -114.762)
-material_override = SubResource("StandardMaterial3D_avars")
-
-[node name="Pillar6" parent="." instance=ExtResource("7_j0mkc")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 0.842621, -6.94076, -119.384)
-material_override = SubResource("StandardMaterial3D_avars")
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
 transform = Transform3D(45.3104, 0, 0, 0, 1.305, -13.6596, 0, 0.689187, 25.8651, 2.13427, -6.29073, -62.8995)
@@ -127,3 +119,75 @@ shape = SubResource("BoxShape3D_j0mkc")
 transform = Transform3D(-0.0771102, -0.165363, 0.983212, -0.734275, 0.676519, 0.0561948, -0.674457, -0.717616, -0.173589, 19.6499, -4.23769, -81.0686)
 strength = 16.5
 centerPlayer = true
+
+[node name="Goal" parent="." instance=ExtResource("9_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.534254, -6.07532, -5.26866)
+
+[node name="Goal2" parent="." instance=ExtResource("9_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.534254, -6.07532, -172.597)
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.79225e-07, 0, -45.6159, 0, 5.27117, 0, 6.3879, 0, -1.99394e-06, 0.738795, -5.89516, -107.605)
+material_override = ExtResource("3_gdvy0")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("BoxMesh_lojvt")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
+shape = SubResource("BoxShape3D_avars")
+
+[node name="Platform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.79225e-07, 0, -45.6159, 0, 5.27117, 0, 6.3879, 0, -1.99394e-06, 0.738795, -3.32033, -113.84)
+material_override = ExtResource("3_gdvy0")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("BoxMesh_lojvt")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
+shape = SubResource("BoxShape3D_avars")
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.79225e-07, 0, -45.6159, 0, 5.27117, 0, 6.3879, 0, -1.99394e-06, 0.738795, 0.610249, -119.602)
+material_override = ExtResource("3_gdvy0")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("BoxMesh_lojvt")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
+shape = SubResource("BoxShape3D_avars")
+
+[node name="Enemy" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.842189, -5.60787, -129.778)
+
+[node name="Enemy7" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243292, -5.60787, -136.054)
+
+[node name="Enemy8" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8068, -5.60787, -127.519)
+
+[node name="Enemy9" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0347, -5.60787, -127.169)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84514, -5.60787, -138.548)
+
+[node name="Enemy3" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6909, -5.60787, -140.953)
+
+[node name="Enemy4" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53783, -5.60787, -134.851)
+
+[node name="Enemy5" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10427, -5.60787, -147.657)
+
+[node name="Enemy6" parent="." instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.31962, -5.60787, -147.657)
