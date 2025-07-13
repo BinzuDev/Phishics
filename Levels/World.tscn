@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=96 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://df7v6ishj1qjd" path="res://Objects/squidhouse.tscn" id="40_vcw38"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="41_i76hq"]
 [ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="42_7pnea"]
+[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialouge_area.tscn" id="43_581hb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -3090,3 +3091,6 @@ bounceForce = 30
 [node name="jumpToggle2" parent="." instance=ExtResource("42_7pnea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0485, 29.8325, 65.4639)
 Enables_jump = true
+
+[node name="dialougeArea" parent="." instance=ExtResource("43_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4448, 30.2565, 55.4843)

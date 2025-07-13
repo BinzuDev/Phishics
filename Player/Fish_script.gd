@@ -81,7 +81,7 @@ func _physics_process(_delta: float) -> void:
 			timeSinceJump = 0
 			#audio
 			$Jumps.play()
-			$Soft_Impact.play() 
+			$Soft_Impact.play()
 			
 			#jump Particle
 			$JumpPuff.restart()

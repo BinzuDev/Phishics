@@ -67,7 +67,7 @@ mesh = SubResource("BoxMesh_mscth")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -33.573)
+transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -7.41788)
 text = "ARROW KEYS TO FLIP AROUND
 (USE MOMENTUM TO MOVE)"
 font_size = 39

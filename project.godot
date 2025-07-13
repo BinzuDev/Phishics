@@ -21,6 +21,7 @@ boot_splash/image="uid://drbikn5ifimak"
 global="*res://global.gd"
 MusicManager="*res://music_manager.tscn"
 ScoreManager="*res://score_manager.tscn"
+DialogueManager="*res://dialogue_manager.tscn"
 
 [debug]
 
