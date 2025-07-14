@@ -1,11 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=55 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_gdvy0"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_hga2d"]
 [ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="6_mscth"]
-[ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="8_j0mkc"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_lojvt"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="9_avars"]
 [ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="9_lojvt"]
@@ -75,6 +74,101 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 radius = 3.53655
 
 [sub_resource type="SphereMesh" id="SphereMesh_to5w2"]
+
+[sub_resource type="Resource" id="Resource_m0lrx"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "Oh hello there, looks like you forgot how to swim.
+"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_kx2g6"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "Don't worry! You can use the arrow keys to flop around (use your momentum to move)"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_l8sr5"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_m0lrx"), SubResource("Resource_kx2g6")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_8fyol"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "Space to jump!
+"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_0cfr2"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_8fyol")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_avars"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "You can press \"D\" while falling to dive!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_rmd0x"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "Diving over crabs murders them! (Thats a good thing)"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_tbpdk"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "remember to aim your dive with the arrow keys!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_rf3la"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("Camera3DCrab")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_avars"), SubResource("Resource_rmd0x"), SubResource("Resource_tbpdk")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_3p1xt"]
+script = ExtResource("10_3hhjp")
+name = "JFG"
+text = "Try building up some momentum to get over this ramp!
+"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_bu5na"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("Camera3DCam")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_3p1xt")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="Resource" id="Resource_0tnf1"]
 script = ExtResource("10_3hhjp")
@@ -233,12 +327,6 @@ mesh = SubResource("BoxMesh_mscth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform21/StaticBody3D"]
 shape = SubResource("BoxShape3D_e312d")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(14.42, 0, 0, 0, 14.42, 0, 0, 0, 14.42, 0, -2.65866, -7.41788)
-text = "ARROW KEYS TO FLIP AROUND
-(USE MOMENTUM TO MOVE)"
-font_size = 39
-
 [node name="Label3D3" type="Label3D" parent="."]
 transform = Transform3D(4.95532, 0, 0, 0, 4.15054, 2.68754, 0, -3.36884, 3.31115, 1.879, 2.78109, -126.591)
 text = "PRESS \"D\" TO DIVE
@@ -246,15 +334,8 @@ text = "PRESS \"D\" TO DIVE
 "
 font_size = 39
 
-[node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(10.086, 0, 0, 0, 6.68957, 10.5636, 0, -4.11545, 17.1709, -0.176477, -0.603838, -82.5153)
-text = "SPACE KEY TO FLOP OVER
-(ALSO WITH MOMENTUM)
-"
-font_size = 39
-
 [node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 1.46498, -75.2815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 1.46498, -96.6346)
 Enables_jump = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jumpToggle2"]
@@ -263,7 +344,7 @@ shape = SubResource("BoxShape3D_to5w2")
 debug_color = Color(0, 1, 0.733333, 1)
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
-transform = Transform3D(45.3104, 0, 0, 0, 1.305, -13.6596, 0, 0.689187, 25.8651, 2.13427, -6.29073, -62.8995)
+transform = Transform3D(15.664, 0, 0, 0, 1.38204, -10.26, 0, 0.517661, 27.392, 1.13783, -8.40783, -64.4398)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_e312d")
@@ -272,10 +353,11 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 4.76837e-07, 0, 0, 1, -9.56431e-05, 0.0318279, 0.00428784)
 shape = SubResource("BoxShape3D_j0mkc")
 
 [node name="Ramp2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-45.3021, -0.0145537, -0.478209, 0, 1.26371, -15.108, 0.865099, -0.762122, -25.0421, 2.13427, -7.47945, -95.7392)
+transform = Transform3D(-45.2952, -0.0147295, -0.487724, 0, 1.27898, -15.4086, 0.864968, -0.771329, -25.5404, 1.01795, -11.2151, -92.7282)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_e312d")
@@ -285,11 +367,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp2/StaticBody3D"]
 shape = SubResource("BoxShape3D_j0mkc")
-
-[node name="BoostRing24" parent="." instance=ExtResource("8_j0mkc")]
-transform = Transform3D(-0.0771102, -0.165363, 0.983212, -0.734275, 0.676519, 0.0561948, -0.674457, -0.717616, -0.173589, 19.6499, -4.23769, -81.0686)
-strength = 16.5
-centerPlayer = true
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.98628, -5.71033, -5.26866)
@@ -364,7 +441,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10427, -5.60787, -147.657)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.31962, -5.60787, -147.657)
 
 [node name="dialogueArea" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4511, -4.9408, -18.1656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6249, -4.9408, -18.1656)
 dialogue = SubResource("Resource_4wqju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea"]
@@ -376,12 +453,70 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 transparency = 0.79
 mesh = SubResource("SphereMesh_to5w2")
 
+[node name="dialogueAreaT" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, -4.94667, -5.43541)
+dialogue = SubResource("Resource_l8sr5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueAreaT"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueAreaT"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")
+
+[node name="dialogueAreaT3" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, -4.94667, -98.6253)
+dialogue = SubResource("Resource_0cfr2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueAreaT3"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueAreaT3"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")
+
+[node name="dialogueAreaT4" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.999992, 0.00402024, 0.00142043, -0.00402129, 0.999991, 0.900684, 4.20531, -119.938)
+dialogue = SubResource("Resource_rf3la")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueAreaT4"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueAreaT4"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")
+
+[node name="Camera3DCrab" type="Camera3D" parent="dialogueAreaT4"]
+transform = Transform3D(0.441506, -0.419854, 0.792966, 0, 0.883766, 0.46793, -0.897258, -0.206594, 0.390188, 26.1175, 9.11162, -3.6539)
+
+[node name="dialogueAreaT2" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4432, -4.94667, -44.5312)
+dialogue = SubResource("Resource_bu5na")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueAreaT2"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueAreaT2"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")
+
+[node name="Camera3DCam" type="Camera3D" parent="dialogueAreaT2"]
+transform = Transform3D(-0.0932962, -0.274882, 0.956941, -0.0392635, 0.961401, 0.272335, -0.994864, -0.012165, -0.100488, 44.102, 9.28041, -31.6329)
+
 [node name="dialogueArea2" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.874018, -4.94079, -27.4103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8679, -4.94079, -27.4103)
 dialogue = SubResource("Resource_3hhjp")
 
 [node name="dialogueCamTest" type="Camera3D" parent="dialogueArea2"]
-transform = Transform3D(0.541561, -0.405506, 0.736394, 0, 0.87597, 0.482365, -0.840661, -0.26123, 0.474392, 6.30939, 4.91887, 4.43566)
+transform = Transform3D(0.541561, -0.405506, 0.736394, 0, 0.87597, 0.482365, -0.840661, -0.26123, 0.474391, 6.30846, 4.92086, 4.43476)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea2"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -394,7 +529,7 @@ mesh = SubResource("BoxMesh_to5w2")
 skeleton = NodePath("../..")
 
 [node name="dialogueArea3" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6243, -5.41566, -35.5355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4919, -5.41566, -35.5355)
 dialogue = SubResource("Resource_s0t66")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea3"]
@@ -406,7 +541,7 @@ transparency = 0.82
 mesh = SubResource("CylinderMesh_4wqju")
 
 [node name="dialogueArea4" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88942, -4.9408, -44.9093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.212, -4.9408, -44.9093)
 dialogue = SubResource("Resource_2kmhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea4"]
