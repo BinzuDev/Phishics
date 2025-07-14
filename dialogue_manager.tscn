@@ -1,11 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=9 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://dialogue_manager.gd" id="1_k6lpl"]
+[ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
+[ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]
+[ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
+[ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqlrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bfllj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aal2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iove5"]
+font = ExtResource("2_iove5")
+font_size = 40
+font_color = Color(0.3, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k6lpl"]
+font = ExtResource("2_iove5")
+font_size = 35
 
 [node name="dialogue_manager" type="Node"]
 script = ExtResource("1_k6lpl")
 
-[node name="Control" type="Control" parent="."]
+[node name="textBoxControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,9 +40,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="dialougeColorRect" type="ColorRect" parent="Control"]
+[node name="dialogueColorRect" type="ColorRect" parent="textBoxControl"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 400)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -23,20 +49,96 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -500.0
-offset_top = -400.0
+offset_top = -300.0
 offset_right = 500.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(500, 300)
 color = Color(0.00784314, 0, 0.627451, 0.443137)
 
-[node name="textBox" type="RichTextLabel" parent="Control/dialougeColorRect"]
+[node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/dialogueColorRect"]
 unique_name_in_owner = true
+position = Vector2(954, 243)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tqlrv")
+autoplay = "default"
+frame_progress = 0.0424007
+
+[node name="nameBox" type="Label" parent="textBoxControl/dialogueColorRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 0
+offset_left = 71.0
+offset_top = -45.0
+offset_right = 271.0
+offset_bottom = 10.0
+size_flags_vertical = 0
+text = "NAME:"
+label_settings = SubResource("LabelSettings_iove5")
+
+[node name="MarginContainer" type="MarginContainer" parent="textBoxControl/dialogueColorRect/nameBox"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "i like men 
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_right = -10
 
-"
+[node name="ColorRect" type="ColorRect" parent="textBoxControl/dialogueColorRect/nameBox/MarginContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+color = Color(1, 0.752941, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="textBoxControl/dialogueColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="textBox" type="Label" parent="textBoxControl/dialogueColorRect/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Textbox text"
+label_settings = SubResource("LabelSettings_k6lpl")
+autowrap_mode = 3
+clip_text = true
+
+[node name="enterTip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="enterTip"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="EnterKey" type="AnimatedSprite2D" parent="enterTip/Control"]
+position = Vector2(694, -333.5)
+sprite_frames = SubResource("SpriteFrames_tqlrv")
+autoplay = "default"
+frame_progress = 0.00853321
+
+[node name="TALK" type="Sprite2D" parent="enterTip/Control"]
+position = Vector2(694, -117.5)
+texture = ExtResource("5_bfllj")

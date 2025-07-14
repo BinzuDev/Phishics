@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=45 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="6_mscth"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="8_j0mkc"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_lojvt"]
+[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="9_avars"]
 [ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="9_lojvt"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="10_3hhjp"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="11_to5w2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -31,6 +34,9 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e312d"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_to5w2"]
+size = Vector3(55.0235, 26.9082, 20.7333)
+
 [sub_resource type="BoxMesh" id="BoxMesh_e312d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0mkc"]
@@ -38,6 +44,167 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_lojvt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_avars"]
+
+[sub_resource type="Resource" id="Resource_to5w2"]
+script = ExtResource("10_3hhjp")
+name = "Insert Name here"
+text = "This dialogue box will wait until you press enter before starting.
+It will also allow you to move around while the textbox is active."
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_so4kt"]
+script = ExtResource("10_3hhjp")
+name = "Starwalker"
+text = "I'm the original                             Starwalker"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_4wqju"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("")
+automaticStart = false
+pauseGame = false
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_to5w2"), SubResource("Resource_so4kt")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3hhjp"]
+radius = 3.53655
+
+[sub_resource type="SphereMesh" id="SphereMesh_to5w2"]
+
+[sub_resource type="Resource" id="Resource_0tnf1"]
+script = ExtResource("10_3hhjp")
+name = "Really long ass name to show that the name box resizes automatically"
+text = "This Dialogue will run as soon as you hit the trigger.
+It will also pause the game until its over!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_td8ta"]
+script = ExtResource("10_3hhjp")
+name = "Binzu himself"
+text = "This was weirdly complicated to do because when the fish is paused, his hitbox is undetectable, so I couldn't just do \"wait until fish isnt touching area\" because it was ALWAYS not touching it. So you'd get stuck in an infinite loop."
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_4d1rn"]
+script = ExtResource("10_3hhjp")
+name = "Binzu himself"
+text = "Oh yeah also different camera angle ig, yk no big deal its fine"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_3hhjp"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("dialogueCamTest")
+automaticStart = true
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_0tnf1"), SubResource("Resource_td8ta"), SubResource("Resource_4d1rn")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hhjp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_to5w2"]
+
+[sub_resource type="Resource" id="Resource_p7ekk"]
+script = ExtResource("10_3hhjp")
+name = ""
+text = ""
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_3l68j"]
+script = ExtResource("10_3hhjp")
+name = "Binzu"
+text = "oops ahah sorry I was just testing a bug that would crash the game if you made an empty textbox. (I coded a whole bunch of error messages so if you do something wrong the game should be able to tell you about it and not crash)"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_5y3ho"]
+script = ExtResource("10_3hhjp")
+name = "Binzu"
+text = "ANYWAY, this textbox starts automatically and doesnt stop the game.
+It will also stay on the screen until another dialogue is triggered, so these settings are perfect for a tutorial textbox!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_desr6"]
+script = ExtResource("10_3hhjp")
+name = "Binzu"
+text = "Oh also a second hidden effect of the \"Keep on screen after end\" proprety is that these guys can only be triggered once!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_mydkt"]
+script = ExtResource("10_3hhjp")
+name = "Binzu"
+text = "OH YEAH ALSO TEXTBOXES CAN GO AT THE TOP OF THE SCREEN HIHIHIHI >:33333333
+(this will stay on screen until you activate another one)"
+JFG_animation = ""
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_s0t66"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("")
+automaticStart = true
+pauseGame = false
+keepOnScreenAfterEnd = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_p7ekk"), SubResource("Resource_3l68j"), SubResource("Resource_5y3ho"), SubResource("Resource_desr6"), SubResource("Resource_mydkt")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3hhjp"]
+radius = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4wqju"]
+top_radius = 3.0
+bottom_radius = 3.0
+
+[sub_resource type="Resource" id="Resource_maxpf"]
+script = ExtResource("10_3hhjp")
+name = "Binzu"
+text = "If you hadn't noticed by now, I even added a skip feature! Pressing Z/Enter during the textbox will finish it instantly. 
+Try it out!"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ygkl2"]
+script = ExtResource("10_3hhjp")
+name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa"
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_jbvdo"]
+script = ExtResource("10_3hhjp")
+name = "penis"
+text = ""
+JFG_animation = ""
+position = "bottom"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_2kmhi"]
+script = ExtResource("11_to5w2")
+cameraOverride = NodePath("")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_maxpf"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_jbvdo"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2"), SubResource("Resource_ygkl2")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [node name="Tutorial" type="Node3D"]
 
@@ -51,7 +218,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_0xeif")
 
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.26472, -0.717042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4388, -2.26472, -0.593908)
 gravity_scale = 1.5
 canJump = false
 
@@ -87,9 +254,13 @@ text = "SPACE KEY TO FLOP OVER
 font_size = 39
 
 [node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
-transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -1.25604, -3.50345, -103.665)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 1.46498, -75.2815)
 Enables_jump = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jumpToggle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40041, 2.35353, -3.77737)
+shape = SubResource("BoxShape3D_to5w2")
+debug_color = Color(0, 1, 0.733333, 1)
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
 transform = Transform3D(45.3104, 0, 0, 0, 1.305, -13.6596, 0, 0.689187, 25.8651, 2.13427, -6.29073, -62.8995)
@@ -121,7 +292,7 @@ strength = 16.5
 centerPlayer = true
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.534254, -6.07532, -5.26866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.98628, -5.71033, -5.26866)
 
 [node name="Goal2" parent="." instance=ExtResource("9_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.534254, -6.07532, -172.597)
@@ -191,3 +362,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10427, -5.60787, -147.657)
 
 [node name="Enemy6" parent="." instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.31962, -5.60787, -147.657)
+
+[node name="dialogueArea" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4511, -4.9408, -18.1656)
+dialogue = SubResource("Resource_4wqju")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueArea"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")
+
+[node name="dialogueArea2" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.874018, -4.94079, -27.4103)
+dialogue = SubResource("Resource_3hhjp")
+
+[node name="dialogueCamTest" type="Camera3D" parent="dialogueArea2"]
+transform = Transform3D(0.541561, -0.405506, 0.736394, 0, 0.87597, 0.482365, -0.840661, -0.26123, 0.474392, 6.30939, 4.91887, 4.43566)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueArea2/CollisionShape3D"]
+transparency = 0.79
+mesh = SubResource("BoxMesh_to5w2")
+skeleton = NodePath("../..")
+
+[node name="dialogueArea3" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6243, -5.41566, -35.5355)
+dialogue = SubResource("Resource_s0t66")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea3"]
+shape = SubResource("CylinderShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueArea3/CollisionShape3D"]
+transparency = 0.82
+mesh = SubResource("CylinderMesh_4wqju")
+
+[node name="dialogueArea4" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88942, -4.9408, -44.9093)
+dialogue = SubResource("Resource_2kmhi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea4"]
+shape = SubResource("SphereShape3D_3hhjp")
+debug_color = Color(0.888423, 0.0002755, 0.800654, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dialogueArea4"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+transparency = 0.79
+mesh = SubResource("SphereMesh_to5w2")

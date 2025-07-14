@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=98 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -41,8 +41,9 @@
 [ext_resource type="PackedScene" uid="uid://s0x1m1riut7j" path="res://Objects/ramenbowl.tscn" id="39_fpk0g"]
 [ext_resource type="PackedScene" uid="uid://df7v6ishj1qjd" path="res://Objects/squidhouse.tscn" id="40_vcw38"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="41_i76hq"]
-[ext_resource type="PackedScene" uid="uid://b1o2qjlo1hir6" path="res://Objects/jump_toggle.tscn" id="42_7pnea"]
-[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialouge_area.tscn" id="43_581hb"]
+[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="43_581hb"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="44_s7dn7"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="45_rneqk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -311,10 +312,16 @@ _data = {
 }
 point_count = 4
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Resource" id="Resource_bmonc"]
+script = ExtResource("45_rneqk")
+cameraOverride = NodePath("")
+automaticStart = false
+pauseGame = true
+keepOnScreenAfterEnd = false
+messages = Array[ExtResource("44_s7dn7")]([])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
 
-[node name="jumpToggle" parent="." instance=ExtResource("42_7pnea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6728, 29.8325, 65.4639)
+[node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
@@ -3088,9 +3095,6 @@ transform = Transform3D(-0.99898, 0, -0.042965, 0, 0.999915, 0, 0.0429668, 0, -0
 speed = 4
 bounceForce = 30
 
-[node name="jumpToggle2" parent="." instance=ExtResource("42_7pnea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0485, 29.8325, 65.4639)
-Enables_jump = true
-
-[node name="dialougeArea" parent="." instance=ExtResource("43_581hb")]
+[node name="dialogueArea" parent="." instance=ExtResource("43_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4448, 30.2565, 55.4843)
+dialogue = SubResource("Resource_bmonc")

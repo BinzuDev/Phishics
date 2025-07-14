@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode unshaded;
 
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
 uniform vec2 frequency = vec2(0.0, 5.0);
