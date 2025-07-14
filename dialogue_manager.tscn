@@ -1,10 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=11 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
+[ext_resource type="Shader" uid="uid://bq8vjf1snwsqm" path="res://dialogue_manager.gdshader" id="2_tqlrv"]
 [ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]
 [ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
+shader = ExtResource("2_tqlrv")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0, 0.4, 0.352941, 1)
+shader_parameter/colour_2 = Color(0, 0.42, 0.706, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 9.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqlrv"]
 animations = [{
@@ -42,6 +57,7 @@ grow_vertical = 2
 
 [node name="dialogueColorRect" type="ColorRect" parent="textBoxControl"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tffx4")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -54,7 +70,7 @@ offset_right = 500.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(500, 300)
-color = Color(0.00784314, 0, 0.627451, 0.443137)
+color = Color(0.00392157, 0, 0.580392, 0.588235)
 
 [node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/dialogueColorRect"]
 unique_name_in_owner = true

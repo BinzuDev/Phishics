@@ -104,7 +104,7 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 [sub_resource type="Resource" id="Resource_8fyol"]
 script = ExtResource("10_3hhjp")
 name = "JFG"
-text = "Space to jump!
+text = "Space to flop over!
 "
 JFG_animation = ""
 position = "bottom"
@@ -138,7 +138,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_tbpdk"]
 script = ExtResource("10_3hhjp")
 name = "JFG"
-text = "remember to aim your dive with the arrow keys!"
+text = "Remember to aim your dive with the arrow keys!"
 JFG_animation = ""
 position = "bottom"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
@@ -327,13 +327,6 @@ mesh = SubResource("BoxMesh_mscth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform21/StaticBody3D"]
 shape = SubResource("BoxShape3D_e312d")
 
-[node name="Label3D3" type="Label3D" parent="."]
-transform = Transform3D(4.95532, 0, 0, 0, 4.15054, 2.68754, 0, -3.36884, 3.31115, 1.879, 2.78109, -126.591)
-text = "PRESS \"D\" TO DIVE
-(DIVING ABOVE CRABS WILL MURDER THEM)
-"
-font_size = 39
-
 [node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 1.46498, -96.6346)
 Enables_jump = true
@@ -496,7 +489,7 @@ mesh = SubResource("SphereMesh_to5w2")
 transform = Transform3D(0.441506, -0.419854, 0.792966, 0, 0.883766, 0.46793, -0.897258, -0.206594, 0.390188, 26.1175, 9.11162, -3.6539)
 
 [node name="dialogueAreaT2" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4432, -4.94667, -44.5312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4432, -4.94667, -30.1103)
 dialogue = SubResource("Resource_bu5na")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueAreaT2"]
@@ -509,7 +502,7 @@ transparency = 0.79
 mesh = SubResource("SphereMesh_to5w2")
 
 [node name="Camera3DCam" type="Camera3D" parent="dialogueAreaT2"]
-transform = Transform3D(-0.0932962, -0.274882, 0.956941, -0.0392635, 0.961401, 0.272335, -0.994864, -0.012165, -0.100488, 44.102, 9.28041, -31.6329)
+transform = Transform3D(-0.0932962, -0.274882, 0.956941, -0.0392635, 0.961401, 0.272335, -0.994864, -0.012165, -0.100488, 44.102, 9.28041, -46.0538)
 
 [node name="dialogueArea2" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8679, -4.94079, -27.4103)
