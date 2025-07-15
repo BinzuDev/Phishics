@@ -93,7 +93,9 @@ func _physics_process(_delta: float) -> void:
 				apply_torque_impulse(rotate_by_cam(torque_impulse)) #flop forward
 			
 			#mid Air extra control
-			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.1, 0, 12)
+			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.15, 0, 20)
+			
+			print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
 			
 			if Input.is_action_pressed("forward"):
 				apply_torque_impulse(rotate_by_cam(torque_impulse))
@@ -106,9 +108,10 @@ func _physics_process(_delta: float) -> void:
 				apply_impulse(rotate_by_cam(Vector3(boost, 0, 0)))
 			if Input.is_action_pressed("left"):
 				apply_torque_impulse(rotate_by_cam(torque_side))
-				apply_impulse(rotate_by_cam(Vector3(-boost, 0, 0)))
-			
-			
+				apply_impulse(rotate_by_cam(Vector3(-boost,0, 0)))
+				
+			if get_input_axis(): #if one of the keys are pressed (long jump)
+				apply_impulse(rotate_by_cam(Vector3(0, boost*0.2, 0)))
 			
 			## Style Meter and jump related tricks
 			superJumpTimer = 5 #check your speed 5 frames after jumping

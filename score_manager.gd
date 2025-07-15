@@ -215,6 +215,9 @@ func _physics_process(_delta: float) -> void:
 ##Give the player points, mult, and chose if you want to refresh the combo timer
 func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trickName: String = "", rarity: String = "", affectFreshness: bool = true):
 	
+	if process_mode == PROCESS_MODE_DISABLED:
+		return
+	
 					  #let the airspin reset timer but ONLY when theres no combo yet
 	if resetTimer or (trickName == "AIRSPIN" and mult == addMult):
 		
@@ -284,8 +287,8 @@ func update_freshness():
 		if uniqueTricks.count(value) == 0: #if that trick hasnt been detected yet
 			uniqueTricks.append(value) #add that to the list of unique detected tricks
 	freshness = uniqueTricks.size()
-	if trickHistory.count("BOOST") >= 5:
-		freshness = 1
+	#if trickHistory.count("BOOST") >= 5:
+	#	freshness = 1
 	
 	
 	
@@ -298,6 +301,7 @@ func update_freshness():
 			%freshWarning.visible = true
 			if freshBefore >= 3:
 				$lowFreshness.play()
+				print("THE LOW FRESHNESS IS PLAYING: th:", trickHistory, " fresh: ", freshness, " fb4: ", freshBefore)
 		if freshness == 7 or freshness == 8:
 			%freshBonus.visible = true
 			if freshBefore <= 6:
@@ -398,6 +402,9 @@ func reset_everything():
 	trickHistory = []
 	%rank.frame = 7
 	%rankBG.frame = 7
+	airSpinHighestRank = 0
+	%comboText.text = ""
+	combo_dict.clear()
 	
 
 ## Used so whole decimal numbers shown on UI are shown like "5" instead of "5.0"
@@ -409,6 +416,8 @@ func format_decimal(value):
 
 func hide():
 	$UI.visible = false
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func show():
 	$UI.visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT

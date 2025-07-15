@@ -558,7 +558,7 @@ offset_left = -358.0
 offset_right = 358.0
 offset_bottom = 71.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 121
+theme_override_constants/margin_top = 230
 
 [node name="freshWarning" type="Label" parent="UI/freshMargin"]
 unique_name_in_owner = true
@@ -782,6 +782,7 @@ bus = &"rankUp"
 
 [node name="lowFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("55_g3jka")
+volume_db = -10.0
 
 [node name="highFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_jkrp3")

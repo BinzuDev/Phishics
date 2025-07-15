@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dd7tm8g28545" path="res://Sprites/Goal_Flag.png" id="2_jgq83"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gehki"]
-size = Vector3(3, 1, 1)
+size = Vector3(7, 2, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdpsu"]
 render_priority = 0
 shader = ExtResource("2_gehki")
 shader_parameter/texture_albedo = ExtResource("2_jgq83")
-shader_parameter/frequency = Vector2(0, -10)
+shader_parameter/frequency = Vector2(0, -7.36)
 shader_parameter/amplitutde = Vector2(0, 0.05)
 shader_parameter/speed = 0.5
 shader_parameter/movement = Vector2(-1, 0)
@@ -27,11 +27,11 @@ shape = SubResource("BoxShape3D_gehki")
 debug_color = Color(0.513726, 1, 1, 0.419608)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1.2, 0, 0, 0)
 layers = 3
 material_override = SubResource("ShaderMaterial_fdpsu")
 texture = ExtResource("2_jgq83")
 region_enabled = true
-region_rect = Rect2(50, 100, 600, 400)
+region_rect = Rect2(50, 100, 1200, 400)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

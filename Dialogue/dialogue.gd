@@ -8,7 +8,8 @@ class_name Dialogue extends Resource
 ##Pause the fish during the textbox, leave off for tutorials
 @export var pauseGame : bool = true
 ##The textbox wont disapear after reaching the last textbox, used for the tutorial. 
-##This also makes it so this dialogue can only run once and then never again.
 @export var keepOnScreenAfterEnd : bool = false
+##This makes it so the dialogue can only run once and then never again.
+@export var runOnlyOnce : bool = false
 ##List of all the textboxes within this dialogue sequence
 @export var messages : Array[textBoxSettings]

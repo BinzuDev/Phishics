@@ -17,7 +17,15 @@ func _process(delta: float) -> void:
 	if !dialogue:
 		return
 	
-	if dialogue.keepOnScreenAfterEnd and alreadyRan:
+	if !DialogueManager.isRunning:
+		if dialogue.cameraOverride:
+			get_node(dialogue.cameraOverride).current = false
+		coolDown += 1
+		if coolDown > 10 and !has_overlapping_bodies():
+			isInside = false
+			coolDown = 0
+	
+	if dialogue.runOnlyOnce and alreadyRan:
 		return
 	
 	if has_overlapping_bodies():
@@ -29,13 +37,7 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("confirm") and !DialogueManager.isRunning:
 				start_dialogue()
 	
-	if !DialogueManager.isRunning:
-		if dialogue.cameraOverride:
-			get_node(dialogue.cameraOverride).current = false
-		coolDown += 1
-		if coolDown > 10 and !has_overlapping_bodies():
-			isInside = false
-			coolDown = 0
+	
 	
 
 func start_dialogue():

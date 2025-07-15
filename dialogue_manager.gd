@@ -36,7 +36,7 @@ func _process(delta):
 		coolDown += 1
 	
 	timer += 1
-	if timer % 1 == 0 and !finished:
+	if timer % 2 == 0 and !finished:
 		if text.length() == 0:
 			text += " " #in case you make it empty so it dont crash
 		%textBox.text += text[char]
@@ -49,6 +49,10 @@ func _process(delta):
 			continue_dialogue()
 	#Skip text button
 	if !finished and Input.is_action_just_pressed("confirm") and char > 3:
+		%textBox.text = text
+		finished = true
+	#Instant text boxes
+	if !finished and currentDialogue.messages[textBoxIndex].instant:
 		%textBox.text = text
 		finished = true
 	
@@ -77,19 +81,27 @@ func continue_dialogue():
 	if !currentDialogue.messages[textBoxIndex]:
 		printerr("Textbox at index ", textBoxIndex, " doesn't exist!!")
 		return
+	var code = currentDialogue.messages[textBoxIndex].code
+	if code != "":
+		var script = GDScript.new()
+		script.set_source_code("func eval():" + code)
+		script.reload()
+		var ref = RefCounted.new()
+		ref.set_script(script)
+		ref.eval()
+	
 	%nameBox.text = currentDialogue.messages[textBoxIndex].name
+	%nameBox.visible = true
+	if %nameBox.text == "":
+		%nameBox.visible = false
 	set_text(currentDialogue.messages[textBoxIndex].text)
-	print(currentDialogue.messages[textBoxIndex].position)
+	
 	if currentDialogue.messages[textBoxIndex].position == "top":
-		%dialogueColorRect.set_anchors_preset(Control.PRESET_CENTER_TOP, true)
-		%dialogueColorRect.position.y = 0
-		%nameBox.position.y = 290
-		%nameBox.size.x = %nameBox.custom_minimum_size.x
+		%textBoxMargin.position.y = -820
+		%nameBox.position.y = 240
 	else:
-		%dialogueColorRect.set_anchors_preset(Control.PRESET_CENTER_BOTTOM, true)
-		%dialogueColorRect.position.y = 780
+		%textBoxMargin.position.y = 0
 		%nameBox.position.y = -45
-		%nameBox.size.x = %nameBox.custom_minimum_size.x
 	
 
 func set_text(newText: String):
@@ -105,3 +117,7 @@ func end_textbox():
 		$textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func set_position(newPos : Vector2):
+	%textBoxMargin.position = newPos

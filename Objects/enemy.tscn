@@ -119,6 +119,7 @@ texture = ExtResource("2_dnm5c")
 
 [node name="JumpPuff" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.270622, 0)
+visible = false
 emitting = false
 amount = 4
 lifetime = 0.6
@@ -147,6 +148,7 @@ shape = SubResource("SphereShape3D_dnm5c")
 debug_color = Color(0.792157, 1, 0.729412, 0.419608)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = SubResource("AudioStreamRandomizer_yfe2k")
 
 [node name="AnimationCrab" type="AnimationPlayer" parent="."]

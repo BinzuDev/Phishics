@@ -318,6 +318,7 @@ cameraOverride = NodePath("")
 automaticStart = false
 pauseGame = true
 keepOnScreenAfterEnd = false
+runOnlyOnce = false
 messages = Array[ExtResource("44_s7dn7")]([])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 

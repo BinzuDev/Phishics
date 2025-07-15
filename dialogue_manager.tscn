@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=12 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
@@ -6,18 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]
 [ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
+[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/seguisb.ttf" id="6_tffx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
 shader = ExtResource("2_tqlrv")
 shader_parameter/spin_rotation_speed = 2.0
 shader_parameter/move_speed = 7.0
 shader_parameter/offset = Vector2(0, 0)
-shader_parameter/colour_1 = Color(0, 0.4, 0.352941, 1)
-shader_parameter/colour_2 = Color(0, 0.42, 0.706, 1)
-shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
-shader_parameter/contrast = 9.0
-shader_parameter/lighting = 0.4
-shader_parameter/spin_amount = 0.25
+shader_parameter/colour_1 = Color(0.018, 0.1764, 0.45, 1)
+shader_parameter/colour_2 = Color(0.0473, 0.149353, 0.43, 1)
+shader_parameter/colour_3 = Color(0.0864, 0.117547, 0.32, 1)
+shader_parameter/contrast = 7.04
+shader_parameter/lighting = 0.37
+shader_parameter/spin_amount = 0.08
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = false
 
@@ -41,8 +42,9 @@ font_size = 40
 font_color = Color(0.3, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k6lpl"]
-font = ExtResource("2_iove5")
-font_size = 35
+line_spacing = 11.0
+font = ExtResource("6_tffx4")
+font_size = 40
 
 [node name="dialogue_manager" type="Node"]
 script = ExtResource("1_k6lpl")
@@ -55,44 +57,58 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="dialogueColorRect" type="ColorRect" parent="textBoxControl"]
+[node name="textBoxMargin" type="MarginContainer" parent="textBoxControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 390
+theme_override_constants/margin_top = 810
+theme_override_constants/margin_right = 390
+theme_override_constants/margin_bottom = 20
+
+[node name="dialogueColorRect" type="ColorRect" parent="textBoxControl/textBoxMargin"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_tffx4")
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 500.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(500, 300)
-color = Color(0.00392157, 0, 0.580392, 0.588235)
+layout_mode = 2
+color = Color(1, 1, 1, 0.72549)
 
-[node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/dialogueColorRect"]
+[node name="Control" type="Control" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/textBoxMargin/dialogueColorRect/Control"]
 unique_name_in_owner = true
-position = Vector2(954, 243)
+position = Vector2(-12, -24)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_tqlrv")
 autoplay = "default"
 frame_progress = 0.0424007
 
-[node name="nameBox" type="Label" parent="textBoxControl/dialogueColorRect"]
+[node name="nameBox" type="Label" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 0
-offset_left = 71.0
+offset_left = 72.0
 offset_top = -45.0
-offset_right = 271.0
+offset_right = 272.0
 offset_bottom = 10.0
 size_flags_vertical = 0
 text = "NAME:"
 label_settings = SubResource("LabelSettings_iove5")
 
-[node name="MarginContainer" type="MarginContainer" parent="textBoxControl/dialogueColorRect/nameBox"]
+[node name="nameMargin" type="MarginContainer" parent="textBoxControl/textBoxMargin/dialogueColorRect/nameBox"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -103,30 +119,34 @@ grow_vertical = 2
 theme_override_constants/margin_left = -10
 theme_override_constants/margin_right = -10
 
-[node name="ColorRect" type="ColorRect" parent="textBoxControl/dialogueColorRect/nameBox/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="textBoxControl/textBoxMargin/dialogueColorRect/nameBox/nameMargin"]
 show_behind_parent = true
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 color = Color(1, 0.752941, 1, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="textBoxControl/dialogueColorRect"]
+[node name="textMargin" type="MarginContainer" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 30
 
-[node name="textBox" type="Label" parent="textBoxControl/dialogueColorRect/MarginContainer"]
+[node name="textBox" type="Label" parent="textBoxControl/textBoxMargin/dialogueColorRect/textMargin"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Textbox text"
+text = "Textbox texthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh a a a
+2
+3
+4
+5"
 label_settings = SubResource("LabelSettings_k6lpl")
 autowrap_mode = 3
 clip_text = true
@@ -141,20 +161,20 @@ grow_vertical = 2
 
 [node name="Control" type="Control" parent="enterTip"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="EnterKey" type="AnimatedSprite2D" parent="enterTip/Control"]
-position = Vector2(694, -333.5)
+position = Vector2(-157, -298.5)
 sprite_frames = SubResource("SpriteFrames_tqlrv")
 autoplay = "default"
 frame_progress = 0.00853321
 
 [node name="TALK" type="Sprite2D" parent="enterTip/Control"]
-position = Vector2(694, -117.5)
+position = Vector2(-157, -82.5)
 texture = ExtResource("5_bfllj")
