@@ -45,6 +45,8 @@ font_color = Color(0.3, 0, 1, 1)
 line_spacing = 11.0
 font = ExtResource("6_tffx4")
 font_size = 40
+outline_size = 10
+outline_color = Color(1, 0, 1, 1)
 
 [node name="dialogue_manager" type="Node"]
 script = ExtResource("1_k6lpl")
