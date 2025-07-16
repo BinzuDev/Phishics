@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=79 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="14_0tnf1"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="14_so4kt"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_td8ta"]
+[ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="17_s0t66"]
+[ext_resource type="Texture2D" uid="uid://dkv87xhsk84pr" path="res://Sprites/crabwarning.png" id="18_p7ekk"]
+[ext_resource type="Texture2D" uid="uid://8df8du65vhkl" path="res://Sprites/fishwarning.png" id="19_p7ekk"]
+[ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -460,6 +464,15 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxMesh" id="BoxMesh_to5w2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l68j"]
+albedo_texture = ExtResource("17_s0t66")
+uv1_scale = Vector3(0.07, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5y3ho"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_desr6"]
+size = Vector3(1, 1.89026, 1)
 
 [node name="Tutorial" type="Node3D"]
 
@@ -1087,6 +1100,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6435, 39.1783, -304.802)
 [node name="worm12" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3502, 39.1783, -302.893)
 
+[node name="worm13" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46781, 2.47873, -240.735)
+
+[node name="worm14" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79322, 23.8722, -306.1)
+
 [node name="PathFollowJellyfish" parent="funArea" instance=ExtResource("15_td8ta")]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.27533, 6.00981, -281.31)
 
@@ -1104,3 +1123,355 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, 3.75815, -220.125)
 
 [node name="Pillar4" parent="." instance=ExtResource("11_4wqju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, -3.83333, -220.125)
+
+[node name="streetsign" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0549206, 0.450324, -0.238667, 2.78786e-09, 2.17695, 0.049943, 0.510031, 0.0484917, -0.0256999, 9.54025, 11.4501, -130.786)
+material_override = SubResource("StandardMaterial3D_3l68j")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("CylinderMesh_5y3ho")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="streetsign"]
+transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="streetsign/StaticBody3D"]
+transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+shape = SubResource("BoxShape3D_desr6")
+
+[node name="Sprite3D" type="Sprite3D" parent="streetsign"]
+transform = Transform3D(-0.0110641, 0.00910258, 1.14227, 0.030238, 0.116794, -0.0888076, -1.43996, 0.00238247, -0.0106404, 0.560677, 0.882424, -0.202637)
+texture = ExtResource("18_p7ekk")
+
+[node name="streetsign2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0527806, -0.168988, -0.243173, -0.0151815, 2.21661, -0.0179767, 0.510031, 0.0484917, -0.0256999, 2.23628, 2.02251, 6.44501)
+material_override = SubResource("StandardMaterial3D_3l68j")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("CylinderMesh_5y3ho")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="streetsign2"]
+transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="streetsign2/StaticBody3D"]
+transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+shape = SubResource("BoxShape3D_desr6")
+
+[node name="Sprite3D" type="Sprite3D" parent="streetsign2"]
+transform = Transform3D(-0.0110641, 0.00910258, 1.14227, 0.030238, 0.116794, -0.0888076, -1.43996, 0.00238247, -0.0106404, 0.560677, 0.882424, -0.202637)
+texture = ExtResource("19_p7ekk")
+
+[node name="seeweed" type="Node3D" parent="."]
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, 20.7761, 0.902186, -71.9224)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(0.990183, 0, 0.139778, 0, 1, 0, -0.139778, 0, 0.990183, 0.0522003, 0, -0.50893)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3591, -0.16662, -3.45423)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065, -0.16662, -4.01329)
+texture = ExtResource("20_3l68j")
+
+[node name="seeweed2" type="Node3D" parent="."]
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, -21.856, 0.902186, -71.9224)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3591, -0.16662, -3.45423)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed2"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065, -0.16662, -4.01329)
+texture = ExtResource("20_3l68j")
+
+[node name="seeweed3" type="Node3D" parent="."]
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, -21.3001, 0.902186, -34.9185)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3591, -0.16662, -3.45423)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed3"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065, -0.16662, -4.01329)
+texture = ExtResource("20_3l68j")
+
+[node name="seeweed4" type="Node3D" parent="."]
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, 21.2656, 0.902186, -34.9185)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3663, -0.16662, -2.30561)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed4"]
+transform = Transform3D(1, 0, 7.91624e-09, 0, 1, 0, -7.91624e-09, 0, 1, 72.5136, 0.370433, -2.88037)
+texture = ExtResource("20_3l68j")
