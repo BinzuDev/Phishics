@@ -223,7 +223,8 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 		
 		if affectFreshness or trickHistory.count(trickName) == 0:
 			if trickName != "AIRSPIN": #special exception for airspin
-				trickHistory.append(trickName) #add the trick to the list of previous tricks
+				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 6):
+					trickHistory.append(trickName) #add the trick to the list of previous tricks
 		if trickHistory.size() >= 10:
 			trickHistory.remove_at(0) #remove the oldest one in the list when theres 10
 		update_freshness()

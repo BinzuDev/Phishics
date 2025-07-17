@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]
 [ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
-[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/seguisb.ttf" id="6_tffx4"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeuib.ttf" id="6_tffx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
 shader = ExtResource("2_tqlrv")
@@ -45,8 +45,6 @@ font_color = Color(0.3, 0, 1, 1)
 line_spacing = 11.0
 font = ExtResource("6_tffx4")
 font_size = 40
-outline_size = 10
-outline_color = Color(1, 0, 1, 1)
 
 [node name="dialogue_manager" type="Node"]
 script = ExtResource("1_k6lpl")
@@ -67,9 +65,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 390
+theme_override_constants/margin_left = 375
 theme_override_constants/margin_top = 810
-theme_override_constants/margin_right = 390
+theme_override_constants/margin_right = 375
 theme_override_constants/margin_bottom = 20
 
 [node name="dialogueColorRect" type="ColorRect" parent="textBoxControl/textBoxMargin"]

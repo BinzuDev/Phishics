@@ -249,7 +249,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_tbpdk"]
 script = ExtResource("10_3hhjp")
 name = ""
-text = "Dive with D 
+text = "Dive with D (in the air)
 Change target with arrow keys"
 JFG_animation = ""
 position = "top"
@@ -470,9 +470,14 @@ albedo_texture = ExtResource("17_s0t66")
 uv1_scale = Vector3(0.07, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5y3ho"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 4.0
+radial_segments = 8
+rings = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_desr6"]
-size = Vector3(1, 1.89026, 1)
+size = Vector3(0.38, 4, 0.38)
 
 [node name="Tutorial" type="Node3D"]
 
@@ -1125,39 +1130,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, 3.75815, -220.125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, -3.83333, -220.125)
 
 [node name="streetsign" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0549206, 0.450324, -0.238667, 2.78786e-09, 2.17695, 0.049943, 0.510031, 0.0484917, -0.0256999, 9.54025, 11.4501, -130.786)
+transform = Transform3D(-0.985049, 0.172273, 8.61157e-08, 0.172273, 0.985049, -1.50606e-08, -8.74228e-08, 0, -1, 9.9606, 11.65, -131.115)
 material_override = SubResource("StandardMaterial3D_3l68j")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("CylinderMesh_5y3ho")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="streetsign"]
-transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
+transform = Transform3D(1, -2.32831e-10, -1.49012e-08, 2.32831e-10, 1, -2.09118e-08, 1.49012e-08, 2.09118e-08, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="streetsign/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+transform = Transform3D(1, 2.13978e-15, -1.42109e-14, 2.13978e-15, 1, 2.13163e-14, 1.42109e-14, -1.95399e-14, 1, 0.00161982, 0.00904655, 0.00363159)
 shape = SubResource("BoxShape3D_desr6")
 
 [node name="Sprite3D" type="Sprite3D" parent="streetsign"]
-transform = Transform3D(-0.0110641, 0.00910258, 1.14227, 0.030238, 0.116794, -0.0888076, -1.43996, 0.00238247, -0.0106404, 0.560677, 0.882424, -0.202637)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0149612, 2.05594, -0.187546)
 texture = ExtResource("18_p7ekk")
 
 [node name="streetsign2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0527806, -0.168988, -0.243173, -0.0151815, 2.21661, -0.0179767, 0.510031, 0.0484917, -0.0256999, 2.23628, 2.02251, 6.44501)
+transform = Transform3D(-0.997199, -0.0622574, -0.0414619, -0.0581752, 0.993938, -0.0932854, 0.0470183, -0.090612, -0.994776, 4.43937, 1.63907, 7.73719)
 material_override = SubResource("StandardMaterial3D_3l68j")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("CylinderMesh_5y3ho")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="streetsign2"]
-transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
+transform = Transform3D(1, -2.32831e-10, -1.49012e-08, 2.32831e-10, 1, -2.09118e-08, 1.49012e-08, 2.09118e-08, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="streetsign2/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+transform = Transform3D(1, 1.82429e-15, -1.59872e-14, -1.81169e-15, 1, 1.95399e-14, 1.59872e-14, -1.95399e-14, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_desr6")
 
 [node name="Sprite3D" type="Sprite3D" parent="streetsign2"]
-transform = Transform3D(-0.0110641, 0.00910258, 1.14227, 0.030238, 0.116794, -0.0888076, -1.43996, 0.00238247, -0.0106404, 0.560677, 0.882424, -0.202637)
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0.0149612, 2.05594, -0.19916)
 texture = ExtResource("19_p7ekk")
 
 [node name="seeweed" type="Node3D" parent="."]
