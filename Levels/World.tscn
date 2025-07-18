@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=99 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="43_581hb"]
 [ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="44_s7dn7"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="45_rneqk"]
+[ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="45_s7dn7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -3099,3 +3100,9 @@ bounceForce = 30
 [node name="dialogueArea" parent="." instance=ExtResource("43_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4448, 30.2565, 55.4843)
 dialogue = SubResource("Resource_bmonc")
+
+[node name="scoreRing" parent="." instance=ExtResource("45_s7dn7")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 26.0239, 29.6364, 39.2002)
+
+[node name="scoreRing2" parent="." instance=ExtResource("45_s7dn7")]
+transform = Transform3D(-1.59496, 0, -1.20669, 0, 2, 0, 1.20669, 0, -1.59496, 49.6046, 18.7551, -26.6081)

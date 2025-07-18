@@ -800,5 +800,5 @@ bus = &"fishsfx"
 [node name="AudioDebug" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_lt56d")
 
-[connection signal="body_entered" from="." to="." method="checkpoint"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="checkpoint"]
