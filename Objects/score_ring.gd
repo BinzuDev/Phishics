@@ -8,11 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	rotation.x += 0.02
+	%MeshInstance3D.rotation.x += 0.02
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is player:
 		ScoreManager.give_points(500, 2, true, "RING")
 		ScoreManager.play_trick_sfx("rare")
-		set_monitoring(true)
+		
 		

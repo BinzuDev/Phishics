@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3gmdvl5bas25"]
 
-[ext_resource type="Script" uid="uid://o58q3joyd1l1" path="res://score_ring.gd" id="1_ybfo2"]
+[ext_resource type="Script" uid="uid://o58q3joyd1l1" path="res://Objects/score_ring.gd" id="1_ybfo2"]
 [ext_resource type="Texture2D" uid="uid://de1deympht5x7" path="res://Textures/ring.png" id="2_2th4t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywmex"]
@@ -22,11 +22,12 @@ radius = 0.2
 
 [node name="scoreRing" type="Area3D"]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 0, 0)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_ybfo2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywmex")
 mesh = SubResource("TorusMesh_3ffwv")
