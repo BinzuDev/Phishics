@@ -786,6 +786,8 @@ volume_db = -10.0
 
 [node name="highFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_jkrp3")
+volume_db = -6.0
 
 [node name="maxFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_ndf8x")
+volume_db = -6.0

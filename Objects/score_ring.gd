@@ -1,18 +1,20 @@
 extends Area3D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var cooldown := 0
+var speed : float = 1.0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	%MeshInstance3D.rotation.x += 0.02
+	%mesh.rotation_degrees.x += speed
+	cooldown += 1
+	speed = max(speed - 0.1, 1.0)
+
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is player:
-		ScoreManager.give_points(500, 2, true, "RING")
+	if body is player and cooldown > 20:
+		ScoreManager.give_points(500, 2, true, "RING", "rare", false)
 		ScoreManager.play_trick_sfx("rare")
-		
-		
+		cooldown = 0
+		speed = 10
+		body.angular_velocity *= 1.2
