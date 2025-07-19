@@ -3102,7 +3102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4448, 30.2565, 55.4843)
 dialogue = SubResource("Resource_bmonc")
 
 [node name="scoreRing" parent="." instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 26.0239, 29.6364, 39.2002)
+transform = Transform3D(3.82137e-15, -8.74228e-08, -2, -2, -8.74228e-08, 0, -8.74228e-08, 2, -8.74228e-08, 26.0239, 29.6364, 39.2002)
 
 [node name="scoreRing2" parent="." instance=ExtResource("45_s7dn7")]
 transform = Transform3D(-1.59496, 0, -1.20669, 0, 2, 0, 1.20669, 0, -1.59496, 49.6046, 18.7551, -26.6081)
