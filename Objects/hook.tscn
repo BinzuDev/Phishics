@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt8qclfbagapf"]
+
+[ext_resource type="Texture2D" uid="uid://d2afkja805oit" path="res://hook.png" id="1_bnfhs"]
+[ext_resource type="Script" uid="uid://bkiau28tbe7vt" path="res://Objects/hook.gd" id="1_ymdgi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vqrsm"]
+radius = 0.601783
+
+[node name="hook" type="Node3D"]
+script = ExtResource("1_ymdgi")
+
+[node name="hookSprite" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+texture_filter = 1
+texture = ExtResource("1_bnfhs")
+
+[node name="hookArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hookArea"]
+shape = SubResource("SphereShape3D_vqrsm")
+
+[connection signal="body_entered" from="hookArea" to="." method="_on_body_entered"]
