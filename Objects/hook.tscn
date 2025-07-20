@@ -4,24 +4,33 @@
 [ext_resource type="Script" uid="uid://bkiau28tbe7vt" path="res://Objects/hook.gd" id="1_ymdgi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vqrsm"]
-radius = 0.601783
+radius = 1.0
 
 [node name="hook" type="Node3D"]
 script = ExtResource("1_ymdgi")
+lineLength = 5.0
+reelingSpeed = 5.0
 
 [node name="hookSprite" type="Sprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -5, 0)
+offset = Vector2(0, 200)
 billboard = 1
 texture_filter = 1
 texture = ExtResource("1_bnfhs")
 
 [node name="hookArea" type="Area3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hookArea"]
 shape = SubResource("SphereShape3D_vqrsm")
+
+[node name="autoSetLength" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1000, 0)
+hit_back_faces = false
+debug_shape_thickness = 5
 
 [connection signal="body_entered" from="hookArea" to="." method="_on_body_entered"]

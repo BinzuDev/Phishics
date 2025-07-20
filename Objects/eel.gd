@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		## When confirmed pressed inside the area
 		if Input.is_action_just_pressed("confirm"):
 			lockFish = true
-			fish.heldByEel = true
+			fish.isHeld = true
 			
 			#lil scope sound
 			%AudioScopeOpen.play()
@@ -79,4 +79,4 @@ func _on_animation_finished(anim_name):
 	if anim_name == "lower_to_floor":
 		$AnimationPlayer.play("idle")
 		lockFish = false
-		fish.heldByEel = false
+		fish.isHeld = false

@@ -931,8 +931,8 @@ debug_color = Color(1, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
 
 [node name="hook" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.059, 40.4383, 65.345)
-lineLength = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.06, 70.337, 65.35)
+lineLength = 40.0658
 reelingSpeed = 3.0
 
 [node name="hook2" parent="intro" instance=ExtResource("15_rk5xy")]

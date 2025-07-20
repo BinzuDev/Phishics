@@ -18,7 +18,7 @@ var homingLookDown : bool = false ##used to make the cam tilt down when chaining
 #other trick variables
 var tiplanding : bool = false
 var tipLandAntiCheese : int = 0
-var heldByEel : bool = false
+var isHeld : bool = false
 var isTipSpinning : bool = false
 var superJumpTimer : int = -1
 var height : float = 0 ##stores how for away you are to the nearest floor
@@ -195,7 +195,7 @@ func _physics_process(_delta: float) -> void:
 	if $heightDetect.is_colliding():
 		height = global_position.y - $heightDetect.get_collision_point().y
 		
-	if Input.is_action_just_pressed("dive") and !$nearFloor.is_colliding():
+	if Input.is_action_just_pressed("dive") and !$nearFloor.is_colliding() and !isHeld:
 		var newSpd = clamp(height*-1.5 -10, -75, -10) 
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
@@ -416,7 +416,7 @@ func _physics_process(_delta: float) -> void:
 		
 		
 		## Tip landing
-		if !tiplanding and linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05 and !heldByEel:
+		if !tiplanding and linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05 and !isHeld:
 			tiplanding = true
 			ScoreManager.give_points(999999, 200, true, "TIPLANDING HOLY SHIT")
 			ScoreManager.change_rank(8, 1.0)
@@ -441,7 +441,7 @@ func _physics_process(_delta: float) -> void:
 	%dead_fish.modulate.a -= 0.05
 	%dead_fish.scale -= Vector2(0.01, 0.01)
 	fishCooldown += 1
-	if Input.is_action_just_pressed("FIsh"):
+	if Input.is_action_just_pressed("FIsh") and !isHeld:
 		$FIsh.play()
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			global.freezeframe = 20
