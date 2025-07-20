@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctowiaw5u6khg"]
+
+[ext_resource type="Script" uid="uid://bj6bohrm801g" path="res://Objects/force_field.gd" id="1_o5jpo"]
+
+[node name="forceField" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_o5jpo")

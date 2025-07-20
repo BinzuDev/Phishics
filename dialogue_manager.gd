@@ -17,7 +17,7 @@ func show_prompt(state:bool = true):
 	$enterTip.visible = state
 
 
-func _process(delta):
+func _process(_delta):
 	if !$textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
 		isRunning = false        #start a dialogue with the same input used to end another one
 	

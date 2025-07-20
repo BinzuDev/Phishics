@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bp34qykvpfnfo" path="res://Sounds/JFJump.ogg" id="4_qkjab"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_34pw1"]
-radius = 4.78696
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_qkjab"]
 resource_name = "Jellyfish"
@@ -86,7 +86,7 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JellyfishArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.483271, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 shape = SubResource("SphereShape3D_34pw1")
 
 [node name="JellyfishSprite" type="Sprite3D" parent="JellyfishArea"]

@@ -232,8 +232,11 @@ func _physics_process(_delta: float) -> void:
 			$diveSFX.play()
 	
 	if get_contact_count() >= 1 or linear_velocity.y > -5: #otherwise dive can persist if you bounce 
+		if diving or homing:
+			print("RESETING DIVING")
 		diving = false
 		homing = false
+		
 	
 	#x0 when homing, x1 otherwise
 	#if homing:

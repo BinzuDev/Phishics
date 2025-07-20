@@ -42,13 +42,15 @@ func _process(_delta: float) -> void:
 
 func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 	#hopping on jellyfish
-	print("bounce")
+	if body is player and !body.diving:
+		print("touching jellyfish but not diving!")
 	if body is player and body.diving:
 		body.linear_velocity.x *= hSpeedMultiplier
 		body.linear_velocity.y = bounceForce
 		body.linear_velocity.z *= hSpeedMultiplier
 		#body.linear_velocity = Vector3.ZERO
 		#body.apply_central_impulse(Vector3.UP * 50)
-	#TRICK
-	ScoreManager.give_points(1000, 1, true, "JELLY JUMP")
-	%AudioJF.play()
+		#TRICK
+		print("bounce")
+		ScoreManager.give_points(1000, 1, true, "JELLY JUMP")
+		%AudioJF.play()

@@ -38,7 +38,8 @@ material_override = SubResource("StandardMaterial3D_ywmex")
 mesh = SubResource("TorusMesh_3ffwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mesh"]
-collision_layer = 4
+visible = false
+collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesh/StaticBody3D"]
