@@ -24,6 +24,7 @@ var descending: bool = false
 func _ready() -> void:
 	%hookSprite.position.y = -lineLength
 	%hookArea.position.y = -lineLength
+	
 
 
 func _process(delta: float) -> void:
