@@ -51,6 +51,8 @@ func _process(delta: float) -> void:
 		%hookSprite.position.y -= reelingSpeed * 0.1
 		if %hookSprite.position.y <= -lineLength:
 			descending = false
+			%hookArea.set_collision_layer_value(6, true)
+
 
 
 ## When fish touches hook
@@ -60,3 +62,4 @@ func _on_body_entered(body: Node3D) -> void:
 			fish = body
 			lockFish = true
 			fish.isHeld = true #prevents tip landing
+			%hookArea.set_collision_layer_value(6, false)

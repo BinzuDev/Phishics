@@ -159,7 +159,7 @@ func _physics_process(_delta: float) -> void:
 	
 	var closest = null
 	## HOMING ATTACK
-	if $homing/area.has_overlapping_areas() and !$nearFloor.is_colliding():
+	if $homing/area.has_overlapping_areas() and !$nearFloor.is_colliding() and !isHeld:
 		closest = get_closest_target()
 		if closest != null:
 			if closestLastFrame != closest:
