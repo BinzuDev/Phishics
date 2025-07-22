@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxi8xd75op4vu"
-path.s3tc="res://.godot/imported/hookline.png-ac6f129dcbfc9af0f8acaa20de3fd6ed.s3tc.ctex"
+uid="uid://dt7e6m7y53n7i"
+path.s3tc="res://.godot/imported/rod.png-b6d2143a435e3963532b99a92bae3ee9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/hookline.png"
-dest_files=["res://.godot/imported/hookline.png-ac6f129dcbfc9af0f8acaa20de3fd6ed.s3tc.ctex"]
+source_file="res://Sprites/hook_zipline/rod.png"
+dest_files=["res://.godot/imported/rod.png-b6d2143a435e3963532b99a92bae3ee9.s3tc.ctex"]
 
 [params]
 

@@ -187,7 +187,7 @@ func _physics_process(_delta: float) -> void:
 		timeSinceNoTargets += 1
 	else:
 		timeSinceNoTargets = 0 
-	if timeSinceNoTargets > 15:
+	if timeSinceNoTargets > 15 or isHeld:
 		homingLookDown = false
 	
 	

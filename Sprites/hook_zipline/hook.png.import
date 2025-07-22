@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3frw7c7ebeee"
-path.s3tc="res://.godot/imported/bobber.png-e984e1dc5214e99377448d5050e71bf2.s3tc.ctex"
+uid="uid://dyxb53tbaq43q"
+path.s3tc="res://.godot/imported/hook.png-9e929985f6cea918227f432567cf2c54.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/bobber.png"
-dest_files=["res://.godot/imported/bobber.png-e984e1dc5214e99377448d5050e71bf2.s3tc.ctex"]
+source_file="res://Sprites/hook_zipline/hook.png"
+dest_files=["res://.godot/imported/hook.png-9e929985f6cea918227f432567cf2c54.s3tc.ctex"]
 
 [params]
 

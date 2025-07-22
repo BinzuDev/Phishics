@@ -333,7 +333,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3179, 29.994, 66.603)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6849, 31.4757, 68.0702)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -449,7 +449,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_aqu14")
 
 [node name="Platform22" type="MeshInstance3D" parent="intro"]
-transform = Transform3D(1.57564e-06, 0, 133.086, 0, 33.22, 0, -20.87, 0, 1.00477e-05, 31.6903, -0.13, 39.43)
+transform = Transform3D(1.57564e-06, 0, 133.086, 0, 33.22, 0, -20.87, 0, 1.00477e-05, 31.69, -0.14, 39.43)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_46o8p")
@@ -461,7 +461,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_aqu14")
 
 [node name="slope" type="MeshInstance3D" parent="intro"]
-transform = Transform3D(1.57187e-06, 0, 147.555, 0, 13, 0, -20.82, 0, 1.114e-05, 47.6005, 22.9752, 39.4)
+transform = Transform3D(1.57187e-06, 0, 147.555, 0, 13, 0, -20.82, 0, 1.114e-05, 47.6, 22.97, 39.4)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("PrismMesh_h7041")
@@ -931,14 +931,14 @@ debug_color = Color(1, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
 
 [node name="hook" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.06, 70.337, 65.35)
-lineLength = 40.0658
-reelingSpeed = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1798, 100, 65.35)
+lineLength = 69.7289
+reelingSpeed = 1.75
 
-[node name="hook2" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3373, 12.7521, -51.2062)
-lineLength = 12.0
-reelingSpeed = 3.0
+[node name="hook3" parent="intro" instance=ExtResource("15_rk5xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8878, 41.4726, 65.35)
+lineLength = 11.2014
+reelingSpeed = 0.8
 
 [node name="lookDown" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
@@ -989,6 +989,10 @@ shape = SubResource("BoxShape3D_u27i5")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="group1" type="Node3D" parent="."]
+
+[node name="hook2" parent="group1" instance=ExtResource("15_rk5xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3373, 12.7521, -51.2062)
+lineLength = 12.4098
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="group1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.7866, 59.771, -17.0084)
@@ -2879,11 +2883,13 @@ transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0
 bounceForce = 31
 hSpeedMultiplier = 0.1
 
-[node name="Jellyfish8" parent="2Darea" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 78.3304, 2.69631, -40.246)
-speed = 0
-bounceForce = 32
-hSpeedMultiplier = 0.4
+[node name="hook" parent="2Darea" instance=ExtResource("15_rk5xy")]
+transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 78.385, 12.0798, -34.2878)
+reelingSpeed = 1.5
+
+[node name="hook3" parent="2Darea" instance=ExtResource("15_rk5xy")]
+transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 77.91, 16.2818, -45.4375)
+reelingSpeed = 1.5
 
 [node name="Jellyfish9" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 78.4206, 8.20706, -64.7995)

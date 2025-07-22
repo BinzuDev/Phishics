@@ -1,44 +1,282 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt8qclfbagapf"]
+[gd_scene load_steps=13 format=3 uid="uid://dt8qclfbagapf"]
 
 [ext_resource type="Script" uid="uid://bkiau28tbe7vt" path="res://Objects/hook.gd" id="1_ymdgi"]
-[ext_resource type="Texture2D" uid="uid://dyxb53tbaq43q" path="res://Sprites/hook2.png" id="2_vqrsm"]
-[ext_resource type="Texture2D" uid="uid://dxi8xd75op4vu" path="res://Sprites/hookline.png" id="3_ymdgi"]
-[ext_resource type="Texture2D" uid="uid://3frw7c7ebeee" path="res://Sprites/bobber.png" id="4_uv86o"]
+[ext_resource type="Texture2D" uid="uid://dyxb53tbaq43q" path="res://Sprites/hook_zipline/hook.png" id="2_vqrsm"]
+[ext_resource type="Texture2D" uid="uid://dxi8xd75op4vu" path="res://Sprites/hook_zipline/hookline.png" id="3_ymdgi"]
+[ext_resource type="Texture2D" uid="uid://3frw7c7ebeee" path="res://Sprites/hook_zipline/bobber.png" id="4_uv86o"]
+[ext_resource type="AudioStream" uid="uid://bykjymt7hrou2" path="res://Sounds/zipline/zipline_start.ogg" id="5_uv86o"]
+[ext_resource type="AudioStream" uid="uid://bqv4wpvoyw8m8" path="res://Sounds/zipline/zipline_loop.wav" id="7_25c2w"]
+[ext_resource type="Texture2D" uid="uid://dt7e6m7y53n7i" path="res://Sprites/hook_zipline/rod.png" id="7_plar0"]
+[ext_resource type="AudioStream" uid="uid://bl26jap1mpw33" path="res://Sounds/zipline/zipline_end.ogg" id="8_4pkbe"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vqrsm"]
-radius = 1.0
+radius = 1.2
+
+[sub_resource type="Animation" id="Animation_4pkbe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rodPivot/bobberAnim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aaaaWire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hookSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rodPivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.0944, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rodPivot/bobberAnim:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.0944, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rodPivot/bobberAnim/wireAnim:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rodPivot/bobberAnim/wireAnim/hookAnim:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_25c2w"]
+resource_name = "reel_end"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rodPivot/bobberAnim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aaaaWire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hookSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rodPivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.6),
+"transitions": PackedFloat32Array(0.3, -2, 1),
+"update": 0,
+"values": [Vector3(0, 2.0944, 0), Vector3(2.40837e-09, 2.0944, -0.535991), Vector3(0, 2.0944, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rodPivot/bobberAnim:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.85, 1),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, -2.0944, 0), Vector3(-0.489334, -1.75258, 0.112326), Vector3(0.354192, -2.21456, -0.321508), Vector3(-0.0966913, -1.98147, 0.0602139), Vector3(0, -2.0944, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rodPivot/bobberAnim/wireAnim:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.420275, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rodPivot/bobberAnim/wireAnim/hookAnim:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.503004, 0, 0.458323), Vector3(0.237505, -0.021769, -0.297007), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhkq3"]
+_data = {
+&"RESET": SubResource("Animation_4pkbe"),
+&"reel_end": SubResource("Animation_25c2w")
+}
 
 [node name="hook" type="Node3D"]
 script = ExtResource("1_ymdgi")
-lineLength = 5.0
-reelingSpeed = 5.0
+
+[node name="rodPivot" type="Node3D" parent="."]
+transform = Transform3D(-0.500004, 0, 0.866023, 0, 1, 0, -0.866023, 0, -0.500004, -1.18418, 1.23993, -2.0328)
+
+[node name="rod" type="Sprite3D" parent="rodPivot"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -2.35255, 2.90007, 0.00912595)
+offset = Vector2(160, -173)
+texture = ExtResource("7_plar0")
+
+[node name="bobberAnim" type="Sprite3D" parent="rodPivot"]
+transform = Transform3D(-0.500004, 0, -0.866023, 0, 1, 0, 0.866023, 0, -0.500004, -2.35255, 2.86018, 0.00912595)
+visible = false
+offset = Vector2(0, -180)
+pixel_size = 0.0045
+texture = ExtResource("4_uv86o")
+
+[node name="wireAnim" type="Sprite3D" parent="rodPivot/bobberAnim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00466251, -1.63637, 0)
+offset = Vector2(0, -0.5)
+pixel_size = 0.52
+render_priority = -1
+texture = ExtResource("3_ymdgi")
+hframes = 6
+
+[node name="hookAnim" type="Sprite3D" parent="rodPivot/bobberAnim/wireAnim"]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.553471, 0)
+offset = Vector2(0, -220)
+texture_filter = 1
+texture = ExtResource("2_vqrsm")
+
+[node name="aaaaWire" type="Sprite3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 10, 0, 0, 0, 1.5, 0, 4.14, 0)
+offset = Vector2(0, -0.5)
+pixel_size = 1.0
+billboard = 2
+texture = ExtResource("3_ymdgi")
+
+[node name="sfxEnd" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84859, 0)
+stream = ExtResource("8_4pkbe")
+volume_db = -6.0
 
 [node name="hookSprite" type="Sprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -5, 0)
-offset = Vector2(0, 200)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -10, 0)
+offset = Vector2(0, 160)
 billboard = 2
 texture_filter = 1
 texture = ExtResource("2_vqrsm")
 
-[node name="hookLineSprite" type="Sprite3D" parent="hookSprite"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09112, 4.04465, -0.0484984)
+[node name="wireInBetween" type="Sprite3D" parent="hookSprite"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 2, -0.00337338, 4.44489, 0)
+pixel_size = 1.0
 billboard = 2
+render_priority = -1
 texture = ExtResource("3_ymdgi")
 
 [node name="bobberSprite" type="Sprite3D" parent="hookSprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.66186, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 6.60957, 0)
 billboard = 2
 texture = ExtResource("4_uv86o")
 
+[node name="sfxStart" type="AudioStreamPlayer3D" parent="hookSprite"]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = ExtResource("5_uv86o")
+
+[node name="sfxLoop" type="AudioStreamPlayer3D" parent="hookSprite"]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = ExtResource("7_25c2w")
+
 [node name="hookArea" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hookArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("SphereShape3D_vqrsm")
 
 [node name="autoSetLength" type="RayCast3D" parent="."]
@@ -46,4 +284,10 @@ target_position = Vector3(0, -1000, 0)
 hit_back_faces = false
 debug_shape_thickness = 5
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hhkq3")
+}
+
 [connection signal="body_entered" from="hookArea" to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
