@@ -653,7 +653,6 @@ mesh = SubResource("SphereMesh_lt56d")
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 8.0
 offset_top = 12.0
 offset_right = 274.0

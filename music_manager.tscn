@@ -286,6 +286,7 @@ autoplay = true
 bus = &"music"
 
 [node name="musicDebug" type="Label" parent="."]
+visible = false
 offset_left = 18.0
 offset_top = 88.0
 offset_right = 1211.0
