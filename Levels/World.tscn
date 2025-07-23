@@ -2924,75 +2924,57 @@ transform = Transform3D(-5.53048e-08, 4.5301e-08, 1, -0.247929, 0.968778, -5.759
 
 [node name="worm" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46326, 8.1532, 5.69877)
-skeleton = NodePath("../..")
 
 [node name="worm18" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.79, 49.9594, -35.5046)
-skeleton = NodePath("../..")
 
 [node name="worm6" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7253, 13.5079, -6.92634)
-skeleton = NodePath("../..")
 
 [node name="worm9" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.525, 46.914, -26.0178)
-skeleton = NodePath("../..")
 
 [node name="worm7" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, -0.309937)
-skeleton = NodePath("../..")
 
 [node name="worm10" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 3.67554)
-skeleton = NodePath("../..")
 
 [node name="worm11" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 7.89321)
-skeleton = NodePath("../..")
 
 [node name="worm14" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.994, 20.8323, -25.9339)
-skeleton = NodePath("../..")
 
 [node name="worm17" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.291, 22.5598, -49.5484)
-skeleton = NodePath("../..")
 
 [node name="worm12" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 12.2016)
-skeleton = NodePath("../..")
 
 [node name="worm13" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7197, 5.1155, 27.3681)
-skeleton = NodePath("../..")
 
 [node name="worm15" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.2298, 8.49199, 0.252899)
-skeleton = NodePath("../..")
 
 [node name="worm4" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61124, 19.5706, -25.287)
-skeleton = NodePath("../..")
 
 [node name="worm3" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98809, 26.7464, -5.78333)
-skeleton = NodePath("../..")
 
 [node name="worm2" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4821, 47.3582, -51.1012)
-skeleton = NodePath("../..")
 
 [node name="worm16" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3318, 35.4946, -25.8374)
-skeleton = NodePath("../..")
 
 [node name="worm8" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3677, 27.3784, -51.4375)
-skeleton = NodePath("../..")
 
 [node name="worm5" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6826, 27.8463, -51.1012)
-skeleton = NodePath("../..")
 
 [node name="AllCoralGroups" type="Node3D" parent="."]
 
