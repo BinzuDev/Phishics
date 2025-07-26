@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dekjyfsmafh8k"]
+[gd_scene load_steps=15 format=3 uid="uid://dekjyfsmafh8k"]
 
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="1_14tpb"]
 [ext_resource type="Texture2D" uid="uid://qmeykmwuuucb" path="res://Sprites/worm.png" id="2_affe2"]
 [ext_resource type="Script" uid="uid://bdmescwjq652r" path="res://Objects/worm.gd" id="2_rs7oq"]
 [ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="4_77qcx"]
-[ext_resource type="Material" uid="uid://c1y6pcmembpvq" path="res://Particles/bubble_particle.tres" id="5_j5b4d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_affe2"]
 radius = 1.11926
@@ -52,10 +51,10 @@ tracks/1/path = NodePath("../wormsprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.5, 2.07053, 1),
+"times": PackedFloat32Array(0, 0.1, 0.35, 0.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 2.07053, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.237, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.237, 0), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -64,10 +63,10 @@ tracks/2/path = NodePath("../OmniLight3D:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [16.0, 0.0]
+"values": [5.0, 16.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -76,10 +75,10 @@ tracks/3/path = NodePath("../wormsprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.15, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.35, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.723063, 0.817194, 1), Vector3(0.103, 0.116, 0.142)]
+"values": [Vector3(0.85, 0.85, 0.85), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.103, 0.116, 0.142)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -88,10 +87,10 @@ tracks/4/path = NodePath("../wormsprite:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -100,22 +99,34 @@ tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%CPUParticles3D:emitting")
+tracks/6/path = NodePath("../CPUParticles3D:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.13),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(2, 2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_ppvjl"]
@@ -154,7 +165,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [4.146]
+"values": [5.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -166,7 +177,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.723063, 0.817194, 1)]
+"values": [Vector3(0.85, 0.85, 0.85)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -195,7 +206,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%CPUParticles3D:emitting")
+tracks/6/path = NodePath("../CPUParticles3D:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -203,6 +214,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5b4d"]
@@ -212,11 +235,11 @@ _data = {
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_ppvjl"]
-material = ExtResource("5_j5b4d")
+material = SubResource("ShaderMaterial_rs7oq")
 
 [sub_resource type="Curve" id="Curve_j5b4d"]
-_data = [Vector2(0.00404859, 1), 0.0, 0.0, 0, 0, Vector2(0.607287, 0.798276), 0.0, 0.0, 0, 0, Vector2(0.967611, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0.00404859, 1), 0.0, 0.0, 0, 0, Vector2(0.967611, 0), -3.0315, 0.0, 0, 0]
+point_count = 2
 
 [node name="Worm" type="Area3D"]
 collision_layer = 0
@@ -229,46 +252,44 @@ shape = SubResource("SphereShape3D_affe2")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 3
 light_color = Color(0.286275, 0.698039, 0.262745, 1)
-light_energy = 4.146
+light_energy = 5.0
 
 [node name="wormBubble" type="MeshInstance3D" parent="."]
 layers = 3
 mesh = SubResource("SphereMesh_jxdlp")
 
 [node name="wormsprite" type="Sprite3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(0.723063, 0, 0, 0, 0.817194, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
 layers = 3
 texture = ExtResource("2_affe2")
 
 [node name="WormSFX" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_j5b4d")
-volume_db = 9.973
 
 [node name="WormAnimation" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 root_node = NodePath("../wormBubble")
 libraries = {
 &"": SubResource("AnimationLibrary_j5b4d")
 }
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0111516, -0.464825, -0.000243664)
 emitting = false
-amount = 25
+amount = 30
+lifetime = 1.25
+speed_scale = 1.2
 explosiveness = 1.0
 mesh = SubResource("SphereMesh_ppvjl")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
 spread = 180.0
-flatness = 0.31
-gravity = Vector3(0, 9, 0)
-initial_velocity_min = 7.35
-initial_velocity_max = 7.35
+gravity = Vector3(0, 8, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 11.0
+damping_min = 11.0
+damping_max = 15.0
 scale_amount_min = 0.1
-scale_amount_max = 0.2
+scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_j5b4d")
-hue_variation_min = 1.0
-hue_variation_max = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_area_3d_body_entered"]

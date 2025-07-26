@@ -426,7 +426,7 @@ func _physics_process(_delta: float) -> void:
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again
 	
-	if linear_velocity.length() < 0.1 and !tiplanding:
+	if linear_velocity.length() < 0.1 and !tiplanding and !isHeld:
 		ScoreManager.idle = true
 	else:
 		ScoreManager.idle = false
@@ -444,7 +444,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("FIsh") and !isHeld:
 		$FIsh.play()
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
-			global.freezeframe = 20
+			GameManager.freezeframe = 20
 			get_tree().paused = true
 			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
 			$taunt.play()

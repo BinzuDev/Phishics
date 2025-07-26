@@ -130,7 +130,7 @@ func _physics_process(_delta: float) -> void:
 		styleDecreaseRate = 1 #so you can't keep PSSS maxed out forever
 	if airSpinRank == 10: 
 		styleDecreaseRate = 0.02 #so you dont lose your rank in really big falls
-	if idle: #lose rank quickly when you stop moving EXCEPT IF YOU TIPLANDED (set in fish.gd)
+	if idle: #lose rank quickly when you stop moving EXCEPT IF YOU TIPLANDED OR HOOKING (set in fish.gd)
 		ScoreManager.styleDecreaseRate = 0.5 
 	
 	

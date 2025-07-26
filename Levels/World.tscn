@@ -940,6 +940,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8878, 41.4726, 65.35)
 lineLength = 11.2014
 reelingSpeed = 0.8
 
+[node name="hook4" parent="intro" instance=ExtResource("15_rk5xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4213, 50.6803, 66.4524)
+lineLength = 20.4092
+reelingSpeed = 3.0
+
 [node name="lookDown" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
 collision_layer = 8
@@ -2938,7 +2943,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.525, 46.914, -26.0178)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, -0.309937)
 
 [node name="worm10" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 3.67554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 3.70373)
 
 [node name="worm11" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 7.89321)
@@ -2947,7 +2952,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 7.89321)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.994, 20.8323, -25.9339)
 
 [node name="worm17" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.291, 22.5598, -49.5484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.291, 20.8724, -47.5174)
 
 [node name="worm12" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 12.2016)

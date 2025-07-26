@@ -6,9 +6,16 @@ var framefwrd
 
 var freezeframe : int = 0
 
+enum gameState { #Testing something, not used yet
+	MENU,
+	GAMEPLAY,
+	RESULTSCREEN,
+}
+
+
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
-	gamePaused = gamePaused
+	gamePaused = get_tree().paused
 
 
 func _physics_process(_delta):

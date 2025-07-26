@@ -21,7 +21,7 @@ var descending: bool = false
 var storeFishSpeed : Vector3 
 #So that the reeling can ba slightly gradual
 var actualSpeed: float = 1.0
-
+var fastAccel : bool = false #accelerate faster when diving on the hook
 
 ## Set hook position when game starts
 func _ready() -> void:
@@ -43,8 +43,12 @@ func _process(delta: float) -> void:
 	
 	## When the fish is on the hook
 	if lockFish:
-		actualSpeed = min(actualSpeed*1.3, 1.0)
-		#print(actualSpeed)
+		#start at 0.03 then *=1.3 until it equals 1
+		if fastAccel:
+			actualSpeed = min(actualSpeed*2, 1.0)
+		else:
+			actualSpeed = min(actualSpeed*1.3, 1.0)
+		print(actualSpeed)
 		%hookSprite.position.y += reelingSpeed * 0.6 * actualSpeed
 		fish.force_position(%hookSprite.global_position)
 		ScoreManager.comboTimer += 1 #so you dont lose your combo on long hooks
@@ -90,6 +94,7 @@ func _on_body_entered(body: Node3D) -> void:
 			%sfxLoop.pitch_scale = reelingSpeed
 			%sfxLoop.play()
 			actualSpeed = 0.03
+			fastAccel = fish.diving
 			
 
 

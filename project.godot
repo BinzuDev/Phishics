@@ -18,7 +18,7 @@ boot_splash/image="uid://drbikn5ifimak"
 
 [autoload]
 
-global="*res://global.gd"
+GameManager="*res://GAME_MANAGER.gd"
 MusicManager="*res://music_manager.tscn"
 ScoreManager="*res://score_manager.tscn"
 DialogueManager="*res://dialogue_manager.tscn"
