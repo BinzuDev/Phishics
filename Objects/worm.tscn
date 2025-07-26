@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dekjyfsmafh8k"]
+[gd_scene load_steps=16 format=3 uid="uid://dekjyfsmafh8k"]
 
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="1_14tpb"]
 [ext_resource type="Texture2D" uid="uid://qmeykmwuuucb" path="res://Sprites/worm.png" id="2_affe2"]
@@ -205,14 +205,10 @@ tracks/6/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_77qcx"]
-resource_name = "new_animation"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5b4d"]
 _data = {
 &"Collected": SubResource("Animation_j5b4d"),
-&"RESET": SubResource("Animation_ppvjl"),
-&"new_animation": SubResource("Animation_77qcx")
+&"RESET": SubResource("Animation_ppvjl")
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_ppvjl"]
