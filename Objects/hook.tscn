@@ -213,9 +213,9 @@ texture = ExtResource("4_uv86o")
 
 [node name="wireAnim" type="Sprite3D" parent="rodPivot/bobberAnim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00466251, -1.63637, 0)
+sorting_offset = -1.0
 offset = Vector2(0, -0.5)
 pixel_size = 0.52
-render_priority = -1
 texture = ExtResource("3_ymdgi")
 hframes = 6
 
@@ -249,9 +249,9 @@ texture = ExtResource("2_vqrsm")
 
 [node name="wireInBetween" type="Sprite3D" parent="hookSprite"]
 transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 2, -0.00337338, 4.44489, 0)
+sorting_offset = -1.0
 pixel_size = 1.0
 billboard = 2
-render_priority = -1
 texture = ExtResource("3_ymdgi")
 
 [node name="bobberSprite" type="Sprite3D" parent="hookSprite"]

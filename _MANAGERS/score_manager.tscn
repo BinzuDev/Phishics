@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=3 uid="uid://bf4od5ihf5y78"]
 
-[ext_resource type="Script" uid="uid://2quft78r0yym" path="res://score_manager.gd" id="1_vublb"]
+[ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="3_uvms0"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="4_bfd2b"]
 [ext_resource type="Texture2D" uid="uid://brk5f6m6r7rwt" path="res://Sprites/UI/fishrank_background.png" id="5_1x5f8"]
@@ -706,7 +706,7 @@ offset_bottom = 662.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_g3jka")
 
-[node name="debugLabel2" type="Label" parent="."]
+[node name="freshDebugLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = 12.0
 offset_top = 6.0

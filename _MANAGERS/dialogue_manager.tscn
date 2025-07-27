@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dn0q40lsrgegb"]
 
-[ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://dialogue_manager.gd" id="1_k6lpl"]
+[ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://_MANAGERS/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
 [ext_resource type="Shader" uid="uid://bq8vjf1snwsqm" path="res://Shaders/text_box.gdshader" id="2_tqlrv"]
 [ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]

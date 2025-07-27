@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://c023evklyjypk"]
+
+[ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
+[ext_resource type="Theme" uid="uid://jcfvj2hbynk0" path="res://UI_THEME.tres" id="1_t3ngx"]
+
+[node name="menu_manager" type="Node"]
+process_mode = 3
+script = ExtResource("1_kt1dn")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterMargin" type="MarginContainer" parent="PauseMenu"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="optionList" type="VBoxContainer" parent="PauseMenu/CenterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Continue" type="Button" parent="PauseMenu/CenterMargin/optionList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_t3ngx")
+text = "CONTINUE"
+text_overrun_behavior = 1
+clip_text = true
+
+[node name="Restart" type="Button" parent="PauseMenu/CenterMargin/optionList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_t3ngx")
+text = "RESTART"
+
+[node name="Settings" type="Button" parent="PauseMenu/CenterMargin/optionList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_t3ngx")
+text = "SETTINGS"
+
+[node name="Exit" type="Button" parent="PauseMenu/CenterMargin/optionList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_t3ngx")
+text = "EXIT"
+
+[node name="DebugMargin" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+offset_right = 180.0
+offset_bottom = 206.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Panel" type="Panel" parent="PauseMenu/DebugMargin"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PauseMenu/DebugMargin"]
+layout_mode = 2
+alignment = 2
+
+[node name="fresh" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "Fresh debug info"
+
+[node name="music" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "Music debug info"
+
+[node name="fish" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "Fish debug info"
+
+[node name="style" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "Style debug info"
+
+[node name="hideUI" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "Hide all UI"
+
+[node name="noclip" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "noclip"
+
+[node name="muteMusic" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+layout_mode = 2
+text = "mute music"
+
+[connection signal="pressed" from="PauseMenu/CenterMargin/optionList/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterMargin/optionList/Restart" to="." method="_on_restart_pressed"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/fresh" to="." method="_on_fresh_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/music" to="." method="_on_music_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/fish" to="." method="_on_fish_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/style" to="." method="_on_style_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/hideUI" to="." method="_on_hide_ui_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/noclip" to="." method="_on_noclip_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugMargin/HBoxContainer/muteMusic" to="." method="_on_mute_music_toggled"]

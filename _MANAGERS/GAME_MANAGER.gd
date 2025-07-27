@@ -17,6 +17,11 @@ func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	gamePaused = get_tree().paused
 
+func reset_level():
+	get_tree().reload_current_scene()
+	MusicManager.stop_music()
+	ScoreManager.reset_everything()
+
 
 func _physics_process(_delta):
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -32,9 +37,7 @@ func _physics_process(_delta):
 		get_tree().paused = !get_tree().paused
 	
 	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
-		MusicManager.stop_music()
-		ScoreManager.reset_everything()
+		reset_level()
 	
 	if Input.is_action_just_pressed("F11"): #fullscreen toggle
 		if DisplayServer.window_get_mode() == 4:

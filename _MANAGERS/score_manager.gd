@@ -202,8 +202,7 @@ func _physics_process(_delta: float) -> void:
 	#"airSpinHighestRank: ", airSpinHighestRank, "\n",
 	)
 	
-	%debugLabel2.text = str(trickHistory, "\nfreshness: ", freshness)
-
+	%freshDebugLabel.text = str(trickHistory, "\nfreshness: ", freshness)
 
 
 

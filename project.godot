@@ -18,10 +18,11 @@ boot_splash/image="uid://drbikn5ifimak"
 
 [autoload]
 
-GameManager="*res://GAME_MANAGER.gd"
-MusicManager="*res://music_manager.tscn"
-ScoreManager="*res://score_manager.tscn"
-DialogueManager="*res://dialogue_manager.tscn"
+GameManager="*res://_MANAGERS/GAME_MANAGER.gd"
+MusicManager="*res://_MANAGERS/music_manager.tscn"
+ScoreManager="*res://_MANAGERS/score_manager.tscn"
+DialogueManager="*res://_MANAGERS/dialogue_manager.tscn"
+MenuManager="*res://_MANAGERS/menu_manager.tscn"
 
 [debug]
 

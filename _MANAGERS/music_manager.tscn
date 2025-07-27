@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://brarw73p2ss0"]
 
-[ext_resource type="Script" uid="uid://dlombqqma6ffi" path="res://music_manager.gd" id="1_tylfe"]
+[ext_resource type="Script" uid="uid://dlombqqma6ffi" path="res://_MANAGERS/music_manager.gd" id="1_tylfe"]
 [ext_resource type="AudioStream" uid="uid://djsqi5hk8cqvp" path="res://Music/OST1/calm1.ogg" id="2_rn4ok"]
 [ext_resource type="AudioStream" uid="uid://ct1tv7gd0d6xr" path="res://Music/silence.ogg" id="3_u7qmi"]
 [ext_resource type="AudioStream" uid="uid://ceda4c52rrkek" path="res://Music/OST1/bass.ogg" id="4_l0n74"]
@@ -287,9 +287,9 @@ bus = &"music"
 
 [node name="musicDebug" type="Label" parent="."]
 visible = false
-offset_left = 18.0
-offset_top = 88.0
-offset_right = 1211.0
-offset_bottom = 285.0
+offset_left = 10.0
+offset_top = 118.0
+offset_right = 1203.0
+offset_bottom = 315.0
 text = "Now playing:"
 label_settings = SubResource("LabelSettings_rn4ok")

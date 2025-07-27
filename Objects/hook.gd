@@ -34,7 +34,7 @@ func set_hook_lenght():
 	%hookArea.position.y = -lineLength
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	## Set the hook position if inside the editor
 	if Engine.is_editor_hint():
@@ -43,12 +43,12 @@ func _process(delta: float) -> void:
 	
 	## When the fish is on the hook
 	if lockFish:
-		#start at 0.03 then *=1.3 until it equals 1
+		#what makes it accelerate at the start
 		if fastAccel:
 			actualSpeed = min(actualSpeed*2, 1.0)
 		else:
 			actualSpeed = min(actualSpeed*1.3, 1.0)
-		print(actualSpeed)
+		#print(actualSpeed)
 		%hookSprite.position.y += reelingSpeed * 0.6 * actualSpeed
 		fish.force_position(%hookSprite.global_position)
 		ScoreManager.comboTimer += 1 #so you dont lose your combo on long hooks
@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
 ## When fish touches hook
 func _on_body_entered(body: Node3D) -> void:
 	if body is player:
-		if not descending:
+		if not descending and !$AnimationPlayer.is_playing():
 			fish = body
 			lockFish = true
 			fish.isHeld = true #prevents tip landing
@@ -98,5 +98,5 @@ func _on_body_entered(body: Node3D) -> void:
 			
 
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(_anim_name):
 	descending = true #only start going down after animation done

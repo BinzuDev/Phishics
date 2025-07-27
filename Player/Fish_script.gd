@@ -5,7 +5,7 @@ extends RigidBody3D
 #jump check
 @export var canJump: bool = true
 
-var checkpoint_pos: Vector3 # i like men too teeheehee
+var checkpoint_pos: Vector3
 
 #camera
 var targetCamAngle: Vector3
@@ -42,6 +42,7 @@ var timeSinceJump : int = 0
 var flopTimer : int = 0
 var sfxCoolDown : int = 0
 
+var noclip := false
 
 
 func _ready() -> void:
@@ -77,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
 	if Input.is_action_just_pressed("jump") and canJump:
-		if timeSinceJump > 20 and $floorDetection.is_colliding():
+		if (timeSinceJump > 20 and $floorDetection.is_colliding()) or noclip:
 			timeSinceJump = 0
 			#audio
 			$Jumps.play()
@@ -231,7 +232,10 @@ func _physics_process(_delta: float) -> void:
 			homing = true
 			$diveSFX.play()
 	
-	if get_contact_count() >= 1 or linear_velocity.y > -5: #otherwise dive can persist if you bounce 
+	if get_contact_count() >= 1 and linear_velocity.y <= -5:
+		if diving or homing:
+			printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
+	if linear_velocity.y > -2: #otherwise dive can persist if you bounce 
 		if diving or homing:
 			print("RESETING DIVING")
 		diving = false
@@ -239,10 +243,10 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	#x0 when homing, x1 otherwise
-	#if homing:
-		#gravity_scale = 0.0
-	#else:
-		#gravity_scale = 1.5
+	if homing:
+		gravity_scale = 0.0
+	else:
+		gravity_scale = 1.5
 	#gravity_scale = !int(homing)
 	
 	
@@ -443,6 +447,7 @@ func _physics_process(_delta: float) -> void:
 	fishCooldown += 1
 	if Input.is_action_just_pressed("FIsh") and !isHeld:
 		$FIsh.play()
+		$recordingManager.fishPressed = true
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			GameManager.freezeframe = 20
 			get_tree().paused = true
