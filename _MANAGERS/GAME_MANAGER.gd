@@ -4,7 +4,9 @@ var gamePaused : bool
 var gameTimer : int = 0
 var framefwrd
 
-var freezeframe : int = 0
+var freezeframe : int = 0 
+var objFreeze #freeze something else when hitstopping
+
 
 enum gameState { #Testing something, not used yet
 	MENU,
@@ -12,6 +14,18 @@ enum gameState { #Testing something, not used yet
 	RESULTSCREEN,
 }
 
+
+##Allows you to pause the game for x amount of frames, for impact and juice
+func hitstop(frames: int, objToPause: Node3D = null):
+	freezeframe = frames
+	#get_tree().paused = true
+	var fish = get_tree().get_first_node_in_group("player")
+	fish.process_mode = Node.PROCESS_MODE_DISABLED
+	if objToPause != null:
+		objFreeze = objToPause
+		objToPause.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	#objToPause.process_mode = Node.PROCESS_MODE_DISABLED
+	
 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
@@ -49,5 +63,9 @@ func _physics_process(_delta):
 	if freezeframe > 0:
 		freezeframe -= 1
 		if freezeframe == 0:
-			get_tree().paused = false
+			var fish = get_tree().get_first_node_in_group("player")
+			fish.process_mode = Node.PROCESS_MODE_INHERIT
+			if objFreeze:
+				objFreeze.process_mode = Node.PROCESS_MODE_INHERIT
+			#get_tree().paused = false
 	

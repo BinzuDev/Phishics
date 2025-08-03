@@ -22,6 +22,7 @@ var storeFishSpeed : Vector3
 #So that the reeling can ba slightly gradual
 var actualSpeed: float = 1.0
 var fastAccel : bool = false #accelerate faster when diving on the hook
+var timer : int = 0
 
 ## Set hook position when game starts
 func _ready() -> void:
@@ -39,6 +40,15 @@ func _process(_delta: float) -> void:
 	## Set the hook position if inside the editor
 	if Engine.is_editor_hint():
 		set_hook_lenght()
+	
+	
+	timer += 1
+	var swaySpd = 2
+	var swayAmt = 2
+	#%hookSprite.position.x = sin(timer*swaySpd*0.1) * swayAmt
+	#%hookSprite.rotation_degrees.z = %hookSprite.position.x*14
+	
+	
 	
 	
 	## When the fish is on the hook

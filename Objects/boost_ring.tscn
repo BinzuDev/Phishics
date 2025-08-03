@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cu87u6588tm6x"]
+[gd_scene load_steps=22 format=3 uid="uid://cu87u6588tm6x"]
 
 [ext_resource type="Script" uid="uid://1b1lupixtjff" path="res://Objects/boost_ring.gd" id="1_5o6kl"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="2_rd0gv"]
@@ -61,6 +61,67 @@ outer_radius = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75vsp"]
 
+[sub_resource type="Animation" id="Animation_75vsp"]
+resource_name = "boost"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.45, 0.75, 1),
+"transitions": PackedFloat32Array(1, 0.6, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(1.7, 1.7, 1.7), Vector3(1, 1, 1), Vector3(2, 2, 2), Vector3(1.5, 1.5, 1.5), Vector3(1.8, 1.8, 1.8), Vector3(1.7, 1.7, 1.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ring:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.45, 0.75, 1),
+"transitions": PackedFloat32Array(1, 0.6, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.75, 0, 0), Vector3(-1.75, 0, 0), Vector3(0.75, 0, 0), Vector3(-0.5, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o4k7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.69999, 1.7, 1.69999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ring:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_leupk"]
+_data = {
+&"RESET": SubResource("Animation_o4k7s"),
+&"boost": SubResource("Animation_75vsp")
+}
+
 [node name="BoostRing" type="Area3D"]
 process_priority = 5
 process_physics_priority = 5
@@ -70,7 +131,7 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.27286e-07, -1.7, -2.32997e-08, -0.154307, 1.16499e-08, -1.69297, 1.69297, 1.28876e-07, -0.154307, 0, 0, 0)
+transform = Transform3D(4.38916e-08, -1.7, -1.90328e-07, -1.26048, 9.51645e-08, -1.14067, 1.14067, 1.70574e-07, -1.26048, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
@@ -138,5 +199,10 @@ priority = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="homingTarget"]
 shape = SubResource("BoxShape3D_75vsp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_leupk")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

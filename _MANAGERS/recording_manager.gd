@@ -12,6 +12,7 @@ extends Node
 @export var replayAccuracy : int = 20
 
 var currentFile
+var currentFrame
 
 #Because taunting pauses the game, its not recording the moment you press
 #the fish button, so to fix this bug I use this variable instead.
@@ -19,6 +20,7 @@ var currentFile
 var fishPressed := false 
 
 func _ready() -> void:
+	currentFrame = 0
 	if recordingMode == "record":
 		var fileName
 		if recordingFile == "":
@@ -74,6 +76,7 @@ func do_record():
  # 0    1     2     3      4     5     6  
  #UP, DOWN, LEFT, RIGHT, JUMP, DIVE, TAUNT
 func do_replay():
+	currentFrame += 1
 	if FileAccess.file_exists(replayFile) == true:
 		
 		#print(gameTimer, " H: ", hspeed, " V: ", vspeed)
@@ -92,9 +95,9 @@ func do_replay():
 		else:
 			var setInputs = current_line
 			var fish = get_parent()
-			print("fish current pos:", fish.global_position, " recording pos: ", setInputs[7] )
+			print(currentFrame, " current pos:", fish.global_position, " recording pos: ", setInputs[7] )
 			
-			if GameManager.gameTimer % replayAccuracy == 0:
+			if currentFrame % replayAccuracy == 0:
 				#print("FORCE SET POSITION")
 				fish.global_position = string_to_vector3(setInputs[7])
 				fish.global_rotation = string_to_vector3(setInputs[8])

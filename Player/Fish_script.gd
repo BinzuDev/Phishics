@@ -232,9 +232,10 @@ func _physics_process(_delta: float) -> void:
 			homing = true
 			$diveSFX.play()
 	
-	if get_contact_count() >= 1 and linear_velocity.y <= -5:
-		if diving or homing:
-			printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
+	
+	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
+	#	if diving or homing:
+	#		printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
 	if linear_velocity.y > -2: #otherwise dive can persist if you bounce 
 		if diving or homing:
 			print("RESETING DIVING")
@@ -411,7 +412,7 @@ func _physics_process(_delta: float) -> void:
 		tipLandAntiCheese += 1
 	else:
 		tipLandAntiCheese = 0
-	if tipLandAntiCheese >= 5: 
+	if tipLandAntiCheese > 3: 
 		if linear_velocity.length() > 0.5 and angular_velocity.length() > 10:
 			isTipSpinning = true
 			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN", "", false)
@@ -429,6 +430,19 @@ func _physics_process(_delta: float) -> void:
 	
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again
+	
+	#Spark Particles
+	$tipSpinSparks.emitting = isTipSpinning
+	var sparkSpd = clamp(angular_velocity.length() * 0.06 +0.3, 0.8, 4)
+	$tipSpinSparks.speed_scale = sparkSpd
+	
+	if $trickRC/head.is_colliding():
+		$tipSpinSparks.position.x = -0.7
+		$tipSpinSparks.rotation_degrees.y = -180
+	else:
+		$tipSpinSparks.position.x = 0.7
+		$tipSpinSparks.rotation_degrees.y = 0
+	
 	
 	if linear_velocity.length() < 0.1 and !tiplanding and !isHeld:
 		ScoreManager.idle = true
@@ -449,8 +463,7 @@ func _physics_process(_delta: float) -> void:
 		$FIsh.play()
 		$recordingManager.fishPressed = true
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
-			GameManager.freezeframe = 20
-			get_tree().paused = true
+			GameManager.hitstop(20)
 			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
 			$taunt.play()
 			$pivotUpper.visible = false
@@ -487,6 +500,7 @@ func _physics_process(_delta: float) -> void:
 	"speed: ",  snapped(linear_velocity.length(), 0.01), "\n",
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
+	"spark speed: ", sparkSpd, "\n",
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",

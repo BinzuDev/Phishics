@@ -92,6 +92,7 @@ layout_mode = 2
 text = "Style debug info"
 
 [node name="hideUI" type="CheckButton" parent="PauseMenu/DebugMargin/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Hide all UI"
 

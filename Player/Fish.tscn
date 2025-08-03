@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=66 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -28,6 +28,44 @@
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="AudioStream" uid="uid://dhn0knconkx21" path="res://Sounds/shotgun_og.ogg" id="27_lt56d"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
+
+[sub_resource type="Gradient" id="Gradient_lt56d"]
+offsets = PackedFloat32Array(0, 0.338912, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.97, 0.1, 1, 1, 0.314, 0.02, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ie0qp"]
+gradient = SubResource("Gradient_lt56d")
+
+[sub_resource type="Curve" id="Curve_lt56d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.96606, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ie0qp"]
+curve = SubResource("Curve_lt56d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lt56d"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+damping_min = 12.0
+damping_max = 12.0
+scale_min = 0.8
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_ie0qp")
+color_ramp = SubResource("GradientTexture1D_ie0qp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt56d"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ie0qp"]
+material = SubResource("StandardMaterial3D_lt56d")
+size = Vector2(0.07, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
 
@@ -421,7 +459,16 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
+replayFile = "res://Recordings/doubleCrabBounce.json"
+replayAccuracy = 999
+
+[node name="tipSpinSparks" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0)
+visible = false
+amount = 30
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_lt56d")
+draw_pass_1 = SubResource("QuadMesh_ie0qp")
 
 [node name="collision" type="CollisionShape3D" parent="." groups=["player"]]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
@@ -574,25 +621,26 @@ collision_mask = 17
 
 [node name="head" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
-target_position = Vector3(-0.3, 0, 0)
+target_position = Vector3(-0.4, 0, 0)
 collision_mask = 17
 
 [node name="tail" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
-target_position = Vector3(0.3, 0, 0)
+target_position = Vector3(0.4, 0, 0)
 collision_mask = 17
 
 [node name="belly" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.243617)
-target_position = Vector3(0, 0, 0.3)
+target_position = Vector3(0, 0, 0.4)
 collision_mask = 17
 
 [node name="back" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24)
-target_position = Vector3(0, 0, -0.3)
+target_position = Vector3(0, 0, -0.4)
 collision_mask = 17
 
 [node name="detectCamSwitch" type="Area3D" parent="."]
+process_mode = 3
 collision_layer = 0
 collision_mask = 8
 
@@ -809,5 +857,5 @@ bus = &"fishsfx"
 [node name="AudioDebug" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_lt56d")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="." method="checkpoint"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

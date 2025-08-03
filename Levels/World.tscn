@@ -55,6 +55,8 @@ sky_material = SubResource("PanoramaSkyMaterial_53g8k")
 background_mode = 2
 background_energy_multiplier = 1.6
 sky = SubResource("Sky_7pnea")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
 fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
@@ -1181,6 +1183,8 @@ mesh = SubResource("CylinderMesh_6r7q6")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group1/pole2"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/pole2/StaticBody3D"]
 shape = SubResource("CylinderShape3D_63vwh")
@@ -2413,22 +2417,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3973, 0.64544, -22.2361)
 audio_file = "uid://cv7x2xq8oskhx"
 
 [node name="Pillar4" parent="group2" instance=ExtResource("33_fbdpx")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 73.0122, -0.330253, 6.3211)
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 73.3934, -0.330253, 6.3211)
 material_override = SubResource("StandardMaterial3D_gpdup")
 skeleton = NodePath("../..")
 
 [node name="Pillar6" parent="group2" instance=ExtResource("33_fbdpx")]
-transform = Transform3D(-0.00151884, -1.08324e-05, 0.999999, -0.962983, 0.269557, -0.0014597, -0.269557, -0.962985, -0.000419854, 72.8159, 5.49502, 4.40126)
+transform = Transform3D(-0.00151884, -1.08324e-05, 0.999999, -0.962983, 0.269557, -0.0014597, -0.269557, -0.962985, -0.000419854, 73.1971, 5.49502, 4.40126)
 material_override = SubResource("StandardMaterial3D_gpdup")
 skeleton = NodePath("../..")
 
 [node name="Pillar9" parent="group2" instance=ExtResource("33_fbdpx")]
-transform = Transform3D(-0.999997, 0.00170891, -0.00151882, -0.00072054, -0.866019, -0.500011, -0.00216981, -0.500009, 0.866018, 73.0004, 0.612565, 16.0318)
+transform = Transform3D(-0.999997, 0.00170891, -0.00151882, -0.00072054, -0.866019, -0.500011, -0.00216981, -0.500009, 0.866018, 73.3816, 0.612565, 16.0318)
 material_override = SubResource("StandardMaterial3D_gpdup")
 skeleton = NodePath("../..")
 
 [node name="Pillar5" parent="group2" instance=ExtResource("33_fbdpx")]
-transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.000126062, 0.704502, 0.709702, -0.00228287, -0.709701, 0.7045, 73.0122, 0.625466, 13.5563)
+transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.000126062, 0.704502, 0.709702, -0.00228287, -0.709701, 0.7045, 73.3934, 0.625466, 13.5563)
 material_override = SubResource("StandardMaterial3D_gpdup")
 skeleton = NodePath("../..")
 
@@ -2437,7 +2441,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6294, -0.303532, 8.04283)
 skeleton = NodePath("../..")
 
 [node name="Pillar8" parent="group2" instance=ExtResource("34_er564")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 72.7396, -0.303532, 1.29653)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 73.1208, -0.303532, 1.29653)
 skeleton = NodePath("../..")
 
 [node name="scoreRing" parent="group2" instance=ExtResource("45_s7dn7")]

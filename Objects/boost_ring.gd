@@ -75,6 +75,7 @@ func _on_body_entered(body: Node3D) -> void:
 				ScoreManager.give_points(500, 1, true, "BOOST", "", false)
 			ScoreManager.play_trick_sfx("rare")
 			body.lastUsedBoost = self
+			$AnimationPlayer.play("boost")
 		#body.play_random_trick()
 		
 		#sound 
