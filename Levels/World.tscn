@@ -930,12 +930,12 @@ debug_color = Color(1, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
 
 [node name="hook" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1798, 100, 65.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6909, 100, 58.2002)
 lineLength = 69.7289
 reelingSpeed = 1.75
 
 [node name="hook3" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8878, 41.4726, 65.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3989, 41.4726, 58.2002)
 lineLength = 11.2014
 reelingSpeed = 0.8
 
@@ -1023,6 +1023,9 @@ transform = Transform3D(1, -1.49012e-08, -5.10702e-15, 1.49012e-08, 1, 2.53319e-
 [node name="back" type="CSGBox3D" parent="group1/CSGCombiner3D2"]
 transform = Transform3D(-4.37114e-08, 0.561506, -0.827473, 0, 0.827473, 0.561506, 1, 2.45442e-08, -3.617e-08, -47.145, 6.2067, -79.9426)
 size = Vector3(198.001, 4.65121, 23.2248)
+
+[node name="tornado" parent="group1/CSGCombiner3D2" instance=ExtResource("17_w578l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 83.0016, -30.2174, -54.7623)
 
 [node name="Platform1" type="MeshInstance3D" parent="group1"]
 transform = Transform3D(-2.79248e-05, 0, -434.948, 0, 1.80286, 0, 638.846, 0, -1.90122e-05, 175.423, -1.35911, 79.9901)
@@ -1290,7 +1293,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_46o8p")
 
 [node name="Platform16" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(-4.8908e-07, 0, -18.2226, 0, 22.0476, 0, 11.1888, 0, -7.96536e-07, 50.2209, 5.51292, -47.6784)
+transform = Transform3D(-4.8908e-07, 0, -18.2226, 0, 22.0476, 0, 11.1888, 0, -7.96536e-07, 50.2209, 5.8931, -47.6784)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -2381,11 +2384,20 @@ shape = SubResource("BoxShape3D_wvw3a")
 [node name="tornado" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.001, 12.5428, -19.2369)
 
+[node name="tornado6" parent="group2" instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4149, -0.429138, 12.6378)
+
+[node name="tornado7" parent="group2" instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3314, -0.429138, -7.84064)
+
 [node name="tornado2" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.833, 13.1761, -26.0355)
 
 [node name="tornado3" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5866, 14.5868, -20.2408)
+
+[node name="tornado5" parent="group2" instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.703, 18.9514, -49.9719)
 
 [node name="tornado4" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1362, 13.1761, -30.0089)
@@ -2709,7 +2721,7 @@ reelingSpeed = 2.0
 homingTarget = false
 
 [node name="Platform1" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(85.6392, 0, 0, 0, 20.0182, 0, 0, 0, 98.2536, 195.9, 9.18, -36.41)
+transform = Transform3D(85.6392, 0, 0, 0, 20.0182, 0, 0, 0, 129.541, 195.9, 9.18, -29.291)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -2718,6 +2730,17 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="group3/Platform1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_m3j4o")
+
+[node name="Platform2" type="MeshInstance3D" parent="group3"]
+transform = Transform3D(107.816, 0, 0, 0, 41.5372, 0, 0, 0, 7.35574, 172.943, 8.25657, 15.0484)
+transparency = 1.0
+mesh = SubResource("BoxMesh_j5go0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group3/Platform2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="sphere5" type="MeshInstance3D" parent="group3"]
@@ -2842,10 +2865,6 @@ texture = ExtResource("15_wvw3a")
 transform = Transform3D(0.631431, -0.404507, 0, 0.404439, 0.631537, 0, 0, 0, 0.761141, 16.2447, 3.688, -15.8682)
 texture = ExtResource("15_wvw3a")
 
-[node name="arrowSIgn4" type="Sprite3D" parent="2Darea"]
-transform = Transform3D(0.749055, -0.0345442, 0, 0.0345384, 0.749181, 0, 0, 0, 0.761141, 13.6102, 2.3571, -15.8682)
-texture = ExtResource("30_i76hq")
-
 [node name="arrowSIgn" type="Sprite3D" parent="2Darea"]
 transform = Transform3D(0.899633, 0.000201719, -0.0256893, 1.24488e-07, 0.899972, 0.00707119, 0.0256901, -0.00706831, 0.899605, -8.74169, 1.7808, -15.9809)
 texture = ExtResource("15_wvw3a")
@@ -2856,6 +2875,10 @@ transform = Transform3D(1, 0, 1.86265e-09, 1.45519e-11, 1, 0, 1.86265e-09, 0, 1,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2Darea/arrowSIgn/StaticBody3D"]
 transform = Transform3D(1, 7.27596e-11, -2.04891e-08, -1.30967e-09, 0.999997, -1.10827e-07, 1.11759e-08, 1.11759e-08, 0.999995, -0.00886536, -0.0786972, -1.90735e-06)
 shape = SubResource("BoxShape3D_vcw38")
+
+[node name="arrowSIgn4" type="Sprite3D" parent="2Darea"]
+transform = Transform3D(0.749055, -0.0345442, 0, 0.0345384, 0.749181, 0, 0, 0, 0.761141, 13.6102, 2.3571, -15.8682)
+texture = ExtResource("30_i76hq")
 
 [node name="Platform35" type="MeshInstance3D" parent="2Darea"]
 transform = Transform3D(22.1825, -5.25568e-08, 0, 1.13687e-13, 1.42538, 0, 0, 0, 31.0085, 0, 0, -0.573746)

@@ -60,4 +60,3 @@ void fragment() {
     vec2 uv = UV;
 	COLOR *= effect(TEXTURE_PIXEL_SIZE, uv);
 }
-

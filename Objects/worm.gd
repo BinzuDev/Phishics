@@ -1,3 +1,4 @@
+@icon("res://icons/worm.png")
 extends Area3D
 
 var collected: bool = false

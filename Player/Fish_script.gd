@@ -413,7 +413,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tipLandAntiCheese = 0
 	if tipLandAntiCheese > 3: 
-		if linear_velocity.length() > 0.5 and angular_velocity.length() > 10:
+		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10:
 			isTipSpinning = true
 			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN", "", false)
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
@@ -433,8 +433,28 @@ func _physics_process(_delta: float) -> void:
 	
 	#Spark Particles
 	$tipSpinSparks.emitting = isTipSpinning
+	%ballSpark.emitting = isTipSpinning
 	var sparkSpd = clamp(angular_velocity.length() * 0.06 +0.3, 0.8, 4)
 	$tipSpinSparks.speed_scale = sparkSpd
+	var sparkRate = clamp(angular_velocity.length()*0.03, 0.3, 1)
+	$tipSpinSparks.amount_ratio = sparkRate
+	var sfxRate = int(clamp(30 - angular_velocity.length()*0.5, 5, 25))
+	
+	%particleFloor.position.y = -height -1
+	
+	%speedLines.rotation_degrees.y += angular_velocity.y*0.6
+	%speedLines2.rotation_degrees.y += angular_velocity.y*0.5
+	%speedLines3.rotation_degrees.y += angular_velocity.y*0.4
+	var transp = abs(angular_velocity.y)*0.02
+	if !isTipSpinning: #make it harder to see the speed lines when not tipspinning
+		transp -= 0.3
+	transp = 1 - clamp(transp, 0 ,1)
+	%speedLines.transparency = transp
+	%speedLines2.transparency = transp
+	%speedLines3.transparency = transp
+	
+	if GameManager.gameTimer % sfxRate == 0 and isTipSpinning:
+		$grindingSparks.play()
 	
 	if $trickRC/head.is_colliding():
 		$tipSpinSparks.position.x = -0.7
@@ -501,12 +521,14 @@ func _physics_process(_delta: float) -> void:
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
 	"spark speed: ", sparkSpd, "\n",
+	"spark sfx rate: ", sfxRate, "\n",
+	"transp: ", transp, "\n",
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
-	"gravity scale: ", gravity_scale
+	"gravity scale: ", gravity_scale,
 	)
 	
 

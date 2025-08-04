@@ -1,3 +1,4 @@
+@icon("res://icons/baskethoop.png")
 extends Node3D
 
 var coolDown = 0
@@ -14,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 		#fish[0].give_points(0,0,true) #resets the timer
 		##fish[0].comboTimer += 2 #give you extra time
 	#else:
-		#%hoopCollision.collision_layer = 1 #reaply collision once fish leaves
+		#%hoopCollision.collision_layer = 4 #reaply collision once fish leaves
 		#stopSlowmo = false
 	
 	## Delayed Dive dunk
@@ -135,6 +136,6 @@ func _on_slowmo_body_exited(body):
 func _on_reset_hoop_body_exited(body):
 	if body.process_mode == Node.PROCESS_MODE_INHERIT:
 		print(body.name, " HAS EXITED THE RESET HOOP AREA")
-		%hoopCollision.collision_layer = 1 #reaply collision once fish leaves
+		%hoopCollision.collision_layer = 4 #reaply collision once fish leaves
 		$antiCheese.collision_layer = 4
 		stopSlowmo = false
