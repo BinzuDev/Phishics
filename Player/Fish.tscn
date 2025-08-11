@@ -620,8 +620,8 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-replayFile = "res://Recordings/doubleCrabBounce.json"
-replayAccuracy = 999
+replayFile = "res://Recordings/2025-08-06_10-59-13.json"
+replayAccuracy = 5
 
 [node name="collision" type="CollisionShape3D" parent="." groups=["player"]]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
