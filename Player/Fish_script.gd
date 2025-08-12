@@ -236,7 +236,7 @@ func _physics_process(_delta: float) -> void:
 	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
 	#	if diving or homing:
 	#		printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
-	if linear_velocity.y > -2: #otherwise dive can persist if you bounce 
+	if linear_velocity.y > -5: #otherwise dive can persist if you bounce 
 		if diving or homing:
 			print("RESETING DIVING")
 		diving = false
@@ -415,7 +415,9 @@ func _physics_process(_delta: float) -> void:
 	if tipLandAntiCheese > 3: 
 		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10:
 			isTipSpinning = true
-			ScoreManager.give_points(500/linear_velocity.length()*2, 0, true, "TIPSPIN", "", false)
+			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN", "", false)
+			#ScoreManager.give_points(1, 0, true, "TIPSPIN", "", false)
+			print("spd: ", linear_velocity.length(), "  score: ", 500/(linear_velocity.length()*2) )
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
 				ScoreManager.give_points(0, 1, true, "")
 		
@@ -424,9 +426,12 @@ func _physics_process(_delta: float) -> void:
 		if !tiplanding and linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05 and !isHeld:
 			tiplanding = true
 			ScoreManager.give_points(999999, 200, true, "TIPLANDING HOLY SHIT")
-			ScoreManager.change_rank(8, 1.0)
+			ScoreManager.change_rank(8, 1)
 			ScoreManager.comboTimer += 500
 			ScoreManager.play_trick_sfx("legendary")
+			MusicManager.play_track(1, 1)
+			MusicManager.play_track(2, 1)
+			MusicManager.play_track(3, 1) #play the music tracks if not already playing
 	
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again

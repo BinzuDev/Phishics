@@ -7,8 +7,10 @@ func _ready():
 
 func _process(_delta):
 	$PauseMenu.visible = GameManager.gamePaused
-	if Input.is_action_just_pressed("frameFRWD"):
-		%hideUI.button_pressed = true
+	if Input.is_action_just_pressed("pause"):
+		%Continue.grab_focus()
+	#if Input.is_action_just_pressed("frameFRWD"):
+	#	%hideUI.button_pressed = true
 	$PauseMenu/CenterMargin.visible = !%hideUI.button_pressed
 	
 

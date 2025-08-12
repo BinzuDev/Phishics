@@ -332,7 +332,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6849, 31.8458, 67.831)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 24.6849, 36.5093, 67.831)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -351,7 +351,7 @@ shape = SubResource("BoxShape3D_er564")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="invisible wall"]
-transform = Transform3D(1, 0, -3.2685e-13, 0, 2, 0, 1.06581e-14, 0, 5.07478, -41.3704, 29.9709, -25.263)
+transform = Transform3D(1, 0, -3.2685e-13, 0, 2, 0, 1.06581e-14, 0, 5.07478, -41.3704, 29.9709, -17.2981)
 shape = SubResource("BoxShape3D_er564")
 debug_color = Color(1, 0, 0, 1)
 
@@ -929,16 +929,6 @@ debug_color = Color(1, 0, 0, 1)
 [node name="eel" parent="intro" instance=ExtResource("31_exl13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
 
-[node name="hook" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6909, 100, 58.2002)
-lineLength = 69.7289
-reelingSpeed = 1.75
-
-[node name="hook3" parent="intro" instance=ExtResource("15_rk5xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3989, 41.4726, 58.2002)
-lineLength = 11.2014
-reelingSpeed = 0.8
-
 [node name="lookDown" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
 collision_layer = 8
@@ -1024,9 +1014,6 @@ transform = Transform3D(1, -1.49012e-08, -5.10702e-15, 1.49012e-08, 1, 2.53319e-
 transform = Transform3D(-4.37114e-08, 0.561506, -0.827473, 0, 0.827473, 0.561506, 1, 2.45442e-08, -3.617e-08, -47.145, 6.2067, -79.9426)
 size = Vector3(198.001, 4.65121, 23.2248)
 
-[node name="tornado" parent="group1/CSGCombiner3D2" instance=ExtResource("17_w578l")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 83.0016, -30.2174, -54.7623)
-
 [node name="Platform1" type="MeshInstance3D" parent="group1"]
 transform = Transform3D(-2.79248e-05, 0, -434.948, 0, 1.80286, 0, 638.846, 0, -1.90122e-05, 175.423, -1.35911, 79.9901)
 material_override = ExtResource("4_vbdqq")
@@ -1088,7 +1075,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="wall2" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(-5.13923e-06, 1.806, 5.87228e-06, 0, -7.89428e-08, 134.342, 117.572, 7.89428e-08, 2.56685e-13, 228.468, -6.95354, -23.2111)
+transform = Transform3D(-5.13923e-06, 1.806, 5.87228e-06, 0, -7.89428e-08, 134.342, 117.572, 7.89428e-08, 2.56685e-13, 220.503, -6.95354, -23.2111)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -1345,6 +1332,8 @@ mesh = SubResource("CylinderMesh_6r7q6")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group1/streetsign2"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign2/StaticBody3D"]
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
@@ -1388,6 +1377,8 @@ skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group1/streetsign4"]
 transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign4/StaticBody3D"]
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
@@ -1407,6 +1398,10 @@ transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 22.1179,
 speed = 3
 bounceForce = 100
 hSpeedMultiplier = 1.0
+
+[node name="Jellyfish4" parent="group1" instance=ExtResource("41_i76hq")]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 82.9125, 4.94401, -0.832575)
+speed = 3
 
 [node name="PathJF" type="Path3D" parent="group1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7901, 13.5144, 19.2387)
@@ -2052,12 +2047,12 @@ shape = SubResource("BoxShape3D_m3j4o")
 transform = Transform3D(-0.834488, -0.483735, 0.263873, -0.501511, 0.86515, 0, -0.22829, -0.132335, -0.964557, 22.1253, 5.56337, 14.8228)
 
 [node name="BoostRing21" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(0.00452982, 0.00262599, 0.999986, -0.501511, 0.86515, 1.50505e-08, -0.865139, -0.501503, 0.005236, 83.8049, 21.7343, -51.4284)
-strength = 28.0
+transform = Transform3D(0.00464013, 0.0024258, 0.999986, -0.463296, 0.886202, 0, -0.886191, -0.463289, 0.00523596, 83.8049, 21.7343, -51.4284)
+strength = 29.0
 centerPlayer = true
 
 [node name="BoostRing24" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-0.658678, -0.752407, 0.00495955, -0.752411, 0.658691, 0.00167873, -0.0045298, -0.00262594, -0.999986, 59.6517, 18.5475, 16.7977)
+transform = Transform3D(-0.653919, -0.746964, -0.120137, -0.752415, 0.658688, 0, 0.0791328, 0.0903926, -0.992757, 59.6517, 18.5475, 16.7977)
 strength = 20.0
 
 [node name="BoostRing17" parent="group2" instance=ExtResource("9_2uuim")]
@@ -2388,7 +2383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.001, 12.5428, -19.2369)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4149, -0.429138, 12.6378)
 
 [node name="tornado7" parent="group2" instance=ExtResource("17_w578l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3314, -0.429138, -7.84064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0265, -0.429138, -12.0045)
 
 [node name="tornado2" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.833, 13.1761, -26.0355)
@@ -2469,10 +2464,10 @@ transform = Transform3D(-0.79748, 0, -0.603345, 0, 1, 0, 0.603345, 0, -0.79748, 
 transform = Transform3D(-4.37114e-08, 0, 1, -0.513841, 0.857886, -2.24607e-08, -0.857886, -0.513841, -3.74994e-08, 84.2025, 29.9535, -38.3689)
 
 [node name="scoreRing7" parent="group2" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0.243276, 0.969957, 1.06339e-08, -0.969957, 0.243276, -4.23982e-08, 84.2025, 37.5909, 4.69584)
+transform = Transform3D(-4.37114e-08, 0, 1, 0.243276, 0.969957, 1.06339e-08, -0.969957, 0.243276, -4.23982e-08, 84.2025, 37.6138, 7.5143)
 
 [node name="scoreRing6" parent="group2" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-4.37114e-08, 0, 1, -0.0160563, 0.999871, -7.01847e-10, -0.999871, -0.0160563, -4.37058e-08, 84.2025, 39.5585, -16.4818)
+transform = Transform3D(-4.37114e-08, 0, 1, -0.0160563, 0.999871, -7.01847e-10, -0.999871, -0.0160563, -4.37058e-08, 84.2025, 39.0958, -14.892)
 
 [node name="scoreRing8" parent="group2" instance=ExtResource("45_s7dn7")]
 transform = Transform3D(-0.845542, -0.53391, -7.42895e-08, -0.53391, 0.845542, -4.60794e-08, 8.74171e-08, 7.01845e-10, -1, 65.846, 25.3922, 16.0757)
@@ -2704,6 +2699,44 @@ shape = SubResource("BoxShape3D_w578l")
 transform = Transform3D(0.323818, -0.00168026, 0.938608, -0.0176727, 0.0857891, 0.0315114, -0.744978, -0.00276544, 0.407235, 0.794647, 0.874355, -0.203674)
 texture = ExtResource("15_wvw3a")
 
+[node name="streetsign5" type="MeshInstance3D" parent="highUpSection"]
+transform = Transform3D(-0.503626, 0.190782, -0.0765488, 4.65031e-09, 4.55142, 0.0790507, 0.10359, 0.92753, -0.372159, 99.0122, 22.7561, 9.22042)
+material_override = SubResource("StandardMaterial3D_11qgy")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("CylinderMesh_6r7q6")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/streetsign5"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign5/StaticBody3D"]
+transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+shape = SubResource("BoxShape3D_w578l")
+
+[node name="Sprite3D" type="Sprite3D" parent="highUpSection/streetsign5"]
+transform = Transform3D(1.00579, -0.101282, -0.0305081, -0.0111361, -0.111276, 0.0022795, -0.0429449, -0.0231323, -1.33902, 0.127441, 0.752491, -0.595322)
+texture = ExtResource("15_wvw3a")
+
+[node name="Sprite3D" type="Sprite3D" parent="highUpSection"]
+transform = Transform3D(-0.653826, 0.216707, 0.365992, -0.312267, -0.700271, -0.143213, 0.288793, -0.266569, 0.673751, 93.56, 26.1339, 12.3109)
+texture = ExtResource("15_wvw3a")
+
+[node name="streetsign6" type="MeshInstance3D" parent="highUpSection"]
+transform = Transform3D(-0.499542, 0.0824869, -0.0769262, 4.6126e-09, 1.96786, 0.0794405, 0.10275, 0.401029, -0.373994, 93.3465, 24.7289, 11.5554)
+material_override = SubResource("StandardMaterial3D_11qgy")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("CylinderMesh_6r7q6")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/streetsign6"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign6/StaticBody3D"]
+transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
+shape = SubResource("BoxShape3D_w578l")
+
 [node name="group3" type="Node3D" parent="."]
 
 [node name="hook" parent="group3" instance=ExtResource("15_rk5xy")]
@@ -2866,7 +2899,7 @@ transform = Transform3D(0.631431, -0.404507, 0, 0.404439, 0.631537, 0, 0, 0, 0.7
 texture = ExtResource("15_wvw3a")
 
 [node name="arrowSIgn" type="Sprite3D" parent="2Darea"]
-transform = Transform3D(0.899633, 0.000201719, -0.0256893, 1.24488e-07, 0.899972, 0.00707119, 0.0256901, -0.00706831, 0.899605, -8.74169, 1.7808, -15.9809)
+transform = Transform3D(1.04903, -0.0336481, -0.0299709, 0.0338962, 1.04942, 0.00824972, 0.02969, -0.00920964, 1.04954, -9.11372, 1.6584, -15.8663)
 texture = ExtResource("15_wvw3a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="2Darea/arrowSIgn"]
@@ -2881,7 +2914,7 @@ transform = Transform3D(0.749055, -0.0345442, 0, 0.0345384, 0.749181, 0, 0, 0, 0
 texture = ExtResource("30_i76hq")
 
 [node name="Platform35" type="MeshInstance3D" parent="2Darea"]
-transform = Transform3D(22.1825, -5.25568e-08, 0, 1.13687e-13, 1.42538, 0, 0, 0, 31.0085, 0, 0, -0.573746)
+transform = Transform3D(22.1825, -5.25568e-08, 0, 1.13687e-13, 1.42538, 0, 0, 0, 31.0085, -0.0779419, -0.212383, -0.573746)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")

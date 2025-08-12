@@ -135,6 +135,13 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
+		#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
+	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
+	#combine styleScore and the current combo to create the final styleMeter value  
+	styleMeter = styleScore + points*mult
+	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
+	
+	
 	## Rank up
 	if styleMeter >= rankRequirements[styleRank+1] and styleRank < PSSS:
 		if styleRank < A:
@@ -151,13 +158,9 @@ func _physics_process(_delta: float) -> void:
 	
 	## Rank down
 	if styleMeter < rankRequirements[styleRank] and styleRank > D:
+		print("rank down", "styleMeter: ", styleMeter, " StyleRank: ", styleRank, " requirement: ", rankRequirements[styleRank] )
 		ScoreManager.change_rank(-1, 0.5)
 	
-	#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
-	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
-	#combine styleScore and the current combo to create the final styleMeter value  
-	styleMeter = styleScore + points*mult
-	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
 	
 	
 	
@@ -224,11 +227,11 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 			if trickName != "AIRSPIN": #special exception for airspin
 				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 6):
 					trickHistory.append(trickName) #add the trick to the list of previous tricks
-		if trickHistory.size() >= 10:
-			trickHistory.remove_at(0) #remove the oldest one in the list when theres 10
+		if trickHistory.size() > 10:
+			trickHistory.remove_at(0) #remove the oldest one in the list when theres more than 10
 		update_freshness()
 		#if your freshness is ok OR you haven't even done 10 tricks yet
-		if freshness >= 3 or trickHistory.size() < 9:
+		if freshness >= 3 or trickHistory.size() < 10:
 			comboTimer = max(comboReset, comboTimer) #dont crop timer if bigger than maximum (ex: post dunking)
 			#if you want to give a timer bonus, manually set comboTimer to a high value right before give_points()
 	
@@ -297,18 +300,18 @@ func update_freshness():
 	%freshBonus.visible = false
 	%maxFresh.visible = false
 	if trickHistory.size() >= 9:
-		if freshness <= 2:
+		if freshness <= 3:
 			%freshWarning.visible = true
-			if freshBefore >= 3:
+			if freshBefore >= 4:
 				$lowFreshness.play()
 				print("THE LOW FRESHNESS IS PLAYING: th:", trickHistory, " fresh: ", freshness, " fb4: ", freshBefore)
-		if freshness == 7 or freshness == 8:
+		if freshness >= 7 and freshness <= 10:
 			%freshBonus.visible = true
 			if freshBefore <= 6:
 				$highFreshness.play()
-		if freshness == 9:
+		if freshness == 10:
 			%maxFresh.visible = true
-			if freshBefore <= 8:
+			if freshBefore <= 9:
 				$maxFreshness.play()
 				give_points(10000, 2, false, "MAX FRESHNESS")
 	
@@ -322,8 +325,11 @@ func change_rank(amount: int, meterPercentage: float):
 	styleRank += amount
 	styleRank = clamp(styleRank, 0, 7)
 	%rank.frame = 7-styleRank #set image
+	%rankBG.frame = 7-styleRank
 	var middle = (rankRequirements[styleRank+1]-rankRequirements[styleRank])*meterPercentage + rankRequirements[styleRank]
 	styleScore = middle - (points*mult)
+	
+	print("current rank is: ", styleRank)
 	
 	## Ranking up
 	if amount > 0: 
