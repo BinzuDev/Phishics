@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=3 uid="uid://bodx52lopr82a"]
+
+[ext_resource type="PackedScene" uid="uid://d26yovwidbieu" path="res://Models/bowling_pin.tscn" id="1_5q7g6"]
+[ext_resource type="Script" uid="uid://tjrubtffbjgc" path="res://Objects/strike_zone.gd" id="1_p8utt"]
+[ext_resource type="AudioStream" uid="uid://fnadeg5y52e6" path="res://Sounds/bowling/STRIKE.ogg" id="3_fgkp4"]
+[ext_resource type="Texture2D" uid="uid://cswiwcixd4g52" path="res://Sprites/words/STRIKETEXT.png" id="4_wt2jt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgkp4"]
+size = Vector3(1.89571, 1.20618, 2.35211)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wt2jt"]
+size = Vector3(4.11127, 1, 1.44592)
+
+[sub_resource type="Animation" id="Animation_jar3h"]
+resource_name = "STRIKE"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.13333),
+"transitions": PackedFloat32Array(1, 0.277392, 0.277392, 0.277392, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.6, 0.6, 0.6), Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mf8fx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qen1s"]
+_data = {
+&"RESET": SubResource("Animation_mf8fx"),
+&"STRIKE": SubResource("Animation_jar3h")
+}
+
+[node name="strike_zone" type="Node3D"]
+script = ExtResource("1_p8utt")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0438881, 0.103088, -0.277557)
+shape = SubResource("BoxShape3D_fgkp4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151062, 0, -1.08563)
+shape = SubResource("BoxShape3D_wt2jt")
+
+[node name="Pins" type="Node3D" parent="."]
+
+[node name="bowling_pin" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.702553, 0, 0)
+
+[node name="bowling_pin3" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29972, 0, -0.684989)
+
+[node name="bowling_pin4" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87933, 0, -1.33485)
+
+[node name="bowling_pin5" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703, 0, 0)
+
+[node name="bowling_pin6" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, -0.685)
+
+[node name="bowling_pin7" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.879, 0, -1.335)
+
+[node name="bowling_pin8" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544808, 0, -1.38769)
+
+[node name="bowling_pin9" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473894, 0, -1.38769)
+
+[node name="bowling_pin10" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00911069, 0, -0.483154)
+
+[node name="bowling_pin2" parent="Pins" instance=ExtResource("1_5q7g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.701662)
+
+[node name="strikeSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_fgkp4")
+volume_db = 34.285
+
+[node name="STRIKEsprite" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.36047, -0.939349)
+billboard = 1
+texture = ExtResource("4_wt2jt")
+
+[node name="strikeAnimation" type="AnimationPlayer" parent="STRIKEsprite"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qen1s")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

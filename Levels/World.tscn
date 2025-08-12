@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=101 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -38,11 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://c5hwbfaxo6ov7" path="res://Sprites/tornadowarning.png" id="33_nykkc"]
 [ext_resource type="PackedScene" uid="uid://cheqhyt0b5ovq" path="res://Models/pillarhalf.tscn" id="34_er564"]
 [ext_resource type="Texture2D" uid="uid://bgeyga2o4k8mo" path="res://Textures/concrete.png" id="35_5g6ug"]
-[ext_resource type="PackedScene" uid="uid://cybli1pljid07" path="res://Models/pineapple.tscn" id="38_ajrn0"]
+[ext_resource type="PackedScene" uid="uid://cybli1pljid07" path="res://Models/bowling pin/texture_pin/pineapple.tscn" id="38_ajrn0"]
 [ext_resource type="PackedScene" uid="uid://s0x1m1riut7j" path="res://Models/ramenbowl.tscn" id="39_fpk0g"]
 [ext_resource type="PackedScene" uid="uid://df7v6ishj1qjd" path="res://Models/squidhouse.tscn" id="40_vcw38"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="41_i76hq"]
+[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="41_rneqk"]
 [ext_resource type="PackedScene" uid="uid://ctowiaw5u6khg" path="res://Objects/force_field.tscn" id="42_7pnea"]
+[ext_resource type="PackedScene" uid="uid://d26yovwidbieu" path="res://Models/bowling_pin.tscn" id="45_rneqk"]
 [ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="45_s7dn7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
@@ -2472,6 +2474,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, -0.0160563, 0.999871, -7.01847e-10, 
 [node name="scoreRing8" parent="group2" instance=ExtResource("45_s7dn7")]
 transform = Transform3D(-0.845542, -0.53391, -7.42895e-08, -0.53391, 0.845542, -4.60794e-08, 8.74171e-08, 7.01845e-10, -1, 65.846, 25.3922, 16.0757)
 
+[node name="strike_zone" parent="group2" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7025, 30, 62)
+
 [node name="highUpSection" type="Node3D" parent="."]
 
 [node name="Platform10" type="MeshInstance3D" parent="highUpSection"]
@@ -3443,5 +3448,8 @@ texture = ExtResource("6_53g8k")
 [node name="CoralSpriteG6" type="Sprite3D" parent="AllCoralGroups/CoralSpriteGroup19"]
 transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.54285, -0.14407, 4.18181)
 texture = ExtResource("6_53g8k")
+
+[node name="bowling_pin2" parent="." instance=ExtResource("45_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92167, 0, 0)
 
 [editable path="group2/frickingAwesomeTube"]
