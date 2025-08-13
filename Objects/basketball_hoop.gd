@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		get_tree().get_first_node_in_group("camera").fov = zoom
 		#print("distance: ", distance, " pitch: ", pitch.pitch_scale)
 		
-		
+
 		
 	
 	## Animation

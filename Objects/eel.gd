@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	$UI/ColorRect.material.set_shader_parameter("screen_height", window_size.y)
 	
 	
+	
 	if !$appear.has_overlapping_bodies():
 		$Label3D.visible = false
 	else:
@@ -32,7 +33,6 @@ func _process(delta: float) -> void:
 			ScoreManager.reset_airspin()
 			
 	
-	#print(%Camera3D.fov)
 	
 	## When fish is on eel
 	if lockFish:
@@ -76,6 +76,7 @@ func _on_animation_finished(anim_name):
 		$eel_sprite/scope.visible = false
 		ScoreManager.hide()
 		%Camera3D.fov = 60
+		print("RESETING THE FOV")
 	if anim_name == "lower_to_floor":
 		$AnimationPlayer.play("idle")
 		lockFish = false

@@ -333,7 +333,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 24.6849, 36.5093, 67.831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6849, 30.7588, 67.831)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -929,6 +929,9 @@ debug_color = Color(1, 0, 0, 1)
 
 [node name="eel" parent="intro" instance=ExtResource("31_exl13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
+
+[node name="strike_zone4" parent="intro" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5056, 30, 61.0653)
 
 [node name="lookDown" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
@@ -2392,9 +2395,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.833, 13.1761, -26.0355)
 [node name="tornado3" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5866, 14.5868, -20.2408)
 
-[node name="tornado5" parent="group2" instance=ExtResource("17_w578l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.703, 18.9514, -49.9719)
-
 [node name="tornado4" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1362, 13.1761, -30.0089)
 
@@ -2472,9 +2472,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, -0.0160563, 0.999871, -7.01847e-10, 
 
 [node name="scoreRing8" parent="group2" instance=ExtResource("45_s7dn7")]
 transform = Transform3D(-0.845542, -0.53391, -7.42895e-08, -0.53391, 0.845542, -4.60794e-08, 8.74171e-08, 7.01845e-10, -1, 65.846, 25.3922, 16.0757)
-
-[node name="strike_zone" parent="group2" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7025, 30, 62)
 
 [node name="highUpSection" type="Node3D" parent="."]
 
@@ -2741,7 +2738,18 @@ collision_mask = 0
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
 shape = SubResource("BoxShape3D_w578l")
 
+[node name="strike_zone" parent="highUpSection" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6081, 38.9935, -51.2123)
+
 [node name="group3" type="Node3D" parent="."]
+
+[node name="tornado5" parent="group3" instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.34, 18.9514, -39.8067)
+
+[node name="BoostRing" parent="group3" instance=ExtResource("9_2uuim")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 209.249, 20.1925, -34.0318)
+strength = 15.0
+centerPlayer = true
 
 [node name="hook" parent="group3" instance=ExtResource("15_rk5xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.249, 20.4741, -51.0844)
@@ -2767,6 +2775,18 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="group3/Platform1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_m3j4o")
+
+[node name="Platform3" type="MeshInstance3D" parent="group3"]
+transform = Transform3D(7.18149, 0, 0, 0, 2.75296, 1.46019, 0, -4.76827, 0.843039, 209.061, 19.3628, -58.3003)
+material_override = ExtResource("4_vbdqq")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("BoxMesh_j5go0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group3/Platform3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform3/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform2" type="MeshInstance3D" parent="group3"]
@@ -3456,5 +3476,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8161, 13.3117, -46.085)
 
 [node name="strike_zone3" parent="." instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.0541501, 7.07259)
+
+[node name="strike_zone4" parent="." instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.009, 19.4595, -53.4845)
+disableHoming = true
 
 [editable path="group2/frickingAwesomeTube"]

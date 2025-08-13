@@ -21,6 +21,7 @@ func _on_continue_pressed():
 func _on_restart_pressed():
 	GameManager.toggle_pause()
 	GameManager.reset_level()
+	ScoreManager.show()
 
 
 

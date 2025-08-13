@@ -135,12 +135,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
-		#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
-	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
-	#combine styleScore and the current combo to create the final styleMeter value  
-	styleMeter = styleScore + points*mult
-	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
-	
+	update_style_meter()
 	
 	## Rank up
 	if styleMeter >= rankRequirements[styleRank+1] and styleRank < PSSS:
@@ -225,7 +220,7 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 		
 		if affectFreshness or trickHistory.count(trickName) == 0:
 			if trickName != "AIRSPIN": #special exception for airspin
-				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 6):
+				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 3):
 					trickHistory.append(trickName) #add the trick to the list of previous tricks
 		if trickHistory.size() > 10:
 			trickHistory.remove_at(0) #remove the oldest one in the list when theres more than 10
@@ -283,6 +278,14 @@ func end_combo():
 	combo_dict.clear()
 
 
+func update_style_meter():
+	#Reduce the styleScore over time, speed of reduction depends on combo size and styleDecreaseRate
+	styleScore -= (styleScore + points*mult) * styleDecreaseRate * 0.01
+	#combine styleScore and the current combo to create the final styleMeter value  
+	styleMeter = styleScore + points*mult
+	styleMeter = clamp(styleMeter, 0, rankRequirements[-1])
+
+
 func update_freshness():
 	var freshBefore = freshness
 	var uniqueTricks = []
@@ -329,6 +332,8 @@ func change_rank(amount: int, meterPercentage: float):
 	var middle = (rankRequirements[styleRank+1]-rankRequirements[styleRank])*meterPercentage + rankRequirements[styleRank]
 	styleScore = middle - (points*mult)
 	
+	update_style_meter()
+	
 	print("current rank is: ", styleRank)
 	
 	## Ranking up
@@ -359,7 +364,7 @@ func change_rank(amount: int, meterPercentage: float):
 			MusicManager.stop_track(3)
 		if styleRank == PSS:
 			MusicManager.stop_track(4)
-			
+	
 	
 	## Rank Voice Lines
 	var rankSFX = [$damp, $coastal, $buoyant, $aquatic, $splashing, $phishics, $phishicss, $phishicsss]

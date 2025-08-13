@@ -52,6 +52,7 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("reset"):
 		reset_level()
+		ScoreManager.show()
 	
 	if Input.is_action_just_pressed("F11"): #fullscreen toggle
 		if DisplayServer.window_get_mode() == 4:
