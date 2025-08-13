@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=101 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/streetsign.png" id="15_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="16_e1uki"]
 [ext_resource type="PackedScene" uid="uid://cgsag1mii1t2g" path="res://Models/surf_board.tscn" id="16_h7041"]
+[ext_resource type="PackedScene" uid="uid://b55dwm5m1l2j5" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="16_rneqk"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="17_w578l"]
 [ext_resource type="Texture2D" uid="uid://ghxwq1l37dj5" path="res://Sprites/flipflop.png" id="20_bccto"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="21_46o8p"]
@@ -333,7 +334,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6849, 30.7588, 67.831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9117, 30.077, 66.8739)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -933,6 +934,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 29.6013, 59.9104)
 [node name="strike_zone4" parent="intro" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5056, 30, 61.0653)
 
+[node name="jelly_fish_girl_IK" parent="intro" instance=ExtResource("16_rneqk")]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 30.7091, 29.4564, 62.4478)
+
 [node name="lookDown" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
 collision_layer = 8
@@ -1166,7 +1170,7 @@ transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e
 shape = SubResource("BoxShape3D_w578l")
 
 [node name="Sprite3D" type="Sprite3D" parent="group1/streetsign"]
-transform = Transform3D(0.0178805, -0.00149047, 1.02323, 0.0141063, 0.0858247, 0.0173822, -0.812185, 0.00145777, 0.0228287, 0.560671, 0.874672, -0.222008)
+transform = Transform3D(0.0244274, -0.00156252, 1.0196, 0.0192713, 0.0899735, 0.0173204, -1.10956, 0.00152829, 0.0227476, 0.560671, 0.874672, -0.222008)
 texture = ExtResource("15_wvw3a")
 
 [node name="pole2" type="MeshInstance3D" parent="group1"]
@@ -2387,7 +2391,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.001, 12.5428, -19.2369)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4149, -0.429138, 12.6378)
 
 [node name="tornado7" parent="group2" instance=ExtResource("17_w578l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0265, -0.429138, -12.0045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5624, -0.429138, -23.7562)
 
 [node name="tornado2" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.833, 13.1761, -26.0355)
@@ -3480,5 +3484,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.0541501, 7.07259
 [node name="strike_zone4" parent="." instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.009, 19.4595, -53.4845)
 disableHoming = true
+
+[node name="tornado" parent="." instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4849, 29.3771, 66.1205)
 
 [editable path="group2/frickingAwesomeTube"]

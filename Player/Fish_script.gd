@@ -209,7 +209,10 @@ func _physics_process(_delta: float) -> void:
 		if newSpd == -75:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
 			ScoreManager.play_trick_sfx("legendary")
-			
+		print("the transparency is ", %speedLines.transparency)
+		if %speedLines.transparency < 0.8:
+			print("yupp goodneough for me")
+			global_rotation = Vector3(0,0,-90)
 		diving = true #DIVING VARIABLE
 		
 		
@@ -290,6 +293,10 @@ func _physics_process(_delta: float) -> void:
 		$BubbleRing.emitting = true
 	else:
 		$BubbleRing.emitting = false
+	
+
+	
+	
 	
 	
 	## Restart
@@ -417,7 +424,7 @@ func _physics_process(_delta: float) -> void:
 			isTipSpinning = true
 			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN", "", false)
 			#ScoreManager.give_points(1, 0, true, "TIPSPIN", "", false)
-			print("spd: ", linear_velocity.length(), "  score: ", 500/(linear_velocity.length()*2) )
+			#print("spd: ", linear_velocity.length(), "  score: ", 500/(linear_velocity.length()*2) )
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
 				ScoreManager.give_points(0, 1, true, "")
 		
@@ -461,12 +468,34 @@ func _physics_process(_delta: float) -> void:
 	if GameManager.gameTimer % sfxRate == 0 and isTipSpinning:
 		$grindingSparks.play()
 	
+	var trackPos
+	var trackAng
+	
 	if $trickRC/head.is_colliding():
 		$tipSpinSparks.position.x = -0.7
 		$tipSpinSparks.rotation_degrees.y = -180
+		trackPos = $trickRC/head.get_collision_point()
+		trackAng = $trickRC/head.get_collision_normal()
 	else:
 		$tipSpinSparks.position.x = 0.7
 		$tipSpinSparks.rotation_degrees.y = 0
+		trackPos = $trickRC/tail.get_collision_point()
+		trackAng = $trickRC/tail.get_collision_normal()
+	
+	
+	## Tire tracks
+	if isTipSpinning: #flopTimer % 5 == 0 and
+		var newDecal = $Decal.duplicate()
+		add_child(newDecal)
+		newDecal.theOriginal = false
+		newDecal.global_position = trackPos
+		newDecal.global_transform.basis.y = trackAng
+		newDecal.global_transform.basis.x = -newDecal.global_transform.basis.z.cross(trackAng)
+		newDecal.global_transform.basis = newDecal.global_transform.basis.orthonormalized()
+		
+		print("new decal")
+		
+		
 	
 	
 	if linear_velocity.length() < 0.1 and !tiplanding and !isHeld:
@@ -536,6 +565,8 @@ func _physics_process(_delta: float) -> void:
 	"gravity scale: ", gravity_scale,
 	)
 	
+
+
 
 
 ## This functions takes in a vector, and rotates it so that forward points

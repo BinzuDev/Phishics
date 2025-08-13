@@ -16,18 +16,18 @@ shader_parameter/Vframes = 4
 shader_parameter/frame = 0
 shader_parameter/texture_albedo = ExtResource("3_c6ao3")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tvltw"]
 noise_type = 0
 frequency = 0.02
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45gao"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m2mm5"]
 seamless = true
-noise = SubResource("FastNoiseLite_gggs4")
+noise = SubResource("FastNoiseLite_tvltw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dvnco"]
 render_priority = -2
 shader = ExtResource("4_gl63g")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(0.588235, 0.47451, 0.8, 1)
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 3.0
@@ -37,7 +37,7 @@ shader_parameter/transparency = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y4fcc"]
 render_priority = -2
 shader = ExtResource("4_gl63g")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(0.447059, 0.305882, 0.784314, 1)
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 3.0
@@ -47,7 +47,7 @@ shader_parameter/transparency = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e58jm"]
 render_priority = -2
 shader = ExtResource("4_gl63g")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(0.513726, 0.529412, 1, 1)
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 3.0
@@ -57,7 +57,7 @@ shader_parameter/transparency = 0.05
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gl63g"]
 render_priority = -1
 shader = ExtResource("4_gl63g")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(0.14902, 0.0313726, 0.545098, 0.752941)
 shader_parameter/height_multiplier = 0.07
 shader_parameter/noise_sample_size = 3.0
@@ -1249,6 +1249,7 @@ _data = {
 }
 
 [node name="jelly_fish_girl" instance=ExtResource("1_u1msr")]
+transform = Transform3D(1, -1.15914e-07, 0.000148588, 1.61831e-07, 1, -0.000315861, -0.000148588, 0.000315861, 1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(0.999999, 0.000549804, -0.000858237, -0.000550081, 1, -0.000307365, 0.00085806, 0.000307861, 1, 0, 0, 0)
@@ -2091,7 +2092,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionCapsule3D" type="SpringBoneCollisionCapsule3D" parent="Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(0, 1.11868e-08, -1, 0.0369412, -0.999317, -5.56258e-09, -0.999317, -0.0369412, -1.19267e-07, 0.125505, 0.970102, 0.0473262)
+transform = Transform3D(0, 1.11759e-08, -1, 0.0369412, -0.999318, -9.31323e-09, -0.999317, -0.0369412, -1.19209e-07, 0.125505, 0.970102, 0.0473263)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -2099,7 +2100,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="SpringBoneCollisionCapsule3D2" type="SpringBoneCollisionCapsule3D" parent="Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(0, -1.1165e-08, 1, -0.0369412, -0.999317, -5.57026e-09, 0.999317, -0.0369412, -1.19151e-07, -0.125505, 0.970102, 0.0473262)
+transform = Transform3D(0, -1.11759e-08, 1, -0.0369412, -0.999318, -9.31323e-09, 0.999317, -0.0369412, -1.19209e-07, -0.125505, 0.970102, 0.0473263)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)

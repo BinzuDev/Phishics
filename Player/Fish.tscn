@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=110 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -45,6 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
 [ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
+[ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
+[ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -607,6 +609,18 @@ stream_15/stream = ExtResource("10_q0y68")
 streams_count = 1
 stream_0/stream = ExtResource("6_t0nqp")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tid1w"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3rn02"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3rn02"]
+radius = 0.106
+height = 1.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_ny41d"]
+
 [node name="fish" type="RigidBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 21
@@ -630,6 +644,7 @@ shape = SubResource("BoxShape3D_j2ykt")
 
 [node name="upperBody" type="Sprite3D" parent="pivotUpper"]
 transform = Transform3D(0.18, 0, 0, 0, -8.30516e-09, 1, 0, -0.19, -4.37114e-08, 0, 0, 0)
+layers = 2
 offset = Vector2(-74.98, 0)
 texture = ExtResource("2_j2ykt")
 region_enabled = true
@@ -640,6 +655,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, 0, 0)
 
 [node name="head" type="Sprite3D" parent="pivotUpper/pivotHead"]
 transform = Transform3D(0.18, 0, 0, 0, -8.30516e-09, 1, 0, -0.19, -4.37114e-08, 0, 0, 0)
+layers = 2
 offset = Vector2(-112.28, 0)
 texture = ExtResource("2_j2ykt")
 region_enabled = true
@@ -649,6 +665,7 @@ region_rect = Rect2(0, 0, 225.14, 495)
 
 [node name="lowerBody" type="Sprite3D" parent="pivotLower"]
 transform = Transform3D(0.180958, 0, 0, 0, -8.3202e-09, 1, 0, -0.190344, -4.37114e-08, 0, 0, 0)
+layers = 2
 offset = Vector2(72.32, 0)
 texture = ExtResource("2_j2ykt")
 region_enabled = true
@@ -660,6 +677,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262142, 0, 0)
 [node name="tail" type="Sprite3D" parent="pivotLower/pivotTail"]
 transform = Transform3D(0.180958, 0, 0, 0, -8.3202e-09, 1, 0, -0.190344, -4.37114e-08, 0, 0, 0)
 rotation_order = 0
+layers = 2
 offset = Vector2(105.88, 0)
 texture = ExtResource("2_j2ykt")
 region_enabled = true
@@ -795,32 +813,32 @@ scale_amount_curve = SubResource("Curve_j6575")
 [node name="under" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 target_position = Vector3(0, -0.4, 0)
-collision_mask = 17
+collision_mask = 21
 
 [node name="top" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
 target_position = Vector3(0, 0.4, 0)
-collision_mask = 17
+collision_mask = 21
 
 [node name="head" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 target_position = Vector3(-0.4, 0, 0)
-collision_mask = 17
+collision_mask = 21
 
 [node name="tail" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 target_position = Vector3(0.4, 0, 0)
-collision_mask = 17
+collision_mask = 21
 
 [node name="belly" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.243617)
 target_position = Vector3(0, 0, 0.4)
-collision_mask = 17
+collision_mask = 21
 
 [node name="back" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24)
 target_position = Vector3(0, 0, -0.4)
-collision_mask = 17
+collision_mask = 21
 
 [node name="detectCamSwitch" type="Area3D" parent="."]
 process_mode = 3
@@ -1069,5 +1087,34 @@ stream = ExtResource("25_dhdhv")
 max_polyphony = 5
 bus = &"fishsfx"
 
-[connection signal="body_entered" from="." to="." method="checkpoint"]
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+top_level = true
+size = Vector3(0.4, 0.1, 0.4)
+texture_albedo = ExtResource("47_3rn02")
+emission_energy = 16.0
+cull_mask = 1048573
+script = ExtResource("48_tid1w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decal"]
+visible = false
+layers = 2
+material_override = SubResource("StandardMaterial3D_tid1w")
+transparency = 0.5
+mesh = SubResource("BoxMesh_3rn02")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Decal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498826, 0)
+visible = false
+layers = 2
+material_override = SubResource("StandardMaterial3D_tid1w")
+transparency = 0.5
+mesh = SubResource("CapsuleMesh_3rn02")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499862, 1.77077)
+visible = false
+mesh = SubResource("BoxMesh_ny41d")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="checkpoint"]

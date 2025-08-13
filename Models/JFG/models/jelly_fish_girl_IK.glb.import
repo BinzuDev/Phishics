@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds435j43fpcd6"
-path="res://.godot/imported/jelly_fish_girl.fbx-32feef74b870e73105470832f3fd3519.scn"
+uid="uid://c81n6rsfe13qy"
+path="res://.godot/imported/jelly_fish_girl_IK.glb-8c4b3d20a3d260ae42e92e4550ced557.scn"
 
 [deps]
 
-source_file="res://Models/JFG/models/jelly_fish_girl.fbx"
-dest_files=["res://.godot/imported/jelly_fish_girl.fbx-32feef74b870e73105470832f3fd3519.scn"]
+source_file="res://Models/JFG/models/jelly_fish_girl_IK.glb"
+dest_files=["res://.godot/imported/jelly_fish_girl_IK.glb-8c4b3d20a3d260ae42e92e4550ced557.scn"]
 
 [params]
 
@@ -28,11 +28,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1
