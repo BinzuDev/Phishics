@@ -49,6 +49,8 @@ func _ready() -> void:
 	checkpoint_pos = position
 	$UI/splashScreen.visible = true
 	ScoreManager.fish = self
+	
+	
 
 func _physics_process(_delta: float) -> void:
 	
@@ -544,6 +546,15 @@ func _physics_process(_delta: float) -> void:
 		ScoreManager.reset_airspin()
 		
 	
+	
+	#speed lines 
+	
+	if linear_velocity.length() > 37: #checks for speed lines speed
+		print("fast")
+		%speedLinesShader.show()
+	else:
+		%speedLinesShader.hide()
+
 	
 	
 	#DEBUG_INFO
