@@ -22,6 +22,7 @@ var crackedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	og_position = position #stores it's position so it can return to it if it moves
+	print(scale)
 	
 	
 	#enemy type loads
@@ -48,7 +49,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	 
+	#print("scale is", scale)
 	#var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	if agro:
 		apply_central_impulse(target * 0.5)
@@ -72,6 +73,8 @@ func _physics_process(_delta: float) -> void:
 	if hp <= 0:
 		$CrabSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 		$homingTarget.priority = 0 #lower the target priority of dead crabs
+	#print("scale is2", scale)
+	
 
 
 ## Enemy detect
@@ -96,6 +99,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	#if $FloorCast.is_colliding():
 		#$JumpPuff.emitting = true
 		
+	
 
 
 
