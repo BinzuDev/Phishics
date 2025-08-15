@@ -49,7 +49,7 @@ func _ready() -> void:
 	checkpoint_pos = position
 	$UI/splashScreen.visible = true
 	ScoreManager.fish = self
-	
+	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -249,10 +249,10 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	#x0 when homing, x1 otherwise
-	if homing:
-		gravity_scale = 0.0
-	else:
+	if !homing or linear_velocity.y > -25:
 		gravity_scale = 1.5
+	else:
+		gravity_scale = 0.0
 	#gravity_scale = !int(homing)
 	
 	
@@ -491,11 +491,16 @@ func _physics_process(_delta: float) -> void:
 		add_child(newDecal)
 		newDecal.theOriginal = false
 		newDecal.global_position = trackPos
+		#set the angle with complicated math
 		newDecal.global_transform.basis.y = trackAng
 		newDecal.global_transform.basis.x = -newDecal.global_transform.basis.z.cross(trackAng)
 		newDecal.global_transform.basis = newDecal.global_transform.basis.orthonormalized()
-		
-		print("new decal")
+		#size is 0.2 at spd 16 | 0.5 at spd 50
+		var size = 0.2 + (angular_velocity.length() - 16) * 0.008
+		size = clamp(size, 0.2 , 0.5)
+		newDecal.size.x = size
+		newDecal.size.z = size
+		print("size of latest decal: ", size)
 		
 		
 	
@@ -547,14 +552,20 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	
-	#speed lines 
-	
-	if linear_velocity.length() > 37: #checks for speed lines speed
-		print("fast")
-		%speedLinesShader.show()
-	else:
-		%speedLinesShader.hide()
-
+	##speed lines 
+	var target = 0.5 - (linear_velocity.length()-25.0)*0.0125 #0.7 at <30 | 0.43 at 30 | 0.0 at 65
+	target = clamp(target, 0, 7)
+	if target > 0.5: #if slowly then 30, well slowly make it too big to be visible
+		target = 0.7 #at 0.7 its just enough to not be visible
+	var current = %speedLinesShader.material.get_shader_parameter("clipPosition")
+	 
+	var lineLen    #slowly move from the current length to the goal one
+	if current > target:  #when ACCELERATING, make the speed line reach the goal much faster
+		lineLen = move_toward(current, target, 0.08)
+	else:                #when slowing down, make the speed lines slowly go away
+		lineLen = move_toward(current, target, 0.01)
+	%speedLinesShader.material.set_shader_parameter("clipPosition", lineLen)
+	#print("cur: ", current, " target: ", target)
 	
 	
 	#DEBUG_INFO
@@ -562,7 +573,7 @@ func _physics_process(_delta: float) -> void:
 	"fov: ", %cam.fov, "\n",
 	"height: ", snapped(height, 0.01), "\n",
 	"linear velocity: ", snapped(linear_velocity, Vector3(0.01,0.01,0.01)), "\n",
-	"speed: ",  snapped(linear_velocity.length(), 0.01), "\n",
+	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",lineLen,")",  "\n",
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
 	"spark speed: ", sparkSpd, "\n",

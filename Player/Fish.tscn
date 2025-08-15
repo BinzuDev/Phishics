@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=114 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://6pi0oi8jx8by" path="res://Sounds/impact_soft/soft2.ogg" id="7_quwx5"]
 [ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="8_6h88e"]
 [ext_resource type="AudioStream" uid="uid://7fhfltsgpuss" path="res://Sounds/impact_soft/soft3.ogg" id="8_mf1i0"]
+[ext_resource type="Shader" uid="uid://bq6unteeis7cy" path="res://Player/speed_blur.gdshader" id="8_q0y68"]
 [ext_resource type="AudioStream" uid="uid://b3m2t2vfnka6v" path="res://Sounds/sparks/sparks_medium_intensity_23.wav" id="8_tid1w"]
 [ext_resource type="AudioStream" uid="uid://upa2refreuuc" path="res://Sounds/sparks/sparks_medium_intensity_27.wav" id="9_ny41d"]
 [ext_resource type="AudioStream" uid="uid://bmhyvq1ucstr0" path="res://Sounds/impact_soft/soft4.ogg" id="9_quwx5"]
@@ -170,7 +171,18 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q0y68"]
 shader = ExtResource("49_ny41d")
 shader_parameter/speedScale = 16.0
-shader_parameter/clipPosition = 0.2
+shader_parameter/clipPosition = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4b1c"]
+shader = ExtResource("8_q0y68")
+shader_parameter/line_count = 2.0
+shader_parameter/distortion_power = 0.034
+shader_parameter/line_falloff = 1.0
+shader_parameter/mask_size = 0.175
+shader_parameter/mask_edge = 0.195
+shader_parameter/animation_speed = 20.0
+shader_parameter/blur_strength = 0.01
+shader_parameter/effect_power = 0.5
 
 [sub_resource type="Animation" id="Animation_lt56d"]
 length = 0.001
@@ -929,6 +941,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="speedLinesShader" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q0y68")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="speedBlurShader" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_l4b1c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="splashScreen" type="TextureRect" parent="UI"]
 visible = false
 z_index = 10
@@ -956,14 +992,6 @@ mouse_filter = 2
 [node name="Control" type="Control" parent="UI/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-
-[node name="speedLinesShader" type="ColorRect" parent="UI/CenterContainer/Control"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_q0y68")
-offset_left = -1040.0
-offset_top = -540.0
-offset_right = 1067.0
-offset_bottom = 540.0
 
 [node name="dead_fish" type="Sprite2D" parent="UI/CenterContainer/Control"]
 unique_name_in_owner = true
@@ -1104,9 +1132,8 @@ bus = &"fishsfx"
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
 top_level = true
-size = Vector3(0.4, 0.1, 0.4)
+size = Vector3(0.5, 0.1, 0.5)
 texture_albedo = ExtResource("47_3rn02")
-emission_energy = 16.0
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
 

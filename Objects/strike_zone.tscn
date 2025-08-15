@@ -121,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, -0.52)
 
 [node name="strikeSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_fgkp4")
-volume_db = 34.285
+volume_db = 35.0
 
 [node name="STRIKEsprite" type="Sprite3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.36047, -0.939349)

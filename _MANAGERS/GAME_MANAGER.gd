@@ -70,3 +70,5 @@ func _physics_process(_delta):
 				objFreeze.process_mode = Node.PROCESS_MODE_INHERIT
 			#get_tree().paused = false
 	
+	
+	

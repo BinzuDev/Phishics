@@ -220,7 +220,7 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 		
 		if affectFreshness or trickHistory.count(trickName) == 0:
 			if trickName != "AIRSPIN": #special exception for airspin
-				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 3):
+				if trickName != "POGO JUMP" or (trickName == "POGO JUMP" and trickHistory.count(trickName) < 4):
 					trickHistory.append(trickName) #add the trick to the list of previous tricks
 		if trickHistory.size() > 10:
 			trickHistory.remove_at(0) #remove the oldest one in the list when theres more than 10
@@ -308,7 +308,7 @@ func update_freshness():
 			if freshBefore >= 4:
 				$lowFreshness.play()
 				print("THE LOW FRESHNESS IS PLAYING: th:", trickHistory, " fresh: ", freshness, " fb4: ", freshBefore)
-		if freshness >= 7 and freshness <= 10:
+		if freshness >= 7 and freshness <= 9:
 			%freshBonus.visible = true
 			if freshBefore <= 6:
 				$highFreshness.play()

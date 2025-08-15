@@ -22,7 +22,6 @@ var crackedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	og_position = position #stores it's position so it can return to it if it moves
-	print(scale)
 	
 	
 	#enemy type loads
