@@ -943,6 +943,7 @@ mouse_filter = 2
 
 [node name="speedLinesShader" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_q0y68")
 layout_mode = 1
 anchors_preset = 15
@@ -1157,5 +1158,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499862, 1.77077)
 visible = false
 mesh = SubResource("BoxMesh_ny41d")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="." method="checkpoint"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

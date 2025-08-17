@@ -26,6 +26,7 @@ mass = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, -0.294914, 0)
+cast_shadow = 0
 mesh = ExtResource("1_ulua0")
 surface_material_override/0 = SubResource("StandardMaterial3D_85h5f")
 
