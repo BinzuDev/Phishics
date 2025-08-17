@@ -49,13 +49,13 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
 
-[sub_resource type="Sky" id="Sky_7pnea"]
+[sub_resource type="Sky" id="Sky_s7dn7"]
 sky_material = SubResource("PanoramaSkyMaterial_53g8k")
 
 [sub_resource type="Environment" id="Environment_v72nc"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_7pnea")
+sky = SubResource("Sky_s7dn7")
 glow_levels/3 = 16.0
 glow_levels/5 = 0.0
 fog_mode = 1

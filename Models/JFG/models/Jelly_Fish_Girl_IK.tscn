@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://b55dwm5m1l2j5"]
+[gd_scene load_steps=37 format=3 uid="uid://b55dwm5m1l2j5"]
 
 [ext_resource type="PackedScene" uid="uid://c81n6rsfe13qy" path="res://Models/JFG/models/jelly_fish_girl_IK.glb" id="1_8sp2m"]
+[ext_resource type="Script" uid="uid://c0kyxugabv0la" path="res://Models/JFG/jelly_fish_girl.gd" id="2_ctkjy"]
 [ext_resource type="Shader" uid="uid://db4tpgrv8uij0" path="res://Shaders/jelly_fish_girl_skin.gdshader" id="2_vxsjo"]
 [ext_resource type="Texture2D" uid="uid://b8xxgpeimaaqn" path="res://Models/JFG/textures/underwear_texture.png" id="3_h17yl"]
 [ext_resource type="Shader" uid="uid://6evy6m7allbb" path="res://Shaders/jelly_fish_girl_face.gdshader" id="4_tvltw"]
@@ -9,6 +10,11 @@
 [ext_resource type="Shader" uid="uid://dpxq38qrq8x5d" path="res://Shaders/jelly_fish_girl_clothes.gdshader" id="7_l7bk4"]
 [ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/JFG/textures/clothes_texture.png" id="7_tvltw"]
 [ext_resource type="Material" uid="uid://byeq4c0xycfjc" path="res://Models/JFG/materials/clothes_material.tres" id="8_m2mm5"]
+[ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="10_sskjn"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="11_ah0cj"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="12_i8tt3"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="13_puxw3"]
+[ext_resource type="Texture2D" uid="uid://n2yune56md71" path="res://Models/JFG/textures/smear.png" id="14_puxw3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
 noise_type = 0
@@ -22,7 +28,7 @@ noise = SubResource("FastNoiseLite_gggs4")
 render_priority = -1
 shader = ExtResource("2_vxsjo")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
-shader_parameter/bubble_color = Color(0, 0.85, 0.85, 1)
+shader_parameter/bubble_color = Color(0.5184, 0.81, 0.81, 1)
 shader_parameter/height_multiplier = 0.3
 shader_parameter/noise_sample_size = 0.8
 shader_parameter/animation_speed = 0.4
@@ -49,21 +55,21 @@ noise = SubResource("FastNoiseLite_tvltw")
 render_priority = -2
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
-shader_parameter/bubble_color = Color(0.775833, 0, 0.95, 1)
+shader_parameter/bubble_color = Color(0.6045, 0.279, 0.93, 1)
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 3.0
 shader_parameter/animation_speed = 0.3
 shader_parameter/transparency = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2mm5"]
-render_priority = -2
+render_priority = 0
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
-shader_parameter/bubble_color = Color(0.42, 0.478, 1, 1)
-shader_parameter/height_multiplier = 0.07
+shader_parameter/bubble_color = Color(1, 0.4, 0.69, 1)
+shader_parameter/height_multiplier = 0.3
 shader_parameter/noise_sample_size = 3.0
 shader_parameter/animation_speed = 0.3
-shader_parameter/transparency = 0.0
+shader_parameter/transparency = 0.2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l7bk4"]
 noise_type = 0
@@ -99,27 +105,65 @@ albedo_texture = ExtResource("7_tvltw")
 render_priority = 0
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
-shader_parameter/bubble_color = Color(0.786667, 0.36, 1, 1)
-shader_parameter/height_multiplier = 0.07
+shader_parameter/bubble_color = Color(1, 0.19, 0.5815, 1)
+shader_parameter/height_multiplier = 0.1
 shader_parameter/noise_sample_size = 3.0
 shader_parameter/animation_speed = 0.3
 shader_parameter/transparency = 0.05
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puxw3"]
+render_priority = 1
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("14_puxw3")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tet6g"]
+panorama = ExtResource("11_ah0cj")
+
+[sub_resource type="Sky" id="Sky_7pnea"]
+sky_material = SubResource("PanoramaSkyMaterial_tet6g")
+
+[sub_resource type="Environment" id="Environment_i8tt3"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_7pnea")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ctkjy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8tt3"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_puxw3"]
+
 [node name="jelly_fish_girl_IK" instance=ExtResource("1_8sp2m")]
+script = ExtResource("2_ctkjy")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/3/rotation = Quaternion(2.79341e-08, 4.15556e-08, -0.765438, 0.64351)
 bones/4/rotation = Quaternion(0.527037, 0.849843, 8.39379e-08, 5.89591e-08)
-bones/5/rotation = Quaternion(-1.82762e-08, -3.52377e-07, -0.0449893, 0.998987)
+bones/5/rotation = Quaternion(-1.82762e-08, -3.52377e-07, -0.0449893, 0.998988)
 bones/6/rotation = Quaternion(7.10542e-15, -7.10543e-14, 7.45057e-09, 1)
 bones/7/rotation = Quaternion(-6.66135e-15, -4.17233e-07, 7.45057e-09, 1)
 bones/8/rotation = Quaternion(-1.19904e-14, -1.78814e-07, 7.45057e-09, 1)
 bones/12/rotation = Quaternion(-3.46284e-08, 2.27419e-08, 0.765438, 0.64351)
 bones/13/rotation = Quaternion(-0.527037, 0.849843, 6.62407e-10, 6.68818e-08)
-bones/14/rotation = Quaternion(-1.5519e-08, 4.13599e-07, 0.0449893, 0.998988)
+bones/14/rotation = Quaternion(-1.5519e-08, 4.13599e-07, 0.0449893, 0.998987)
 bones/15/rotation = Quaternion(-3.55272e-15, 7.10543e-14, 7.45059e-09, 1)
 bones/16/rotation = Quaternion(-2.17604e-14, 4.17233e-07, 7.45059e-09, 1)
 bones/17/rotation = Quaternion(-3.06422e-14, 1.78814e-07, 7.45059e-09, 1)
+bones/19/rotation = Quaternion(-0.290822, -0.000238436, -0.0062221, 0.956757)
 bones/23/rotation = Quaternion(-0.0209592, 0.173568, 0.977498, -0.118037)
 bones/32/rotation = Quaternion(0.899477, -0.239454, -0.32115, -0.174545)
 bones/35/rotation = Quaternion(0.931453, -0.215609, -0.215608, -0.198548)
@@ -137,17 +181,18 @@ bones/89/rotation = Quaternion(0.811166, 0.387418, 0.327932, -0.290479)
 bones/97/rotation = Quaternion(-6.35486e-07, 4.2106e-07, 0.908732, -0.417379)
 bones/103/rotation = Quaternion(-0.16618, 0.328504, 0.896311, -0.247177)
 bones/109/rotation = Quaternion(0.0451844, -0.332727, 0.907608, -0.251989)
-bones/115/rotation = Quaternion(0.707099, -0.00326978, -0.707099, 0.00327008)
-bones/116/rotation = Quaternion(0.0823728, 0.996602, -3.99236e-12, 7.52416e-08)
-bones/117/rotation = Quaternion(0.57801, 0.81603, 1.19044e-06, 5.01235e-06)
-bones/118/rotation = Quaternion(0.0107724, 0.000684939, 0.205042, 0.978694)
+bones/115/rotation = Quaternion(0.707101, -0.00440804, -0.707096, 0.00219171)
+bones/116/rotation = Quaternion(0.0824272, 0.996597, -1.59025e-10, 7.52473e-08)
+bones/117/rotation = Quaternion(0.577992, 0.816004, 0.0053626, 0.00588971)
+bones/118/rotation = Quaternion(0.0107724, 0.000684888, 0.205042, 0.978694)
 bones/120/rotation = Quaternion(0.707099, 0.00326978, 0.707099, 0.00327007)
 bones/121/rotation = Quaternion(-0.0823728, 0.996602, -3.99525e-12, -7.52416e-08)
 bones/122/rotation = Quaternion(-0.57801, 0.81603, 1.1681e-06, -4.97474e-06)
 bones/123/rotation = Quaternion(0.0107724, -0.000684939, -0.205042, 0.978694)
 bones/125/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
 bones/129/position = Vector3(0.125505, 0.0727742, 0.139432)
-bones/130/position = Vector3(8.95842e-09, 2.33229e-08, 3.38128e-10)
+bones/129/rotation = Quaternion(0.520465, -0.481693, -0.519144, 0.477051)
+bones/130/position = Vector3(3.49992e-09, 5.40685e-08, -1.29383e-08)
 bones/130/rotation = Quaternion(-0.00613733, 0.00891695, 0.73473, 0.678273)
 bones/133/position = Vector3(-0.125505, 0.0727742, 0.139432)
 bones/133/rotation = Quaternion(0.524108, 0.485659, 0.515435, 0.473046)
@@ -161,6 +206,7 @@ material_override = SubResource("ShaderMaterial_l7bk4")
 material_override = SubResource("ShaderMaterial_sskjn")
 
 [node name="hair" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000273943, 0.00973582, -0.0013938)
 material_override = SubResource("ShaderMaterial_h17yl")
 
 [node name="hair_ears" parent="Armature/Skeleton3D" index="3"]
@@ -188,6 +234,7 @@ material_override = SubResource("StandardMaterial3D_l7bk4")
 material_override = ExtResource("8_m2mm5")
 
 [node name="tentacle_hair_013" parent="Armature/Skeleton3D" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09212e-05, 0.00970006, -0.00189912)
 material_override = SubResource("ShaderMaterial_tvltw")
 
 [node name="breastJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="12"]
@@ -388,13 +435,21 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="0"]
-transform = Transform3D(-0.877146, 0.480224, -1.35346e-08, -0.463203, -0.846058, 0.263873, 0.126718, 0.231455, 0.964557, -0.372964, 2.46819, 0.0939476)
+transform = Transform3D(0.838202, 0.539326, 0.0808989, 0.539326, -0.797753, -0.269663, -0.0808989, 0.269663, -0.95955, -0.33, 2.41859, 0)
+bone_name = "Hat root"
+bone = 31
+position_offset = Vector3(-0.33, -0.05, 0)
+rotation_offset = Quaternion(1, 0.3, 0, 0.15)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="1"]
-transform = Transform3D(-0.964465, -0.26421, 0, 0.26421, -0.964465, 0, 0, 0, 1, 0.293097, 2.42091, 0.0939476)
+transform = Transform3D(0.961554, -0.274617, 0, -0.274617, -0.961553, 0, 0, 0, -1, 0.3, 2.38859, 0)
+bone_name = "Hat root"
+bone = 31
+position_offset = Vector3(0.3, -0.08, 0)
+rotation_offset = Quaternion(1, -0.14, 0, 0)
 
 [node name="hatJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="15"]
-visible = false
+active = false
 influence = 0.5
 setting_count = 6
 settings/0/root_bone_name = "hat1"
@@ -793,10 +848,18 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, -0.159881, 0.987136, 0, -0.987136, -0.159881, 0, 1.82752, 0.104737)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00386322, 1.82226, 0.101834)
+bone_name = "Chest"
+bone = 2
+position_offset = Vector3(0, 0.12, 0.1)
+rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.690251, 0.72357, 0, -0.72357, -0.690251, 0, 2.42772, -0.112884)
+transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, -0.00386322, 2.46859, 0.00183439)
+bone_name = "Hat root"
+bone = 31
+position_offset = Vector3(0, 0, 0)
+rotation_offset = Quaternion(-2.4, 0, 0, 1)
 
 [node name="skirtJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="17"]
 visible = false
@@ -1008,7 +1071,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="thighL2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(5.96046e-08, 4.15835e-07, -1, -0.00924866, -0.999957, -4.16301e-07, -0.999957, 0.00924866, -1.19209e-07, 0.265505, 0.972219, 0.0612152)
+transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.264564, 0.971786, 0.0612436)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, -0.14)
@@ -1016,7 +1079,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighL1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(5.96046e-08, 4.15835e-07, -1, -0.00924866, -0.999957, -4.16301e-07, -0.999957, 0.00924866, -1.19209e-07, 0.125505, 0.972219, 0.0612152)
+transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.124565, 0.972225, 0.0612406)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -1039,5 +1102,31 @@ position_offset = Vector3(0.05, 0.3, -0.14)
 rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
-[node name="AnimationPlayer" parent="." index="1"]
-autoplay = "Knee_bend_test"
+[node name="smear" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_puxw3")
+
+[node name="fishAttachment" type="BoneAttachment3D" parent="." index="2"]
+transform = Transform3D(0.929427, 0.369005, -6.17919e-07, 0.369005, -0.929427, -3.65019e-07, -7.09005e-07, 1.11243e-07, -1, 0.311776, 1.61527, 3.40172e-08)
+bone_name = "Left elbow"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="fakeFish" parent="fishAttachment" index="0" instance=ExtResource("10_sskjn")]
+transform = Transform3D(0.0423524, 0.495751, -0.0493643, 0.0391184, 0.0460803, 0.496333, 0.496665, -0.0459038, -0.0348828, -0.0685423, 0.188536, -0.0112744)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource("Environment_i8tt3")
+
+[node name="Platform" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(-4.8913e-07, 0, -10.68, 0, 1, 0, 11.19, 0, -4.66838e-07, 0, -0.5, 0)
+material_override = ExtResource("12_i8tt3")
+material_overlay = ExtResource("13_puxw3")
+mesh = SubResource("BoxMesh_ctkjy")
+skeleton = NodePath("../..")
+
+[node name="blackBox" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(32.42, 0, 0, 0, 20.36, 0, 0, 0, 20, 0, 6.93895, 0.75271)
+visible = false
+material_override = SubResource("StandardMaterial3D_i8tt3")
+mesh = SubResource("BoxMesh_puxw3")

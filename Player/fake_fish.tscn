@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu0225of8r2sg"]
+
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="1_atjba"]
+[ext_resource type="Script" uid="uid://3pwkyxpqmn2j" path="res://Player/fake_fish.gd" id="1_xhr18"]
+
+[node name="fakeFish" type="Node3D"]
+script = ExtResource("1_xhr18")
+
+[node name="pivotUpper" type="Node3D" parent="."]
+
+[node name="upperBody" type="Sprite3D" parent="pivotUpper"]
+transform = Transform3D(0.18, 0, 0, 0, -8.30516e-09, 1, 0, -0.19, -4.37114e-08, 0, 0, 0)
+layers = 2
+offset = Vector2(-74.98, 0)
+texture = ExtResource("1_atjba")
+region_enabled = true
+region_rect = Rect2(225.27, 0, 149.79, 495)
+
+[node name="pivotHead" type="Node3D" parent="pivotUpper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, 0, 0)
+
+[node name="head" type="Sprite3D" parent="pivotUpper/pivotHead"]
+transform = Transform3D(0.18, 0, 0, 0, -8.30516e-09, 1, 0, -0.19, -4.37114e-08, 0, 0, 0)
+layers = 2
+offset = Vector2(-112.28, 0)
+texture = ExtResource("1_atjba")
+region_enabled = true
+region_rect = Rect2(0, 0, 225.14, 495)
+
+[node name="pivotLower" type="Node3D" parent="."]
+
+[node name="lowerBody" type="Sprite3D" parent="pivotLower"]
+transform = Transform3D(0.180958, 0, 0, 0, -8.3202e-09, 1, 0, -0.190344, -4.37114e-08, 0, 0, 0)
+layers = 2
+offset = Vector2(72.32, 0)
+texture = ExtResource("1_atjba")
+region_enabled = true
+region_rect = Rect2(375, 0, 144.9, 495)
+
+[node name="pivotTail" type="Node3D" parent="pivotLower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262142, 0, 0)
+
+[node name="tail" type="Sprite3D" parent="pivotLower/pivotTail"]
+transform = Transform3D(0.180958, 0, 0, 0, -8.3202e-09, 1, 0, -0.190344, -4.37114e-08, 0, 0, 0)
+rotation_order = 0
+layers = 2
+offset = Vector2(105.88, 0)
+texture = ExtResource("1_atjba")
+region_enabled = true
+region_rect = Rect2(519.96, 0, 212, 495)

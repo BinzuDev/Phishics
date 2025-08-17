@@ -25,7 +25,8 @@ float fresnel(vec3 normal, mat4 camera_matrix){
 }
 
 void vertex(){
-	height = texture(noise_tex, VERTEX.xz * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
+	height = texture(noise_tex, UV2 * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
+	//height = texture(noise_tex, VERTEX.xz * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
 	height = (height + 1.0) * 0.5; //code that makes her grow less on average
 	height = pow(height, 5.0);     //when you increase the height multiplier
 	VERTEX += NORMAL * height * height_multiplier * 0.1;

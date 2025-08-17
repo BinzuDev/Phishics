@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode depth_draw_always; //transparency works but cant see other body parts through
+render_mode depth_draw_always; //fixes an issue with the transparency
 
 uniform sampler2D noise_tex;
 uniform vec4 bubble_color: source_color;
@@ -8,6 +8,7 @@ uniform float height_multiplier = 0.2;
 uniform float noise_sample_size = 0.1;
 uniform float animation_speed = 0.1;
 uniform float transparency = 0.2;
+
 
 varying float height;
 
@@ -22,16 +23,20 @@ float fresnel(vec3 normal, mat4 camera_matrix){
 	return 1.0 - d;
 }
 
+
+
 void vertex(){
-	height = texture(noise_tex, VERTEX.xz * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
-	height = (height + 1.0) * 0.5; //code that makes her grow less on average
+	//uv version that works but with seams
+	height = texture(noise_tex, UV2 * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
+	//Vertex version that causes the problema
+	//height = texture(noise_tex, VERTEX.xz * noise_sample_size + vec2(TIME) * animation_speed*0.1).r;
+	
+	height = (height + 1.0) * 0.5; //custom code that makes it grow less on average
 	height = pow(height, 5.0);     //when you increase the height multiplier
 	VERTEX += NORMAL * height * height_multiplier * 0.1;
 }
 
 void fragment(){
-	
-	// CUSTOM CODE //
 	ROUGHNESS = mix(0.05, 0.1, 1.0 - height);
 	SPECULAR = height;
 	ALPHA = fresnel(NORMAL, INV_VIEW_MATRIX);
