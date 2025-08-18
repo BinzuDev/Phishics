@@ -118,6 +118,9 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 ## When the fish and crab touch eachother
 func _on_bump_body_entered(body: Node3D) -> void:
+	#because the gravity gets turned off when the fish is homing
+	#so it doesnt fall out of the way
+	gravity_scale = 1
 	
 	
 	#horsehoe crabs can only be damaged if diving
@@ -185,7 +188,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 				#body.body.func_set_fov()
 			
 		else:
-			ScoreManager.give_points(100, 0, false, "DISRESPECT")
+			ScoreManager.give_points(100, 0, false, "DISRESPECT", "", false)
 			
 			#body.play_trick_sfx("rare")
 		
@@ -199,7 +202,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 				if hp > 0:
 					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK", "", false)
 			else:
-				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT")
+				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT", "", false)
 				ScoreManager.play_trick_sfx("rare")
 				 
 		

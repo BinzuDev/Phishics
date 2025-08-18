@@ -13,6 +13,7 @@ static var currFrame := 0
 static var pitch := 1.0
 static var timeSinceLastStrike := 0
 
+
 func _process(delta):
 	if currFrame != Engine.get_process_frames():
 		timeSinceLastStrike += 1
@@ -30,6 +31,8 @@ func _ready() -> void:
 	if floating:
 		for pin in $Pins.get_children(): #set the gravity of all pins to 0 if floating
 			pin.gravity_scale = 0.0
+			pin.get_node("./model").cast_shadow = false
+			
 
 
 
@@ -44,6 +47,7 @@ func apply_force_to_rigidbodies():
 			var randSpin = Vector3(randf_range(-1.0, 1.0),randf_range(-0.5, 0.5),randf_range(-3.0, 3.0))
 			child.apply_torque_impulse(randSpin)
 			child.gravity_scale = 1.0 #reset gravity if floating
+			child.get_node("./model").cast_shadow = true
 
 
 

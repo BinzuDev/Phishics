@@ -121,13 +121,13 @@ albedo_texture = ExtResource("14_puxw3")
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tet6g"]
 panorama = ExtResource("11_ah0cj")
 
-[sub_resource type="Sky" id="Sky_7pnea"]
+[sub_resource type="Sky" id="Sky_ctkjy"]
 sky_material = SubResource("PanoramaSkyMaterial_tet6g")
 
 [sub_resource type="Environment" id="Environment_i8tt3"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_7pnea")
+sky = SubResource("Sky_ctkjy")
 glow_levels/3 = 16.0
 glow_levels/5 = 0.0
 fog_mode = 1
@@ -848,14 +848,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00386322, 1.82226, 0.101834)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.82226, 0.1)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, -0.00386322, 2.46859, 0.00183439)
+transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, 0, 2.46859, 0)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -1071,7 +1071,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="thighL2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.264564, 0.971786, 0.0612436)
+transform = Transform3D(-7.62939e-06, -0.00313436, -0.999996, -0.00933335, -0.999952, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.264564, 0.971786, 0.0612436)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, -0.14)
@@ -1079,7 +1079,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighL1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.124565, 0.972225, 0.0612406)
+transform = Transform3D(-7.62939e-06, -0.00313436, -0.999996, -0.00933335, -0.999952, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.124565, 0.972225, 0.0612406)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -1087,7 +1087,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="2"]
-transform = Transform3D(-1.19209e-07, -4.16767e-07, 1, 0.00924864, -0.999957, -4.15836e-07, 0.999957, 0.00924864, 5.96047e-08, -0.125505, 0.972219, 0.0612152)
+transform = Transform3D(0, -4.10248e-07, 1, 0.00924865, -0.999957, -4.10248e-07, 0.999957, 0.00924865, 0, -0.125505, 0.972219, 0.0612152)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)
@@ -1095,7 +1095,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(-1.19209e-07, -4.16767e-07, 1, 0.00924864, -0.999957, -4.15836e-07, 0.999957, 0.00924864, 5.96047e-08, -0.265505, 0.972219, 0.0612152)
+transform = Transform3D(0, -4.10248e-07, 1, 0.00924865, -0.999957, -4.10248e-07, 0.999957, 0.00924865, 0, -0.265505, 0.972219, 0.0612152)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, -0.14)
@@ -1106,7 +1106,7 @@ radius = 0.16
 material_override = SubResource("StandardMaterial3D_puxw3")
 
 [node name="fishAttachment" type="BoneAttachment3D" parent="." index="2"]
-transform = Transform3D(0.929427, 0.369005, -6.17919e-07, 0.369005, -0.929427, -3.65019e-07, -7.09005e-07, 1.11243e-07, -1, 0.311776, 1.61527, 3.40172e-08)
+transform = Transform3D(0.929427, 0.369005, -6.17918e-07, 0.369005, -0.929427, -3.65019e-07, -7.09004e-07, 1.11243e-07, -1, 0.311776, 1.61527, 3.40172e-08)
 bone_name = "Left elbow"
 bone_idx = 5
 use_external_skeleton = true
@@ -1118,14 +1118,20 @@ transform = Transform3D(0.0423524, 0.495751, -0.0493643, 0.0391184, 0.0460803, 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 environment = SubResource("Environment_i8tt3")
 
-[node name="Platform" type="MeshInstance3D" parent="." index="4"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="Platform" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(-4.8913e-07, 0, -10.68, 0, 1, 0, 11.19, 0, -4.66838e-07, 0, -0.5, 0)
 material_override = ExtResource("12_i8tt3")
 material_overlay = ExtResource("13_puxw3")
 mesh = SubResource("BoxMesh_ctkjy")
 skeleton = NodePath("../..")
 
-[node name="blackBox" type="MeshInstance3D" parent="." index="5"]
+[node name="blackBox" type="MeshInstance3D" parent="." index="6"]
 transform = Transform3D(32.42, 0, 0, 0, 20.36, 0, 0, 0, 20, 0, 6.93895, 0.75271)
 visible = false
 material_override = SubResource("StandardMaterial3D_i8tt3")

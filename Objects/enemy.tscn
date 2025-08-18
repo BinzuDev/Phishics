@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_edmjf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7k104"]
-height = 1.68546
+height = 3.24361
 radius = 4.55469
 
 [sub_resource type="SphereMesh" id="SphereMesh_dnm5c"]
@@ -89,11 +89,13 @@ update_rotation = false
 top_level = true
 collision_layer = 0
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="EnemeyDetect" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.28364, 0, 0, 0, 1.28364, 0, 0, 0, 1.28364, 0, 0, 0)
+transform = Transform3D(1.28364, 0, 0, 0, 1.28364, 0, 0, 0, 1.28364, 0, 1.00005, 0)
 shape = SubResource("CylinderShape3D_7k104")
 debug_color = Color(0.901053, 0.0799822, 0.729045, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="RemoteTransformFloorCast" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("../FloorCast")

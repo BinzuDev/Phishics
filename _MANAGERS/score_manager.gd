@@ -226,7 +226,7 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 			trickHistory.remove_at(0) #remove the oldest one in the list when theres more than 10
 		update_freshness()
 		#if your freshness is ok OR you haven't even done 10 tricks yet
-		if freshness >= 3 or trickHistory.size() < 10:
+		if freshness > 3 or trickHistory.size() < 10:
 			comboTimer = max(comboReset, comboTimer) #dont crop timer if bigger than maximum (ex: post dunking)
 			#if you want to give a timer bonus, manually set comboTimer to a high value right before give_points()
 	

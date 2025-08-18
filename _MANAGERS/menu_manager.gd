@@ -41,6 +41,7 @@ func _on_fresh_debug_toggled(toggled_on):
 
 
 func _on_hide_ui_toggled(toggled_on):
+	GameManager.hideUI = toggled_on
 	if toggled_on:
 		ScoreManager.hide()
 	else:

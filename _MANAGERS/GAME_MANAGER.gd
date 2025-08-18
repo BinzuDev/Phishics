@@ -6,6 +6,7 @@ var framefwrd
 
 var freezeframe : int = 0 
 var objFreeze #freeze something else when hitstopping
+var hideUI : bool = false
 
 
 enum gameState { #Testing something, not used yet

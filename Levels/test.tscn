@@ -1,0 +1,285 @@
+[gd_scene load_steps=12 format=3 uid="uid://tx645n6y4nh3"]
+
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_f87w0"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_afen0"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_w4v7x"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_mkyii"]
+[ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="5_afen0"]
+[ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="6_w4v7x"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ostwq"]
+panorama = ExtResource("1_f87w0")
+
+[sub_resource type="Sky" id="Sky_w4v7x"]
+sky_material = SubResource("PanoramaSkyMaterial_ostwq")
+
+[sub_resource type="Environment" id="Environment_b0qhh"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_w4v7x")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uoobp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qax75"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b0qhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="fish" parent="." instance=ExtResource("2_afen0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14877, 0.579885, 0.954185)
+
+[node name="Platform1" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -1.53195, 0)
+material_override = ExtResource("3_w4v7x")
+material_overlay = ExtResource("4_mkyii")
+mesh = SubResource("BoxMesh_uoobp")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_qax75")
+
+[node name="Goal" parent="." instance=ExtResource("5_afen0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8047, 0, -6.50626)
+
+[node name="BoostRing" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.35955, 0, -12.0283)
+strength = 50.0
+
+[node name="BoostRing2" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.45658, -1.70604e-07, -12.0283)
+strength = 50.0
+
+[node name="BoostRing3" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0960031, -3.61211e-07, -12.0283)
+strength = 50.0
+
+[node name="BoostRing4" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.43099, -5.59092e-07, -12.0283)
+strength = 50.0
+
+[node name="BoostRing5" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 9.63439, -7.8654e-07, -12.0283)
+strength = 50.0
+
+[node name="BoostRing6" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 7.15836, 1.67134e-07, -16.6836)
+strength = 50.0
+
+[node name="BoostRing7" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.52516, 1.67134e-07, -17.2108)
+strength = 50.0
+
+[node name="BoostRing8" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3.66446, -7.8654e-07, -17.7726)
+strength = 50.0
+
+[node name="BoostRing9" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.38757, 1.67134e-07, -18.1805)
+strength = 50.0
+
+[node name="BoostRing10" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.26346, -7.8654e-07, -23.834)
+strength = 50.0
+
+[node name="BoostRing11" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.172378, -7.8654e-07, -23.1993)
+strength = 50.0
+
+[node name="BoostRing12" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5.65018, -7.8654e-07, -23.2407)
+strength = 50.0
+
+[node name="BoostRing13" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 11.3694, -7.8654e-07, -23.1955)
+strength = 50.0
+
+[node name="BoostRing14" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -13.5802, 1.67134e-07, -24.6166)
+strength = 50.0
+
+[node name="BoostRing15" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -8.35955, 21.0212, -12.0283)
+strength = 50.0
+
+[node name="BoostRing16" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.45658, 21.0212, -12.0283)
+strength = 50.0
+
+[node name="BoostRing17" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0960031, 21.0212, -12.0283)
+strength = 50.0
+
+[node name="BoostRing18" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.43099, 21.0212, -12.0283)
+strength = 50.0
+
+[node name="BoostRing19" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.63439, 21.0212, -12.0283)
+strength = 50.0
+
+[node name="BoostRing20" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.15836, 21.0212, -16.6836)
+strength = 50.0
+
+[node name="BoostRing21" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.52516, 21.0212, -17.2108)
+strength = 50.0
+
+[node name="BoostRing22" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.66446, 21.0212, -17.7726)
+strength = 50.0
+
+[node name="BoostRing23" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -8.38757, 21.0212, -18.1805)
+strength = 50.0
+
+[node name="BoostRing24" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -7.26346, 21.0212, -23.834)
+strength = 50.0
+
+[node name="BoostRing25" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.172378, 21.0212, -23.1993)
+strength = 50.0
+
+[node name="BoostRing26" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5.65018, 21.0212, -23.2407)
+strength = 50.0
+
+[node name="BoostRing27" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 11.3694, 21.0212, -23.1955)
+strength = 50.0
+
+[node name="BoostRing28" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -13.5802, 21.0212, -24.6166)
+strength = 50.0
+
+[node name="BoostRing29" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 18.4265, -12.0283)
+strength = 50.0
+
+[node name="BoostRing30" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 14.5235, -12.0283)
+strength = 50.0
+
+[node name="BoostRing31" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 10.1629, -12.0283)
+strength = 50.0
+
+[node name="BoostRing32" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 5.63592, -12.0283)
+strength = 50.0
+
+[node name="BoostRing33" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 0.43252, -12.0283)
+strength = 50.0
+
+[node name="BoostRing34" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 2.90855, -16.6836)
+strength = 50.0
+
+[node name="BoostRing35" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 8.54175, -17.2108)
+strength = 50.0
+
+[node name="BoostRing36" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 13.7314, -17.7726)
+strength = 50.0
+
+[node name="BoostRing37" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 18.4545, -18.1805)
+strength = 50.0
+
+[node name="BoostRing38" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 17.3304, -23.834)
+strength = 50.0
+
+[node name="BoostRing39" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 10.2393, -23.1993)
+strength = 50.0
+
+[node name="BoostRing40" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 4.41674, -23.2407)
+strength = 50.0
+
+[node name="BoostRing41" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, -1.30247, -23.1955)
+strength = 50.0
+
+[node name="BoostRing42" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -10.9543, 23.6471, -24.6166)
+strength = 50.0
+
+[node name="BoostRing43" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 18.4265, -12.0283)
+strength = 50.0
+
+[node name="BoostRing44" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 14.5235, -12.0283)
+strength = 50.0
+
+[node name="BoostRing45" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 10.1629, -12.0283)
+strength = 50.0
+
+[node name="BoostRing46" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 5.63592, -12.0283)
+strength = 50.0
+
+[node name="BoostRing47" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 0.43252, -12.0283)
+strength = 50.0
+
+[node name="BoostRing48" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 2.90855, -16.6836)
+strength = 50.0
+
+[node name="BoostRing49" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 8.54175, -17.2108)
+strength = 50.0
+
+[node name="BoostRing50" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 13.7314, -17.7726)
+strength = 50.0
+
+[node name="BoostRing51" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 18.4545, -18.1805)
+strength = 50.0
+
+[node name="BoostRing52" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 17.3304, -23.834)
+strength = 50.0
+
+[node name="BoostRing53" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 10.2393, -23.1993)
+strength = 50.0
+
+[node name="BoostRing54" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 4.41673, -23.2407)
+strength = 50.0
+
+[node name="BoostRing55" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, -1.30247, -23.1955)
+strength = 50.0
+
+[node name="BoostRing56" parent="." instance=ExtResource("6_w4v7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0669, 23.6471, -24.6166)
+strength = 50.0

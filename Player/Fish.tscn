@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=113 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://6pi0oi8jx8by" path="res://Sounds/impact_soft/soft2.ogg" id="7_quwx5"]
 [ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="8_6h88e"]
 [ext_resource type="AudioStream" uid="uid://7fhfltsgpuss" path="res://Sounds/impact_soft/soft3.ogg" id="8_mf1i0"]
-[ext_resource type="Shader" uid="uid://bq6unteeis7cy" path="res://Player/speed_blur.gdshader" id="8_q0y68"]
 [ext_resource type="AudioStream" uid="uid://b3m2t2vfnka6v" path="res://Sounds/sparks/sparks_medium_intensity_23.wav" id="8_tid1w"]
 [ext_resource type="AudioStream" uid="uid://upa2refreuuc" path="res://Sounds/sparks/sparks_medium_intensity_27.wav" id="9_ny41d"]
 [ext_resource type="AudioStream" uid="uid://bmhyvq1ucstr0" path="res://Sounds/impact_soft/soft4.ogg" id="9_quwx5"]
@@ -52,6 +51,8 @@
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q0y68"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2ykt"]
 
@@ -172,17 +173,6 @@ outline_color = Color(0, 0, 0, 1)
 shader = ExtResource("49_ny41d")
 shader_parameter/speedScale = 16.0
 shader_parameter/clipPosition = 0.7
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4b1c"]
-shader = ExtResource("8_q0y68")
-shader_parameter/line_count = 2.0
-shader_parameter/distortion_power = 0.034
-shader_parameter/line_falloff = 1.0
-shader_parameter/mask_size = 0.175
-shader_parameter/mask_edge = 0.195
-shader_parameter/animation_speed = 20.0
-shader_parameter/blur_strength = 0.01
-shader_parameter/effect_power = 0.5
 
 [sub_resource type="Animation" id="Animation_lt56d"]
 length = 0.001
@@ -652,11 +642,16 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
+replayFile = "res://Recordings/BGHOOP.json"
 replayAccuracy = 5
 
-[node name="collision" type="CollisionShape3D" parent="." groups=["player"]]
+[node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_j2ykt")
+
+[node name="collisionSphere" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_q0y68")
+disabled = true
 
 [node name="pivotUpper" type="Node3D" parent="."]
 
@@ -721,6 +716,7 @@ collision_mask = 17
 [node name="speedLines" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 0.0354262)
+visible = false
 material_override = SubResource("StandardMaterial3D_div8h")
 mesh = SubResource("CylinderMesh_dh0na")
 skeleton = NodePath("../..")
@@ -728,6 +724,7 @@ skeleton = NodePath("../..")
 [node name="speedLines2" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(0.800418, 0, 0.599443, 0, 1, 0, -0.599443, 0, 0.800418, 0, 3.72529e-09, 0.0354262)
+visible = false
 material_override = SubResource("StandardMaterial3D_iujy1")
 mesh = SubResource("CylinderMesh_iujy1")
 skeleton = NodePath("../..")
@@ -735,6 +732,7 @@ skeleton = NodePath("../..")
 [node name="speedLines3" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, 0, 3.72529e-09, 0.0354262)
+visible = false
 material_override = SubResource("StandardMaterial3D_twgm3")
 mesh = SubResource("CylinderMesh_div8h")
 skeleton = NodePath("../..")
@@ -750,7 +748,6 @@ top_level = true
 
 [node name="ceilDetect" type="RayCast3D" parent="cameraAnchor"]
 unique_name_in_owner = true
-transform = Transform3D(1, 2.13613e-10, 5.2108e-13, -2.13613e-10, 0.999988, 0.0048869, 5.2108e-13, -0.0048869, 0.999988, 0, 0, 1)
 target_position = Vector3(0, 4, 0)
 
 [node name="camera_target" type="Node3D" parent="cameraAnchor"]
@@ -943,21 +940,7 @@ mouse_filter = 2
 
 [node name="speedLinesShader" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_q0y68")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="speedBlurShader" type="ColorRect" parent="UI"]
-unique_name_in_owner = true
-visible = false
-z_index = 1
-material = SubResource("ShaderMaterial_l4b1c")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

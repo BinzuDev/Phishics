@@ -186,6 +186,13 @@ func _physics_process(_delta: float) -> void:
 		$reticle.visible = false
 		closestLastFrame = null
 	
+	if GameManager.hideUI:
+		$reticle.modulate.a = 0
+		%speedLinesShader.visible = false
+	else:
+		$reticle.modulate.a = 1
+		%speedLinesShader.visible = true
+	
 	if !$homing/area.has_overlapping_areas() or height < 3:
 		timeSinceNoTargets += 1
 	else:
@@ -206,7 +213,7 @@ func _physics_process(_delta: float) -> void:
 		#print("height: ", height, " speed: ", newSpd, " points: ", 100*height )
 		ScoreManager.give_points(100*height, 0, false, "DIVE")
 		if height > 10:
-			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
+			ScoreManager.give_points(0, 0, true, "", "", false) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
 		if newSpd == -75:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
@@ -221,10 +228,10 @@ func _physics_process(_delta: float) -> void:
 		
 		if closest != null: #Homing attack
 			var direction = global_position.direction_to(closest.global_position)
-			if closest is enemy:  #make it more violent towards crabs
-				linear_velocity = direction * 100
-			else:
-				linear_velocity = direction * 60
+			if closest.get_parent() is enemy:
+				closest.get_parent().gravity_scale = 0   #makes it easier to attack falling crabs
+				closest.get_parent().linear_velocity = Vector3(0,0,0)
+			linear_velocity = direction * 80
 			$homing/smear.look_at(closest.global_position)
 			$homing/smear.rotation *= -1
 			print("look at enemy: ", $homing/smear.rotation_degrees)
@@ -677,5 +684,6 @@ func get_closest_target():
 	#so debbing rc looks at the correct crab
 	var rcDirection = global_position.direction_to(closest.global_position)
 	$homing/raycast.target_position = rcDirection*5
+	
 	
 	return closest
