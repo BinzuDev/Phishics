@@ -26,7 +26,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 8.95538, 1.89101, 5.23929)
 strength = 20.0
 centerPlayer = true
-deactivateParticles = true
+affectFreshness = false
 
 [node name="BoostRing3" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, 0.984808, -0.707107, 0.707107, 0, -0.696364, -0.696364, 0.173648, 7.45214, 2.35121, 9.72371)
@@ -34,6 +34,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing2" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, -4.30473e-08, 0.984808, -0.984808, -7.5904e-09, 0.173648, 0, -1, -4.37114e-08, 5.95214, 6.02829, 12.4773)
@@ -41,6 +42,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing4" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, -0.984808, -0.707107, 0.707107, 0, 0.696364, 0.696364, 0.173648, 4.45214, 10.781, 12.27)
@@ -48,6 +50,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing5" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 2.95214, 13.634, 8.34406)
@@ -55,6 +58,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing6" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, -0.122788, -0.984808, 0.707107, 0.707107, 0, 0.696364, -0.696364, 0.173648, 1.45214, 13.1327, 3.59694)
@@ -69,6 +73,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing8" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, -0.122788, 0.984808, 0.707107, 0.707107, 0, -0.696364, 0.696364, 0.173648, -1.54786, 5.25, 1.71001)
@@ -76,6 +81,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing9" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -2.39202, 1.89101, 5.23929)
@@ -83,6 +89,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing10" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, 0.984808, -0.707107, 0.707107, 0, -0.696364, -0.696364, 0.173648, -3.89527, 2.35121, 9.72371)
@@ -90,6 +97,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing11" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, -4.30473e-08, 0.984808, -0.984808, -7.5904e-09, 0.173648, 0, -1, -4.37114e-08, -5.39526, 6.02829, 12.4773)
@@ -97,6 +105,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing12" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, -0.984808, -0.707107, 0.707107, 0, 0.696364, 0.696364, 0.173648, -6.89527, 10.781, 12.27)
@@ -111,6 +120,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing14" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, -0.122788, -0.984808, 0.707107, 0.707107, 0, 0.696364, -0.696364, 0.173648, -9.89526, 13.1327, 3.59694)
@@ -118,6 +128,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing15" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(-7.5904e-09, -0.173648, -0.984808, 1, -4.37114e-08, 0, -4.30473e-08, -0.984807, 0.173648, -11.3953, 9.57524, 1.09944)
@@ -125,6 +136,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing16" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, -0.122788, 0.984808, 0.707107, 0.707107, 0, -0.696364, 0.696364, 0.173648, -12.8953, 5.25, 1.71001)
@@ -132,6 +144,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing17" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -13.5494, 1.89101, 5.23929)
@@ -139,6 +152,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing18" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, 0.984808, -0.707107, 0.707107, 0, -0.696364, -0.696364, 0.173648, -15.0526, 2.35121, 9.72371)
@@ -153,6 +167,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing20" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, 0.122788, -0.984808, -0.707107, 0.707107, 0, 0.696364, 0.696364, 0.173648, -18.0526, 10.781, 12.27)
@@ -160,6 +175,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing21" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, -19.5526, 13.634, 8.34406)
@@ -167,6 +183,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing22" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.122788, -0.122788, -0.984808, 0.707107, 0.707107, 0, 0.696364, -0.696364, 0.173648, -21.0526, 13.1327, 3.59694)
@@ -174,6 +191,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing23" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(-7.5904e-09, -0.173648, -0.984808, 1, -4.37114e-08, 0, -4.30473e-08, -0.984807, 0.173648, -22.5526, 9.57524, 1.09944)
@@ -181,6 +199,7 @@ strength = 20.0
 centerPlayer = true
 deactivateParticles = true
 targetableByHoming = false
+affectFreshness = false
 
 [node name="BoostRing24" parent="." instance=ExtResource("3_kpnwi")]
 transform = Transform3D(0.663414, -0.383022, 0.642788, 0.5, 0.866025, 0, -0.55667, 0.321394, 0.766044, -24.0526, 5.25, 1.71001)

@@ -108,6 +108,7 @@ func perform_dunk(body):
 	else:
 		ScoreManager.give_points(1000, 5, true, "SLAM DUNK")
 	
+	ScoreManager.update_freshness(self)
 	$ScoreSound.play() #dunk sfx
 	$HoopPuff.emitting = true #Particles 
 	%hoopCollision.collision_layer = 0 #disable collision so fish passes through

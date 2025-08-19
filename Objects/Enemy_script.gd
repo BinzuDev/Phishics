@@ -80,8 +80,6 @@ func _physics_process(_delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player:
 		
-		#fishplayer == player
-		
 		#print("detected")
 		agro = true
 		
@@ -89,12 +87,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		target = direction
 		#apply_central_impulse(direction * 2)
 		apply_central_impulse(Vector3(0, 7, 0)) #jump
-		#
-		#
+		
+		
 		var torque_axis = direction.cross(Vector3.UP)  # Calculate a perpendicular axis
 		apply_torque(torque_axis * 10)
 		
-		
+		print("on_area_3d_body_entered")
 	#if $FloorCast.is_colliding():
 		#$JumpPuff.emitting = true
 		
@@ -111,7 +109,8 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		agro = false
 		apply_central_impulse(direction * 3)
 		
-		#fishplayer == null
+		print("on_area_3d_body_exited")
+		
 		
 		
 
@@ -141,7 +140,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 	
 	
 	#regular crab logic
-	if body.linear_velocity.length() < 2 and not body.isTipSpinning:
+	if body.linear_velocity.length() < 4 and not body.isTipSpinning:
 		if hp > 0:
 			print("WEAK")
 			
@@ -156,7 +155,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			#
 	
 	
-	if body.linear_velocity.length() >= 2 or body.isTipSpinning:
+	if body.linear_velocity.length() >= 4 or body.isTipSpinning:
 		
 		if enemyType == Enum1.Regular_Crab: #regular crab logic
 			#player pushing
@@ -188,7 +187,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 				#body.body.func_set_fov()
 			
 		else:
-			ScoreManager.give_points(100, 0, false, "DISRESPECT", "", false)
+			ScoreManager.give_points(100, 0, false, "DISRESPECT")
 			
 			#body.play_trick_sfx("rare")
 		
@@ -200,9 +199,11 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			
 			if $FloorCast/airshot.is_colliding():
 				if hp > 0:
-					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK", "", false)
+					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK")
+					ScoreManager.update_freshness(self)
 			else:
-				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT", "", false)
+				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT")
+				ScoreManager.update_freshness(self)
 				ScoreManager.play_trick_sfx("rare")
 				 
 		
@@ -217,14 +218,14 @@ func _on_bump_body_entered(body: Node3D) -> void:
 		
 		
 			#change sprite to dead
-		if hp < 1: 
+		if hp <= 0: 
 			#scale collsion shape so carb is flat
 			$CollisionShape3D.scale.z = 0.3 
 			
-			if not shiny:
-				$CrabSprite.modulate = Color(0.5, 0.5, 0.5, 1)
-			elif shiny:
+			$CrabSprite.modulate = Color(0.5, 0.5, 0.5, 1)
+			if shiny:
 				$CrabSprite.modulate = Color(0.0, 0.29, 0.47, 1)
+				
 			
 		
 		

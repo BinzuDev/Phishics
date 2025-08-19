@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player and not collected:
 		ScoreManager.give_points(800,5,true, "WORM")
+		ScoreManager.update_freshness(self)
 		collected = true
 		$WormSFX.play()
 		$WormAnimation.play("Collected") #animation

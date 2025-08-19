@@ -1,12 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://cu87u6588tm6x"]
+[gd_scene load_steps=23 format=3 uid="uid://cu87u6588tm6x"]
 
 [ext_resource type="Script" uid="uid://1b1lupixtjff" path="res://Objects/boost_ring.gd" id="1_5o6kl"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="2_rd0gv"]
 [ext_resource type="Texture2D" uid="uid://ds6r7bqmtuqlq" path="res://Sprites/bubble2.png" id="3_leupk"]
-[ext_resource type="Material" uid="uid://c1y6pcmembpvq" path="res://Particles/bubble_particle.tres" id="4_75vsp"]
 [ext_resource type="AudioStream" uid="uid://ced3chei8hbe3" path="res://Sounds/ringboost.ogg" id="4_rd0gv"]
 [ext_resource type="AudioStream" uid="uid://cfpescstk1e0g" path="res://Sounds/bubbling_loop.ogg" id="5_75vsp"]
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="7_mb512"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jhcq3"]
 seamless = true
@@ -135,51 +133,6 @@ _data = {
 &"boost": SubResource("Animation_75vsp")
 }
 
-[sub_resource type="QuadMesh" id="QuadMesh_o5o40"]
-material = SubResource("StandardMaterial3D_leupk")
-size = Vector2(0.6, 0.6)
-
-[sub_resource type="SphereMesh" id="SphereMesh_o4k7s"]
-material = ExtResource("4_75vsp")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5o40"]
-render_priority = 0
-shader = ExtResource("2_rd0gv")
-shader_parameter/bubble_color = Color(0.65098, 0.309804, 0.615686, 1)
-shader_parameter/height_multiplier = 1.0
-shader_parameter/noise_sample_size = 0.1
-shader_parameter/animation_speed = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_jmdq4"]
-material = SubResource("ShaderMaterial_o5o40")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj7mq"]
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_51oog"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wlcvx"]
-panorama = ExtResource("7_mb512")
-
-[sub_resource type="Sky" id="Sky_7pnea"]
-sky_material = SubResource("PanoramaSkyMaterial_wlcvx")
-
-[sub_resource type="Environment" id="Environment_q155g"]
-background_mode = 2
-background_energy_multiplier = 1.6
-sky = SubResource("Sky_7pnea")
-glow_levels/3 = 16.0
-glow_levels/5 = 0.0
-fog_mode = 1
-fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
-fog_density = 1.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
-volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
-
 [node name="BoostRing" type="Area3D"]
 process_priority = 5
 process_physics_priority = 5
@@ -189,7 +142,7 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.50626e-07, -1.7, -1.23672e-07, -0.81904, 3.58016e-08, -1.48968, 1.48968, 1.91577e-07, -0.81904, 0, 0, 0)
+transform = Transform3D(-2.24816e-07, -1.7, 2.37874e-07, 1.57537, -1.18938e-07, 0.638896, -0.638896, 3.04928e-07, 1.57537, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
@@ -262,36 +215,5 @@ shape = SubResource("BoxShape3D_75vsp")
 libraries = {
 &"": SubResource("AnimationLibrary_leupk")
 }
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410504, 9.53674e-07, 9.73093)
-visible = false
-mesh = SubResource("QuadMesh_o5o40")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78281, -0.183199, 14.7893)
-visible = false
-mesh = SubResource("SphereMesh_o4k7s")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2651, 15.4367, 5.44778)
-visible = false
-mesh = SubResource("SphereMesh_jmdq4")
-
-[node name="void" type="MeshInstance3D" parent="."]
-transform = Transform3D(14.6687, 0, 0, 0, 11.3656, 0, 0, 0, 13.9262, 48.1546, 13.6194, 5.62983)
-visible = false
-material_override = SubResource("StandardMaterial3D_kj7mq")
-mesh = SubResource("BoxMesh_51oog")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_q155g")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.944468, -0.22801, 0.236626, 0.0370016, 0.641722, 0.766045, -0.326514, 0.73226, -0.597649, 0, 13.966, 0)
-visible = false
-shadow_enabled = true
-shadow_normal_bias = 6.028
-directional_shadow_fade_start = 0.647
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
