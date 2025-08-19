@@ -642,7 +642,8 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-replayFile = "res://Recordings/BGHOOP.json"
+recordingMode = "record"
+recordingFile = "LATEST_RECORDING"
 replayAccuracy = 5
 
 [node name="collision" type="CollisionShape3D" parent="."]

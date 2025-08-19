@@ -28,7 +28,6 @@ var homing := false
 var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the homing area has been empty
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
-var lastUsedBoost
 
 
 #MOVEMENT CONSTS
@@ -213,7 +212,7 @@ func _physics_process(_delta: float) -> void:
 		#print("height: ", height, " speed: ", newSpd, " points: ", 100*height )
 		ScoreManager.give_points(100*height, 0, false, "DIVE")
 		if height > 10:
-			ScoreManager.give_points(0, 0, true, "", "", false) #only reset the timer if you're high up enough
+			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
 		if newSpd == -75:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
@@ -431,11 +430,11 @@ func _physics_process(_delta: float) -> void:
 	if tipLandAntiCheese > 3: 
 		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10:
 			isTipSpinning = true
-			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN", "", false)
+			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN")
 			#ScoreManager.give_points(1, 0, true, "TIPSPIN", "", false)
 			#print("spd: ", linear_velocity.length(), "  score: ", 500/(linear_velocity.length()*2) )
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
-				ScoreManager.give_points(0, 1, true, "")
+				ScoreManager.give_points(0, 1, true)
 		
 		
 		## Tip landing
@@ -507,7 +506,6 @@ func _physics_process(_delta: float) -> void:
 		size = clamp(size, 0.2 , 0.5)
 		newDecal.size.x = size
 		newDecal.size.z = size
-		print("size of latest decal: ", size)
 		
 		
 	

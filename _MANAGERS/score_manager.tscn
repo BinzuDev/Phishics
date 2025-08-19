@@ -1,9 +1,12 @@
-[gd_scene load_steps=81 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=92 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="3_uvms0"]
+[ext_resource type="Texture2D" uid="uid://4xfolklfvbhn" path="res://Sprites/words/fresh_bonus1.png" id="4_0wahh"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="4_bfd2b"]
+[ext_resource type="FontFile" uid="uid://cx0yxj8ife8ms" path="res://Fonts/slimy_filled.ttf" id="4_xixmf"]
 [ext_resource type="Texture2D" uid="uid://brk5f6m6r7rwt" path="res://Sprites/UI/fishrank_background.png" id="5_1x5f8"]
+[ext_resource type="Texture2D" uid="uid://byfs2g4jfnic3" path="res://Sprites/warning_sign.png" id="5_eyaen"]
 [ext_resource type="Texture2D" uid="uid://b4nyue3pqwn7t" path="res://Sprites/UI/style_bar_progress.png" id="6_r4nh4"]
 [ext_resource type="Texture2D" uid="uid://dluimmklciqsx" path="res://Sprites/UI/fishrank_foreground.png" id="7_lu126"]
 [ext_resource type="AudioStream" uid="uid://ghurq6t565lm" path="res://Sounds/tricks/legendary/anime_punch.ogg" id="8_g3jka"]
@@ -56,6 +59,10 @@
 [ext_resource type="AudioStream" uid="uid://dnphskcuvtm1c" path="res://Sounds/style_ranks/PhishicSSS1.ogg" id="55_5su7l"]
 [ext_resource type="AudioStream" uid="uid://bw6p02hutkg8" path="res://Sounds/tricks/low_freshness.ogg" id="55_g3jka"]
 [ext_resource type="AudioStream" uid="uid://tyhasv5d7ppk" path="res://Sounds/tricks/unused/airhorn2.ogg" id="56_ndf8x"]
+[ext_resource type="Texture2D" uid="uid://dws0t81dgeg1x" path="res://Sprites/words/fresh_bonus2.png" id="60_mvj7n"]
+[ext_resource type="Texture2D" uid="uid://biyocmb7ia2bd" path="res://Sprites/words/fresh_bonus3.png" id="61_tgdxi"]
+[ext_resource type="Texture2D" uid="uid://upg1u7tqyma3" path="res://Sprites/words/fresh_bonus4.png" id="62_tgdxi"]
+[ext_resource type="Texture2D" uid="uid://36vi63vqf8i2" path="res://Sprites/words/freshbonus5.png" id="63_51vah"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7cib2"]
 font = ExtResource("4_bfd2b")
@@ -63,26 +70,224 @@ font_size = 66
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_e46gk"]
-font = ExtResource("4_bfd2b")
-font_size = 52
-font_color = Color(0.47, 0.26414, 0.1269, 1)
-outline_size = 20
+[sub_resource type="LabelSettings" id="LabelSettings_0wahh"]
+font = ExtResource("4_xixmf")
+font_size = 60
+font_color = Color(0.7, 0.373333, 0, 0.996078)
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ndf8x"]
+[sub_resource type="LabelSettings" id="LabelSettings_7ge72"]
 font = ExtResource("4_bfd2b")
 font_size = 52
-font_color = Color(1, 0, 0.9, 1)
-outline_size = 20
-outline_color = Color(0, 1, 1, 1)
+font_color = Color(1, 0.733333, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_8kiqt"]
-font = ExtResource("4_bfd2b")
-font_size = 62
-font_color = Color(0, 1, 1, 1)
-outline_size = 20
-outline_color = Color(1, 0, 0.683333, 1)
+[sub_resource type="Animation" id="Animation_eyaen"]
+resource_name = "spam_penalty"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spamPenalty/spamPenCtrl/spamPenalty:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [100, 230]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spamPenalty/spamPenCtrl/spamPenalty:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spamWarning:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spamPenalty/spamPenCtrl:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 2.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_0wahh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spamPenalty/spamPenCtrl/spamPenalty:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [230]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spamPenalty/spamPenCtrl/spamPenalty:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spamWarning:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spamPenalty/spamPenCtrl:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("freshBonuses/freshScale:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_mvj7n"]
+resource_name = "spam_warn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spamWarning:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spamPenalty/spamPenCtrl/spamPenalty:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_constants/margin_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [230]
+}
+
+[sub_resource type="Animation" id="Animation_51vah"]
+resource_name = "freshBonus"
+length = 5.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("freshBonuses/freshScale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.75, 1.1, 1.45, 1.75, 3.3, 3.65, 4.05, 4.4),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, -2, 1, -2, -2, -2, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1.15, 1.15), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ge72"]
+_data = {
+&"RESET": SubResource("Animation_0wahh"),
+&"freshBonus": SubResource("Animation_51vah"),
+&"spam_penalty": SubResource("Animation_eyaen"),
+&"spam_warn": SubResource("Animation_mvj7n")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_5htxl"]
 font = ExtResource("4_bfd2b")
@@ -466,29 +671,40 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -157.0
-offset_bottom = -157.0
+offset_top = -135.0
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="wallOfText" type="HBoxContainer" parent="UI/comboText"]
-custom_minimum_size = Vector2(1920, 0)
-layout_mode = 2
-offset_left = -750.0
-offset_top = -1973.0
-offset_right = 750.0
-offset_bottom = 27.0
+[node name="wallShrinker" type="Control" parent="UI/comboText"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 4
 size_flags_vertical = 8
-alignment = 1
 
-[node name="comboText" type="RichTextLabel" parent="UI/comboText/wallOfText"]
+[node name="comboText" type="RichTextLabel" parent="UI/comboText/wallShrinker"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(1600, 2000)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -800.0
+offset_top = -2000.0
+offset_right = 800.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_colors/default_color = Color(0, 1, 1, 1)
@@ -499,7 +715,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/normal_font = ExtResource("4_bfd2b")
 theme_override_font_sizes/normal_font_size = 40
-text = "combo:"
+text = "COMBO:"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -556,36 +772,116 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -358.0
 offset_right = 358.0
-offset_bottom = 71.0
+offset_bottom = 298.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 230
 
-[node name="freshWarning" type="Label" parent="UI/freshMargin"]
+[node name="spamPenalty" type="Control" parent="UI/freshMargin"]
+layout_mode = 2
+
+[node name="spamPenCtrl" type="Control" parent="UI/freshMargin/spamPenalty"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 358.0
+offset_top = 68.0
+offset_right = 358.0
+offset_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="spamPenalty" type="Label" parent="UI/freshMargin/spamPenalty/spamPenCtrl"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -55.38
+offset_right = 240.0
+offset_bottom = 12.62
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
-text = "LOW FRESHNESS WARNING"
-label_settings = SubResource("LabelSettings_e46gk")
+text = "SPAM PENALTY"
+label_settings = SubResource("LabelSettings_0wahh")
 horizontal_alignment = 1
 
-[node name="freshBonus" type="Label" parent="UI/freshMargin"]
+[node name="spamWarning" type="Label" parent="UI/freshMargin"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-text = "FRESHNESS BONUS!!"
-label_settings = SubResource("LabelSettings_ndf8x")
+text = "SPAM WARNING"
+label_settings = SubResource("LabelSettings_7ge72")
 horizontal_alignment = 1
 
-[node name="maxFresh" type="Label" parent="UI/freshMargin"]
-unique_name_in_owner = true
-visible = false
+[node name="WarningSign" type="Sprite2D" parent="UI/freshMargin/spamWarning"]
+position = Vector2(-44, 36)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("5_eyaen")
+
+[node name="WarningSign2" type="Sprite2D" parent="UI/freshMargin/spamWarning"]
+position = Vector2(480, 36)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("5_eyaen")
+
+[node name="freshBonuses" type="Control" parent="UI/freshMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "MAXIMUM FRESHNESS!!"
-label_settings = SubResource("LabelSettings_8kiqt")
-horizontal_alignment = 1
+size_flags_vertical = 4
+
+[node name="freshScale" type="Control" parent="UI/freshMargin/freshBonuses"]
+anchors_preset = 0
+scale = Vector2(1e-05, 1e-05)
+
+[node name="FreshBonus1" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("4_0wahh")
+hframes = 5
+vframes = 6
+
+[node name="FreshBonus2" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("60_mvj7n")
+hframes = 5
+vframes = 12
+frame = 59
+
+[node name="FreshBonus3" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("61_tgdxi")
+hframes = 5
+vframes = 6
+frame = 29
+
+[node name="FreshBonus4" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("62_tgdxi")
+hframes = 5
+vframes = 6
+
+[node name="FreshBonus5" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("63_51vah")
+hframes = 6
+vframes = 8
+
+[node name="freshAnims" type="AnimationPlayer" parent="UI/freshMargin"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7ge72")
+}
 
 [node name="comboBarMargin" type="MarginContainer" parent="UI"]
 layout_mode = 1
@@ -712,7 +1008,7 @@ offset_left = 12.0
 offset_top = 6.0
 offset_right = 278.0
 offset_bottom = 253.0
-text = "debug info"
+text = "trick history"
 label_settings = SubResource("LabelSettings_g3jka")
 
 [node name="legendary" type="AudioStreamPlayer" parent="."]
@@ -737,10 +1033,12 @@ bus = &"tricks"
 
 [node name="specialTrick1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_jkrp3")
+volume_db = 8.0
 bus = &"tricks"
 
 [node name="specialTrick2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_vvwlm")
+volume_db = 8.0
 bus = &"tricks"
 
 [node name="randomTrick" type="AudioStreamPlayer" parent="."]
@@ -782,11 +1080,7 @@ bus = &"rankUp"
 
 [node name="lowFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("55_g3jka")
-volume_db = -10.0
-
-[node name="highFreshness" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("36_jkrp3")
-volume_db = -6.0
+volume_db = -5.0
 
 [node name="maxFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_ndf8x")

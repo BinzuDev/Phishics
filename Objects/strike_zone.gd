@@ -58,7 +58,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		touched = true
 		
 		#trick
-		ScoreManager.give_points(500, 2, true, "STRIKE!", "rare", false)
+		ScoreManager.give_points(500, 2, true, "STRIKE!")
+		ScoreManager.update_freshness(self)
 		ScoreManager.play_trick_sfx("rare")
 		print("strike!")
 		

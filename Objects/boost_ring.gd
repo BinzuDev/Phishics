@@ -11,8 +11,15 @@ extends Area3D
 @export var rotationSpeed : float = 1.0
 @export var deactivateParticles : bool = false
 @export var targetableByHoming : bool = true
+@export var affectFreshness : bool = true
 
 var strengthLastFrame = strength
+
+#We need a cooldown because sometimes you can hit the same boost multiple frames in
+#a row if you're unlucky rotation, but we can't make the cooldown affect the boost
+#itself because a boost is used to block your way and we dont want it to be easier
+#to cheese through it
+var freshCooldown := 0
 
 
 func _ready():
@@ -20,6 +27,7 @@ func _ready():
 		$homingTarget.collision_layer = 0
 
 func _process(_delta: float) -> void:
+	freshCooldown += 1
 	$ring.rotation.x += 0.02
 	$direction.scale.x = strength
 	if !Engine.is_editor_hint(): #hide the helper arrow in game
@@ -66,15 +74,13 @@ func _on_body_entered(body: Node3D) -> void:
 		body.apply_impulse(distance*3)
 		
 		
-		if body is player: # and body.lastUsedBoost != self
+		if body is player:
 			ScoreManager.reset_airspin()
-			if body.lastUsedBoost == self:
-				ScoreManager.give_points(500, 1, true, "BOOST", "")
-				ScoreManager.give_points(0, 0, true, "BOOST", "")
-			else: #dont lower the freshness if you use multiple DIFFERENT boosts
-				ScoreManager.give_points(500, 1, true, "BOOST", "", false)
+			ScoreManager.give_points(500, 1, true, "BOOST")
+			if affectFreshness and freshCooldown >= 4:
+				ScoreManager.update_freshness(self)
+				freshCooldown = 0 
 			ScoreManager.play_trick_sfx("rare")
-			body.lastUsedBoost = self
 			$AnimationPlayer.play("boost")
 		#body.play_random_trick()
 		

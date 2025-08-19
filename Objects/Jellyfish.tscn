@@ -101,6 +101,7 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_w0s7j")
 }
+autoplay = "Jellyfish"
 
 [node name="AudioJF" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true

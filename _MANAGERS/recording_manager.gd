@@ -70,6 +70,7 @@ func do_record():
 	
 	currentFile.store_string(jstr)
 	currentFile.store_string("\n")
+	#currentFile.close() USE THAT WHEN ENDING LEVELS
 	
 
 
