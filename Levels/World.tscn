@@ -3057,12 +3057,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45796, 6.90523, 6.82944)
 shape = SubResource("BoxShape3D_28m7t")
 debug_color = Color(0.716667, 0, 1, 0.419608)
 
-[node name="BoostRing42" parent="group3/half pipe" instance=ExtResource("9_2uuim")]
-transform = Transform3D(0.0135346, -0.154701, -0.579556, 0.597717, 0.0522935, 0, 0.0505116, -0.57735, 0.155291, 0.111885, 10.5885, 14.069)
-strength = 50.0
-
 [node name="BoostRing47" parent="group3/half pipe" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-0.362527, 0.02698, -0.477332, 0.474177, -0.0562351, -0.363309, -0.0610749, -0.596749, 0.0126558, 0.111885, 10.5885, 14.069)
+transform = Transform3D(0.523752, -0.0596815, -0.286568, 0.286275, -0.0181228, 0.526989, -0.061075, -0.596749, 0.0126558, 0.579647, 10.5885, 14.069)
 strength = 50.0
 
 [node name="BoostRing43" parent="group3/half pipe" instance=ExtResource("9_2uuim")]
