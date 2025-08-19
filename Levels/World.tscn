@@ -391,7 +391,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.6053, 30.8907, 68.2292)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -3318,22 +3318,22 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.69429e-23, 0, -3.88235e-23, 1, 7.84145
 transform = Transform3D(1, 0, 0, 0, 1, -5.69429e-23, 0, -3.88235e-23, 1, 2.05698, 21.9204, -26.4442)
 
 [node name="scoreRing" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-1.19606, 0, -0.905229, 0, 1.5, 0, 0.905229, 0, -1.19606, 11.8496, 22.5458, 14.3482)
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, 7.28491, 7.26502, 20.8614)
 
 [node name="scoreRing3" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-0.982705, 0, -1.13327, 0, 1.5, 0, 1.13327, 0, -0.982705, -9.77654, 22.5458, -0.269951)
+transform = Transform3D(-6.55672e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -13.0075, 13.8529, 6.69698)
 
 [node name="scoreRing2" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(0.820249, 0, -1.25586, 0, 1.5, 0, 1.25586, 0, 0.820249, 25.5098, 25.8761, -7.32499)
+transform = Transform3D(-6.5567e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, 22.9977, 15.7922, -3.85639)
 
 [node name="scoreRing4" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(0.70698, 0, -1.32294, 0, 1.5, 0, 1.32294, 0, 0.70698, 6.56808, 25.8761, -17.7976)
+transform = Transform3D(-6.5567e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, 9.71083, 15.2334, -11.8596)
 
 [node name="scoreRing5" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(0.0125661, 0, -1.49995, 0, 1.5, 0, 1.49995, 0, 0.0125661, 28.6496, 25.8761, 12.0395)
+transform = Transform3D(-6.55672e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, 25.4187, 14.6532, 12.0395)
 
 [node name="scoreRing6" parent="group3/THEPIT(tm)" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-0.294176, 0, -1.47087, 0, 1.5, 0, 1.47087, 0, -0.294176, 7.90971, 24.9427, -3.92642)
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, 6.93459, 18.9537, 2.96935)
 
 [node name="Worm" parent="group3/THEPIT(tm)" instance=ExtResource("16_e1uki")]
 transform = Transform3D(0.978903, 0, -0.204325, 0, 1, 0, 0.204325, 0, 0.978903, 8.30869, 27.944, -3.53841)
@@ -3964,6 +3964,9 @@ texture = ExtResource("6_53g8k")
 [node name="CoralSpriteG6" type="Sprite3D" parent="AllCoralGroups/CoralSpriteGroup19"]
 transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.54285, -0.14407, 4.18181)
 texture = ExtResource("6_53g8k")
+
+[node name="Enemy5" parent="." instance=ExtResource("21_46o8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
 
 [connection signal="body_entered" from="group3/half pipe/collisionSwitcher" to="group3/half pipe/collisionSwitcher" method="_on_body_entered"]
 [connection signal="body_exited" from="group3/half pipe/collisionSwitcher" to="group3/half pipe/collisionSwitcher" method="_on_body_exited"]
