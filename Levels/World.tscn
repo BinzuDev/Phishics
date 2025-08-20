@@ -3121,7 +3121,7 @@ bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish3" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141914, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
+transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141913, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
 progress = 58.8951
 speed = 7
 bounceForce = 40
