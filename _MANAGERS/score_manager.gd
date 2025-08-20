@@ -20,10 +20,12 @@ var idle : bool = false
 
 ## Fresh meter
 var trickHistory = [] #stores your previous 10 tricks
+var trickHistoryExtra = [] #stores an extra 5 tricks so you cant spam in high density areas
 var freshness : int
-enum {FRESHLOW, FRESHWARN, FRESHOK, FRESHIGH}
-var freshState = FRESHOK
+enum FRESH {LOW, WARN, OK, HIGH}
+var freshState = FRESH.OK
 var freshCombo := 0
+var timeSinceFreshChange := 0
 @onready var freshSprites = [%FreshBonus1,%FreshBonus2,%FreshBonus3,%FreshBonus4,%FreshBonus5]
 
 ## Combo variables
@@ -134,7 +136,7 @@ func _physics_process(_delta: float) -> void:
 		styleDecreaseRate = 1 #so you can't keep PSSS maxed out forever
 	if airSpinRank == 10: 
 		styleDecreaseRate = 0.02 #so you dont lose your rank in really big falls
-	if freshState == FRESHLOW:
+	if freshState == FRESH.LOW:
 		styleDecreaseRate = 0.16
 	if idle: #lose rank quickly when you stop moving EXCEPT IF YOU TIPLANDED OR HOOKING (set in fish.gd)
 		styleDecreaseRate = 0.5 
@@ -192,11 +194,28 @@ func _physics_process(_delta: float) -> void:
 		give_points(100000000, 1, true, "debug")
 	
 	
+	##Freshness
 	%FreshBonus1.frame = wrap(%FreshBonus1.frame+1, 0, 30)
 	%FreshBonus2.frame = wrap(%FreshBonus2.frame+1, 0, 60)
 	%FreshBonus3.frame = wrap(%FreshBonus3.frame+1, 0, 30)
 	%FreshBonus4.frame = wrap(%FreshBonus4.frame+1, 0, 30)
 	%FreshBonus5.frame = wrap(%FreshBonus5.frame+1, 0, 48)
+	timeSinceFreshChange += 1
+	if timeSinceFreshChange == 500: #so it doesnt last long
+		if freshState == FRESH.LOW or freshState == FRESH.WARN:
+			trickHistory = []
+			trickHistoryExtra = []
+			freshState = FRESH.OK
+			%freshAnims.play("RESET")
+			print("RESET FRESHNESS")
+	if timeSinceFreshChange >= 720:
+		if freshState == FRESH.OK:
+			trickHistory = []
+			trickHistoryExtra = []
+			%freshAnims.play("RESET")
+			print("RESET FRESHNESS")
+			timeSinceFreshChange = 0
+	
 	
 	
 	#DEBUG_INFO
@@ -207,6 +226,7 @@ func _physics_process(_delta: float) -> void:
 	"prev rank: ", rankRequirements[styleRank], "\n",
 	"next rank: ", rankRequirements[styleRank+1], "\n",
 	"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
+	"timeSinceFreshChange: ", timeSinceFreshChange
 	#"airSpinAmount: ", airSpinAmount, "\n",
 	#"airSpinRank: ", airSpinRank, "\n",
 	#"airSpinHighestRank: ", airSpinHighestRank, "\n",
@@ -229,8 +249,10 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 	
 				 #let the airspin reset timer but ONLY when theres no combo yet
 	if resetTimer or (trickName == "AIRSPIN" and mult == addMult):
-		if freshState != FRESHLOW: #spam penality
+		if freshState != FRESH.LOW: #spam penality
 			comboTimer = max(comboReset, comboTimer) #dont crop timer if bigger than maximum (ex: post dunking)
+		if freshState == FRESH.WARN:
+			comboTimer *= 0.8 #small penalty when you're in spam warning, comboReset time is 20% shorter
 		#if you want to give a timer bonus, manually set comboTimer to a high value right before give_points()
 	
 	points += addPoints
@@ -296,15 +318,18 @@ func update_freshness(object):
 	
 	#remove the last one when more then 10
 	if trickHistory.size() > 10:
+		trickHistoryExtra.append(trickHistory[0])
 		trickHistory.remove_at(0)  
+		if trickHistoryExtra.size() > 5:
+			trickHistoryExtra.remove_at(0)  
 	
 	freshness = 0
 	
-	#Only check the 5 most recent tricks (or all of them if theres less than 5)
+	#Only check the 4 most recent tricks (or all of them if theres less than 4)
 	for i in range(-min(4, trickHistory.size()), 0):
 		print("trick at index ", i, " is: ", trickHistory[i].name)
 		#Find how often the most common on shows up in the full list
-		freshness = max(freshness, trickHistory.count(trickHistory[i]))
+		freshness = max(freshness, trickHistory.count(trickHistory[i])+trickHistoryExtra.count(trickHistory[i]) )
 	
 	## When all 10 tricks are unique
 	if trickHistory.size() == 10:
@@ -320,29 +345,38 @@ func update_freshness(object):
 			freshSprites[freshCombo%5].visible = true
 			freshCombo += 1
 			trickHistory = []
+			trickHistoryExtra = []
 	
 	## UI
-	var nameDebug = "["
-	for value in trickHistory:
-		if nameDebug != "[":
-			nameDebug += ", "
-		nameDebug += str(value.name)
-	%freshDebugLabel.text = str(nameDebug, "]", "\nfreshness: ", freshness, "\nfresh state: ", freshState)
+	%freshDebugLabel.text = str(array_to_str(trickHistoryExtra),
+								array_to_str(trickHistory), 
+								"freshness: ", freshness, "\nfresh state: ", freshState)
+	
+	timeSinceFreshChange = 0
+	
 	if trickHistory.size() >= 5:
-		if freshness >= 6 and freshState != FRESHLOW:
+		if freshness >= 6 and freshState != FRESH.LOW:
 			$lowFreshness.play()
 			%freshAnims.play("spam_penalty")
-			freshState = FRESHLOW
-		if freshness >= 4 and freshness <= 5 and freshState != FRESHWARN:
+			freshState = FRESH.LOW
+		if freshness >= 4 and freshness <= 5 and freshState != FRESH.WARN:
 			%freshAnims.play("spam_warn")
-			freshState = FRESHWARN
+			freshState = FRESH.WARN
 		if freshness <= 3:
-			freshState = FRESHOK
+			freshState = FRESH.OK
 			if %freshAnims.current_animation != "freshBonus":
 				%freshAnims.play("RESET")
 	
 	
 
+func array_to_str(array : Array):
+	var str := "["
+	for value in array:
+		if str != "[":
+			str += ", "
+		str += str(value.name)
+	str += "]\n"
+	return str
 
 
 
@@ -434,6 +468,7 @@ func reset_everything():
 	finalScore = 0
 	freshness = 0
 	trickHistory = []
+	trickHistoryExtra = []
 	%rank.frame = 7
 	%rankBG.frame = 7
 	airSpinHighestRank = 0

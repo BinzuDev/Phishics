@@ -19,3 +19,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		collected = true
 		$WormSFX.play()
 		$WormAnimation.play("Collected") #animation
+
+
+func _on_air_hitbox_body_entered(body):
+	if body is player and not collected:
+		if body.height > 10: #if the player enters the big hitbox while up in the air
+			print("COLLECTED WORM IN THE AIR")
+			_on_area_3d_body_entered(body) #run the regular function

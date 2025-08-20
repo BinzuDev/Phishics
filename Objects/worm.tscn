@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dekjyfsmafh8k"]
+[gd_scene load_steps=16 format=3 uid="uid://dekjyfsmafh8k"]
 
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="1_14tpb"]
 [ext_resource type="Texture2D" uid="uid://qmeykmwuuucb" path="res://Sprites/worm.png" id="2_affe2"]
@@ -6,7 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="4_77qcx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_affe2"]
-radius = 1.11926
+radius = 1.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_77qcx"]
+radius = 2.5
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jhcq3"]
 seamless = true
@@ -249,6 +252,13 @@ script = ExtResource("2_rs7oq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_affe2")
 
+[node name="airHitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="airHitbox"]
+shape = SubResource("SphereShape3D_77qcx")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 3
 light_color = Color(0.286275, 0.698039, 0.262745, 1)
@@ -293,3 +303,4 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_j5b4d")
 
 [connection signal="body_entered" from="." to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="airHitbox" to="." method="_on_air_hitbox_body_entered"]

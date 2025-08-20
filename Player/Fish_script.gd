@@ -20,6 +20,7 @@ var tiplanding : bool = false
 var tipLandAntiCheese : int = 0
 var isHeld : bool = false
 var isTipSpinning : bool = false
+var wallGrind : int = 0
 var superJumpTimer : int = -1
 var height : float = 0 ##stores how for away you are to the nearest floor
 var fishCooldown : int = 0
@@ -205,7 +206,7 @@ func _physics_process(_delta: float) -> void:
 		height = global_position.y - $heightDetect.get_collision_point().y
 		
 	if Input.is_action_just_pressed("dive") and !$nearFloor.is_colliding() and !isHeld:
-		var newSpd = clamp(height*-1.5 -10, -75, -10) 
+		var newSpd = clamp(height*-1.5 -10, -90, -10) 
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
 		linear_velocity.z *= 0.5
@@ -214,7 +215,7 @@ func _physics_process(_delta: float) -> void:
 		if height > 10:
 			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
-		if newSpd == -75:
+		if newSpd <= -75:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
 			ScoreManager.play_trick_sfx("legendary")
 		print("the transparency is ", %speedLines.transparency)
@@ -423,6 +424,7 @@ func _physics_process(_delta: float) -> void:
 	
 	## Tipspin
 	isTipSpinning = false
+	wallGrind = move_toward(wallGrind, 0, 1)
 	if get_side_count() == 1 and ($trickRC/tail.is_colliding() or $trickRC/head.is_colliding()):
 		tipLandAntiCheese += 1
 	else:
@@ -431,6 +433,14 @@ func _physics_process(_delta: float) -> void:
 		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10:
 			isTipSpinning = true
 			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN")
+			if height > 2:
+				ScoreManager.give_points(angular_velocity.length()*4, 0, true, "WALL TIPSPIN")
+				wallGrind += 2 #+2 to counteract the -1 so its actually +1
+				print("WALL TIPSPIN")
+			if wallGrind == 50: #wall tipspin for 50 frames in a row
+				ScoreManager.give_points(0, 15, true, "WALLGRIND")
+				ScoreManager.play_trick_sfx("legendary")
+				wallGrind = -200 #extra cooldown
 			#ScoreManager.give_points(1, 0, true, "TIPSPIN", "", false)
 			#print("spd: ", linear_velocity.length(), "  score: ", 500/(linear_velocity.length()*2) )
 			if ScoreManager.mult == 0: #in case you do a tipspin without a combo first
@@ -531,6 +541,7 @@ func _physics_process(_delta: float) -> void:
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			GameManager.hitstop(20)
 			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
+			ScoreManager.update_freshness(self)
 			$taunt.play()
 			$pivotUpper.visible = false
 			$pivotLower.visible = false
@@ -572,13 +583,37 @@ func _physics_process(_delta: float) -> void:
 	%speedLinesShader.material.set_shader_parameter("clipPosition", lineLen)
 	#print("cur: ", current, " target: ", target)
 	
+	## Speed wind SFX
+	#DECIBEL TO LINEAR CHEAT SHEET
+	#-20 : 0.1     -6 : 0.5   0 : 1.0   6 : 2.0   12 : 4.0    20 : 10.0
+	var speed = linear_velocity.length()
+	var windVolume
+	if speed < 15:
+		windVolume = 0
+	else:
+		windVolume = (speed-15) * 0.04  #0 at 15   2 at 50
+		windVolume = clamp(windVolume*1.5, 0, 4) #caps to 4 at 80
+	#adds fade in and fade out
+	$speedWind.volume_linear = move_toward($speedWind.volume_linear, windVolume, 0.2)
+	
+	#extra pitch when you go really fast
+	if speed <= 40:
+		$speedWind.pitch_scale = 1
+	else:                             #1 at 50     3 at 200
+		$speedWind.pitch_scale =clamp( (speed-50)*0.013 + 1, 1, 3)
+	
+	
 	
 	#DEBUG_INFO
+	%debugLabel2.text = str(snapped(linear_velocity.length(), 0.01),
+	"  goal: ",snapped(windVolume, 0.01),
+	"  curr: ", snapped($speedWind.volume_linear, 0.01),
+	" pitch: ", snapped($speedWind.pitch_scale, 0.01),  "\n")
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
 	"height: ", snapped(height, 0.01), "\n",
 	"linear velocity: ", snapped(linear_velocity, Vector3(0.01,0.01,0.01)), "\n",
-	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",lineLen,")",  "\n",
+	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",windVolume,")",  "\n",
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
 	"spark speed: ", sparkSpd, "\n",
@@ -589,7 +624,8 @@ func _physics_process(_delta: float) -> void:
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
-	"gravity scale: ", gravity_scale,
+	"gravity scale: ", gravity_scale, "\n",
+	"wallgrind: ", wallGrind
 	)
 	
 
@@ -642,7 +678,7 @@ func is_in_air():
 		
 
 func set_skin(): #doesnt work yet
-	var skin = preload("res://Skins/binzufish.png")
+	var skin = preload("res://Skins/lemmedoitfoyew.png")
 	$pivotUpper/upperBody.texture = skin
 	$pivotUpper/pivotHead/head.texture = skin
 	$pivotLower/lowerBody.texture = skin

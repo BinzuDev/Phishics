@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=116 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -46,8 +46,10 @@
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
 [ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
+[ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
 [ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/blurLines.gdshader" id="49_ny41d"]
+[ext_resource type="Texture2D" uid="uid://pdyrqt81ou6p" path="res://Skins/pufferfish.png" id="51_l4b1c"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -166,6 +168,11 @@ height = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_nmgcd"]
 font_size = 30
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q0y68"]
+font_size = 95
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
@@ -644,7 +651,13 @@ script = ExtResource("1_8ijwk")
 script = ExtResource("2_lt56d")
 recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
+replayFile = "res://Recordings/SUPER_LONG_WALL_GRIND.json"
 replayAccuracy = 5
+
+[node name="pufferfish" type="Sprite3D" parent="."]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+visible = false
+texture = ExtResource("51_l4b1c")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
@@ -923,12 +936,21 @@ mesh = SubResource("SphereMesh_lt56d")
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 14.0
-offset_top = 205.0
-offset_right = 280.0
-offset_bottom = 452.0
+offset_left = 16.0
+offset_top = 297.0
+offset_right = 282.0
+offset_bottom = 544.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_nmgcd")
+
+[node name="debugLabel2" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 926.0
+offset_right = 577.0
+offset_bottom = 1173.0
+text = "debug info"
+label_settings = SubResource("LabelSettings_q0y68")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -987,6 +1009,7 @@ texture = ExtResource("2_dhdhv")
 [node name="sfx" type="AudioStreamPlayer2D" parent="reticle"]
 stream = ExtResource("8_6h88e")
 panning_strength = 20.0
+bus = &"fishsfx"
 
 [node name="reticleR" type="Sprite2D" parent="reticle"]
 texture = ExtResource("24_40mal")
@@ -1021,6 +1044,7 @@ libraries = {
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_po2vx")
 max_polyphony = 5
+bus = &"fishsfx"
 
 [node name="tauntAnimation" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -1101,6 +1125,7 @@ draw_pass_1 = SubResource("QuadMesh_tid1w")
 stream = SubResource("AudioStreamRandomizer_25ixj")
 volume_db = -8.0
 max_polyphony = 10
+bus = &"fishsfx"
 
 [node name="FIsh" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -1113,6 +1138,10 @@ process_mode = 3
 stream = ExtResource("25_dhdhv")
 max_polyphony = 5
 bus = &"fishsfx"
+
+[node name="speedWind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_q0y68")
+autoplay = true
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
