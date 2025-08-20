@@ -28,6 +28,7 @@ func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 		#body.apply_central_impulse(Vector3.UP * 50)
 		#TRICK
 		print("bounce")
+		ScoreManager.reset_airspin()
 		ScoreManager.give_points(1000, 1, true, "JELLY JUMP")
 		ScoreManager.update_freshness(self)
 		%AudioJF.play()
