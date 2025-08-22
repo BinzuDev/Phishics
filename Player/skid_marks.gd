@@ -5,7 +5,7 @@ var timer : int = 0
 var theOriginal : bool = true
 
 
-func _process(delta):
+func _process(_delta):
 	if not theOriginal:
 		timer += 1
 		albedo_mix = (250 - timer) * 0.004

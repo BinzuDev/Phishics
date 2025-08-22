@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=111 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -37,7 +37,6 @@
 [ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="17_17eip"]
 [ext_resource type="AudioStream" uid="uid://c77aqd8m0ea3d" path="res://Sounds/sparks/sparks_low_intensity_07.wav" id="17_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://bfrairy2vrx6r" path="res://Sounds/sparks/sparks_low_intensity_11.wav" id="18_4buur"]
-[ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="18_qaf4p"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="24_40mal"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
@@ -624,18 +623,6 @@ stream_15/stream = ExtResource("10_q0y68")
 streams_count = 1
 stream_0/stream = ExtResource("6_t0nqp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tid1w"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3rn02"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3rn02"]
-radius = 0.106
-height = 1.05
-
-[sub_resource type="BoxMesh" id="BoxMesh_ny41d"]
-
 [node name="fish" type="RigidBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 21
@@ -649,9 +636,8 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
-replayFile = "res://Recordings/SUPER_LONG_WALL_GRIND.json"
+replayFile = "res://Recordings/tiplanding_and_music_glitch.json"
 replayAccuracy = 5
 
 [node name="pufferfish" type="Sprite3D" parent="."]
@@ -936,6 +922,7 @@ mesh = SubResource("SphereMesh_lt56d")
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 16.0
 offset_top = 297.0
 offset_right = 282.0
@@ -971,19 +958,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="splashScreen" type="TextureRect" parent="UI"]
-visible = false
-z_index = 10
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("18_qaf4p")
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 1
@@ -1076,21 +1050,29 @@ frame = 3
 
 [node name="Jumps" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_v25j4")
+unit_size = 20.0
+panning_strength = 1.5
 bus = &"fishsfx"
 
 [node name="Soft_Impact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_j6575")
+unit_size = 20.0
 max_polyphony = 3
+panning_strength = 1.5
 bus = &"fishsfx"
 
 [node name="Medium_Impact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ox1d5")
+unit_size = 20.0
 max_polyphony = 3
+panning_strength = 1.5
 bus = &"fishsfx"
 
 [node name="Hard_Impact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_mce56")
+unit_size = 20.0
 max_polyphony = 3
+panning_strength = 1.5
 bus = &"fishsfx"
 
 [node name="tipSpinSparks" type="GPUParticles3D" parent="."]
@@ -1152,25 +1134,5 @@ texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Decal"]
-visible = false
-layers = 2
-material_override = SubResource("StandardMaterial3D_tid1w")
-transparency = 0.5
-mesh = SubResource("BoxMesh_3rn02")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Decal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498826, 0)
-visible = false
-layers = 2
-material_override = SubResource("StandardMaterial3D_tid1w")
-transparency = 0.5
-mesh = SubResource("CapsuleMesh_3rn02")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499862, 1.77077)
-visible = false
-mesh = SubResource("BoxMesh_ny41d")
-
-[connection signal="body_entered" from="." to="." method="checkpoint"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="checkpoint"]

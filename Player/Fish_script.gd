@@ -4,6 +4,7 @@ extends RigidBody3D
 
 #jump check
 @export var canJump: bool = true
+@export var noScoreUI : bool = false
 
 var checkpoint_pos: Vector3
 
@@ -47,16 +48,14 @@ var noclip := false
 
 func _ready() -> void:
 	checkpoint_pos = position
-	$UI/splashScreen.visible = true
 	ScoreManager.fish = self
 	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
+	$Decal.visible = false
+	if noScoreUI:
+		ScoreManager.hide()
 	
 
 func _physics_process(_delta: float) -> void:
-	
-	#splash screen fadeout
-	if flopTimer >= 5: #skip the first couple of frames for lag
-		$UI/splashScreen.modulate.a -= 0.05
 	
 	## Movement
 	if Input.is_action_just_pressed("forward"):
@@ -436,7 +435,6 @@ func _physics_process(_delta: float) -> void:
 			if height > 2:
 				ScoreManager.give_points(angular_velocity.length()*4, 0, true, "WALL TIPSPIN")
 				wallGrind += 2 #+2 to counteract the -1 so its actually +1
-				print("WALL TIPSPIN")
 			if wallGrind == 50: #wall tipspin for 50 frames in a row
 				ScoreManager.give_points(0, 15, true, "WALLGRIND")
 				ScoreManager.play_trick_sfx("legendary")
@@ -516,6 +514,7 @@ func _physics_process(_delta: float) -> void:
 		size = clamp(size, 0.2 , 0.5)
 		newDecal.size.x = size
 		newDecal.size.z = size
+		newDecal.visible = true
 		
 		
 	

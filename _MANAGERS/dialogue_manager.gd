@@ -2,7 +2,7 @@ extends Node
 
 var text := ""
 var timer := 0
-var char := 0
+var chara := 0
 var finished := true
 var textBoxIndex := 0
 var currentDialogue
@@ -39,16 +39,16 @@ func _process(_delta):
 	if timer % 2 == 0 and !finished:
 		if text.length() == 0:
 			text += " " #in case you make it empty so it dont crash
-		%textBox.text += text[char]
-		char += 1
-		if char == text.length():
+		%textBox.text += text[chara]
+		chara += 1
+		if chara == text.length():
 			finished = true
 	if finished and Input.is_action_just_pressed("confirm"):
 		if $textBoxControl.visible and isRunning:
 			textBoxIndex += 1
 			continue_dialogue()
 	#Skip text button
-	if !finished and Input.is_action_just_pressed("confirm") and char > 3:
+	if !finished and Input.is_action_just_pressed("confirm") and chara > 3:
 		%textBox.text = text
 		finished = true
 	#Instant text boxes
@@ -107,7 +107,7 @@ func continue_dialogue():
 func set_text(newText: String):
 	text = newText
 	finished = false
-	char = 0
+	chara = 0
 	%textBox.text = ""
 
 func end_textbox():
@@ -117,6 +117,19 @@ func end_textbox():
 		$textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func reset():
+	text = ""
+	timer = 0
+	chara = 0
+	finished = true
+	textBoxIndex = 0
+	currentDialogue = null
+	isRunning = false
+	coolDown = 0
+	$textBoxControl.visible = false
+	$enterTip.visible = false
 
 
 func set_position(newPos : Vector2):

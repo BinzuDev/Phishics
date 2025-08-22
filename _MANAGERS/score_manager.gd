@@ -231,6 +231,9 @@ func _physics_process(_delta: float) -> void:
 	#"airSpinRank: ", airSpinRank, "\n",
 	#"airSpinHighestRank: ", airSpinHighestRank, "\n",
 	)
+	%freshDebugLabel.text = str(array_to_str(trickHistoryExtra),
+							array_to_str(trickHistory), 
+							"freshness: ", freshness, "\nfresh state: ", freshState)
 	
 	
 
@@ -327,7 +330,7 @@ func update_freshness(object):
 	
 	#Only check the 4 most recent tricks (or all of them if theres less than 4)
 	for i in range(-min(4, trickHistory.size()), 0):
-		print("trick at index ", i, " is: ", trickHistory[i].name)
+		#print("trick at index ", i, " is: ", trickHistory[i].name)
 		#Find how often the most common on shows up in the full list
 		freshness = max(freshness, trickHistory.count(trickHistory[i])+trickHistoryExtra.count(trickHistory[i]) )
 	
@@ -348,9 +351,6 @@ func update_freshness(object):
 			trickHistoryExtra = []
 	
 	## UI
-	%freshDebugLabel.text = str(array_to_str(trickHistoryExtra),
-								array_to_str(trickHistory), 
-								"freshness: ", freshness, "\nfresh state: ", freshState)
 	
 	timeSinceFreshChange = 0
 	
@@ -370,13 +370,13 @@ func update_freshness(object):
 	
 
 func array_to_str(array : Array):
-	var str := "["
+	var text := "["
 	for value in array:
-		if str != "[":
-			str += ", "
-		str += str(value.name)
-	str += "]\n"
-	return str
+		if text != "[":
+			text += ", "
+		text += str(value.name)
+	text += "]\n"
+	return text
 
 
 

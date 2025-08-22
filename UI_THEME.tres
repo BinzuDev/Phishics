@@ -1,27 +1,14 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://jcfvj2hbynk0"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://jcfvj2hbynk0"]
 
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="1_t7nr0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1bgx"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_width_left = 40
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7nr0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qih64"]
 resource_local_to_scene = true
 content_margin_top = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(1, 0.25, 0.7875, 1)
-border_width_left = 40
 border_color = Color(0, 0.966667, 1, 1)
 corner_radius_top_left = 60
 corner_radius_top_right = 15
@@ -43,12 +30,24 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1bgx"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyiqo"]
 resource_local_to_scene = true
 content_margin_top = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(1, 0.25, 0.7875, 1)
-border_width_left = 20
 border_color = Color(0, 0.966667, 1, 1)
 corner_radius_top_left = 60
 corner_radius_top_right = 15
@@ -60,13 +59,29 @@ shadow_size = 10
 [resource]
 resource_local_to_scene = true
 Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
 Button/constants/outline_size = 20
 Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_t7nr0")
-Button/styles/focus = SubResource("StyleBoxFlat_m1bgx")
+Button/styles/focus = SubResource("StyleBoxEmpty_t7nr0")
 Button/styles/hover = SubResource("StyleBoxFlat_qih64")
 Button/styles/normal = SubResource("StyleBoxFlat_t7nr0")
-Button/styles/pressed = SubResource("StyleBoxFlat_dyiqo")
+Button/styles/pressed = SubResource("StyleBoxFlat_m1bgx")
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_t7nr0")
+Label/styles/normal = SubResource("StyleBoxFlat_dyiqo")

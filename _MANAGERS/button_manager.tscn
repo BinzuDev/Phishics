@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt4sgsaxfg8yc"]
+
+[ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="1_a5m03"]
+[ext_resource type="Script" uid="uid://dw34m7d1vvhxg" path="res://_MANAGERS/UI_button.gd" id="2_m4ko8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0yte"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ko8"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5m03"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+draw_center = false
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+
+[node name="Button" type="Label"]
+focus_mode = 2
+mouse_filter = 0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_a5m03")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_s0yte")
+text = "     Button     "
+horizontal_alignment = 1
+script = ExtResource("2_m4ko8")
+
+[node name="backPanel" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m4ko8")
+
+[node name="blueBorder" type="Panel" parent="backPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5m03")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

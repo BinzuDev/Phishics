@@ -7,6 +7,7 @@ var framefwrd
 var freezeframe : int = 0 
 var objFreeze #freeze something else when hitstopping
 var hideUI : bool = false
+var nextScene
 
 
 enum gameState { #Testing something, not used yet
@@ -36,6 +37,19 @@ func reset_level():
 	get_tree().reload_current_scene()
 	MusicManager.stop_music()
 	ScoreManager.reset_everything()
+
+func change_scene(scene : String):
+	nextScene = scene
+	MenuManager.start_transition()
+
+func level_transition():
+	MusicManager.stop_music()
+	ScoreManager.reset_everything()
+	ScoreManager.show()
+	DialogueManager.reset()
+	MenuManager.end_transition()
+	get_tree().change_scene_to_file.call_deferred(nextScene)
+
 
 
 func _physics_process(_delta):

@@ -16,7 +16,7 @@ unique_name_in_owner = true
 stream = ExtResource("3_i3sl1")
 volume_db = 10.0
 autoplay = true
-max_distance = 40.0
+max_distance = 35.0
 parameters/looping = true
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]

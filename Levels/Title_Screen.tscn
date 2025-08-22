@@ -1,0 +1,220 @@
+[gd_scene load_steps=20 format=3 uid="uid://c3e2kb32fmaeo"]
+
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
+[ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_t7vd5"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_5cjeb"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_4kyk8"]
+[ext_resource type="PackedScene" uid="uid://b55dwm5m1l2j5" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_1em2i"]
+[ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="6_t7vd5"]
+[ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ostwq"]
+panorama = ExtResource("1_1em2i")
+
+[sub_resource type="Sky" id="Sky_w4v7x"]
+sky_material = SubResource("PanoramaSkyMaterial_ostwq")
+
+[sub_resource type="Environment" id="Environment_b0qhh"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_w4v7x")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uoobp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qax75"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yt0yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1em2i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bnno"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68fed"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cjeb"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1em2i"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[node name="Title_Screen" type="Node3D"]
+script = ExtResource("1_5cjeb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b0qhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="fish" parent="." instance=ExtResource("2_t7vd5")]
+transform = Transform3D(0.939573, 0, 0.342348, 0, 1, 0, -0.342348, 0, 0.939573, -0.0942845, 0.206973, 1.52209)
+noScoreUI = true
+
+[node name="Platform1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -0.5, -490)
+material_override = ExtResource("3_5cjeb")
+material_overlay = ExtResource("4_4kyk8")
+mesh = SubResource("BoxMesh_uoobp")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_qax75")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.973659, 0.228011, 0, -0.228011, 0.973659, 0, 2.44329, 4.30156)
+current = true
+
+[node name="jelly_fish_girl_IK" parent="." instance=ExtResource("6_1em2i")]
+transform = Transform3D(0.765187, 0.0373174, -0.642726, 0.0202117, 0.996434, 0.0819169, 0.643491, -0.0756723, 0.761704, 1.11886, 3.96976e-05, 2.92213)
+
+[node name="invisWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="invisWall"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="invisWall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.614285, 0, -789.084, 0, 200, 0, 0.789084, 0, 614.285, 11.51, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="invisWall2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="invisWall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1000, 0, 200, 0, -1, 0, -4.37114e-05, 11.51, 0, -239.905)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="invisWall3"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterMargin" type="MarginContainer" parent="PauseMenu"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = -412.0
+offset_right = 538.0
+offset_bottom = -68.0
+grow_vertical = 0
+
+[node name="optionList" type="VBoxContainer" parent="PauseMenu/CenterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="tutorial" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1bnno")
+text = "TUTORIAL"
+
+[node name="play" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_68fed")
+text = "PLAY"
+
+[node name="tricks" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5cjeb")
+text = "TRICKS"
+
+[node name="Exit" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../tutorial")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1em2i")
+text = "QUIT"
+
+[node name="logo" type="Sprite3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70877, 0, -5.70877, 24.3395, -29.7062, 47.8489, -224.936)
+no_depth_test = true
+texture = ExtResource("7_t7vd5")
+
+[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/tutorial" to="." method="_on_tutorial_button_pressed"]
+[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/play" to="." method="_on_play_button_pressed"]
+[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/Exit" to="." method="_on_exit_button_pressed"]

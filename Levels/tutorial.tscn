@@ -494,6 +494,7 @@ environment = SubResource("Environment_0xeif")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35052, 12.529)
 gravity_scale = 1.5
 canJump = false
+noScoreUI = true
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 

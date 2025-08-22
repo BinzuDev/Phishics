@@ -3,16 +3,37 @@ extends Node
 
 func _ready():
 	print("menu manager ready")
-	
+	$PauseMenu/TrickList.visible = false
+	$splashScreen.visible = true
 
 func _process(_delta):
+	
+	#splash screen fadeout
+	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
+		$splashScreen.modulate.a -= 0.05
+	
+	
 	$PauseMenu.visible = GameManager.gamePaused
 	if Input.is_action_just_pressed("pause"):
 		%Continue.grab_focus()
+		%PauseList.visible = true
+		%TrickList.visible = false
+		
 	#if Input.is_action_just_pressed("frameFRWD"):
 	#	%hideUI.button_pressed = true
-	$PauseMenu/CenterMargin.visible = !%hideUI.button_pressed
 	
+
+
+func start_transition():
+	$screenTransition.play("transition_in")
+
+func _on_screen_transition_finished(anim_name):
+	if anim_name == "transition_in":
+		GameManager.level_transition()
+
+func end_transition():
+	$screenTransition.play("transition_out")
+
 
 #Pause menu options
 func _on_continue_pressed():
@@ -23,6 +44,15 @@ func _on_restart_pressed():
 	GameManager.reset_level()
 	ScoreManager.show()
 
+func _on_tricks_pressed():
+	%PauseList.visible = false
+	%TrickList.visible = true
+	$PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer/Button.grab_focus()
+
+
+func _on_exit_pressed(): 
+	GameManager.toggle_pause() 
+	GameManager.change_scene("res://Levels/Title_Screen.tscn")
 
 
 #Debug settings
@@ -41,6 +71,7 @@ func _on_fresh_debug_toggled(toggled_on):
 
 
 func _on_hide_ui_toggled(toggled_on):
+	$PauseMenu/CenterMargin.visible = false
 	GameManager.hideUI = toggled_on
 	if toggled_on:
 		ScoreManager.hide()
