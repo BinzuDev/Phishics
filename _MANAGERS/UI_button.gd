@@ -9,6 +9,9 @@ var timer := 0
 @onready var stylebox: StyleBoxFlat = $backPanel/blueBorder.get_theme_stylebox("panel").duplicate()
 
 signal on_button_pressed
+signal on_button_hovered
+signal on_button_exited
+
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
@@ -30,6 +33,7 @@ func set_border_width(value: float):
 	
 func _on_focus_entered():
 	if !ignoreInputs:
+		on_button_hovered.emit()
 		var tween = create_tween()
 		tween.tween_method(set_border_width, 0, 50, 0.5) \
 			.set_trans(Tween.TRANS_EXPO) \
@@ -37,6 +41,7 @@ func _on_focus_entered():
 
 func _on_focus_exited():
 	if !ignoreInputs:
+		on_button_exited.emit()
 		var tween = create_tween()
 		tween.tween_method(set_border_width, 50, 0, 0.5) \
 			.set_trans(Tween.TRANS_EXPO) \

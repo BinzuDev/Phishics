@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b55dwm5m1l2j5"]
+[gd_scene load_steps=41 format=3 uid="uid://b55dwm5m1l2j5"]
 
 [ext_resource type="PackedScene" uid="uid://c81n6rsfe13qy" path="res://Models/JFG/models/jelly_fish_girl_IK.glb" id="1_8sp2m"]
 [ext_resource type="Script" uid="uid://c0kyxugabv0la" path="res://Models/JFG/jelly_fish_girl.gd" id="2_ctkjy"]
@@ -147,23 +147,181 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_puxw3"]
 
+[sub_resource type="Animation" id="Animation_ctkjy"]
+resource_name = "Hug"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fishAttachment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeFish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeFish:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0.0529825, 1.30401), Vector3(0, 0.0529825, 1.30401), Vector3(1.19209e-07, 1.17442, 1.07869)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeFish:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.683742, 1.49397, -1.8188)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6f1a5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fishAttachment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeFish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeFish:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0529825, 1.30401)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeFish:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.683742, 1.49397, -1.8188)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kklxm"]
+resource_name = "Sad"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kklxm"]
+_data = {
+&"Hug": SubResource("Animation_ctkjy"),
+&"RESET": SubResource("Animation_6f1a5"),
+&"Sad": SubResource("Animation_kklxm")
+}
+
 [node name="jelly_fish_girl_IK" instance=ExtResource("1_8sp2m")]
 script = ExtResource("2_ctkjy")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(4.16034e-09, 1.19137e-07, 0.0348995, 0.999391)
+bones/2/rotation = Quaternion(1.95156e-16, -1.19209e-07, 2.32645e-23, 1)
 bones/3/rotation = Quaternion(3.22493e-08, 3.66462e-08, -0.73232, 0.680961)
-bones/5/rotation = Quaternion(-3.81514e-21, -3.52734e-07, -7.17071e-15, 1)
-bones/6/rotation = Quaternion(-4.65868e-21, -8.52651e-14, -7.10543e-15, 1)
-bones/7/rotation = Quaternion(-7.19978e-21, -4.17232e-07, -7.10544e-15, 1)
-bones/8/rotation = Quaternion(-2.96461e-21, -1.78814e-07, -7.10545e-15, 1)
+bones/4/rotation = Quaternion(0.344329, 0.935741, 0.0762511, -0.00336707)
+bones/5/rotation = Quaternion(-0.0540556, 0.0281899, 0.690014, 0.721224)
+bones/6/rotation = Quaternion(0.0858913, 0.0177619, -0.731403, 0.676282)
+bones/7/rotation = Quaternion(6.98493e-10, -4.17698e-07, -2.32831e-09, 1)
+bones/8/rotation = Quaternion(1.39698e-09, -1.85333e-07, 1.11759e-08, 1)
+bones/10/rotation = Quaternion(-0.290822, 0.000238445, 0.00622213, 0.956757)
 bones/12/rotation = Quaternion(-3.34485e-08, 2.44442e-08, 0.73232, 0.680961)
-bones/13/rotation = Quaternion(0.0363161, 0.99934, 5.11284e-09, 7.54481e-08)
-bones/14/rotation = Quaternion(1.77636e-15, 4.14018e-07, 6.78612e-15, 1)
-bones/15/rotation = Quaternion(-2.96462e-21, 5.68434e-14, 7.10542e-15, 1)
-bones/16/rotation = Quaternion(-5.50572e-21, 4.17233e-07, 7.10541e-15, 1)
-bones/17/rotation = Quaternion(-4.65868e-21, 1.78814e-07, 7.10541e-15, 1)
-bones/19/rotation = Quaternion(-0.290822, -0.000238428, -0.00622211, 0.956757)
+bones/13/rotation = Quaternion(-0.344329, 0.935742, 0.076251, 0.00336721)
+bones/14/rotation = Quaternion(-0.0540557, -0.0281898, -0.690014, 0.721224)
+bones/15/rotation = Quaternion(0.0858912, -0.0177619, 0.731403, 0.676282)
+bones/16/rotation = Quaternion(-8.14907e-10, 4.15253e-07, 4.65671e-10, 1)
+bones/17/rotation = Quaternion(-6.40287e-10, 1.84111e-07, -1.39698e-08, 1)
+bones/19/rotation = Quaternion(-0.290822, -0.000238427, -0.00622209, 0.956757)
+bones/21/position = Vector3(-7.45058e-09, 0.331349, 1.5439e-16)
+bones/21/rotation = Quaternion(-2.15973e-16, 1.38778e-17, 0, 1)
+bones/22/rotation = Quaternion(-2.15973e-16, 1.38778e-17, 0, 1)
 bones/23/rotation = Quaternion(-0.0209592, 0.173568, 0.977498, -0.118037)
+bones/31/rotation = Quaternion(-2.15973e-16, 1.38778e-17, 0, 1)
 bones/32/rotation = Quaternion(0.899477, -0.239454, -0.32115, -0.174545)
 bones/35/rotation = Quaternion(0.931453, -0.215609, -0.215608, -0.198548)
 bones/39/rotation = Quaternion(0.927679, -0.226656, -0.238136, -0.177001)
@@ -184,10 +342,10 @@ bones/115/rotation = Quaternion(0.706986, 0.0130651, -0.706986, -0.0130651)
 bones/116/rotation = Quaternion(0.0373702, 0.999301, -1.48956e-15, 7.54452e-08)
 bones/117/rotation = Quaternion(0.560345, 0.828259, 2.56771e-06, 4.84881e-06)
 bones/118/rotation = Quaternion(0.0107734, 0.000678734, 0.204552, 0.978796)
-bones/120/rotation = Quaternion(0.706986, -0.0130651, 0.706986, -0.0130651)
-bones/121/rotation = Quaternion(-0.0373702, 0.999301, -9.63585e-16, -7.54452e-08)
-bones/122/rotation = Quaternion(-0.560345, 0.828259, 2.54453e-06, -4.81172e-06)
-bones/123/rotation = Quaternion(0.0107734, -0.000678734, -0.204552, 0.978796)
+bones/120/rotation = Quaternion(0.707037, -0.0174209, 0.706894, -0.00979954)
+bones/121/rotation = Quaternion(-0.0367073, 0.99473, 0.00701535, -0.0954795)
+bones/122/rotation = Quaternion(-0.557576, 0.824593, -0.0492714, 0.0820267)
+bones/123/rotation = Quaternion(0.0107734, -0.000678755, -0.204552, 0.978796)
 bones/125/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
 bones/129/position = Vector3(0.125505, 0.0700438, 0.139432)
 bones/129/rotation = Quaternion(0.524108, -0.485659, -0.515435, 0.473046)
@@ -368,14 +526,14 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/earJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.496558, -0.868003, 0, 0.868004, 0.496558, 0, 1.96226, 0)
+transform = Transform3D(0.997564, -0.0346381, 0.0605488, 0.0697565, 0.495348, -0.865889, 5.80783e-10, 0.868004, 0.496558, -0.037706, 1.96094, 8.9898e-09)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.26, 0)
 rotation_offset = Quaternion(0.58, 0, 0, 1)
 
 [node name="SpringBoneCollisionSphere3D" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70226, 0.06)
+transform = Transform3D(0.997564, -0.0697565, 5.80755e-10, 0.0697565, 0.997564, -1.66312e-08, 5.80783e-10, 1.66312e-08, 1, -0.0195693, 1.70158, 0.06)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0, 0.06)
@@ -383,7 +541,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.22
 
 [node name="SpringBoneCollisionSphere3D2" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95226, 0.08)
+transform = Transform3D(0.997564, -0.0697565, 5.80755e-10, 0.0697565, 0.997564, -1.66312e-08, 5.80783e-10, 1.66312e-08, 1, -0.0370084, 1.95097, 0.08)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.25, 0.08)
@@ -434,20 +592,21 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="0"]
-transform = Transform3D(0.838202, 0.539326, 0.0808989, 0.539326, -0.797753, -0.269663, -0.0808989, 0.269663, -0.95955, -0.33, 2.41859, 0)
+transform = Transform3D(0.798539, 0.59366, 0.0995125, 0.596482, -0.758188, -0.263363, -0.0808989, 0.269663, -0.95955, -0.398734, 2.39314, 1.63875e-08)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(-0.33, -0.05, 0)
 rotation_offset = Quaternion(1, 0.3, 0, 0.15)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="1"]
-transform = Transform3D(0.961554, -0.274617, 0, -0.274617, -0.961553, 0, 0, 0, -1, 0.3, 2.38859, 0)
+transform = Transform3D(0.978368, -0.206874, -5.80755e-10, -0.206874, -0.978367, 1.66312e-08, -4.00877e-09, -1.61513e-08, -1, 0.231824, 2.40716, 1.62544e-08)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0.3, -0.08, 0)
 rotation_offset = Quaternion(1, -0.14, 0, 0)
 
 [node name="hatJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="15"]
+visible = false
 active = false
 influence = 0.5
 setting_count = 6
@@ -847,14 +1006,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.82226, 0.1)
+transform = Transform3D(0.997564, -5.80755e-10, -0.0697565, 0.0697565, 1.66312e-08, 0.997564, 5.80783e-10, -1, 1.66312e-08, -0.0279401, 1.82128, 0.1)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, 0, 2.46859, 0)
+transform = Transform3D(0.997564, 0.0491185, -0.0495312, 0.0697565, -0.702427, 0.708329, 5.80783e-10, -0.710059, -0.704142, -0.0730257, 2.46604, 1.74107e-08)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -1086,7 +1245,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="2"]
-transform = Transform3D(-1.19209e-07, -2.79397e-08, 1, -0.0369474, -0.999317, -3.35276e-08, 0.999317, -0.0369474, 5.96047e-08, -0.125505, 0.970101, 0.0473244)
+transform = Transform3D(-5.126e-06, -0.0107799, 0.999942, -0.0384889, -0.999201, -0.0107721, 0.999259, -0.0384867, -0.000409842, -0.128739, 0.970059, 0.0468597)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)
@@ -1094,7 +1253,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(-1.19209e-07, -2.79397e-08, 1, -0.0369474, -0.999317, -3.35276e-08, 0.999317, -0.0369474, 5.96047e-08, -0.265505, 0.970102, 0.0473244)
+transform = Transform3D(-5.126e-06, -0.0107799, 0.999942, -0.0384889, -0.999201, -0.0107721, 0.999259, -0.0384867, -0.000409842, -0.268731, 0.971567, 0.0469171)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, -0.14)
@@ -1104,8 +1263,13 @@ radius = 0.16
 [node name="smear" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_puxw3")
 
-[node name="fishAttachment" type="BoneAttachment3D" parent="." index="2"]
-transform = Transform3D(-8.19564e-08, 0.999999, 7.02522e-14, 1, 9.68576e-08, -7.58967e-07, -7.58967e-07, 1.68754e-14, -1, 0.571577, 1.97596, -1.5061e-09)
+[node name="fakeFish" parent="." index="2" instance=ExtResource("10_sskjn")]
+transform = Transform3D(0.295862, 0.114504, 0.386464, -0.375748, -0.0951455, 0.315849, 0.145873, -0.477321, 0.0297491, 0, 0.0529825, 1.30401)
+visible = false
+
+[node name="fishAttachment" type="BoneAttachment3D" parent="." index="3"]
+transform = Transform3D(0.756745, -0.619238, 0.209476, -0.601527, -0.785075, -0.147723, 0.255931, -0.0142169, -0.966591, 0.442141, 1.75629, 0.0505658)
+visible = false
 bone_name = "Left elbow"
 bone_idx = 5
 use_external_skeleton = true
@@ -1114,26 +1278,33 @@ external_skeleton = NodePath("../Armature/Skeleton3D")
 [node name="fakeFish" parent="fishAttachment" index="0" instance=ExtResource("10_sskjn")]
 transform = Transform3D(0.0423524, 0.495751, -0.0493643, 0.0391184, 0.0460803, 0.496333, 0.496665, -0.0459038, -0.0348828, -0.0685423, 0.188536, -0.0112744)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
 environment = SubResource("Environment_i8tt3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="4"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
 visible = false
 shadow_enabled = true
 shadow_normal_bias = 6.028
 directional_shadow_fade_start = 0.647
 
-[node name="Platform" type="MeshInstance3D" parent="." index="5"]
+[node name="Platform" type="MeshInstance3D" parent="." index="6"]
 transform = Transform3D(-4.8913e-07, 0, -10.68, 0, 1, 0, 11.19, 0, -4.66838e-07, 0, -0.5, 0)
-visible = false
 material_override = ExtResource("12_i8tt3")
 material_overlay = ExtResource("13_puxw3")
 mesh = SubResource("BoxMesh_ctkjy")
 skeleton = NodePath("../..")
 
-[node name="blackBox" type="MeshInstance3D" parent="." index="6"]
+[node name="blackBox" type="MeshInstance3D" parent="." index="7"]
 transform = Transform3D(32.42, 0, 0, 0, 20.36, 0, 0, 0, 20, 0, 6.93895, 0.75271)
 visible = false
 material_override = SubResource("StandardMaterial3D_i8tt3")
 mesh = SubResource("BoxMesh_puxw3")
+
+[node name="AnimationPlayer" parent="." index="8"]
+autoplay = "T-Pose"
+
+[node name="AnimationExtras" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+&"": SubResource("AnimationLibrary_kklxm")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=28 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b55dwm5m1l2j5" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_1em2i"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="6_t7vd5"]
 [ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeuib.ttf" id="8_4kyk8"]
+[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/seguisb.ttf" id="9_1bnno"]
+[ext_resource type="Texture2D" uid="uid://b5f7hqp8djo8w" path="res://Sprites/godot_logo.png" id="10_68fed"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ostwq"]
 panorama = ExtResource("1_1em2i")
@@ -76,6 +79,19 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kyk8"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1em2i"]
 resource_local_to_scene = true
 content_margin_top = 8.0
@@ -88,6 +104,47 @@ corner_radius_bottom_right = 45
 corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imy30"]
+bg_color = Color(0, 0.751334, 0.98, 0.945098)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0, 0.966667, 0.843137)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13dlr"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bnno"]
+font = ExtResource("8_4kyk8")
+font_size = 75
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_68fed"]
+font = ExtResource("9_1bnno")
+font_size = 42
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Title_Screen" type="Node3D"]
 script = ExtResource("1_5cjeb")
@@ -122,7 +179,7 @@ shape = SubResource("BoxShape3D_qax75")
 transform = Transform3D(1, 0, 0, 0, 0.973659, 0.228011, 0, -0.228011, 0.973659, 0, 2.44329, 4.30156)
 current = true
 
-[node name="jelly_fish_girl_IK" parent="." instance=ExtResource("6_1em2i")]
+[node name="JFG" parent="." instance=ExtResource("6_1em2i")]
 transform = Transform3D(0.765187, 0.0373174, -0.642726, 0.0202117, 0.996434, 0.0819169, 0.643491, -0.0756723, 0.761704, 1.11886, 3.96976e-05, 2.92213)
 
 [node name="invisWall" type="MeshInstance3D" parent="."]
@@ -161,7 +218,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_1em2i")
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -170,8 +227,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="CenterMargin" type="MarginContainer" parent="PauseMenu"]
+[node name="MenuOptions" type="MarginContainer" parent="UI"]
 custom_minimum_size = Vector2(460, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -183,38 +241,279 @@ offset_right = 538.0
 offset_bottom = -68.0
 grow_vertical = 0
 
-[node name="optionList" type="VBoxContainer" parent="PauseMenu/CenterMargin"]
+[node name="optionList" type="VBoxContainer" parent="UI/MenuOptions"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="tutorial" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+[node name="tutorial" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1bnno")
 text = "TUTORIAL"
 
-[node name="play" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+[node name="play" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_68fed")
 text = "PLAY"
 
-[node name="tricks" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+[node name="tricks" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5cjeb")
 text = "TRICKS"
 
-[node name="Exit" parent="PauseMenu/CenterMargin/optionList" instance=ExtResource("6_t7vd5")]
+[node name="credits" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kyk8")
+text = "CREDITS"
+
+[node name="Exit" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../tutorial")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1em2i")
 text = "QUIT"
 
+[node name="Credits" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -480.0
+offset_right = 900.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_imy30")
+metadata/_edit_lock_ = true
+
+[node name="creditsReturn" parent="UI/Credits/Panel" instance=ExtResource("6_t7vd5")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 856.0
+offset_right = 1782.0
+offset_bottom = 954.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_13dlr")
+text = "Back"
+
+[node name="binzu" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 109.0
+text = "BinzuDev"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="binzuList" type="Label" parent="UI/Credits/Panel/binzu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 549.0
+grow_horizontal = 2
+text = "Lead Programmer
+Lead Level Designer
+3D Character Modeling
+3D Character Animation
+Audio engineering
+Folley SFX recording
+Promotional Video Assistant
+Quality Assurance"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="hamhus" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 10.0
+offset_right = 1053.0
+offset_bottom = 110.0
+text = "HamHus"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="hamList" type="Label" parent="UI/Credits/Panel/hamhus"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 473.0
+grow_horizontal = 2
+text = "Producer
+Lead Artist
+Composer
+Assistant Programmer
+3D Prop artist
+Head of Marketing
+Video Production Manager
+Human Relations"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="enzo" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 1360.0
+offset_top = 23.0
+offset_right = 1653.0
+offset_bottom = 123.0
+text = "Lorenzo"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="enzoList" type="Label" parent="UI/Credits/Panel/enzo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 473.0
+grow_horizontal = 2
+text = "JFG Concept Artist
+JFG Face Sprites"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="ben" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 1354.0
+offset_top = 256.0
+offset_right = 1647.0
+offset_bottom = 356.0
+text = "Ben"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="benList" type="Label" parent="UI/Credits/Panel/ben"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 473.0
+grow_horizontal = 2
+text = "Early Prototype assistance
+3D rigging assistance"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="raspy" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 1354.0
+offset_top = 500.0
+offset_right = 1647.0
+offset_bottom = 600.0
+text = "Raspy"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="voiceActing" type="Label" parent="UI/Credits/Panel/raspy"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 171.0
+grow_horizontal = 2
+text = "Voice Acting"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="Playtest" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 726.0
+offset_right = 531.0
+offset_bottom = 826.0
+text = "Playtesting"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="Playtesters" type="Label" parent="UI/Credits/Panel/Playtest"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 473.0
+grow_horizontal = 2
+text = "Friends and Familly
+BinzuDev Discord"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="Made in godot" type="Label" parent="UI/Credits/Panel"]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 750.0
+offset_right = 1128.0
+offset_bottom = 850.0
+text = "Made In Godot"
+label_settings = SubResource("LabelSettings_1bnno")
+horizontal_alignment = 1
+
+[node name="godotengine" type="Label" parent="UI/Credits/Panel/Made in godot"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 96.0
+offset_right = 316.5
+offset_bottom = 473.0
+grow_horizontal = 2
+text = "godotengine.org/license/"
+label_settings = SubResource("LabelSettings_68fed")
+horizontal_alignment = 1
+
+[node name="GodotLogo" type="Sprite2D" parent="UI/Credits/Panel"]
+position = Vector2(1252, 834)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("10_68fed")
+
 [node name="logo" type="Sprite3D" parent="."]
 transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70877, 0, -5.70877, 24.3395, -29.7062, 47.8489, -224.936)
 no_depth_test = true
+render_priority = -10
 texture = ExtResource("7_t7vd5")
 
-[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/tutorial" to="." method="_on_tutorial_button_pressed"]
-[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/play" to="." method="_on_play_button_pressed"]
-[connection signal="on_button_pressed" from="PauseMenu/CenterMargin/optionList/Exit" to="." method="_on_exit_button_pressed"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_button_pressed"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/play" to="." method="_on_play_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/play" to="." method="_on_play_button_pressed"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tricks" to="." method="_on_tricks_hovered"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_button_pressed"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_button_pressed"]
+[connection signal="on_button_pressed" from="UI/Credits/Panel/creditsReturn" to="." method="_on_credits_go_back_pressed"]

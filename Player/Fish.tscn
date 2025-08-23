@@ -1134,5 +1134,5 @@ texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="." method="checkpoint"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
