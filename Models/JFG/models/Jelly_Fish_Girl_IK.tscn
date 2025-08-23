@@ -55,7 +55,7 @@ noise = SubResource("FastNoiseLite_tvltw")
 render_priority = -2
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
-shader_parameter/bubble_color = Color(0.6045, 0.279, 0.93, 1)
+shader_parameter/bubble_color = Color(0.603922, 0.52549, 0.796078, 1)
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 3.0
 shader_parameter/animation_speed = 0.3
@@ -526,14 +526,14 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/earJiggle" index="0"]
-transform = Transform3D(0.997564, -0.0346381, 0.0605488, 0.0697565, 0.495348, -0.865889, 5.80783e-10, 0.868004, 0.496558, -0.037706, 1.96094, 8.9898e-09)
+transform = Transform3D(0.997564, -0.0346381, 0.0605489, 0.0697565, 0.495348, -0.865889, 5.79575e-10, 0.868004, 0.496558, -0.037706, 1.96094, 8.98981e-09)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.26, 0)
 rotation_offset = Quaternion(0.58, 0, 0, 1)
 
 [node name="SpringBoneCollisionSphere3D" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="1"]
-transform = Transform3D(0.997564, -0.0697565, 5.80755e-10, 0.0697565, 0.997564, -1.66312e-08, 5.80783e-10, 1.66312e-08, 1, -0.0195693, 1.70158, 0.06)
+transform = Transform3D(0.997564, -0.0697565, 5.81977e-10, 0.0697565, 0.997564, -1.66312e-08, 5.79575e-10, 1.66312e-08, 1, -0.0195693, 1.70158, 0.06)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0, 0.06)
@@ -541,7 +541,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.22
 
 [node name="SpringBoneCollisionSphere3D2" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="2"]
-transform = Transform3D(0.997564, -0.0697565, 5.80755e-10, 0.0697565, 0.997564, -1.66312e-08, 5.80783e-10, 1.66312e-08, 1, -0.0370084, 1.95097, 0.08)
+transform = Transform3D(0.997564, -0.0697565, 5.81977e-10, 0.0697565, 0.997564, -1.66312e-08, 5.79575e-10, 1.66312e-08, 1, -0.0370084, 1.95097, 0.08)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.25, 0.08)
@@ -592,14 +592,14 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="0"]
-transform = Transform3D(0.798539, 0.59366, 0.0995125, 0.596482, -0.758188, -0.263363, -0.0808989, 0.269663, -0.95955, -0.398734, 2.39314, 1.63875e-08)
+transform = Transform3D(0.798539, 0.59366, 0.0995125, 0.596482, -0.758188, -0.263363, -0.0808989, 0.269663, -0.95955, -0.398734, 2.39314, 1.63879e-08)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(-0.33, -0.05, 0)
 rotation_offset = Quaternion(1, 0.3, 0, 0.15)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="1"]
-transform = Transform3D(0.978368, -0.206874, -5.80755e-10, -0.206874, -0.978367, 1.66312e-08, -4.00877e-09, -1.61513e-08, -1, 0.231824, 2.40716, 1.62544e-08)
+transform = Transform3D(0.978368, -0.206874, -5.81977e-10, -0.206874, -0.978367, 1.66312e-08, -4.00994e-09, -1.6151e-08, -1, 0.231824, 2.40716, 1.62541e-08)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0.3, -0.08, 0)
@@ -1006,14 +1006,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(0.997564, -5.80755e-10, -0.0697565, 0.0697565, 1.66312e-08, 0.997564, 5.80783e-10, -1, 1.66312e-08, -0.0279401, 1.82128, 0.1)
+transform = Transform3D(0.997564, -5.81977e-10, -0.0697565, 0.0697565, 1.66312e-08, 0.997564, 5.79575e-10, -1, 1.66312e-08, -0.0318033, 1.82128, 0.101834)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(0.997564, 0.0491185, -0.0495312, 0.0697565, -0.702427, 0.708329, 5.80783e-10, -0.710059, -0.704142, -0.0730257, 2.46604, 1.74107e-08)
+transform = Transform3D(0.997564, 0.0491185, -0.0495312, 0.0697565, -0.702427, 0.708329, 5.79575e-10, -0.710059, -0.704142, -0.0768889, 2.46604, 0.00183441)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -1229,7 +1229,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="thighL2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(0, 2.79397e-08, -1, 0.0369474, -0.999317, -2.42144e-08, -0.999317, -0.0369473, -1.19209e-07, 0.265505, 0.970101, 0.0473244)
+transform = Transform3D(5.96046e-08, 1.86264e-09, -1, 0.0369474, -0.999317, 0, -0.999317, -0.0369474, 5.96047e-08, 0.265505, 0.970102, 0.0473244)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, -0.14)
@@ -1237,7 +1237,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighL1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(0, 2.79397e-08, -1, 0.0369474, -0.999317, -2.42144e-08, -0.999317, -0.0369473, -1.19209e-07, 0.125505, 0.970101, 0.0473244)
+transform = Transform3D(5.96046e-08, 1.86264e-09, -1, 0.0369474, -0.999317, 0, -0.999317, -0.0369474, 5.96047e-08, 0.125505, 0.970101, 0.0473244)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -1245,7 +1245,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="2"]
-transform = Transform3D(-5.126e-06, -0.0107799, 0.999942, -0.0384889, -0.999201, -0.0107721, 0.999259, -0.0384867, -0.000409842, -0.128739, 0.970059, 0.0468597)
+transform = Transform3D(-5.24521e-06, -0.01078, 0.999942, -0.0384889, -0.999201, -0.0107722, 0.999259, -0.0384867, -0.000409603, -0.128739, 0.970059, 0.0468597)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)
@@ -1253,7 +1253,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(-5.126e-06, -0.0107799, 0.999942, -0.0384889, -0.999201, -0.0107721, 0.999259, -0.0384867, -0.000409842, -0.268731, 0.971567, 0.0469171)
+transform = Transform3D(-5.24521e-06, -0.01078, 0.999942, -0.0384889, -0.999201, -0.0107722, 0.999259, -0.0384867, -0.000409603, -0.268731, 0.971567, 0.046917)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, -0.14)
@@ -1264,11 +1264,11 @@ radius = 0.16
 material_override = SubResource("StandardMaterial3D_puxw3")
 
 [node name="fakeFish" parent="." index="2" instance=ExtResource("10_sskjn")]
-transform = Transform3D(0.295862, 0.114504, 0.386464, -0.375748, -0.0951455, 0.315849, 0.145873, -0.477321, 0.0297491, 0, 0.0529825, 1.30401)
+transform = Transform3D(0.295862, 0.114504, 0.386464, -0.375748, -0.0951455, 0.315849, 0.145872, -0.477321, 0.0297491, 0, 0.0529825, 1.30401)
 visible = false
 
 [node name="fishAttachment" type="BoneAttachment3D" parent="." index="3"]
-transform = Transform3D(0.756745, -0.619238, 0.209476, -0.601527, -0.785075, -0.147723, 0.255931, -0.0142169, -0.966591, 0.442141, 1.75629, 0.0505658)
+transform = Transform3D(0.756745, -0.619238, 0.209476, -0.601528, -0.785074, -0.147724, 0.255931, -0.014217, -0.96659, 0.442141, 1.75629, 0.0505658)
 visible = false
 bone_name = "Left elbow"
 bone_idx = 5

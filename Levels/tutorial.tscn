@@ -765,6 +765,11 @@ transform = Transform3D(-0.863131, -0.504979, -4.85127e-09, -0.50498, 0.863131, 
 strength = 20.0
 centerPlayer = true
 
+[node name="BoostRing10" parent="funArea" instance=ExtResource("13_4wqju")]
+transform = Transform3D(-0.898441, 0.435046, -0.0594914, 0.435497, 0.90017, 0.00582653, 0.0560872, -0.0206736, -0.998212, -22.3518, 41.8024, -304.3)
+strength = 17.0
+centerPlayer = true
+
 [node name="BoostRing6" parent="funArea" instance=ExtResource("13_4wqju")]
 transform = Transform3D(3.04686e-08, 1.54015e-09, 1, -0.717032, 0.69704, -1.81762e-08, -0.69704, -0.717032, 4.37114e-08, -17.2674, 49.9489, -304.67)
 strength = 20.0
