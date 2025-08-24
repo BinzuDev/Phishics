@@ -1,11 +1,15 @@
 extends Node3D
 
+@export var customEyes : bool = true
+
 
 func _ready():
 	pass 
 
 func _process(_delta):
-	pass
+	%moveIrisRight.visible = customEyes
+	%moveIrisLeft.visible = customEyes
+	%EyeWhite.visible = customEyes
 
 
 func play_animation(anim : String):
@@ -19,7 +23,7 @@ func play_animation(anim : String):
 	if $AnimationExtras.has_animation(anim):
 		$AnimationExtras.play(anim)
 	else:
-		$AnimationExtras.play("RESET")
+		$AnimationExtras.play("Blinking")
 	
 	
 	

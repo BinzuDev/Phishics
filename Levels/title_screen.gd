@@ -8,8 +8,15 @@ func _ready():
 	$UI/Credits.visible = false
 
 func _process(_delta):
+	print(get_viewport().gui_get_focus_owner())
 	logoTimer += 1
 	$logo.rotation_degrees.z = sin(logoTimer*0.02) * 3
+	#backup in case no option is selected
+	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
+		if get_viewport().gui_get_focus_owner() == null:
+			%tutorial.grab_focus()
+	
+	
 
 
 func _on_tutorial_button_pressed():
@@ -37,7 +44,7 @@ func _on_credits_go_back_pressed():
 
 
 func _on_tutorial_hovered():
-	$JFG.play_animation("T-pose")
+	$JFG.play_animation("Stretching")
 
 func _on_play_hovered():
 	$JFG.play_animation("idle")

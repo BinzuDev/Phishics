@@ -12,19 +12,19 @@ void vertex() {
 	vec3 uv1_offset = vec3(0,0,0);
 	float H = float(Hframes);
 	float V = float(Vframes);
-	uv1_offset.x = float(frame)/H + 0.012;
-	uv1_offset.y = floor( float(frame)/H ) / V + 0.018;
-
-	vec3 uv1_scale = vec3(0.9/H, 0.90/V, 1);
-	//vec3 uv1_scale = vec3(1.0/H, 1.0/V, 1);
-
+	uv1_offset.x = float(frame)/H;
+	uv1_offset.y = floor( float(frame)/H )/V;
+	
+	vec3 uv1_scale = vec3(1.0/H, 1.0/V, 1);
+	
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	
 }
+
 
 void fragment() {
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	ALBEDO = albedo_tex.rgb;
 	ALPHA *= albedo_tex.a;
-
 }

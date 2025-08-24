@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dtensr1tt2svp"]
 
-[ext_resource type="Shader" uid="uid://db4tpgrv8uij0" path="res://Shaders/jelly_fish_girl_skin.gdshader" id="1_qfi0n"]
+[ext_resource type="Shader" uid="uid://db4tpgrv8uij0" path="res://Shaders/JFG_skin.gdshader" id="1_qfi0n"]
 [ext_resource type="Texture2D" uid="uid://b8xxgpeimaaqn" path="res://Models/JFG/textures/underwear_texture.png" id="2_2uw1e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gggs4"]
