@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhurauq3rbwsc"]
+
+[ext_resource type="Script" uid="uid://cwrjcdhivp6o1" path="res://destructable_sign.gd" id="1_egdn7"]
+[ext_resource type="Texture2D" uid="uid://s5egjbmsoc15" path="res://Sprites/signs/fishwarning.png" id="2_3f8aq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s010x"]
+size = Vector3(1.80209, 1.56863, 0.255173)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 5
+collision_mask = 7
+gravity_scale = 0.0
+script = ExtResource("1_egdn7")
+Sign_Sprite = "uid://s5egjbmsoc15"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("2_3f8aq")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155965, -0.0641863, -0.00164141)
+shape = SubResource("BoxShape3D_s010x")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShapeForArea" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.00990176, -0.0314763, 0.0686342)
+shape = SubResource("BoxShape3D_s010x")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

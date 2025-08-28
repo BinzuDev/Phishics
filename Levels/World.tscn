@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=113 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b3o3bqgimbwt7" path="res://Models/car_battery.tscn" id="14_hqwgh"]
 [ext_resource type="PackedScene" uid="uid://bf8smqh6dbfvm" path="res://Objects/fricking_awesome_tube.tscn" id="15_myu2g"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="15_rk5xy"]
-[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/streetsign.png" id="15_wvw3a"]
+[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/streetsign.png" id="15_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="16_e1uki"]
 [ext_resource type="PackedScene" uid="uid://cgsag1mii1t2g" path="res://Models/surf_board.tscn" id="16_h7041"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="17_w578l"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://ctowiaw5u6khg" path="res://Objects/force_field.tscn" id="42_7pnea"]
 [ext_resource type="PackedScene" uid="uid://cydkps4dt7k4i" path="res://Objects/ball_mode.tscn" id="42_rneqk"]
 [ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="45_s7dn7"]
+[ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="47_bmonc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -1266,10 +1267,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign/StaticBody3D"]
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
 shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="group1/streetsign"]
-transform = Transform3D(0.0244274, -0.00156252, 1.0196, 0.0192713, 0.0899735, 0.0173204, -1.10956, 0.00152829, 0.0227476, 0.560671, 0.874672, -0.222008)
-texture = ExtResource("15_wvw3a")
 
 [node name="pole2" type="MeshInstance3D" parent="group1"]
 transform = Transform3D(-0.139089, 0.235637, -0.373099, -0.312643, 3.55743, 0.0820562, 0.383769, 2.98351, -0.0683735, -12.5529, 14.4055, -53.3846)
@@ -3136,7 +3133,7 @@ bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish4" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.755743, -0.0233588, 0.654262, 0.0243525, 0.999583, 0.00755636, -0.654259, 0.0102239, 0.756028, 17.6492, 1.63514, -16.4438)
+transform = Transform3D(0.755743, -0.0233588, 0.654263, 0.0243525, 0.999583, 0.00755637, -0.654259, 0.0102239, 0.756029, 17.6492, 1.63514, -16.4438)
 progress = 88.3427
 speed = 7
 bounceForce = 30
@@ -3987,5 +3984,13 @@ texture = ExtResource("6_53g8k")
 
 [node name="Enemy5" parent="." instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
+
+[node name="Destructable_Sign" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.869, 31.445, 58.8964)
+Sign_Sprite = "uid://cnu1o2yg0c0o0"
+
+[node name="Destructable_Sign2" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.639921, 0.114022, 0, -0.114022, 0.639921, 0, 0, 0, 0.65, 11.1004, 8.7709, -11.5288)
+Sign_Sprite = "uid://bwjgjk84nbeei"
 
 [editable path="group2/frickingAwesomeTube"]
