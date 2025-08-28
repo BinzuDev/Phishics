@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://b55dwm5m1l2j5"]
+[gd_scene load_steps=61 format=4 uid="uid://p3f1xaqm8id"]
 
 [ext_resource type="PackedScene" uid="uid://c81n6rsfe13qy" path="res://Models/JFG/models/jelly_fish_girl_IK.glb" id="1_8sp2m"]
 [ext_resource type="Script" uid="uid://c0kyxugabv0la" path="res://Models/JFG/jelly_fish_girl.gd" id="2_ctkjy"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="10_sskjn"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="11_ah0cj"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="12_i8tt3"]
+[ext_resource type="PackedScene" uid="uid://djw56e4742ewv" path="res://Models/blahaj/blahaj_model.tscn" id="13_2lh6a"]
 [ext_resource type="Shader" uid="uid://c60r6xqjgyjav" path="res://Shaders/JFG_eye.gdshader" id="13_6f1a5"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="13_puxw3"]
 [ext_resource type="Texture2D" uid="uid://cknjgl3r75q0i" path="res://Models/JFG/faces/eye_white.png" id="14_kklxm"]
@@ -122,7 +123,7 @@ cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("14_puxw3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd6l8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbni8"]
 render_priority = 3
 shader = ExtResource("4_tvltw")
 shader_parameter/Hframes = 4
@@ -132,7 +133,7 @@ shader_parameter/texture_albedo = ExtResource("5_m2mm5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s8dx"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6xbjr"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2lh6a"]
 resource_name = "jelly_fish_girl_IK_Plane_001"
 _surfaces = [{
 "aabb": AABB(-0.156777, 2.05364, 0.109834, 0.313553, 0.3497, 0.075053),
@@ -151,7 +152,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_fo11q"]
+[sub_resource type="Skin" id="Skin_6aj6f"]
 resource_name = "Skin"
 bind_count = 137
 bind/0/name = &"Hips"
@@ -566,28 +567,28 @@ bind/136/name = &"footIK.R_leaf"
 bind/136/bone = -1
 bind/136/pose = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.125505, 0.0416526, 0.192289)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kklxm"]
-render_priority = 2
-shader = ExtResource("13_6f1a5")
-shader_parameter/mask_tex = ExtResource("14_kklxm")
-shader_parameter/pupil_tex = ExtResource("15_hd6l8")
-shader_parameter/pupil_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkveb"]
-render_priority = 2
-shader = ExtResource("13_6f1a5")
-shader_parameter/mask_tex = ExtResource("14_kklxm")
-shader_parameter/pupil_tex = ExtResource("16_wswht")
-shader_parameter/pupil_offset = Vector2(0, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd6l8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsxks"]
 render_priority = 1
 transparency = 1
 no_depth_test = true
 shading_mode = 0
 albedo_texture = ExtResource("14_kklxm")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4es0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqs7x"]
+render_priority = 2
+shader = ExtResource("13_6f1a5")
+shader_parameter/mask_tex = ExtResource("14_kklxm")
+shader_parameter/pupil_tex = ExtResource("15_hd6l8")
+shader_parameter/pupil_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhwva"]
+render_priority = 2
+shader = ExtResource("13_6f1a5")
+shader_parameter/mask_tex = ExtResource("14_kklxm")
+shader_parameter/pupil_tex = ExtResource("16_wswht")
+shader_parameter/pupil_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lir32"]
 render_priority = 2
 shader = ExtResource("4_tvltw")
 shader_parameter/Hframes = 4
@@ -624,6 +625,70 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_puxw3"]
 
+[sub_resource type="Animation" id="Animation_g84a4"]
+resource_name = "Blahaj"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blahajAttachment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("face/EyeWhite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/hair_ears_001:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_hd6l8"]
 resource_name = "Blinking"
 length = 5.0
@@ -641,6 +706,132 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1, 0, 1, 0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 2.7, 2.8, 3, 3.1, 4.4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face/EyeWhite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 2.7, 2.8, 3, 3.1, 4.4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("face/mouth:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y4es0"]
+resource_name = "Cutesy"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 2.7, 2.8, 3, 3.1, 4.4, 4.5, 5.5, 5.8, 8, 8.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 3.1, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 4, 5, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 2.7, 2.8, 3, 3.1, 4.4, 4.5, 5.5, 5.8, 8, 8.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face/EyeWhite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 2.7, 2.8, 3, 3.1, 4.4, 4.5, 5.5, 5.8, 8, 8.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4167, 0.8334, 1.2501, 1.6668, 2.0835, 2.5002, 2.9169, 3.3336, 3.7503, 4.167, 4.5837, 5, 5.4167, 5.8334, 6.2501, 6.6668, 7.0835, 7.5002, 7.9169, 8.3336, 8.7503, 9.167, 9.5837, 10),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0), Vector2(1.12, 0), Vector2(0, 0), Vector2(-2.44, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4167, 0.8334, 1.2501, 1.6668, 2.0835, 2.5002, 2.9169, 3.3336, 3.7503, 4.167, 4.5837, 5, 5.4167, 5.8334, 6.2501, 6.6668, 7.0835, 7.5002, 7.9169, 8.3336, 8.7503, 9.167, 9.5837, 10),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0), Vector2(2.43, 0), Vector2(0, 0), Vector2(-1.1, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_h5a1t"]
 resource_name = "Eye_testing"
@@ -649,7 +840,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RemoteTransform3D/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/0/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -661,7 +852,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RemoteTransform3D/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/1/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -673,7 +864,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RemoteTransform3D/EyeOverlay:material_override:shader_parameter/frame")
+tracks/2/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -685,7 +876,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RemoteTransform3D/EyeWhite:visible")
+tracks/3/path = NodePath("face/EyeWhite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -697,7 +888,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RemoteTransform3D/moveIrisRight:visible")
+tracks/4/path = NodePath("face/EyeWhite/moveIrisRight:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -709,7 +900,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RemoteTransform3D/moveIrisLeft:visible")
+tracks/5/path = NodePath("face/EyeWhite/moveIrisLeft:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -721,7 +912,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("RemoteTransform3D/mouth:material_override:shader_parameter/frame")
+tracks/6/path = NodePath("face/mouth:material_override:shader_parameter/frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -733,6 +924,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_ctkjy"]
 resource_name = "Hug"
+length = 3.7083
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -785,14 +977,113 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/4/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9, 2.7, 3.2, 3.55, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 2, 0, 2, 2, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("face/EyeWhite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9, 2.7, 3.2, 3.55, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.9, 3.55, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 4, 5, 4, 4, 6]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.65, 2.7, 3.2, 3.6),
+"transitions": PackedFloat32Array(1, -2, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 1.5), Vector2(-1, 1.5), Vector2(0.63, 4.6), Vector2(2.39, 3.41), Vector2(2.39, 3.41), Vector2(-1.73, 0.12)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.65, 2.7, 3.2, 3.6),
+"transitions": PackedFloat32Array(1, -2, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.5), Vector2(1, 1.5), Vector2(2.65, 3.49), Vector2(4.68, 1.87), Vector2(4.68, 1.87), Vector2(1.37, 0.41)]
+}
+
+[sub_resource type="Animation" id="Animation_kkveb"]
+resource_name = "Jumping"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:customEyes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face/EyeWhite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_6f1a5"]
@@ -860,7 +1151,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RemoteTransform3D/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/5/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -872,7 +1163,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("RemoteTransform3D/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/6/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -884,7 +1175,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RemoteTransform3D/EyeOverlay:material_override:shader_parameter/frame")
+tracks/7/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -896,7 +1187,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("RemoteTransform3D/moveIrisRight:visible")
+tracks/8/path = NodePath("face/EyeWhite/moveIrisRight:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -908,7 +1199,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("RemoteTransform3D/moveIrisLeft:visible")
+tracks/9/path = NodePath("face/EyeWhite/moveIrisLeft:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -920,7 +1211,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("RemoteTransform3D/EyeWhite:visible")
+tracks/10/path = NodePath("face/EyeWhite:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -944,10 +1235,46 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RemoteTransform3D/mouth:visible")
+tracks/12/path = NodePath("face/mouth:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("blahajAttachment:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armature/Skeleton3D/hair_ears_001:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -960,7 +1287,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RemoteTransform3D/EyeOverlay:material_override:shader_parameter/frame")
+tracks/0/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -984,7 +1311,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RemoteTransform3D/mouth:visible")
+tracks/2/path = NodePath("face/mouth:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -992,6 +1319,190 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face/EyeWhite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hhs3r"]
+resource_name = "Stare"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fishAttachment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeFish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeFish:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0529825, 1.30401)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeFish:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.683742, 1.49397, -1.8188)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/face:material_override:shader_parameter/frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("face/EyeWhite/moveIrisRight:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("face/EyeWhite/moveIrisLeft:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("face/EyeWhite:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".:customEyes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("face/mouth:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("face/mouth:material_override:shader_parameter/frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_wswht"]
@@ -1002,7 +1513,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RemoteTransform3D/moveIrisLeft:material_override:shader_parameter/pupil_offset")
+tracks/0/path = NodePath("face/EyeWhite/moveIrisLeft:material_override:shader_parameter/pupil_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1014,7 +1525,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RemoteTransform3D/moveIrisRight:material_override:shader_parameter/pupil_offset")
+tracks/1/path = NodePath("face/EyeWhite/moveIrisRight:material_override:shader_parameter/pupil_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1026,7 +1537,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RemoteTransform3D/EyeOverlay:material_override:shader_parameter/frame")
+tracks/2/path = NodePath("face/EyeOverlay:material_override:shader_parameter/frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1038,7 +1549,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RemoteTransform3D/mouth:material_override:shader_parameter/frame")
+tracks/3/path = NodePath("face/mouth:material_override:shader_parameter/frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1050,10 +1561,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:customEyes")
+tracks/4/path = NodePath("face/mouth:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("face/EyeWhite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.41, 1.16, 2.04, 2.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
@@ -1062,11 +1585,15 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kklxm"]
 _data = {
+&"Blahaj": SubResource("Animation_g84a4"),
 &"Blinking": SubResource("Animation_hd6l8"),
+&"Cutesy": SubResource("Animation_y4es0"),
 &"Eye_testing": SubResource("Animation_h5a1t"),
 &"Hug": SubResource("Animation_ctkjy"),
+&"Jumping": SubResource("Animation_kkveb"),
 &"RESET": SubResource("Animation_6f1a5"),
 &"Sad": SubResource("Animation_kklxm"),
+&"Stare": SubResource("Animation_hhs3r"),
 &"Stretching": SubResource("Animation_wswht")
 }
 
@@ -1074,24 +1601,33 @@ _data = {
 script = ExtResource("2_ctkjy")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 1.20928, 0.092007)
-bones/3/position = Vector3(0.0573522, 0.28491, 1.50271e-09)
-bones/3/rotation = Quaternion(0.164907, -0.0939377, -0.680466, 0.707777)
-bones/4/rotation = Quaternion(0.531866, 0.745935, 0.284468, 0.282449)
-bones/5/rotation = Quaternion(-0.926742, 0.120839, -0.0970635, 0.342237)
-bones/6/rotation = Quaternion(1.37295e-07, 1.11869e-08, -0.401742, 0.915753)
-bones/7/rotation = Quaternion(-1.86752e-08, -4.59588e-07, 0.755789, 0.654815)
-bones/8/rotation = Quaternion(1.98342e-07, -2.49203e-07, 0.827585, 0.56134)
-bones/10/rotation = Quaternion(-0.046781, 0.145487, 0.314574, 0.93685)
-bones/12/position = Vector3(-0.0573522, 0.28491, -1.41397e-09)
-bones/12/rotation = Quaternion(0.164907, 0.0939377, 0.680466, 0.707777)
-bones/13/rotation = Quaternion(-0.531866, 0.745935, 0.284468, -0.282449)
-bones/14/rotation = Quaternion(-0.926742, -0.120839, 0.0970635, 0.342237)
-bones/15/rotation = Quaternion(1.34753e-07, -1.37295e-08, 0.401742, 0.915753)
-bones/16/rotation = Quaternion(-1.52865e-08, 4.63901e-07, -0.755789, 0.654815)
-bones/17/rotation = Quaternion(1.95529e-07, 2.41607e-07, -0.827585, 0.56134)
-bones/19/rotation = Quaternion(-0.046781, -0.145487, -0.314574, 0.93685)
+bones/0/position = Vector3(-0.0118748, 1.86245, 0.787768)
+bones/0/rotation = Quaternion(0.0277812, -0.08589, -0.0197176, 0.995722)
+bones/1/rotation = Quaternion(-0.044059, -0.156558, 0.0461513, 0.985606)
+bones/2/rotation = Quaternion(-0.244038, 0.0857362, 0.0054092, 0.965953)
+bones/3/position = Vector3(0.0573522, 0.28491, -4.29135e-15)
+bones/3/rotation = Quaternion(0.148839, -0.0831204, -0.733435, 0.658036)
+bones/4/rotation = Quaternion(0.146842, 0.83246, 0.528634, -0.077426)
+bones/5/rotation = Quaternion(-0.528609, -0.353196, 0.517631, 0.572611)
+bones/6/rotation = Quaternion(-0.119681, -0.0222037, 0.338216, 0.933163)
+bones/7/rotation = Quaternion(-1.49493e-07, -3.88299e-07, 0.353525, 0.935425)
+bones/8/rotation = Quaternion(-1.34217e-08, -1.81817e-07, 0.0907493, 0.995874)
+bones/10/position = Vector3(-0.0089448, 0.0696471, -0.0559163)
+bones/10/rotation = Quaternion(-0.290822, 0.000238434, 0.00622211, 0.956757)
+bones/12/position = Vector3(-0.0573522, 0.28491, -1.97652e-15)
+bones/12/rotation = Quaternion(-0.169519, 0.0209984, 0.65339, 0.737499)
+bones/13/rotation = Quaternion(0.295953, 0.943475, 0.136955, 0.0592523)
+bones/14/rotation = Quaternion(-0.0966272, 0.800382, 0.155147, 0.570947)
+bones/15/rotation = Quaternion(0.10301, -0.242571, -0.00383565, 0.964642)
+bones/16/rotation = Quaternion(3.30798e-08, 4.29007e-07, 0.0567865, 0.998386)
+bones/17/rotation = Quaternion(-8.06823e-09, 1.86814e-07, -0.00605761, 0.999982)
+bones/19/position = Vector3(0.00894471, 0.0696469, -0.0559162)
+bones/19/rotation = Quaternion(-0.558791, 0.00159806, -0.00601812, 0.829285)
+bones/21/position = Vector3(-0.00159917, 0.35928, 0.0116297)
+bones/21/rotation = Quaternion(0.13828, -0.209429, 0.044765, 0.966961)
+bones/22/rotation = Quaternion(-0.0321044, -0.0139959, -0.0606323, 0.997546)
 bones/23/rotation = Quaternion(-0.0209592, 0.173568, 0.977498, -0.118037)
+bones/31/rotation = Quaternion(-0.0808213, 0.10642, 0.0839498, 0.987469)
 bones/32/rotation = Quaternion(0.899477, -0.239454, -0.32115, -0.174545)
 bones/35/rotation = Quaternion(0.931453, -0.215609, -0.215608, -0.198548)
 bones/39/rotation = Quaternion(0.927679, -0.226656, -0.238136, -0.177001)
@@ -1108,23 +1644,25 @@ bones/89/rotation = Quaternion(0.811166, 0.387418, 0.327932, -0.290479)
 bones/97/rotation = Quaternion(-6.35486e-07, 4.2106e-07, 0.908732, -0.417379)
 bones/103/rotation = Quaternion(-0.16618, 0.328504, 0.896311, -0.247177)
 bones/109/rotation = Quaternion(0.0451844, -0.332727, 0.907608, -0.251989)
-bones/115/rotation = Quaternion(0.702253, -0.0833943, -0.702378, 0.0809424)
-bones/116/rotation = Quaternion(0.385098, 0.922876, -2.40501e-10, 6.97284e-08)
-bones/117/rotation = Quaternion(0.729265, 0.684183, 0.0042648, 0.00689888)
-bones/118/rotation = Quaternion(0.0107724, 0.000684887, 0.205042, 0.978694)
-bones/120/rotation = Quaternion(0.702318, 0.0821511, 0.702318, 0.0821515)
-bones/121/rotation = Quaternion(-0.385082, 0.922883, -1.78584e-10, -6.97086e-08)
-bones/122/rotation = Quaternion(-0.729301, 0.684193, 1.11447e-07, -5.10791e-06)
-bones/123/rotation = Quaternion(0.0107723, -0.000684939, -0.205042, 0.978694)
+bones/115/rotation = Quaternion(0.607269, -0.105714, -0.725601, 0.305861)
+bones/116/rotation = Quaternion(0.579957, 0.814647, 2.04929e-08, 7.11917e-08)
+bones/117/rotation = Quaternion(0.398779, 0.915636, -0.0222997, -0.0456999)
+bones/118/rotation = Quaternion(0.0107644, 0.00114206, 0.245538, 0.969327)
+bones/120/rotation = Quaternion(0.689372, 0.137351, 0.690675, 0.169909)
+bones/121/rotation = Quaternion(-0.637592, 0.770374, 1.28445e-08, -6.45134e-08)
+bones/122/rotation = Quaternion(-0.436986, 0.898243, -0.0421048, -0.0207242)
+bones/123/rotation = Quaternion(0.0107632, -0.00114191, -0.245538, 0.969327)
+bones/125/position = Vector3(0.26908, 1.28339, 1.6841)
 bones/125/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
-bones/129/position = Vector3(0.125505, 0.0727742, 0.139432)
-bones/129/rotation = Quaternion(0.520465, -0.481693, -0.519144, 0.477051)
-bones/130/position = Vector3(3.49992e-09, 5.40685e-08, -1.29383e-08)
-bones/130/rotation = Quaternion(-0.00613733, 0.00891695, 0.73473, 0.678273)
-bones/133/position = Vector3(-0.125505, 0.0727742, 0.139432)
-bones/133/rotation = Quaternion(0.524108, 0.485659, 0.515435, 0.473046)
-bones/134/position = Vector3(-1.92364e-09, 2.65887e-08, 6.00056e-10)
-bones/134/rotation = Quaternion(-0.00613733, -0.00891695, -0.73473, 0.678273)
+bones/127/position = Vector3(-0.354502, 1.28339, 1.6841)
+bones/129/position = Vector3(0.300615, 0.716756, 0.773405)
+bones/129/rotation = Quaternion(0.690352, -0.187617, -0.65182, 0.251684)
+bones/130/position = Vector3(-0.000499939, -0.00124161, 2.8158e-05)
+bones/130/rotation = Quaternion(-0.0065026, 0.00865338, 0.705907, 0.708222)
+bones/133/position = Vector3(-0.162287, 0.802544, 0.470218)
+bones/133/rotation = Quaternion(0.600465, 0.118035, 0.773178, 0.166448)
+bones/134/position = Vector3(0.00257786, -0.000208874, 1.24036e-05)
+bones/134/rotation = Quaternion(-0.00650259, -0.00865338, -0.705907, 0.708222)
 
 [node name="Body" parent="Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_l7bk4")
@@ -1208,7 +1746,6 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="earJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="13"]
-visible = false
 setting_count = 2
 settings/0/root_bone_name = "Left strand start"
 settings/0/root_bone = 23
@@ -1296,27 +1833,41 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/earJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.496558, -0.868003, 0, 0.868004, 0.496558, 0, 1.86982, 0.092007)
+transform = Transform3D(0.949745, -0.161302, -0.268265, 0.00878882, 0.870412, -0.492246, 0.312901, 0.46515, 0.828087, 0.0233062, 2.45478, 0.65917)
 bone_name = "Chest"
 bone = 2
-position_offset = Vector3(0, 0.26, 0)
+position_offset = Vector3(0, 0.23, -0.01)
 rotation_offset = Quaternion(0.58, 0, 0, 1)
 
 [node name="SpringBoneCollisionSphere3D" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60982, 0.152007)
+transform = Transform3D(0.949745, 0.152759, -0.27322, 0.00878882, 0.859481, 0.511092, 0.312901, -0.487808, 0.814945, -0.0417952, 2.41623, 0.857854)
 bone_name = "Chest"
 bone = 2
-position_offset = Vector3(0, 0, 0.06)
+position_offset = Vector3(0, 0.09, 0.15)
 rotation_offset = Quaternion(0, 0, 0, 1)
-radius = 0.22
+radius = 0.23
 
 [node name="SpringBoneCollisionSphere3D2" type="SpringBoneCollisionSphere3D" parent="Armature/Skeleton3D/earJiggle" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85982, 0.172007)
+transform = Transform3D(0.949745, 0.152759, -0.27322, 0.00878882, 0.859481, 0.511092, 0.312901, -0.487808, 0.814945, 0.00121293, 2.57627, 0.722817)
 bone_name = "Chest"
 bone = 2
-position_offset = Vector3(0, 0.25, 0.08)
+position_offset = Vector3(0, 0.3, 0.11)
 rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.15
+
+[node name="armColliderLeft" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/earJiggle" index="3"]
+transform = Transform3D(-0.344801, -0.938254, -0.028127, 0.315375, -0.087571, -0.944917, 0.88411, -0.334679, 0.326097, -0.0966632, 2.51552, 0.984562)
+bone_name = "Left elbow"
+bone = 5
+position_offset = Vector3(-0.04, 0.24, 0)
+rotation_offset = Quaternion(0, 0, 0, 1)
+
+[node name="armColliderRight" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/earJiggle" index="4"]
+transform = Transform3D(-0.00434564, -0.263661, -0.964606, 0.746353, 0.641136, -0.178608, 0.665536, -0.720712, 0.193998, -0.433164, 2.88167, 0.182827)
+bone_name = "Right elbow"
+bone = 14
+position_offset = Vector3(0.04, 0.24, 0)
+rotation_offset = Quaternion(0, 0, 0, 1)
 
 [node name="frontHairJiggle" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="14"]
 visible = false
@@ -1362,14 +1913,14 @@ settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="0"]
-transform = Transform3D(0.838202, 0.539326, 0.0808989, 0.539326, -0.797753, -0.269663, -0.0808989, 0.269663, -0.95955, -0.33, 2.32615, 0.092007)
+transform = Transform3D(0.786361, 0.308159, 0.53542, 0.615879, -0.458763, -0.640491, 0.0482576, 0.833411, -0.550542, -0.23457, 2.87745, 0.366496)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(-0.33, -0.05, 0)
 rotation_offset = Quaternion(1, 0.3, 0, 0.15)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/frontHairJiggle" index="1"]
-transform = Transform3D(0.961554, -0.274617, 0, -0.274617, -0.961553, 0, 0, 0, -1, 0.3, 2.29615, 0.092007)
+transform = Transform3D(0.825941, -0.271129, 0.494279, -0.0305013, -0.896965, -0.441048, 0.562932, 0.349204, -0.749109, 0.311658, 2.98803, 0.661804)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0.3, -0.08, 0)
@@ -1776,14 +2327,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00386322, 1.72982, 0.193841)
+transform = Transform3D(0.949745, 0.27322, 0.152759, 0.00878882, -0.511092, 0.859481, 0.312901, -0.814945, -0.487808, -0.0274147, 2.41646, 0.804307)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, -0.00386322, 2.37615, 0.0938414)
+transform = Transform3D(0.868643, 0.327106, 0.372105, 0.216994, -0.926377, 0.307798, 0.445392, -0.186622, -0.87567, 0.0499131, 2.9926, 0.490792)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -1999,7 +2550,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="thighL2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(-0.000578523, -0.00342347, -0.999994, -0.230832, -0.972987, 0.00346455, -0.972993, 0.230833, -0.000227332, 0.264506, 0.898463, 0.218381)
+transform = Transform3D(0.0466552, 0.192948, -0.980099, -0.525202, -0.829866, -0.188373, -0.849697, 0.523539, 0.0626194, 0.301959, 1.63025, 1.00642)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, -0.14)
@@ -2007,7 +2558,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighL1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(-0.000578523, -0.00342347, -0.999994, -0.230832, -0.972987, 0.00346455, -0.972993, 0.230833, -0.000227332, 0.124507, 0.898948, 0.218349)
+transform = Transform3D(0.0466552, 0.192948, -0.980099, -0.525202, -0.829866, -0.188373, -0.849697, 0.523539, 0.0626194, 0.164745, 1.60388, 1.01519)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -2015,7 +2566,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="2"]
-transform = Transform3D(0, -5.66244e-07, 1, 0.230786, -0.973005, -5.66244e-07, 0.973005, 0.230786, 0, -0.125505, 0.89894, 0.218336)
+transform = Transform3D(-0.133183, -0.148815, 0.979856, 0.375696, -0.922456, -0.089033, 0.917123, 0.35627, 0.178765, -0.189221, 1.57968, 0.925721)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)
@@ -2023,7 +2574,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(0, -5.66244e-07, 1, 0.230786, -0.973005, -5.66244e-07, 0.973005, 0.230786, 0, -0.265505, 0.89894, 0.218336)
+transform = Transform3D(-0.133183, -0.148815, 0.979856, 0.375696, -0.922456, -0.089033, 0.917123, 0.35627, 0.178765, -0.326401, 1.59215, 0.900694)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, -0.14)
@@ -2038,7 +2589,7 @@ transform = Transform3D(0.295862, 0.114504, 0.386464, -0.375748, -0.0951454, 0.3
 visible = false
 
 [node name="fishAttachment" type="BoneAttachment3D" parent="." index="3"]
-transform = Transform3D(0.902391, -0.429188, -0.0385606, 0.430289, 0.892632, 0.134381, -0.0232545, -0.137856, 0.990179, 0.21231, 1.64549, 0.40468)
+transform = Transform3D(-0.344801, -0.938254, -0.028127, 0.315375, -0.087571, -0.944917, 0.88411, -0.334679, 0.326097, 0.114726, 2.54916, 1.10025)
 visible = false
 bone_name = "Left elbow"
 bone_idx = 5
@@ -2048,75 +2599,87 @@ external_skeleton = NodePath("../Armature/Skeleton3D")
 [node name="fakeFish" parent="fishAttachment" index="0" instance=ExtResource("10_sskjn")]
 transform = Transform3D(0.0423524, 0.495751, -0.0493643, 0.0391184, 0.0460803, 0.496333, 0.496665, -0.0459038, -0.0348828, -0.0685423, 0.188536, -0.0112744)
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." index="4"]
+[node name="blahajAttachment" type="BoneAttachment3D" parent="." index="4"]
+transform = Transform3D(-0.344801, -0.938254, -0.028127, 0.315375, -0.087571, -0.944917, 0.88411, -0.334679, 0.326097, 0.114726, 2.54916, 1.10025)
+visible = false
+bone_name = "Left elbow"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="blahaj_model" parent="blahajAttachment" index="0" instance=ExtResource("13_2lh6a")]
+transform = Transform3D(-0.377353, 0.740722, 0.555821, 0.91989, 0.369037, 0.132722, -0.106808, 0.561376, -0.820639, -0.101839, 0.261681, -0.0786264)
+
+[node name="face" type="RemoteTransform3D" parent="." index="5"]
 remote_path = NodePath("../Armature/Skeleton3D/Head")
 
-[node name="EyeOverlay" type="MeshInstance3D" parent="RemoteTransform3D" index="0"]
+[node name="EyeOverlay" type="MeshInstance3D" parent="face" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-material_override = SubResource("ShaderMaterial_hd6l8")
-mesh = SubResource("ArrayMesh_6xbjr")
-skin = SubResource("Skin_fo11q")
+material_override = SubResource("ShaderMaterial_hbni8")
+mesh = SubResource("ArrayMesh_2lh6a")
+skin = SubResource("Skin_6aj6f")
 skeleton = NodePath("../../Armature/Skeleton3D")
 
-[node name="moveIrisRight" type="MeshInstance3D" parent="RemoteTransform3D" index="1"]
+[node name="EyeWhite" type="MeshInstance3D" parent="face" index="1"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-material_override = SubResource("ShaderMaterial_kklxm")
-mesh = SubResource("ArrayMesh_6xbjr")
-skin = SubResource("Skin_fo11q")
+material_override = SubResource("StandardMaterial3D_nsxks")
+mesh = SubResource("ArrayMesh_2lh6a")
+skin = SubResource("Skin_6aj6f")
 skeleton = NodePath("../../Armature/Skeleton3D")
 
-[node name="moveIrisLeft" type="MeshInstance3D" parent="RemoteTransform3D" index="2"]
+[node name="moveIrisRight" type="MeshInstance3D" parent="face/EyeWhite" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-material_override = SubResource("ShaderMaterial_kkveb")
-mesh = SubResource("ArrayMesh_6xbjr")
-skin = SubResource("Skin_fo11q")
-skeleton = NodePath("../../Armature/Skeleton3D")
+material_override = SubResource("ShaderMaterial_bqs7x")
+mesh = SubResource("ArrayMesh_2lh6a")
+skin = SubResource("Skin_6aj6f")
+skeleton = NodePath("../../../Armature/Skeleton3D")
 
-[node name="EyeWhite" type="MeshInstance3D" parent="RemoteTransform3D" index="3"]
+[node name="moveIrisLeft" type="MeshInstance3D" parent="face/EyeWhite" index="1"]
 unique_name_in_owner = true
+material_override = SubResource("ShaderMaterial_uhwva")
+mesh = SubResource("ArrayMesh_2lh6a")
+skin = SubResource("Skin_6aj6f")
+skeleton = NodePath("../../../Armature/Skeleton3D")
+
+[node name="mouth" type="MeshInstance3D" parent="face" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-material_override = SubResource("StandardMaterial3D_hd6l8")
-mesh = SubResource("ArrayMesh_6xbjr")
-skin = SubResource("Skin_fo11q")
+material_override = SubResource("ShaderMaterial_lir32")
+mesh = SubResource("ArrayMesh_2lh6a")
+skin = SubResource("Skin_6aj6f")
 skeleton = NodePath("../../Armature/Skeleton3D")
 
-[node name="mouth" type="MeshInstance3D" parent="RemoteTransform3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-material_override = SubResource("ShaderMaterial_y4es0")
-mesh = SubResource("ArrayMesh_6xbjr")
-skin = SubResource("Skin_fo11q")
-skeleton = NodePath("../../Armature/Skeleton3D")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
 environment = SubResource("Environment_i8tt3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="6"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="7"]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
 visible = false
 shadow_enabled = true
 shadow_normal_bias = 6.028
 directional_shadow_fade_start = 0.647
 
-[node name="Platform" type="MeshInstance3D" parent="." index="7"]
+[node name="Platform" type="MeshInstance3D" parent="." index="8"]
 transform = Transform3D(-4.8913e-07, 0, -10.68, 0, 1, 0, 11.19, 0, -4.66838e-07, 0, -0.5, 0)
 material_override = ExtResource("12_i8tt3")
 material_overlay = ExtResource("13_puxw3")
 mesh = SubResource("BoxMesh_ctkjy")
 skeleton = NodePath("../..")
 
-[node name="blackBox" type="MeshInstance3D" parent="." index="8"]
+[node name="blackBox" type="MeshInstance3D" parent="." index="9"]
 transform = Transform3D(32.42, 0, 0, 0, 20.36, 0, 0, 0, 20, 0, 6.93895, 0.75271)
 visible = false
 material_override = SubResource("StandardMaterial3D_i8tt3")
 mesh = SubResource("BoxMesh_puxw3")
 
-[node name="AnimationPlayer" parent="." index="9"]
+[node name="AnimationPlayer" parent="." index="10"]
 autoplay = "T-Pose"
 
-[node name="AnimationExtras" type="AnimationPlayer" parent="." index="10"]
+[node name="AnimationExtras" type="AnimationPlayer" parent="." index="11"]
 libraries = {
 &"": SubResource("AnimationLibrary_kklxm")
 }
+
+[node name="Camera3D" type="Camera3D" parent="." index="12"]
+transform = Transform3D(0.717883, 0.163934, -0.676586, -3.72529e-08, 0.971879, 0.235481, 0.696163, -0.169048, 0.697696, -1.88811, 2.82594, 2.53794)

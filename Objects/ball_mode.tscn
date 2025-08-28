@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cydkps4dt7k4i"]
+
+[sub_resource type="GDScript" id="GDScript_s7dn7"]
+resource_name = "collisionSwitcher"
+script/source = "extends Area3D
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	collision_layer = 0
+	collision_mask = 2
+
+
+func _on_body_entered(body):
+	body.get_node(\"./collision\").set_deferred(\"disabled\", true)
+	body.get_node(\"./collisionSphere\").set_deferred(\"disabled\", false)
+
+
+func _on_body_exited(body):
+	body.get_node(\"./collision\").set_deferred(\"disabled\", false)
+	body.get_node(\"./collisionSphere\").set_deferred(\"disabled\", true)
+"
+
+[node name="ball_mode_area" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_s7dn7")

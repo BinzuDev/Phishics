@@ -9,5 +9,6 @@ albedo_texture = ExtResource("1_in6y3")
 [node name="blahaj_model" type="Node3D"]
 
 [node name="Blahaj" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_l156g")
 mesh = ExtResource("2_27rn2")

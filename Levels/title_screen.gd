@@ -8,7 +8,6 @@ func _ready():
 	$UI/Credits.visible = false
 
 func _process(_delta):
-	print(get_viewport().gui_get_focus_owner())
 	logoTimer += 1
 	$logo.rotation_degrees.z = sin(logoTimer*0.02) * 3
 	#backup in case no option is selected
@@ -47,13 +46,16 @@ func _on_tutorial_hovered():
 	$JFG.play_animation("Stretching")
 
 func _on_play_hovered():
-	$JFG.play_animation("idle")
+	$JFG.play_animation("Jumping")
 
 func _on_tricks_hovered():
-	$JFG.play_animation("wave")
+	$JFG.play_animation("Cutesy")
 
 func _on_credits_hovered():
-	$JFG.play_animation("Hug")
+	$JFG.play_animation("Blahaj")
 
 func _on_exit_hovered():
 	$JFG.play_animation("Sad")
+
+func _on_exit_just_pressed():
+	$JFG.play_animation("Stare")

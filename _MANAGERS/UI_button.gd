@@ -8,7 +8,8 @@ var timer := 0
 
 @onready var stylebox: StyleBoxFlat = $backPanel/blueBorder.get_theme_stylebox("panel").duplicate()
 
-signal on_button_pressed
+signal on_button_pressed #After you press the button and its done doing the little animation
+signal on_button_just_pressed #the EXACT moment you press the button
 signal on_button_hovered
 signal on_button_exited
 
@@ -71,5 +72,6 @@ func _process(_delta):
 				print("CANCEL MENU INPUT")
 				return #cancel if you pressed the mouse but the mouse isnt on it
 			_on_button_pressed()
+			on_button_just_pressed.emit()
 			ignoreInputs = true
 	

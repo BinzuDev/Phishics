@@ -188,10 +188,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="cam_anchor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.826786, 0.562516, 0, -0.562516, 0.826786, 0.091394, 31.4961, -0.158273)
+transform = Transform3D(1, 0, 0, 0, 0.826786, 0.562516, 0, -0.562516, 0.826786, 0.091394, 31.4961, -0.00149234)
 
 [node name="Camera3D" type="Camera3D" parent="cam_anchor"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.04, -0.16)
 fov = 60.0
 
 [node name="UI" type="Control" parent="."]

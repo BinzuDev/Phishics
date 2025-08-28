@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_t7vd5"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_5cjeb"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_4kyk8"]
-[ext_resource type="PackedScene" uid="uid://b55dwm5m1l2j5" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_1em2i"]
+[ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_68fed"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="6_t7vd5"]
 [ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeuib.ttf" id="8_4kyk8"]
@@ -179,8 +179,8 @@ shape = SubResource("BoxShape3D_qax75")
 transform = Transform3D(1, 0, 0, 0, 0.973659, 0.228011, 0, -0.228011, 0.973659, 0, 2.44329, 4.30156)
 current = true
 
-[node name="JFG" parent="." instance=ExtResource("6_1em2i")]
-transform = Transform3D(0.765187, 0.0373174, -0.642726, 0.0202117, 0.996434, 0.0819169, 0.643491, -0.0756723, 0.761704, 1.11886, 3.96976e-05, 2.92213)
+[node name="JFG" parent="." instance=ExtResource("6_68fed")]
+transform = Transform3D(0.764736, 0.0368805, -0.643287, 0.020872, 0.996419, 0.0819385, 0.644005, -0.076088, 0.761228, 1.12, 0, 2.92)
 
 [node name="invisWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)
@@ -519,5 +519,6 @@ texture = ExtResource("7_t7vd5")
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_hovered"]
+[connection signal="on_button_just_pressed" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_just_pressed"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_button_pressed"]
 [connection signal="on_button_pressed" from="UI/Credits/Panel/creditsReturn" to="." method="_on_credits_go_back_pressed"]

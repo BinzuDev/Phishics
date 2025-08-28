@@ -4,19 +4,24 @@ extends Node3D
 
 
 func _ready():
-	pass 
+	#$DirectionalLight3D.visible = false
+	#$Platform.visible = false
+	play_animation("Hug")
+	
 
 func _process(_delta):
-	%moveIrisRight.visible = customEyes
-	%moveIrisLeft.visible = customEyes
-	%EyeWhite.visible = customEyes
+	pass
+	#safety net to make sure her eyes never become cursed
+	#if %EyeOverlay.get_instance_shader_parameter("frame") != 0:
+	#	%EyeWhite.visible = false
+	
 
 
 func play_animation(anim : String):
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
 	else:
-		$AnimationPlayer.play("T-Pose")
+		$AnimationPlayer.play("A-Pose")
 	
 	$AnimationExtras.play("RESET")
 	$AnimationExtras.advance(0)
