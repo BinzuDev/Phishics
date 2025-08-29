@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://igkx2qpnjl6x"]
+[gd_scene load_steps=11 format=3 uid="uid://igkx2qpnjl6x"]
 
 [ext_resource type="Script" uid="uid://cjh4npyqcxtf2" path="res://Objects/jellyfish.gd" id="1_34pw1"]
 [ext_resource type="Texture2D" uid="uid://bgpp2xr858vcn" path="res://Sprites/jellyfish.png" id="1_yvkaf"]
@@ -75,6 +75,9 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_qkjab")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qkjab"]
+radius = 3.0
+
 [node name="PathFollowJellyfish" type="PathFollow3D"]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 0, 0, 0)
 script = ExtResource("1_34pw1")
@@ -82,7 +85,7 @@ script = ExtResource("1_34pw1")
 [node name="JellyfishArea" type="Area3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1.00001, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, 0, 0, 0)
-collision_layer = 32
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JellyfishArea"]
@@ -107,5 +110,13 @@ autoplay = "Jellyfish"
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_c7hmj")
 volume_db = 1.0
+
+[node name="homingTarget" type="Area3D" parent="."]
+transform = Transform3D(1.00001, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, 0, 0, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="homingTarget"]
+shape = SubResource("CylinderShape3D_qkjab")
 
 [connection signal="body_entered" from="JellyfishArea" to="." method="_on_jellyfish_area_body_entered"]

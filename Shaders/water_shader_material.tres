@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="2_a5dhh"]
 
 [resource]
-render_priority = -1
+render_priority = -7
 shader = ExtResource("1_j6rqo")
 shader_parameter/albedo = Color(1, 1, 1, 0.380392)
 shader_parameter/texture_albedo = ExtResource("2_a5dhh")

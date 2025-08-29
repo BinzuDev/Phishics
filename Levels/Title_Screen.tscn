@@ -183,6 +183,7 @@ current = true
 
 [node name="JFG" parent="." instance=ExtResource("6_68fed")]
 transform = Transform3D(0.764736, 0.0368805, -0.643287, 0.020872, 0.996419, 0.0819385, 0.644005, -0.076088, 0.761228, 1.12, 0, 2.92)
+testingMode = false
 
 [node name="invisWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)
@@ -508,7 +509,7 @@ scale = Vector2(0.19, 0.19)
 texture = ExtResource("10_68fed")
 
 [node name="logo" type="Sprite3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70877, 0, -5.70877, 24.3395, -29.7062, 47.8489, -224.936)
+transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -38.996, 51.0354, -225.683)
 no_depth_test = true
 render_priority = -5
 texture = ExtResource("7_t7vd5")

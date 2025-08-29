@@ -60,6 +60,7 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("frameFRWD") and get_tree().paused:
 		get_tree().paused = !get_tree().paused
+		MenuManager.hide_menu_in_FBF()
 		framefwrd = gameTimer + 1
 	
 	if gameTimer == framefwrd:

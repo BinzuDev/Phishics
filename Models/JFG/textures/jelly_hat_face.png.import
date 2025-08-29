@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2tlrr0ix011u"
-path.s3tc="res://.godot/imported/tornadowarning.png-752ded9600cec2633d3401597348ec0e.s3tc.ctex"
+uid="uid://dtei5yqkv7ohr"
+path.s3tc="res://.godot/imported/jelly_hat_face.png-49b396ed5f6a7252b59ee29e0aed56b4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/signs/tornadowarning.png"
-dest_files=["res://.godot/imported/tornadowarning.png-752ded9600cec2633d3401597348ec0e.s3tc.ctex"]
+source_file="res://Models/JFG/textures/jelly_hat_face.png"
+dest_files=["res://.godot/imported/jelly_hat_face.png-49b396ed5f6a7252b59ee29e0aed56b4.s3tc.ctex"]
 
 [params]
 

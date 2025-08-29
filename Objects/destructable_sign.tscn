@@ -1,31 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhurauq3rbwsc"]
+[gd_scene load_steps=7 format=3 uid="uid://dhurauq3rbwsc"]
 
 [ext_resource type="Script" uid="uid://cwrjcdhivp6o1" path="res://destructable_sign.gd" id="1_egdn7"]
 [ext_resource type="Texture2D" uid="uid://s5egjbmsoc15" path="res://Sprites/signs/fishwarning.png" id="2_3f8aq"]
+[ext_resource type="AudioStream" uid="uid://bu7um2p6lj37" path="res://Sounds/sign_hit.ogg" id="3_3f8aq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s010x"]
-size = Vector3(1.80209, 1.56863, 0.255173)
+size = Vector3(1.8, 1.57, 0.15)
 
-[node name="RigidBody3D" type="RigidBody3D"]
-collision_layer = 5
+[sub_resource type="BoxShape3D" id="BoxShape3D_3f8aq"]
+size = Vector3(0.899707, 1.57, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_egdn7"]
+size = Vector3(1.9, 1.67, 0.36)
+
+[node name="destructable_sign" type="RigidBody3D"]
+collision_layer = 4
 collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("1_egdn7")
-Sign_Sprite = "uid://s5egjbmsoc15"
+signSprite = "uid://s5egjbmsoc15"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
+offset = Vector2(-25, 0)
 texture = ExtResource("2_3f8aq")
+region_enabled = true
+region_rect = Rect2(0, 0, 250, 400)
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155965, -0.0641863, -0.00164141)
+[node name="bend" type="Node3D" parent="."]
+
+[node name="Sprite3D2" type="Sprite3D" parent="bend"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
+sorting_offset = -0.1
+offset = Vector2(25, 0)
+texture = ExtResource("2_3f8aq")
+region_enabled = true
+region_rect = Rect2(250, 0, 250, 400)
+
+[node name="collisionFlat" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_s010x")
+
+[node name="collisionBend1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450146, 0, 0)
+shape = SubResource("BoxShape3D_3f8aq")
+disabled = true
+
+[node name="collisionBend2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0.182281, 0, 0.363101)
+shape = SubResource("BoxShape3D_3f8aq")
+disabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShapeForArea" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.00990176, -0.0314763, 0.0686342)
-shape = SubResource("BoxShape3D_s010x")
+shape = SubResource("BoxShape3D_egdn7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3f8aq")
+volume_db = 3.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

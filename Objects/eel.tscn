@@ -177,7 +177,7 @@ shape = SubResource("CylinderShape3D_orarh")
 debug_color = Color(0.352941, 0.152941, 0.729412, 0.988235)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05156, 1.45819, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05156, 0.737845, 0)
 text = "Press (Z)"
 font_size = 136
 

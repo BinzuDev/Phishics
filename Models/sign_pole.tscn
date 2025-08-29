@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6ues44s0cm5n"]
+
+[ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="1_0r8x8"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="2_ox0tv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11qgy"]
+albedo_texture = ExtResource("1_0r8x8")
+uv1_scale = Vector3(0.07, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6r7q6"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 8.0
+radial_segments = 8
+rings = 0
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r8x8"]
+height = 8.0
+radius = 0.15
+
+[node name="streetsign" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_11qgy")
+material_overlay = ExtResource("2_ox0tv")
+mesh = SubResource("CylinderMesh_6r7q6")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_0r8x8")

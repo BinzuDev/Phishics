@@ -1,12 +1,17 @@
 extends Node3D
 
-@export var customEyes : bool = true
+@export var testingMode : bool = false
 
 
 func _ready():
-	#$DirectionalLight3D.visible = false
-	#$Platform.visible = false
-	play_animation("Hug")
+	if get_tree().current_scene == self:
+		print("Debug mode")
+		$DirectionalLight3D.visible = true
+		$Platform.visible = true
+		play_animation("Hug")
+	else:
+		$DirectionalLight3D.visible = false
+		$Platform.visible = false
 	
 
 func _process(_delta):
