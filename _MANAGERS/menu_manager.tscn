@@ -1,7 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=19 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
+[ext_resource type="PackedScene" uid="uid://danbt80ck41n5" path="res://_MANAGERS/trick_panel.tscn" id="3_lv8kq"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="3_p1amj"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="3_tgkfp"]
 [ext_resource type="Texture2D" uid="uid://hmdmgl20jrvs" path="res://Sprites/UI/transition_head.png" id="4_s0yte"]
 [ext_resource type="Texture2D" uid="uid://dd5v5ejjwikqb" path="res://Sprites/UI/transition_tail2.png" id="5_s0yte"]
@@ -62,183 +64,26 @@ shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv8kq"]
 bg_color = Color(0, 0.637, 0.98, 0.823529)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 0.966667, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
+expand_margin_left = 25.0
+expand_margin_top = 25.0
+expand_margin_right = 25.0
 expand_margin_bottom = 25.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdg7k"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ewwa"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhqs"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06qk8"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l76pd"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgclf"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp8og"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1dqt"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lic3k"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7i77"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juf4l"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nkoj"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqsjg"]
-resource_local_to_scene = true
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(1, 0.25, 0.7875, 1)
-border_color = Color(0, 0.966667, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 15
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 15
-shadow_color = Color(0.02, 0.02, 0.02, 0.6)
-shadow_size = 10
+[sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
+line_spacing = 11.0
+font = ExtResource("3_p1amj")
+font_size = 35
+font_color = Color(0.983334, 0, 1, 1)
+outline_size = 19
 
 [sub_resource type="Animation" id="Animation_p1amj"]
 length = 0.001
@@ -334,21 +179,25 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4s76r")
 text = "CONTINUE"
+helpText = "Resume the game."
 
 [node name="Restart" parent="PauseMenu/PauseList/optionList" instance=ExtResource("3_tgkfp")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_tgkfp")
 text = "RESTART"
+helpText = "Reset the level and start over."
 
 [node name="Tricks" parent="PauseMenu/PauseList/optionList" instance=ExtResource("3_tgkfp")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_s0yte")
 text = "TRICKS"
+helpText = "Discover all the techniques you can pull off!"
 
 [node name="Exit" parent="PauseMenu/PauseList/optionList" instance=ExtResource("3_tgkfp")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_p1amj")
 text = "EXIT"
+helpText = "Go back to the main menu."
 
 [node name="DebugList" type="MarginContainer" parent="PauseMenu"]
 layout_mode = 1
@@ -394,7 +243,7 @@ text = "mute music"
 
 [node name="TrickList" type="MarginContainer" parent="PauseMenu"]
 unique_name_in_owner = true
-visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -402,15 +251,135 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 45
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 45
 metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="PauseMenu/TrickList"]
 layout_mode = 2
 theme = SubResource("Theme_vdg7k")
 theme_override_styles/panel = SubResource("StyleBoxFlat_lv8kq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PauseMenu/TrickList/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TrickList/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="hangtime" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Hangtime"
+score = "1-10pts depending on height"
+description = "Gained continuously every frame spent in the air."
+
+[node name="pogo" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Pogo Jump"
+score = "1000pts"
+description = "Press the Jump button right before landing to jump without even touching the ground!"
+description2 = "If the timing is perfect you can even jump without resetting the airspin meter!"
+
+[node name="high" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "High Jump"
+score = "500pts + x1"
+description = "Let go of the arrow keys before jumping to jump higher."
+description2 = "Tip: The faster you're spinning the higher the jump will go!"
+
+[node name="long" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Long Jump"
+score = "200pts + x1"
+description = "Keep a direction held before jumping to go further."
+
+[node name="wall" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Wall Jump"
+score = "800pts + x1"
+description = "Jump close enough to a wall to jump in midair."
+description2 = "Tip: Try combining it with a high jump!"
+
+[node name="vertical" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Vertical Jump"
+score = "5000pts + x5"
+rarity = "Rare"
+description = "Perfom a high jump that goes REALLY high."
+
+[node name="speen" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Speen"
+score = "depends on spinning speed"
+rarity = "Uncommon"
+description = "Gained continuously every frame that you're spinning REALLY fast."
+
+[node name="fish" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "fish"
+score = "100pts"
+description = "press the fish button"
+
+[node name="taunt" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Strike a Pose"
+score = "[altitude*500]pts + x5"
+rarity = "Uncommon"
+description = "Press the fish button while at the peak of your jump to perform a taunt!"
+description2 = "It won't work if you spam the fish button. You also need to be at least 4 meters off the ground."
+
+[node name="dive" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Dive"
+score = "[altitude*100]pts"
+description = "Press the dive button in the air."
+
+[node name="highdive" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "High Dive"
+score = "x10"
+rarity = "Rare"
+description = "Dive while REALLY high up in the air."
+
+[node name="tipsin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Tipspin"
+score = "[Depends on speed] pts"
+rarity = "Uncommon"
+description = "Spin on the floor vertically. (Either spinning on your tail or your face)"
+description2 = " Points are gained continuously every frame. Staying perfectly still will give the maximum amount of points."
+
+[node name="walltipspin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Wall Tipspin"
+score = "[Spin speed * 4] pts"
+rarity = "Rare"
+description = "Perform a tipspin in the air, perpendicularly to a wall."
+description2 = "Points are gained continuously every frame. At the spinning speeds required for the SPEEN trick, you'd gain 24000pts per second!"
+
+[node name="wallgrind" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Wall Grind"
+score = "x15"
+rarity = "Legendary"
+description = "Perform a Wall Tipspin that lasts over a second long!"
+
+[node name="tipland" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "TIP LANDING"
+score = "999999pts x200"
+rarity = "Legendary"
+description = "Land perfectly vertically either on your head or tail."
+description2 = "Instantly awards you with style rank PhishicSSS"
 
 [node name="Control" type="Control" parent="PauseMenu/TrickList/Panel"]
 layout_mode = 1
@@ -421,87 +390,29 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PauseMenu/TrickList/Panel/Control"]
+[node name="tips" type="MarginContainer" parent="PauseMenu"]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -319.0
-grow_horizontal = 0
-grow_vertical = 2
-follow_focus = true
+offset_left = -320.5
+offset_top = -61.0
+offset_right = 320.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 14
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer"]
+[node name="HelpTip" type="Label" parent="PauseMenu/tips"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = -4
-
-[node name="Button" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_vdg7k")
-text = "Button"
-
-[node name="Button2" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_6ewwa")
-text = "Button"
-
-[node name="Button3" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_juhqs")
-text = "Button"
-
-[node name="Button4" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_06qk8")
-text = "Button"
-
-[node name="Button5" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_l76pd")
-text = "Button"
-
-[node name="Button6" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_wgclf")
-text = "Button"
-
-[node name="Button7" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_pp8og")
-text = "Button"
-
-[node name="Button8" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_m1dqt")
-text = "Button"
-
-[node name="Button9" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lic3k")
-text = "Button"
-
-[node name="Button10" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7i77")
-text = "Button"
-
-[node name="Button11" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_juf4l")
-text = "Button"
-
-[node name="Button12" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_1nkoj")
-text = "Button"
-
-[node name="Button13" parent="PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer" instance=ExtResource("3_tgkfp")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gqsjg")
-text = "Button"
+size_flags_vertical = 8
+text = "Extra info on the selected menu option"
+label_settings = SubResource("LabelSettings_lv8kq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="splashScreen" type="TextureRect" parent="."]
 visible = false

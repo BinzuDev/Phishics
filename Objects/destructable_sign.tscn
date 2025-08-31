@@ -1,13 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhurauq3rbwsc"]
 
-[ext_resource type="Script" uid="uid://cwrjcdhivp6o1" path="res://destructable_sign.gd" id="1_egdn7"]
+[ext_resource type="Script" uid="uid://cwrjcdhivp6o1" path="res://Objects/destructable_sign.gd" id="1_egdn7"]
 [ext_resource type="Texture2D" uid="uid://s5egjbmsoc15" path="res://Sprites/signs/fishwarning.png" id="2_3f8aq"]
 [ext_resource type="AudioStream" uid="uid://bu7um2p6lj37" path="res://Sounds/sign_hit.ogg" id="3_3f8aq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s010x"]
-size = Vector3(1.8, 1.57, 0.15)
+margin = 0.01
+size = Vector3(1.8, 1.57, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3f8aq"]
+margin = 0.01
 size = Vector3(0.899707, 1.57, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_egdn7"]

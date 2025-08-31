@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://wbp38yxcr774"
-path="res://.godot/imported/segoeuii.ttf-e1a955db05fc25b47eb7ac7dbc2bc0ef.fontdata"
+uid="uid://vxjlxsvfng4u"
+path="res://.godot/imported/segui_semi_bold.ttf-a31677b1dc6a3fa426bd71184b66b167.fontdata"
 
 [deps]
 
-source_file="res://Fonts/segoeuii.ttf"
-dest_files=["res://.godot/imported/segoeuii.ttf-e1a955db05fc25b47eb7ac7dbc2bc0ef.fontdata"]
+source_file="res://Fonts/segui_semi_bold.ttf"
+dest_files=["res://.godot/imported/segui_semi_bold.ttf-a31677b1dc6a3fa426bd71184b66b167.fontdata"]
 
 [params]
 
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}

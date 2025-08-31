@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4k31usk776dy" path="res://Sprites/UI/enter_pink.png" id="3_aal2s"]
 [ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
-[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeuib.ttf" id="6_tffx4"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="6_tffx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
 shader = ExtResource("2_tqlrv")

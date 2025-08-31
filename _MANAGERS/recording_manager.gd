@@ -97,13 +97,14 @@ func do_replay():
 			var setInputs = current_line
 			var fish = get_parent()
 			print(currentFrame, " current pos:", fish.global_position, " recording pos: ", setInputs[7] )
-			
-			if currentFrame % replayAccuracy == 0:
+												   #cause theres always a bit of lag at the start, helps with desyncs
+			if currentFrame % replayAccuracy == 0 or currentFrame == 1 or Input.is_action_just_pressed("resync"):
 				#print("FORCE SET POSITION")
 				fish.global_position = string_to_vector3(setInputs[7])
 				fish.global_rotation = string_to_vector3(setInputs[8])
 				fish.linear_velocity = string_to_vector3(setInputs[9])
 				fish.angular_velocity = string_to_vector3(setInputs[10])
+				
 				
 			
 			if setInputs[0]:

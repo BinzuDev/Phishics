@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://06bslnyasca1"
-path="res://.godot/imported/segoeuib.ttf-e2cb0c93b107f223fa3533bc41a39c64.fontdata"
+path="res://.godot/imported/segoeui_bold.ttf-5a75e999c281932758d1d4ca5966512a.fontdata"
 
 [deps]
 
-source_file="res://Fonts/segoeuib.ttf"
-dest_files=["res://.godot/imported/segoeuib.ttf-e2cb0c93b107f223fa3533bc41a39c64.fontdata"]
+source_file="res://Fonts/segoeui_bold.ttf"
+dest_files=["res://.godot/imported/segoeui_bold.ttf-5a75e999c281932758d1d4ca5966512a.fontdata"]
 
 [params]
 
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}

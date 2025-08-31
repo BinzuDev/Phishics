@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=34 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_68fed"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="6_t7vd5"]
 [ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
-[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeuib.ttf" id="8_4kyk8"]
-[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/seguisb.ttf" id="9_1bnno"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="8_4kyk8"]
+[ext_resource type="Texture2D" uid="uid://camhknuxnb4ml" path="res://Sprites/UI/z_tip.png" id="8_w1112"]
+[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="9_1bnno"]
 [ext_resource type="Texture2D" uid="uid://b5f7hqp8djo8w" path="res://Sprites/godot_logo.png" id="10_68fed"]
+[ext_resource type="Texture2D" uid="uid://cix3flwwea5p7" path="res://Sprites/UI/arrow_tip.png" id="11_lt42k"]
 [ext_resource type="PackedScene" uid="uid://biji6soms632" path="res://Models/skate_park.tscn" id="12_imy30"]
 [ext_resource type="Texture2D" uid="uid://b5uhj7jaepkyy" path="res://Sprites/coral.png" id="13_13dlr"]
 
@@ -106,6 +108,20 @@ corner_radius_bottom_right = 45
 corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyvl3"]
+line_spacing = 11.0
+font = ExtResource("9_1bnno")
+font_size = 30
+font_color = Color(0.984314, 0, 1, 1)
+outline_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_w1112"]
+line_spacing = 11.0
+font = ExtResource("8_4kyk8")
+font_size = 35
+font_color = Color(0.983334, 0, 1, 1)
+outline_size = 19
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imy30"]
 bg_color = Color(0, 0.751334, 0.98, 0.945098)
@@ -239,13 +255,14 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 78.0
-offset_top = -412.0
+offset_top = -670.0
 offset_right = 538.0
-offset_bottom = -68.0
+offset_bottom = -6.0
 grow_vertical = 0
 
 [node name="optionList" type="VBoxContainer" parent="UI/MenuOptions"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 25
 
 [node name="tutorial" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
@@ -280,7 +297,89 @@ focus_neighbor_bottom = NodePath("../tutorial")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1em2i")
 text = "QUIT"
 
+[node name="keypTips" type="HBoxContainer" parent="UI/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="enter" type="Control" parent="UI/MenuOptions/keypTips"]
+custom_minimum_size = Vector2(47, 60)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="UI/MenuOptions/keypTips/enter"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("8_w1112")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Confirm" type="Label" parent="UI/MenuOptions/keypTips"]
+layout_mode = 2
+text = ": Confirm   "
+label_settings = SubResource("LabelSettings_pyvl3")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="arrows" type="Control" parent="UI/MenuOptions/keypTips"]
+custom_minimum_size = Vector2(78, 60)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="UI/MenuOptions/keypTips/arrows"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("11_lt42k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Select" type="Label" parent="UI/MenuOptions/keypTips"]
+layout_mode = 2
+text = ": Select"
+label_settings = SubResource("LabelSettings_pyvl3")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="tips" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.5
+offset_top = -61.0
+offset_right = 320.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 14
+metadata/_edit_lock_ = true
+
+[node name="HelpTip" type="Label" parent="UI/tips"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "Extra info on the selected menu option"
+label_settings = SubResource("LabelSettings_w1112")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Credits" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

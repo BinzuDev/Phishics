@@ -85,7 +85,9 @@ albedo_texture = ExtResource("44_iujy1")
 uv1_scale = Vector3(-2.5, -2, -2.5)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iujy1"]
-height = 0.9
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.85
 radial_segments = 16
 rings = 0
 cap_top = false
@@ -99,8 +101,8 @@ albedo_texture = ExtResource("44_iujy1")
 uv1_scale = Vector3(2, 1.5, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_div8h"]
-top_radius = 0.6
-bottom_radius = 0.6
+top_radius = 0.7
+bottom_radius = 0.7
 height = 0.6
 radial_segments = 16
 rings = 0
@@ -638,7 +640,8 @@ script = ExtResource("1_8ijwk")
 script = ExtResource("2_lt56d")
 recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
-replayAccuracy = 5
+replayFile = "res://Recordings/SUPER_LONG_WALL_GRIND.json"
+replayAccuracy = 9999
 
 [node name="pufferfish" type="Sprite3D" parent="."]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
@@ -716,7 +719,6 @@ collision_mask = 17
 [node name="speedLines" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 0.0354262)
-visible = false
 material_override = SubResource("StandardMaterial3D_div8h")
 mesh = SubResource("CylinderMesh_dh0na")
 skeleton = NodePath("../..")
@@ -724,7 +726,6 @@ skeleton = NodePath("../..")
 [node name="speedLines2" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(0.800418, 0, 0.599443, 0, 1, 0, -0.599443, 0, 0.800418, 0, 3.72529e-09, 0.0354262)
-visible = false
 material_override = SubResource("StandardMaterial3D_iujy1")
 mesh = SubResource("CylinderMesh_iujy1")
 skeleton = NodePath("../..")
@@ -732,7 +733,6 @@ skeleton = NodePath("../..")
 [node name="speedLines3" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true
 transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, 0, 3.72529e-09, 0.0354262)
-visible = false
 material_override = SubResource("StandardMaterial3D_twgm3")
 mesh = SubResource("CylinderMesh_div8h")
 skeleton = NodePath("../..")
@@ -1134,5 +1134,5 @@ texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
 
-[connection signal="body_entered" from="." to="." method="checkpoint"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="checkpoint"]

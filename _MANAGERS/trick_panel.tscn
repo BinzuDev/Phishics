@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://danbt80ck41n5"]
+
+[ext_resource type="Script" uid="uid://rdy6ljwgotcb" path="res://_MANAGERS/trick_panel.gd" id="1_5qu7t"]
+[ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="1_wjyya"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="2_xyjwe"]
+[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="3_x8feo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhqs"]
+bg_color = Color(1, 0, 0.816667, 0.917647)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1amj"]
+font = ExtResource("1_wjyya")
+font_size = 55
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8feo"]
+font = ExtResource("2_xyjwe")
+font_size = 45
+outline_size = 17
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qu7t"]
+line_spacing = -4.0
+paragraph_spacing = -10.0
+font = ExtResource("3_x8feo")
+font_size = 37
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2d5nh"]
+line_spacing = -4.0
+font = ExtResource("3_x8feo")
+font_size = 25
+outline_color = Color(0, 0.51, 0.51, 1)
+
+[node name="trick_panel" type="Panel"]
+custom_minimum_size = Vector2(1000, 175)
+focus_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_juhqs")
+script = ExtResource("1_5qu7t")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Trick name"
+label_settings = SubResource("LabelSettings_p1amj")
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 16
+
+[node name="score" type="Label" parent="MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "PTSxMULT"
+label_settings = SubResource("LabelSettings_x8feo")
+horizontal_alignment = 1
+
+[node name="rarity" type="Label" parent="MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "rarity"
+label_settings = SubResource("LabelSettings_x8feo")
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="description" type="Label" parent="MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Description
+"
+label_settings = SubResource("LabelSettings_5qu7t")
+vertical_alignment = 1
+
+[node name="description2" type="Label" parent="MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "Secondary Description"
+label_settings = SubResource("LabelSettings_2d5nh")
+vertical_alignment = 1

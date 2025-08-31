@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://q56ucvvc7jmb"
-path="res://.godot/imported/seguisli.ttf-cf5c2e42836d218a4647ebad3f44456d.fontdata"
+uid="uid://rs21d3pdqy1x"
+path="res://.godot/imported/segoeui_semi_light.ttf-2aaf0e26d928c915318c135984e04794.fontdata"
 
 [deps]
 
-source_file="res://Fonts/seguisli.ttf"
-dest_files=["res://.godot/imported/seguisli.ttf-cf5c2e42836d218a4647ebad3f44456d.fontdata"]
+source_file="res://Fonts/segoeui_semi_light.ttf"
+dest_files=["res://.godot/imported/segoeui_semi_light.ttf-2aaf0e26d928c915318c135984e04794.fontdata"]
 
 [params]
 
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}

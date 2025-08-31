@@ -2199,7 +2199,7 @@ strength = 12.0
 
 [node name="BoostRing20" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.375433, 0.269776, 0.382454, -0.350125, 0.48725, 0, -0.310585, -0.223178, 0.462308, 32.689, 14.4073, -30.7051)
-strength = 12.0
+strength = 20.0
 
 [node name="BoostRing12" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-3.67423e-08, -2.36788e-08, -0.999999, -0.980921, 0.194405, 3.1438e-08, 0.194406, 0.98092, -3.03699e-08, 41.2633, 9.15238, 5.60906)

@@ -470,12 +470,17 @@ func _physics_process(_delta: float) -> void:
 	
 	%particleFloor.position.y = -height -1
 	
-	%speedLines.rotation_degrees.y += angular_velocity.y*0.6
+	%speedLines.rotation_degrees.y += angular_velocity.y*0.4
 	%speedLines2.rotation_degrees.y += angular_velocity.y*0.5
-	%speedLines3.rotation_degrees.y += angular_velocity.y*0.4
+	%speedLines3.rotation_degrees.y += angular_velocity.y*0.6
+	%speedLines.visible = true
+	%speedLines2.visible = true
+	%speedLines3.visible = false
 	var transp = abs(angular_velocity.y)*0.02
 	if !isTipSpinning: #make it harder to see the speed lines when not tipspinning
 		transp -= 0.3
+		%speedLines.visible = false #make the speed lines wider when in the air,
+		%speedLines3.visible = true #but thinner and taller when tipspinning
 	transp = 1 - clamp(transp, 0 ,1)
 	%speedLines.transparency = transp
 	%speedLines2.transparency = transp

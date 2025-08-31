@@ -47,13 +47,16 @@ func _on_restart_pressed():
 func _on_tricks_pressed():
 	%PauseList.visible = false
 	%TrickList.visible = true
-	$PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer/Button.grab_focus()
-
+	$PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer/hangtime.grab_focus()
+	#$PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer/Button.grab_focus()
 
 func _on_exit_pressed(): 
 	GameManager.toggle_pause() 
 	GameManager.change_scene("res://Levels/Title_Screen.tscn")
 
+
+func set_help_tip(newText: String):
+	%HelpTip.text = newText
 
 #Debug settings
 func hide_menu_in_FBF(): #so the frame by frame button is actually useful

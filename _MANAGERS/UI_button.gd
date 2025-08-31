@@ -6,6 +6,8 @@ static var ignoreInputs : bool = false #so that during animations you cant press
 var hovered : bool = false
 var timer := 0
 
+@export var helpText: String = ""
+
 @onready var stylebox: StyleBoxFlat = $backPanel/blueBorder.get_theme_stylebox("panel").duplicate()
 
 signal on_button_pressed #After you press the button and its done doing the little animation
@@ -35,6 +37,7 @@ func set_border_width(value: float):
 func _on_focus_entered():
 	if !ignoreInputs:
 		on_button_hovered.emit()
+		MenuManager.set_help_tip(helpText)
 		var tween = create_tween()
 		tween.tween_method(set_border_width, 0, 50, 0.5) \
 			.set_trans(Tween.TRANS_EXPO) \

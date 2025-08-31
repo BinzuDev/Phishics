@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bikm5cln26d4h"
-path="res://.godot/imported/seguili.ttf-536d4b6af815eca99fb1f200c28fb940.fontdata"
+uid="uid://dooo6t2xwosew"
+path="res://.godot/imported/segoeui_light.ttf-8007129138c048e093a9db7bdc97a9eb.fontdata"
 
 [deps]
 
-source_file="res://Fonts/seguili.ttf"
-dest_files=["res://.godot/imported/seguili.ttf-536d4b6af815eca99fb1f200c28fb940.fontdata"]
+source_file="res://Fonts/segoeui_light.ttf"
+dest_files=["res://.godot/imported/segoeui_light.ttf-8007129138c048e093a9db7bdc97a9eb.fontdata"]
 
 [params]
 
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}

@@ -44,18 +44,24 @@ func _on_credits_go_back_pressed():
 
 func _on_tutorial_hovered():
 	$JFG.play_animation("Stretching")
+	%HelpTip.text = "Learn the basics of how to play."
 
 func _on_play_hovered():
 	$JFG.play_animation("Jumping")
+	%HelpTip.text = "Start a game of Phishics!"
 
 func _on_tricks_hovered():
 	$JFG.play_animation("Cutesy")
+	%HelpTip.text = "Discover all the techniques you can pull off!"
 
 func _on_credits_hovered():
 	$JFG.play_animation("Blahaj")
+	%HelpTip.text = "Learn about the creators of Phishics."
 
 func _on_exit_hovered():
 	$JFG.play_animation("Sad")
+	%HelpTip.text = "Close the game."
+
 
 func _on_exit_just_pressed():
 	$JFG.play_animation("Stare")
