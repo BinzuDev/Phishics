@@ -47,7 +47,7 @@ func _on_restart_pressed():
 func _on_tricks_pressed():
 	%PauseList.visible = false
 	%TrickList.visible = true
-	$PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer/hangtime.grab_focus()
+	$PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer/movement.grab_focus()
 	#$PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer/Button.grab_focus()
 
 func _on_exit_pressed(): 

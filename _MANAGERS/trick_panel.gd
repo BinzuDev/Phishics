@@ -3,7 +3,7 @@ extends Panel
 
 @export var trickName : String = ""
 @export var score : String = ""
-@export_enum("Common", "Uncommon", "Rare", "Legendary") var rarity : String = "Common"
+@export_enum("Common", "Uncommon", "Rare", "Legendary", "Mechanic") var rarity : String = "Common"
 @export_multiline var description : String = ""
 @export_multiline var description2 : String = ""
 
@@ -23,6 +23,8 @@ func set_text():
 	%description2.text = "  " + description2
 	if description2 != "":
 		%description.text += "\n"
+	if rarity == "Mechanic":
+		%score.text = ""
 
 func _ready():
 	set_text()

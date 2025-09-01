@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://p3f1xaqm8id"]
+[gd_scene load_steps=69 format=4 uid="uid://p3f1xaqm8id"]
 
 [ext_resource type="PackedScene" uid="uid://c81n6rsfe13qy" path="res://Models/JFG/models/jelly_fish_girl_IK.glb" id="1_8sp2m"]
 [ext_resource type="Script" uid="uid://c0kyxugabv0la" path="res://Models/JFG/jelly_fish_girl.gd" id="2_ctkjy"]
@@ -1638,12 +1638,6 @@ _data = {
 &"Stretching": SubResource("Animation_wswht")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_hhs3r"]
-size = Vector3(1, 2.5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g84a4"]
-size = Vector3(1, 2.70185, 1)
-
 [node name="jelly_fish_girl_IK" instance=ExtResource("1_8sp2m")]
 script = ExtResource("2_ctkjy")
 testingMode = true
@@ -2366,14 +2360,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.82226, 0.1)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00386322, 1.82226, 0.101834)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, 0, 2.46859, 0)
+transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, -0.00386322, 2.46859, 0.00183439)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -2752,11 +2746,3 @@ libraries = {
 
 [node name="Camera3D" type="Camera3D" parent="." index="14"]
 transform = Transform3D(0.717883, 0.276257, -0.639004, -2.98023e-08, 0.917893, 0.396828, 0.696163, -0.284876, 0.65894, -1.9479, 2.87276, 2.5996)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09714, 1.29882, 0)
-mesh = SubResource("BoxMesh_hhs3r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34834, 0)
-shape = SubResource("BoxShape3D_g84a4")

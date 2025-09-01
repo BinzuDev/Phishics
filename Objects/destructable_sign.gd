@@ -40,7 +40,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		
 		if not touched: #destruction points
-			ScoreManager.give_points(100, 1, false, "VANDALISM")
+			ScoreManager.give_points(1000, 1, false, "VANDALISM")
 			ScoreManager.play_trick_sfx("uncommon")
 			$AudioStreamPlayer3D.play()
 			touched = true

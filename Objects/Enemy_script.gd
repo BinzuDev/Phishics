@@ -155,7 +155,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			#
 	
 	
-	if body.linear_velocity.length() >= 4 or body.isTipSpinning:
+	if body.linear_velocity.length() >= 6 or body.isTipSpinning:
 		
 		if enemyType == Enum1.Regular_Crab: #regular crab logic
 			#player pushing

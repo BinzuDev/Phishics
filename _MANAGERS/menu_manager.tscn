@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=20 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -77,6 +77,26 @@ expand_margin_left = 25.0
 expand_margin_top = 25.0
 expand_margin_right = 25.0
 expand_margin_bottom = 25.0
+
+[sub_resource type="GDScript" id="GDScript_lv8kq"]
+script/source = "@tool
+extends ScrollContainer
+
+##Allows you to scroll in the editor
+@export var autoScroll : int = 0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if !Engine.is_editor_hint():
+		scroll_vertical = 0
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Engine.is_editor_hint():
+		scroll_vertical += autoScroll
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
 line_spacing = 11.0
@@ -269,12 +289,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
+scroll_vertical = 5365
+horizontal_scroll_mode = 0
+script = SubResource("GDScript_lv8kq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TrickList/Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15
+
+[node name="movement" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Movement"
+rarity = "Mechanic"
+description = "Spamming the arrow keys will build up linear and rotational speed."
+
+[node name="jump" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Jump"
+rarity = "Mechanic"
+description = "Pressing the spacebar makes you jump. Currently held arrow keys influences direction."
 
 [node name="hangtime" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -343,6 +378,14 @@ trickName = "Dive"
 score = "[altitude*100]pts"
 description = "Press the dive button in the air."
 
+[node name="homing" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Homing Attack"
+rarity = "Mechanic"
+description = ""
+description2 = "When above a targetable object, a reticle will apear around it. Once something has been locked on, press the dive button to dive
+  towards the target at high speed. When multiple targets are under you, hold down the arrow keys to choose a target."
+
 [node name="highdive" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "High Dive"
@@ -350,7 +393,7 @@ score = "x10"
 rarity = "Rare"
 description = "Dive while REALLY high up in the air."
 
-[node name="tipsin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+[node name="tipspin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Tipspin"
 score = "[Depends on speed] pts"
@@ -380,6 +423,174 @@ score = "999999pts x200"
 rarity = "Legendary"
 description = "Land perfectly vertically either on your head or tail."
 description2 = "Instantly awards you with style rank PhishicSSS"
+
+[node name="spinMeter" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Spin Meter"
+rarity = "Mechanic"
+description = ""
+description2 = "Spinning in the air fills up the circle meter in the center of the screen. The faster you spin the faster it fills up. Once filled, your
+  AirSpin Rank increases. Higher ranks requires more and more spinning to fill up. Upon touching anything, the meter resets and
+  you go back to AirSpin rank 1. The meter can be filled 9 times before maxing out at rank 10."
+
+[node name="airspin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Air Spin"
+score = "200pts + 1x"
+description = "Fill up the Spin Meter."
+description2 = "Reaching rank 9 gives 500pts + 5x"
+
+[node name="maxAirspin" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "MAX AIRSPIN"
+score = "5000pts + 10x"
+rarity = "Rare"
+description = "Fill up the Spin Meter 9 times and reach AirSpin Rank 10!"
+description2 = "To reach it, spin faster, perform high jumps, and use the pogo jump to stay in the air longer without touching the ground!"
+
+[node name="closeCall" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Close Call"
+score = "15x"
+rarity = "Rare"
+description = "Reach Max Airspin right before you touch the ground."
+
+[node name="Freshness" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Freshness"
+rarity = "Mechanic"
+description = ""
+description2 = "The Freshness system rewards you for spicing things up, and punishes you for spamming. The Fresh Meter keeps track of the
+  things you interact with, so hitting 10 different boost rings is a row is fresh, but hitting the same boost ring over and over is
+  spamming. The Taunt is also part of the Freshness calculations. Any other trick the fish can do on its own doesn't affect freshness."
+
+[node name="Freshness2" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Spam Warning/Penalty"
+rarity = "Mechanic"
+description = ""
+description2 = "The Fresh Meter keeps track of the last 15 things you've interacted with. If the same object appears in that list 4 or 5 times, you'll
+  get a warning. After a 6th time, you'll get a Spam Penalty and temporarily lose the ability to keep a combo going. Only the last
+  4 tricks are checked for spam, so even if the entire list is the same object, touching 4 new unique ones will clear the penalty."
+
+[node name="Freshness3" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Fresh Bonus"
+score = "10000pts + 5x"
+rarity = "Rare"
+description = "Interact with 10 unique objects in a row."
+description2 = "Since the Taunt also counts as an interaction, try to only use it once per Fresh Bonus."
+
+[node name="eel" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Eel"
+rarity = "Mechanic"
+description = "Talk to the garden eel with the scope to get a view of the level from high up!"
+
+[node name="boost" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Boost"
+score = "500pts + 1x"
+description = "Touch a boost ring bubble."
+
+[node name="hook" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Hooked"
+score = "500pts + 1x"
+description = "Get caught by a fishing hook."
+
+[node name="jellyfish" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Jelly Jump"
+score = "1000pts + 1x"
+description = "Bounce off of a jellyfish by diving onto it."
+
+[node name="strike" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Strike!"
+score = "500pts + 2x"
+rarity = "Uncommon"
+description = "Touch a group of bowling pins"
+description2 = "Tip: Bowling pins are targetable by the homing attack."
+
+[node name="ring" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Ring"
+score = "500pts + 2x"
+description = "Pass through a white and orange striped Score Ring."
+
+[node name="tornado" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Tornado"
+score = "500pts"
+description = "Touch a tornado."
+
+[node name="sign" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Vandalism"
+score = "1000pts + 1x"
+rarity = "Uncommon"
+description = "Destroy a sign post"
+
+[node name="worm" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Worm"
+score = "800pts + 5x"
+rarity = "Uncommon"
+description = "Collect a worm."
+
+[node name="dunk" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Slam Dunk"
+score = "1000pts + 5x"
+description = "Throw yourself into a basketball hoop."
+
+[node name="dunk2" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Big Dunk"
+score = "2000pts + 10x"
+rarity = "Rare"
+description = "Dunk from high up."
+
+[node name="dunk3" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Diving Dunk"
+score = "4000pts + 10x"
+rarity = "Rare"
+description = "Dunk while diving."
+
+[node name="dunk4" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "KOBE"
+score = "8000pts + 30x"
+rarity = "Legendary"
+description = "Dunk from REALLY high up"
+
+[node name="crab" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Crab Toss"
+score = "1000pts + 1x"
+description = "Run into a crab fast enough to hurt it."
+
+[node name="crab2" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Disrespect"
+score = "100pts"
+description = "Keep attacking a crab after death."
+
+[node name="crab3" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Homing Attack"
+score = "2000pts + x1"
+rarity = "Uncommon"
+description = "Use the homing dive to attack a crab."
+
+[node name="crab4" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Homing Airshot"
+score = "x5"
+rarity = "Rare"
+description = "Use a homing attack on an airborne crab."
 
 [node name="Control" type="Control" parent="PauseMenu/TrickList/Panel"]
 layout_mode = 1
