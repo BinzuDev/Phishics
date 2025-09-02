@@ -14,7 +14,7 @@ static var pitch := 1.0
 static var timeSinceLastStrike := 0
 
 
-func _process(delta):
+func _process(_delta):
 	if currFrame != Engine.get_process_frames():
 		timeSinceLastStrike += 1
 		if timeSinceLastStrike > 200:

@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="4_ie0qp"]
 [ext_resource type="AudioStream" uid="uid://dtx8330mvhty2" path="res://Sounds/sparks/sparks_high_intensity_03.wav" id="4_iujy1"]
 [ext_resource type="AudioStream" uid="uid://dr5fa44lr58yx" path="res://Sounds/sparks/sparks_medium_intensity_02.wav" id="5_div8h"]
+[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/streetsign.png" id="5_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://divrkdsaujxsd" path="res://Sounds/poof.ogg" id="5_t0nqp"]
 [ext_resource type="AudioStream" uid="uid://qpt3nmj24kdx" path="res://Sounds/impact_soft/soft1.ogg" id="6_h8qkj"]
 [ext_resource type="AudioStream" uid="uid://c6au0422c773r" path="res://Sounds/FISH.ogg" id="6_t0nqp"]
@@ -48,7 +49,6 @@
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
 [ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/blurLines.gdshader" id="49_ny41d"]
-[ext_resource type="Texture2D" uid="uid://pdyrqt81ou6p" path="res://Skins/pufferfish.png" id="51_l4b1c"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -638,15 +638,9 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
-replayFile = "res://Recordings/SUPER_LONG_WALL_GRIND.json"
-replayAccuracy = 9999
-
-[node name="pufferfish" type="Sprite3D" parent="."]
-transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
-visible = false
-texture = ExtResource("51_l4b1c")
+replayFile = "res://Recordings/LATEST_RECORDING.json"
+replayAccuracy = 5
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
@@ -657,6 +651,7 @@ shape = SubResource("SphereShape3D_q0y68")
 disabled = true
 
 [node name="pivotUpper" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="upperBody" type="Sprite3D" parent="pivotUpper"]
 transform = Transform3D(0.18, 0, 0, 0, -8.30516e-09, 1, 0, -0.19, -4.37114e-08, 0, 0, 0)
@@ -667,6 +662,7 @@ region_enabled = true
 region_rect = Rect2(225.27, 0, 149.79, 495)
 
 [node name="pivotHead" type="Node3D" parent="pivotUpper"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, 0, 0)
 
 [node name="head" type="Sprite3D" parent="pivotUpper/pivotHead"]
@@ -678,6 +674,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 225.14, 495)
 
 [node name="pivotLower" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="lowerBody" type="Sprite3D" parent="pivotLower"]
 transform = Transform3D(0.180958, 0, 0, 0, -8.3202e-09, 1, 0, -0.190344, -4.37114e-08, 0, 0, 0)
@@ -688,6 +685,7 @@ region_enabled = true
 region_rect = Rect2(375, 0, 144.9, 495)
 
 [node name="pivotTail" type="Node3D" parent="pivotLower"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262142, 0, 0)
 
 [node name="tail" type="Sprite3D" parent="pivotLower/pivotTail"]
@@ -705,16 +703,28 @@ cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 
 [node name="RemoteTransformJump" type="RemoteTransform3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.0354262)
 remote_path = NodePath("../floorDetection")
 update_rotation = false
 
 [node name="floorDetection" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.0354262)
 top_level = true
 shape = SubResource("CylinderShape3D_uucyj")
 target_position = Vector3(0, -0.7, 0)
 collision_mask = 17
+
+[node name="signtest" type="Sprite3D" parent="floorDetection"]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.165947, 0.0354262)
+visible = false
+sorting_offset = -0.15
+axis = 1
+texture = ExtResource("5_l4b1c")
+
+[node name="surfingFish" type="Sprite3D" parent="floorDetection"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.21, 0, -0.135997, 0)
+visible = false
+sorting_offset = 0.07
+axis = 1
+texture = ExtResource("2_j2ykt")
 
 [node name="speedLines" type="MeshInstance3D" parent="floorDetection"]
 unique_name_in_owner = true

@@ -1,11 +1,16 @@
-extends Node3D
+extends Level
 
 var logoTimer := 0
 
 func _ready():
+	super()
+	GameManager.isOnTitleScreen = true
 	ScoreManager.hide()
+	GameManager.disableMenuControl = false
 	%tutorial.grab_focus()
 	$UI/Credits.visible = false
+
+
 
 func _process(_delta):
 	logoTimer += 1
@@ -14,7 +19,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
 		if get_viewport().gui_get_focus_owner() == null:
 			%tutorial.grab_focus()
-	
 	
 
 
@@ -28,6 +32,7 @@ func _on_play_button_pressed():
 func _on_credits_button_pressed():
 	$UI/MenuOptions.visible = false
 	$UI/Credits.visible = true
+	GameManager.disableMenuControl = false
 	%creditsReturn.grab_focus()
 	
 
@@ -38,6 +43,7 @@ func _on_exit_button_pressed():
 func _on_credits_go_back_pressed():
 	$UI/MenuOptions.visible = true
 	$UI/Credits.visible = false
+	GameManager.disableMenuControl = false
 	%credits.grab_focus()
 	
 

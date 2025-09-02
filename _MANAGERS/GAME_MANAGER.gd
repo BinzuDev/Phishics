@@ -1,6 +1,9 @@
 extends Node
 
 var gamePaused : bool
+var isOnTitleScreen : bool = false
+##Stops you from pausing/unpausing during button animations or screen transitions
+var disableMenuControl : bool = false 
 var gameTimer : int = 0
 var framefwrd
 
@@ -10,11 +13,6 @@ var hideUI : bool = false
 var nextScene
 
 
-enum gameState { #Testing something, not used yet
-	MENU,
-	GAMEPLAY,
-	RESULTSCREEN,
-}
 
 
 ##Allows you to pause the game for x amount of frames, for impact and juice
@@ -30,34 +28,55 @@ func hitstop(frames: int, objToPause: Node3D = null):
 	
 
 func toggle_pause():
-	get_tree().paused = !get_tree().paused
-	gamePaused = get_tree().paused
+	if !isOnTitleScreen:
+		disableMenuControl = false
+		get_tree().paused = !get_tree().paused
+		gamePaused = get_tree().paused
+		MenuManager.toggleMenu()
+	
 
 func reset_level():
-	get_tree().reload_current_scene()
-	MusicManager.stop_music()
-	ScoreManager.reset_everything()
+	if !isOnTitleScreen:
+		change_scene(get_tree().current_scene.scene_file_path)
 
+
+func forceUnpause():
+	get_tree().paused = false
+	gamePaused = get_tree().paused
+	MenuManager.toggleMenu()
+
+
+
+##This is the function you use to change maps
 func change_scene(scene : String):
+	disableMenuControl = true
 	nextScene = scene
+	##It calls this function which starts the transition animation in menu manager
 	MenuManager.start_transition()
 
+##Once the transition animation is over, this function gets called and
+##resets everything and loads the next map
 func level_transition():
+	forceUnpause()
 	MusicManager.stop_music()
 	ScoreManager.reset_everything()
 	ScoreManager.show()
 	DialogueManager.reset()
-	MenuManager.end_transition()
+	MenuManager.resetFocus()
 	get_tree().change_scene_to_file.call_deferred(nextScene)
+##After the level is loaded, level_class.gd tells menu manager
+##to play the 2nd screen transition animation
 
 
 
 
 func _physics_process(_delta):
+	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner())
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	gameTimer += 1
 	if Input.is_action_just_pressed("pause"):
-		toggle_pause()
+		if disableMenuControl == false:
+			toggle_pause()
 	
 	if Input.is_action_just_pressed("frameFRWD") and get_tree().paused:
 		get_tree().paused = !get_tree().paused
@@ -67,9 +86,10 @@ func _physics_process(_delta):
 	if gameTimer == framefwrd:
 		get_tree().paused = !get_tree().paused
 	
-	if Input.is_action_just_pressed("reset"):
-		reset_level()
-		ScoreManager.show()
+	if Input.is_action_just_pressed("reset"): #Pressing the R key
+		if disableMenuControl == false:
+			reset_level()
+		
 	
 	if Input.is_action_just_pressed("F11"): #fullscreen toggle
 		if DisplayServer.window_get_mode() == 4:

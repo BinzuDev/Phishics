@@ -43,8 +43,8 @@ func _process(_delta: float) -> void:
 	
 	
 	timer += 1
-	var swaySpd = 2
-	var swayAmt = 2
+	#var swaySpd = 2
+	#var swayAmt = 2
 	#%hookSprite.position.x = sin(timer*swaySpd*0.1) * swayAmt
 	#%hookSprite.rotation_degrees.z = %hookSprite.position.x*14
 	

@@ -1,7 +1,9 @@
 @tool
 @icon("res://icons/warning_sign.png")
 extends RigidBody3D
-var touched: bool = false
+
+var fellOff: bool = false
+var bent: bool = false
 
 #allows us to switch sprites
 @export_file("*.png") var signSprite: String = "res://Sprites/signs/warning_sign.png": 
@@ -20,28 +22,51 @@ func _ready() -> void:
 			$bend/Sprite3D2.texture = load(signSprite)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+	
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player:
-		gravity_scale = 4 #when player touches it, it falls
 		
-		linear_velocity = body.linear_velocity * 1
-		angular_velocity = body.angular_velocity * 1
+		gravity_scale = 3 #when player touches it, it falls
 		
-		#Switch to folded version if fast enough
-		if body.linear_velocity.length() > 10:
-			$bend.rotation_degrees.y = -60
+		#angular_velocity = body.angular_velocity
+		#var vel = body.linear_velocity
+		#vel.y = 0
+		#linear_velocity = vel
+		
+		
+		#if the fish isnt surfing and the sign isnt bent yet
+		if body.surfMode == false and not bent:
+			body.activateSurfMode(signSprite, self)
 			$collisionFlat.set_deferred("disabled", true)
-			$collisionBend1.set_deferred("disabled", false)
-			$collisionBend2.set_deferred("disabled", false)
+			set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+			visible = false
 		
 		
-		if not touched: #destruction points
+		if not fellOff: #destruction points
 			ScoreManager.give_points(1000, 1, false, "VANDALISM")
 			ScoreManager.play_trick_sfx("uncommon")
 			$AudioStreamPlayer3D.play()
-			touched = true
+			fellOff = true
+			
 		
+
+
+func throwAway():
+	visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	$bend.rotation_degrees.y = -60
+	apply_central_impulse(Vector3(0,-6,0))
+	$AudioStreamPlayer3D.play()
+	bent = true
+	$Area3D.set_collision_layer_value(6, false) #turn off homing when bent
+	#temporarily turn off collision as you jump off
+	set_collision_layer_value(3, false) 
+	await get_tree().create_timer(10.05).timeout
+	$collisionBend1.set_deferred("disabled", false)
+	$collisionBend2.set_deferred("disabled", false)
+	set_collision_layer_value(3, true)  #turn it back on after 3 frames
+	printerr("collision is back")

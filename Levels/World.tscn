@@ -1,6 +1,7 @@
-[gd_scene load_steps=115 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=116 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
+[ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="2_j5go0"]
 [ext_resource type="Texture2D" uid="uid://hibyuf0jiqrv" path="res://Sprites/tutorialwall.png" id="3_m3j4o"]
 [ext_resource type="Texture2D" uid="uid://crhny214v7mdk" path="res://Sprites/tutorialwall_up.png" id="4_piqde"]
@@ -330,6 +331,9 @@ size = Vector3(41.5679, 16.195, 16.4041)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwgh"]
 size = Vector3(8.58044, 5.10071, 0.338745)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_grwv0"]
+size = Vector3(7.07935, 3.20593, 13.6348)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_28m7t"]
 size = Vector3(17.6213, 11.3783, 46.5079)
 
@@ -370,9 +374,6 @@ func _process(delta):
 	progress += 5 * delta
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_grwv0"]
-size = Vector3(7.07935, 3.20593, 4.44043)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcw38"]
 size = Vector3(4.58386, 2.21405, 0.2)
 
@@ -382,7 +383,8 @@ size = Vector3(17.8735, 34.4618, 58.2001)
 [sub_resource type="BoxShape3D" id="BoxShape3D_581hb"]
 size = Vector3(108.891, 82.4746, 9.29117)
 
-[node name="Node3D" type="Node3D"]
+[node name="World" type="Node3D"]
+script = ExtResource("1_kvfdy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
@@ -2221,7 +2223,7 @@ strength = 19.0
 targetableByHoming = false
 
 [node name="BoostRing30" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-0.496823, -0.867852, 7.19522e-08, -0.867852, 0.496823, 4.96551e-08, -7.88407e-08, -3.77741e-08, -1, 127.015, 36.5726, -26.3319)
+transform = Transform3D(-0.642521, -0.766268, 7.96019e-08, -0.766268, 0.642521, 3.61426e-08, -7.88407e-08, -3.77741e-08, -1, 126.7, 36.5726, -26.1097)
 priority = 1
 centerPlayer = true
 
@@ -2610,7 +2612,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, -0.98873, 0.149708, 4.32188e-08, 0.
 strength = 25.0
 
 [node name="scoreRing12" parent="highUpSection" instance=ExtResource("45_s7dn7")]
-transform = Transform3D(-0.277759, -0.301353, 1.12785, -0.882366, 0.813284, -4.6762e-08, -0.764382, -0.829311, -0.409834, 166.716, 65.7051, -109.006)
+transform = Transform3D(-0.174641, -0.189475, 1.17201, -0.882366, 0.813284, -3.08912e-08, -0.794311, -0.861783, -0.257682, 166.358, 68.9436, -105.772)
 
 [node name="Platform10" type="MeshInstance3D" parent="highUpSection"]
 transform = Transform3D(-4.98747e-07, 0, -10.41, 0, 40.8, 0, 11.41, 0, -4.55036e-07, 64.1497, 18.19, -50.5942)
@@ -2748,7 +2750,7 @@ text = "UNDER CONSTRUCTION"
 font_size = 39
 
 [node name="Platform13" type="MeshInstance3D" parent="highUpSection"]
-transform = Transform3D(-3.15773e-06, 0, -29.9185, 0, 1.8051, 0, 72.2403, 0, -1.30778e-06, 157.407, 58.318, -119.479)
+transform = Transform3D(-9.58546e-07, 0, -29.9185, 0, 1.8051, 0, 21.9289, 0, -1.30778e-06, 157.407, 58.318, -113.115)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -2758,6 +2760,19 @@ metadata/_edit_group_ = true
 [node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Platform13"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform13/StaticBody3D"]
+shape = SubResource("BoxShape3D_m3j4o")
+
+[node name="Platform14" type="MeshInstance3D" parent="highUpSection"]
+transform = Transform3D(-7.02959e-07, 0, -29.9185, 0, 1.8051, 0, 16.0818, 0, -1.30778e-06, 157.408, 58.318, -145.226)
+material_override = ExtResource("4_vbdqq")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("BoxMesh_j5go0")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Platform14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform14/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform12" type="MeshInstance3D" parent="highUpSection"]
@@ -2808,8 +2823,8 @@ strength = 19.0
 centerPlayer = true
 
 [node name="BoostRing29" parent="highUpSection" instance=ExtResource("9_2uuim")]
-transform = Transform3D(0.522998, 0.522998, -0.673012, -0.707107, 0.707106, 0, 0.475892, 0.475891, 0.73963, 192.508, 63.1383, -75.3429)
-strength = 19.0
+transform = Transform3D(0.630743, 0.479861, -0.609832, -0.645159, 0.760972, -0.068492, 0.4312, 0.436639, 0.789564, 192.508, 63.1383, -75.3429)
+strength = 21.0
 
 [node name="streetsign5" type="MeshInstance3D" parent="highUpSection"]
 transform = Transform3D(-0.503626, 0.190782, -0.0765488, 4.65031e-09, 4.55142, 0.0790507, 0.10359, 0.92753, -0.372159, 99.0122, 22.7561, 9.22042)
@@ -2873,6 +2888,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6081, 38.9935, -51.2123)
 
 [node name="Enemy5" parent="highUpSection" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
+
+[node name="ball_mode_area2" parent="highUpSection" instance=ExtResource("42_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.026, 59.6679, -120.782)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/ball_mode_area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119553, 1.13224, 3.10513)
+shape = SubResource("BoxShape3D_grwv0")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="Platform15" type="MeshInstance3D" parent="highUpSection"]
+transform = Transform3D(7.18149, 0, 0, 0, 2.50563, 2.55315, 0, -6.77359, 0.944434, 163.797, 59.0831, -121.785)
+material_override = ExtResource("4_vbdqq")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("BoxMesh_j5go0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Platform15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform15/StaticBody3D"]
+shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="group3" type="Node3D" parent="."]
 
@@ -2980,6 +3015,14 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform4/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
+
+[node name="ball_mode_area" parent="group3" instance=ExtResource("42_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.955, 19.459, -56.8731)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/ball_mode_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118042, 1.10297, -1.479)
+shape = SubResource("BoxShape3D_grwv0")
+debug_color = Color(0, 0, 0, 1)
 
 [node name="Platform3" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(7.18149, 0, 0, 0, 2.75296, 2.35752, 0, -4.76827, 1.36111, 213.779, 18.8742, -58.5824)
@@ -3146,7 +3189,7 @@ bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish3" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141913, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
+transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141914, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
 progress = 58.8951
 speed = 7
 bounceForce = 40
@@ -3391,13 +3434,13 @@ script = SubResource("GDScript_bmonc")
 [node name="tornado" parent="group3/THEPIT(tm)/Path3D/PathFollow3D" instance=ExtResource("17_w578l")]
 
 [node name="Basketballhoop3" parent="group3" instance=ExtResource("11_vbdqq")]
-transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 163.602, 87.2992, -158.866)
+transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 163.602, 96.3354, -160.426)
 
 [node name="Basketballhoop4" parent="group3" instance=ExtResource("11_vbdqq")]
-transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 162.855, 59.6972, -159.529)
+transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 162.855, 64.3702, -161.089)
 
 [node name="Basketballhoop5" parent="group3" instance=ExtResource("11_vbdqq")]
-transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 164.088, 25.3054, -159.956)
+transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 164.088, 29.9784, -161.516)
 
 [node name="streetsign2" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(0.146634, 2.17363, -0.324709, -0.0439867, 4.09976, 0.179936, 0.49085, -0.281945, 0.113127, 182.27, 89.8869, -183.228)
@@ -3427,13 +3470,6 @@ floating = true
 
 [node name="strike_zone6" parent="group3" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.4595, -135.593)
-
-[node name="ball_mode_area" parent="group3" instance=ExtResource("42_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.955, 19.459, -56.8731)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/ball_mode_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118042, 1.10297, -1.479)
-shape = SubResource("BoxShape3D_grwv0")
 
 [node name="2Darea" type="Node3D" parent="."]
 transform = Transform3D(1, -4.6761e-08, 0, 4.6761e-08, 1, 0, 0, 0, 1, 124.283, 34.8701, 23.0205)
@@ -3504,13 +3540,11 @@ hSpeedMultiplier = 0.4
 
 [node name="Jellyfish5" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 49.7967, -4.85084, -13.4218)
-bounceForce = 23
-hSpeedMultiplier = 0.6
+bounceForce = 24
 
 [node name="Jellyfish6" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 63.4062, -4.85084, -13.4218)
-bounceForce = 24
-hSpeedMultiplier = 0.6
+bounceForce = 26
 
 [node name="Jellyfish7" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 77.9146, -1.36254, -25.5433)
@@ -3518,7 +3552,7 @@ bounceForce = 31
 hSpeedMultiplier = 0.1
 
 [node name="Jellyfish8" parent="2Darea" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 36.1022, 0.412792, -49.4228)
+transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 36.4085, 0.412792, -49.4228)
 bounceForce = 15
 hSpeedMultiplier = 1.5
 
@@ -4004,6 +4038,25 @@ texture = ExtResource("6_53g8k")
 [node name="CoralSpriteG6" type="Sprite3D" parent="AllCoralGroups/CoralSpriteGroup19"]
 transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.54285, -0.14407, 4.18181)
 texture = ExtResource("6_53g8k")
+
+[node name="destructable_sign" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5276, 0.47736, -41.213)
+signSprite = "uid://drxd8lqdquu0g"
+
+[node name="destructable_sign2" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4316, 0.542324, -40.8377)
+signSprite = "uid://cu2gs7ehy4cxr"
+
+[node name="destructable_sign3" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6531, 0.542324, -40.8948)
+signSprite = "uid://cnu1o2yg0c0o0"
+
+[node name="destructable_sign4" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7699, 0.542324, -40.7639)
+signSprite = "uid://2tlrr0ix011u"
+
+[node name="destructable_sign5" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.21818, 0.542324, -40.6681)
 
 [node name="Destructable_Sign" parent="." instance=ExtResource("47_bmonc")]
 transform = Transform3D(1, 0, 0, 0, 0.905717, -0.423883, 0, 0.423883, 0.905717, 26.869, 31.9015, 58.7082)

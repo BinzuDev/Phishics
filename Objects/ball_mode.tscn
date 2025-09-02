@@ -18,8 +18,9 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	body.get_node(\"./collision\").set_deferred(\"disabled\", false)
-	body.get_node(\"./collisionSphere\").set_deferred(\"disabled\", true)
+	if body.surfMode == false:
+		body.get_node(\"./collision\").set_deferred(\"disabled\", false)
+		body.get_node(\"./collisionSphere\").set_deferred(\"disabled\", true)
 "
 
 [node name="ball_mode_area" type="Area3D"]

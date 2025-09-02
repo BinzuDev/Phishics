@@ -31,6 +31,10 @@ var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the ho
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
 
+var surfMode : bool = false
+var surfSignRef : Node
+var surfJumpCooldown : int = 0 #so you cant accidentally surf jump by spamming
+
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -78,8 +82,21 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
+	surfJumpCooldown += 1
+	print(surfJumpCooldown)
 	if Input.is_action_just_pressed("jump") and canJump:
-		if (timeSinceJump > 20 and $floorDetection.is_colliding()) or noclip:
+		
+		   #surf jumping
+		if surfJumpCooldown > 45 and surfMode and !$floorDetection.is_colliding() and height > 3:
+			timeSinceJump = 0
+			deactivateSurfMode()
+			apply_impulse(JUMP_STRENGTH*5)
+		surfJumpCooldown = 0
+		
+		
+		if !$nearFloor.is_colliding() and surfMode:
+			pass #Disable walljumps in surf mode
+		elif (timeSinceJump > 20 and $floorDetection.is_colliding()) or noclip:
 			timeSinceJump = 0
 			#audio
 			$Jumps.play()
@@ -290,10 +307,10 @@ func _physics_process(_delta: float) -> void:
 	## Flop Animation
 	var amp = max(angular_velocity.length() * 0.18, linear_velocity.length())
 	flopTimer += 1 
-	$pivotUpper.rotation_degrees.z = sin(flopTimer * 0.3) *  3*clamp(amp, 1, 10)
-	$pivotLower.rotation_degrees.z = sin(flopTimer * 0.3) * -3*clamp(amp, 1, 10)
-	$pivotUpper/pivotHead.rotation_degrees.z = sin(flopTimer * 0.3) *  6*clamp(amp, 1, 10)
-	$pivotLower/pivotTail.rotation_degrees.z = sin(flopTimer * 0.3) *  -6*clamp(amp, 1, 10)  
+	%pivotUpper.rotation_degrees.z = sin(flopTimer * 0.3) *  3*clamp(amp, 1, 10)
+	%pivotLower.rotation_degrees.z = sin(flopTimer * 0.3) * -3*clamp(amp, 1, 10)
+	%pivotHead.rotation_degrees.z = sin(flopTimer * 0.3) *  6*clamp(amp, 1, 10)
+	%pivotTail.rotation_degrees.z = sin(flopTimer * 0.3) *  -6*clamp(amp, 1, 10)  
 	
 	
 	## Particle Effects
@@ -429,7 +446,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tipLandAntiCheese = 0
 	if tipLandAntiCheese > 3: 
-		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10:
+		if linear_velocity.length() > 0.1 and angular_velocity.length() > 10 and !surfMode:
 			isTipSpinning = true
 			ScoreManager.give_points(500/(linear_velocity.length()*2), 0, true, "TIPSPIN")
 			if height > 2:
@@ -532,8 +549,9 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	## Fish button
-	$pivotUpper.visible = true
-	$pivotLower.visible = true
+	if surfMode == false:
+		%pivotUpper.visible = true
+		%pivotLower.visible = true
 	$posing.visible = false
 	$flash.visible = false
 	%dead_fish.modulate.a -= 0.05
@@ -629,11 +647,33 @@ func _physics_process(_delta: float) -> void:
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n",
-	"wallgrind: ", wallGrind
 	)
 	
 
 
+
+func activateSurfMode(sprite : String, signObj : Node):
+	surfMode = true
+	surfSignRef = signObj
+	$floorDetection/signtest.texture = load(sprite)
+	$floorDetection/signtest.visible = true
+	$floorDetection/surfingFish.visible = true
+	%pivotUpper.visible = false
+	%pivotLower.visible = false
+	$collision.set_deferred("disabled", true)
+	$collisionSphere.set_deferred("disabled", false)
+	surfJumpCooldown = -15 #so you cant accidentally cancel it immedeatly
+
+func deactivateSurfMode():
+	surfMode = false
+	surfSignRef.global_position = global_position
+	surfSignRef.reset_physics_interpolation()
+	surfSignRef.throwAway()
+	$floorDetection/signtest.visible = false
+	$floorDetection/surfingFish.visible = false
+	$collision.set_deferred("disabled", false)
+	$collisionSphere.set_deferred("disabled", true)
+	
 
 
 ## This functions takes in a vector, and rotates it so that forward points

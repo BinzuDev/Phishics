@@ -1,5 +1,5 @@
 extends Label
-class_name binzuButton
+class_name uiButton
 
 #static means that it affects all instances globally
 static var ignoreInputs : bool = false #so that during animations you cant press anything
@@ -35,24 +35,35 @@ func set_border_width(value: float):
 	$backPanel/blueBorder.add_theme_stylebox_override("panel", stylebox)
 	
 func _on_focus_entered():
-	if !ignoreInputs:
+	#print(name, " focus enter")
+	if !ignoreInputs and !GameManager.disableMenuControl:
+		$selectSFX.play()
 		on_button_hovered.emit()
 		MenuManager.set_help_tip(helpText)
 		var tween = create_tween()
-		tween.tween_method(set_border_width, 0, 50, 0.5) \
+		tween.tween_method(set_border_width, 0, 50, 0.3) \
 			.set_trans(Tween.TRANS_EXPO) \
 			.set_ease(Tween.EASE_OUT)
 
 func _on_focus_exited():
-	if !ignoreInputs:
+	#print(name, " focus exited")
+	if !ignoreInputs and !GameManager.disableMenuControl:
 		on_button_exited.emit()
 		var tween = create_tween()
-		tween.tween_method(set_border_width, 50, 0, 0.5) \
+		tween.tween_method(set_border_width, 50, 0, 0.3) \
 			.set_trans(Tween.TRANS_EXPO) \
 			.set_ease(Tween.EASE_OUT)
 
+func forceReset():
+	set_border_width(0)
+	ignoreInputs = false
+
+
 func _on_button_pressed():
-	if !ignoreInputs:
+	print(name, " pressed")
+	if !ignoreInputs and !GameManager.disableMenuControl:
+		$confirmSFX.play()
+		GameManager.disableMenuControl = true
 		var tween = create_tween()
 		tween.finished.connect(_on_animation_finished)
 		tween.tween_method(set_border_width, 50, 480, 0.3) \
@@ -61,6 +72,7 @@ func _on_button_pressed():
 
 
 func _on_animation_finished(): #when click animation done
+	print(name, " animation done")
 	$Timer.start() #wait a second so the player can see the animation
 func _on_timer_timeout():
 	ignoreInputs = false
@@ -69,6 +81,7 @@ func _on_timer_timeout():
 
 func _process(_delta):
 	timer += 1  #things can be buggy if you click during loading
+	
 	if has_focus() and timer > 10:
 		if Input.is_action_just_pressed("confirm"):
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and !hovered:

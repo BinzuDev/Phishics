@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt4sgsaxfg8yc"]
+[gd_scene load_steps=16 format=3 uid="uid://bt4sgsaxfg8yc"]
 
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="1_a5m03"]
 [ext_resource type="Script" uid="uid://dw34m7d1vvhxg" path="res://_MANAGERS/UI_button.gd" id="2_m4ko8"]
+[ext_resource type="AudioStream" uid="uid://qpt3nmj24kdx" path="res://Sounds/impact_soft/soft1.ogg" id="3_gwnyg"]
+[ext_resource type="AudioStream" uid="uid://6pi0oi8jx8by" path="res://Sounds/impact_soft/soft2.ogg" id="4_qywpg"]
+[ext_resource type="AudioStream" uid="uid://7fhfltsgpuss" path="res://Sounds/impact_soft/soft3.ogg" id="5_3xtdh"]
+[ext_resource type="AudioStream" uid="uid://bmhyvq1ucstr0" path="res://Sounds/impact_soft/soft4.ogg" id="6_8a146"]
+[ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="7_bui54"]
+[ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="8_8a146"]
+[ext_resource type="AudioStream" uid="uid://b2uje1y503456" path="res://Sounds/impact_bloody/bloody2.ogg" id="9_bui54"]
+[ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="10_dti24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0yte"]
 resource_local_to_scene = true
@@ -41,6 +49,22 @@ corner_radius_bottom_right = 45
 corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dti24"]
+random_pitch = 1.15
+streams_count = 5
+stream_0/stream = ExtResource("3_gwnyg")
+stream_1/stream = ExtResource("4_qywpg")
+stream_2/stream = ExtResource("5_3xtdh")
+stream_3/stream = ExtResource("6_8a146")
+stream_4/stream = ExtResource("7_bui54")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2kyl"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("8_8a146")
+stream_1/stream = ExtResource("9_bui54")
+stream_2/stream = ExtResource("10_dti24")
+
 [node name="Button" type="Label"]
 focus_mode = 2
 mouse_filter = 0
@@ -77,5 +101,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a5m03")
 wait_time = 0.1
 one_shot = true
 ignore_time_scale = true
+
+[node name="selectSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dti24")
+max_polyphony = 3
+bus = &"soundEffects"
+
+[node name="confirmSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_q2kyl")
+bus = &"soundEffects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

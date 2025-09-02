@@ -92,7 +92,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		var torque_axis = direction.cross(Vector3.UP)  # Calculate a perpendicular axis
 		apply_torque(torque_axis * 10)
 		
-		print("on_area_3d_body_entered")
+
 	#if $FloorCast.is_colliding():
 		#$JumpPuff.emitting = true
 		
@@ -109,7 +109,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		agro = false
 		apply_central_impulse(direction * 3)
 		
-		print("on_area_3d_body_exited")
 		
 		
 		

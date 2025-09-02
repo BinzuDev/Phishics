@@ -9,10 +9,6 @@ extends Panel
 
 @onready var stylebox: StyleBoxFlat = get_theme_stylebox("panel").duplicate()
 
-signal on_button_pressed #After you press the button and its done doing the little animation
-signal on_button_just_pressed #the EXACT moment you press the button
-signal on_button_hovered
-signal on_button_exited
 
 
 func set_text():
@@ -33,7 +29,7 @@ func _ready():
 	focus_entered.connect(_on_focus_entered)
 	focus_exited.connect(_on_focus_exited)
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		set_text()
 

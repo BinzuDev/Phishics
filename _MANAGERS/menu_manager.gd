@@ -1,38 +1,74 @@
 extends Node
 
+var transitionStart : int = 0
+var transitionEnd : int = 0
 
 func _ready():
 	print("menu manager ready")
 	$PauseMenu/TrickList.visible = false
 	$splashScreen.visible = true
+	$transitionScreen.visible = true
+	$transitionScreen.position = Vector2(-99999, 0)
+	toggleMenu()
+
 
 func _process(_delta):
-	
 	#splash screen fadeout
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
 	
+	transitionStart = -($transitionScreen.size.x + %fishHead.size.x*0.5) - 100
+	transitionEnd = $transitionScreen.size.x + %fishTail.size.x + 100
+	#print("screen: ", $transitionScreen.size.x, " tail: ", %fishTail.size.x, " head: ", %fishHead.size.x*0.5)
+	#print("S: ", transitionStart, " C: ", $transitionScreen.position.x, " E: ", transitionEnd)
 	
+
+
+func toggleMenu():
 	$PauseMenu.visible = GameManager.gamePaused
-	if Input.is_action_just_pressed("pause"):
+	if GameManager.gamePaused:
 		%Continue.grab_focus()
 		%PauseList.visible = true
 		%TrickList.visible = false
 		
-	#if Input.is_action_just_pressed("frameFRWD"):
-	#	%hideUI.button_pressed = true
-	
+
+
+
+func setTransition(value: float):
+	$transitionScreen.position.x = value
 
 
 func start_transition():
-	$screenTransition.play("transition_in")
+	$transitionScreen.visible = true
+	var tween = create_tween()
+	tween.finished.connect(_fade_in_over)
+	tween.tween_method(setTransition, transitionStart, 0, 0.6) \
+		.set_trans(Tween.TRANS_LINEAR) \
+		.set_ease(Tween.EASE_OUT)
+	
+func _fade_in_over():
+	await get_tree().create_timer(0.03).timeout
+	GameManager.level_transition()
 
-func _on_screen_transition_finished(anim_name):
-	if anim_name == "transition_in":
-		GameManager.level_transition()
 
 func end_transition():
-	$screenTransition.play("transition_out")
+	var tween = create_tween()
+	tween.finished.connect(_fade_out_over)
+	tween.tween_method(setTransition, 0, transitionEnd, 0.6) \
+		.set_trans(Tween.TRANS_LINEAR) \
+		.set_ease(Tween.EASE_OUT)
+	
+func _fade_out_over():
+	GameManager.disableMenuControl = false
+	$transitionScreen.visible = false
+
+
+func resetFocus():
+	%Continue.forceReset()
+	%Restart.forceReset()
+	%Tricks.forceReset()
+	%Exit.forceReset()
+	
 
 
 #Pause menu options
@@ -40,18 +76,17 @@ func _on_continue_pressed():
 	GameManager.toggle_pause()
 
 func _on_restart_pressed():
-	GameManager.toggle_pause()
 	GameManager.reset_level()
-	ScoreManager.show()
 
 func _on_tricks_pressed():
 	%PauseList.visible = false
 	%TrickList.visible = true
-	$PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer/movement.grab_focus()
-	#$PauseMenu/TrickList/Panel/Control/ScrollContainer/VBoxContainer/Button.grab_focus()
+	GameManager.disableMenuControl = false
+	%movement.grab_focus()
+	$PauseMenu/TrickList/Panel/ScrollContainer.scroll_vertical = -500
+	
 
 func _on_exit_pressed(): 
-	GameManager.toggle_pause() 
 	GameManager.change_scene("res://Levels/Title_Screen.tscn")
 
 
