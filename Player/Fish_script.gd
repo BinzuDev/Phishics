@@ -555,7 +555,7 @@ func _physics_process(_delta: float) -> void:
 		var n3 = %surfRC3.get_collision_normal()
 		var n0 = %canSurf.get_collision_normal()
 		var floor_normal = (n1 + n2 + n3 + n0).normalized()
-		print(floor_normal)
+		
 		
 		
 		var vel_2d = Vector2(-linear_velocity.z, linear_velocity.x)
@@ -584,8 +584,6 @@ func _physics_process(_delta: float) -> void:
 			##$surfPivot/fishPivot.global_rotation_degrees.z -= 1
 		#print($surfPivot/fishPivot.global_rotation_degrees)
 		
-	else:
-		$surfPivot.global_rotation
 		
 		
 		
