@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=114 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -57,6 +57,23 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2ykt"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0y68"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l4b1c"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dp2w5"]
+top_radius = 0.2
+bottom_radius = 0.0
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
+radius = 0.1
+height = 0.2
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uucyj"]
 height = 0.5
 radius = 0.65
@@ -108,10 +125,6 @@ radial_segments = 16
 rings = 0
 cap_top = false
 cap_bottom = false
-
-[sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
-radius = 0.1
-height = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_twgm3"]
 size = Vector3(2, 20, 20)
@@ -638,6 +651,7 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
+recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 5
@@ -702,49 +716,60 @@ transform = Transform3D(0.985198, 0, 0, 0, 0.165934, 0, 0, 0, 0.38402, 0, 0, -0.
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 
-[node name="RemoteTransformJump" type="RemoteTransform3D" parent="."]
-remote_path = NodePath("../floorDetection")
-update_rotation = false
+[node name="surfPivot" type="Node3D" parent="."]
 
-[node name="floorDetection" type="ShapeCast3D" parent="."]
-top_level = true
-shape = SubResource("CylinderShape3D_uucyj")
-target_position = Vector3(0, -0.7, 0)
+[node name="surfRC1" type="RayCast3D" parent="surfPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+target_position = Vector3(0, -4, 0)
 collision_mask = 17
 
-[node name="signtest" type="Sprite3D" parent="floorDetection"]
+[node name="surfRC2" type="RayCast3D" parent="surfPivot"]
+unique_name_in_owner = true
+target_position = Vector3(0, -4, 0)
+collision_mask = 17
+
+[node name="surfRC3" type="RayCast3D" parent="surfPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+target_position = Vector3(0, -4, 0)
+collision_mask = 17
+
+[node name="surfSign" type="Sprite3D" parent="surfPivot"]
+unique_name_in_owner = true
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.165947, 0.0354262)
-visible = false
-sorting_offset = -0.15
 axis = 1
 texture = ExtResource("5_l4b1c")
 
-[node name="surfingFish" type="Sprite3D" parent="floorDetection"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.21, 0, -0.135997, 0)
-visible = false
-sorting_offset = 0.07
+[node name="fishPivot" type="Node3D" parent="surfPivot"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -0.17, 0)
+
+[node name="surfingFish" type="Sprite3D" parent="surfPivot/fishPivot"]
+unique_name_in_owner = true
+transform = Transform3D(-1.74846e-08, -1.50996e-08, 0.21, 0.2, -8.74228e-09, 1.83588e-08, 8.74228e-09, 0.2, 1.58546e-08, 5.85977e-08, -0.67028, -2.92988e-08)
 axis = 1
 texture = ExtResource("2_j2ykt")
 
-[node name="speedLines" type="MeshInstance3D" parent="floorDetection"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 0.0354262)
-material_override = SubResource("StandardMaterial3D_div8h")
-mesh = SubResource("CylinderMesh_dh0na")
+[node name="arrow" type="MeshInstance3D" parent="surfPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34472, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_q0y68")
+transparency = 0.47
+mesh = SubResource("CylinderMesh_l4b1c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="surfPivot/arrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653623, 0)
+material_override = SubResource("StandardMaterial3D_q0y68")
+transparency = 0.47
+mesh = SubResource("CylinderMesh_dp2w5")
 skeleton = NodePath("../..")
 
-[node name="speedLines2" type="MeshInstance3D" parent="floorDetection"]
-unique_name_in_owner = true
-transform = Transform3D(0.800418, 0, 0.599443, 0, 1, 0, -0.599443, 0, 0.800418, 0, 3.72529e-09, 0.0354262)
-material_override = SubResource("StandardMaterial3D_iujy1")
-mesh = SubResource("CylinderMesh_iujy1")
-skeleton = NodePath("../..")
-
-[node name="speedLines3" type="MeshInstance3D" parent="floorDetection"]
-unique_name_in_owner = true
-transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, 0, 3.72529e-09, 0.0354262)
-material_override = SubResource("StandardMaterial3D_twgm3")
-mesh = SubResource("CylinderMesh_div8h")
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="surfPivot/arrow"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.625346, 0.0673386, -2.38419e-07)
+material_override = SubResource("StandardMaterial3D_q0y68")
+transparency = 0.47
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_dp2w5")
 skeleton = NodePath("../..")
 
 [node name="RemoteTransformCamera" type="RemoteTransform3D" parent="."]
@@ -777,29 +802,63 @@ fov = 80.0
 visible = false
 mesh = SubResource("SphereMesh_ipqbp")
 
-[node name="RemoteTransformWallJump" type="RemoteTransform3D" parent="."]
-remote_path = NodePath("../nearFloor")
+[node name="RemoteTransformGeneric" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../antiRotation")
 update_rotation = false
 
-[node name="nearFloor" type="RayCast3D" parent="."]
+[node name="antiRotation" type="Node3D" parent="."]
 top_level = true
+
+[node name="floorDetection" type="ShapeCast3D" parent="antiRotation"]
+unique_name_in_owner = true
+shape = SubResource("CylinderShape3D_uucyj")
+target_position = Vector3(0, -0.7, 0)
+collision_mask = 17
+
+[node name="heightDetect" type="RayCast3D" parent="antiRotation"]
+unique_name_in_owner = true
+target_position = Vector3(0, -150, 0)
+
+[node name="nearFloor" type="RayCast3D" parent="antiRotation"]
+unique_name_in_owner = true
 target_position = Vector3(0, -1.5, 0)
 collision_mask = 17
 
-[node name="RemoteTransformHeight" type="RemoteTransform3D" parent="."]
-remote_path = NodePath("../heightDetect")
-update_rotation = false
+[node name="canSurf" type="RayCast3D" parent="antiRotation"]
+unique_name_in_owner = true
+target_position = Vector3(0, -4, 0)
+collision_mask = 17
 
-[node name="heightDetect" type="RayCast3D" parent="."]
-top_level = true
-target_position = Vector3(0, -150, 0)
+[node name="speedLines" type="Node3D" parent="antiRotation"]
+unique_name_in_owner = true
 
-[node name="particleFloor" type="GPUParticlesCollisionBox3D" parent="heightDetect"]
+[node name="speedLines1" type="MeshInstance3D" parent="antiRotation/speedLines"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 0.0354262)
+material_override = SubResource("StandardMaterial3D_div8h")
+mesh = SubResource("CylinderMesh_dh0na")
+skeleton = NodePath("../../..")
+
+[node name="speedLines2" type="MeshInstance3D" parent="antiRotation/speedLines"]
+unique_name_in_owner = true
+transform = Transform3D(0.800418, 0, 0.599443, 0, 1, 0, -0.599443, 0, 0.800418, 0, 3.72529e-09, 0.0354262)
+material_override = SubResource("StandardMaterial3D_iujy1")
+mesh = SubResource("CylinderMesh_iujy1")
+skeleton = NodePath("../../..")
+
+[node name="speedLines3" type="MeshInstance3D" parent="antiRotation/speedLines"]
+unique_name_in_owner = true
+transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, 0, 3.72529e-09, 0.0354262)
+material_override = SubResource("StandardMaterial3D_twgm3")
+mesh = SubResource("CylinderMesh_div8h")
+skeleton = NodePath("../../..")
+
+[node name="particleFloor" type="GPUParticlesCollisionBox3D" parent="antiRotation"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -3.56055, 0)
 size = Vector3(2, 20, 20)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="heightDetect/particleFloor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="antiRotation/particleFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216472, -9.4623e-10, 0)
 visible = false
 mesh = SubResource("BoxMesh_twgm3")
@@ -904,6 +963,7 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="raycast" type="RayCast3D" parent="homing"]
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
+visible = false
 collision_mask = 33
 collide_with_areas = true
 
@@ -932,7 +992,6 @@ mesh = SubResource("SphereMesh_lt56d")
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 16.0
 offset_top = 297.0
 offset_right = 282.0

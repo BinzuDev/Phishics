@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=117 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -37,7 +37,6 @@
 [ext_resource type="PackedScene" uid="uid://uo7r1md5qd4y" path="res://Objects/boombox.tscn" id="31_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="32_581hb"]
 [ext_resource type="PackedScene" uid="uid://cf81w8s7c7kox" path="res://Models/pillar.tscn" id="33_fbdpx"]
-[ext_resource type="Texture2D" uid="uid://c5hwbfaxo6ov7" path="res://Sprites/tornadowarning.png" id="33_nykkc"]
 [ext_resource type="PackedScene" uid="uid://cheqhyt0b5ovq" path="res://Models/pillarhalf.tscn" id="34_er564"]
 [ext_resource type="Texture2D" uid="uid://bgeyga2o4k8mo" path="res://Textures/concrete.png" id="35_5g6ug"]
 [ext_resource type="PackedScene" uid="uid://cybli1pljid07" path="res://Models/bowling pin/texture_pin/pineapple.tscn" id="38_ajrn0"]
@@ -53,13 +52,13 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
 
-[sub_resource type="Sky" id="Sky_s7dn7"]
+[sub_resource type="Sky" id="Sky_28m7t"]
 sky_material = SubResource("PanoramaSkyMaterial_53g8k")
 
 [sub_resource type="Environment" id="Environment_v72nc"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_s7dn7")
+sky = SubResource("Sky_28m7t")
 glow_levels/3 = 16.0
 glow_levels/5 = 0.0
 fog_mode = 1
@@ -373,6 +372,16 @@ func _ready():
 func _process(delta):
 	progress += 5 * delta
 "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28m7t"]
+albedo_color = Color(0.35, 0.35, 0.35, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kvfdy"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+radial_segments = 6
+rings = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcw38"]
 size = Vector3(4.58386, 2.21405, 0.2)
@@ -1261,9 +1270,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
 shape = SubResource("BoxShape3D_w578l")
 
-[node name="streetsign" parent="group1" instance=ExtResource("19_28m7t")]
-transform = Transform3D(-4.42972e-08, 0.203693, -0.979035, -2.81546e-09, 0.979035, 0.203693, 1, 1.17795e-08, -4.2795e-08, 10.385, 5.5401, -11.8157)
-
 [node name="pole2" type="MeshInstance3D" parent="group1"]
 transform = Transform3D(-0.139089, 0.235637, -0.373099, -0.312643, 3.55743, 0.0820562, 0.383769, 2.98351, -0.0683735, -12.5529, 14.4055, -53.3846)
 material_override = SubResource("StandardMaterial3D_11qgy")
@@ -1427,69 +1433,85 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.358437, 0, -0.348601, 0, 0.5, 0, 0.348601, 0, 0.358437, -13.5503, 0, -3.39736)
 skeleton = NodePath("../..")
 
-[node name="streetsign2" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(-0.503626, 0.190783, -0.0765489, 4.65031e-09, 4.55142, 0.0790505, 0.10359, 0.92753, -0.372159, 42.3593, 6.38038, -9.28557)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
+[node name="sign" type="Node3D" parent="group1"]
+transform = Transform3D(0.99157, 0.0108475, -0.129118, 0.00270722, 0.994538, 0.104344, 0.129544, -0.103814, 0.986124, 10.5976, 5.76699, -11.7929)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.68703, 0.316243)
+
+[node name="sign2" type="Node3D" parent="group1"]
+transform = Transform3D(0.114814, 0.0142559, -0.993285, -0.181804, 0.983311, -0.00690203, 0.976609, 0.181376, 0.11549, 43.346, 6.66243, -7.96758)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign2" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign2" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 9.33614e-10, -7.51587e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.0701047, 0.99754, 0.171497, 2.55157, 0.251998)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign3" type="Node3D" parent="group1"]
+transform = Transform3D(0.98432, 0.176398, 0, -0.176398, 0.984319, 0, 0, 0, 1, 24.0583, 6.52493, -11.6532)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign3" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign3" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.977843, -0.209336, 0.000889774, 0.207327, 0.969029, 0.134156, -0.0289459, -0.130999, 0.99096, -0.068697, 2.60219, 0.298411)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign5" type="Node3D" parent="group1"]
+transform = Transform3D(0.98432, 0.176398, 0, -0.176398, 0.984319, 0, 0, 0, 1, 12.8917, 1.18961, -41.0748)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign5" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign5" instance=ExtResource("47_bmonc")]
+transform = Transform3D(-0.555948, -0.310631, -0.770993, 0.491145, -0.871072, -0.00320303, -0.670596, -0.38045, 0.636835, -0.160392, 2.54662, 0.131123)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign7" type="Node3D" parent="group1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.563, 5.41546, -40.7155)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign7" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign7" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.751494, 0, -0.659739, 0, 1, 0, 0.659739, 0, 0.751494, -0.0791541, 2.54662, 0.229397)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign6" type="Node3D" parent="group1"]
+transform = Transform3D(0.995964, -0.0897635, 0, 0.0897635, 0.995963, 0, 0, 0, 1, 2.53923, 9.82806, -49.114)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group1/sign6" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+
+[node name="destructable_sign" parent="group1/sign6" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.856734, -0.50395, 0.109727, 0.488477, 0.861118, 0.140948, -0.165518, -0.0671557, 0.983918, 0.104696, 2.63459, 0.257136)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign4" type="Node3D" parent="group1"]
+transform = Transform3D(0.969445, 0.245276, 0.00389592, -0.245307, 0.969323, 0.0153966, 3.67778e-09, -0.0158818, 0.999874, 51.5363, 14.0026, -9.22508)
+
+[node name="streetsign6" parent="group1/sign4" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, -1.47911e-10, -1.17506e-12, -5.84099e-11, 1, 0, 1.8486e-10, 0, 1, 0, 0, 0)
 skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group1/streetsign2"]
-collision_layer = 4
-collision_mask = 0
+[node name="destructable_sign2" parent="group1/sign4" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.964654, 0.195426, -0.176779, -0.213376, 0.972925, -0.0888086, 0.154637, 0.12339, 0.980236, 0.0282021, 0.11261, 0.231768)
+signSprite = "uid://bwjgjk84nbeei"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign2/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="group1/streetsign2"]
-transform = Transform3D(-0.225728, -0.00143217, 0.983186, 0.0135542, 0.085817, 0.0227111, -0.780402, 0.00190473, -0.283988, 0.560677, 0.874672, -0.222008)
-texture = ExtResource("15_wvw3a")
-
-[node name="streetsign3" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(0.127095, 0.917562, -0.368159, 4.65031e-09, 4.55142, 0.0790505, 0.498213, -0.234071, 0.0939179, 51.3231, 13.6303, -9.28557)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="group1/streetsign3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign3/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="group1/streetsign3"]
-transform = Transform3D(-0.156079, 0.00660095, 1.00148, 0.0446472, 0.0855242, -0.0690977, -0.796122, 0.00350213, -0.200213, 0.560669, 0.874672, -0.222008)
-texture = ExtResource("15_wvw3a")
-
-[node name="Sprite3D3" type="Sprite3D" parent="group1/streetsign3"]
-transform = Transform3D(0.720648, -0.000688575, 0.472716, 0.00651686, 0.0858472, 0.00200933, -0.375217, 0.000168596, 0.90794, 1.09004, 0.148155, 0.0837021)
-texture = ExtResource("15_wvw3a")
-
-[node name="Sprite3D2" type="Sprite3D" parent="group1/streetsign3"]
-transform = Transform3D(-0.282813, -0.00237991, 0.9592, -0.0414015, 0.0857337, 0.010867, -0.76057, -0.00378196, -0.357263, 0.6828, 0.445052, -0.283684)
-texture = ExtResource("15_wvw3a")
-
-[node name="streetsign4" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(-0.0549206, 0.450324, -0.238667, 2.78786e-09, 2.17695, 0.049943, 0.510031, 0.0484917, -0.0256999, 51.3231, 14.5781, -17.3275)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="group1/streetsign4"]
-transform = Transform3D(1, 0, 7.45058e-09, 2.32831e-10, 0.712573, 8.00355e-10, 1.49012e-08, 1.49012e-08, 0.940199, 0, 0, 0)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group1/streetsign4/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="group1/streetsign4"]
-transform = Transform3D(-0.0112989, 0.0091132, 1.14226, 0.0327377, 0.116789, -0.0888887, -1.4399, 0.00258366, -0.0109831, 0.56068, 0.882425, -0.202652)
-texture = ExtResource("33_nykkc")
+[node name="destructable_sign3" parent="group1/sign4" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.564279, -0.262329, 0.782798, 0.186928, 0.964147, 0.188355, -0.804144, 0.0400416, 0.593085, 0.171112, 2.6158, 0.169168)
+signSprite = "uid://bwjgjk84nbeei"
 
 [node name="Jellyfish2" parent="group1" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 15.6925, 25.1399, -0.967458)
@@ -1539,6 +1561,142 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 181.76
 
 [node name="group2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2975, 0, 9.74655e-07)
+
+[node name="destructable_sign2" parent="group2" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.0623676, 0.0178835, -0.997893, -0.275637, 0.961262, -5.58794e-09, 0.959237, 0.275057, 0.0648804, 30.8209, 6.36013, -34.7361)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign" type="Node3D" parent="group2"]
+transform = Transform3D(0.997485, -0.0227955, 0.0671146, 0.0107397, 0.984548, 0.174784, -0.0700619, -0.173624, 0.982317, 40.7624, 12.6416, -29.9053)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.86779, 0.171818)
+signSprite = "uid://2tlrr0ix011u"
+
+[node name="sign6" type="Node3D" parent="group2"]
+transform = Transform3D(0.911502, 0.0941262, -0.400381, -0.19856, 0.953213, -0.227946, 0.360192, 0.287273, 0.887545, 33.8482, 18.7019, -49.5803)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign6" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign6" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.614186, -0.0358754, -0.788345, 0.257807, 0.953278, 0.157472, 0.745862, -0.299959, 0.594739, -0.0492281, 2.89949, 0.384448)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign5" type="Node3D" parent="group2"]
+transform = Transform3D(0.997485, -0.0227955, 0.0671146, 0.0261445, 0.998434, -0.0494512, -0.0658823, 0.0510814, 0.996519, 20.8185, 12.3624, -20.0294)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign5" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign5" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, -7.45058e-09, 1.86265e-09, 1, -1.49012e-08, 0, 0, 1, -0.00597382, 2.70227, 0.180014)
+signSprite = "uid://cu2gs7ehy4cxr"
+
+[node name="sign2" type="Node3D" parent="group2"]
+transform = Transform3D(0.937379, -0.218028, -0.271633, 0.229141, 0.973347, 0.00948101, 0.262326, -0.0711296, 0.962354, 49.7154, 0.700048, -14.001)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign2" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign2" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.7022, 0.257956)
+signSprite = "uid://drxd8lqdquu0g"
+
+[node name="sign9" type="Node3D" parent="group2"]
+transform = Transform3D(0.964285, 0.057145, -0.258629, -0.0365977, 0.995829, 0.0835798, 0.262326, -0.0711296, 0.962354, 56.754, -0.817667, 1.98183)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign9" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign9" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.822884, -0.398415, 0.405127, 0.396078, 0.913415, 0.0937772, -0.407412, 0.0832943, 0.909438, 0.0192566, 3.35807, 0.296659)
+signSprite = "uid://2jdkufiby1by"
+
+[node name="sign8" type="Node3D" parent="group2"]
+transform = Transform3D(0.874518, 0.229516, -0.427248, -0.278607, 0.958818, -0.0551975, 0.396984, 0.167305, 0.902448, 61.2546, 3.92287, -26.6086)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign8" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign8" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.7022, 0.257956)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign10" type="Node3D" parent="group2"]
+transform = Transform3D(0.899115, -0.268413, -0.345756, 0.250454, 0.963304, -0.0965324, 0.358979, 0.000197798, 0.933345, 67.9151, 2.8066, -3.89918)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign10" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign10" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.940694, -0.233321, -0.246285, 0.221519, 0.972269, -0.0749891, 0.256952, 0.0159848, 0.966292, -0.00164032, 2.7022, 0.257957)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="destructable_sign2" parent="group2/sign10" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.579455, 0.250454, -0.775568, -0.0692793, 0.963304, 0.259318, 0.812054, -0.0965324, 0.575543, 3.66471, -2.55647, 7.45308)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="destructable_sign3" parent="group2/sign10" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.579455, 0.250454, -0.775568, -0.0692793, 0.963304, 0.259318, 0.812054, -0.0965324, 0.575543, 5.49949, -2.59555, 11.8235)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="destructable_sign4" parent="group2/sign10" instance=ExtResource("47_bmonc")]
+transform = Transform3D(-0.185658, -0.396389, -0.899115, 0.481481, -0.834345, 0.268413, -0.856567, -0.383073, 0.345756, 14.2221, -0.354527, 17.428)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign3" type="Node3D" parent="group2"]
+transform = Transform3D(0.863614, -0.218028, -0.454571, 0.226367, 0.973347, -0.0367878, 0.450476, -0.0711296, 0.889951, 89.7698, 21.1777, -50.4682)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign3" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign3" instance=ExtResource("47_bmonc")]
+transform = Transform3D(-0.965926, 0.258819, -7.45058e-09, -0.258819, -0.965926, -1.49012e-08, -1.8504e-08, -2.73662e-08, 1, -0.00164032, 2.7022, 0.257956)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign7" type="Node3D" parent="group2"]
+transform = Transform3D(0.873659, 0.240368, -0.423018, -0.183826, 0.968072, 0.170423, 0.450476, -0.0711295, 0.889951, 77.0669, 21.8389, -52.0272)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign7" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign7" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.980677, -0.0596872, 0.186308, 0.028424, 0.985688, 0.166167, -0.193559, -0.15766, 0.968338, -0.00939941, 2.88057, 0.278519)
+signSprite = "uid://bwjgjk84nbeei"
+
+[node name="sign4" type="Node3D" parent="group2"]
+transform = Transform3D(0.942753, -0.0344221, 0.331711, 0.0492603, 0.998121, -0.0364259, -0.329834, 0.0506807, 0.942678, 77.2942, 23.3978, 9.89279)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group2/sign4" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group2/sign4" instance=ExtResource("47_bmonc")]
+transform = Transform3D(-0.917513, -0.0599477, 0.393161, 0.118254, -0.984985, 0.12578, 0.379717, 0.161898, 0.910826, 0.0451262, 2.4402, 0.309516)
+signSprite = "uid://bwjgjk84nbeei"
 
 [node name="Platform2" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-1.44868e-06, -0.935859, -9.47233, 0, 5.26986, -1.68216, 33.1419, -4.09077e-08, -4.14049e-07, -7.3336, -0.109611, 0.210557)
@@ -2826,50 +2984,12 @@ centerPlayer = true
 transform = Transform3D(0.630743, 0.479861, -0.609832, -0.645159, 0.760972, -0.068492, 0.4312, 0.436639, 0.789564, 192.508, 63.1383, -75.3429)
 strength = 21.0
 
-[node name="streetsign5" type="MeshInstance3D" parent="highUpSection"]
-transform = Transform3D(-0.503626, 0.190782, -0.0765488, 4.65031e-09, 4.55142, 0.0790507, 0.10359, 0.92753, -0.372159, 99.0122, 22.7561, 9.22042)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/streetsign5"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign5/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="highUpSection/streetsign5"]
-transform = Transform3D(1.00579, -0.101282, -0.0305081, -0.0111361, -0.111276, 0.0022795, -0.0429449, -0.0231323, -1.33902, 0.127441, 0.752491, -0.595322)
-texture = ExtResource("15_wvw3a")
-
-[node name="streetsign7" type="MeshInstance3D" parent="highUpSection"]
-transform = Transform3D(-0.410431, -1.60745, 0.191407, -0.168528, 4.35287, 0.0488779, -0.259836, -0.284148, -0.334044, 111.674, 21.222, -51.6436)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/streetsign7"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign7/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
-
-[node name="Sprite3D" type="Sprite3D" parent="highUpSection/streetsign7"]
-transform = Transform3D(1.00579, -0.101282, -0.0305081, -0.0111361, -0.111276, 0.0022795, -0.0429449, -0.0231323, -1.33902, 0.127441, 0.752491, -0.595322)
-texture = ExtResource("15_wvw3a")
-
-[node name="Sprite3D" type="Sprite3D" parent="highUpSection"]
-transform = Transform3D(-0.653826, 0.216707, 0.365992, -0.312267, -0.700271, -0.143213, 0.288793, -0.266569, 0.673751, 93.56, 26.1339, 12.3109)
-texture = ExtResource("15_wvw3a")
+[node name="destructable_sign6" parent="highUpSection" instance=ExtResource("47_bmonc")]
+transform = Transform3D(-0.931722, 0.295912, 0.210546, -0.290507, -0.95518, 0.056885, 0.217942, -0.00816405, 0.975928, 93.4706, 25.4987, 12.2336)
+signSprite = "uid://bwjgjk84nbeei"
 
 [node name="streetsign6" type="MeshInstance3D" parent="highUpSection"]
-transform = Transform3D(-0.499542, 0.0824869, -0.0769262, 4.6126e-09, 1.96786, 0.0794405, 0.10275, 0.401029, -0.373994, 93.3465, 24.7289, 11.5554)
+transform = Transform3D(-0.489747, 0.0820766, -0.0986234, 4.52216e-09, 1.95807, 0.101847, 0.100735, 0.399034, -0.47948, 93.3465, 24.7289, 11.5554)
 material_override = SubResource("StandardMaterial3D_11qgy")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("CylinderMesh_6r7q6")
@@ -3094,6 +3214,10 @@ strength = 18.0
 centerPlayer = true
 targetableByHoming = false
 
+[node name="destructable_sign" parent="group3" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 3.44589e-08, 4.65661e-09, 6.33299e-08, 1, 0, -1, -1.2666e-07, 165.777, 20.6658, -27.6884)
+signSprite = "uid://bopnbyxyecen8"
+
 [node name="half pipe" type="CSGCombiner3D" parent="group3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 180.965, 7.87008, -42.375)
 material_override = ExtResource("4_vbdqq")
@@ -3167,6 +3291,45 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/wall2/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
+
+[node name="sign5" type="Node3D" parent="group3"]
+transform = Transform3D(0.919266, -0.153849, 0.362326, 0.0937729, 0.979549, 0.178017, -0.382304, -0.129669, 0.914894, 208.983, 20.2453, -41.6254)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group3/sign5" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group3/sign5" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00164032, 2.7022, 0.257956)
+signSprite = "uid://2tlrr0ix011u"
+
+[node name="sign7" type="Node3D" parent="group3"]
+transform = Transform3D(0.897917, 0.181616, 0.400951, -0.270568, 0.946229, 0.177323, -0.347187, -0.267706, 0.898775, 201.225, 20.2453, -69.9483)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group3/sign7" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group3/sign7" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.934468, -0.342835, -0.096092, 0.345617, 0.938279, 0.0134546, 0.0855483, -0.0457842, 0.995281, -0.157181, 2.76111, 0.201244)
+signSprite = "uid://2jdkufiby1by"
+
+[node name="destructable_sign2" parent="group3/sign7" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.748222, -0.111174, -0.654067, 0.145967, 0.989289, -0.00117314, 0.647192, -0.0945947, 0.756435, -0.183712, 0.385805, 0.156453)
+signSprite = "uid://drxd8lqdquu0g"
+
+[node name="sign6" type="Node3D" parent="group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.851, 25.1532, -39.8636)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="group3/sign6" instance=ExtResource("19_28m7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
+skeleton = NodePath("../../../group1")
+
+[node name="destructable_sign" parent="group3/sign6" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00164032, 2.7022, 0.257956)
 
 [node name="THEPIT(tm)" type="Node3D" parent="group3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.545, 0, -102.627)
@@ -3471,6 +3634,10 @@ floating = true
 [node name="strike_zone6" parent="group3" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.4595, -135.593)
 
+[node name="destructable_sign2" parent="group3" instance=ExtResource("47_bmonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2513, 30.4711, 51.7738)
+signSprite = "uid://bwjgjk84nbeei"
+
 [node name="2Darea" type="Node3D" parent="."]
 transform = Transform3D(1, -4.6761e-08, 0, 4.6761e-08, 1, 0, 0, 0, 1, 124.283, 34.8701, 23.0205)
 
@@ -3478,13 +3645,73 @@ transform = Transform3D(1, -4.6761e-08, 0, 4.6761e-08, 1, 0, 0, 0, 1, 124.283, 3
 transform = Transform3D(0.554084, 0.505324, 0, -0.505239, 0.554177, 0, 0, 0, 0.761141, 11.1197, 3.688, -15.8682)
 texture = ExtResource("15_wvw3a")
 
+[node name="bolt" type="MeshInstance3D" parent="2Darea/arrowSIgn2"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, -2.00607, 0.759622, 3.8773e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt2" type="MeshInstance3D" parent="2Darea/arrowSIgn2"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, 2.00879, 0.759621, 3.99999e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt3" type="MeshInstance3D" parent="2Darea/arrowSIgn2"]
+transform = Transform3D(0.29354, -2.12458e-09, -0.955947, -0.955947, -4.37114e-08, -0.29354, -4.51493e-08, 1, -1.57933e-08, 2.00879, -0.800148, 3.26532e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt4" type="MeshInstance3D" parent="2Darea/arrowSIgn2"]
+transform = Transform3D(-0.682254, -2.12458e-09, -0.731116, -0.731116, -4.37114e-08, 0.682254, -3.73948e-08, 1, 2.73376e-08, -1.9577, -0.844361, 1.08451e-06)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
 [node name="arrowSIgn3" type="Sprite3D" parent="2Darea"]
 transform = Transform3D(0.631431, -0.404507, 0, 0.404439, 0.631537, 0, 0, 0, 0.761141, 16.2447, 3.688, -15.8682)
 texture = ExtResource("15_wvw3a")
 
+[node name="bolt" type="MeshInstance3D" parent="2Darea/arrowSIgn3"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, -2.00607, 0.759622, 3.8773e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt2" type="MeshInstance3D" parent="2Darea/arrowSIgn3"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, 2.00879, 0.759621, 3.99999e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt3" type="MeshInstance3D" parent="2Darea/arrowSIgn3"]
+transform = Transform3D(0.29354, -2.12458e-09, -0.955947, -0.955947, -4.37114e-08, -0.29354, -4.51493e-08, 1, -1.57933e-08, 2.00879, -0.800148, 3.26532e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt4" type="MeshInstance3D" parent="2Darea/arrowSIgn3"]
+transform = Transform3D(-0.682254, -2.12458e-09, -0.731116, -0.731116, -4.37114e-08, 0.682254, -3.73948e-08, 1, 2.73376e-08, -1.9577, -0.844361, 1.08451e-06)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
 [node name="arrowSIgn" type="Sprite3D" parent="2Darea"]
 transform = Transform3D(1.04903, -0.0336481, -0.0299709, 0.0338962, 1.04942, 0.00824972, 0.02969, -0.00920964, 1.04954, -9.11372, 1.6584, -15.8663)
 texture = ExtResource("15_wvw3a")
+
+[node name="bolt" type="MeshInstance3D" parent="2Darea/arrowSIgn"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, -2.00607, 0.759622, 3.8773e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt2" type="MeshInstance3D" parent="2Darea/arrowSIgn"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, 2.00879, 0.759621, 3.99999e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt3" type="MeshInstance3D" parent="2Darea/arrowSIgn"]
+transform = Transform3D(0.29354, -2.12458e-09, -0.955947, -0.955947, -4.37114e-08, -0.29354, -4.51493e-08, 1, -1.57933e-08, 2.00879, -0.800148, 3.26532e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt4" type="MeshInstance3D" parent="2Darea/arrowSIgn"]
+transform = Transform3D(-0.682254, -2.12458e-09, -0.731116, -0.731116, -4.37114e-08, 0.682254, -3.73948e-08, 1, 2.73376e-08, -1.9577, -0.844361, 1.08451e-06)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="2Darea/arrowSIgn"]
 transform = Transform3D(1, 0, 1.86265e-09, 1.45519e-11, 1, 0, 1.86265e-09, 0, 1, 0, 0, 0)
@@ -3496,6 +3723,21 @@ shape = SubResource("BoxShape3D_vcw38")
 [node name="arrowSIgn4" type="Sprite3D" parent="2Darea"]
 transform = Transform3D(0.749055, -0.0345442, 0, 0.0345384, 0.749181, 0, 0, 0, 0.761141, 13.6102, 2.3571, -15.8682)
 texture = ExtResource("30_i76hq")
+
+[node name="bolt" type="MeshInstance3D" parent="2Darea/arrowSIgn4"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, 0.0333581, 0.759622, 3.93963e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt2" type="MeshInstance3D" parent="2Darea/arrowSIgn4"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, -1.17379, -1.13772, 3.99999e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt3" type="MeshInstance3D" parent="2Darea/arrowSIgn4"]
+transform = Transform3D(0.29354, -2.12458e-09, -0.955947, -0.955947, -4.37114e-08, -0.29354, -4.51493e-08, 1, -1.57933e-08, 1.02101, -1.12354, 3.26532e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
 
 [node name="Platform35" type="MeshInstance3D" parent="2Darea"]
 transform = Transform3D(22.1825, -5.25568e-08, 0, 1.13687e-13, 1.42538, 0, 0, 0, 31.0085, -0.0779419, -0.212383, -0.573746)
@@ -4038,32 +4280,5 @@ texture = ExtResource("6_53g8k")
 [node name="CoralSpriteG6" type="Sprite3D" parent="AllCoralGroups/CoralSpriteGroup19"]
 transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.54285, -0.14407, 4.18181)
 texture = ExtResource("6_53g8k")
-
-[node name="destructable_sign" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5276, 0.47736, -41.213)
-signSprite = "uid://drxd8lqdquu0g"
-
-[node name="destructable_sign2" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4316, 0.542324, -40.8377)
-signSprite = "uid://cu2gs7ehy4cxr"
-
-[node name="destructable_sign3" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6531, 0.542324, -40.8948)
-signSprite = "uid://cnu1o2yg0c0o0"
-
-[node name="destructable_sign4" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7699, 0.542324, -40.7639)
-signSprite = "uid://2tlrr0ix011u"
-
-[node name="destructable_sign5" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.21818, 0.542324, -40.6681)
-
-[node name="Destructable_Sign" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 0.905717, -0.423883, 0, 0.423883, 0.905717, 26.869, 31.9015, 58.7082)
-signSprite = "uid://bwjgjk84nbeei"
-
-[node name="Destructable_Sign2" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(0.984494, 0.175419, 0, -0.175419, 0.984494, 0, 0, 0, 1, 11.1004, 8.7709, -11.5288)
-signSprite = "uid://2jdkufiby1by"
 
 [editable path="group2/frickingAwesomeTube"]

@@ -473,19 +473,35 @@ trickName = "Tornado"
 score = "500pts"
 description = "Touch a tornado."
 
-[node name="sign" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-layout_mode = 2
-trickName = "Vandalism"
-score = "1000pts + 1x"
-rarity = "Uncommon"
-description = "Destroy a sign post"
-
 [node name="worm" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Worm"
 score = "800pts + 5x"
 rarity = "Uncommon"
 description = "Collect a worm."
+
+[node name="signMechanic" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Sign Surfing"
+rarity = "Mechanic"
+description = ""
+description2 = "Touch a street sign to rip it off the pole and start using it as a surf board! In sign surfing mode, you can to slide around smoothly
+  with very little friction. By holding space, you can disembark the sign and do a big double jump! (breaking the sign in the process)
+  During sign surf, you're unable to tipspin and wall jump, homing dive also makes you drop and break the sign."
+
+[node name="sign" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Vandalism"
+score = "2500pts + 1x"
+rarity = "Uncommon"
+description = "Steal a sign and use it as a surf board."
+
+[node name="sign2" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Surf Jump"
+score = "8x"
+rarity = "Uncommon"
+description = "Jump off of a sign during sign surf by holding down space."
 
 [node name="dunk" parent="PauseMenu/TrickList/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2

@@ -30,34 +30,35 @@ func _process(_delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player:
 		
-		gravity_scale = 3 #when player touches it, it falls
+		angular_velocity = body.angular_velocity
+		linear_velocity = body.linear_velocity
 		
-		#angular_velocity = body.angular_velocity
-		#var vel = body.linear_velocity
-		#vel.y = 0
-		#linear_velocity = vel
+		
+		if not fellOff: #destruction points
+			ScoreManager.give_points(2500, 1, true, "VANDALISM")
+			ScoreManager.play_trick_sfx("uncommon")
+			$AudioStreamPlayer3D.play()
+			fellOff = true
 		
 		
 		#if the fish isnt surfing and the sign isnt bent yet
 		if body.surfMode == false and not bent:
 			body.activateSurfMode(signSprite, self)
 			$collisionFlat.set_deferred("disabled", true)
+			$Area3D.set_deferred("monitoring", false)
 			set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 			visible = false
 		
 		
-		if not fellOff: #destruction points
-			ScoreManager.give_points(1000, 1, false, "VANDALISM")
-			ScoreManager.play_trick_sfx("uncommon")
-			$AudioStreamPlayer3D.play()
-			fellOff = true
-			
+		
+		
 		
 
 
 func throwAway():
 	visible = true
-	process_mode = Node.PROCESS_MODE_INHERIT
+	set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+	gravity_scale = 3 #when player touches it, it falls
 	$bend.rotation_degrees.y = -60
 	apply_central_impulse(Vector3(0,-6,0))
 	$AudioStreamPlayer3D.play()
@@ -65,8 +66,9 @@ func throwAway():
 	$Area3D.set_collision_layer_value(6, false) #turn off homing when bent
 	#temporarily turn off collision as you jump off
 	set_collision_layer_value(3, false) 
-	await get_tree().create_timer(10.05).timeout
+	await get_tree().create_timer(0.1).timeout
 	$collisionBend1.set_deferred("disabled", false)
 	$collisionBend2.set_deferred("disabled", false)
-	set_collision_layer_value(3, true)  #turn it back on after 3 frames
-	printerr("collision is back")
+	set_collision_layer_value(3, true)  #turn it back on after 6 frames
+	$Area3D.set_deferred("monitoring", true)
+	

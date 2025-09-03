@@ -33,7 +33,7 @@ var closestLastFrame = null
 
 var surfMode : bool = false
 var surfSignRef : Node
-var surfJumpCooldown : int = 0 #so you cant accidentally surf jump by spamming
+var surfJumpHolding : int = 0 #keeps track of how lonh youve held jump
 
 
 #MOVEMENT CONSTS
@@ -55,6 +55,7 @@ func _ready() -> void:
 	ScoreManager.fish = self
 	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
 	$Decal.visible = false
+	$surfPivot.visible = false
 	if noScoreUI:
 		ScoreManager.hide()
 	
@@ -82,21 +83,10 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
-	surfJumpCooldown += 1
-	print(surfJumpCooldown)
 	if Input.is_action_just_pressed("jump") and canJump:
-		
-		   #surf jumping
-		if surfJumpCooldown > 45 and surfMode and !$floorDetection.is_colliding() and height > 3:
-			timeSinceJump = 0
-			deactivateSurfMode()
-			apply_impulse(JUMP_STRENGTH*5)
-		surfJumpCooldown = 0
-		
-		
-		if !$nearFloor.is_colliding() and surfMode:
+		if !%nearFloor.is_colliding() and surfMode:
 			pass #Disable walljumps in surf mode
-		elif (timeSinceJump > 20 and $floorDetection.is_colliding()) or noclip:
+		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
 			timeSinceJump = 0
 			#audio
 			$Jumps.play()
@@ -135,11 +125,11 @@ func _physics_process(_delta: float) -> void:
 			## Style Meter and jump related tricks
 			superJumpTimer = 5 #check your speed 5 frames after jumping
 			
-			if is_in_air() and $nearFloor.is_colliding():
+			if is_in_air() and %nearFloor.is_colliding():
 				ScoreManager.give_points(1000,0, true, "POGO JUMP", "uncommon")
 				#play_trick_sfx("uncommon")
 			
-			if !$nearFloor.is_colliding():
+			if !%nearFloor.is_colliding():
 				ScoreManager.give_points(800,1, true, "WALL JUMP", "uncommon")
 				ScoreManager.reset_airspin()
 				print("Airspin reset by walljump")
@@ -175,10 +165,22 @@ func _physics_process(_delta: float) -> void:
 			ScoreManager.play_trick_sfx("legendary")
 		
 	
+	## Surf Jump
+	if Input.is_action_pressed("jump"):
+		surfJumpHolding += 1
+		if surfJumpHolding >= 20 and surfMode:
+			deactivateSurfMode()
+			ScoreManager.give_points(0, 8, true, "SURF JUMP")
+			apply_impulse(JUMP_STRENGTH*5)
+	else:
+		surfJumpHolding = 0
+	#print(surfJumpHolding)
+	
+	
 	
 	var closest = null
 	## HOMING ATTACK
-	if $homing/area.has_overlapping_areas() and !$nearFloor.is_colliding() and !isHeld:
+	if $homing/area.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
 		closest = get_closest_target()
 		if closest != null:
 			if closestLastFrame != closest:
@@ -218,10 +220,10 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	## Diving
-	if $heightDetect.is_colliding():
-		height = global_position.y - $heightDetect.get_collision_point().y
+	if %heightDetect.is_colliding():
+		height = global_position.y - %heightDetect.get_collision_point().y
 		
-	if Input.is_action_just_pressed("dive") and !$nearFloor.is_colliding() and !isHeld:
+	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld:
 		var newSpd = clamp(height*-1.5 -10, -90, -10) 
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
@@ -234,8 +236,8 @@ func _physics_process(_delta: float) -> void:
 		if newSpd <= -75:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
 			ScoreManager.play_trick_sfx("legendary")
-		print("the transparency is ", %speedLines.transparency)
-		if %speedLines.transparency < 0.8:
+		print("the transparency is ", %speedLines1.transparency)
+		if %speedLines1.transparency < 0.8:
 			print("yupp goodneough for me")
 			global_rotation = Vector3(0,0,-90)
 		diving = true #DIVING VARIABLE
@@ -259,6 +261,8 @@ func _physics_process(_delta: float) -> void:
 				#print("SMEAR FIX")
 			homing = true
 			$diveSFX.play()
+			if surfMode:
+				deactivateSurfMode()
 	
 	
 	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
@@ -429,7 +433,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	## Hangtime
-	if is_in_air() and !$nearFloor.is_colliding(): 
+	if is_in_air() and !%nearFloor.is_colliding(): 
 		ScoreManager.give_points(clamp(height, 1, 10), 0, false, "HANGTIME")
 	
 	## SPEEN
@@ -463,15 +467,16 @@ func _physics_process(_delta: float) -> void:
 		
 		
 		## Tip landing
-		if !tiplanding and linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05 and !isHeld:
-			tiplanding = true
-			ScoreManager.give_points(999999, 200, true, "TIPLANDING HOLY SHIT")
-			ScoreManager.change_rank(8, 1)
-			ScoreManager.comboTimer += 500
-			ScoreManager.play_trick_sfx("legendary")
-			MusicManager.play_track(1, 1)
-			MusicManager.play_track(2, 1)
-			MusicManager.play_track(3, 1) #play the music tracks if not already playing
+		if !tiplanding and !isHeld and !surfMode:
+			if linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05:
+				tiplanding = true
+				ScoreManager.give_points(999999, 200, true, "TIPLANDING HOLY SHIT")
+				ScoreManager.change_rank(8, 1)
+				ScoreManager.comboTimer += 500
+				ScoreManager.play_trick_sfx("legendary")
+				MusicManager.play_track(1, 1)
+				MusicManager.play_track(2, 1)
+				MusicManager.play_track(3, 1) #play the music tracks if not already playing
 	
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again
@@ -487,19 +492,20 @@ func _physics_process(_delta: float) -> void:
 	
 	%particleFloor.position.y = -height -1
 	
-	%speedLines.rotation_degrees.y += angular_velocity.y*0.4
+	%speedLines1.rotation_degrees.y += angular_velocity.y*0.4
 	%speedLines2.rotation_degrees.y += angular_velocity.y*0.5
 	%speedLines3.rotation_degrees.y += angular_velocity.y*0.6
-	%speedLines.visible = true
+	%speedLines1.visible = true
 	%speedLines2.visible = true
 	%speedLines3.visible = false
 	var transp = abs(angular_velocity.y)*0.02
 	if !isTipSpinning: #make it harder to see the speed lines when not tipspinning
 		transp -= 0.3
-		%speedLines.visible = false #make the speed lines wider when in the air,
+		%speedLines1.visible = false #make the speed lines wider when in the air,
 		%speedLines3.visible = true #but thinner and taller when tipspinning
+	%speedLines.visible = !surfMode
 	transp = 1 - clamp(transp, 0 ,1)
-	%speedLines.transparency = transp
+	%speedLines1.transparency = transp
 	%speedLines2.transparency = transp
 	%speedLines3.transparency = transp
 	
@@ -538,7 +544,54 @@ func _physics_process(_delta: float) -> void:
 		newDecal.size.z = size
 		newDecal.visible = true
 		
+	
+	
+	## Sign Surf angle ##
+	
+	if surfMode and (%canSurf.is_colliding() or %surfRC2.is_colliding()):
+		#Rotate the sign
+		var n1 = %surfRC1.get_collision_normal()
+		var n2 = %surfRC2.get_collision_normal()
+		var n3 = %surfRC3.get_collision_normal()
+		var n0 = %canSurf.get_collision_normal()
+		var floor_normal = (n1 + n2 + n3 + n0).normalized()
+		print(floor_normal)
 		
+		
+		var vel_2d = Vector2(-linear_velocity.z, linear_velocity.x)
+		if vel_2d.length() > 0.01:
+			var vel_dir = Vector3(vel_2d.x, 0, vel_2d.y).normalized()
+			var forward = vel_dir.slide(floor_normal).normalized()
+			
+			var right = forward.cross(floor_normal).normalized()
+			#print(right)
+			#if floor_normal.y < 0:
+				#right = floor_normal.cross(forward).normalized()
+				#printerr("glitch fixed????")
+			forward = right.cross(floor_normal).normalized()
+			
+			
+			var newBasis = Basis(right, floor_normal, forward).orthonormalized()
+			
+			$surfPivot.global_transform.basis = newBasis
+			
+		
+		#if Input.is_action_pressed("cancel"):
+			#$surfPivot/fishPivot.rotate_z(0.1)
+			##$surfPivot/fishPivot.global_rotation_degrees.z += 1
+		#if Input.is_action_pressed("confirm"):
+			#$surfPivot/fishPivot.rotate_z(-0.1)
+			##$surfPivot/fishPivot.global_rotation_degrees.z -= 1
+		#print($surfPivot/fishPivot.global_rotation_degrees)
+		
+	else:
+		$surfPivot.global_rotation
+		
+		
+		
+	
+	
+	
 	
 	
 	if linear_velocity.length() < 0.1 and !tiplanding and !isHeld:
@@ -585,7 +638,7 @@ func _physics_process(_delta: float) -> void:
 	ScoreManager.airSpinAmount += deg_vel
 	
 	#reset when touching the floor
-	if get_contact_count() > 0 and $nearFloor.is_colliding(): 
+	if get_contact_count() > 0 and %nearFloor.is_colliding(): 
 		ScoreManager.reset_airspin()
 		
 	
@@ -646,7 +699,8 @@ func _physics_process(_delta: float) -> void:
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
-	"gravity scale: ", gravity_scale, "\n",
+	"gravity scale: ", gravity_scale, "\n", 
+	"surf jump: ", surfJumpHolding
 	)
 	
 
@@ -655,22 +709,23 @@ func _physics_process(_delta: float) -> void:
 func activateSurfMode(sprite : String, signObj : Node):
 	surfMode = true
 	surfSignRef = signObj
-	$floorDetection/signtest.texture = load(sprite)
-	$floorDetection/signtest.visible = true
-	$floorDetection/surfingFish.visible = true
+	if diving:
+		linear_velocity.y = 0
+		apply_impulse(JUMP_STRENGTH)
+	surfJumpHolding = 5
+	%surfSign.texture = load(sprite)
+	$surfPivot.visible = true
 	%pivotUpper.visible = false
 	%pivotLower.visible = false
 	$collision.set_deferred("disabled", true)
 	$collisionSphere.set_deferred("disabled", false)
-	surfJumpCooldown = -15 #so you cant accidentally cancel it immedeatly
 
 func deactivateSurfMode():
 	surfMode = false
 	surfSignRef.global_position = global_position
 	surfSignRef.reset_physics_interpolation()
 	surfSignRef.throwAway()
-	$floorDetection/signtest.visible = false
-	$floorDetection/surfingFish.visible = false
+	$surfPivot.visible = false
 	$collision.set_deferred("disabled", false)
 	$collisionSphere.set_deferred("disabled", true)
 	
