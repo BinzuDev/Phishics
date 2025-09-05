@@ -138,8 +138,8 @@ material_overlay = ExtResource("2_wstlt")
 use_collision = true
 
 [node name="base" type="CSGBox3D" parent="half pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.298, -30.3849, 17.4706)
-size = Vector3(179.932, 122.786, 130.786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3346, -30.3849, 13.2357)
+size = Vector3(300.246, 122.786, 241.423)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="half pipe"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -7.00846, -5.03661, 6.83)
@@ -149,14 +149,35 @@ radial_segments = 48
 rings = 24
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="half pipe"]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 66.339, 58.8055, 3.58744)
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 74.8948, 31.0431, 3.58744)
 operation = 2
-radius = 51.3686
+radius = 35.215
 radial_segments = 48
 rings = 24
 
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="half pipe"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 99.4386, 40.6264, 58.3942)
+operation = 2
+radius = 25.0
+radial_segments = 48
+rings = 24
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="half pipe"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 131.876, 20.1487, 23.0774)
+operation = 2
+radius = 25.215
+radial_segments = 48
+rings = 24
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="half pipe"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 55.5413, 32.4185, 85.735)
+operation = 2
+radius = 14.0
+height = 87.5662
+sides = 64
+
 [node name="half pipe2" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8909, 79.78, 64.2852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8909, 79.6124, 64.2852)
 material_override = ExtResource("1_hsesv")
 material_overlay = ExtResource("2_wstlt")
 use_collision = true
@@ -166,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185051, -2.762, -0.534088)
 size = Vector3(10.7602, 23.1842, 10.4157)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="half pipe2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 6.08823, 1.2199)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 6.13, 1.22)
 operation = 2
 radius = 6.007
 height = 13.7793
@@ -188,6 +209,14 @@ gravity_scale = 1.5
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6432, 80.7427, 65.184)
 signSprite = "uid://bwjgjk84nbeei"
+
+[node name="destructable_sign9" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9499, 80.7427, 65.1732)
+signSprite = "uid://cu2gs7ehy4cxr"
+
+[node name="destructable_sign10" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5604, 80.7427, 65.1732)
+signSprite = "uid://bopnbyxyecen8"
 
 [node name="destructable_sign2" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6432, 84.8005, 53.6529)

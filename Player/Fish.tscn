@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=122 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cksq7ka4w1bjq" path="res://Sounds/sparks/sparks_high_intensity_01.wav" id="3_dh0na"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="4_ie0qp"]
 [ext_resource type="AudioStream" uid="uid://dtx8330mvhty2" path="res://Sounds/sparks/sparks_high_intensity_03.wav" id="4_iujy1"]
+[ext_resource type="Texture2D" uid="uid://bopnbyxyecen8" path="res://Sprites/signs/skateBoard.png" id="4_q0y68"]
 [ext_resource type="AudioStream" uid="uid://dr5fa44lr58yx" path="res://Sounds/sparks/sparks_medium_intensity_02.wav" id="5_div8h"]
-[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/streetsign.png" id="5_l4b1c"]
+[ext_resource type="Texture2D" uid="uid://dvh47r7mka7c5" path="res://Sprites/signs/skateBoard_underside.png" id="5_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://divrkdsaujxsd" path="res://Sounds/poof.ogg" id="5_t0nqp"]
 [ext_resource type="AudioStream" uid="uid://qpt3nmj24kdx" path="res://Sounds/impact_soft/soft1.ogg" id="6_h8qkj"]
 [ext_resource type="AudioStream" uid="uid://c6au0422c773r" path="res://Sounds/FISH.ogg" id="6_t0nqp"]
@@ -23,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="10_ipqbp"]
 [ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="10_mf1i0"]
 [ext_resource type="AudioStream" uid="uid://diu6e6ohohx7d" path="res://Sounds/sparks/sparks_medium_intensity_28.wav" id="10_q0y68"]
+[ext_resource type="Texture2D" uid="uid://wd70c8b4u4o" path="res://Sprites/UI/surf_jump_meter.png" id="11_dp2w5"]
 [ext_resource type="AudioStream" uid="uid://436nxm2fmpx7" path="res://Sounds/sparks/sparks_high_intensity_06.wav" id="11_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://drrw7ys5t8wyt" path="res://Sounds/impact_medium/medium1.ogg" id="11_uucyj"]
 [ext_resource type="AudioStream" uid="uid://cwilbc1payrwb" path="res://Sounds/impact_medium/medium2.ogg" id="12_5m7cr"]
@@ -56,6 +58,41 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_q0y68"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2ykt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp2w5"]
+albedo_color = Color(0, 1, 0.05, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d6s4o"]
+material = SubResource("StandardMaterial3D_dp2w5")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.7
+radial_segments = 4
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jkku"]
+shading_mode = 0
+albedo_color = Color(0, 0.166667, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bsrx0"]
+material = SubResource("StandardMaterial3D_3jkku")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.7
+radial_segments = 4
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jjx5"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xsxx4"]
+material = SubResource("StandardMaterial3D_3jjx5")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.7
+radial_segments = 4
+rings = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0y68"]
 albedo_color = Color(1, 0, 0, 1)
@@ -661,6 +698,7 @@ transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_j2ykt")
 
 [node name="collisionSphere" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("SphereShape3D_q0y68")
 disabled = true
 
@@ -716,38 +754,65 @@ transform = Transform3D(0.985198, 0, 0, 0, 0.165934, 0, 0, 0, 0.38402, 0, 0, -0.
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 
+[node name="fishGimble" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_d6s4o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="fishGimble"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bsrx0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="fishGimble"]
+transform = Transform3D(0, 1, 0, 4.37114e-08, 2.30371e-15, -1, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xsxx4")
+skeleton = NodePath("../..")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../surfPivot")
+update_rotation = false
+
 [node name="surfPivot" type="Node3D" parent="."]
+top_level = true
+visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-target_position = Vector3(0, -4, 0)
 collision_mask = 17
+debug_shape_custom_color = Color(0, 1, 1, 1)
+debug_shape_thickness = 5
 
 [node name="surfRC2" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
-target_position = Vector3(0, -4, 0)
 collision_mask = 17
+debug_shape_custom_color = Color(0, 1, 1, 1)
+debug_shape_thickness = 5
 
 [node name="surfRC3" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-target_position = Vector3(0, -4, 0)
 collision_mask = 17
+debug_shape_custom_color = Color(0, 1, 1, 1)
+debug_shape_thickness = 5
 
 [node name="surfSign" type="Sprite3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.165947, 0.0354262)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.17, 0)
 axis = 1
+texture = ExtResource("4_q0y68")
+
+[node name="surfSignUnder" type="Sprite3D" parent="surfPivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 4.37114e-08, 4.37114e-08, 4.37114e-08, -0.5, 0, 4.37114e-08, 3.82137e-15, -0.5, 0, -0.17, 0)
+axis = 1
+double_sided = false
 texture = ExtResource("5_l4b1c")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="surfPivot"]
-remote_path = NodePath("../fishPivot")
-update_rotation = false
-
 [node name="fishPivot" type="Node3D" parent="surfPivot"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
-top_level = true
+unique_name_in_owner = true
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, -0.15, 0)
 
 [node name="surfingFish" type="Sprite3D" parent="surfPivot/fishPivot"]
 unique_name_in_owner = true
@@ -762,18 +827,17 @@ material_override = SubResource("StandardMaterial3D_q0y68")
 transparency = 0.47
 mesh = SubResource("CylinderMesh_l4b1c")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="surfPivot/arrow"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.37859, -1.34466, -2.38419e-07)
+material_override = SubResource("StandardMaterial3D_q0y68")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_dp2w5")
+skeleton = NodePath("../..")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="surfPivot/arrow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653623, 0)
 material_override = SubResource("StandardMaterial3D_q0y68")
 transparency = 0.47
-mesh = SubResource("CylinderMesh_dp2w5")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="surfPivot/arrow"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.625346, 0.0673386, -2.38419e-07)
-material_override = SubResource("StandardMaterial3D_q0y68")
-transparency = 0.47
-cast_shadow = 0
 mesh = SubResource("CylinderMesh_dp2w5")
 skeleton = NodePath("../..")
 
@@ -816,23 +880,28 @@ top_level = true
 
 [node name="floorDetection" type="ShapeCast3D" parent="antiRotation"]
 unique_name_in_owner = true
+visible = false
 shape = SubResource("CylinderShape3D_uucyj")
 target_position = Vector3(0, -0.7, 0)
 collision_mask = 17
 
 [node name="heightDetect" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
+visible = false
 target_position = Vector3(0, -150, 0)
 
 [node name="nearFloor" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
+visible = false
 target_position = Vector3(0, -1.5, 0)
 collision_mask = 17
 
 [node name="canSurf" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
-target_position = Vector3(0, -4, 0)
+target_position = Vector3(0, -1.5, 0)
 collision_mask = 17
+debug_shape_custom_color = Color(0.9, 0, 1, 1)
+debug_shape_thickness = 5
 
 [node name="speedLines" type="Node3D" parent="antiRotation"]
 unique_name_in_owner = true
@@ -861,6 +930,7 @@ skeleton = NodePath("../../..")
 [node name="particleFloor" type="GPUParticlesCollisionBox3D" parent="antiRotation"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -3.56055, 0)
+visible = false
 size = Vector3(2, 20, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="antiRotation/particleFloor"]
@@ -898,6 +968,7 @@ scale_amount_max = 0.2
 scale_amount_curve = SubResource("Curve_j6575")
 
 [node name="trickRC" type="Node3D" parent="."]
+visible = false
 
 [node name="under" type="RayCast3D" parent="trickRC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
@@ -944,25 +1015,30 @@ update_scale = false
 
 [node name="homing" type="Node3D" parent="."]
 top_level = true
+visible = false
 
 [node name="area" type="Area3D" parent="homing"]
 unique_name_in_owner = true
 rotation_order = 1
+visible = false
 collision_layer = 0
 collision_mask = 32
 
 [node name="top" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, 0)
+visible = false
 shape = SubResource("CylinderShape3D_40mal")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="middle" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, -1.5)
+visible = false
 shape = SubResource("CylinderShape3D_mdn8s")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="bottom" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -2.5)
+visible = false
 shape = SubResource("CylinderShape3D_6h88e")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
@@ -1034,6 +1110,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1051,6 +1128,43 @@ mouse_filter = 2
 [node name="dead_fish" type="Sprite2D" parent="UI/CenterContainer/Control"]
 unique_name_in_owner = true
 texture = ExtResource("2_dhdhv")
+
+[node name="airSpin" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="surfJumpMeter" type="TextureProgressBar" parent="UI/airSpin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -71.0
+offset_right = 23.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 20.0
+fill_mode = 4
+radial_initial_angle = 230.8
+radial_fill_degrees = 82.7
+nine_patch_stretch = true
+texture_under = ExtResource("11_dp2w5")
+texture_progress = ExtResource("11_dp2w5")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0.466667, 0, 1)
 
 [node name="reticle" type="Node2D" parent="."]
 
@@ -1208,5 +1322,5 @@ texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="." method="checkpoint"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

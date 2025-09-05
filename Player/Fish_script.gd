@@ -33,7 +33,8 @@ var closestLastFrame = null
 
 var surfMode : bool = false
 var surfSignRef : Node
-var surfJumpHolding : int = 0 #keeps track of how lonh youve held jump
+var surfJumpHolding : int = 0 #keeps track of how long youve held jump
+var surfingLastFrame : bool = false
 
 
 #MOVEMENT CONSTS
@@ -174,8 +175,9 @@ func _physics_process(_delta: float) -> void:
 			apply_impulse(JUMP_STRENGTH*5)
 	else:
 		surfJumpHolding = 0
-	#print(surfJumpHolding)
 	
+	%surfJumpMeter.visible = surfMode# and surfJumpHolding != 0
+	%surfJumpMeter.value = surfJumpHolding
 	
 	
 	var closest = null
@@ -412,17 +414,17 @@ func _physics_process(_delta: float) -> void:
 		if amp >= 14:
 			$Hard_Impact.pitch_scale = 1
 			$Hard_Impact.play()
-			#print("play hard, pitch: ", $Hard_Impact.pitch_scale, " speed: ", amp )
+			print("play hard, pitch: ", $Hard_Impact.pitch_scale, " speed: ", amp )
 			$JumpPuff.restart() #harsh particles
 			$JumpPuff.emitting = true
 		elif amp >= 8:                   #from 0.8 to 1.17 at amp 14
 			$Medium_Impact.pitch_scale = 0.35 + amp / 15
 			$Medium_Impact.play()
-			#print("play meduim, pitch: ", $Medium_Impact.pitch_scale, " speed: ", amp )
+			print("play meduim, pitch: ", $Medium_Impact.pitch_scale, " speed: ", amp )
 		else:                         #from 0.7 to 1.3 at amp 8
 			$Soft_Impact.pitch_scale = 0.7 + amp / 15
 			$Soft_Impact.play()
-			#print("play soft, pitch: ", $Soft_Impact.pitch_scale, " speed: ", amp )
+			print("play soft, pitch: ", $Soft_Impact.pitch_scale, " speed: ", amp )
 	
 	
 	  
@@ -545,46 +547,77 @@ func _physics_process(_delta: float) -> void:
 		newDecal.visible = true
 		
 	
+	##TODO: when 360ing near enough to a surface, update perpendicular angle but not facing direction
+	##TODO: change sfx to metal scrapes (and skate sounds for skateboard)
+	##TODO: update info in trick list
 	
 	## Sign Surf angle ##
+	var surfState = "Not surfing"
+	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	
-	if surfMode and (%canSurf.is_colliding() or %surfRC2.is_colliding()):
-		#Rotate the sign
-		var n1 = %surfRC1.get_collision_normal()
-		var n2 = %surfRC2.get_collision_normal()
-		var n3 = %surfRC3.get_collision_normal()
-		var n0 = %canSurf.get_collision_normal()
-		var floor_normal = (n1 + n2 + n3 + n0).normalized()
+	if surfMode:
+		%fishPivot.visible = true
 		
+		if %canSurf.is_colliding():
+			if %surfRC2.is_colliding():
+				surfState = "Normal surfing"
+				floor_normal = getSurfNormal()
+			else:
+				surfState = "landing after a tumble"
+				floor_normal = %canSurf.get_collision_normal().normalized() 
+		else:
+			if %surfRC1.is_colliding():
+				surfState = "Surfing up a steep slope"
+				floor_normal = getSurfNormal()
+			else:
+				surfState = "Jumping"
 		
+		#print($surfPivot.global_transform.basis.y.y)
 		
 		var vel_2d = Vector2(-linear_velocity.z, linear_velocity.x)
-		if vel_2d.length() > 0.01:
+		
+		#Surfing or non-halfpipe jump
+		if surfState != "Jumping" or $surfPivot.global_transform.basis.y.y <= -0.8:
+			surfingLastFrame = true
 			var vel_dir = Vector3(vel_2d.x, 0, vel_2d.y).normalized()
 			var forward = vel_dir.slide(floor_normal).normalized()
-			
 			var right = forward.cross(floor_normal).normalized()
-			#print(right)
-			#if floor_normal.y < 0:
-				#right = floor_normal.cross(forward).normalized()
-				#printerr("glitch fixed????")
-			forward = right.cross(floor_normal).normalized()
 			
+			if floor_normal.y < 0:
+				right = floor_normal.cross(forward).normalized()
+				surfingLastFrame = false #fixes a glitch where you get flipped by jumping upside down
+				#printerr("glitch fixed????")
+			#forward = right.cross(floor_normal).normalized()
 			
 			var newBasis = Basis(right, floor_normal, forward).orthonormalized()
-			
 			$surfPivot.global_transform.basis = newBasis
+			%surfSign.flip_v = false
+			%surfSign.flip_h = false
+			ScoreManager.reset_airspin()
 			
-		
-		#if Input.is_action_pressed("cancel"):
-			#$surfPivot/fishPivot.rotate_z(0.1)
-			##$surfPivot/fishPivot.global_rotation_degrees.z += 1
-		#if Input.is_action_pressed("confirm"):
-			#$surfPivot/fishPivot.rotate_z(-0.1)
-			##$surfPivot/fishPivot.global_rotation_degrees.z -= 1
-		#print($surfPivot/fishPivot.global_rotation_degrees)
-		
-		
+		else: ## rotating in the air
+			if surfingLastFrame: #flip the fish on the first airborne frame because of math bullshit
+				$surfPivot.global_rotation.z += PI
+				printerr("FLIPPING FISH")
+				if %surfSign.rotation_degrees.y == -180:
+					%surfSign.flip_v = true #flip the long signs
+				else:
+					%surfSign.flip_h = true #flip the triangle signs
+			surfingLastFrame = false
+			
+			
+			if $surfPivot.global_transform.basis.y.y < 0.8: #dont rotate if your straight up
+				surfState = "Jumping spin"
+				var curBasis = $surfPivot.global_transform.basis
+				var spinSpeed = angular_velocity.length() * 0.05 * _delta
+				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.y, spinSpeed)
+				
+				ScoreManager.airSpinAmount += rad_to_deg(spinSpeed)
+				#print("total: ", snapped(ScoreManager.airSpinAmount, 0.1), " this frame: ", snapped(rad_to_deg(spinSpeed), 0.1))
+				
+			else:
+				#keep your direction but dont rotate
+				surfState = "Jumping flat"
 		
 		
 	
@@ -618,6 +651,7 @@ func _physics_process(_delta: float) -> void:
 			$taunt.play()
 			$pivotUpper.visible = false
 			$pivotLower.visible = false
+			%fishPivot.visible = false
 			$posing.visible = true
 			$flash.visible = true
 			$tauntAnimation.play("taunt")
@@ -633,7 +667,8 @@ func _physics_process(_delta: float) -> void:
 	var deg_vel = angular_velocity.length() #get rotation speed
 	deg_vel = rad_to_deg(deg_vel) / 60 #transform radians per second into degrees per frame 
 	
-	ScoreManager.airSpinAmount += deg_vel
+	if surfMode == false:
+		ScoreManager.airSpinAmount += deg_vel
 	
 	#reset when touching the floor
 	if get_contact_count() > 0 and %nearFloor.is_colliding(): 
@@ -689,16 +724,17 @@ func _physics_process(_delta: float) -> void:
 	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",windVolume,")",  "\n",
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
-	"spark speed: ", sparkSpd, "\n",
-	"spark sfx rate: ", sfxRate, "\n",
-	"transp: ", transp, "\n",
+	#"spark speed: ", sparkSpd, "\n",
+	#"spark sfx rate: ", sfxRate, "\n",
+	#"transp: ", transp, "\n",
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
-	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
+	#"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
-	"surf jump: ", surfJumpHolding
+	"surf jump: ", surfJumpHolding, "\n", 
+	"surf state: ", surfState
 	)
 	
 
@@ -712,11 +748,22 @@ func activateSurfMode(sprite : String, signObj : Node):
 		apply_impulse(JUMP_STRENGTH)
 	surfJumpHolding = 5
 	%surfSign.texture = load(sprite)
+	print(sprite)
+	%surfSignUnder.visible = sprite == "uid://bopnbyxyecen8" #skateboard underside
+	%surfSign.double_sided = !%surfSignUnder.visible
+	if sprite == "uid://bwjgjk84nbeei" or sprite == "uid://bopnbyxyecen8":
+		%surfSign.position.x = 0
+		%surfSign.rotation_degrees.y = -180 
+	else:  ##differences between triangle signs and long signs
+		%surfSign.position.x = -0.20
+		%surfSign.rotation_degrees.y = 90
 	$surfPivot.visible = true
 	%pivotUpper.visible = false
 	%pivotLower.visible = false
 	$collision.set_deferred("disabled", true)
 	$collisionSphere.set_deferred("disabled", false)
+	ScoreManager.reset_airspin()
+
 
 func deactivateSurfMode():
 	surfMode = false
@@ -726,7 +773,24 @@ func deactivateSurfMode():
 	$surfPivot.visible = false
 	$collision.set_deferred("disabled", false)
 	$collisionSphere.set_deferred("disabled", true)
+	ScoreManager.reset_airspin()
 	
+
+func getSurfNormal():
+	var raycasts : Array = []
+	if %surfRC1.is_colliding():
+		raycasts.append(%surfRC1.get_collision_normal())
+	if %surfRC2.is_colliding():
+		raycasts.append(%surfRC2.get_collision_normal())
+	if %surfRC3.is_colliding():
+		raycasts.append(%surfRC3.get_collision_normal())
+	var finalVector : Vector3 = Vector3.ZERO
+	for ray in raycasts:
+		finalVector += ray
+	
+	return finalVector.normalized()
+
+
 
 
 ## This functions takes in a vector, and rotates it so that forward points

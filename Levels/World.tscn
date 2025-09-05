@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b3o3bqgimbwt7" path="res://Models/car_battery.tscn" id="14_hqwgh"]
 [ext_resource type="PackedScene" uid="uid://bf8smqh6dbfvm" path="res://Objects/fricking_awesome_tube.tscn" id="15_myu2g"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="15_rk5xy"]
-[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/streetsign.png" id="15_wvw3a"]
+[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/arrowSign.png" id="15_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="16_e1uki"]
 [ext_resource type="PackedScene" uid="uid://cgsag1mii1t2g" path="res://Models/surf_board.tscn" id="16_h7041"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="17_w578l"]
@@ -1185,7 +1185,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="slope3" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(37.9998, 1.14628, -26.6685, 2.38419e-07, 1.24697, 31.8571, 69.4368, -0.627308, 14.5945, -22.4992, 12.6227, 22.7649)
+transform = Transform3D(25.0918, 1.14628, -27.139, 1.57432e-07, 1.24697, 32.4192, 45.8502, -0.627308, 14.852, -22.4992, 12.6227, 22.7649)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -1911,7 +1911,7 @@ mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
 [node name="Platform31" type="MeshInstance3D" parent="group2"]
-transform = Transform3D(52.9347, 0, 0, 0, 23.8987, 0, 0, 0, 41.0275, 97.0935, 24.4212, 49.4809)
+transform = Transform3D(26.47, 0, 0, 0, 23.9, 0, 0, 0, 41.03, 83.9962, 24.4212, 49.4809)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -3352,7 +3352,7 @@ bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish3" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141913, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
+transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141914, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
 progress = 58.8951
 speed = 7
 bounceForce = 40

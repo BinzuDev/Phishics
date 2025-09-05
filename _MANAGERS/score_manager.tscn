@@ -714,16 +714,6 @@ nine_patch_stretch = true
 texture_under = ExtResource("3_uvms0")
 texture_progress = ExtResource("3_uvms0")
 
-[node name="marginSpinMeter" type="MarginContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_right = -150
-theme_override_constants/margin_bottom = 40
-
 [node name="comboText" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 7
@@ -778,6 +768,7 @@ theme_override_font_sizes/normal_font_size = 40
 text = "COMBO:"
 horizontal_alignment = 1
 vertical_alignment = 2
+metadata/_edit_lock_ = true
 
 [node name="comboScore" type="Control" parent="UI"]
 layout_mode = 1

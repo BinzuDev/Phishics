@@ -38,16 +38,25 @@ var airSpinAmount : float = 0.0
 var airSpinRank : int = 0
 var airSpinHighestRank : int = 0
 #All of the required spin amounts to rank up the air spin meter
-var ASrequirements = [320*2, 360*4, 360*7, 360*11, 360*16, 360*24, 360*34, 360*55, 360*55, 360*89, 9999999*9999999]
-#var ASrankColor = ["ff00ff", "bb00ff", "0000ff", "0080ff", "00ffff" , "00ff40", "f2ff00", "ff9900", "ff9900", "ff0000", "ff0000", "ffffff"]
-var ASrankColor = ["00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "ff00e8", "00d8ff", "00d8ff", "000000"]
+const ASnormalRequirements = [320*2, 360*4, 360*7, 360*11, 360*16, 360*24, 360*34, 360*55, 360*55, 360*89, 9999999*9999999]
+const ASnormalRankColor = ["00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "ff00e8", "00d8ff", "00d8ff", "000000"]
+const ASsurfRequirements = [320*1, 360*2, 360*3, 360*4, 360*5, 360*6, 360*7, 360*8, 360*8, 360*10, 9999999*9999999]
+const ASsurfRankColor = ["f08a15", "000000", "f08a15", "000000", "f08a15", "000000", "f08a15", "000000", "000000", "f08a15", "f08a15", "000000"]
+var ASrequirements = []
+var ASrankColor = []
 
 var fish #gets set automatically inside the fish script
 
 
 
-
 func _physics_process(_delta: float) -> void:
+	ASrequirements = ASnormalRequirements
+	ASrankColor = ASnormalRankColor
+	if fish:
+		if fish.surfMode:
+			ASrequirements = ASsurfRequirements
+			ASrankColor = ASsurfRankColor
+	
 	
 	## Air spin
 	var doAirSpin = false   #look at variable list above to see requirements
@@ -67,21 +76,26 @@ func _physics_process(_delta: float) -> void:
 			#clamp to 7 so you can still here the last 3 notes
 			#even if its not the first time you've done it this combo
 			airSpinHighestRank = clamp(airSpinRank, 0, 7)
+			if fish.surfMode:
+				airSpinHighestRank = 0 #ALWAYS show in surf mode
 		
 		
 		if newHigh:
 			$airSpin.pitch_scale = 1 + airSpinRank*0.1
 			$airSpin.play()
 			airSpinUIgrow()
-			if airSpinRank == 10:
-				give_points(5000, 10, true, "MAX AIRSPIN")
-				if fish.height <= 15:
-					give_points(0, 15, true, "CLOSE CALL")
-					comboTimer += 100
-			elif airSpinRank == 9:
-				give_points(500, 5, true, "AIRSPIN")
-			elif airSpinRank >= 1 and airSpinRank <= 7:
-				give_points(200, 1, true, "AIRSPIN")
+			if fish.surfMode:
+				give_points(0, 1, true, str(airSpinRank*360))
+			else:
+				if airSpinRank == 10:
+					give_points(5000, 10, true, "MAX AIRSPIN")
+					if fish.height <= 15:
+						give_points(0, 15, true, "CLOSE CALL")
+						comboTimer += 100
+				elif airSpinRank == 9:
+					give_points(500, 5, true, "AIRSPIN")
+				elif airSpinRank >= 1 and airSpinRank <= 7:
+					give_points(200, 1, true, "AIRSPIN")
 		
 	
 	## Airspin UI
@@ -95,7 +109,7 @@ func _physics_process(_delta: float) -> void:
 	%spinMeter.value = airSpinAmount
 	$UI/airSpin.scale.x = move_toward($UI/airSpin.scale.x, 1.0, 0.01)
 	$UI/airSpin.scale.y = move_toward($UI/airSpin.scale.y, 1.0, 0.01)
-	if airSpinRank < airSpinHighestRank-1 or airSpinAmount < 100:
+	if airSpinRank < airSpinHighestRank-1 or (airSpinAmount < 100 and !fish.surfMode) or (airSpinAmount == 0 and fish.surfMode):
 		$UI/airSpin.modulate.a -= 0.2
 	else:
 		$UI/airSpin.modulate.a += 0.2
