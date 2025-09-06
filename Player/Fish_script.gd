@@ -555,6 +555,10 @@ func _physics_process(_delta: float) -> void:
 	##TODO: when 360ing near enough to a surface, update perpendicular angle but not facing direction
 	##TODO: change sfx to metal scrapes (and skate sounds for skateboard)
 	##TODO: update info in trick list
+	##TODO: fish leaning on input
+	
+	
+	
 	
 	
 	######################

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=33 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="6_hswr3"]
 [ext_resource type="Shader" uid="uid://ddlqbkdpx3ho2" path="res://Shaders/auto_water_reflect.gdshader" id="8_jctnn"]
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
+[ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="10_j71bj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -127,6 +128,9 @@ uv1_world_triplanar = true
 [sub_resource type="SphereMesh" id="SphereMesh_ab27v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfxg8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gx528"]
+size = Vector3(329.2, 245.912, 278.149)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -542,3 +546,11 @@ mesh = SubResource("SphereMesh_ab27v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sphere6/StaticBody3D"]
 shape = SubResource("SphereShape3D_yfxg8")
+
+[node name="cameraController" parent="." instance=ExtResource("10_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2819, 82.858, 62.5752)
+newCameraOffset = Vector3(1, 0.58, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0755, -49.5701, -44.3973)
+shape = SubResource("BoxShape3D_gx528")
