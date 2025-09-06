@@ -31,10 +31,15 @@ var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the ho
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
 
+#Surfing variables
 var surfMode : bool = false
 var surfSignRef : Node
 var surfJumpHolding : int = 0 #keeps track of how long youve held jump
 var surfingLastFrame : bool = false
+var inputHistory : Array = ["","",""]
+var timeSinceLastInput : int = 0
+var surfRotationType : String = ""
+var surfRotationDir : int = 1
 
 
 #MOVEMENT CONSTS
@@ -414,17 +419,17 @@ func _physics_process(_delta: float) -> void:
 		if amp >= 14:
 			$Hard_Impact.pitch_scale = 1
 			$Hard_Impact.play()
-			print("play hard, pitch: ", $Hard_Impact.pitch_scale, " speed: ", amp )
+			#print("play hard, pitch: ", $Hard_Impact.pitch_scale, " speed: ", amp )
 			$JumpPuff.restart() #harsh particles
 			$JumpPuff.emitting = true
 		elif amp >= 8:                   #from 0.8 to 1.17 at amp 14
 			$Medium_Impact.pitch_scale = 0.35 + amp / 15
 			$Medium_Impact.play()
-			print("play meduim, pitch: ", $Medium_Impact.pitch_scale, " speed: ", amp )
+			#print("play meduim, pitch: ", $Medium_Impact.pitch_scale, " speed: ", amp )
 		else:                         #from 0.7 to 1.3 at amp 8
 			$Soft_Impact.pitch_scale = 0.7 + amp / 15
 			$Soft_Impact.play()
-			print("play soft, pitch: ", $Soft_Impact.pitch_scale, " speed: ", amp )
+			#print("play soft, pitch: ", $Soft_Impact.pitch_scale, " speed: ", amp )
 	
 	
 	  
@@ -551,7 +556,10 @@ func _physics_process(_delta: float) -> void:
 	##TODO: change sfx to metal scrapes (and skate sounds for skateboard)
 	##TODO: update info in trick list
 	
-	## Sign Surf angle ##
+	
+	######################
+	##   Sign Surfing   ##
+	######################
 	var surfState = "Not surfing"
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	
@@ -571,13 +579,14 @@ func _physics_process(_delta: float) -> void:
 				floor_normal = getSurfNormal()
 			else:
 				surfState = "Jumping"
+				updateInputHistory()
 		
 		#print($surfPivot.global_transform.basis.y.y)
 		
 		var vel_2d = Vector2(-linear_velocity.z, linear_velocity.x)
 		
 		#Surfing or non-halfpipe jump
-		if surfState != "Jumping" or $surfPivot.global_transform.basis.y.y <= -0.8:
+		if surfState != "Jumping":# or $surfPivot.global_transform.basis.y.y <= -0.8:
 			surfingLastFrame = true
 			var vel_dir = Vector3(vel_2d.x, 0, vel_2d.y).normalized()
 			var forward = vel_dir.slide(floor_normal).normalized()
@@ -594,6 +603,8 @@ func _physics_process(_delta: float) -> void:
 			%surfSign.flip_v = false
 			%surfSign.flip_h = false
 			ScoreManager.reset_airspin()
+			surfRotationType = ""
+			inputHistory = ["","",""]
 			
 		else: ## rotating in the air
 			if surfingLastFrame: #flip the fish on the first airborne frame because of math bullshit
@@ -606,18 +617,34 @@ func _physics_process(_delta: float) -> void:
 			surfingLastFrame = false
 			
 			
-			if $surfPivot.global_transform.basis.y.y < 0.8: #dont rotate if your straight up
-				surfState = "Jumping spin"
-				var curBasis = $surfPivot.global_transform.basis
-				var spinSpeed = angular_velocity.length() * 0.05 * _delta
+			#if $surfPivot.global_transform.basis.y.y < 0.8: #dont rotate if your straight up
+			var curBasis = $surfPivot.global_transform.basis
+			var spinSpeed = angular_velocity.length() * 0.06 * _delta
+			
+			if surfRotationType == "clockwise" or surfRotationType == "counterClockwise":
+				if surfRotationType == "clockwise":
+					spinSpeed *= -1
 				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.y, spinSpeed)
+				ScoreManager.airSpinAmount += abs(rad_to_deg(spinSpeed))
 				
-				ScoreManager.airSpinAmount += rad_to_deg(spinSpeed)
+			if surfRotationType == "frontFlip" or surfRotationType == "backFlip":
+				if surfRotationType == "backFlip":
+					spinSpeed *= -1
+				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.z, spinSpeed)
+				ScoreManager.airSpinAmount += abs(rad_to_deg(spinSpeed))
+			if surfRotationType == "leftFlip" or surfRotationType == "rightFlip":
+				if surfRotationType == "rightFlip":
+					spinSpeed *= -1
+				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.x, spinSpeed)
+				ScoreManager.airSpinAmount += abs(rad_to_deg(spinSpeed))
+			
+			
+			
 				#print("total: ", snapped(ScoreManager.airSpinAmount, 0.1), " this frame: ", snapped(rad_to_deg(spinSpeed), 0.1))
 				
-			else:
+			#else:
 				#keep your direction but dont rotate
-				surfState = "Jumping flat"
+				#surfState = "Jumping flat"
 		
 		
 	
@@ -734,7 +761,8 @@ func _physics_process(_delta: float) -> void:
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
 	"surf jump: ", surfJumpHolding, "\n", 
-	"surf state: ", surfState
+	"surf state: ", surfState,  " ", surfRotationType, "\n",
+	"input hitory: ", inputHistory
 	)
 	
 
@@ -789,6 +817,74 @@ func getSurfNormal():
 		finalVector += ray
 	
 	return finalVector.normalized()
+
+
+func updateInputHistory():
+	timeSinceLastInput += 1
+	if Input.is_action_just_pressed("forward"):
+		inputHistory.append("up")
+		inputHistory.remove_at(0)
+		timeSinceLastInput = 0
+	if Input.is_action_just_pressed("back"):
+		inputHistory.append("down")
+		inputHistory.remove_at(0)
+		timeSinceLastInput = 0
+	if Input.is_action_just_pressed("left"):
+		inputHistory.append("left")
+		inputHistory.remove_at(0)
+		timeSinceLastInput = 0
+	if Input.is_action_just_pressed("right"):
+		inputHistory.append("right")
+		inputHistory.remove_at(0)
+		timeSinceLastInput = 0
+	if timeSinceLastInput == 30:
+		inputHistory = ["","",""]
+	
+	var prevRotation = surfRotationType
+	#Yes I couldnt think of a better way to code this, shut up
+	var newTrick = false
+	if inputHistory == ["up","left","down"] or inputHistory == ["left","down","right"] or inputHistory == ["down","right","up"] or inputHistory == ["right","up","left"]:
+		if surfRotationType != "rightFlip": #dont allow you to perform the same spin AGAIN but in the other direction
+			surfRotationType = "leftFlip"
+			ScoreManager.give_points(4000, 0, true, "SIDEFLIP", "uncommon")
+			newTrick = true
+	if inputHistory == ["up","right","down"] or inputHistory == ["right","down","left"] or inputHistory == ["down","left","up"] or inputHistory == ["left","up","right"]:
+		if surfRotationType != "leftFlip":
+			surfRotationType = "rightFlip"
+			ScoreManager.give_points(4000, 0, true, "SIDEFLIP", "uncommon")
+			newTrick = true
+	if inputHistory == ["down", "up", "down"]:
+		if surfRotationType != "backFlip":
+			surfRotationType = "frontFlip"
+			ScoreManager.give_points(3000, 0, true, "FRONTFLIP", "uncommon")
+			newTrick = true
+	if inputHistory == ["up", "down", "up"]:
+		if surfRotationType != "frontFlip":
+			surfRotationType = "backFlip"
+			ScoreManager.give_points(3000, 0, true, "BACKFLIP", "uncommon")
+			newTrick = true
+	if inputHistory == ["right", "left", "right"]:
+		if surfRotationType != "counterClockwise":
+			surfRotationType = "clockwise"
+			newTrick = true
+	if inputHistory == ["left", "right", "left"]:
+		if surfRotationType != "clockwise":
+			surfRotationType = "counterClockwise"
+			newTrick = true
+	if newTrick:
+		inputHistory = ["","",""]
+		if angular_velocity.length() < 100:
+			angular_velocity *= 100/angular_velocity.length()
+		
+		if angular_velocity.length() < 500:
+			if surfRotationType == prevRotation: #doing the same rotation twice in a row
+				angular_velocity *= 1.2
+			else:
+				angular_velocity *= 1.4 #doing a different rotation
+				printerr("DIFFERENT")
+		
+		print("SPEEDING UP FISH")
+
 
 
 

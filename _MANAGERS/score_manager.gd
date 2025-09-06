@@ -85,7 +85,7 @@ func _physics_process(_delta: float) -> void:
 			$airSpin.play()
 			airSpinUIgrow()
 			if fish.surfMode:
-				give_points(0, 1, true, str(airSpinRank*360))
+				give_points(0, 1, true, str(airSpinRank*360, "°"))
 			else:
 				if airSpinRank == 10:
 					give_points(5000, 10, true, "MAX AIRSPIN")
