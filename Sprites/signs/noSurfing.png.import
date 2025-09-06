@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyeb4smsyuvcn"
-path.s3tc="res://.godot/imported/boost_ring.png-0fab7c5715b45d03a41c2ad561e14f55.s3tc.ctex"
+uid="uid://df28u2lkg3puf"
+path.s3tc="res://.godot/imported/noSurfing.png-feb2742decc996699b88278302e558a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://icons/boost_ring.png"
-dest_files=["res://.godot/imported/boost_ring.png-0fab7c5715b45d03a41c2ad561e14f55.s3tc.ctex"]
+source_file="res://Sprites/signs/noSurfing.png"
+dest_files=["res://.godot/imported/noSurfing.png-feb2742decc996699b88278302e558a0.s3tc.ctex"]
 
 [params]
 

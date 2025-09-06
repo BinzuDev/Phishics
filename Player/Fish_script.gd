@@ -783,7 +783,7 @@ func activateSurfMode(sprite : String, signObj : Node):
 	print(sprite)
 	%surfSignUnder.visible = sprite == "uid://bopnbyxyecen8" #skateboard underside
 	%surfSign.double_sided = !%surfSignUnder.visible
-	if sprite == "uid://bwjgjk84nbeei" or sprite == "uid://bopnbyxyecen8":
+	if sprite == "uid://bwjgjk84nbeei" or sprite == "uid://bopnbyxyecen8" or sprite == "uid://df28u2lkg3puf":
 		%surfSign.position.x = 0
 		%surfSign.rotation_degrees.y = -180 
 	else:  ##differences between triangle signs and long signs

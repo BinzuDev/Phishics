@@ -1888,14 +1888,14 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.15
 
 [node name="armColliderLeft" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/earJiggle" index="3"]
-transform = Transform3D(-8.19564e-08, 0.999999, 7.02522e-14, 1, 9.68576e-08, -7.58967e-07, -7.58967e-07, 1.68754e-14, -1, 0.811577, 1.93596, 2.88526e-08)
+transform = Transform3D(4.02331e-07, 0.999999, -4.50809e-13, 1, -3.8743e-07, -7.58966e-07, -7.58967e-07, -1.42109e-13, -1, 0.811577, 1.93596, 2.88525e-08)
 bone_name = "Left elbow"
 bone = 5
 position_offset = Vector3(-0.04, 0.24, 0)
 rotation_offset = Quaternion(0, 0, 0, 1)
 
 [node name="armColliderRight" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/earJiggle" index="4"]
-transform = Transform3D(-8.19564e-08, -0.999999, -5.3652e-14, -1, 9.68576e-08, -7.58967e-07, 7.58967e-07, -8.88179e-15, -1, -0.811577, 1.93596, 2.88526e-08)
+transform = Transform3D(3.20375e-07, -0.999999, 2.33308e-13, -1, -3.05474e-07, -7.58967e-07, 7.58967e-07, 1.77636e-14, -1, -0.811577, 1.93596, 2.88526e-08)
 bone_name = "Right elbow"
 bone = 14
 position_offset = Vector3(0.04, 0.24, 0)
@@ -2359,14 +2359,14 @@ settings/11/enable_all_child_collisions = true
 settings/11/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00386322, 1.82226, 0.101834)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.82226, 0.1)
 bone_name = "Chest"
 bone = 2
 position_offset = Vector3(0, 0.12, 0.1)
 rotation_offset = Quaternion(-1, 0, 0, 1)
 
 [node name="SpringBoneCollisionPlane3D2" type="SpringBoneCollisionPlane3D" parent="Armature/Skeleton3D/hairJiggle" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, -0.00386322, 2.46859, 0.00183439)
+transform = Transform3D(1, 0, 0, 0, -0.704142, 0.710059, 0, -0.710059, -0.704142, 0, 2.46859, 0)
 bone_name = "Hat root"
 bone = 31
 position_offset = Vector3(0, 0, 0)
@@ -2582,7 +2582,7 @@ settings/5/enable_all_child_collisions = true
 settings/5/exclude_collision_count = 0
 
 [node name="thighL2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.264564, 0.971786, 0.0612436)
+transform = Transform3D(-7.62939e-06, -0.00313436, -0.999996, -0.00933335, -0.999952, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.264564, 0.971786, 0.0612436)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, -0.14)
@@ -2590,7 +2590,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighL1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(-7.39098e-06, -0.00313435, -0.999996, -0.00933335, -0.999951, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.124565, 0.972225, 0.0612406)
+transform = Transform3D(-7.62939e-06, -0.00313436, -0.999996, -0.00933335, -0.999952, 0.00313429, -0.999956, 0.00933333, -2.18153e-05, 0.124565, 0.972225, 0.0612406)
 bone_name = "Left leg"
 bone = 115
 position_offset = Vector3(-0.05, 0.3, 0)
@@ -2598,7 +2598,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR1" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="2"]
-transform = Transform3D(-1.19209e-07, -4.16767e-07, 1, 0.00924864, -0.999957, -4.15836e-07, 0.999957, 0.00924864, 5.96047e-08, -0.125505, 0.972219, 0.0612152)
+transform = Transform3D(0, -4.10248e-07, 1, 0.00924865, -0.999957, -4.10248e-07, 0.999957, 0.00924865, 0, -0.125505, 0.972219, 0.0612152)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, 0)
@@ -2606,7 +2606,7 @@ rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 0.16
 
 [node name="thighR2" type="SpringBoneCollisionCapsule3D" parent="Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(-1.19209e-07, -4.16767e-07, 1, 0.00924864, -0.999957, -4.15836e-07, 0.999957, 0.00924864, 5.96047e-08, -0.265505, 0.972219, 0.0612152)
+transform = Transform3D(0, -4.10248e-07, 1, 0.00924865, -0.999957, -4.10248e-07, 0.999957, 0.00924865, 0, -0.265505, 0.972219, 0.0612152)
 bone_name = "Right leg"
 bone = 120
 position_offset = Vector3(0.05, 0.3, -0.14)
