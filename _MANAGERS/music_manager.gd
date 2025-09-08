@@ -47,5 +47,6 @@ func _process(_delta):
 	$music4.stream.get_clip_name($music4.get_stream_playback().get_current_clip_index())
 	]
 	$musicDebug.text = str("Now Playing: ", musicDebug)
+	
 	#print($music3.get_stream_playback().get_current_clip_index())
 	#print($music3.stream.get_clip_name($music3.get_stream_playback().get_current_clip_index()) )

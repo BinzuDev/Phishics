@@ -76,8 +76,8 @@ func _physics_process(_delta: float) -> void:
 			#clamp to 7 so you can still here the last 3 notes
 			#even if its not the first time you've done it this combo
 			airSpinHighestRank = clamp(airSpinRank, 0, 7)
-			if fish.surfMode:
-				airSpinHighestRank = 0 #ALWAYS show in surf mode
+			#if fish.surfMode:
+			#	airSpinHighestRank = 0 #ALWAYS show in surf mode
 		
 		
 		if newHigh:
@@ -109,10 +109,11 @@ func _physics_process(_delta: float) -> void:
 	%spinMeter.value = airSpinAmount
 	$UI/airSpin.scale.x = move_toward($UI/airSpin.scale.x, 1.0, 0.01)
 	$UI/airSpin.scale.y = move_toward($UI/airSpin.scale.y, 1.0, 0.01)
-	if airSpinRank < airSpinHighestRank-1 or (airSpinAmount < 100 and !fish.surfMode) or (airSpinAmount == 0 and fish.surfMode):
-		$UI/airSpin.modulate.a -= 0.2
-	else:
-		$UI/airSpin.modulate.a += 0.2
+	if fish:
+		if airSpinRank < airSpinHighestRank-1 or (airSpinAmount < 100 and !fish.surfMode) or (airSpinAmount == 0 and fish.surfMode):
+			$UI/airSpin.modulate.a -= 0.2
+		else:
+			$UI/airSpin.modulate.a += 0.2
 	$UI/airSpin.modulate.a = clamp($UI/airSpin.modulate.a, 0, 1)
 	
 	## COMBO METER ##

@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player:
 		
+		gravity_scale = 3 #when player touches it, it falls
 		angular_velocity = body.angular_velocity
 		linear_velocity = body.linear_velocity
 		

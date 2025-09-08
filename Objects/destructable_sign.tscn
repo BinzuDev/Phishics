@@ -55,6 +55,7 @@ disabled = true
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 32
 collision_mask = 2
+priority = 3
 
 [node name="areaCollision" type="CollisionShape3D" parent="Area3D"]
 unique_name_in_owner = true

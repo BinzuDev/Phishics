@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=124 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://baga7qw4us4yf" path="res://Sprites/spark.png" id="27_div8h"]
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
+[ext_resource type="AudioStream" uid="uid://crr8giq6rl0wd" path="res://Sounds/surfing/metal_scrape.wav" id="30_d6s4o"]
 [ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
@@ -58,6 +59,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_q0y68"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2ykt"]
+radial_segments = 16
+rings = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp2w5"]
 albedo_color = Color(0, 1, 0.05, 1)
@@ -92,6 +95,11 @@ top_radius = 0.05
 bottom_radius = 0.05
 height = 0.7
 radial_segments = 4
+rings = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3jkku"]
+height = 0.1
+radial_segments = 16
 rings = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0y68"]
@@ -750,7 +758,7 @@ region_enabled = true
 region_rect = Rect2(519.96, 0, 212, 495)
 
 [node name="shadowMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.985198, 0, 0, 0, 0.165934, 0, 0, 0, 0.38402, 0, 0, -0.0637502)
+transform = Transform3D(0.9999, 0, 0.00537194, 0, 0.17, 0, -0.0141367, 0, 0.379962, -0.0536617, 0, 0.0391284)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 
@@ -797,6 +805,14 @@ collision_mask = 17
 debug_shape_custom_color = Color(0, 1, 1, 1)
 debug_shape_thickness = 5
 
+[node name="halfPipeCheck" type="RayCast3D" parent="surfPivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, 0.599394, 0, 0)
+target_position = Vector3(0, -5, 0)
+collision_mask = 17
+debug_shape_custom_color = Color(0, 1, 1, 1)
+debug_shape_thickness = 5
+
 [node name="surfSign" type="Sprite3D" parent="surfPivot"]
 unique_name_in_owner = true
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.17, 0)
@@ -810,19 +826,28 @@ axis = 1
 double_sided = false
 texture = ExtResource("5_l4b1c")
 
+[node name="surfShadow" type="MeshInstance3D" parent="surfPivot"]
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_3jkku")
+
 [node name="fishPivot" type="Node3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, -0.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+
+[node name="shadowMesh" type="MeshInstance3D" parent="surfPivot/fishPivot"]
+transform = Transform3D(-4.37114e-08, 7.43094e-09, 0.38, 1, 0, 1.66103e-08, 0, 0.17, -1.66103e-08, -2.51183e-08, 0.724639, -1.18023e-22)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_j2ykt")
+skeleton = NodePath("../../surfShadow")
 
 [node name="surfingFish" type="Sprite3D" parent="surfPivot/fishPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-1.74846e-08, -1.50996e-08, 0.21, 0.2, -8.74228e-09, 1.83588e-08, 8.74228e-09, 0.2, 1.58546e-08, 5.85977e-08, -0.67028, -2.92988e-08)
+transform = Transform3D(4.48652e-14, -1.50996e-08, -0.21, -0.2, -8.74228e-09, -1.73733e-14, -8.74228e-09, 0.2, -1.58546e-08, 0, 0.67, 0)
 axis = 1
 texture = ExtResource("2_j2ykt")
 
 [node name="arrow" type="MeshInstance3D" parent="surfPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34472, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_q0y68")
 transparency = 0.47
 mesh = SubResource("CylinderMesh_l4b1c")
@@ -1015,36 +1040,30 @@ update_scale = false
 
 [node name="homing" type="Node3D" parent="."]
 top_level = true
-visible = false
 
 [node name="area" type="Area3D" parent="homing"]
 unique_name_in_owner = true
 rotation_order = 1
-visible = false
 collision_layer = 0
 collision_mask = 32
 
 [node name="top" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, 0)
-visible = false
 shape = SubResource("CylinderShape3D_40mal")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="middle" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, -1.5)
-visible = false
 shape = SubResource("CylinderShape3D_mdn8s")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="bottom" type="CollisionShape3D" parent="homing/area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, -2.5)
-visible = false
 shape = SubResource("CylinderShape3D_6h88e")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="raycast" type="RayCast3D" parent="homing"]
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
-visible = false
 collision_mask = 33
 collide_with_areas = true
 
@@ -1108,6 +1127,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 1
@@ -1156,6 +1176,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 max_value = 20.0
+value = 10.0
 fill_mode = 4
 radial_initial_angle = 230.8
 radial_fill_degrees = 82.7
@@ -1231,6 +1252,7 @@ offset = Vector2(0, 13)
 billboard = 1
 no_depth_test = true
 texture_filter = 0
+render_priority = -1
 texture = ExtResource("26_pqkfo")
 hframes = 4
 frame = 3
@@ -1260,6 +1282,12 @@ stream = SubResource("AudioStreamRandomizer_mce56")
 unit_size = 20.0
 max_polyphony = 3
 panning_strength = 1.5
+bus = &"fishsfx"
+
+[node name="sign_scraping" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("30_d6s4o")
+autoplay = true
+max_polyphony = 3
 bus = &"fishsfx"
 
 [node name="tipSpinSparks" type="GPUParticles3D" parent="."]
