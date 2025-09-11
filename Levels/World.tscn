@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b3o3bqgimbwt7" path="res://Models/car_battery.tscn" id="14_hqwgh"]
 [ext_resource type="PackedScene" uid="uid://bf8smqh6dbfvm" path="res://Objects/fricking_awesome_tube.tscn" id="15_myu2g"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="15_rk5xy"]
-[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/arrowSign.png" id="15_wvw3a"]
+[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/long_arrowSign.png" id="15_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="16_e1uki"]
 [ext_resource type="PackedScene" uid="uid://cgsag1mii1t2g" path="res://Models/surf_board.tscn" id="16_h7041"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="17_w578l"]
@@ -1442,6 +1442,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign" instance=ExtResource("47_bmonc")]
 transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.68703, 0.316243)
+signSprite = "uid://2tlrr0ix011u"
 
 [node name="sign2" type="Node3D" parent="group1"]
 transform = Transform3D(0.114814, 0.0142559, -0.993285, -0.181804, 0.983311, -0.00690203, 0.976609, 0.181376, 0.11549, 43.346, 6.66243, -7.96758)
@@ -1452,7 +1453,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign2" instance=ExtResource("47_bmonc")]
 transform = Transform3D(1, 9.33614e-10, -7.51587e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.0701047, 0.99754, 0.171497, 2.55157, 0.251998)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign3" type="Node3D" parent="group1"]
 transform = Transform3D(0.98432, 0.176398, 0, -0.176398, 0.984319, 0, 0, 0, 1, 24.0583, 6.52493, -11.6532)
@@ -1463,7 +1463,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign3" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.977843, -0.209336, 0.000889774, 0.207327, 0.969029, 0.134156, -0.0289459, -0.130999, 0.99096, -0.068697, 2.60219, 0.298411)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign5" type="Node3D" parent="group1"]
 transform = Transform3D(0.98432, 0.176398, 0, -0.176398, 0.984319, 0, 0, 0, 1, 12.8917, 1.18961, -41.0748)
@@ -1474,7 +1473,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign5" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.555948, -0.310631, -0.770993, 0.491145, -0.871072, -0.00320303, -0.670596, -0.38045, 0.636835, -0.160392, 2.54662, 0.131123)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign7" type="Node3D" parent="group1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.563, 5.41546, -40.7155)
@@ -1485,7 +1483,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign7" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.751494, 0, -0.659739, 0, 1, 0, 0.659739, 0, 0.751494, -0.0791541, 2.54662, 0.229397)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign6" type="Node3D" parent="group1"]
 transform = Transform3D(0.995964, -0.0897635, 0, 0.0897635, 0.995963, 0, 0, 0, 1, 2.53923, 9.82806, -49.114)
@@ -1496,7 +1493,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117768, 0)
 
 [node name="destructable_sign" parent="group1/sign6" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.856734, -0.50395, 0.109727, 0.488477, 0.861118, 0.140948, -0.165518, -0.0671557, 0.983918, 0.104696, 2.63459, 0.257136)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign4" type="Node3D" parent="group1"]
 transform = Transform3D(0.969445, 0.245276, 0.00389592, -0.245307, 0.969323, 0.0153966, 3.67778e-09, -0.0158818, 0.999874, 51.5363, 14.0026, -9.22508)
@@ -1507,11 +1503,9 @@ skeleton = NodePath("../../..")
 
 [node name="destructable_sign2" parent="group1/sign4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.964654, 0.195426, -0.176779, -0.213376, 0.972925, -0.0888086, 0.154637, 0.12339, 0.980236, 0.0282021, 0.11261, 0.231768)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="destructable_sign3" parent="group1/sign4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.564279, -0.262329, 0.782798, 0.186928, 0.964147, 0.188355, -0.804144, 0.0400416, 0.593085, 0.171112, 2.6158, 0.169168)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="Jellyfish2" parent="group1" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 15.6925, 25.1399, -0.967458)
@@ -1564,7 +1558,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2975, 0, 9.74655e-07)
 
 [node name="destructable_sign2" parent="group2" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.0623676, 0.0178835, -0.997893, -0.275637, 0.961262, -5.58794e-09, 0.959237, 0.275057, 0.0648804, 30.8209, 6.36013, -34.7361)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign" type="Node3D" parent="group2"]
 transform = Transform3D(0.997485, -0.0227955, 0.0671146, 0.0107397, 0.984548, 0.174784, -0.0700619, -0.173624, 0.982317, 40.7624, 12.6416, -29.9053)
@@ -1588,7 +1581,6 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign6" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.614186, -0.0358754, -0.788345, 0.257807, 0.953278, 0.157472, 0.745862, -0.299959, 0.594739, -0.0492281, 2.89949, 0.384448)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign5" type="Node3D" parent="group2"]
 transform = Transform3D(0.997485, -0.0227955, 0.0671146, 0.0261445, 0.998434, -0.0494512, -0.0658823, 0.0510814, 0.996519, 20.8185, 12.3624, -20.0294)
@@ -1636,7 +1628,6 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign8" instance=ExtResource("47_bmonc")]
 transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-08, 0, 0, 1, -0.00164032, 2.7022, 0.257956)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign10" type="Node3D" parent="group2"]
 transform = Transform3D(0.899115, -0.268413, -0.345756, 0.250454, 0.963304, -0.0965324, 0.358979, 0.000197798, 0.933345, 67.9151, 2.8066, -3.89918)
@@ -1648,19 +1639,15 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign10" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.940694, -0.233321, -0.246285, 0.221519, 0.972269, -0.0749891, 0.256952, 0.0159848, 0.966292, -0.00164032, 2.7022, 0.257957)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="destructable_sign2" parent="group2/sign10" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.579455, 0.250454, -0.775568, -0.0692793, 0.963304, 0.259318, 0.812054, -0.0965324, 0.575543, 3.66471, -2.55647, 7.45308)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="destructable_sign3" parent="group2/sign10" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.579455, 0.250454, -0.775568, -0.0692793, 0.963304, 0.259318, 0.812054, -0.0965324, 0.575543, 5.49949, -2.59555, 11.8235)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="destructable_sign4" parent="group2/sign10" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.185658, -0.396389, -0.899115, 0.481481, -0.834345, 0.268413, -0.856567, -0.383073, 0.345756, 14.2221, -0.354527, 17.428)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign3" type="Node3D" parent="group2"]
 transform = Transform3D(0.863614, -0.218028, -0.454571, 0.226367, 0.973347, -0.0367878, 0.450476, -0.0711296, 0.889951, 89.7698, 21.1777, -50.4682)
@@ -1672,7 +1659,6 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign3" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.965926, 0.258819, -7.45058e-09, -0.258819, -0.965926, -1.49012e-08, -1.8504e-08, -2.73662e-08, 1, -0.00164032, 2.7022, 0.257956)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign7" type="Node3D" parent="group2"]
 transform = Transform3D(0.873659, 0.240368, -0.423018, -0.183826, 0.968072, 0.170423, 0.450476, -0.0711295, 0.889951, 77.0669, 21.8389, -52.0272)
@@ -1684,7 +1670,6 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign7" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.980677, -0.0596872, 0.186308, 0.028424, 0.985688, 0.166167, -0.193559, -0.15766, 0.968338, -0.00939941, 2.88057, 0.278519)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="sign4" type="Node3D" parent="group2"]
 transform = Transform3D(0.942753, -0.0344221, 0.331711, 0.0492603, 0.998121, -0.0364259, -0.329834, 0.0506807, 0.942678, 77.2942, 23.3978, 9.89279)
@@ -1696,7 +1681,6 @@ skeleton = NodePath("../../../group1")
 
 [node name="destructable_sign" parent="group2/sign4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.917513, -0.0599477, 0.393161, 0.118254, -0.984985, 0.12578, 0.379717, 0.161898, 0.910826, 0.0451262, 2.4402, 0.309516)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="Platform2" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-1.44868e-06, -0.935859, -9.47233, 0, 5.26986, -1.68216, 33.1419, -4.09077e-08, -4.14049e-07, -7.3336, -0.109611, 0.210557)
@@ -2986,7 +2970,6 @@ strength = 21.0
 
 [node name="destructable_sign6" parent="highUpSection" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.931722, 0.295912, 0.210546, -0.290507, -0.95518, 0.056885, 0.217942, -0.00816405, 0.975928, 93.4706, 25.4987, 12.2336)
-signSprite = "uid://bwjgjk84nbeei"
 
 [node name="streetsign6" type="MeshInstance3D" parent="highUpSection"]
 transform = Transform3D(-0.489747, 0.0820766, -0.0986234, 4.52216e-09, 1.95807, 0.101847, 0.100735, 0.399034, -0.47948, 93.3465, 24.7289, 11.5554)
@@ -3636,7 +3619,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.4595, -135.593)
 
 [node name="destructable_sign2" parent="group3" instance=ExtResource("47_bmonc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2513, 30.4711, 51.7738)
-signSprite = "uid://bwjgjk84nbeei"
+signSprite = "uid://bopnbyxyecen8"
 
 [node name="2Darea" type="Node3D" parent="."]
 transform = Transform3D(1, -4.6761e-08, 0, 4.6761e-08, 1, 0, 0, 0, 1, 124.283, 34.8701, 23.0205)

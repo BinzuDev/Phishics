@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnu1o2yg0c0o0"
-path.s3tc="res://.godot/imported/JFGwarning.png-35b3fa8d55cd67f5d9c278c75722cea5.s3tc.ctex"
+uid="uid://bwjgjk84nbeei"
+path.s3tc="res://.godot/imported/long_arrowSign.png-13538ebf194930619c72fcc9abeaa113.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/signs/JFGwarning.png"
-dest_files=["res://.godot/imported/JFGwarning.png-35b3fa8d55cd67f5d9c278c75722cea5.s3tc.ctex"]
+source_file="res://Sprites/signs/long_arrowSign.png"
+dest_files=["res://.godot/imported/long_arrowSign.png-13538ebf194930619c72fcc9abeaa113.s3tc.ctex"]
 
 [params]
 

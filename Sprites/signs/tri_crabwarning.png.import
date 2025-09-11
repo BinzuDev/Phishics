@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2tlrr0ix011u"
-path.s3tc="res://.godot/imported/tornadowarning.png-752ded9600cec2633d3401597348ec0e.s3tc.ctex"
+uid="uid://drxd8lqdquu0g"
+path.s3tc="res://.godot/imported/tri_crabwarning.png-455a46fd18e3f12576569b39ead05400.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/signs/tornadowarning.png"
-dest_files=["res://.godot/imported/tornadowarning.png-752ded9600cec2633d3401597348ec0e.s3tc.ctex"]
+source_file="res://Sprites/signs/tri_crabwarning.png"
+dest_files=["res://.godot/imported/tri_crabwarning.png-455a46fd18e3f12576569b39ead05400.s3tc.ctex"]
 
 [params]
 

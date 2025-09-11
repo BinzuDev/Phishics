@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="3_x8feo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhqs"]
-bg_color = Color(1, 0, 0.816667, 0.917647)
+bg_color = Color(1, 0.25, 0.8625, 0.917647)
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -30,7 +30,7 @@ line_spacing = -4.0
 paragraph_spacing = -10.0
 font = ExtResource("3_x8feo")
 font_size = 37
-outline_size = 12
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2d5nh"]

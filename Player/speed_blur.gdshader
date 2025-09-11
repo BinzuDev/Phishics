@@ -30,7 +30,7 @@ vec2 rotate_uv(vec2 uv, vec2 pivot, float rotation) {
     uv -= pivot;
     return vec2(
         cosa * uv.x - sina * uv.y,
-        cosa * uv.y + sina * uv.x 
+        cosa * uv.y + sina * uv.x
     ) + pivot;
 }
 
@@ -38,25 +38,25 @@ void fragment(){
 	// Generate the speed lines pattern
 	vec2 polar_uv = polar_coordinates(rotate_uv(UV, vec2(0.5), floor(fract(TIME) * animation_speed)), vec2(0.5), 0.01, line_count);
 	vec3 lines = texture(noise, polar_uv).rgb;
-	
+
 	// Create mask for radial falloff
 	float mask_value = length(UV - vec2(0.5));
 	float mask = inv_lerp(mask_size, mask_edge, mask_value);
 	float effect_strength = mask * distortion_power * effect_power;
-	
+
 	// Create line intensity
 	float line_intensity = smoothstep(1.0 - effect_strength, 1.0 - effect_strength + line_falloff, lines.r);
-	
+
 	// Calculate distortion direction (radial outward from center)
 	vec2 center = vec2(0.5);
 	vec2 direction = normalize(UV - center);
-	
+
 	// Apply distortion based on line intensity
 	vec2 distorted_uv = UV + direction * line_intensity * effect_strength;
-	
+
 	// Sample the original texture with distortion
 	vec4 base_color = texture(SCREEN_TEXTURE, distorted_uv);
-	
+
 	// Add slight blur effect by sampling surrounding pixels
 	vec4 blur_color = vec4(0.0);
 	float blur_samples = 8.0;
@@ -66,7 +66,7 @@ void fragment(){
 		blur_color += texture(SCREEN_TEXTURE, distorted_uv + offset);
 	}
 	blur_color /= blur_samples;
-	
+
 	// Mix between sharp and blurred based on line intensity
 	COLOR = mix(base_color, blur_color, line_intensity * 0.5);
 }

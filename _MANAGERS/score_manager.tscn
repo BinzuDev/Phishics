@@ -1,12 +1,13 @@
-[gd_scene load_steps=92 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=94 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
+[ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="3_sv072"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="3_uvms0"]
 [ext_resource type="Texture2D" uid="uid://4xfolklfvbhn" path="res://Sprites/words/fresh_bonus1.png" id="4_0wahh"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="4_bfd2b"]
 [ext_resource type="FontFile" uid="uid://cx0yxj8ife8ms" path="res://Fonts/slimy_filled.ttf" id="4_xixmf"]
 [ext_resource type="Texture2D" uid="uid://brk5f6m6r7rwt" path="res://Sprites/UI/fishrank_background.png" id="5_1x5f8"]
-[ext_resource type="Texture2D" uid="uid://byfs2g4jfnic3" path="res://Sprites/warning_sign.png" id="5_eyaen"]
+[ext_resource type="Texture2D" uid="uid://dcbm76b5bo1ef" path="res://Sprites/UI/warning_sign.png" id="5_51vah"]
 [ext_resource type="Texture2D" uid="uid://b4nyue3pqwn7t" path="res://Sprites/UI/style_bar_progress.png" id="6_r4nh4"]
 [ext_resource type="Texture2D" uid="uid://dluimmklciqsx" path="res://Sprites/UI/fishrank_foreground.png" id="7_lu126"]
 [ext_resource type="AudioStream" uid="uid://ghurq6t565lm" path="res://Sounds/tricks/legendary/anime_punch.ogg" id="8_g3jka"]
@@ -63,6 +64,13 @@
 [ext_resource type="Texture2D" uid="uid://biyocmb7ia2bd" path="res://Sprites/words/fresh_bonus3.png" id="61_tgdxi"]
 [ext_resource type="Texture2D" uid="uid://upg1u7tqyma3" path="res://Sprites/words/fresh_bonus4.png" id="62_tgdxi"]
 [ext_resource type="Texture2D" uid="uid://36vi63vqf8i2" path="res://Sprites/words/freshbonus5.png" id="63_51vah"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_51vah"]
+font = ExtResource("3_sv072")
+font_size = 20
+font_color = Color(1, 0, 1, 1)
+outline_size = 8
+outline_color = Color(0, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7cib2"]
 font = ExtResource("4_bfd2b")
@@ -714,6 +722,25 @@ nine_patch_stretch = true
 texture_under = ExtResource("3_uvms0")
 texture_progress = ExtResource("3_uvms0")
 
+[node name="spinRank" type="Label" parent="UI/airSpin/spinMeter"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -15.5
+offset_right = 6.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_51vah")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="comboText" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 7
@@ -873,12 +900,12 @@ horizontal_alignment = 1
 [node name="WarningSign" type="Sprite2D" parent="UI/freshMargin/spamWarning"]
 position = Vector2(-44, 36)
 scale = Vector2(0.28, 0.28)
-texture = ExtResource("5_eyaen")
+texture = ExtResource("5_51vah")
 
 [node name="WarningSign2" type="Sprite2D" parent="UI/freshMargin/spamWarning"]
 position = Vector2(480, 36)
 scale = Vector2(0.28, 0.28)
-texture = ExtResource("5_eyaen")
+texture = ExtResource("5_51vah")
 
 [node name="freshBonuses" type="Control" parent="UI/freshMargin"]
 layout_mode = 2

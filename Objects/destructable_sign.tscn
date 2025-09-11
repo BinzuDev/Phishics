@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhurauq3rbwsc"]
 
 [ext_resource type="Script" uid="uid://cwrjcdhivp6o1" path="res://Objects/destructable_sign.gd" id="1_egdn7"]
-[ext_resource type="Texture2D" uid="uid://s5egjbmsoc15" path="res://Sprites/signs/fishwarning.png" id="2_3f8aq"]
+[ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/long_arrowSign.png" id="2_3f8aq"]
 [ext_resource type="AudioStream" uid="uid://bu7um2p6lj37" path="res://Sounds/sign_hit.ogg" id="3_3f8aq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s010x"]
@@ -20,24 +20,24 @@ collision_layer = 4
 collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_egdn7")
-signSprite = "uid://s5egjbmsoc15"
+signSprite = "uid://bwjgjk84nbeei"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="spriteL" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
 offset = Vector2(-25, 0)
 texture = ExtResource("2_3f8aq")
 region_enabled = true
-region_rect = Rect2(0, 0, 250, 400)
+region_rect = Rect2(0, 0, 250, 500)
 
 [node name="bend" type="Node3D" parent="."]
 
-[node name="Sprite3D2" type="Sprite3D" parent="bend"]
+[node name="spriteR" type="Sprite3D" parent="bend"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
 sorting_offset = -0.1
 offset = Vector2(25, 0)
 texture = ExtResource("2_3f8aq")
 region_enabled = true
-region_rect = Rect2(250, 0, 250, 400)
+region_rect = Rect2(250, 0, 250, 500)
 
 [node name="collisionFlat" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_s010x")

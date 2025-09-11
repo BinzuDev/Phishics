@@ -4,27 +4,44 @@ extends RigidBody3D
 
 var fellOff: bool = false
 var bent: bool = false
+var fileName : String = ""
+
+#####################################
+## SIGN SPRITE NAMING CHEAT SHEET
+## starts with tri_: sprite gets lowered 50 pixels
+## starts with long_: the sprite gets rotated when used as a surf board, right=forward
+
 
 #allows us to switch sprites
-@export_file("*.png") var signSprite: String = "res://Sprites/signs/warning_sign.png": 
+@export_file("*.png") var signSprite: String = "res://Sprites/signs/tri_fishwarning.png": 
 	set(new_value):
 		signSprite = new_value
 		if Engine.is_editor_hint():
-			if get_node_or_null("./Sprite3D"): #failsafe check to prevent errors
-				$Sprite3D.texture = load(new_value) #changes sprites real time
-				$bend/Sprite3D2.texture = load(new_value)
+			if get_node_or_null("./spriteL"): #failsafe check to prevent errors
+				set_sign_visuals()
 
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		if signSprite.get_file(): #failsafe check to prevent errors
-			$Sprite3D.texture = load(signSprite)
-			$bend/Sprite3D2.texture = load(signSprite)
+			set_sign_visuals()
 
 
-func _process(_delta: float) -> void:
-	pass
+
+func set_sign_visuals():
+	$spriteL.texture = load(signSprite)
+	$bend/spriteR.texture = load(signSprite)
 	
+	var id = ResourceUID.text_to_id(signSprite) ##WARNING: theres a better way to do this in 4.5
+	fileName = ResourceUID.get_id_path(id)
+	$spriteL.position.y = 0
+	$bend.position.y = 0
+	if fileName.get_file().begins_with("tri_"):
+		$spriteL.position.y = -0.25
+		$bend.position.y = -0.25
+	
+
+
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -34,24 +51,20 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		angular_velocity = body.angular_velocity
 		linear_velocity = body.linear_velocity
 		
-		
 		if not fellOff: #destruction points
-			ScoreManager.give_points(2500, 1, true, "VANDALISM")
-			ScoreManager.play_trick_sfx("uncommon")
+			if !fileName.get_file().contains("skateBoard"): #stealing isnt vandalism technically?
+				ScoreManager.give_points(2500, 1, true, "VANDALISM")
+				ScoreManager.play_trick_sfx("uncommon")
 			$AudioStreamPlayer3D.play()
 			fellOff = true
 		
-		
 		#if the fish isnt surfing and the sign isnt bent yet
 		if body.surfMode == false and not bent:
-			body.activateSurfMode(signSprite, self)
+			body.activateSurfMode(fileName, self)
 			$collisionFlat.set_deferred("disabled", true)
 			$Area3D.set_deferred("monitoring", false)
 			set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 			visible = false
-		
-		
-		
 		
 		
 
@@ -64,10 +77,12 @@ func throwAway():
 	apply_central_impulse(Vector3(0,-6,0))
 	$AudioStreamPlayer3D.play()
 	bent = true
+	if fileName.get_file().contains("skateBoard"): #special trick when breaking skateboard
+		ScoreManager.give_points(10000, 0, true, "NEUTRON STYLE")
 	$Area3D.set_collision_layer_value(6, false) #turn off homing when bent
 	#temporarily turn off collision as you jump off
 	set_collision_layer_value(3, false) 
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.05).timeout
 	$collisionBend1.set_deferred("disabled", false)
 	$collisionBend2.set_deferred("disabled", false)
 	set_collision_layer_value(3, true)  #turn it back on after 6 frames

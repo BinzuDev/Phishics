@@ -38,9 +38,10 @@ var airSpinAmount : float = 0.0
 var airSpinRank : int = 0
 var airSpinHighestRank : int = 0
 #All of the required spin amounts to rank up the air spin meter
-const ASnormalRequirements = [320*2, 360*4, 360*7, 360*11, 360*16, 360*24, 360*34, 360*55, 360*55, 360*89, 9999999*9999999]
+#const ASnormalRequirements = [360*2, 360*4, 360*7, 360*11, 360*16, 360*24, 360*34, 360*55, 360*55, 360*89, 9999999*9999999]
+const ASnormalRequirements = [360*3, 360*6, 360*9, 360*13, 360*18, 360*25, 360*34, 360*55, 360*55, 360*89, 9999999*9999999]
 const ASnormalRankColor = ["00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "00d8ff", "ff00e8", "ff00e8", "00d8ff", "00d8ff", "000000"]
-const ASsurfRequirements = [320*1, 360*2, 360*3, 360*4, 360*5, 360*6, 360*7, 360*8, 360*8, 360*10, 9999999*9999999]
+const ASsurfRequirements = [360*1, 360*2, 360*3, 360*4, 360*5, 360*6, 360*7, 360*8, 360*8, 360*10, 9999999*9999999]
 const ASsurfRankColor = ["f08a15", "000000", "f08a15", "000000", "f08a15", "000000", "f08a15", "000000", "000000", "f08a15", "f08a15", "000000"]
 var ASrequirements = []
 var ASrankColor = []
@@ -67,6 +68,12 @@ func _physics_process(_delta: float) -> void:
 		if airSpinRank == 9:
 			$specialTrick2.play()
 	
+	
+	if airSpinRank < 8:
+		%spinRank.text = str(airSpinRank+1)
+	else:
+		%spinRank.text = str(airSpinRank)
+	
 	if doAirSpin:
 		var newHigh = false
 		airSpinRank += 1
@@ -85,7 +92,11 @@ func _physics_process(_delta: float) -> void:
 			$airSpin.play()
 			airSpinUIgrow()
 			if fish.surfMode:
-				give_points(0, 1, true, str(airSpinRank*360, "°"))
+				if airSpinRank == 9:
+					give_points(0, 1, true, str(8*360,"°")) #special exception bcs you skip a rank
+				else:
+					give_points(0, 1, true, str(airSpinRank*360, "°"))
+				
 			else:
 				if airSpinRank == 10:
 					give_points(5000, 10, true, "MAX AIRSPIN")

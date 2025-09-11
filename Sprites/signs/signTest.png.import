@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bopnbyxyecen8"
-path.s3tc="res://.godot/imported/skateBoard.png-8a8f0169eab2522974b8e0a404adc510.s3tc.ctex"
+uid="uid://bhxjw7iui1gxo"
+path.s3tc="res://.godot/imported/signTest.png-76ed6bcb3b38700c7e675310066a5f50.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/signs/skateBoard.png"
-dest_files=["res://.godot/imported/skateBoard.png-8a8f0169eab2522974b8e0a404adc510.s3tc.ctex"]
+source_file="res://Sprites/signs/signTest.png"
+dest_files=["res://.godot/imported/signTest.png-76ed6bcb3b38700c7e675310066a5f50.s3tc.ctex"]
 
 [params]
 

@@ -7,7 +7,7 @@ func _ready():
 	GameManager.isOnTitleScreen = false
 	#dont do the transition when the game opens
 	if GameManager.gameTimer > 15:
-		var waitTime = 0.2
+		var waitTime = 0.5
 		if get_tree().current_scene.name == "World":
 			waitTime = 0.5 #wait a little longer on the level bcs its so big
 		await get_tree().create_timer(waitTime).timeout

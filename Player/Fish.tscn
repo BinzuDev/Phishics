@@ -1,13 +1,13 @@
-[gd_scene load_steps=124 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=126 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="2_j2ykt"]
 [ext_resource type="Script" uid="uid://ds6aunatkq5dv" path="res://_MANAGERS/recording_manager.gd" id="2_lt56d"]
 [ext_resource type="AudioStream" uid="uid://cksq7ka4w1bjq" path="res://Sounds/sparks/sparks_high_intensity_01.wav" id="3_dh0na"]
+[ext_resource type="Texture2D" uid="uid://bhxjw7iui1gxo" path="res://Sprites/signs/signTest.png" id="4_d6s4o"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="4_ie0qp"]
 [ext_resource type="AudioStream" uid="uid://dtx8330mvhty2" path="res://Sounds/sparks/sparks_high_intensity_03.wav" id="4_iujy1"]
-[ext_resource type="Texture2D" uid="uid://bopnbyxyecen8" path="res://Sprites/signs/skateBoard.png" id="4_q0y68"]
 [ext_resource type="AudioStream" uid="uid://dr5fa44lr58yx" path="res://Sounds/sparks/sparks_medium_intensity_02.wav" id="5_div8h"]
 [ext_resource type="Texture2D" uid="uid://dvh47r7mka7c5" path="res://Sprites/signs/skateBoard_underside.png" id="5_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://divrkdsaujxsd" path="res://Sounds/poof.ogg" id="5_t0nqp"]
@@ -51,7 +51,9 @@
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
+[ext_resource type="AudioStream" uid="uid://cwbyge4sbo6ch" path="res://Sounds/tricks/rare/tony_hawk_trick_low.ogg" id="49_3jkku"]
 [ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/blurLines.gdshader" id="49_ny41d"]
+[ext_resource type="AudioStream" uid="uid://dav807pihtf7q" path="res://Sounds/tricks/legendary/tony_hawk_trick_high.ogg" id="50_bsrx0"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -109,11 +111,15 @@ albedo_color = Color(1, 0, 0, 1)
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
+radial_segments = 8
+rings = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dp2w5"]
 top_radius = 0.2
 bottom_radius = 0.0
 height = 0.3
+radial_segments = 8
+rings = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
 radius = 0.1
@@ -231,7 +237,7 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q0y68"]
-font_size = 95
+font_size = 50
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
@@ -699,7 +705,7 @@ script = ExtResource("2_lt56d")
 recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
-replayAccuracy = 5
+replayAccuracy = 1
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
@@ -783,11 +789,10 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
-visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_mask = 17
 debug_shape_custom_color = Color(0, 1, 1, 1)
 debug_shape_thickness = 5
@@ -800,14 +805,14 @@ debug_shape_thickness = 5
 
 [node name="surfRC3" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 1)
 collision_mask = 17
 debug_shape_custom_color = Color(0, 1, 1, 1)
 debug_shape_thickness = 5
 
 [node name="halfPipeCheck" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0, 1, 0.599394, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.987688, -0.156434, 0, 0.156434, 0.987688, 0, 0, 0.6)
 target_position = Vector3(0, -5, 0)
 collision_mask = 17
 debug_shape_custom_color = Color(0, 1, 1, 1)
@@ -815,13 +820,14 @@ debug_shape_thickness = 5
 
 [node name="surfSign" type="Sprite3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.17, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.17, 0)
 axis = 1
-texture = ExtResource("4_q0y68")
+double_sided = false
+texture = ExtResource("4_d6s4o")
 
 [node name="surfSignUnder" type="Sprite3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 4.37114e-08, 4.37114e-08, 4.37114e-08, -0.5, 0, 4.37114e-08, 3.82137e-15, -0.5, 0, -0.17, 0)
+transform = Transform3D(2.18557e-08, 1.91068e-15, -0.5, 4.37114e-08, -0.5, 0, -0.5, -4.37114e-08, -2.18557e-08, 0, -0.17, 0)
 axis = 1
 double_sided = false
 texture = ExtResource("5_l4b1c")
@@ -842,18 +848,19 @@ skeleton = NodePath("../../surfShadow")
 
 [node name="surfingFish" type="Sprite3D" parent="surfPivot/fishPivot"]
 unique_name_in_owner = true
-transform = Transform3D(4.48652e-14, -1.50996e-08, -0.21, -0.2, -8.74228e-09, -1.73733e-14, -8.74228e-09, 0.2, -1.58546e-08, 0, 0.67, 0)
+transform = Transform3D(3.82137e-16, -0.2, 9.17939e-09, -0.2, 1.09268e-15, 1.83588e-08, -1.74846e-08, -8.74228e-09, -0.21, 0, 0.67, 0)
 axis = 1
 texture = ExtResource("2_j2ykt")
 
 [node name="arrow" type="MeshInstance3D" parent="surfPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34472, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_q0y68")
 transparency = 0.47
 mesh = SubResource("CylinderMesh_l4b1c")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="surfPivot/arrow"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.37859, -1.34466, -2.38419e-07)
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, -1.34, -1.43)
 material_override = SubResource("StandardMaterial3D_q0y68")
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_dp2w5")
@@ -1092,6 +1099,7 @@ mesh = SubResource("SphereMesh_lt56d")
 
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 16.0
 offset_top = 297.0
 offset_right = 282.0
@@ -1102,9 +1110,10 @@ label_settings = SubResource("LabelSettings_nmgcd")
 [node name="debugLabel2" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_top = 926.0
-offset_right = 577.0
-offset_bottom = 1173.0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 590.0
+offset_bottom = 263.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_q0y68")
 
@@ -1324,6 +1333,16 @@ volume_db = -8.0
 max_polyphony = 10
 bus = &"fishsfx"
 
+[node name="THPS_low" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("49_3jkku")
+volume_db = -4.0
+bus = &"tricks"
+
+[node name="THPS_high" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("50_bsrx0")
+volume_db = -3.0
+bus = &"tricks"
+
 [node name="FIsh" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_kufgg")
@@ -1348,6 +1367,3 @@ size = Vector3(0.5, 0.1, 0.5)
 texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="." to="." method="checkpoint"]

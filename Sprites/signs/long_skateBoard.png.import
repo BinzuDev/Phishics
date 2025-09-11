@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s5egjbmsoc15"
-path.s3tc="res://.godot/imported/fishwarning.png-a816ae0057640a286ca4a133ebade703.s3tc.ctex"
+uid="uid://bopnbyxyecen8"
+path.s3tc="res://.godot/imported/long_skateBoard.png-1aaa1bdb703538762698ab8baef9d035.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/signs/fishwarning.png"
-dest_files=["res://.godot/imported/fishwarning.png-a816ae0057640a286ca4a133ebade703.s3tc.ctex"]
+source_file="res://Sprites/signs/long_skateBoard.png"
+dest_files=["res://.godot/imported/long_skateBoard.png-1aaa1bdb703538762698ab8baef9d035.s3tc.ctex"]
 
 [params]
 
