@@ -99,7 +99,9 @@ func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 
 func _on_fish_debug_toggled(toggled_on):
 	get_tree().get_first_node_in_group("player").find_child("debugLabel").visible = toggled_on
-	
+
+func _on_surf_debug_toggled(toggled_on):
+	get_tree().get_first_node_in_group("player").find_child("debugLabel2").visible = toggled_on
 
 func _on_music_debug_toggled(toggled_on):
 	MusicManager.find_child("musicDebug").visible = toggled_on

@@ -121,6 +121,44 @@ height = 0.3
 radial_segments = 8
 rings = 0
 
+[sub_resource type="Gradient" id="Gradient_lt56d"]
+offsets = PackedFloat32Array(0, 0.338912, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.97, 0.1, 1, 1, 0.314, 0.02, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ie0qp"]
+gradient = SubResource("Gradient_lt56d")
+
+[sub_resource type="Curve" id="Curve_lt56d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.96606, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ie0qp"]
+curve = SubResource("Curve_lt56d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lt56d"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+damping_min = 12.0
+damping_max = 12.0
+scale_min = 0.8
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_ie0qp")
+color_ramp = SubResource("GradientTexture1D_ie0qp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt56d"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ie0qp"]
+material = SubResource("StandardMaterial3D_lt56d")
+size = Vector2(0.07, 0.5)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
 radius = 0.1
 height = 0.2
@@ -552,44 +590,6 @@ stream_0/stream = ExtResource("15_5m7cr")
 stream_1/stream = ExtResource("16_l2vbt")
 stream_2/stream = ExtResource("17_17eip")
 
-[sub_resource type="Gradient" id="Gradient_lt56d"]
-offsets = PackedFloat32Array(0, 0.338912, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.97, 0.1, 1, 1, 0.314, 0.02, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ie0qp"]
-gradient = SubResource("Gradient_lt56d")
-
-[sub_resource type="Curve" id="Curve_lt56d"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.96606, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ie0qp"]
-curve = SubResource("Curve_lt56d")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lt56d"]
-particle_flag_align_y = true
-emission_shape = 1
-emission_sphere_radius = 0.2
-direction = Vector3(-1, 0, 0)
-spread = 60.0
-initial_velocity_min = 8.0
-initial_velocity_max = 12.0
-damping_min = 12.0
-damping_max = 12.0
-scale_min = 0.8
-scale_max = 1.1
-scale_curve = SubResource("CurveTexture_ie0qp")
-color_ramp = SubResource("GradientTexture1D_ie0qp")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt56d"]
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_ie0qp"]
-material = SubResource("StandardMaterial3D_lt56d")
-size = Vector2(0.07, 0.5)
-
 [sub_resource type="Curve" id="Curve_tid1w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -704,7 +704,6 @@ script = ExtResource("1_8ijwk")
 script = ExtResource("2_lt56d")
 recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
-replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1
 
 [node name="collision" type="CollisionShape3D" parent="."]
@@ -712,7 +711,6 @@ transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_j2ykt")
 
 [node name="collisionSphere" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("SphereShape3D_q0y68")
 disabled = true
 
@@ -783,7 +781,7 @@ transform = Transform3D(0, 1, 0, 4.37114e-08, 2.30371e-15, -1, -1, 0, -4.37114e-
 mesh = SubResource("CylinderMesh_xsxx4")
 skeleton = NodePath("../..")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+[node name="RemoteTransformSurf" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("../surfPivot")
 update_rotation = false
 
@@ -873,6 +871,14 @@ transparency = 0.47
 mesh = SubResource("CylinderMesh_dp2w5")
 skeleton = NodePath("../..")
 
+[node name="surfSparks" type="GPUParticles3D" parent="surfPivot"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, -0.707107, 0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0, 0, 0.8)
+amount = 30
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_lt56d")
+draw_pass_1 = SubResource("QuadMesh_ie0qp")
+
 [node name="RemoteTransformCamera" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("../cameraAnchor")
 update_rotation = false
@@ -954,7 +960,7 @@ skeleton = NodePath("../../..")
 
 [node name="speedLines3" type="MeshInstance3D" parent="antiRotation/speedLines"]
 unique_name_in_owner = true
-transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, 0, 3.72529e-09, 0.0354262)
+transform = Transform3D(0.821846, 0, -0.56971, 0, 1, 0, 0.56971, 0, 0.821846, -3.17693e-05, 0.00243199, 0.0344145)
 material_override = SubResource("StandardMaterial3D_twgm3")
 mesh = SubResource("CylinderMesh_div8h")
 skeleton = NodePath("../../..")
@@ -962,7 +968,6 @@ skeleton = NodePath("../../..")
 [node name="particleFloor" type="GPUParticlesCollisionBox3D" parent="antiRotation"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -3.56055, 0)
-visible = false
 size = Vector3(2, 20, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="antiRotation/particleFloor"]
@@ -1295,6 +1300,9 @@ bus = &"fishsfx"
 
 [node name="sign_scraping" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("30_d6s4o")
+volume_db = -2.0
+unit_size = 20.0
+max_db = 0.0
 autoplay = true
 max_polyphony = 3
 bus = &"fishsfx"
@@ -1335,12 +1343,12 @@ bus = &"fishsfx"
 
 [node name="THPS_low" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("49_3jkku")
-volume_db = -4.0
+volume_db = -3.0
 bus = &"tricks"
 
 [node name="THPS_high" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("50_bsrx0")
-volume_db = -3.0
+volume_db = -2.5
 bus = &"tricks"
 
 [node name="FIsh" type="AudioStreamPlayer" parent="."]

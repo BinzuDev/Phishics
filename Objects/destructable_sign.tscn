@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s010x"]
 margin = 0.01
-size = Vector3(1.8, 1.57, 0.2)
+size = Vector3(1.8, 1.57, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3f8aq"]
 margin = 0.01
@@ -41,6 +41,7 @@ region_rect = Rect2(250, 0, 250, 500)
 
 [node name="collisionFlat" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_s010x")
+disabled = true
 
 [node name="collisionBend1" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450146, 0, 0)

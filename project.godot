@@ -41,6 +41,7 @@ window/stretch/aspect="expand"
 
 [editor]
 
+movie_writer/mjpeg_quality=0.9
 movie_writer/movie_file="C:/Users/Utilisateur/Documents/Godot 4/fish flopper/phishics/Recordings/Movie.avi"
 
 [global_group]

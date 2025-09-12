@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=32 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="3_hswr3"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="3_wstlt"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="4_ab27v"]
+[ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="4_j71bj"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="6_hswr3"]
 [ext_resource type="Shader" uid="uid://ddlqbkdpx3ho2" path="res://Shaders/auto_water_reflect.gdshader" id="8_jctnn"]
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
@@ -179,6 +180,9 @@ sides = 64
 [node name="CSGBox3D" type="CSGBox3D" parent="half pipe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0113, 38.0518, -49.5638)
 size = Vector3(48.6485, 16.6685, 13.0572)
+
+[node name="tornado" parent="half pipe" instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96848, 31.0081, 81.0735)
 
 [node name="half pipe2" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8909, 118.136, 64.2852)

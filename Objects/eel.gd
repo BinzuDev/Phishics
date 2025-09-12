@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			%Camera3D.fov -= 1
 		if Input.is_action_pressed("camera"):
 			%Camera3D.fov += 1
-		%Camera3D.fov = clamp(%Camera3D.fov, 10, 60)
+		%Camera3D.fov = clamp(%Camera3D.fov, 10, 80)
 		
 		
 		if Input.is_action_just_pressed("cancel"):

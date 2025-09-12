@@ -69,10 +69,7 @@ func _physics_process(_delta: float) -> void:
 			$specialTrick2.play()
 	
 	
-	if airSpinRank < 8:
-		%spinRank.text = str(airSpinRank+1)
-	else:
-		%spinRank.text = str(airSpinRank)
+	
 	
 	if doAirSpin:
 		var newHigh = false
@@ -125,7 +122,19 @@ func _physics_process(_delta: float) -> void:
 			$UI/airSpin.modulate.a -= 0.2
 		else:
 			$UI/airSpin.modulate.a += 0.2
+		if fish.surfMode:
+			%spinRank.label_settings.font_color = "f08a15"
+			%spinRank.label_settings.outline_color = "000000"
+		else:
+			%spinRank.label_settings.font_color = "ff00ff"
+			%spinRank.label_settings.outline_color = "00ffff"
+		
 	$UI/airSpin.modulate.a = clamp($UI/airSpin.modulate.a, 0, 1)
+	if airSpinRank < 8:
+		%spinRank.text = str(airSpinRank+1)
+	else:
+		%spinRank.text = str(airSpinRank)
+	
 	
 	## COMBO METER ##
 	comboTimer -= 1   #How fast the combo timer ticks down
@@ -380,7 +389,7 @@ func update_freshness(object):
 	
 	timeSinceFreshChange = 0
 	
-	if trickHistory.size() >= 5:
+	if trickHistory.size() >= 4:
 		if freshness >= 6 and freshState != FRESH.LOW:
 			$lowFreshness.play()
 			%freshAnims.play("spam_penalty")
@@ -500,6 +509,7 @@ func reset_everything():
 	airSpinHighestRank = 0
 	%comboText.text = ""
 	combo_dict.clear()
+	%freshAnims.play("RESET")
 	
 
 ## Used so whole decimal numbers shown on UI are shown like "5" instead of "5.0"

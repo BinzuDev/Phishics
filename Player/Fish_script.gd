@@ -37,6 +37,7 @@ var surfSignRef : Node
 var surfJumpHolding : int = 0 #keeps track of how long youve held jump
 var inputHistory : Array = ["","",""]
 var timeSinceLastInput : int = 0
+var surfState : String = ""
 var surfRotationType : String = ""
 var hasSurfedBefore : bool = false
 var isHalfPiping : bool = false
@@ -48,6 +49,7 @@ const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
 const torque_side = Vector3(0, 0, 1.5)     #left-right rotation speed
 const JUMP_STRENGTH = Vector3(0, 9, 0)     #jump strength                                                      
 const ACCEL : float = 1.5                  #acceleration speed
+const SURFACCEL : float = 3                #surf acceleration speed
 
 #TIMING VARS
 var timeSinceJump : int = 0
@@ -69,22 +71,26 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
+	var accel = ACCEL
+	if surfMode:
+		accel = SURFACCEL
+	
 	## Movement
 	if Input.is_action_just_pressed("forward"):
 		apply_torque_impulse(rotate_by_cam(torque_impulse))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, -ACCEL)))
+		apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
 	
 	if Input.is_action_just_pressed("back"):
 		apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, ACCEL)))
+		apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
 	
 	if Input.is_action_just_pressed("right"):
 		apply_torque_impulse(rotate_by_cam(torque_side * -1))
-		apply_impulse(rotate_by_cam(Vector3(ACCEL, 0, 0)))
+		apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
 	 
 	if Input.is_action_just_pressed("left"):
 		apply_torque_impulse(rotate_by_cam(torque_side))
-		apply_impulse(rotate_by_cam(Vector3(-ACCEL, 0, 0)))
+		apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
 	
 	
 		###############
@@ -494,10 +500,13 @@ func _physics_process(_delta: float) -> void:
 	#Spark Particles
 	$tipSpinSparks.emitting = isTipSpinning
 	%ballSpark.emitting = isTipSpinning
+	%surfSparks.emitting = surfMode and %surfRC3.is_colliding()
 	var sparkSpd = clamp(angular_velocity.length() * 0.06 +0.3, 0.8, 4)
 	$tipSpinSparks.speed_scale = sparkSpd
+	%surfSparks.speed_scale = sparkSpd
 	var sparkRate = clamp(angular_velocity.length()*0.03, 0.3, 1)
 	$tipSpinSparks.amount_ratio = sparkRate
+	%surfSparks.amount_ratio = sparkRate
 	var sfxRate = int(clamp(30 - angular_velocity.length()*0.5, 5, 25))
 	
 	%particleFloor.position.y = -height -1
@@ -564,7 +573,7 @@ func _physics_process(_delta: float) -> void:
 	######################
 	##   Sign Surfing   ##
 	######################
-	var surfState = "Not surfing"
+	surfState = "Not surfing"
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
 	
@@ -596,7 +605,7 @@ func _physics_process(_delta: float) -> void:
 				floor_normal = %canSurf.get_collision_normal().normalized() 
 		else:
 			if %surfRC1.is_colliding(): #pointing under the board but at the front
-				surfState = "Surfing up a steep slope"
+				surfState = "Slope surfing"
 				isHalfPiping = true
 				floor_normal = getSurfNormal()
 			else:
@@ -757,6 +766,7 @@ func _physics_process(_delta: float) -> void:
 	surf jump: ", surfJumpHolding, "
 	surf state: ", surfState, "
 	Rotation Type: ", surfRotationType, "
+	last input ago: ", timeSinceLastInput, "
 	input hitory: ", inputHistory, "
 	isHalfPiping: ", isHalfPiping, "
 	floor normal: ", floor_normal, "
@@ -777,7 +787,7 @@ func _physics_process(_delta: float) -> void:
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
-	#"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
+	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
 	)
@@ -790,6 +800,7 @@ func activateSurfMode(sprite : String, signObj : Node):
 	surfSignRef = signObj
 	if diving:
 		linear_velocity.y = 0
+		linear_velocity *= 0.5
 		apply_impulse(JUMP_STRENGTH)
 	surfJumpHolding = 5
 	%surfSign.texture = load(sprite)
@@ -804,6 +815,7 @@ func activateSurfMode(sprite : String, signObj : Node):
 	$shadowMesh.visible = false
 	$collision.set_deferred("disabled", true)
 	$collisionSphere.set_deferred("disabled", false)
+	ScoreManager.comboTimer += 80 #give you extra time
 	ScoreManager.reset_airspin()
 	ScoreManager.airSpinHighestRank = 0
 
@@ -820,7 +832,7 @@ func deactivateSurfMode():
 	$collisionSphere.set_deferred("disabled", true)
 	hasSurfedBefore = true
 	ScoreManager.reset_airspin()
-	ScoreManager.airSpinHighestRank = 0
+	#ScoreManager.airSpinHighestRank = 0
 	
 
 func getSurfNormal():
@@ -840,17 +852,24 @@ func getSurfNormal():
 
 func updateInputHistory():
 	timeSinceLastInput += 1
+	if timeSinceLastInput == 1: #so you can just spam keys randomly super fast
+		return
 	if Input.is_action_just_pressed("forward"):
 		inputHistory.append("up")
-	if Input.is_action_just_pressed("back"):
+		print(timeSinceLastInput)
+	elif Input.is_action_just_pressed("back"):
 		inputHistory.append("down")
-	if Input.is_action_just_pressed("left"):
+		print(timeSinceLastInput)
+	elif Input.is_action_just_pressed("left"):
 		inputHistory.append("left")
-	if Input.is_action_just_pressed("right"):
+		print(timeSinceLastInput)
+	elif Input.is_action_just_pressed("right"):
 		inputHistory.append("right")
+		print(timeSinceLastInput)
 	
 	if timeSinceLastInput == 30:
 		inputHistory = ["","",""]
+	
 	
 	while inputHistory.size() >= 4:
 		inputHistory.remove_at(0)

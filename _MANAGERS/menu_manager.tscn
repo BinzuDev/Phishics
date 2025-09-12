@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=22 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -141,6 +141,26 @@ font_size = 35
 font_color = Color(0.983334, 0, 1, 1)
 outline_size = 19
 
+[sub_resource type="LabelSettings" id="LabelSettings_6ewwa"]
+font_size = 20
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_juhqs"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	var fps = Engine.get_frames_per_second()
+	text = str(\"FPS: \", fps)
+"
+
 [node name="menu_manager" type="Node"]
 process_mode = 3
 script = ExtResource("1_kt1dn")
@@ -228,6 +248,10 @@ text = "Music debug info"
 layout_mode = 2
 text = "Fish debug info"
 
+[node name="surf" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
+layout_mode = 2
+text = "Surf debug info"
+
 [node name="style" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
 text = "Style debug info"
@@ -274,7 +298,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 8890
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 
@@ -780,6 +804,25 @@ size_flags_horizontal = 8
 texture = ExtResource("5_s0yte")
 expand_mode = 2
 
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Control"]
+z_index = 999
+layout_mode = 1
+offset_right = 83.0
+offset_bottom = 28.0
+text = "FPS: 60.0"
+label_settings = SubResource("LabelSettings_6ewwa")
+script = SubResource("GDScript_juhqs")
+
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Continue" to="." method="_on_continue_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Restart" to="." method="_on_restart_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Tricks" to="." method="_on_tricks_pressed"]
@@ -787,6 +830,7 @@ expand_mode = 2
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/fresh" to="." method="_on_fresh_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/music" to="." method="_on_music_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/fish" to="." method="_on_fish_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/surf" to="." method="_on_surf_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/style" to="." method="_on_style_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/hideUI" to="." method="_on_hide_ui_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/noclip" to="." method="_on_noclip_toggled"]
