@@ -490,9 +490,10 @@ func _physics_process(_delta: float) -> void:
 				ScoreManager.change_rank(8, 1)
 				ScoreManager.comboTimer += 500
 				ScoreManager.play_trick_sfx("legendary")
-				MusicManager.play_track(1, 1)
-				MusicManager.play_track(2, 1)
-				MusicManager.play_track(3, 1) #play the music tracks if not already playing
+				MusicManager.play_track(1)
+				MusicManager.play_track(2)
+				MusicManager.play_track(3)
+				MusicManager.play_track(4)
 	
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again

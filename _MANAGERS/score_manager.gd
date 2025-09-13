@@ -436,13 +436,13 @@ func change_rank(amount: int, meterPercentage: float):
 			%rankAnim.play("rank_up_PSSS")
 		
 		if styleRank == C:
-			MusicManager.play_track(1, 1)
+			MusicManager.play_track(1)
 		if styleRank == A:
-			MusicManager.play_track(2, 1)
+			MusicManager.play_track(2)
 		if styleRank == P:
-			MusicManager.play_track(3, 1)
+			MusicManager.play_track(3)
 		if styleRank == PSSS:
-			MusicManager.play_track(4, 1)
+			MusicManager.play_track(4)
 	
 	## Ranking down
 	if amount < 0:

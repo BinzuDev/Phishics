@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://brarw73p2ss0"]
+[gd_scene load_steps=16 format=3 uid="uid://brarw73p2ss0"]
 
 [ext_resource type="Script" uid="uid://dlombqqma6ffi" path="res://_MANAGERS/music_manager.gd" id="1_tylfe"]
 [ext_resource type="AudioStream" uid="uid://djsqi5hk8cqvp" path="res://Music/OST1/calm1.ogg" id="2_rn4ok"]
-[ext_resource type="AudioStream" uid="uid://ct1tv7gd0d6xr" path="res://Music/silence.ogg" id="3_u7qmi"]
+[ext_resource type="Script" uid="uid://i7r0qecxe5aj" path="res://_MANAGERS/AdaptiveMusicTrack.gd" id="3_n58e7"]
 [ext_resource type="AudioStream" uid="uid://ceda4c52rrkek" path="res://Music/OST1/bass.ogg" id="4_l0n74"]
 [ext_resource type="AudioStream" uid="uid://bay2ajwwd0nvy" path="res://Music/OST1/drums1.ogg" id="5_6bu3j"]
 [ext_resource type="AudioStream" uid="uid://b4ilms0b4cl2w" path="res://Music/OST1/melody1.ogg" id="6_wdhd3"]
@@ -12,245 +12,30 @@
 [ext_resource type="AudioStream" uid="uid://cxnd4dnpab2pp" path="res://Music/OST1/melody2.ogg" id="10_eyimf"]
 [ext_resource type="AudioStream" uid="uid://c4afk4egqj245" path="res://Music/OST1/ladder.ogg" id="11_32pxr"]
 [ext_resource type="AudioStream" uid="uid://0amo7pnp0b14" path="res://Music/OST1/ladder2.ogg" id="12_5tnd0"]
+[ext_resource type="AudioStream" uid="uid://2jq4scf8afkq" path="res://Music/metronome.ogg" id="13_7m2rd"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_u5yq6"]
-stream_count = 1
+stream_count = 10
 stream_0/stream = ExtResource("2_rn4ok")
 stream_0/volume = 0.0
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vfhda"]
-clip_count = 2
-clip_0/name = &"Silence"
-clip_0/stream = ExtResource("3_u7qmi")
-clip_0/auto_advance = 0
-clip_1/name = &"Bass"
-clip_1/stream = ExtResource("4_l0n74")
-clip_1/auto_advance = 0
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-}
-}
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7i7ec"]
-clip_count = 2
-clip_0/name = &"Silence"
-clip_0/stream = ExtResource("3_u7qmi")
-clip_0/auto_advance = 0
-clip_1/name = &"Drums"
-clip_1/stream = ExtResource("5_6bu3j")
-clip_1/auto_advance = 0
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-}
-}
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u5twb"]
-clip_count = 5
-clip_0/name = &"Silence"
-clip_0/stream = ExtResource("3_u7qmi")
-clip_0/auto_advance = 0
-clip_1/name = &"Melody"
-clip_1/stream = ExtResource("6_wdhd3")
-clip_1/auto_advance = 1
-clip_1/next_clip = 2
-clip_2/name = &"Backing"
-clip_2/stream = ExtResource("7_kyyes")
-clip_2/auto_advance = 1
-clip_2/next_clip = 1
-clip_3/name = &"Backing 2"
-clip_3/stream = ExtResource("8_22gu4")
-clip_3/auto_advance = 1
-clip_3/next_clip = 1
-clip_4/name = &"Backing 3"
-clip_4/stream = ExtResource("9_7n7fs")
-clip_4/auto_advance = 1
-clip_4/next_clip = 1
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 2): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 3): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 4): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 2): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(1, 3): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(1, 4): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(2, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(2, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(3, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(3, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(4, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(4, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-}
-}
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_q1vne"]
-clip_count = 4
-clip_0/name = &"Silence"
-clip_0/stream = ExtResource("3_u7qmi")
-clip_0/auto_advance = 0
-clip_1/name = &"Melody2"
-clip_1/stream = ExtResource("10_eyimf")
-clip_1/auto_advance = 1
-clip_1/next_clip = 2
-clip_2/name = &"Ladder"
-clip_2/stream = ExtResource("11_32pxr")
-clip_2/auto_advance = 1
-clip_2/next_clip = 1
-clip_3/name = &"Ladder2"
-clip_3/stream = ExtResource("12_5tnd0")
-clip_3/auto_advance = 1
-clip_3/next_clip = 1
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 2): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 3): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 2): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(1, 3): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(2, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(2, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(3, 0): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(3, 1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 1
-}
-}
+stream_1/stream = ExtResource("4_l0n74")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("5_6bu3j")
+stream_2/volume = -60.0
+stream_3/stream = ExtResource("6_wdhd3")
+stream_3/volume = -60.0
+stream_4/stream = ExtResource("10_eyimf")
+stream_4/volume = -60.0
+stream_5/stream = ExtResource("7_kyyes")
+stream_5/volume = -60.0
+stream_6/stream = ExtResource("8_22gu4")
+stream_6/volume = -60.0
+stream_7/stream = ExtResource("9_7n7fs")
+stream_7/volume = -60.0
+stream_8/stream = ExtResource("11_32pxr")
+stream_8/volume = -60.0
+stream_9/stream = ExtResource("12_5tnd0")
+stream_9/volume = -60.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rn4ok"]
 font_size = 30
@@ -260,36 +45,43 @@ outline_color = Color(0, 0, 0, 1)
 [node name="music_manager" type="Node"]
 script = ExtResource("1_tylfe")
 
-[node name="music0" type="AudioStreamPlayer" parent="."]
+[node name="AdaptiveMusicTrack" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamSynchronized_u5yq6")
 autoplay = true
 bus = &"music"
-
-[node name="music1" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_vfhda")
-autoplay = true
-bus = &"music"
-
-[node name="music2" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_7i7ec")
-autoplay = true
-bus = &"music"
-
-[node name="music3" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_u5twb")
-autoplay = true
-bus = &"music"
-
-[node name="music4" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_q1vne")
-autoplay = true
-bus = &"music"
+script = ExtResource("3_n58e7")
+trackCount = 5
+clipGrouping = Dictionary[int, int]({
+0: 0,
+1: 1,
+2: 2,
+3: 3,
+4: 4,
+5: 3,
+6: 3,
+7: 3,
+8: 4,
+9: 4
+})
+clipTracks = Array[int]([0, 1, 2, 3, 4, 3, 3, 3, 4, 4])
 
 [node name="musicDebug" type="Label" parent="."]
-visible = false
-offset_left = 10.0
-offset_top = 118.0
-offset_right = 1203.0
-offset_bottom = 315.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 661.0
+offset_bottom = 959.0
 text = "Now playing:"
 label_settings = SubResource("LabelSettings_rn4ok")
+
+[node name="barEnd" type="Timer" parent="."]
+wait_time = 1.6
+
+[node name="songEnd" type="Timer" parent="."]
+wait_time = 51.2
+
+[node name="metronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7m2rd")
+autoplay = true
+
+[connection signal="timeout" from="barEnd" to="." method="_on_bar_end_timeout"]
+[connection signal="timeout" from="songEnd" to="." method="_on_song_end_timeout"]

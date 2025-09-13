@@ -95,7 +95,9 @@ func set_help_tip(newText: String):
 
 #Debug settings
 func hide_menu_in_FBF(): #so the frame by frame button is actually useful
-	%PauseList.visible = false
+	$PauseMenu.visible = false
+	#%PauseList.visible = false
+	
 
 func _on_fish_debug_toggled(toggled_on):
 	get_tree().get_first_node_in_group("player").find_child("debugLabel").visible = toggled_on

@@ -58,7 +58,7 @@ func change_scene(scene : String):
 ##resets everything and loads the next map
 func level_transition():
 	forceUnpause()
-	MusicManager.stop_music()
+	MusicManager.reset_music()
 	ScoreManager.reset_everything()
 	ScoreManager.show()
 	DialogueManager.reset()
