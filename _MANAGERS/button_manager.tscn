@@ -72,6 +72,7 @@ theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_a5m03")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_s0yte")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s0yte")
 text = "     Button     "
 horizontal_alignment = 1
 script = ExtResource("2_m4ko8")

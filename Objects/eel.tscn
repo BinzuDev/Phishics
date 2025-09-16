@@ -151,10 +151,12 @@ texture = ExtResource("2_orarh")
 [node name="AudioScopeOpen" type="AudioStreamPlayer" parent="eel_sprite/scope"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_nvi72")
+bus = &"soundEffects"
 
 [node name="AudioScopeClose" type="AudioStreamPlayer" parent="eel_sprite/scope"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_3o7ct")
+bus = &"soundEffects"
 
 [node name="fish_pos" type="Node3D" parent="eel_sprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549628, 17.138, 0)

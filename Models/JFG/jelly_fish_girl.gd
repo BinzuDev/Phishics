@@ -1,9 +1,12 @@
 extends Node3D
 
-@export var testingMode : bool = false
+@export var defaultAnimation : String = ""
 
 
 func _ready():
+	if defaultAnimation:
+		play_animation(defaultAnimation)
+	
 	if get_tree().current_scene == self:
 		print("Debug mode")
 		$DirectionalLight3D.visible = true

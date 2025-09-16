@@ -8,8 +8,8 @@ noise_type = 0
 frequency = 0.02
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sskjn"]
-seamless = true
 noise = SubResource("FastNoiseLite_l7bk4")
+seamless = true
 
 [resource]
 render_priority = -3

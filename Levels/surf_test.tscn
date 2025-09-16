@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=33 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="6_hswr3"]
 [ext_resource type="Shader" uid="uid://ddlqbkdpx3ho2" path="res://Shaders/auto_water_reflect.gdshader" id="8_jctnn"]
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
+[ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_gx528"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -546,3 +547,6 @@ mesh = SubResource("SphereMesh_ab27v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sphere6/StaticBody3D"]
 shape = SubResource("SphereShape3D_yfxg8")
+
+[node name="Basketballhoop" parent="." instance=ExtResource("11_gx528")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.34676, 118.6671, 70.651276)

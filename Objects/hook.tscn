@@ -197,7 +197,7 @@ _data = {
 script = ExtResource("1_ymdgi")
 
 [node name="rodPivot" type="Node3D" parent="."]
-transform = Transform3D(-0.500004, 0, 0.866023, 0, 1, 0, -0.866023, 0, -0.500004, -1.18418, 1.23993, -2.0328)
+transform = Transform3D(-0.5000041, 0, 0.8660229, 0, 1, 0, -0.8660229, 0, -0.5000041, -1.18418, 1.23993, -2.0328)
 
 [node name="rod" type="Sprite3D" parent="rodPivot"]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -2.35255, 2.90007, 0.00912595)
@@ -205,7 +205,7 @@ offset = Vector2(160, -173)
 texture = ExtResource("7_plar0")
 
 [node name="bobberAnim" type="Sprite3D" parent="rodPivot"]
-transform = Transform3D(-0.500004, 0, -0.866023, 0, 1, 0, 0.866023, 0, -0.500004, -2.35255, 2.86018, 0.00912595)
+transform = Transform3D(-0.5000041, 0, -0.8660229, 0, 1, 0, 0.8660229, 0, -0.5000041, -2.35255, 2.86018, 0.00912595)
 visible = false
 offset = Vector2(0, -180)
 pixel_size = 0.0045
@@ -237,6 +237,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84859, 0)
 stream = ExtResource("8_4pkbe")
 volume_db = -6.0
+bus = &"soundEffects"
 
 [node name="hookSprite" type="Sprite3D" parent="."]
 unique_name_in_owner = true
@@ -262,11 +263,13 @@ texture = ExtResource("4_uv86o")
 unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("5_uv86o")
+bus = &"soundEffects"
 
 [node name="sfxLoop" type="AudioStreamPlayer3D" parent="hookSprite"]
 unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("7_25c2w")
+bus = &"soundEffects"
 
 [node name="hookArea" type="Area3D" parent="."]
 unique_name_in_owner = true

@@ -275,6 +275,7 @@ texture = ExtResource("2_affe2")
 
 [node name="WormSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_j5b4d")
+bus = &"soundEffects"
 
 [node name="WormAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../wormBubble")

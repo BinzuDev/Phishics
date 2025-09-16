@@ -1171,6 +1171,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="surfJumpMeter" type="TextureProgressBar" parent="UI/airSpin"]
 unique_name_in_owner = true
@@ -1189,6 +1190,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 max_value = 20.0
 value = 10.0
 fill_mode = 4
@@ -1367,6 +1369,7 @@ bus = &"fishsfx"
 stream = ExtResource("48_q0y68")
 volume_db = -80.0
 autoplay = true
+bus = &"fishsfx"
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)

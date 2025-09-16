@@ -12,7 +12,7 @@ config_version=5
 
 config/name="PHISHICS github edition"
 run/main_scene="uid://c3e2kb32fmaeo"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/use_filter=false
 boot_splash/image="uid://drbikn5ifimak"
 config/icon="uid://dyjk0tumswvgp"
@@ -41,8 +41,8 @@ window/stretch/aspect="expand"
 
 [editor]
 
-movie_writer/mjpeg_quality=0.9
 movie_writer/movie_file="C:/Users/Utilisateur/Documents/Godot 4/fish flopper/phishics/Recordings/Movie.avi"
+movie_writer/mjpeg_quality=0.9
 
 [global_group]
 

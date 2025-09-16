@@ -20,11 +20,9 @@ class_name AdaptiveMusicTrack
 @export var songLength : float = 51.2
 
 ##This is how you link clips to tracks. 
-##Key is the clip index (START COUNTING FROM 0)
+##The index is the clip index (START COUNTING FROM 0)
 ##and Value is the track index (AGAIN, START COUNTING FROM 0)
-@export var clipGrouping : Dictionary[int, int]
-
-@export var clipTracks : Array[int]
+@export var clipGrouping : Array[int]
 
 ##Get how long in seconds 1 beat is at the song's BPM.
 func get_beat_length():

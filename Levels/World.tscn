@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=126 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="45_s7dn7"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="47_bmonc"]
 [ext_resource type="ArrayMesh" uid="uid://begvgj4h00n1y" path="res://Models/skate_mountain/skateMountain.obj" id="49_kvfdy"]
+[ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="50_ie2ey"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -1990,7 +1991,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7901, 13.5144, 19.2387)
 curve = SubResource("Curve3D_i76hq")
 
 [node name="Jellyfish" parent="group1/PathJF" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.83255, 0.51511, 0.203761, 0, 0.367833, -0.92989, -0.553947, 0.77418, 0.306241, 5.10682, 0.312191, -1.41056)
+transform = Transform3D(0.83255, 0.5151099, 0.20376088, 0, 0.36783338, -0.9298901, -0.55394715, 0.77417994, 0.30624065, 5.10682, 0.312191, -1.41056)
 speed = 3
 bounceForce = 50
 hSpeedMultiplier = 0.0
@@ -2000,7 +2001,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="group1/Path3D" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.998978, 0, -0.042964, 0, 0.999915, 0, 0.0429667, 0, -0.998915, -9.00834, -0.795094, 0.556206)
+transform = Transform3D(-0.998978, 0, -0.042963985, 0, 0.999915, 0, 0.042966697, 0, -0.998915, -9.00834, -0.795094, 0.556206)
 speed = 4
 bounceForce = 30
 
@@ -3829,34 +3830,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65196, 10.6001, 2.09141)
 curve = SubResource("Curve3D_s7dn7")
 
 [node name="PathFollowJellyfish" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.999066, 0, -0.0407761, 0, 0.999915, 0, 0.0407786, 0, -0.999005, -23.9382, 1.09086, 0.390198)
+transform = Transform3D(-0.999066, 0, -0.04077608, 0, 0.999915, 0, 0.04077857, 0, -0.999005, -23.9382, 1.09086, 0.390198)
 speed = 7
 bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish2" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.208339, -0.00556746, -0.977877, 0.00888489, 0.999847, -0.00758437, 0.977912, -0.0102703, -0.208263, -5.6587, 1.29124, 20.3676)
+transform = Transform3D(-0.20833899, -0.0055674626, -0.97787714, 0.00888489, 0.999847, -0.0075843725, 0.9779124, -0.010270297, -0.20826258, -5.6587043, 1.2912438, 20.367554)
 progress = 29.4476
 speed = 7
 bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish3" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.833511, -0.0274307, -0.551605, 0.0235007, 0.999543, -0.0141914, 0.551821, -0.00113465, 0.83379, 20.4263, 1.64016, 11.0308)
+transform = Transform3D(0.8335111, -0.027430715, -0.5516052, 0.023500662, 0.9995433, -0.014191351, 0.5518208, -0.0011346479, 0.8337899, 20.42634, 1.6401596, 11.030795)
 progress = 58.8951
 speed = 7
 bounceForce = 40
 hSpeedMultiplier = 0.1
 
 [node name="PathFollowJellyfish4" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.755743, -0.0233588, 0.654263, 0.0243525, 0.999583, 0.00755638, -0.654259, 0.0102239, 0.75603, 17.6492, 1.63514, -16.4438)
+transform = Transform3D(0.7557432, -0.02335883, 0.6542635, 0.024352536, 0.999583, 0.0075563765, -0.65425885, 0.010223942, 0.7560298, 17.649212, 1.6351434, -16.443817)
 progress = 88.3427
 speed = 7
 bounceForce = 30
 hSpeedMultiplier = 0.4
 
 [node name="PathFollowJellyfish5" parent="group3/THEPIT(tm)/PathJellyfish" instance=ExtResource("41_i76hq")]
-transform = Transform3D(-0.310401, -0.0074734, 0.950413, 0.0175701, 0.999668, 0.0135972, -0.950336, 0.0209232, -0.310175, -9.46893, 1.4684, -22.6177)
+transform = Transform3D(-0.3104014, -0.0074733975, 0.9504129, 0.017570144, 0.999668, 0.013597186, -0.9503358, 0.020923197, -0.31017524, -9.46893, 1.468399, -22.617746)
 progress = 117.79
 speed = 7
 bounceForce = 30
@@ -4081,7 +4082,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.99387, 21.1459, 4.16908)
 curve = SubResource("Curve3D_rneqk")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="group3/THEPIT(tm)/Path3D"]
-transform = Transform3D(0.999977, 0, -0.00662384, 0, 0.999999, 0, 0.00662384, 0, 0.999977, -10.6591, 0.166992, 0.0262527)
+transform = Transform3D(0.999977, 0, -0.0066238386, 0, 0.999999, 0, 0.0066238386, 0, 0.999977, -10.6591, 0.166992, 0.0262527)
 script = SubResource("GDScript_bmonc")
 
 [node name="tornado" parent="group3/THEPIT(tm)/Path3D/PathFollow3D" instance=ExtResource("17_w578l")]
@@ -4401,7 +4402,7 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_kvfdy")
 
 [node name="skateCSG" type="CSGCombiner3D" parent="group4"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 146.826, 33.17, -183.06)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 146.83, 33.18, -183.06)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 use_collision = true
@@ -4512,5 +4513,9 @@ debug_color = Color(1, 1, 1, 1)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.0795, 27.2897, -14.655)
 shape = SubResource("BoxShape3D_cxcqp")
 debug_color = Color(1, 1, 1, 1)
+
+[node name="jelly_fish_girl_IK" parent="." instance=ExtResource("50_ie2ey")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 195.01974, 19.184479, -150.54013)
+defaultAnimation = "Cheering"
 
 [editable path="group2/frickingAwesomeTube"]

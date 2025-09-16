@@ -220,10 +220,12 @@ bus = &"tricks"
 [node name="SlomoEnd" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 stream = SubResource("AudioStreamRandomizer_evkxb")
+bus = &"soundEffects"
 
 [node name="Slomo" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 stream = SubResource("AudioStreamRandomizer_ri3g6")
+bus = &"soundEffects"
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3.19324, 0.431064, -1.00145)
