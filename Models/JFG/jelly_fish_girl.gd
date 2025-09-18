@@ -11,7 +11,9 @@ func _ready():
 		print("Debug mode")
 		$DirectionalLight3D.visible = true
 		$Platform.visible = true
-		play_animation("Hug")
+		var list = "string"
+		list.length()
+		play_animation("Cheering")
 	else:
 		$DirectionalLight3D.visible = false
 		$Platform.visible = false

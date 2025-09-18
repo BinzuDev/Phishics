@@ -199,6 +199,7 @@ theme_override_constants/separation = 25
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4s76r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4s76r")
 text = "CONTINUE"
 helpText = "Resume the game."
 
@@ -206,6 +207,7 @@ helpText = "Resume the game."
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_tgkfp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tgkfp")
 text = "RESTART"
 helpText = "Reset the level and start over."
 
@@ -213,6 +215,7 @@ helpText = "Reset the level and start over."
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_s0yte")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s0yte")
 text = "TRICKS"
 helpText = "Discover all the techniques you can pull off!"
 
@@ -220,6 +223,7 @@ helpText = "Discover all the techniques you can pull off!"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_p1amj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1amj")
 text = "EXIT"
 helpText = "Go back to the main menu."
 

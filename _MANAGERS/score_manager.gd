@@ -128,7 +128,9 @@ func _physics_process(_delta: float) -> void:
 		else:
 			%spinRank.label_settings.font_color = "ff00ff"
 			%spinRank.label_settings.outline_color = "00ffff"
-		
+	else:
+		$UI/airSpin.modulate.a = 0 #hide if no fish
+	
 	$UI/airSpin.modulate.a = clamp($UI/airSpin.modulate.a, 0, 1)
 	if airSpinRank < 8:
 		%spinRank.text = str(airSpinRank+1)
@@ -261,10 +263,11 @@ func _physics_process(_delta: float) -> void:
 	"prev rank: ", rankRequirements[styleRank], "\n",
 	"next rank: ", rankRequirements[styleRank+1], "\n",
 	"styleDecreaseRate: ", styleDecreaseRate, "%","\n",
-	"timeSinceFreshChange: ", timeSinceFreshChange
-	#"airSpinAmount: ", airSpinAmount, "\n",
-	#"airSpinRank: ", airSpinRank, "\n",
-	#"airSpinHighestRank: ", airSpinHighestRank, "\n",
+	"timeSinceFreshChange: ", timeSinceFreshChange,"\n",
+	"current rank is: ", styleRank,"\n",
+	"airSpinAmount: ", airSpinAmount, "\n",
+	"airSpinRank: ", airSpinRank, "\n",
+	"airSpinHighestRank: ", airSpinHighestRank, "\n"
 	)
 	%freshDebugLabel.text = str(array_to_str(trickHistoryExtra),
 							array_to_str(trickHistory), 
@@ -426,7 +429,6 @@ func change_rank(amount: int, meterPercentage: float):
 	
 	update_style_meter()
 	
-	print("current rank is: ", styleRank)
 	
 	## Ranking up
 	if amount > 0: 

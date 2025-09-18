@@ -1,6 +1,8 @@
 extends Node3D
 class_name Level
 
+@export var song : String = "OST1"
+
 
 func _ready():
 	print("level is fully loaded")
@@ -8,9 +10,9 @@ func _ready():
 	#dont do the transition when the game opens
 	if GameManager.gameTimer > 15:
 		var waitTime = 0.5
-		if get_tree().current_scene.name == "World":
-			waitTime = 0.5 #wait a little longer on the level bcs its so big
 		await get_tree().create_timer(waitTime).timeout
 		print(waitTime, "s long loading")
 		MenuManager.end_transition()
+	MusicManager.change_music(song)
+	
 	

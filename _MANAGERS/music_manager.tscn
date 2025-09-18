@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brarw73p2ss0"]
+[gd_scene load_steps=16 format=3 uid="uid://brarw73p2ss0"]
 
 [ext_resource type="Script" uid="uid://dlombqqma6ffi" path="res://_MANAGERS/music_manager.gd" id="1_tylfe"]
 [ext_resource type="AudioStream" uid="uid://djsqi5hk8cqvp" path="res://Music/OST1/calm1.ogg" id="2_rn4ok"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://c4afk4egqj245" path="res://Music/OST1/ladder.ogg" id="11_32pxr"]
 [ext_resource type="AudioStream" uid="uid://0amo7pnp0b14" path="res://Music/OST1/ladder2.ogg" id="12_5tnd0"]
 [ext_resource type="AudioStream" uid="uid://2jq4scf8afkq" path="res://Music/metronome.ogg" id="13_7m2rd"]
-[ext_resource type="AudioStream" uid="uid://hayb1djl3db0" path="res://Music/silence.ogg" id="14_n58e7"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_u5yq6"]
 stream_count = 10
@@ -43,27 +42,10 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ffh18"]
-clip_count = 2
-clip_0/name = &"Bass"
-clip_0/stream = ExtResource("4_l0n74")
-clip_0/auto_advance = 0
-clip_1/name = &"Silence"
-clip_1/stream = ExtResource("14_n58e7")
-clip_1/auto_advance = 0
-_transitions = {
-Vector2i(-1, -1): {
-"fade_beats": 0.0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 0
-}
-}
-
 [node name="music_manager" type="Node"]
 script = ExtResource("1_tylfe")
 
-[node name="AdaptiveMusicTrack" type="AudioStreamPlayer" parent="."]
+[node name="OST1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamSynchronized_u5yq6")
 autoplay = true
 bus = &"music"
@@ -79,29 +61,27 @@ offset_bottom = 259.0
 text = "Now playing:"
 label_settings = SubResource("LabelSettings_rn4ok")
 
-[node name="metronome" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_7m2rd")
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="musicDebug"]
 z_index = 999
-offset_left = 11.0
-offset_top = 13.0
-offset_right = 223.0
-offset_bottom = 84.0
+layout_mode = 0
+offset_left = -2.0
+offset_top = -71.0
+offset_right = 210.0
 mouse_behavior_recursive = 2
 text = "force start beat"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="musicDebug"]
 z_index = 999
-offset_left = 242.0
-offset_top = 14.0
-offset_right = 455.0
-offset_bottom = 87.0
+layout_mode = 0
+offset_left = 229.0
+offset_top = -70.0
+offset_right = 442.0
+offset_bottom = 3.0
 mouse_behavior_recursive = 2
 text = "force end beat"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_ffh18")
+[node name="metronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7m2rd")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="musicDebug/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="musicDebug/Button2" to="." method="_on_button_2_pressed"]

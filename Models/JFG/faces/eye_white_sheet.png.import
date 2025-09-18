@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lpqqiebv7dt3"
-path.s3tc="res://.godot/imported/spritesheet.png-87b62a784e167b8c932462604e631778.s3tc.ctex"
+uid="uid://cheh605kegnx"
+path.s3tc="res://.godot/imported/eye_white_sheet.png-2dfdf7330a667b03cdcd438143557f2b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/JFG/faces/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-87b62a784e167b8c932462604e631778.s3tc.ctex"]
+source_file="res://Models/JFG/faces/eye_white_sheet.png"
+dest_files=["res://.godot/imported/eye_white_sheet.png-2dfdf7330a667b03cdcd438143557f2b.s3tc.ctex"]
 
 [params]
 

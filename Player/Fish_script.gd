@@ -914,7 +914,7 @@ func updateInputHistory():
 			ScoreManager.give_points(800, 0, true, "INPUT COMBO")
 			if angular_velocity.length() < 250:
 				angular_velocity *= 1.10 #doing the same rotation twice in a row
-			spinBoostBonus = 1.9
+			spinBoostBonus = 2.0
 			$THPS_low.play()
 		else:
 			ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
