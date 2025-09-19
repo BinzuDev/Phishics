@@ -20,7 +20,7 @@ func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 	#hopping on jellyfish
 	if body is player and !body.diving:
 		print("touching jellyfish but not diving!")
-	if body is player and body.diving:
+	if body is player and (body.diving or body.surfMode):
 		body.linear_velocity.x *= hSpeedMultiplier
 		body.linear_velocity.y = bounceForce
 		body.linear_velocity.z *= hSpeedMultiplier

@@ -54,6 +54,7 @@ trackCount = 5
 clipGrouping = Array[int]([0, 1, 2, 3, 4, 3, 3, 3, 4, 4])
 
 [node name="musicDebug" type="Label" parent="."]
+visible = false
 offset_left = 13.0
 offset_top = 84.0
 offset_right = 580.0

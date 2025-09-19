@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b58npw2l2i2jo"]
+
+[ext_resource type="Script" uid="uid://cp6gbd4aas5rn" path="res://Objects/mine.gd" id="1_ddm8m"]
+[ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="2_8o44x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n6nrv"]
+radius = 2.2191157
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ddm8m"]
+radius = 25.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ryc8"]
+albedo_texture = ExtResource("2_8o44x")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ddm8m"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ib7dw"]
+albedo_texture = ExtResource("2_8o44x")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fhvvj"]
+height = 6.0
+
+[node name="Mine" type="Node3D"]
+script = ExtResource("1_ddm8m")
+
+[node name="hitArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitArea"]
+shape = SubResource("SphereShape3D_n6nrv")
+
+[node name="boomArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="boomArea"]
+shape = SubResource("SphereShape3D_ddm8m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5ryc8")
+mesh = SubResource("SphereMesh_ddm8m")
+skeleton = NodePath("../hitArea")
+
+[node name="Rods" type="Node3D" parent="MeshInstance3D"]
+
+[node name="Rod" type="MeshInstance3D" parent="MeshInstance3D/Rods"]
+transform = Transform3D(0.80982554, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ib7dw")
+mesh = SubResource("CylinderMesh_fhvvj")
+
+[node name="Rod2" type="MeshInstance3D" parent="MeshInstance3D/Rods"]
+transform = Transform3D(0.80982554, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ib7dw")
+mesh = SubResource("CylinderMesh_fhvvj")
+
+[node name="Rod3" type="MeshInstance3D" parent="MeshInstance3D/Rods"]
+transform = Transform3D(-3.53986e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 0.80982554, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ib7dw")
+mesh = SubResource("CylinderMesh_fhvvj")
+
+[node name="explosionOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[connection signal="body_entered" from="hitArea" to="." method="_on_mine_touched"]

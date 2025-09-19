@@ -214,32 +214,19 @@ func _on_bump_body_entered(body: Node3D) -> void:
 		if enemyType == Enum1.Horse_Shoe and body.diving:
 			hp -= 1 #minus hp
 		
+		change_sprite()
+
+
+func change_sprite():
+	#cracked sprite
+	if hp <= 1: 
+		$CrabSprite.texture = crackedSprite
+	if hp <= 0: 
+		#scale collsion shape so carb is flat
+		$CollisionShape3D.scale.z = 0.3 
 		
-		
-			#change sprite to dead
-		if hp <= 0: 
-			#scale collsion shape so carb is flat
-			$CollisionShape3D.scale.z = 0.3 
+		$CrabSprite.modulate = Color(0.5, 0.5, 0.5, 1)
+		if shiny:
+			$CrabSprite.modulate = Color(0.0, 0.29, 0.47, 1)
 			
-			$CrabSprite.modulate = Color(0.5, 0.5, 0.5, 1)
-			if shiny:
-				$CrabSprite.modulate = Color(0.0, 0.29, 0.47, 1)
-				
-			
-		
-		
-		#cracked sprite
-		if hp <= 1: 
-			$CrabSprite.texture = crackedSprite
-		
-	
-	
-
-
-
-	#make sure crabs get launched up when diving
-	#DOES NOT WORK RN...
-	#if body.diving:
-		#apply_central_impulse(-global_transform.basis.z * 10)
-		#apply_central_impulse(Vector3.UP * 20)
-		#apply_central_impulse(Vector3(randf_range(-1, 1), randf_range(0.5, 1.5), randf_range(-1, 1)).normalized() * 10)
+	%AnimationCrab.play("RESET") #no more immortal dancer
