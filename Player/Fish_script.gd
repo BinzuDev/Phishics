@@ -349,6 +349,8 @@ func _physics_process(_delta: float) -> void:
 		ScoreManager.end_combo() #reset combo
 		#get_tree().reload_current_scene()
 		position = checkpoint_pos
+		if surfMode:
+			deactivateSurfMode()
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		
@@ -501,13 +503,10 @@ func _physics_process(_delta: float) -> void:
 	#Spark Particles
 	$tipSpinSparks.emitting = isTipSpinning
 	%ballSpark.emitting = isTipSpinning
-	%surfSparks.emitting = surfMode and %surfRC3.is_colliding()
 	var sparkSpd = clamp(angular_velocity.length() * 0.06 +0.3, 0.8, 4)
 	$tipSpinSparks.speed_scale = sparkSpd
-	%surfSparks.speed_scale = sparkSpd
 	var sparkRate = clamp(angular_velocity.length()*0.03, 0.3, 1)
 	$tipSpinSparks.amount_ratio = sparkRate
-	%surfSparks.amount_ratio = sparkRate
 	var sfxRate = int(clamp(30 - angular_velocity.length()*0.5, 5, 25))
 	
 	%particleFloor.position.y = -height -1
@@ -570,15 +569,27 @@ func _physics_process(_delta: float) -> void:
 	##TODO: UI follows camera change,
 	##TODO: combo list on screen whenever u do a surf trick,
 	
-	
+	var surfSparkSpd
+	var surfSparkRate
 	######################
 	##   Sign Surfing   ##
 	######################
 	surfState = "Not surfing"
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
+	%surfSparks.emitting = surfMode and %surfRC3.is_colliding()
 	
 	if surfMode:
+		#Particles
+		surfSparkSpd = clamp(( linear_velocity.length()-5)*0.1 +1, 1, 5) #1 at 5, 5 at 45
+		%surfSparks.speed_scale = surfSparkSpd
+		surfSparkRate = clamp( (linear_velocity.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
+		%surfSparks.amount_ratio = surfSparkRate
+		
+		# < 5 no sparks
+		
+		
+		
 		#audio
 		$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
 		$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
@@ -761,8 +772,10 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	#DEBUG_INFO
-	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01),"
-	rotation:", angular_velocity, "
+	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01),"\n",
+	"spark speed: ", surfSparkSpd, "\n",
+	"spark rate: ", surfSparkRate, "\n",
+	"rotation:", angular_velocity, "
 	spin: ", snapped(angular_velocity.length(), 0.01), "
 	surf jump: ", surfJumpHolding, "
 	surf state: ", surfState, "
@@ -772,7 +785,7 @@ func _physics_process(_delta: float) -> void:
 	isHalfPiping: ", isHalfPiping, "
 	floor normal: ", floor_normal, "
 	y.y basis: ", $surfPivot.global_transform.basis.y.y, "
-	spinBoostBonus: ", spinBoostBonus)
+	spinBoostBonus: ", spinBoostBonus, "\n")
 	
 	
 	%debugLabel.text = str(
@@ -782,9 +795,6 @@ func _physics_process(_delta: float) -> void:
 	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",windVolume,")",  "\n",
 	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
 	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
-	#"spark speed: ", sparkSpd, "\n",
-	#"spark sfx rate: ", sfxRate, "\n",
-	#"transp: ", transp, "\n",
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
@@ -982,8 +992,9 @@ func set_skin(): #doesnt work yet
 
 func force_position(newPos : Vector3):
 	global_position = newPos
-	linear_velocity = Vector3(0,0,0)
-	angular_velocity = Vector3(0,0,0)
+	if not surfMode: #when surfing, this causes some weird divide by 0 glitch 
+		linear_velocity = Vector3(0,0,0) 
+		angular_velocity = Vector3(0,0,0)
 
 func get_closest_target():
 	var crabs = $homing/area.get_overlapping_areas()

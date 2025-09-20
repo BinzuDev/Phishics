@@ -1,12 +1,16 @@
+@tool
 extends Node3D
 
 @export var defaultAnimation : String = ""
+@export var animationPreview : bool = false
 
 
 func _ready():
-	if defaultAnimation:
-		play_animation(defaultAnimation)
-	
+	$AnimationPlayer.play("thumbnailPose")
+	if !Engine.is_editor_hint(): #if not in the editor
+		if defaultAnimation:
+			play_animation(defaultAnimation)
+		
 	if get_tree().current_scene == self:
 		print("Debug mode")
 		$DirectionalLight3D.visible = true
@@ -20,7 +24,12 @@ func _ready():
 	
 
 func _process(_delta):
-	pass
+	if Engine.is_editor_hint() and animationPreview:
+		$AnimationPlayer.play("thumbnailPose")
+		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
+		
+	
+	
 	#safety net to make sure her eyes never become cursed
 	#if %EyeOverlay.get_instance_shader_parameter("frame") != 0:
 	#	%EyeWhite.visible = false
@@ -31,14 +40,13 @@ func play_animation(anim : String):
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
 	else:
-		$AnimationPlayer.play("A-Pose")
+		$AnimationPlayer.play("A-Pose")  #default to A pose as a backup
 	
-	$AnimationExtras.play("RESET")
+	$AnimationExtras.play("RESET") #play reset for 1 frame to reset everything
 	$AnimationExtras.advance(0)
 	if $AnimationExtras.has_animation(anim):
 		$AnimationExtras.play(anim)
 	else:
-		$AnimationExtras.play("Blinking")
-	
+		$AnimationExtras.play("Blinking") #default to blinking as a backuo
 	
 	

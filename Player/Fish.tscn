@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=127 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -135,12 +135,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_ie0qp"]
 curve = SubResource("Curve_lt56d")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lt56d"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bsrx0"]
 particle_flag_align_y = true
 emission_shape = 1
-emission_sphere_radius = 0.2
+emission_sphere_radius = 0.6
 direction = Vector3(-1, 0, 0)
-spread = 60.0
+flatness = 0.7
 initial_velocity_min = 8.0
 initial_velocity_max = 12.0
 damping_min = 12.0
@@ -590,6 +590,21 @@ stream_0/stream = ExtResource("15_5m7cr")
 stream_1/stream = ExtResource("16_l2vbt")
 stream_2/stream = ExtResource("17_17eip")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lt56d"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+damping_min = 12.0
+damping_max = 12.0
+scale_min = 0.8
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_ie0qp")
+color_ramp = SubResource("GradientTexture1D_ie0qp")
+
 [sub_resource type="Curve" id="Curve_tid1w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -873,10 +888,12 @@ skeleton = NodePath("../..")
 
 [node name="surfSparks" type="GPUParticles3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, -0.707107, 0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0, 0, 0.8)
-amount = 30
+transform = Transform3D(-4.37114e-08, 0, 1, -0.707107, 0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0, -0.3, 0.8)
+emitting = false
+amount = 50
 lifetime = 0.7
-process_material = SubResource("ParticleProcessMaterial_lt56d")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bsrx0")
 draw_pass_1 = SubResource("QuadMesh_ie0qp")
 
 [node name="RemoteTransformCamera" type="RemoteTransform3D" parent="."]
@@ -1114,7 +1131,6 @@ label_settings = SubResource("LabelSettings_nmgcd")
 
 [node name="debugLabel2" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 13.0
 offset_top = 16.0
 offset_right = 590.0

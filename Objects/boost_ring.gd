@@ -63,7 +63,7 @@ func _on_body_entered(body: Node3D) -> void:
 		if centerPlayer:
 			body.global_position = global_position
 		
-		body.linear_velocity = Vector3(0,0,0)
+		body.linear_velocity = Vector3(0.001,0.001,0.001) #Fixes a stupid surfing glitch
 		body.angular_velocity = Vector3(0,0.1,0)
 		
 		var distance = %goal.global_position - global_position

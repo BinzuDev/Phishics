@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://bixfmayjgdrhy"]
+
+[ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_expp7"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="2_03cwd"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="3_c2gnq"]
+[ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="4_gv82r"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="5_iyqws"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="6_1t8kx"]
+[ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="7_lo1g5"]
+[ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="8_uxs7v"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
+panorama = ExtResource("5_iyqws")
+
+[sub_resource type="Sky" id="Sky_s7dn7"]
+sky_material = SubResource("PanoramaSkyMaterial_yfxg8")
+
+[sub_resource type="Environment" id="Environment_jctnn"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_s7dn7")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_expp7")
+
+[node name="half pipe2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8909, 10.7061615, -5.8352966)
+material_override = ExtResource("2_03cwd")
+material_overlay = ExtResource("3_c2gnq")
+use_collision = true
+
+[node name="base" type="CSGBox3D" parent="half pipe2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7638, -7.156975, 7.380966)
+size = Vector3(45.917698, 14.394256, 26.245813)
+
+[node name="hook" parent="half pipe2" instance=ExtResource("4_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.711271, 5.9354553, 4.652565)
+lineLength = 5.095301818847656
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.9980268, 0.06279048, 0, -0.06279048, 0.9980268, 1, 4.3625146e-08, 2.7446598e-09, 0, -6.205841, -70.1205)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jctnn")
+
+[node name="fish" parent="." instance=ExtResource("6_1t8kx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7117, 11.276161, 1.3925018)
+gravity_scale = 1.5
+
+[node name="destructable_sign" parent="." instance=ExtResource("7_lo1g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.844151, 11.997162, -0.1507721)
+
+[node name="eel" parent="." instance=ExtResource("8_uxs7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.157608, 12.252673, -1.3577299)
