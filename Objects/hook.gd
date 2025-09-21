@@ -49,8 +49,6 @@ func _process(_delta: float) -> void:
 	#%hookSprite.rotation_degrees.z = %hookSprite.position.x*14
 	
 	
-	
-	
 	## When the fish is on the hook
 	if lockFish:
 		#what makes it accelerate at the start

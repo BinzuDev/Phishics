@@ -37,7 +37,7 @@ func set_sign_visuals():
 	$spriteL.texture = load(signSprite)
 	$bend/spriteR.texture = load(signSprite)
 	
-	var id = ResourceUID.text_to_id(signSprite) ##WARNING: theres a better way to do this in 4.5
+	var id = ResourceUID.text_to_id(signSprite) ##TODO: theres a better way to do this in 4.5
 	fileName = ResourceUID.get_id_path(id)
 	$spriteL.position.y = 0
 	$bend.position.y = 0
@@ -67,6 +67,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#if the fish isnt surfing and the sign isnt bent yet
 		if body.surfMode == false and not bent:
 			ScoreManager.update_freshness(self)
+			if fileName.get_file().contains("skateBoard"):
+				body.skateboardSurf = true
 			body.activateSurfMode(fileName, self)
 			$collisionFlat.set_deferred("disabled", true)
 			$Area3D.set_deferred("monitoring", false)

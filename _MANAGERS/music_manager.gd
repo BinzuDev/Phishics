@@ -88,15 +88,25 @@ func play_track(trackIndex : int):
 
 
 func _physics_process(_delta):
-	time = currentSong.get_playback_position() + AudioServer.get_time_since_last_mix() + (AudioServer.get_output_latency()*2)
+	#var start = Time.get_ticks_usec()
+	time = currentSong.get_playback_position() + AudioServer.get_time_since_last_mix() + 0.019999 #+ (AudioServer.get_output_latency()*2)
 	#if the current time is LOWER than it was last frame, 
 	#then it must be because we're on a new bar now.
 	var newBarProgress = int(time*100) % int(currentSong.get_bar_length()*100)
+	
 	
 	if newBarProgress < barProgress:
 		_on_bar_end_timeout()
 	
 	barProgress = newBarProgress
+	
+	#optimization check
+	#var end = Time.get_ticks_usec()
+	#var finalTime = (end - start)/1000.0
+	#if finalTime > 6.5:
+		#printerr("Frame time: ",  (end - start)/1000.0)
+	#else:
+		#print("Frame time: ",  (end - start)/1000.0)
 	
 
 

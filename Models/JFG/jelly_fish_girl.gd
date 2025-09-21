@@ -6,7 +6,6 @@ extends Node3D
 
 
 func _ready():
-	$AnimationPlayer.play("thumbnailPose")
 	if !Engine.is_editor_hint(): #if not in the editor
 		if defaultAnimation:
 			play_animation(defaultAnimation)
@@ -25,14 +24,10 @@ func _ready():
 
 func _process(_delta):
 	if Engine.is_editor_hint() and animationPreview:
-		$AnimationPlayer.play("thumbnailPose")
+		$AnimationPlayer.play("Cheering")
 		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
 	
-	
-	#safety net to make sure her eyes never become cursed
-	#if %EyeOverlay.get_instance_shader_parameter("frame") != 0:
-	#	%EyeWhite.visible = false
 	
 
 
@@ -47,6 +42,6 @@ func play_animation(anim : String):
 	if $AnimationExtras.has_animation(anim):
 		$AnimationExtras.play(anim)
 	else:
-		$AnimationExtras.play("Blinking") #default to blinking as a backuo
+		$AnimationExtras.play("Blinking") #default to blinking as a backup
 	
 	

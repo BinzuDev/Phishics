@@ -808,7 +808,7 @@ size_flags_horizontal = 8
 texture = ExtResource("5_s0yte")
 expand_mode = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="FPSanchor" type="Control" parent="."]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 3
 anchors_preset = 1
@@ -818,7 +818,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="FPScounter" type="Label" parent="FPSanchor"]
 z_index = 999
 layout_mode = 1
 offset_right = 83.0

@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bixfmayjgdrhy"]
+[gd_scene load_steps=13 format=3 uid="uid://bixfmayjgdrhy"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_expp7"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="2_03cwd"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="3_c2gnq"]
-[ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="4_gv82r"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="5_iyqws"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="6_1t8kx"]
+[ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="7_gv82r"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="7_lo1g5"]
-[ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="8_uxs7v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("5_iyqws")
@@ -29,22 +28,12 @@ volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
 volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_rof8j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gv82r"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_expp7")
-
-[node name="half pipe2" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8909, 10.7061615, -5.8352966)
-material_override = ExtResource("2_03cwd")
-material_overlay = ExtResource("3_c2gnq")
-use_collision = true
-
-[node name="base" type="CSGBox3D" parent="half pipe2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7638, -7.156975, 7.380966)
-size = Vector3(45.917698, 14.394256, 26.245813)
-
-[node name="hook" parent="half pipe2" instance=ExtResource("4_gv82r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.711271, 5.9354553, 4.652565)
-lineLength = 5.095301818847656
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.9980268, 0.06279048, 0, -0.06279048, 0.9980268, 1, 4.3625146e-08, 2.7446598e-09, 0, -6.205841, -70.1205)
@@ -56,11 +45,420 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("6_1t8kx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7117, 11.276161, 1.3925018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.65263, 7.818548, 20.921543)
 gravity_scale = 1.5
 
 [node name="destructable_sign" parent="." instance=ExtResource("7_lo1g5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.844151, 11.997162, -0.1507721)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06091, 11.997162, 12.949232)
 
-[node name="eel" parent="." instance=ExtResource("8_uxs7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.157608, 12.252673, -1.3577299)
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.3525774e-06, 0, -178.43898, 0, 7.7, 0, 99.57536, 0, -7.799816e-06, 16.69225, 2.8798847, -1.0237422)
+material_override = ExtResource("2_03cwd")
+material_overlay = ExtResource("3_c2gnq")
+mesh = SubResource("BoxMesh_rof8j")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
+shape = SubResource("BoxShape3D_gv82r")
+
+[node name="BoostRing" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing2" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing3" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing4" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing5" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing6" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing7" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing8" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing9" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing10" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 11.101728, -16.838263)
+strength = 50.0
+
+[node name="BoostRing11" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing12" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing13" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing14" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing15" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing16" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing17" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing18" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing19" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing20" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 11.101728, -9.430502)
+strength = 50.0
+
+[node name="BoostRing21" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing22" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing23" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing24" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing25" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing26" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing27" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing28" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing29" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing30" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 11.101728, -3.3159103)
+strength = 50.0
+
+[node name="BoostRing31" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing32" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing33" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing34" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing35" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing36" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing37" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing38" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing39" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing40" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 11.101728, 2.6857014)
+strength = 50.0
+
+[node name="BoostRing41" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing42" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing43" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing44" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing45" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing46" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing47" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing48" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing49" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing50" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 11.101728, 8.581331)
+strength = 50.0
+
+[node name="BoostRing51" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing52" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing53" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing54" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing55" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing56" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing57" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing58" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing59" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing60" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 16.737087, -16.967205)
+strength = 50.0
+
+[node name="BoostRing61" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing62" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing63" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing64" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing65" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing66" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing67" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing68" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing69" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing70" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 16.737087, -9.240198)
+strength = 50.0
+
+[node name="BoostRing71" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing72" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing73" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing74" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing75" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing76" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing77" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing78" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing79" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing80" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 16.737087, -3.4446707)
+strength = 50.0
+
+[node name="BoostRing81" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing82" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing83" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing84" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing85" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing86" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing87" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing88" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing89" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing90" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 16.737087, 2.696742)
+strength = 50.0
+
+[node name="BoostRing91" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.380931, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing92" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5222898, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing93" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6087584, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing94" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.609102, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing95" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.791594, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing96" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.485193, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing97" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.912409, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing98" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.073385, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing99" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.23329, 16.737087, 8.289811)
+strength = 50.0
+
+[node name="BoostRing100" parent="." instance=ExtResource("7_gv82r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.21576, 16.737087, 8.289811)
+strength = 50.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=129 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -47,6 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
 [ext_resource type="AudioStream" uid="uid://crr8giq6rl0wd" path="res://Sounds/surfing/metal_scrape.wav" id="30_d6s4o"]
+[ext_resource type="AudioStream" uid="uid://bk7vq8ulbxhvj" path="res://Sounds/sparks/thps_spark1.wav" id="41_xsxx4"]
+[ext_resource type="AudioStream" uid="uid://0oj8q06006yn" path="res://Sounds/sparks/thps_spark3.wav" id="42_4buur"]
 [ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
@@ -682,7 +684,7 @@ material = SubResource("StandardMaterial3D_3rn02")
 size = Vector2(0.2, 0.2)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_25ixj"]
-streams_count = 16
+streams_count = 18
 stream_0/stream = ExtResource("3_dh0na")
 stream_1/stream = ExtResource("4_iujy1")
 stream_2/stream = ExtResource("11_l4b1c")
@@ -699,6 +701,8 @@ stream_12/stream = ExtResource("7_3rn02")
 stream_13/stream = ExtResource("8_tid1w")
 stream_14/stream = ExtResource("9_ny41d")
 stream_15/stream = ExtResource("10_q0y68")
+stream_16/stream = ExtResource("41_xsxx4")
+stream_17/stream = ExtResource("42_4buur")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kufgg"]
 streams_count = 1
@@ -717,8 +721,8 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
+replayFile = "res://Recordings/accidental_tip_landing.json"
 replayAccuracy = 1
 
 [node name="collision" type="CollisionShape3D" parent="."]
@@ -889,10 +893,8 @@ skeleton = NodePath("../..")
 [node name="surfSparks" type="GPUParticles3D" parent="surfPivot"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, -0.707107, 0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0, -0.3, 0.8)
-emitting = false
 amount = 50
 lifetime = 0.7
-local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bsrx0")
 draw_pass_1 = SubResource("QuadMesh_ie0qp")
 
@@ -1131,6 +1133,7 @@ label_settings = SubResource("LabelSettings_nmgcd")
 
 [node name="debugLabel2" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 13.0
 offset_top = 16.0
 offset_right = 590.0

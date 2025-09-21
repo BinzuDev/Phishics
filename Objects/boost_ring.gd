@@ -23,42 +23,41 @@ var freshCooldown := 0
 
 
 func _ready():
+	set_boost_propreties()
 	if targetableByHoming == false:
 		$homingTarget.collision_layer = 0
+	$direction.visible = Engine.is_editor_hint() #hide the helper arrow in game
 
-func _process(_delta: float) -> void:
-	freshCooldown += 1
-	$ring.rotation.x += 0.02
-	$direction.scale.x = strength
-	if !Engine.is_editor_hint(): #hide the helper arrow in game
-		$direction.visible = false
-	
+
+func set_boost_propreties():
 	#I have to do this stupidness because the particles reset every time the Amount value is changed
 	#So if I change it every frame it'll constantly reset and nothing will spawn
 	if strengthLastFrame != strength:
 		particles.amount = int(strength) * 2
 	strengthLastFrame = strength
 	
-	
 	particles.initial_velocity_min = strength * 1.5 -1
 	particles.initial_velocity_max = strength * 1.5 +1
 	particles.linear_accel_min = strength * -1 -1
 	particles.linear_accel_max = strength * -1 +1
-	
-	
+	$ring/CPUParticles3D.emitting = !deactivateParticles
+
+
+
+func _process(_delta: float) -> void:
+	freshCooldown += 1
+	$ring.rotation.x += 0.02
+	$direction.scale.x = strength
+	if Engine.is_editor_hint():
+		set_boost_propreties() #update the boost in real time in the editor
 	
 	if rotating: #checks for rotation value
 		rotation_degrees.y += rotationSpeed
 	
 
-	$ring/CPUParticles3D.emitting = !deactivateParticles
-	
-	
-
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
-		
 		
 		if centerPlayer:
 			body.global_position = global_position

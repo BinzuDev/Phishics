@@ -42,7 +42,7 @@ var surfRotationType : String = ""
 var hasSurfedBefore : bool = false
 var isHalfPiping : bool = false
 var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a combo
-
+var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -577,7 +577,7 @@ func _physics_process(_delta: float) -> void:
 	surfState = "Not surfing"
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
-	%surfSparks.emitting = surfMode and %surfRC3.is_colliding()
+	%surfSparks.emitting = surfMode and %surfRC3.is_colliding() and !skateboardSurf
 	
 	if surfMode:
 		#Particles
@@ -586,14 +586,12 @@ func _physics_process(_delta: float) -> void:
 		surfSparkRate = clamp( (linear_velocity.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
 		%surfSparks.amount_ratio = surfSparkRate
 		
-		# < 5 no sparks
-		
-		
-		
 		#audio
 		$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
 		$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
 		#print($sign_scraping.volume_linear)
+		
+		
 		
 		#leaning
 		%fishPivot.visible = true
@@ -841,6 +839,7 @@ func deactivateSurfMode():
 	$shadowMesh.visible = true
 	$collision.set_deferred("disabled", false)
 	$collisionSphere.set_deferred("disabled", true)
+	skateboardSurf = false
 	hasSurfedBefore = true
 	ScoreManager.reset_airspin()
 	#ScoreManager.airSpinHighestRank = 0

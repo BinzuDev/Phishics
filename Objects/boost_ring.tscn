@@ -68,7 +68,9 @@ stream_0/stream = ExtResource("4_rd0gv")
 
 [sub_resource type="TorusMesh" id="TorusMesh_rd0gv"]
 inner_radius = 1.0
-outer_radius = 1.8
+outer_radius = 1.9
+rings = 12
+ring_segments = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75vsp"]
 
@@ -142,13 +144,13 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.7935895e-07, -1.7, 3.927875e-08, 0.2601319, -1.1370794e-08, -1.6799694, 1.6799694, 1.8325815e-07, 0.2601319, 0, 0, 0)
+transform = Transform3D(-3.1894103e-07, -1.7, 7.775185e-08, 0.5149282, -2.250836e-08, 1.6201282, -1.6201282, 3.2751083e-07, 0.5149282, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="ring"]
 transform = Transform3D(-0.00294706, 0.321486, -0.492603, -0.588225, -0.00301931, 0.00154864, -0.00168209, 0.492603, 0.321495, -3.43878e-08, -0.342819, -5.36837e-08)
-amount = 10
+amount = 20
 lifetime = 1.6
 mesh = SubResource("QuadMesh_mb512")
 emission_shape = 1
