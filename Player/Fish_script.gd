@@ -296,7 +296,6 @@ func _physics_process(_delta: float) -> void:
 		gravity_scale = 1.5
 	else:
 		gravity_scale = 0.0
-	#gravity_scale = !int(homing)
 	
 	
 	##Speed smear
@@ -866,16 +865,12 @@ func updateInputHistory():
 		return
 	if Input.is_action_just_pressed("forward"):
 		inputHistory.append("up")
-		print(timeSinceLastInput)
 	elif Input.is_action_just_pressed("back"):
 		inputHistory.append("down")
-		print(timeSinceLastInput)
 	elif Input.is_action_just_pressed("left"):
 		inputHistory.append("left")
-		print(timeSinceLastInput)
 	elif Input.is_action_just_pressed("right"):
 		inputHistory.append("right")
-		print(timeSinceLastInput)
 	
 	if timeSinceLastInput == 30:
 		inputHistory = ["","",""]

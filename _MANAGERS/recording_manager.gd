@@ -38,7 +38,7 @@ func _ready() -> void:
 		print("replaying file: ", replayFile)
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	#if Input.is_action_just_pressed("record"):
 	#	recordingMode = "record"
 	#	recordFile = FileAccess.open("res://recordings/recording1.json", FileAccess.WRITE)

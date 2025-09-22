@@ -110,8 +110,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		apply_central_impulse(direction * 3)
 		
 		
-		
-		
 
 
 ## When the fish and crab touch eachother

@@ -806,6 +806,7 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
+visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true

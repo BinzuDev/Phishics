@@ -156,3 +156,4 @@ resync={
 3d_physics/layer_4="camSwitching"
 3d_physics/layer_5="enemies"
 3d_physics/layer_6="homing target"
+3d_physics/layer_7="MineDominoEffect"
