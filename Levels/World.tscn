@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=125 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://c6ues44s0cm5n" path="res://Models/sign_pole.tscn" id="19_28m7t"]
 [ext_resource type="Texture2D" uid="uid://ghxwq1l37dj5" path="res://Sprites/flipflop.png" id="20_bccto"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="21_46o8p"]
-[ext_resource type="Script" uid="uid://budr7hv3mbcbu" path="res://Objects/camera_controller.gd" id="22_dcke8"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="22_u27i5"]
 [ext_resource type="Texture2D" uid="uid://cdpllqpaqnt51" path="res://Sprites/tutorialwall_dive.png" id="28_u27i5"]
 [ext_resource type="Texture2D" uid="uid://bvh653h3ktdm6" path="res://Sprites/jellyfishwarning.png" id="30_i76hq"]
@@ -863,51 +862,47 @@ texture = ExtResource("6_53g8k")
 transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.54285, -0.14407, 4.18181)
 texture = ExtResource("6_53g8k")
 
-[node name="lookDown" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7443, 18.5367, -26.6664)
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("22_dcke8")
+[node name="lookDown" parent="." instance=ExtResource("32_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.748566, 39.308136, -26.654802)
 newCameraAngle = Vector3(-88, 0, 0)
-metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49, 20.0575, 28.8009)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.485733, -0.71393585, 28.7893)
 shape = SubResource("BoxShape3D_h7041")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.816, 57.7605, -130.426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.81174, 36.989067, -130.43759)
 shape = SubResource("BoxShape3D_kvfdy")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66005, 25.9564, 8.53802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6557846, 5.184963, 8.5264225)
 shape = SubResource("BoxShape3D_nykkc")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66005, 37.5651, -5.41721)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6557846, 16.793663, -5.428808)
 shape = SubResource("BoxShape3D_h7041")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66005, 50.9257, -23.0817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6557846, 30.154266, -23.093298)
 shape = SubResource("BoxShape3D_h7041")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2678, 68.6281, 4.46158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.272064, 47.85666, 4.4499817)
 shape = SubResource("BoxShape3D_e1uki")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="bigFall" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.8146, 23.4104, 20.8253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.818867, 2.6389618, 20.813702)
 shape = SubResource("BoxShape3D_sehqq")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="bigFall2" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2245, 21.5196, -22.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.22877, 0.7481613, -22.678297)
 shape = SubResource("BoxShape3D_u27i5")
 debug_color = Color(1, 1, 1, 1)
 
@@ -3110,17 +3105,14 @@ metadata/_edit_lock_ = true
 [node name="BoostRing25" parent="group2/frickingAwesomeTube" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-3.49691e-08, 0.8, 1.20797e-07, -0.8, -3.49691e-08, -5.2802e-15, 0, -1.20797e-07, 0.8, -29.2938, 17.8697, 7.3)
 
-[node name="look_right" type="Area3D" parent="group2/frickingAwesomeTube"]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("22_dcke8")
-newCameraAngle = Vector3(0, -90, 0)
+[node name="cameraController" parent="group2/frickingAwesomeTube" instance=ExtResource("32_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.119461, 7.696294, 6.8272114)
+newCameraAngle = Vector3(0, -93.141594, 0)
 newCameraOffset = Vector3(0, 0, 0)
 rate = 1.0
-metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/frickingAwesomeTube/look_right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9003, 7.59748, 6.83566)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/frickingAwesomeTube/cameraController"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 22.01976, -0.09881401, -0.00844574)
 shape = SubResource("BoxShape3D_wvw3a")
 
 [node name="tornado" parent="group2" instance=ExtResource("17_w578l")]
@@ -4375,7 +4367,8 @@ bounceForce = 80
 hSpeedMultiplier = 0.6
 
 [node name="antiLookDownJF" parent="2Darea" instance=ExtResource("32_581hb")]
-transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 79.8797, 3.30712, -20.5299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8797, 3.30712, -20.5299)
+newCameraAngle = Vector3(-30, 0, -4.6761e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2Darea/antiLookDownJF"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.246964, 10.0837, -20.8067)
@@ -4441,21 +4434,18 @@ skeleton = NodePath("../../../group1")
 [node name="destructable_sign" parent="group4/sign11" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.927438, 0.364417, -0.0840186, -0.36135, 0.931102, 0.049755, 0.0963621, -0.0157842, 0.995222, -0.00939941, 2.88057, 0.278519)
 
-[node name="CameraController" type="Area3D" parent="group4"]
+[node name="cameraController" parent="group4" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.013, 19.18, -132.095)
-script = ExtResource("22_dcke8")
-newCameraOffset = Vector3(0, 0, 0)
 newCameraDistance = 13.0
 rate = 0.1
-metadata/_custom_type_script = "uid://budr7hv3mbcbu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group4/CameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1513, 31.4001, -23.9302)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group4/cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.151306, 31.4001, -23.930206)
 shape = SubResource("BoxShape3D_71q2h")
 debug_color = Color(1, 1, 1, 1)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="group4/CameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5353, 54.0569, -75.5547)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="group4/cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.53531, 54.0569, -75.5547)
 shape = SubResource("BoxShape3D_fop6s")
 debug_color = Color(1, 1, 1, 1)
 

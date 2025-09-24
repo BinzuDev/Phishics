@@ -1,3 +1,4 @@
+@tool
 @icon("res://icons/cam_areas.png")
 class_name CameraController
 extends Area3D
@@ -19,7 +20,27 @@ extends Area3D
 ##Use a value of 1.0 for instant transitions
 @export_range(0, 1, 0.01) var rate = 0.2
 
+@onready var offset = $offset
+@onready var cam_rotation = $offset/camRotation
+@onready var camera = $camera
+@onready var cam_pivot = $offset/camRotation/camPivot
+
+
+
 
 func _ready():
 	collision_layer = 8 #layer 4
 	collision_mask = 0
+	if !Engine.is_editor_hint():
+		visible = false
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		offset.position = newCameraOffset
+		cam_rotation.rotation_degrees = newCameraAngle
+		cam_rotation.scale.z = newCameraDistance
+		camera.global_position = cam_pivot.global_position
+		camera.rotation = cam_rotation.rotation
+		newCameraAngle += rotation
+		rotation = Vector3.ZERO
+		
