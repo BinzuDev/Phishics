@@ -199,7 +199,6 @@ current = true
 
 [node name="JFG" parent="." instance=ExtResource("6_68fed")]
 transform = Transform3D(0.764736, 0.0368805, -0.643287, 0.020872, 0.996419, 0.0819385, 0.644005, -0.076088, 0.761228, 1.12, 0, 2.92)
-testingMode = false
 
 [node name="invisWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)

@@ -549,4 +549,4 @@ mesh = SubResource("SphereMesh_ab27v")
 shape = SubResource("SphereShape3D_yfxg8")
 
 [node name="Basketballhoop" parent="." instance=ExtResource("11_gx528")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.34676, 118.6671, 70.651276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.117529, 118.6671, 72.78833)

@@ -61,7 +61,7 @@ func _on_tricks_hovered():
 	%HelpTip.text = "Discover all the techniques you can pull off!"
 
 func _on_credits_hovered():
-	$JFG.play_animation("Cheering")
+	$JFG.play_animation("Blahaj")
 	%HelpTip.text = "Learn about the creators of Phishics."
 
 func _on_exit_hovered():

@@ -69,9 +69,6 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Heyaaaaa!!                  
 Welcome to Phishics!"
-JFG_animation = ""
-position = "bottom"
-instant = false
 code = "ScoreManager.hide()"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -79,9 +76,6 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Say, Mr Fish, it looks like you don't know how to swim, right?"
-JFG_animation = ""
-position = "bottom"
-instant = false
 code = "print(\"this code run from a cutscene\")"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -89,17 +83,11 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Don't worry! You can use the arrow keys to flip yourself!"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_l8sr5"]
 script = ExtResource("11_to5w2")
-cameraOverride = NodePath("")
 automaticStart = true
-pauseGame = true
 keepOnScreenAfterEnd = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_m0lrx"), SubResource("Resource_kx2g6"), SubResource("Resource_pl552")])
@@ -112,10 +100,6 @@ size = Vector3(11.5216, 3.86565, 10.1921)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Not... very fast... Hm...."
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_f2byx"]
@@ -123,25 +107,16 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Okay, so you don't wanna hold the arrow keys alright?
 Instead, spam the keys as faaast as you can!!"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_wpr1m"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "The more you press the more momentum you gain!"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_i8qca"]
 script = ExtResource("11_to5w2")
-cameraOverride = NodePath("")
 automaticStart = true
 pauseGame = false
 keepOnScreenAfterEnd = true
@@ -161,18 +136,12 @@ name = "Jelly Fishgirl"
 text = "See that ramp over there?
 Try building up enough speed to cross the gap!
 "
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_bu5na"]
 script = ExtResource("11_to5w2")
 cameraOverride = NodePath("Camera3DCam")
 automaticStart = true
-pauseGame = true
-keepOnScreenAfterEnd = false
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_3p1xt")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
@@ -189,10 +158,6 @@ name = "Jelly Fishgirl"
 text = "Very goooood!!
 Look at youuuu!!!
 "
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_to5w2"]
@@ -201,15 +166,10 @@ name = "Jelly Fishgirl"
 text = "You can also JUMP using SPACE!          
 The faster you're spinning, the more powerful your jump becomes!
 (moving slow = small jump)"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_0cfr2"]
 script = ExtResource("11_to5w2")
-cameraOverride = NodePath("")
 automaticStart = true
 pauseGame = false
 keepOnScreenAfterEnd = true
@@ -224,20 +184,12 @@ size = Vector3(47.9379, 18.3858, 16.6607)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Urghh crabs....."
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_4wqju"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "I'm, what I guess you could say, (not too fond of them)."
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_rmd0x"]
@@ -245,28 +197,20 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "You can attack by diving on them!
 Jump above one, wait until the AIM RETICLE locks on, then press D for a homing attack!"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_tbpdk"]
 script = ExtResource("10_3hhjp")
-name = ""
 text = "Dive with D (in the air)
 Change target with arrow keys"
-JFG_animation = ""
 position = "top"
 instant = true
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_rf3la"]
 script = ExtResource("11_to5w2")
 cameraOverride = NodePath("Camera3DCrab")
 automaticStart = true
-pauseGame = true
 keepOnScreenAfterEnd = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_avars"), SubResource("Resource_4wqju"), SubResource("Resource_rmd0x"), SubResource("Resource_tbpdk")])
@@ -279,19 +223,13 @@ size = Vector3(46.0083, 31.9782, 9.56519)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "And finally, the most crucial part:"
-JFG_animation = ""
-position = "bottom"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_td8ta"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Tricks and style!!"
-JFG_animation = ""
 position = "top"
-instant = false
 code = "ScoreManager.show();ScoreManager.reset_everything();DialogueManager.set_position(Vector2(-300,0))"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -300,30 +238,21 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "There's a variety of tricks you can perform!
 Play around and see what shows up at the bottom of the screen!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_s0t66"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Each trick is worth a certain amount of POINTS along with a MULTipler value! The total POINTS and MULT of your current combo is displayed down here!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_p7ekk"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "If you stop doing tricks, your combo will end and the total value of your combo will be added to the score counter at the top!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_3l68j"]
@@ -331,20 +260,14 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Doing tricks fills up the STYLE METER!
 Fill it up completely to reach a new STYLE RANK!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_fljuj"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "If you don't keep up the pace, the meter will deplete and you'll rank down. Higher ranks deplete even faster!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_desr6"]
@@ -353,20 +276,14 @@ name = "Jelly Fishgirl"
 text = "Oh, and here's a little advanced tip for you:
 LET GO of the arrow keys before jumping to go HIGHER!
 HOLD DOWN the arrow keys to jump FURTHER!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_5y3ho"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "The circular meter in the middle of the screen shows how much you've spun while in the air! So perform big jumps and max out the meter for a BIG bonus!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_maxpf"]
@@ -374,20 +291,14 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Being stylish is all about mixing things up!
 Do the same trick over and over again and you'll be penalised, got it?"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_ygkl2"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "If you do a bunch of different tricks in a row, you'll get a freshness bonus!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_2kmhi"]
@@ -396,30 +307,21 @@ name = "Jelly Fishgirl"
 text = "Phew... Well I think that just about covers it up!
 Sorry if it's a lot to take in at once ahah... 
 Don't worry about remembering everything okay?"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_jbvdo"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "OH WAIT I ALMOST FORGOT!!!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_mydkt"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "The most crucial mechanic at your disposal..."
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_2esnd"]
@@ -428,10 +330,7 @@ name = "Jelly Fishgirl"
 text = "THE FISH BUTTON!!!!
                                      
 ( press F to [fish] )"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_83ucr"]
@@ -440,10 +339,7 @@ name = "Jelly Fishgirl"
 text = "[fish] while at the peak of your jump to strike a cool pose!
 (If you're high enough)
 (There's a cooldown so dont spam it!)"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_0mu0c"]
@@ -452,18 +348,13 @@ name = "Jelly Fishgirl"
 text = "Okay that's it for real this time.
 Meet me at the finish line to end the tutorial!
 See yaaa~!!"
-JFG_animation = ""
 position = "top"
-instant = false
-code = ""
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_0tnf1"]
 script = ExtResource("11_to5w2")
-cameraOverride = NodePath("")
 automaticStart = true
 pauseGame = false
-keepOnScreenAfterEnd = false
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubResource("Resource_td8ta"), SubResource("Resource_4d1rn"), SubResource("Resource_s0t66"), SubResource("Resource_p7ekk"), SubResource("Resource_3l68j"), SubResource("Resource_fljuj"), SubResource("Resource_desr6"), SubResource("Resource_5y3ho"), SubResource("Resource_maxpf"), SubResource("Resource_ygkl2"), SubResource("Resource_2kmhi"), SubResource("Resource_jbvdo"), SubResource("Resource_mydkt"), SubResource("Resource_2esnd"), SubResource("Resource_83ucr"), SubResource("Resource_0mu0c")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
@@ -1018,7 +909,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform15" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-5.80767e-07, 0, -6.45219, 0, 15.1003, 0, 13.2864, 0, -2.82035e-07, -0.927308, 3.19413, -244.387)
+transform = Transform3D(-6.426494e-07, 0, -6.45219, 0, 15.1003, 0, 14.7021055, 0, -2.82035e-07, -0.92730796, 3.19413, -245.84398)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -1131,7 +1022,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46781, 2.47873, -240.735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79322, 23.8722, -306.1)
 
 [node name="PathFollowJellyfish" parent="funArea" instance=ExtResource("15_td8ta")]
-transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.27533, 6.00981, -281.31)
+transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.27533, 6.00981, -279.88846)
+hSpeedMultiplier = 0.3
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236072, 17.528, -305.986)

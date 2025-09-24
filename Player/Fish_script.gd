@@ -43,6 +43,7 @@ var hasSurfedBefore : bool = false
 var isHalfPiping : bool = false
 var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a combo
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
+var fallSpeeds : Array = [0, 0]
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -77,20 +78,26 @@ func _physics_process(_delta: float) -> void:
 	
 	## Movement
 	if Input.is_action_just_pressed("forward"):
-		apply_torque_impulse(rotate_by_cam(torque_impulse))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
+		if !surfMode or !%SRCACforward.is_colliding(): #fixes the ability to infinitely climb walls while surfing. yes this is stupid.
+			apply_torque_impulse(rotate_by_cam(torque_impulse))
+			apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
 	
 	if Input.is_action_just_pressed("back"):
-		apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
-		apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
+		if !surfMode or !%SRCACbackwards.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
+			apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
 	
 	if Input.is_action_just_pressed("right"):
-		apply_torque_impulse(rotate_by_cam(torque_side * -1))
-		apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
+		if !surfMode or !%SRCACright.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_side * -1))
+			apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
 	 
 	if Input.is_action_just_pressed("left"):
-		apply_torque_impulse(rotate_by_cam(torque_side))
-		apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
+		if !surfMode or !%SRCACleft.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_side))
+			apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
+	
+	
 	
 	
 		###############
@@ -102,8 +109,11 @@ func _physics_process(_delta: float) -> void:
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
 			timeSinceJump = 0
 			#audio
-			$Jumps.play()
-			$Soft_Impact.play()
+			if surfMode:
+				$skateJumping.play()
+			else:
+				$Jumps.play()
+				$Soft_Impact.play()
 			
 			#jump Particle
 			$JumpPuff.restart()
@@ -563,8 +573,6 @@ func _physics_process(_delta: float) -> void:
 		newDecal.visible = true
 		
 	
-	
-	##TODO: and skate sounds for skateboard
 	##TODO: UI follows camera change,
 	##TODO: combo list on screen whenever u do a surf trick,
 	
@@ -573,9 +581,11 @@ func _physics_process(_delta: float) -> void:
 	######################
 	##   Sign Surfing   ##
 	######################
-	surfState = "Not surfing"
+	if not surfMode:
+		surfState = "Not surfing"
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
+	$skateboarding.volume_linear = 0
 	%surfSparks.emitting = surfMode and %surfRC3.is_colliding() and !skateboardSurf
 	
 	if surfMode:
@@ -586,9 +596,13 @@ func _physics_process(_delta: float) -> void:
 		%surfSparks.amount_ratio = surfSparkRate
 		
 		#audio
-		$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
-		$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
-		#print($sign_scraping.volume_linear)
+		if skateboardSurf:
+			$skateboarding.volume_linear = clamp(linear_velocity.length()*0.02 -0.02, 0, 0.3)
+			$skateboarding.pitch_scale = clamp(0.5 + linear_velocity.length()/30, 0.5, 2)
+		else:
+			$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
+			$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
+		#print("v: ", $skateboarding.volume_linear, "  p: ", $skateboarding.pitch_scale)
 		
 		
 		
@@ -602,6 +616,17 @@ func _physics_process(_delta: float) -> void:
 		#so he doesnt looks flat when facing directly up or down
 		if abs($surfPivot.rotation_degrees.y) > 170 or abs($surfPivot.rotation_degrees.y) < 10:
 			%fishPivot.rotation_degrees.y = -30 
+		
+		
+		#landing sfx volume
+		var surfJumpLastFrame = false
+		if surfState == "Jumping":
+			surfJumpLastFrame = true
+		#bs so that we can know the speed you had BEFORE you landed
+		fallSpeeds.append(linear_velocity.y)
+		fallSpeeds.remove_at(0)
+		#if linear_velocity.y < -1: 
+		#	print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
 		
 		
 		if %canSurf.is_colliding(): #the one thats always pointing globally down
@@ -620,7 +645,15 @@ func _physics_process(_delta: float) -> void:
 			else:
 				surfState = "Jumping"
 				$sign_scraping.volume_linear = 0
+				$skateboarding.volume_linear = 0
 				updateInputHistory()
+		
+		if surfJumpLastFrame and surfState != "Jumping":
+			if !$skateLanding.playing and linear_velocity.y < -1:
+				$skateLanding.volume_linear = fallSpeeds[0]*-0.06 + 0.2
+				$skateLanding.play()
+				#printerr("PLAY LANDING ", $skateLanding.volume_linear)
+		
 		
 		##Surfing or non-halfpipe jump
 		if surfState != "Jumping":
@@ -635,19 +668,22 @@ func _physics_process(_delta: float) -> void:
 			
 		else: ##Rotating in the air
 			
-			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping and !%halfPipeCheck.is_colliding():
-				if surfState == "Jumping" and linear_velocity.y > 5:
-					surfRotationType = "clockwise"
-					ScoreManager.give_points(5000, 0, true, "HALFPIPE")
-					ScoreManager.play_trick_sfx("rare")
-					isHalfPiping = false
-					print("AUTO HALF PIPE SPIN")
-			
+			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping:
+				if surfState == "Jumping" and linear_velocity.y > 20:
+					if !$halfpipe.playing and %surfRC3.is_colliding():#play the sfx a little early so its timed better
+						print("PLAY SFX IN ADVANCE")
+						$halfpipe.play()
+					
+					if !%halfPipeCheck.is_colliding():
+						surfRotationType = "clockwise"
+						ScoreManager.give_points(5000, 0, true, "HALFPIPE")
+						ScoreManager.play_trick_sfx("rare")
+						isHalfPiping = false
+						print("AUTO HALF PIPE SPIN")
 			
 			var curBasis = $surfPivot.global_transform.basis
 			var spinSpeed = angular_velocity.length() * 0.06 * _delta * spinBoostBonus
-			spinBoostBonus = max(spinBoostBonus-0.1, 1)
-			
+			spinBoostBonus = max(spinBoostBonus-0.22, 1)
 			
 			if height > 10 and linear_velocity.y < 0 and surfRotationType == "":
 				surfRotationType = "tumble"
@@ -769,11 +805,8 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	#DEBUG_INFO
-	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01),"\n",
-	"spark speed: ", surfSparkSpd, "\n",
-	"spark rate: ", surfSparkRate, "\n",
-	"rotation:", angular_velocity, "
-	spin: ", snapped(angular_velocity.length(), 0.01), "
+	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",
+	"spin: ", snapped(angular_velocity.length(), 0.01), " ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "
 	surf jump: ", surfJumpHolding, "
 	surf state: ", surfState, "
 	Rotation Type: ", surfRotationType, "
@@ -782,7 +815,9 @@ func _physics_process(_delta: float) -> void:
 	isHalfPiping: ", isHalfPiping, "
 	floor normal: ", floor_normal, "
 	y.y basis: ", $surfPivot.global_transform.basis.y.y, "
-	spinBoostBonus: ", spinBoostBonus, "\n")
+	spinBoostBonus: ", spinBoostBonus, "\n",
+	"spark speed: ", surfSparkSpd, "\n",
+	"spark rate: ", surfSparkRate, "\n",)
 	
 	
 	%debugLabel.text = str(
@@ -916,15 +951,15 @@ func updateInputHistory():
 		
 		if surfRotationType == prevRotation: 
 			ScoreManager.give_points(800, 0, true, "INPUT COMBO")
-			if angular_velocity.length() < 250:
-				angular_velocity *= 1.10 #doing the same rotation twice in a row
-			spinBoostBonus = 2.0
+			if angular_velocity.length() < 180:
+				angular_velocity *= 1.05 #doing the same rotation twice in a row
+			spinBoostBonus = 2.7
 			$THPS_low.play()
 		else:
 			ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
-			if angular_velocity.length() < 250:
-				angular_velocity *= 1.20 #doing a different rotation
-			spinBoostBonus = 2.5
+			if angular_velocity.length() < 220:
+				angular_velocity *= 1.13 #doing a different rotation
+			spinBoostBonus = 3.8
 			$THPS_high.play()
 			
 		

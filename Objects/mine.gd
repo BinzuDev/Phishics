@@ -74,6 +74,7 @@ func activate_mine():
 
 ## When the pin animation is finished
 func _on_animation_finished(_anim_name):
+	ScoreManager.give_points(9999, 0, true, "KABOOM")
 	$explosion.frame = 0
 	$sphere.visible = false
 	$StaticBody3D.process_mode = Node.PROCESS_MODE_DISABLED #disable collision

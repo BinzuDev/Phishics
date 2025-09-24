@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=95 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
 [ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="3_sv072"]
@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://biyocmb7ia2bd" path="res://Sprites/words/fresh_bonus3.png" id="61_tgdxi"]
 [ext_resource type="Texture2D" uid="uid://upg1u7tqyma3" path="res://Sprites/words/fresh_bonus4.png" id="62_tgdxi"]
 [ext_resource type="Texture2D" uid="uid://36vi63vqf8i2" path="res://Sprites/words/freshbonus5.png" id="63_51vah"]
+[ext_resource type="AudioStream" uid="uid://c8thekgwympga" path="res://Sounds/tricks/combo_end.wav" id="65_mthft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_51vah"]
 font = ExtResource("3_sv072")
@@ -1170,4 +1171,9 @@ bus = &"tricks"
 [node name="maxFreshness" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_ndf8x")
 volume_db = -6.0
+bus = &"tricks"
+
+[node name="comboEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("65_mthft")
+volume_db = -5.0
 bus = &"tricks"

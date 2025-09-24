@@ -337,6 +337,8 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 
 
 func end_combo():
+	if mult >= 10:
+		$comboEnd.play() #play sfx only once
 	finalScore += points * mult
 	styleScore += points * mult
 	points = 0
@@ -344,6 +346,7 @@ func end_combo():
 	airSpinHighestRank = 0
 	%comboText.text = ""
 	combo_dict.clear()
+	
 
 
 func update_style_meter():

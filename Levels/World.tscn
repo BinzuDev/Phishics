@@ -3174,9 +3174,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3973, 0.64544, -22.2361)
 audio_file = "uid://cv7x2xq8oskhx"
 
 [node name="Mine" parent="group2" instance=ExtResource("51_4ps87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.095886, 8.551318, -5.270503)
-explosionStrength = 625
-explosionRadius = 25.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.095886, 7.3326654, -5.270503)
+explosionStrength = 600
+explosionRadius = 12.0
+knockbackMultiplier = 2.0
 
 [node name="Pillar4" parent="group2" instance=ExtResource("33_fbdpx")]
 transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 73.3934, -0.330253, 6.3211)
@@ -4158,13 +4159,13 @@ script = SubResource("GDScript_bmonc")
 [node name="tornado" parent="group3/THEPIT(tm)/Path3D/PathFollow3D" instance=ExtResource("17_w578l")]
 
 [node name="Mine2" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.716064, 12.299305, -19.500046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.634506, 12.299305, -22.886307)
 explosionStrength = 1875
 explosionRadius = 50.0
 knockbackMultiplier = 1.5
 
 [node name="Mine3" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.67009, 12.299306, -24.264534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.414383, 12.299306, -22.37239)
 explosionStrength = 1875
 explosionRadius = 50.0
 knockbackMultiplier = 1.5

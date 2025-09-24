@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=140 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -47,15 +47,22 @@
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
 [ext_resource type="AudioStream" uid="uid://crr8giq6rl0wd" path="res://Sounds/surfing/metal_scrape.wav" id="30_d6s4o"]
+[ext_resource type="AudioStream" uid="uid://cdobqnrswwj8v" path="res://Sounds/surfing/skateboard_rolling.ogg" id="31_4buur"]
 [ext_resource type="AudioStream" uid="uid://bk7vq8ulbxhvj" path="res://Sounds/sparks/thps_spark1.wav" id="41_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://0oj8q06006yn" path="res://Sounds/sparks/thps_spark3.wav" id="42_4buur"]
 [ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
-[ext_resource type="AudioStream" uid="uid://cwbyge4sbo6ch" path="res://Sounds/tricks/rare/tony_hawk_trick_low.ogg" id="49_3jkku"]
 [ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/blurLines.gdshader" id="49_ny41d"]
-[ext_resource type="AudioStream" uid="uid://dav807pihtf7q" path="res://Sounds/tricks/legendary/tony_hawk_trick_high.ogg" id="50_bsrx0"]
+[ext_resource type="AudioStream" uid="uid://bj14bvmj4frr" path="res://Sounds/surfing/spinning_okay.ogg" id="51_xsxx4"]
+[ext_resource type="AudioStream" uid="uid://bkjc2yj1y5xha" path="res://Sounds/surfing/spinning_good.ogg" id="52_4buur"]
+[ext_resource type="AudioStream" uid="uid://cblmacgdfisqv" path="res://Sounds/surfing/ollie_landing.ogg" id="57_25ixj"]
+[ext_resource type="AudioStream" uid="uid://b58cir4s4ta10" path="res://Sounds/surfing/ollie2.ogg" id="57_l1lsj"]
+[ext_resource type="AudioStream" uid="uid://c2is0jwpmlyxi" path="res://Sounds/surfing/ollie3.ogg" id="58_oe7hq"]
+[ext_resource type="AudioStream" uid="uid://dqgwqu8b75vxb" path="res://Sounds/surfing/ollie4.ogg" id="59_2owy6"]
+[ext_resource type="AudioStream" uid="uid://cjcsldgm25v5e" path="res://Sounds/surfing/ollie_landing2.ogg" id="61_oe7hq"]
+[ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -708,6 +715,29 @@ stream_17/stream = ExtResource("42_4buur")
 streams_count = 1
 stream_0/stream = ExtResource("6_t0nqp")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v5ton"]
+random_pitch = 1.15
+streams_count = 3
+stream_0/stream = ExtResource("57_l1lsj")
+stream_1/stream = ExtResource("58_oe7hq")
+stream_2/stream = ExtResource("59_2owy6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gqgm8"]
+random_pitch = 1.15
+streams_count = 2
+stream_0/stream = ExtResource("57_25ixj")
+stream_1/stream = ExtResource("61_oe7hq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xsxx4"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("51_xsxx4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4buur"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("52_4buur")
+
 [node name="fish" type="RigidBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 21
@@ -721,6 +751,7 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
+recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/accidental_tip_landing.json"
 replayAccuracy = 1
@@ -963,6 +994,7 @@ debug_shape_thickness = 5
 
 [node name="speedLines" type="Node3D" parent="antiRotation"]
 unique_name_in_owner = true
+visible = false
 
 [node name="speedLines1" type="MeshInstance3D" parent="antiRotation/speedLines"]
 unique_name_in_owner = true
@@ -994,6 +1026,32 @@ size = Vector3(2, 20, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216472, -9.4623e-10, 0)
 visible = false
 mesh = SubResource("BoxMesh_twgm3")
+
+[node name="surfAntiCheese" type="Node3D" parent="antiRotation"]
+
+[node name="SRCACforward" type="RayCast3D" parent="antiRotation/surfAntiCheese"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -0.6)
+collision_mask = 5
+hit_back_faces = false
+
+[node name="SRCACbackwards" type="RayCast3D" parent="antiRotation/surfAntiCheese"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0.6)
+collision_mask = 5
+hit_back_faces = false
+
+[node name="SRCACright" type="RayCast3D" parent="antiRotation/surfAntiCheese"]
+unique_name_in_owner = true
+target_position = Vector3(0.6, 0, 0)
+collision_mask = 5
+hit_back_faces = false
+
+[node name="SRCACleft" type="RayCast3D" parent="antiRotation/surfAntiCheese"]
+unique_name_in_owner = true
+target_position = Vector3(-0.6, 0, 0)
+collision_mask = 5
+hit_back_faces = false
 
 [node name="BubbleRing" type="CPUParticles3D" parent="."]
 emitting = false
@@ -1363,15 +1421,19 @@ volume_db = -8.0
 max_polyphony = 10
 bus = &"fishsfx"
 
-[node name="THPS_low" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("49_3jkku")
-volume_db = -3.0
-bus = &"tricks"
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+top_level = true
+size = Vector3(0.5, 0.1, 0.5)
+texture_albedo = ExtResource("47_3rn02")
+cull_mask = 1048573
+script = ExtResource("48_tid1w")
 
-[node name="THPS_high" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("50_bsrx0")
-volume_db = -2.5
-bus = &"tricks"
+[node name="speedWind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_q0y68")
+volume_db = -80.0
+autoplay = true
+bus = &"fishsfx"
 
 [node name="FIsh" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -1385,16 +1447,32 @@ stream = ExtResource("25_dhdhv")
 max_polyphony = 5
 bus = &"fishsfx"
 
-[node name="speedWind" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("48_q0y68")
-volume_db = -80.0
+[node name="skateboarding" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("31_4buur")
+volume_db = -5.0
+unit_size = 20.0
 autoplay = true
 bus = &"fishsfx"
 
-[node name="Decal" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
-top_level = true
-size = Vector3(0.5, 0.1, 0.5)
-texture_albedo = ExtResource("47_3rn02")
-cull_mask = 1048573
-script = ExtResource("48_tid1w")
+[node name="skateJumping" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_v5ton")
+bus = &"fishsfx"
+
+[node name="skateLanding" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gqgm8")
+bus = &"fishsfx"
+
+[node name="halfpipe" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("62_2owy6")
+bus = &"fishsfx"
+
+[node name="THPS_low" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xsxx4")
+volume_db = -3.0
+bus = &"tricks"
+
+[node name="THPS_high" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_4buur")
+volume_db = -3.0
+pitch_scale = 1.1
+bus = &"tricks"
