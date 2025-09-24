@@ -3079,8 +3079,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6595, -0.0383195, 35.4656)
 [node name="Enemy25" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8101, -0.0383195, 27.0333)
 
+[node name="cameraController" parent="group2" instance=ExtResource("32_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.84054, 7.236294, -20.927214)
+newCameraAngle = Vector3(0, -90, 0)
+newCameraOffset = Vector3(0, 0, 0)
+rate = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.02, 0, 0)
+shape = SubResource("BoxShape3D_wvw3a")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
 [node name="frickingAwesomeTube" parent="group2" instance=ExtResource("15_myu2g")]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 79.96, -0.46, -14.1)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 79.96, -0.46, -14.1)
 
 [node name="base" parent="group2/frickingAwesomeTube" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.068, 8.76631, 6.88112)
@@ -3104,16 +3115,6 @@ metadata/_edit_lock_ = true
 
 [node name="BoostRing25" parent="group2/frickingAwesomeTube" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-3.49691e-08, 0.8, 1.20797e-07, -0.8, -3.49691e-08, -5.2802e-15, 0, -1.20797e-07, 0.8, -29.2938, 17.8697, 7.3)
-
-[node name="cameraController" parent="group2/frickingAwesomeTube" instance=ExtResource("32_581hb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.119461, 7.696294, 6.8272114)
-newCameraAngle = Vector3(0, -93.141594, 0)
-newCameraOffset = Vector3(0, 0, 0)
-rate = 1.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/frickingAwesomeTube/cameraController"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 22.01976, -0.09881401, -0.00844574)
-shape = SubResource("BoxShape3D_wvw3a")
 
 [node name="tornado" parent="group2" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.001, 12.5428, -19.2369)

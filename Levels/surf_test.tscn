@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=35 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -130,6 +130,9 @@ uv1_world_triplanar = true
 [sub_resource type="SphereMesh" id="SphereMesh_ab27v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfxg8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txmry"]
+size = Vector3(11.89209, 7.8325195, 6.1030884)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -555,3 +558,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.117529, 118.6671, 72.78833
 [node name="cameraController" parent="." instance=ExtResource("12_txmry")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.118385, 119.00825, 58.548126)
 newCameraAngle = Vector3(-50, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
+shape = SubResource("BoxShape3D_txmry")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="cameraController2" parent="." instance=ExtResource("12_txmry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.54374, 119.00825, 58.548126)
+newCameraAngle = Vector3(-30, 50, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
+shape = SubResource("BoxShape3D_txmry")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="cameraController3" parent="." instance=ExtResource("12_txmry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.522001, 119.00825, 58.548126)
+newCameraAngle = Vector3(0, -90, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
+shape = SubResource("BoxShape3D_txmry")
+debug_color = Color(0, 0, 0, 1)

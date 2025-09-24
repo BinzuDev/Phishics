@@ -31,8 +31,8 @@ extends Area3D
 func _ready():
 	collision_layer = 8 #layer 4
 	collision_mask = 0
-	if !Engine.is_editor_hint():
-		visible = false
+	#if !Engine.is_editor_hint():
+	#	visible = false
 
 func _process(_delta):
 	if Engine.is_editor_hint():
