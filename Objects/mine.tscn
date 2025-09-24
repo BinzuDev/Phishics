@@ -154,10 +154,12 @@ shape = SubResource("SphereShape3D_n6nrv")
 [node name="boomArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 82
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="boomArea"]
 shape = SubResource("SphereShape3D_ddm8m")
 debug_color = Color(0, 0.85000014, 1, 1)
+metadata/_edit_lock_ = true
 
 [node name="preview" type="MeshInstance3D" parent="."]
 transform = Transform3D(45, 0, 0, 0, 45, 0, 0, 0, 45, 0, 0, 0)
@@ -166,6 +168,7 @@ material_override = SubResource("StandardMaterial3D_fhvvj")
 transparency = 0.5
 cast_shadow = 0
 mesh = SubResource("SphereMesh_xjdej")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -344,6 +347,7 @@ texture = ExtResource("4_ib7dw")
 hframes = 6
 vframes = 4
 frame = 23
+metadata/_edit_lock_ = true
 
 [node name="explosion_sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_fhvvj")
@@ -357,7 +361,7 @@ target_position = Vector3(0, -47, 0)
 hit_back_faces = false
 
 [node name="base" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7.6293945e-06, -0.45768, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_xjdej")
 

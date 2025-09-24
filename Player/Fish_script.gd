@@ -615,7 +615,8 @@ func _physics_process(_delta: float) -> void:
 		
 		#so he doesnt looks flat when facing directly up or down
 		if abs($surfPivot.rotation_degrees.y) > 170 or abs($surfPivot.rotation_degrees.y) < 10:
-			%fishPivot.rotation_degrees.y = -30 
+			if surfRotationType == "":
+				%fishPivot.rotation_degrees.y = -30 
 		
 		
 		#landing sfx volume
@@ -833,7 +834,10 @@ func _physics_process(_delta: float) -> void:
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
+	"position ", global_position, "\n",
 	)
+	
+	
 	
 
 

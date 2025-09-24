@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bixfmayjgdrhy"]
+[gd_scene load_steps=15 format=3 uid="uid://bixfmayjgdrhy"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_expp7"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="2_03cwd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="7_lo1g5"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="7_uxs7v"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_ewr2j"]
+[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="9_ewr2j"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("5_iyqws")
@@ -163,7 +164,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.482746, 15.973551, 40.83937
 gravity_scale = 1.5
 
 [node name="kil" parent="." instance=ExtResource("8_ewr2j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.969866, 39.756046, -5.95418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.230707, 39.756046, -4.8162346)
 
 [node name="Enemy" parent="." instance=ExtResource("8_ewr2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.621853, 8.159797, -5.8407664)
@@ -194,3 +195,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.114357, 8.159797, -5.84076
 
 [node name="Enemy10" parent="." instance=ExtResource("8_ewr2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.16405, 8.15564, -5.8407664)
+
+[node name="strike_zone" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.716976, 7.0421877, -1.3915741)
+
+[node name="strike_zone2" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.360413, 6.968014, -3.3726094)
+
+[node name="strike_zone3" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.694712, 7.0885935, -21.408535)
+
+[node name="strike_zone4" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.52789, 6.83566, -15.935961)
+
+[node name="strike_zone5" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.241432, 7.0098534, -7.242191)
+
+[node name="strike_zone8" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.979118, 7.014022, 40.485016)
+
+[node name="strike_zone6" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.62539, 7.109535, -25.458136)
+
+[node name="strike_zone7" parent="." instance=ExtResource("9_ewr2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.97526, 7.2837553, -16.911577)

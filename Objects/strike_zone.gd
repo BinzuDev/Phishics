@@ -44,6 +44,7 @@ func apply_force_to_rigidbodies():
 		if child is RigidBody3D:
 			var direction = child.global_transform.origin - node_center
 			child.apply_central_impulse(direction.normalized() * force_range) #apply force opposite of the center
+			child.apply_central_impulse(Vector3(0,1,0)) #up force
 			var randSpin = Vector3(randf_range(-1.0, 1.0),randf_range(-0.5, 0.5),randf_range(-3.0, 3.0))
 			child.apply_torque_impulse(randSpin)
 			child.gravity_scale = 1.0 #reset gravity if floating
@@ -52,8 +53,12 @@ func apply_force_to_rigidbodies():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is player and not touched:
-		
+	if body is player:
+		strike(body.linear_velocity.length())
+
+
+func strike(strength: float):
+	if not touched:
 		#confirm touched
 		touched = true
 		
@@ -63,7 +68,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		ScoreManager.play_trick_sfx("rare")
 		print("strike!")
 		
-		fishSpeed = body.linear_velocity.length()
+		fishSpeed = strength
 		apply_force_to_rigidbodies() #func for strike
 		
 		#effects

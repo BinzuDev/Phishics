@@ -82,9 +82,12 @@ func _on_animation_finished(_anim_name):
 	$explosion_sfx.play()
 	isExploding = true
 	
-	for otherMines in $boomArea.get_overlapping_areas(): #explode other mines
-		if otherMines.get_parent() is Mine:
-			otherMines.get_parent().activate_mine()
+	for otherArea in $boomArea.get_overlapping_areas(): #explode any area on layer 7
+		if otherArea.get_parent() is Mine:
+			otherArea.get_parent().activate_mine()
+			
+		if otherArea.get_parent() is bowlingPins:
+			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins
 	
 	for victim in $boomArea.get_overlapping_bodies(): #give knockback to detected physics objects
 		var direction = victim.global_transform.origin - $explosionOrigin.global_transform.origin #go higher on average
@@ -98,11 +101,12 @@ func _on_animation_finished(_anim_name):
 		knockback = max(knockback.length(), 5) #cap at 5 if any closer
 		knockback = explosionStrength/knockback 
 		victim.apply_central_impulse(direction.normalized() *  knockback) #apply force opposite of mine that gets weaker with distance
-		#print("distance to ", victim.name, ": ", (victim.global_transform.origin - global_transform.origin).length(), ", knockback received: ", knockback )
+		print("distance to ", victim.name, ": ", (victim.global_transform.origin - global_transform.origin).length(), ", knockback received: ", knockback )
 		
 		if victim is enemy:
 			victim.hp = 0 #kill crab
 			victim.change_sprite()
+			victim.apply_torque_impulse(Vector3(5, 3, 5))
 		
 
 ## When the explosion sfx is done playing

@@ -3078,9 +3078,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0285, -0.0383195, 19.4862)
 [node name="Enemy24" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8101, -0.0383195, 27.0333)
 
-[node name="Enemy27" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.781406, 29.58849, 21.56982)
-
 [node name="Enemy26" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6595, -0.0383195, 35.4656)
 
@@ -3573,53 +3570,45 @@ homingTarget = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.70607, 12.865359, -40.579876)
 explosionStrength = 200
 explosionRadius = 8.0
-homingTarget = false
 
 [node name="Mine4" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.57965, 6.000272, -20.246696)
 explosionStrength = 200
 explosionRadius = 8.0
-homingTarget = false
 
 [node name="Mine5" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.91124, 9.351558, -8.233879)
 explosionStrength = 100
 explosionRadius = 8.0
 knockbackMultiplier = 0.5
-homingTarget = false
 
 [node name="Mine6" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.51865, 6.209882, 0.046295166)
 explosionStrength = 100
 explosionRadius = 8.0
 knockbackMultiplier = 0.5
-homingTarget = false
 
 [node name="Mine7" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.93459, 5.3884096, -7.997754)
 explosionStrength = 100
 explosionRadius = 8.0
 knockbackMultiplier = 0.5
-homingTarget = false
 
 [node name="Mine8" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.15039, 10.798628, 5.761677)
 explosionStrength = 100
 explosionRadius = 8.0
 knockbackMultiplier = 0.5
-homingTarget = false
 
 [node name="Mine9" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.87271, 9.033831, -32.420647)
 explosionStrength = 200
 explosionRadius = 8.0
-homingTarget = false
 
 [node name="Mine3" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.44655, 22.486662, -47.032524)
 explosionStrength = 200
 explosionRadius = 8.0
-homingTarget = false
 
 [node name="Platform1" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(18.043, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 154.58, 9.18, -21.26)
@@ -4575,5 +4564,9 @@ canRespawn = true
 [node name="signJump3" parent="group4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(2.72826e-08, -1, -1.19933e-08, 0.402427, -2.66454e-15, 0.915452, -0.915452, -2.98023e-08, 0.402427, 188.315, 59.5253, -234.043)
 canRespawn = true
+
+[node name="destructable_sign" parent="." instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.8397431, -0.04781506, 0.5408745, -0.542984, -0.07394762, 0.8364808, -1.0603742e-08, -0.9961151, -0.088059805, 8.204206, 0.30739367, -30.818516)
+signSprite = "uid://bopnbyxyecen8"
 
 [editable path="group2/frickingAwesomeTube"]
