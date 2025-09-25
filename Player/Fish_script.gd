@@ -369,9 +369,9 @@ func _physics_process(_delta: float) -> void:
 	##   CAMERA   ##
 	################
 	#fov
-	%cam.fov = lerp(%cam.fov, 80.0, 0.1)   
-	if %cam.fov > 79.99:
-		%cam.fov = 80
+	%cam.fov = lerp(%cam.fov, 85.0, 0.1)   
+	if %cam.fov > 84.99:
+		%cam.fov = 85
 	
 	#camera controller areas
 	if $detectCamSwitch.has_overlapping_areas():
@@ -388,7 +388,7 @@ func _physics_process(_delta: float) -> void:
 	elif cameraOverride == false:
 		targetCamAngle = Vector3(-30,0,0) #default camera settings
 		targetCamOffset  = Vector3(0,0.58,0)
-		targetCamDist = 5.2
+		targetCamDist = 6
 		camSpeed = 0.2
 		#lower camera when close to a ceiling
 		if %ceilDetect.is_colliding():                                   #clamp min to 1
@@ -626,8 +626,8 @@ func _physics_process(_delta: float) -> void:
 		#bs so that we can know the speed you had BEFORE you landed
 		fallSpeeds.append(linear_velocity.y)
 		fallSpeeds.remove_at(0)
-		#if linear_velocity.y < -1: 
-		#	print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
+		if linear_velocity.y < -1: 
+			print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
 		
 		
 		if %canSurf.is_colliding(): #the one thats always pointing globally down
@@ -651,9 +651,9 @@ func _physics_process(_delta: float) -> void:
 		
 		if surfJumpLastFrame and surfState != "Jumping":
 			if !$skateLanding.playing and linear_velocity.y < -1:
-				$skateLanding.volume_linear = fallSpeeds[0]*-0.06 + 0.2
+				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 4)
 				$skateLanding.play()
-				#printerr("PLAY LANDING ", $skateLanding.volume_linear)
+				printerr("PLAY LANDING ", $skateLanding.volume_linear)
 		
 		
 		##Surfing or non-halfpipe jump

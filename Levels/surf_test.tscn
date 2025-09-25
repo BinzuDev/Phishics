@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=36 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_gx528"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="12_txmry"]
+[ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4rq4h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -216,7 +217,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7117, 118.706, 71.513)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.266973, 120.287964, 75.95333)
 gravity_scale = 1.5
 
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
@@ -231,7 +232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0569, 119.266, 65.4554)
 signSprite = "uid://2jdkufiby1by"
 
 [node name="destructable_sign10" parent="." instance=ExtResource("3_wstlt")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.6638, 119.266, 65.1732)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.2753525, 119.40921, 65.18611)
 signSprite = "uid://bopnbyxyecen8"
 
 [node name="destructable_sign2" parent="." instance=ExtResource("3_wstlt")]
@@ -581,3 +582,6 @@ newCameraAngle = Vector3(0, -90, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
 shape = SubResource("BoxShape3D_txmry")
 debug_color = Color(0, 0, 0, 1)
+
+[node name="BoostRing2" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(0.7198246, 0.694156, 0, -0.694156, 0.7198246, 0, 0, 0, 1, 37.505123, 122.1088, 84.79285)

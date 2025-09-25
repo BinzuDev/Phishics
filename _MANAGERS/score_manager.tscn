@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=99 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
 [ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="3_sv072"]
@@ -65,6 +65,9 @@
 [ext_resource type="Texture2D" uid="uid://upg1u7tqyma3" path="res://Sprites/words/fresh_bonus4.png" id="62_tgdxi"]
 [ext_resource type="Texture2D" uid="uid://36vi63vqf8i2" path="res://Sprites/words/freshbonus5.png" id="63_51vah"]
 [ext_resource type="AudioStream" uid="uid://c8thekgwympga" path="res://Sounds/tricks/combo_end.wav" id="65_mthft"]
+[ext_resource type="AudioStream" uid="uid://b8o5oxxlpold6" path="res://Sounds/tricks/judge_tally2.wav" id="66_ujqk2"]
+[ext_resource type="AudioStream" uid="uid://c4j3e2e6jo0c" path="res://Sounds/tricks/money1.ogg" id="67_ma5d6"]
+[ext_resource type="AudioStream" uid="uid://bxxxm20bfwjhh" path="res://Sounds/tricks/money2.ogg" id="68_b7r8c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_51vah"]
 font = ExtResource("3_sv072")
@@ -681,6 +684,11 @@ stream_0/stream = ExtResource("54_nylqd")
 streams_count = 1
 stream_0/stream = ExtResource("55_5su7l")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ipcik"]
+streams_count = 2
+stream_0/stream = ExtResource("67_ma5d6")
+stream_1/stream = ExtResource("68_b7r8c")
+
 [node name="ScoreManager" type="Node"]
 script = ExtResource("1_vublb")
 
@@ -981,6 +989,52 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="comboEndValue" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 960.0
+offset_top = 930.0
+offset_right = 960.0
+offset_bottom = 930.0
+scale = Vector2(1.2, 1.2)
+
+[node name="comboEndRotation" type="Sprite2D" parent="UI/comboEndValue"]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="UI/comboEndValue/comboEndRotation"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="comboEndText" type="Label" parent="UI/comboEndValue/comboEndRotation/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.5
+offset_top = -45.0
+offset_right = 363.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "999 999 999 999"
+label_settings = SubResource("LabelSettings_7cib2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RankAnchor" type="Control" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -1041,6 +1095,13 @@ skew = -0.261799
 texture = ExtResource("7_lu126")
 vframes = 8
 frame = 7
+
+[node name="comboTargetPos" type="Control" parent="UI/RankAnchor/marginRank/rank"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = 62.0
+offset_bottom = 62.0
 
 [node name="score" type="Label" parent="UI/RankAnchor/marginRank/rank"]
 unique_name_in_owner = true
@@ -1175,5 +1236,15 @@ bus = &"tricks"
 
 [node name="comboEnd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("65_mthft")
-volume_db = -5.0
+bus = &"tricks"
+
+[node name="tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("66_ujqk2")
+volume_db = -15.0
+pitch_scale = 0.9
+max_polyphony = 5
+bus = &"tricks"
+
+[node name="money" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ipcik")
 bus = &"tricks"

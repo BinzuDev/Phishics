@@ -5,7 +5,8 @@ const S = 4; const P = 5; const PSS = 6; const PSSS = 7
 
 
 ## Style Meter Variables
-var finalScore : int = 0     ##Total Style points received
+var scoreVisual : int = 0 ##What the UI is moving towards (so that theres a delay bcs of the animation)
+var finalScore : int = 0 ##Total Style points received
 var points : int = 0    ##Amount of points in the current combo
 var mult : float = 0      ##Amount of multiplier in the current combo
 var styleMeter : int = 0 ##Total amount of the style meter (styleScore + points*mult)
@@ -205,14 +206,29 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
-	
-	
 	## Score and style meter UI
-	%score.text = str("%010d" % clamp(finalScore, 0, 9999999999)) #Display score
+	var scoreBefore = int(%score.text)
+	var scoreUI = lerp(float(%score.text), float(scoreVisual), 0.109) #make the score increase 10% at a time (the extra 09 just makes it look more random)
+	scoreUI = int( move_toward(scoreUI, scoreVisual, 1) ) #move by at least 1 in case the difference is less than 1
+	%score.text = str("%010d" % clamp(scoreUI, 0, 9999999999)) #Display score
+	var scoreDiff = scoreUI-scoreBefore
+	var everyXframe = 1
+	if scoreDiff <= 50000:
+		everyXframe = 2
+	if scoreDiff <= 5000:
+		everyXframe = 3
+	if scoreDiff <= 500:
+		everyXframe = 4
+	if scoreDiff <= 50:
+		everyXframe = 5
+	if scoreBefore != scoreUI and GameManager.gameTimer % everyXframe == 0 and scoreBefore != 9999999999:
+		#print(scoreDiff, " (",everyXframe, ")")
+		$tick.play()
 	var diff = rankRequirements[styleRank+1] - rankRequirements[styleRank]
 	var progress = float(styleMeter) - rankRequirements[styleRank]
 	%StyleBarProgress.scale.x = progress / diff * 208
 	%StyleBarProgressBG.scale.x = progress / diff * 208
+	
 	
 	## rank UI 3D animation
 	%rankBG.frame = %rank.frame
@@ -255,6 +271,8 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
+	
+	
 	#DEBUG_INFO
 	%debugLabel.text = str(
 	"styleScore: ", styleScore, "\n",
@@ -267,7 +285,8 @@ func _physics_process(_delta: float) -> void:
 	"current rank is: ", styleRank,"\n",
 	"airSpinAmount: ", airSpinAmount, "\n",
 	"airSpinRank: ", airSpinRank, "\n",
-	"airSpinHighestRank: ", airSpinHighestRank, "\n"
+	"airSpinHighestRank: ", airSpinHighestRank, "\n",
+	"final score: ", finalScore
 	)
 	%freshDebugLabel.text = str(array_to_str(trickHistoryExtra),
 							array_to_str(trickHistory), 
@@ -337,8 +356,10 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 
 
 func end_combo():
-	if mult >= 10:
+	if mult >= 5:
 		$comboEnd.play() #play sfx only once
+	if mult >= 1:
+		combo_end_animation()
 	finalScore += points * mult
 	styleScore += points * mult
 	points = 0
@@ -347,6 +368,45 @@ func end_combo():
 	%comboText.text = ""
 	combo_dict.clear()
 	
+
+func combo_end_animation():
+	%comboEndValue.set_position($UI/comboScore.get_screen_position()) 
+	%comboEndValue.position.y -= 70
+	%comboEndValue.visible = true
+	%comboEndRotation.rotation = 0
+	%comboEndRotation.skew = 0
+	%comboEndText.text = format_big_number(str(int(points * mult)))
+	%comboEndValue.scale = Vector2(0,0)
+	var tween = get_tree().create_tween()
+	tween.tween_property(%comboEndValue, "scale", Vector2(1.2, 1.2), 1.5) \
+		.set_trans(Tween.TRANS_ELASTIC) \
+		.set_ease(Tween.EASE_OUT)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_interval(0.75)
+	tween2.tween_property(%comboEndValue, "position:x", %comboTargetPos.get_screen_position().x, 0.9) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_IN_OUT)
+	tween2.parallel().tween_property(%comboEndValue, "position:y", %comboTargetPos.get_screen_position().y, 0.9) \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_IN)
+	tween2.parallel().tween_property(%comboEndRotation, "rotation", deg_to_rad(15), 0.9) \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_IN)
+	tween2.parallel().tween_property(%comboEndRotation, "skew", deg_to_rad(-15), 0.9) \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_IN)
+	tween2.tween_callback(combo_end_anim_over)
+
+
+
+func combo_end_anim_over():
+	%comboEndValue.visible = false
+	if finalScore-scoreVisual >= 10000: #so its not annoying or super small combos
+		$money.play()
+	scoreVisual = finalScore
+	
+
+
 
 
 func update_style_meter():
@@ -506,6 +566,7 @@ func reset_everything():
 	styleMeter = 0
 	styleScore = 0
 	finalScore = 0
+	scoreVisual = 0
 	freshness = 0
 	trickHistory = []
 	trickHistoryExtra = []
@@ -513,9 +574,26 @@ func reset_everything():
 	%rankBG.frame = 7
 	airSpinHighestRank = 0
 	%comboText.text = ""
+	%score.text = str("%010d" % 0)
 	combo_dict.clear()
 	%freshAnims.play("RESET")
 	
+	
+
+## Used to add spaces between every 3rd digit of a big number (except if its just 4 digits)
+## ex: 1234567890 -> 1 234 567 890
+func format_big_number(value:String):
+	var length = value.length()
+	if length <= 4:
+		return value
+	
+	while length > 3:
+		length -= 3
+		value = value.insert(length, " ")
+	
+	return value
+
+
 
 ## Used so whole decimal numbers shown on UI are shown like "5" instead of "5.0"
 func format_decimal(value):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=15 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://_MANAGERS/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dxf18dkcq2ajs" path="res://Sprites/UI/enter_blue.png" id="4_bfllj"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="6_tffx4"]
+[ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="8_i3ltt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dp2mv"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
 shader = ExtResource("2_tqlrv")
@@ -39,23 +43,131 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_iove5"]
 font = ExtResource("2_iove5")
 font_size = 40
-font_color = Color(0.3, 0, 1, 1)
+font_color = Color(0.20999998, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k6lpl"]
 line_spacing = 11.0
 font = ExtResource("6_tffx4")
 font_size = 40
 
+[sub_resource type="World3D" id="World3D_i3ltt"]
+
 [node name="dialogue_manager" type="Node"]
 script = ExtResource("1_k6lpl")
 
-[node name="textBoxControl" type="Control" parent="."]
-layout_mode = 3
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("ViewportTexture_dp2mv")
+
+[node name="textBoxControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="dialogueColorRect" type="ColorRect" parent="textBoxControl"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tffx4")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -700.0
+offset_top = -270.0
+offset_right = 600.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.72549)
+
+[node name="Control" type="Control" parent="textBoxControl/dialogueColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -40.0
+offset_right = -163.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/dialogueColorRect/Control"]
+unique_name_in_owner = true
+position = Vector2(-12, -24)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tqlrv")
+autoplay = "default"
+frame_progress = 0.0424007
+
+[node name="nameBox" type="Label" parent="textBoxControl/dialogueColorRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 0
+offset_left = 72.0
+offset_top = -45.0
+offset_right = 272.0
+offset_bottom = 10.0
+size_flags_vertical = 0
+text = "NAME:"
+label_settings = SubResource("LabelSettings_iove5")
+
+[node name="nameMargin" type="MarginContainer" parent="textBoxControl/dialogueColorRect/nameBox"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_right = -10
+
+[node name="ColorRect" type="ColorRect" parent="textBoxControl/dialogueColorRect/nameBox/nameMargin"]
+show_behind_parent = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+color = Color(0.85, 0.3655, 0.85, 1)
+
+[node name="textMargin" type="MarginContainer" parent="textBoxControl/dialogueColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 30
+
+[node name="textBox" type="Label" parent="textBoxControl/dialogueColorRect/textMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Textbox texthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+2
+3
+4
+5"
+label_settings = SubResource("LabelSettings_k6lpl")
+autowrap_mode = 1
+clip_text = true
 
 [node name="textBoxMargin" type="MarginContainer" parent="textBoxControl"]
 unique_name_in_owner = true
@@ -69,87 +181,7 @@ theme_override_constants/margin_left = 375
 theme_override_constants/margin_top = 810
 theme_override_constants/margin_right = 375
 theme_override_constants/margin_bottom = 20
-
-[node name="dialogueColorRect" type="ColorRect" parent="textBoxControl/textBoxMargin"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_tffx4")
-layout_mode = 2
-color = Color(1, 1, 1, 0.72549)
-
-[node name="Control" type="Control" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="confirm" type="AnimatedSprite2D" parent="textBoxControl/textBoxMargin/dialogueColorRect/Control"]
-unique_name_in_owner = true
-position = Vector2(-12, -24)
-scale = Vector2(0.3, 0.3)
-sprite_frames = SubResource("SpriteFrames_tqlrv")
-autoplay = "default"
-frame_progress = 0.0424007
-
-[node name="nameBox" type="Label" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 55)
-layout_mode = 0
-offset_left = 72.0
-offset_top = -45.0
-offset_right = 272.0
-offset_bottom = 10.0
-size_flags_vertical = 0
-text = "NAME:"
-label_settings = SubResource("LabelSettings_iove5")
-
-[node name="nameMargin" type="MarginContainer" parent="textBoxControl/textBoxMargin/dialogueColorRect/nameBox"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -10
-theme_override_constants/margin_right = -10
-
-[node name="ColorRect" type="ColorRect" parent="textBoxControl/textBoxMargin/dialogueColorRect/nameBox/nameMargin"]
-show_behind_parent = true
-custom_minimum_size = Vector2(200, 55)
-layout_mode = 2
-color = Color(1, 0.752941, 1, 1)
-
-[node name="textMargin" type="MarginContainer" parent="textBoxControl/textBoxMargin/dialogueColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="textBox" type="Label" parent="textBoxControl/textBoxMargin/dialogueColorRect/textMargin"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
-size_flags_vertical = 1
-text = "Textbox texthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh a a a
-2
-3
-4
-5"
-label_settings = SubResource("LabelSettings_k6lpl")
-autowrap_mode = 3
-clip_text = true
+metadata/_edit_lock_ = true
 
 [node name="enterTip" type="Control" parent="."]
 layout_mode = 3
@@ -158,8 +190,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="enterTip"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -178,3 +212,17 @@ frame_progress = 0.00853321
 [node name="TALK" type="Sprite2D" parent="enterTip/Control"]
 position = Vector2(-157, -82.5)
 texture = ExtResource("5_bfllj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_i3ltt")
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="jelly_fish_girl_IK" parent="SubViewport" instance=ExtResource("8_i3ltt")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647

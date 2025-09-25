@@ -21,6 +21,9 @@ func _process(_delta):
 	if !$textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
 		isRunning = false        #start a dialogue with the same input used to end another one
 	
+	$SubViewport.size = DisplayServer.window_get_size()
+	
+	
 	$enterTip/Control.visible = !isRunning #dont show prompt if textbox active
 	%confirm.visible = finished and isRunning
 	if currentDialogue:
@@ -89,6 +92,9 @@ func continue_dialogue():
 		var ref = RefCounted.new()
 		ref.set_script(script)
 		ref.eval()
+	var jfg = currentDialogue.messages[textBoxIndex].JFG_animation
+	if jfg != "":
+		$SubViewport/jelly_fish_girl_IK.play_animation(jfg)
 	
 	%nameBox.text = currentDialogue.messages[textBoxIndex].name
 	%nameBox.visible = true
@@ -134,3 +140,6 @@ func reset():
 
 func set_position(newPos : Vector2):
 	%textBoxMargin.position = newPos
+
+func show_jfg(value:bool = true):
+	$CanvasLayer.visible = value

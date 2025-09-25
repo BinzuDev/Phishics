@@ -10,7 +10,7 @@ extends Area3D
 @export var newCameraOffset : Vector3 = Vector3(0, 0.58, 0)
 
 ##How far away the camera is from the focus
-@export var newCameraDistance : float = 5.2
+@export var newCameraDistance : float = 6.0
 
 ##Put a node in here and the camera will lock on to it
 @export var target : Node
@@ -27,20 +27,25 @@ extends Area3D
 
 
 
-
 func _ready():
 	collision_layer = 8 #layer 4
 	collision_mask = 0
-	#if !Engine.is_editor_hint():
-	#	visible = false
+	if !Engine.is_editor_hint(): #when playing the game
+		if !get_tree().debug_collisions_hint: 
+			visible = false
+		else:
+			set_debug_visuals() #if "visible collision shapes" is on
 
 func _process(_delta):
 	if Engine.is_editor_hint():
-		offset.position = newCameraOffset
-		cam_rotation.rotation_degrees = newCameraAngle
-		cam_rotation.scale.z = newCameraDistance
-		camera.global_position = cam_pivot.global_position
-		camera.rotation = cam_rotation.rotation
-		newCameraAngle += rotation
-		rotation = Vector3.ZERO
+		set_debug_visuals()
 		
+
+func set_debug_visuals():
+	offset.position = newCameraOffset
+	cam_rotation.rotation_degrees = newCameraAngle
+	cam_rotation.scale.z = newCameraDistance
+	camera.global_position = cam_pivot.global_position
+	camera.rotation = cam_rotation.rotation
+	newCameraAngle += rotation
+	rotation = Vector3.ZERO

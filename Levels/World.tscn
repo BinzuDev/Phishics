@@ -3098,19 +3098,103 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.068, 8.76631, 6.88112)
 size = Vector3(42.9544, 19.3458, 17.6194)
 
 [node name="CSGCylinder3D" parent="group2/frickingAwesomeTube" index="1"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -8.79668, 7.54758, 6.83362)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+layers = 1
+sorting_offset = 0.0
+sorting_use_aabb_center = true
+material_override = null
+material_overlay = null
+transparency = 0.0
+cast_shadow = 1
+extra_cull_margin = 0.0
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+lod_bias = 1.0
+ignore_occlusion_culling = false
+gi_mode = 1
+gi_lightmap_texel_scale = 1.0
+visibility_range_begin = 0.0
+visibility_range_begin_margin = 0.0
+visibility_range_end = 0.0
+visibility_range_end_margin = 0.0
+visibility_range_fade_mode = 0
+calculate_tangents = true
+use_collision = false
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+flip_faces = false
 height = 45.8006
+cone = false
+smooth_faces = true
+material = null
+script = null
 
 [node name="BoostRing24" parent="group2/frickingAwesomeTube" index="25"]
 transform = Transform3D(0.607652, -0.350828, 0.712516, 0.5, 0.866025, 0, -0.617057, 0.356258, 0.701655, -24.0526, 5.25, 1.71001)
 targetableByHoming = false
 
 [node name="tophole" type="CSGCylinder3D" parent="group2/frickingAwesomeTube"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.32, 15.3845, 7.3)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+layers = 1
+sorting_offset = 0.0
+sorting_use_aabb_center = true
+material_override = null
+material_overlay = null
+transparency = 0.0
+cast_shadow = 1
+extra_cull_margin = 0.0
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+lod_bias = 1.0
+ignore_occlusion_culling = false
+gi_mode = 1
+gi_lightmap_texel_scale = 1.0
+visibility_range_begin = 0.0
+visibility_range_begin_margin = 0.0
+visibility_range_end = 0.0
+visibility_range_end_margin = 0.0
+visibility_range_fade_mode = 0
 operation = 2
+calculate_tangents = true
+use_collision = false
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+flip_faces = false
 radius = 2.06299
 height = 6.42916
 sides = 32
+cone = false
+smooth_faces = true
+material = null
+script = null
 metadata/_edit_lock_ = true
 
 [node name="BoostRing25" parent="group2/frickingAwesomeTube" instance=ExtResource("9_2uuim")]
@@ -3365,8 +3449,6 @@ shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="cameraController" parent="highUpSection" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.983, 44.226, -46.3324)
-newCameraAngle = Vector3(0, 0, 0)
-newCameraDistance = 10.0
 rate = 0.8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/cameraController"]
@@ -3744,11 +3826,53 @@ radius = 8.855
 radial_segments = 32
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group3/half pipe"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 2.49581, 10.2715, 6.83362)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+layers = 1
+sorting_offset = 0.0
+sorting_use_aabb_center = true
+material_override = null
+material_overlay = null
+transparency = 0.0
+cast_shadow = 1
+extra_cull_margin = 0.0
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+lod_bias = 1.0
+ignore_occlusion_culling = false
+gi_mode = 1
+gi_lightmap_texel_scale = 1.0
+visibility_range_begin = 0.0
+visibility_range_begin_margin = 0.0
+visibility_range_end = 0.0
+visibility_range_end_margin = 0.0
+visibility_range_fade_mode = 0
 operation = 2
+calculate_tangents = true
+use_collision = false
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+flip_faces = false
 radius = 8.85547
 height = 29.8902
 sides = 32
+cone = false
+smooth_faces = true
+material = null
+script = null
 
 [node name="ball_mode_area" parent="group3/half pipe" instance=ExtResource("42_rneqk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.36192, 2.33716, 2.98257)
@@ -3794,11 +3918,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 size = Vector3(20, 20, 20)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group3/quarterPipe/base"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 10, 10)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+layers = 1
+sorting_offset = 0.0
+sorting_use_aabb_center = true
+material_override = null
+material_overlay = null
+transparency = 0.0
+cast_shadow = 1
+extra_cull_margin = 0.0
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+lod_bias = 1.0
+ignore_occlusion_culling = false
+gi_mode = 1
+gi_lightmap_texel_scale = 1.0
+visibility_range_begin = 0.0
+visibility_range_begin_margin = 0.0
+visibility_range_end = 0.0
+visibility_range_end_margin = 0.0
+visibility_range_fade_mode = 0
 operation = 2
+calculate_tangents = true
+use_collision = false
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+flip_faces = false
 radius = 10.0
 height = 20.0
 sides = 24
+cone = false
+smooth_faces = true
+material = null
+script = null
 
 [node name="corner" type="CSGSphere3D" parent="group3/quarterPipe"]
 radius = 10.0
@@ -4436,17 +4602,17 @@ skeleton = NodePath("../../../group1")
 transform = Transform3D(0.927438, 0.364417, -0.0840186, -0.36135, 0.931102, 0.049755, 0.0963621, -0.0157842, 0.995222, -0.00939941, 2.88057, 0.278519)
 
 [node name="cameraController" parent="group4" instance=ExtResource("32_581hb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.013, 19.18, -132.095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.80714, 19.18, -152.4684)
 newCameraDistance = 13.0
 rate = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group4/cameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.151306, 31.4001, -23.930206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3571625, 31.4001, -3.5568085)
 shape = SubResource("BoxShape3D_71q2h")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="group4/cameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.53531, 54.0569, -75.5547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.258835, 54.0569, -55.181305)
 shape = SubResource("BoxShape3D_fop6s")
 debug_color = Color(1, 1, 1, 1)
 
@@ -4475,11 +4641,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7155, 5.72205e-06, 3.97805
 size = Vector3(20, 20, 20)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group4/skateCSG/base"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 10, 10)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+layers = 1
+sorting_offset = 0.0
+sorting_use_aabb_center = true
+material_override = null
+material_overlay = null
+transparency = 0.0
+cast_shadow = 1
+extra_cull_margin = 0.0
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+lod_bias = 1.0
+ignore_occlusion_culling = false
+gi_mode = 1
+gi_lightmap_texel_scale = 1.0
+visibility_range_begin = 0.0
+visibility_range_begin_margin = 0.0
+visibility_range_end = 0.0
+visibility_range_end_margin = 0.0
+visibility_range_fade_mode = 0
 operation = 2
+calculate_tangents = true
+use_collision = false
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+flip_faces = false
 radius = 10.0
 height = 20.0
 sides = 24
+cone = false
+smooth_faces = true
+material = null
+script = null
 
 [node name="corner" type="CSGSphere3D" parent="group4/skateCSG/base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)

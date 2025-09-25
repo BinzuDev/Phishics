@@ -70,7 +70,8 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Heyaaaaa!!                  
 Welcome to Phishics!"
-code = "ScoreManager.hide()"
+JFG_animation = "tuto_talk"
+code = "DialogueManager.show_jfg(true)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_kx2g6"]
@@ -137,6 +138,7 @@ name = "Jelly Fishgirl"
 text = "See that ramp over there?
 Try building up enough speed to cross the gap!
 "
+JFG_animation = "tuto_point"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_bu5na"]
@@ -887,7 +889,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform11" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-1.70086e-06, 0, -8.59321, -25.1517, 2.61378, 2.42798e-07, 29.6893, 2.2143, -2.86602e-07, 6.37914, 1.01548, -233.839)
+transform = Transform3D(-1.70086e-06, 0, -8.59321, -25.1517, 2.7604477, 2.42798e-07, 29.6893, 2.3385515, -2.86602e-07, 6.37914, 1.191351, -233.69002)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -926,7 +928,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform17" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-3.61519e-07, 0, -8.36613, 0, 15.3636, 0, 8.27056, 0, -3.65696e-07, 6.33418, 7.21183, -251.712)
+transform = Transform3D(-3.61519e-07, 0, -8.36613, 0, 15.3636, 0, 8.27056, 0, -3.65696e-07, 6.33, 7.46, -251.53)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -1020,7 +1022,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6435, 39.1783, -304.802)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3502, 39.1783, -302.893)
 
 [node name="worm13" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46781, 2.47873, -240.735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.736897, 2.47873, -240.735)
+
+[node name="worm15" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2445507, 2.47873, -240.735)
+
+[node name="worm16" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4170842, 2.47873, -240.735)
 
 [node name="worm14" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79322, 23.8722, -306.1)

@@ -31,11 +31,10 @@ func _physics_process(_delta: float) -> void:
 		var pitch = AudioServer.get_bus_effect(4,0)
 		pitch.pitch_scale = clamp(distance*0.5 +0.4, 0.5, 1) #music slow down
 		
-		var zoom = 80 - (25 - clamp(distance*25, 0, 25) )
+		var zoom = 85 - (25 - clamp(distance*25, 0, 25) )
 		get_tree().get_first_node_in_group("camera").fov = zoom
 		#print("distance: ", distance, " pitch: ", pitch.pitch_scale)
 		
-
 		
 	
 	## Animation
