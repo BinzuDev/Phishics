@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://d003wfuaw73ku"]
+[gd_scene load_steps=22 format=3 uid="uid://d003wfuaw73ku"]
 
-[ext_resource type="Texture2D" uid="uid://dks0ap6uq64p2" path="res://Sprites/Garden Eel/garden eel.png" id="1_h3c62"]
 [ext_resource type="Script" uid="uid://ckayq0dd14upk" path="res://Objects/eel.gd" id="2_f2cti"]
+[ext_resource type="Texture2D" uid="uid://h7dhlu128sc" path="res://Sprites/Garden Eel/eel_head.png" id="2_kqlh1"]
 [ext_resource type="Texture2D" uid="uid://duvmiscmbnnfu" path="res://Sprites/Garden Eel/scope.png" id="2_orarh"]
 [ext_resource type="Shader" uid="uid://c8cu0s3x2qypc" path="res://Shaders/scope_mask.gdshader" id="4_2ec3g"]
 [ext_resource type="AudioStream" uid="uid://cie8tuyw05cnm" path="res://Sounds/scope/scope open.ogg" id="4_8q0io"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d721sx4b04ep" path="res://Sounds/scope/scope close2.ogg" id="6_3o7ct"]
 [ext_resource type="Texture2D" uid="uid://8hmebvbh1xqp" path="res://Textures/scope_overlay.png" id="6_8q0io"]
 [ext_resource type="AudioStream" uid="uid://yq6okvtmi78h" path="res://Sounds/scope/scope close3.ogg" id="8_ujmdm"]
+[ext_resource type="Texture2D" uid="uid://omd54fh2yfyl" path="res://Sprites/Garden Eel/eel_body.png" id="9_uscsh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvi72"]
 random_pitch = 1.2
@@ -135,15 +136,18 @@ process_priority = 1
 process_physics_priority = 1
 script = ExtResource("2_f2cti")
 
-[node name="eel_sprite" type="Sprite3D" parent="."]
+[node name="eel_sprite" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
-offset = Vector2(-80, 900)
+
+[node name="eel_head" type="Sprite3D" parent="eel_sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024168491, 0, 0)
+offset = Vector2(-15, 1509)
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_h3c62")
+texture = ExtResource("2_kqlh1")
 
 [node name="scope" type="Sprite3D" parent="eel_sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.840469, 16.9001, 0.0721474)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84288585, 16.9001, 0.0721474)
 alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("2_orarh")
@@ -159,16 +163,23 @@ stream = SubResource("AudioStreamRandomizer_3o7ct")
 bus = &"soundEffects"
 
 [node name="fish_pos" type="Node3D" parent="eel_sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549628, 17.138, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54721117, 17.138, 0)
 
-[node name="eel_sprite_extended" type="Sprite3D" parent="eel_sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.94, 0)
-offset = Vector2(-80, 900)
+[node name="eel_body1" type="Sprite3D" parent="eel_sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01758315, -0.5, 0)
+centered = false
+offset = Vector2(-10.93, -0.22)
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_h3c62")
-region_enabled = true
-region_rect = Rect2(0, 613.573, 800, 1286.43)
+texture = ExtResource("9_uscsh")
+
+[node name="eel_body2" type="Sprite3D" parent="eel_sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5, 0)
+centered = false
+offset = Vector2(-9.18, -0.16)
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("9_uscsh")
 
 [node name="appear" type="Area3D" parent="."]
 collision_layer = 0

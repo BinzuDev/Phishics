@@ -70,14 +70,16 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Heyaaaaa!!                  
 Welcome to Phishics!"
-JFG_animation = "tuto_talk"
+JFG_animation = "tuto_hello"
 code = "DialogueManager.show_jfg(true)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_kx2g6"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Say, Mr Fish, it looks like you don't know how to swim, right?"
+text = "Say, Mr Fish...                     
+It looks like you don't know how to swim, right?"
+JFG_animation = "tuto_talk"
 code = "print(\"this code run from a cutscene\")"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -96,7 +98,7 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_m0lrx"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wqju"]
-size = Vector3(11.5216, 3.86565, 10.1921)
+size = Vector3(11.5216, 2.6936893, 10.1921)
 
 [sub_resource type="Resource" id="Resource_ilxjc"]
 script = ExtResource("10_3hhjp")
@@ -147,6 +149,7 @@ cameraOverride = NodePath("Camera3DCam")
 automaticStart = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_3p1xt")])
+codePostDialogue = "DialogueManager.show_jfg(false)"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_so4kt"]
@@ -161,6 +164,7 @@ name = "Jelly Fishgirl"
 text = "Very goooood!!
 Look at youuuu!!!
 "
+code = "DialogueManager.show_jfg(true)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_to5w2"]
@@ -394,7 +398,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_0xeif")
 
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35052, 12.529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, 12.529)
 gravity_scale = 1.5
 canJump = false
 noScoreUI = true
@@ -538,7 +542,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, 1.55035, -0.454178)
 dialogue = SubResource("Resource_l8sr5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialIntro"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4949, -2.29813, 12.7362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4949, -2.8841105, 12.7362)
 shape = SubResource("BoxShape3D_4wqju")
 debug_color = Color(0, 0, 0, 1)
 

@@ -13,3 +13,5 @@ class_name Dialogue extends Resource
 @export var runOnlyOnce : bool = false
 ##List of all the textboxes within this dialogue sequence
 @export var messages : Array[textBoxSettings]
+##Run code after closing the textbox
+@export_multiline var codePostDialogue : String

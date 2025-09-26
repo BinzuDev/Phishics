@@ -21,7 +21,7 @@ func _process(_delta):
 	if !$textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
 		isRunning = false        #start a dialogue with the same input used to end another one
 	
-	$SubViewport.size = DisplayServer.window_get_size()
+	$SubViewport.size = DisplayServer.window_get_size() #jfg
 	
 	
 	$enterTip/Control.visible = !isRunning #dont show prompt if textbox active
@@ -42,7 +42,8 @@ func _process(_delta):
 	if timer % 2 == 0 and !finished:
 		if text.length() == 0:
 			text += " " #in case you make it empty so it dont crash
-		%textBox.text += text[chara]
+		#%textBox.text += text[chara]
+		%textBox.visible_characters += 1
 		chara += 1
 		if chara == text.length():
 			finished = true
@@ -52,11 +53,13 @@ func _process(_delta):
 			continue_dialogue()
 	#Skip text button
 	if !finished and Input.is_action_just_pressed("confirm") and chara > 3:
-		%textBox.text = text
+		#%textBox.text = text
+		%textBox.visible_characters = text.length()
 		finished = true
 	#Instant text boxes
 	if !finished and currentDialogue.messages[textBoxIndex].instant:
-		%textBox.text = text
+		#%textBox.text = text
+		%textBox.visible_characters = text.length()
 		finished = true
 	
 
@@ -86,12 +89,7 @@ func continue_dialogue():
 		return
 	var code = currentDialogue.messages[textBoxIndex].code
 	if code != "":
-		var script = GDScript.new()
-		script.set_source_code("func eval():" + code)
-		script.reload()
-		var ref = RefCounted.new()
-		ref.set_script(script)
-		ref.eval()
+		run_code(code)
 	var jfg = currentDialogue.messages[textBoxIndex].JFG_animation
 	if jfg != "":
 		$SubViewport/jelly_fish_girl_IK.play_animation(jfg)
@@ -114,7 +112,9 @@ func set_text(newText: String):
 	text = newText
 	finished = false
 	chara = 0
-	%textBox.text = ""
+	#%textBox.text = ""
+	%textBox.text = text
+	%textBox.visible_characters = 0
 
 func end_textbox():
 	if currentDialogue.keepOnScreenAfterEnd:
@@ -123,6 +123,8 @@ func end_textbox():
 		$textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
+	if currentDialogue.codePostDialogue != "":
+		run_code(currentDialogue.codePostDialogue)
 
 
 func reset():
@@ -136,6 +138,16 @@ func reset():
 	coolDown = 0
 	$textBoxControl.visible = false
 	$enterTip.visible = false
+
+
+func run_code(newCode:String):
+	var script = GDScript.new()
+	script.set_source_code("func eval():" + newCode)
+	script.reload()
+	var ref = RefCounted.new()
+	ref.set_script(script)
+	ref.eval()
+
 
 
 func set_position(newPos : Vector2):

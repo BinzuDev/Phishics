@@ -160,14 +160,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Textbox texthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+text = "1
 2
 3
 4
 5"
 label_settings = SubResource("LabelSettings_k6lpl")
-autowrap_mode = 1
+autowrap_mode = 2
 clip_text = true
+visible_characters_behavior = 1
 
 [node name="textBoxMargin" type="MarginContainer" parent="textBoxControl"]
 unique_name_in_owner = true

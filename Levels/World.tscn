@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=130 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -328,6 +328,9 @@ size = Vector3(2.24, 1, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dcke8"]
 points = PackedVector3Array(-1.12, 0.5, 0.5, 1.12, -0.5, 0.5, -1.12, 0.5, -0.5, -1.12, -0.5, 0.5, 1.12, -0.5, -0.5, -1.12, -0.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngj88"]
+size = Vector3(7.5113525, 1, 16.069473)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvw3a"]
 size = Vector3(41.5679, 16.195, 16.4041)
 
@@ -339,6 +342,18 @@ size = Vector3(30.6068, 17.7794, 19.6494)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_grwv0"]
 size = Vector3(7.07935, 3.20593, 13.6348)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvfdy"]
+shading_mode = 0
+albedo_color = Color(0, 0.021333313, 0.16, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ie2ey"]
+size = Vector2(23, 70)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_kvfdy"]
+size = Vector2(10, 10)
+orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_28m7t"]
 size = Vector3(17.6213, 11.3783, 46.5079)
@@ -382,6 +397,9 @@ func _process(delta):
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb77i"]
 size = Vector3(9.73267, 1, 29.8836)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hfp4"]
+size = Vector3(9.73267, 1, 8.035489)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vok04"]
 size = Vector3(11.8297, 13.2959, 1.35788)
@@ -2835,12 +2853,12 @@ strength = 19.0
 targetableByHoming = false
 
 [node name="BoostRing30" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-0.642521, -0.766268, 7.96019e-08, -0.766268, 0.642521, 3.61426e-08, -7.88407e-08, -3.77741e-08, -1, 126.7, 36.5726, -26.1097)
+transform = Transform3D(-0.56726986, -0.8235319, 7.96019e-08, -0.8235319, 0.56726986, 3.61426e-08, -7.492023e-08, -4.505219e-08, -1, 127.079956, 36.573227, -26.16985)
 priority = 1
 centerPlayer = true
 
 [node name="BoostRing32" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 117.02, 46.4438, -26.1897)
+transform = Transform3D(-0.997276, -0.07376038, -8.74228e-08, -0.07376038, 0.997276, 0, 8.718466e-08, 6.448339e-09, -1, 117.02, 46.4438, -26.1897)
 centerPlayer = true
 
 [node name="BoostRing13" parent="group2" instance=ExtResource("9_2uuim")]
@@ -2857,6 +2875,19 @@ strength = 20.0
 [node name="BoostRing16" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(1.92604e-05, 0.000417194, -0.999999, -0.965948, 0.258735, 8.93298e-05, 0.258735, 0.965947, 0.000407973, 41.2633, 36.6514, -36.4613)
 strength = 18.0
+
+[node name="HomingBlocker" type="Area3D" parent="group2"]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999875, 0, 0, 0, 0.99999905, 121.12248, 36.98285, -25.653042)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/HomingBlocker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2003784, 0, -0.84895897)
+shape = SubResource("BoxShape3D_ngj88")
+debug_color = Color(1, 0.8333334, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="group2/HomingBlocker"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 0, 1, 2.1704102, 2.9470062, -0.84895897)
+shape = SubResource("BoxShape3D_ngj88")
+debug_color = Color(1, 0.8333334, 0, 1)
 
 [node name="seeweed2" type="Node3D" parent="group2"]
 transform = Transform3D(0.254751, 0, -0.0112651, 0, 0.320987, 0, 0.0112651, 0, 0.254751, 18.0916, 5.12763, 28.5554)
@@ -3098,103 +3129,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.068, 8.76631, 6.88112)
 size = Vector3(42.9544, 19.3458, 17.6194)
 
 [node name="CSGCylinder3D" parent="group2/frickingAwesomeTube" index="1"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -8.79668, 7.54758, 6.83362)
-rotation_edit_mode = 0
-rotation_order = 2
-top_level = false
-visible = true
-visibility_parent = NodePath("")
-layers = 1
-sorting_offset = 0.0
-sorting_use_aabb_center = true
-material_override = null
-material_overlay = null
-transparency = 0.0
-cast_shadow = 1
-extra_cull_margin = 0.0
-custom_aabb = AABB(0, 0, 0, 0, 0, 0)
-lod_bias = 1.0
-ignore_occlusion_culling = false
-gi_mode = 1
-gi_lightmap_texel_scale = 1.0
-visibility_range_begin = 0.0
-visibility_range_begin_margin = 0.0
-visibility_range_end = 0.0
-visibility_range_end_margin = 0.0
-visibility_range_fade_mode = 0
-calculate_tangents = true
-use_collision = false
-collision_layer = 1
-collision_mask = 1
-collision_priority = 1.0
-flip_faces = false
 height = 45.8006
-cone = false
-smooth_faces = true
-material = null
-script = null
 
 [node name="BoostRing24" parent="group2/frickingAwesomeTube" index="25"]
 transform = Transform3D(0.607652, -0.350828, 0.712516, 0.5, 0.866025, 0, -0.617057, 0.356258, 0.701655, -24.0526, 5.25, 1.71001)
 targetableByHoming = false
 
 [node name="tophole" type="CSGCylinder3D" parent="group2/frickingAwesomeTube"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.32, 15.3845, 7.3)
-rotation_edit_mode = 0
-rotation_order = 2
-top_level = false
-visible = true
-visibility_parent = NodePath("")
-layers = 1
-sorting_offset = 0.0
-sorting_use_aabb_center = true
-material_override = null
-material_overlay = null
-transparency = 0.0
-cast_shadow = 1
-extra_cull_margin = 0.0
-custom_aabb = AABB(0, 0, 0, 0, 0, 0)
-lod_bias = 1.0
-ignore_occlusion_culling = false
-gi_mode = 1
-gi_lightmap_texel_scale = 1.0
-visibility_range_begin = 0.0
-visibility_range_begin_margin = 0.0
-visibility_range_end = 0.0
-visibility_range_end_margin = 0.0
-visibility_range_fade_mode = 0
 operation = 2
-calculate_tangents = true
-use_collision = false
-collision_layer = 1
-collision_mask = 1
-collision_priority = 1.0
-flip_faces = false
 radius = 2.06299
 height = 6.42916
 sides = 32
-cone = false
-smooth_faces = true
-material = null
-script = null
 metadata/_edit_lock_ = true
 
 [node name="BoostRing25" parent="group2/frickingAwesomeTube" instance=ExtResource("9_2uuim")]
@@ -3322,7 +3269,7 @@ shape = SubResource("BoxShape3D_m3j4o")
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 63.612, 43.3847, -51.1557)
 
 [node name="Basketballhoop2" parent="highUpSection" instance=ExtResource("11_vbdqq")]
-transform = Transform3D(1.18021e-07, 0, -0.9, 0, 0.9, 0, 0.9, 0, 1.18021e-07, 148.995, 44.6103, -26.0974)
+transform = Transform3D(1.18021e-07, 0, -0.9, 0, 0.9, 0, 0.9, 0, 1.18021e-07, 149.37967, 44.6103, -26.1696)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Basketballhoop2"]
 
@@ -3710,7 +3657,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform7" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(23.311, 0, 0, 0, 20.0182, 0, 0, 0, 79.8456, 174.54, -0.722316, -30.5865)
+transform = Transform3D(23.311, 0, 0, 0, 20.0182, 0, 0, 0, 79.8456, 174.54, -0.74, -30.59)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -3765,7 +3712,7 @@ skeleton = NodePath("../..")
 shape = SubResource("SphereShape3D_wvw3a")
 
 [node name="sphere6" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 195.247, 11.2421, -40.09)
+transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 195.72406, 11.2421, -40.09)
 material_override = SubResource("StandardMaterial3D_myu2g")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("SphereMesh_dcke8")
@@ -3800,7 +3747,7 @@ centerPlayer = true
 targetableByHoming = false
 
 [node name="destructable_sign" parent="group3" instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 3.44589e-08, 4.65661e-09, 6.33299e-08, 1, 0, -1, -1.2666e-07, 165.777, 20.6658, -27.6884)
+transform = Transform3D(1, 0, 3.44589e-08, 4.65661e-09, 6.33299e-08, 1, 0, -1, -1.2666e-07, 165.64384, 20.6658, -27.6884)
 signSprite = "uid://bopnbyxyecen8"
 
 [node name="half pipe" type="CSGCombiner3D" parent="group3"]
@@ -3808,6 +3755,36 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 180.96
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 use_collision = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="group3/half pipe"]
+transform = Transform3D(-4.3711392e-08, 0, 1.0000006, 0, 0.9999999, 0, -0.9999998, 0, -4.3711424e-08, 20.481293, 1.3999996, 6.3200073)
+material_override = SubResource("StandardMaterial3D_kvfdy")
+mesh = SubResource("QuadMesh_ie2ey")
+skeleton = NodePath("../../sign5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="group3/half pipe"]
+transform = Transform3D(1.9106857e-15, -4.3711395e-08, 1.0000006, -0.9999998, -4.3711385e-08, 3.5527137e-15, 4.371138e-08, -0.9999999, -4.371142e-08, 20.48, 1.23, 17.36)
+material_override = SubResource("StandardMaterial3D_kvfdy")
+mesh = SubResource("QuadMesh_ie2ey")
+skeleton = NodePath("../../sign5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="group3/half pipe"]
+transform = Transform3D(-5.732057e-15, 4.37114e-08, 1.0000006, 0.9999998, 1.3113416e-07, -3.5527137e-15, -1.3113414e-07, 0.9999999, -4.371143e-08, 20.48, 1.2300005, -4.479721)
+material_override = SubResource("StandardMaterial3D_kvfdy")
+mesh = SubResource("QuadMesh_ie2ey")
+skeleton = NodePath("../../sign5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="group3/half pipe"]
+transform = Transform3D(-1.567158e-07, 0.9999999, -7.915522e-08, 0.8108594, 8.07497e-08, -0.58524114, -0.58524066, -1.5590021e-07, -0.8108601, 11.458508, 4.269948, -6.027664)
+material_override = SubResource("StandardMaterial3D_kvfdy")
+mesh = SubResource("QuadMesh_kvfdy")
+skeleton = NodePath("../../sign5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="group3/half pipe"]
+transform = Transform3D(-1.4219671e-07, 0.9999999, -8.599977e-08, 0.9674443, 1.15802415e-07, -0.25308272, -0.2530825, -1.19187476e-07, -0.96744514, 11.458508, 6.001972, -6.4288025)
+material_override = SubResource("StandardMaterial3D_kvfdy")
+mesh = SubResource("QuadMesh_kvfdy")
+skeleton = NodePath("../../sign5")
 
 [node name="base" type="CSGBox3D" parent="group3/half pipe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0413, 1.40884, 7.61407)
@@ -3826,53 +3803,11 @@ radius = 8.855
 radial_segments = 32
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group3/half pipe"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 2.49581, 10.2715, 6.83362)
-rotation_edit_mode = 0
-rotation_order = 2
-top_level = false
-visible = true
-visibility_parent = NodePath("")
-layers = 1
-sorting_offset = 0.0
-sorting_use_aabb_center = true
-material_override = null
-material_overlay = null
-transparency = 0.0
-cast_shadow = 1
-extra_cull_margin = 0.0
-custom_aabb = AABB(0, 0, 0, 0, 0, 0)
-lod_bias = 1.0
-ignore_occlusion_culling = false
-gi_mode = 1
-gi_lightmap_texel_scale = 1.0
-visibility_range_begin = 0.0
-visibility_range_begin_margin = 0.0
-visibility_range_end = 0.0
-visibility_range_end_margin = 0.0
-visibility_range_fade_mode = 0
 operation = 2
-calculate_tangents = true
-use_collision = false
-collision_layer = 1
-collision_mask = 1
-collision_priority = 1.0
-flip_faces = false
 radius = 8.85547
 height = 29.8902
 sides = 32
-cone = false
-smooth_faces = true
-material = null
-script = null
 
 [node name="ball_mode_area" parent="group3/half pipe" instance=ExtResource("42_rneqk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.36192, 2.33716, 2.98257)
@@ -3918,53 +3853,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 size = Vector3(20, 20, 20)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group3/quarterPipe/base"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 10, 10)
-rotation_edit_mode = 0
-rotation_order = 2
-top_level = false
-visible = true
-visibility_parent = NodePath("")
-layers = 1
-sorting_offset = 0.0
-sorting_use_aabb_center = true
-material_override = null
-material_overlay = null
-transparency = 0.0
-cast_shadow = 1
-extra_cull_margin = 0.0
-custom_aabb = AABB(0, 0, 0, 0, 0, 0)
-lod_bias = 1.0
-ignore_occlusion_culling = false
-gi_mode = 1
-gi_lightmap_texel_scale = 1.0
-visibility_range_begin = 0.0
-visibility_range_begin_margin = 0.0
-visibility_range_end = 0.0
-visibility_range_end_margin = 0.0
-visibility_range_fade_mode = 0
 operation = 2
-calculate_tangents = true
-use_collision = false
-collision_layer = 1
-collision_mask = 1
-collision_priority = 1.0
-flip_faces = false
 radius = 10.0
 height = 20.0
 sides = 24
-cone = false
-smooth_faces = true
-material = null
-script = null
 
 [node name="corner" type="CSGSphere3D" parent="group3/quarterPipe"]
 radius = 10.0
@@ -4014,7 +3907,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="sign5" type="Node3D" parent="group3"]
-transform = Transform3D(0.919266, -0.153849, 0.362326, 0.0937729, 0.979549, 0.178017, -0.382304, -0.129669, 0.914894, 208.983, 20.2453, -41.6254)
+transform = Transform3D(0.919266, -0.153849, 0.362326, 0.0937729, 0.979549, 0.178017, -0.382304, -0.129669, 0.914894, 206.96451, 20.2453, -44.293774)
 metadata/_edit_group_ = true
 
 [node name="streetsign" parent="group3/sign5" instance=ExtResource("19_28m7t")]
@@ -4308,15 +4201,15 @@ script = SubResource("GDScript_bmonc")
 
 [node name="Mine2" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.634506, 12.299305, -22.886307)
-explosionStrength = 1875
+explosionStrength = 999
 explosionRadius = 50.0
-knockbackMultiplier = 1.5
+knockbackMultiplier = 0.7999999999999999
 
 [node name="Mine3" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.414383, 12.299306, -22.37239)
-explosionStrength = 1875
+explosionStrength = 999
 explosionRadius = 50.0
-knockbackMultiplier = 1.5
+knockbackMultiplier = 0.7999999999999999
 
 [node name="strike_zone4" parent="group3" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.727, 19.4595, -53.4845)
@@ -4344,6 +4237,11 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/homingBlocker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69089, 7.62939e-06, -2.90917)
 shape = SubResource("BoxShape3D_wb77i")
+debug_color = Color(1, 0.983333, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="group3/homingBlocker"]
+transform = Transform3D(1, 0, 0, 0, 0.90115273, -0.43350184, 0, 0.43350184, 0.90115273, 4.0492096, -12.2003765, -11.349403)
+shape = SubResource("BoxShape3D_1hfp4")
 debug_color = Color(1, 0.983333, 0, 1)
 
 [node name="homingBlocker2" type="Area3D" parent="group3"]
@@ -4511,9 +4409,9 @@ bounceForce = 31
 hSpeedMultiplier = 0.1
 
 [node name="Jellyfish8" parent="2Darea" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 36.4085, 0.412792, -49.4228)
-bounceForce = 15
-hSpeedMultiplier = 1.5
+transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 37.499886, 0.41279194, -49.4228)
+bounceForce = 12
+hSpeedMultiplier = 1.3
 
 [node name="hook" parent="2Darea" instance=ExtResource("15_rk5xy")]
 transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 78.385, 12.0798, -34.2878)
@@ -4641,53 +4539,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7155, 5.72205e-06, 3.97805
 size = Vector3(20, 20, 20)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group4/skateCSG/base"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 10, 10)
-rotation_edit_mode = 0
-rotation_order = 2
-top_level = false
-visible = true
-visibility_parent = NodePath("")
-layers = 1
-sorting_offset = 0.0
-sorting_use_aabb_center = true
-material_override = null
-material_overlay = null
-transparency = 0.0
-cast_shadow = 1
-extra_cull_margin = 0.0
-custom_aabb = AABB(0, 0, 0, 0, 0, 0)
-lod_bias = 1.0
-ignore_occlusion_culling = false
-gi_mode = 1
-gi_lightmap_texel_scale = 1.0
-visibility_range_begin = 0.0
-visibility_range_begin_margin = 0.0
-visibility_range_end = 0.0
-visibility_range_end_margin = 0.0
-visibility_range_fade_mode = 0
 operation = 2
-calculate_tangents = true
-use_collision = false
-collision_layer = 1
-collision_mask = 1
-collision_priority = 1.0
-flip_faces = false
 radius = 10.0
 height = 20.0
 sides = 24
-cone = false
-smooth_faces = true
-material = null
-script = null
 
 [node name="corner" type="CSGSphere3D" parent="group4/skateCSG/base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)

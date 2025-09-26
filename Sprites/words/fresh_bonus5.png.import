@@ -2,21 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4xfolklfvbhn"
-path="res://.godot/imported/fresh_bonus1.png-8637342af5b3b1e0ea10e2b172f1dac5.ctex"
+uid="uid://36vi63vqf8i2"
+path.bptc="res://.godot/imported/fresh_bonus5.png-34240d2370323cdeb307018a5a1b6cbd.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Sprites/words/fresh_bonus1.png"
-dest_files=["res://.godot/imported/fresh_bonus1.png-8637342af5b3b1e0ea10e2b172f1dac5.ctex"]
+source_file="res://Sprites/words/fresh_bonus5.png"
+dest_files=["res://.godot/imported/fresh_bonus5.png-34240d2370323cdeb307018a5a1b6cbd.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

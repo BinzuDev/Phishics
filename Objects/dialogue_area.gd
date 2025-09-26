@@ -13,7 +13,7 @@ func _ready():
 		printerr("you forgot to fill the dialogue export!!!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !dialogue:
 		return
 	
@@ -50,10 +50,10 @@ func start_dialogue():
 	
 
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	DialogueManager.show_prompt(false)
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if !dialogue.automaticStart:
 		DialogueManager.show_prompt(true)
