@@ -448,7 +448,7 @@ environment = SubResource("Environment_v72nc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.90335, 0.7761078, 16.171192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.087868, 31.013958, 69.3061)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]

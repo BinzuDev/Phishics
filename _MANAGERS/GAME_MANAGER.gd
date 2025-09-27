@@ -73,6 +73,7 @@ func _process(_delta):
 	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner())
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	gameTimer += 1
+	
 	if Input.is_action_just_pressed("pause"):
 		if disableMenuControl == false:
 			toggle_pause()

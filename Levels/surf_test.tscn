@@ -217,7 +217,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.266973, 120.287964, 75.95333)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.143922, 120.37161, 78.23588)
 gravity_scale = 1.5
 
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
@@ -232,7 +232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0569, 119.266, 65.4554)
 signSprite = "uid://2jdkufiby1by"
 
 [node name="destructable_sign10" parent="." instance=ExtResource("3_wstlt")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.2753525, 119.40921, 65.18611)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.019517, 118.407936, 65.18756)
 signSprite = "uid://bopnbyxyecen8"
 
 [node name="destructable_sign2" parent="." instance=ExtResource("3_wstlt")]

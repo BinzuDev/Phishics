@@ -44,6 +44,7 @@ var isHalfPiping : bool = false
 var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a combo
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
+var brakeJump : bool = false
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -70,8 +71,8 @@ func _ready() -> void:
 		ScoreManager.hide()
 	
 
+
 func _physics_process(_delta: float) -> void:
-	
 	var accel = ACCEL
 	if surfMode:
 		accel = SURFACCEL
@@ -595,15 +596,31 @@ func _physics_process(_delta: float) -> void:
 		surfSparkRate = clamp( (linear_velocity.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
 		%surfSparks.amount_ratio = surfSparkRate
 		
+		##Braking/Drifting
+		if surfState == "Normal surfing" and Input.is_action_pressed("dive") and $surfPivot.global_transform.basis.y.y > 0.5:
+			apply_central_force(linear_velocity*-3)
+			%brakingPivot.rotation_degrees.x = 20
+			%surfSparks.emitting = true
+			%surfSparks.speed_scale *= 2
+			%surfSparks.amount_ratio *= 2
+			if Input.is_action_just_pressed("jump"):
+				brakeJump = true
+		else:
+			%brakingPivot.rotation.x = 0
+		
+		
+		
+		
+		
 		#audio
 		if skateboardSurf:
 			$skateboarding.volume_linear = clamp(linear_velocity.length()*0.02 -0.02, 0, 0.3)
-			$skateboarding.pitch_scale = clamp(0.5 + linear_velocity.length()/30, 0.5, 2)
+			$skateboarding.pitch_scale = clamp(0.5 + linear_velocity.length()/30, 0.8, 2)
 		else:
 			$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
 			$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
 		#print("v: ", $skateboarding.volume_linear, "  p: ", $skateboarding.pitch_scale)
-		
+		#print($skateboarding.pitch_scale)
 		
 		
 		#leaning
@@ -626,8 +643,8 @@ func _physics_process(_delta: float) -> void:
 		#bs so that we can know the speed you had BEFORE you landed
 		fallSpeeds.append(linear_velocity.y)
 		fallSpeeds.remove_at(0)
-		if linear_velocity.y < -1: 
-			print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
+		#if linear_velocity.y < -1: 
+		#	print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
 		
 		
 		if %canSurf.is_colliding(): #the one thats always pointing globally down
@@ -651,9 +668,10 @@ func _physics_process(_delta: float) -> void:
 		
 		if surfJumpLastFrame and surfState != "Jumping":
 			if !$skateLanding.playing and linear_velocity.y < -1:
-				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 4)
+				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 3)
 				$skateLanding.play()
 				printerr("PLAY LANDING ", $skateLanding.volume_linear)
+		
 		
 		
 		##Surfing or non-halfpipe jump
@@ -668,6 +686,14 @@ func _physics_process(_delta: float) -> void:
 			inputHistory = ["","",""]
 			
 		else: ##Rotating in the air
+			
+			if brakeJump == true:
+				brakeJump = false
+				surfRotationType = "backFlip"
+				if angular_velocity.length() < 100:
+					angular_velocity *= 100/angular_velocity.length()
+				printerr("BACKFLIP IDIOT")
+			
 			
 			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping:
 				if surfState == "Jumping" and linear_velocity.y > 20:
@@ -702,7 +728,7 @@ func _physics_process(_delta: float) -> void:
 				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.y, spinSpeed)
 				ScoreManager.airSpinAmount += abs(rad_to_deg(spinSpeed))
 			if surfRotationType == "frontFlip" or surfRotationType == "backFlip":
-				if surfRotationType == "backFlip":
+				if surfRotationType == "frontFlip":
 					spinSpeed *= -1
 				$surfPivot.global_transform.basis = curBasis.rotated(curBasis.x, spinSpeed)
 				ScoreManager.airSpinAmount += abs(rad_to_deg(spinSpeed))
@@ -817,8 +843,8 @@ func _physics_process(_delta: float) -> void:
 	floor normal: ", floor_normal, "
 	y.y basis: ", $surfPivot.global_transform.basis.y.y, "
 	spinBoostBonus: ", spinBoostBonus, "\n",
-	"spark speed: ", surfSparkSpd, "\n",
-	"spark rate: ", surfSparkRate, "\n",)
+	"spark speed: ", %surfSparks.speed_scale, "\n",
+	"spark rate: ", %surfSparks.amount_ratio, "\n",)
 	
 	
 	%debugLabel.text = str(
@@ -931,12 +957,12 @@ func updateInputHistory():
 			surfRotationType = "rightFlip"
 			newTrick = true
 	if inputHistory == ["down", "up", "down"]:
-		if surfRotationType != "backFlip":
-			surfRotationType = "frontFlip"
-			newTrick = true
-	if inputHistory == ["up", "down", "up"]:
 		if surfRotationType != "frontFlip":
 			surfRotationType = "backFlip"
+			newTrick = true
+	if inputHistory == ["up", "down", "up"]:
+		if surfRotationType != "backFlip":
+			surfRotationType = "frontFlip"
 			newTrick = true
 	if inputHistory == ["right", "left", "right"]:
 		if surfRotationType != "counterClockwise":
