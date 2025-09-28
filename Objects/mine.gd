@@ -65,9 +65,11 @@ func _on_mine_touched(body: Node3D) -> void:
 	
 
 ## Start the pin clicking animation
-func activate_mine():
+func activate_mine(chainReaction:bool = false):
 	if !isExploding and !$AnimationPlayer.is_playing():
 		$AnimationPlayer.play("click")
+		if chainReaction:
+			ScoreManager.give_points(0, 2, true, "CHAIN REACTION")
 		
 
 
@@ -84,7 +86,7 @@ func _on_animation_finished(_anim_name):
 	
 	for otherArea in $boomArea.get_overlapping_areas(): #explode any area on layer 7
 		if otherArea.get_parent() is Mine:
-			otherArea.get_parent().activate_mine()
+			otherArea.get_parent().activate_mine(true)
 			
 		if otherArea.get_parent() is bowlingPins:
 			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins

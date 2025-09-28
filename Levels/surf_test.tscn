@@ -145,8 +145,8 @@ material_overlay = ExtResource("2_wstlt")
 use_collision = true
 
 [node name="base" type="CSGBox3D" parent="half pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3346, -30.3849, 13.2357)
-size = Vector3(300.246, 122.786, 241.423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3346, -30.3849, -116.27623)
+size = Vector3(300.246, 122.786, 500.44684)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="half pipe"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -7.00846, -5.03661, 6.83)

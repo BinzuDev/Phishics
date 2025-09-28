@@ -302,7 +302,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 100
+scroll_vertical = 7330
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 
@@ -603,6 +603,20 @@ trickName = "Homing Airshot"
 score = "x5"
 rarity = "Rare"
 description = "Use a homing attack on an airborne crab."
+
+[node name="kaboom" parent="PauseMenu/TrickList/Panel/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "KABOOM"
+score = "9999pts"
+rarity = "Uncommon"
+description = "Activate a sea mine."
+
+[node name="kaboom2" parent="PauseMenu/TrickList/Panel/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Chain reaction"
+score = "x2"
+rarity = "Uncommon"
+description = "Activate a sea mine with the explosion of another sea mine"
 
 [node name="signMechanic" parent="PauseMenu/TrickList/Panel/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2

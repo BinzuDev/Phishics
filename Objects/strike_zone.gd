@@ -44,11 +44,12 @@ func apply_force_to_rigidbodies():
 		if child is RigidBody3D:
 			var direction = child.global_transform.origin - node_center
 			child.apply_central_impulse(direction.normalized() * force_range) #apply force opposite of the center
-			child.apply_central_impulse(Vector3(0,1,0)) #up force
+			#child.apply_central_impulse(Vector3(0,1,0)) #up force
 			var randSpin = Vector3(randf_range(-1.0, 1.0),randf_range(-0.5, 0.5),randf_range(-3.0, 3.0))
 			child.apply_torque_impulse(randSpin)
 			child.gravity_scale = 1.0 #reset gravity if floating
 			child.get_node("./model").cast_shadow = true
+			child.get_node("./Collision_Bottom").disabled = true
 
 
 

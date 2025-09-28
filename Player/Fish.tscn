@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="2_j2ykt"]
 [ext_resource type="Script" uid="uid://ds6aunatkq5dv" path="res://_MANAGERS/recording_manager.gd" id="2_lt56d"]
 [ext_resource type="AudioStream" uid="uid://cksq7ka4w1bjq" path="res://Sounds/sparks/sparks_high_intensity_01.wav" id="3_dh0na"]
-[ext_resource type="Texture2D" uid="uid://df28u2lkg3puf" path="res://Sprites/signs/noSurfing.png" id="4_2owy6"]
+[ext_resource type="Texture2D" uid="uid://drxd8lqdquu0g" path="res://Sprites/signs/tri_crabwarning.png" id="4_2owy6"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="4_ie0qp"]
 [ext_resource type="AudioStream" uid="uid://dtx8330mvhty2" path="res://Sounds/sparks/sparks_high_intensity_03.wav" id="4_iujy1"]
 [ext_resource type="AudioStream" uid="uid://dr5fa44lr58yx" path="res://Sounds/sparks/sparks_medium_intensity_02.wav" id="5_div8h"]
@@ -867,39 +867,42 @@ debug_shape_thickness = 5
 
 [node name="brakingPivot" type="Node3D" parent="surfPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17, 0.75)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.17, 0.2)
 
-[node name="surfSign" type="Sprite3D" parent="surfPivot/brakingPivot"]
+[node name="counterPivot" type="Node3D" parent="surfPivot/brakingPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -0.2)
+
+[node name="surfSign" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.75)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 axis = 1
 double_sided = false
 texture = ExtResource("4_2owy6")
 
-[node name="surfSignUnder" type="Sprite3D" parent="surfPivot/brakingPivot"]
+[node name="surfSignUnder" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot"]
 unique_name_in_owner = true
-transform = Transform3D(2.18557e-08, 1.91068e-15, -0.5, 4.37114e-08, -0.5, 0, -0.5, -4.37114e-08, -2.18557e-08, 0, 0, -0.75)
+transform = Transform3D(2.18557e-08, 1.91068e-15, -0.5, 4.37114e-08, -0.5, 0, -0.5, -4.37114e-08, -2.18557e-08, 0, 0, 0)
 axis = 1
 double_sided = false
 texture = ExtResource("5_l4b1c")
 
-[node name="surfShadow" type="MeshInstance3D" parent="surfPivot/brakingPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, -0.75)
+[node name="surfShadow" type="MeshInstance3D" parent="surfPivot/brakingPivot/counterPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
 cast_shadow = 3
 mesh = SubResource("CylinderMesh_3jkku")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="fishPivot" type="Node3D" parent="surfPivot/brakingPivot"]
+[node name="fishPivot" type="Node3D" parent="surfPivot/brakingPivot/counterPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019999996, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019999996, 0)
 
-[node name="shadowMesh" type="MeshInstance3D" parent="surfPivot/brakingPivot/fishPivot"]
+[node name="shadowMesh" type="MeshInstance3D" parent="surfPivot/brakingPivot/counterPivot/fishPivot"]
 transform = Transform3D(-4.37114e-08, 7.43094e-09, 0.38, 1, 0, 1.66103e-08, 0, 0.17, -1.66103e-08, -2.51183e-08, 0.724639, -1.18023e-22)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 skeleton = NodePath("../../surfShadow")
 
-[node name="surfingFish" type="Sprite3D" parent="surfPivot/brakingPivot/fishPivot"]
+[node name="surfingFish" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/fishPivot"]
 unique_name_in_owner = true
 transform = Transform3D(3.82137e-16, -0.2, 9.17939e-09, -0.2, 1.09268e-15, 1.83588e-08, -1.74846e-08, -8.74228e-09, -0.21, 0, 0.67, 0)
 axis = 1

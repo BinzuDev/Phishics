@@ -307,6 +307,9 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 	if process_mode == PROCESS_MODE_DISABLED:
 		return #disable scoring system when the ui is hidden
 	
+	trickName = trickName.replace(" ", " ") ##REPLACES EVERY SPACE WITH A NON-BRAKING SPACE
+	
+	
 				 #let the airspin reset timer but ONLY when theres no combo yet
 	if resetTimer or (trickName == "AIRSPIN" and mult == addMult):
 		if freshState != FRESH.LOW: #spam penality

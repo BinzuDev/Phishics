@@ -599,7 +599,8 @@ func _physics_process(_delta: float) -> void:
 		##Braking/Drifting
 		if surfState == "Normal surfing" and Input.is_action_pressed("dive") and $surfPivot.global_transform.basis.y.y > 0.5:
 			apply_central_force(linear_velocity*-3)
-			%brakingPivot.rotation_degrees.x = 20
+			%brakingPivot.rotation_degrees.x = clamp(linear_velocity.length()*1.5,15, 45)
+			print(%brakingPivot.rotation_degrees.x)
 			%surfSparks.emitting = true
 			%surfSparks.speed_scale *= 2
 			%surfSparks.amount_ratio *= 2
@@ -671,11 +672,15 @@ func _physics_process(_delta: float) -> void:
 				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 3)
 				$skateLanding.play()
 				printerr("PLAY LANDING ", $skateLanding.volume_linear)
+				var force = linear_velocity
+				force.y = 0
+				apply_central_impulse(force*$surfPivot.global_transform.basis.y.y)
+				print("applying impulse of force: ", force*$surfPivot.global_transform.basis.y.y*3)
 		
 		
 		
 		##Surfing or non-halfpipe jump
-		if surfState != "Jumping":
+		if surfState != "Jumping" and linear_velocity.length() > 0.1:
 			var vel_dir = linear_velocity.normalized()
 			var forward = vel_dir.slide(floor_normal).normalized()
 			var right = forward.cross(floor_normal).normalized()
@@ -692,7 +697,6 @@ func _physics_process(_delta: float) -> void:
 				surfRotationType = "backFlip"
 				if angular_velocity.length() < 100:
 					angular_velocity *= 100/angular_velocity.length()
-				printerr("BACKFLIP IDIOT")
 			
 			
 			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping:
@@ -880,6 +884,12 @@ func activateSurfMode(sprite : String, signObj : Node):
 	%surfSign.rotation_degrees.y = 0
 	if sprite.get_file().begins_with("long_"):
 		%surfSign.rotation_degrees.y = 90
+	#Pivot point when braking
+	%brakingPivot.position.z = 0.75
+	$surfPivot/brakingPivot/counterPivot.position.z = -0.75
+	if sprite.get_file().begins_with("tri_"):
+		%brakingPivot.position.z = 0.2
+		$surfPivot/brakingPivot/counterPivot.position.z = -0.2
 	%surfSignUnder.visible = sprite.get_file().contains("skateBoard") #skateboard underside
 	%surfSign.double_sided = !%surfSignUnder.visible
 	$surfPivot.visible = true
