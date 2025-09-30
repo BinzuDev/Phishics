@@ -18,7 +18,9 @@ func set_text():
 	%description.text = description
 	%description2.text = "  " + description2
 	if description2 != "":
-		%description.text += "\n"
+		$MarginContainer3.add_theme_constant_override("margin_top", 85)
+	else:
+		$MarginContainer3.add_theme_constant_override("margin_top", 95)
 	if rarity == "Mechanic" or rarity == "Surf Combo Input":
 		%score.text = ""
 
@@ -48,6 +50,7 @@ func set_border_width(value: float):
 	add_theme_stylebox_override("panel", stylebox)
 	
 func _on_focus_entered():
+	$selectSFX.play()
 	print(name, " focus entered")
 	var tween = create_tween()
 	tween.tween_method(set_border_width, 0, 6, 0.3) \

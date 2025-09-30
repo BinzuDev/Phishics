@@ -4201,8 +4201,8 @@ script = SubResource("GDScript_bmonc")
 
 [node name="Mine2" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.634506, 12.299305, -22.886307)
-explosionStrength = 999
-explosionRadius = 50.0
+explosionStrength = 959
+explosionRadius = 48.0
 knockbackMultiplier = 0.7999999999999999
 
 [node name="Mine3" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]

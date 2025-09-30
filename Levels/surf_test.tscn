@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=35 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -11,8 +11,8 @@
 [ext_resource type="Shader" uid="uid://ddlqbkdpx3ho2" path="res://Shaders/auto_water_reflect.gdshader" id="8_jctnn"]
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_gx528"]
-[ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="12_txmry"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4rq4h"]
+[ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="13_p34o4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -132,9 +132,6 @@ uv1_world_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfxg8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_txmry"]
-size = Vector3(11.89209, 7.8325195, 6.1030884)
-
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
 
@@ -234,6 +231,10 @@ signSprite = "uid://2jdkufiby1by"
 [node name="destructable_sign10" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.019517, 118.407936, 65.18756)
 signSprite = "uid://bopnbyxyecen8"
+
+[node name="destructable_sign12" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.715063, 118.407936, 70.25408)
+signSprite = "uid://bk4qbrhxdmp14"
 
 [node name="destructable_sign2" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6432, 123.324, 53.6529)
@@ -556,32 +557,9 @@ shape = SubResource("SphereShape3D_yfxg8")
 [node name="Basketballhoop" parent="." instance=ExtResource("11_gx528")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.117529, 118.6671, 72.78833)
 
-[node name="cameraController" parent="." instance=ExtResource("12_txmry")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.118385, 119.00825, 58.548126)
-newCameraAngle = Vector3(-50, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
-shape = SubResource("BoxShape3D_txmry")
-debug_color = Color(0, 0, 0, 1)
-
-[node name="cameraController2" parent="." instance=ExtResource("12_txmry")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.54374, 119.00825, 58.548126)
-newCameraAngle = Vector3(-30, 50, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
-shape = SubResource("BoxShape3D_txmry")
-debug_color = Color(0, 0, 0, 1)
-
-[node name="cameraController3" parent="." instance=ExtResource("12_txmry")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.522001, 119.00825, 58.548126)
-newCameraAngle = Vector3(0, -90, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07006836, 3.4162598, -0.069000244)
-shape = SubResource("BoxShape3D_txmry")
-debug_color = Color(0, 0, 0, 1)
-
 [node name="BoostRing2" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(0.7198246, 0.694156, 0, -0.694156, 0.7198246, 0, 0, 0, 1, 37.505123, 122.1088, 84.79285)
+
+[node name="hook" parent="." instance=ExtResource("13_p34o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 124.518585, 70.40018)
+lineLength = 5.452883911132813

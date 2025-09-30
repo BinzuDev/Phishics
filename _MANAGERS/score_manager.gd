@@ -361,7 +361,7 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 func end_combo():
 	if mult >= 5:
 		$comboEnd.play() #play sfx only once
-	if mult >= 1:
+	if mult >= 1 and freshState != FRESH.LOW:
 		combo_end_animation()
 	finalScore += points * mult
 	styleScore += points * mult

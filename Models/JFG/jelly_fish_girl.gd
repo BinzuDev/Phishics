@@ -9,6 +9,7 @@ func _ready():
 	if !Engine.is_editor_hint(): #if not in the editor
 		if defaultAnimation:
 			play_animation(defaultAnimation)
+			print(get_parent().name, "'s jfg is starting to play ", defaultAnimation)
 		
 	if get_tree().current_scene == self:
 		print("Debug mode")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=146 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -63,6 +63,8 @@
 [ext_resource type="AudioStream" uid="uid://dqgwqu8b75vxb" path="res://Sounds/surfing/ollie4.ogg" id="59_2owy6"]
 [ext_resource type="AudioStream" uid="uid://cjcsldgm25v5e" path="res://Sounds/surfing/ollie_landing2.ogg" id="61_oe7hq"]
 [ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
+[ext_resource type="AudioStream" uid="uid://db2o8qqcqpox0" path="res://Sounds/surfing/turn2.wav" id="63_0m6um"]
+[ext_resource type="AudioStream" uid="uid://kxuu5v8dn8i8" path="res://Sounds/surfing/turn3.wav" id="64_vttj7"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -167,6 +169,68 @@ vertex_color_use_as_albedo = true
 [sub_resource type="QuadMesh" id="QuadMesh_ie0qp"]
 material = SubResource("StandardMaterial3D_lt56d")
 size = Vector2(0.07, 0.5)
+
+[sub_resource type="Animation" id="Animation_2owy6"]
+resource_name = "kick_flip"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%fishPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0.019999996, 0), Vector3(0, 1, 0), Vector3(0, 0.019999996, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%brakingPivot/counterPivot/boardPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.7, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.2831855)]
+}
+
+[sub_resource type="Animation" id="Animation_urbyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%fishPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.019999996, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%brakingPivot/counterPivot/boardPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m6um"]
+_data = {
+&"RESET": SubResource("Animation_urbyt"),
+&"kick_flip": SubResource("Animation_2owy6")
+}
 
 [sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
 radius = 0.1
@@ -728,6 +792,12 @@ streams_count = 2
 stream_0/stream = ExtResource("57_25ixj")
 stream_1/stream = ExtResource("61_oe7hq")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_23obf"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("63_0m6um")
+stream_1/stream = ExtResource("64_vttj7")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xsxx4"]
 random_pitch = 1.1
 streams_count = 1
@@ -836,6 +906,7 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
+visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
@@ -872,25 +943,27 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.17, 0
 [node name="counterPivot" type="Node3D" parent="surfPivot/brakingPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -0.2)
 
-[node name="surfSign" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot"]
+[node name="boardPivot" type="Node3D" parent="surfPivot/brakingPivot/counterPivot"]
+
+[node name="surfSign" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/boardPivot"]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 axis = 1
 double_sided = false
 texture = ExtResource("4_2owy6")
 
-[node name="surfSignUnder" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot"]
+[node name="surfSignUnder" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/boardPivot"]
 unique_name_in_owner = true
 transform = Transform3D(2.18557e-08, 1.91068e-15, -0.5, 4.37114e-08, -0.5, 0, -0.5, -4.37114e-08, -2.18557e-08, 0, 0, 0)
 axis = 1
 double_sided = false
 texture = ExtResource("5_l4b1c")
 
-[node name="surfShadow" type="MeshInstance3D" parent="surfPivot/brakingPivot/counterPivot"]
+[node name="surfShadow" type="MeshInstance3D" parent="surfPivot/brakingPivot/counterPivot/boardPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
 cast_shadow = 3
 mesh = SubResource("CylinderMesh_3jkku")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
 [node name="fishPivot" type="Node3D" parent="surfPivot/brakingPivot/counterPivot"]
 unique_name_in_owner = true
@@ -900,7 +973,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019999996, 0)
 transform = Transform3D(-4.37114e-08, 7.43094e-09, 0.38, 1, 0, 1.66103e-08, 0, 0.17, -1.66103e-08, -2.51183e-08, 0.724639, -1.18023e-22)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
-skeleton = NodePath("../../surfShadow")
+skeleton = NodePath("../../boardPivot/surfShadow")
 
 [node name="surfingFish" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/fishPivot"]
 unique_name_in_owner = true
@@ -937,8 +1010,13 @@ lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_bsrx0")
 draw_pass_1 = SubResource("QuadMesh_ie0qp")
 
-[node name="RemoteTransformCamera" type="RemoteTransform3D" parent="."]
-remote_path = NodePath("../cameraAnchor")
+[node name="skateTricks" type="AnimationPlayer" parent="surfPivot"]
+libraries = {
+&"": SubResource("AnimationLibrary_0m6um")
+}
+
+[node name="RemoteTransformCamera" type="RemoteTransform3D" parent="surfPivot"]
+remote_path = NodePath("../../cameraAnchor")
 update_rotation = false
 update_scale = false
 
@@ -1471,6 +1549,10 @@ bus = &"fishsfx"
 
 [node name="halfpipe" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("62_2owy6")
+bus = &"fishsfx"
+
+[node name="quickTurn" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_23obf")
 bus = &"fishsfx"
 
 [node name="THPS_low" type="AudioStreamPlayer" parent="."]

@@ -44,7 +44,6 @@ var isHalfPiping : bool = false
 var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a combo
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
-var brakeJump : bool = false
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -598,18 +597,35 @@ func _physics_process(_delta: float) -> void:
 		
 		##Braking/Drifting
 		if surfState == "Normal surfing" and Input.is_action_pressed("dive") and $surfPivot.global_transform.basis.y.y > 0.5:
-			apply_central_force(linear_velocity*-3)
+			if !get_input_axis(): #slow down faster when not holding any direction keys
+				apply_central_force(linear_velocity*-3)
+			else:
+				apply_central_force(linear_velocity*-1)
 			%brakingPivot.rotation_degrees.x = clamp(linear_velocity.length()*1.5,15, 45)
-			print(%brakingPivot.rotation_degrees.x)
+			#print(%brakingPivot.rotation_degrees.x)
 			%surfSparks.emitting = true
 			%surfSparks.speed_scale *= 2
 			%surfSparks.amount_ratio *= 2
 			if Input.is_action_just_pressed("jump"):
-				brakeJump = true
+				$surfPivot/skateTricks.play("kick_flip")
+				ScoreManager.give_points(2500, 0, false, "KICKFLIP")
+				ScoreManager.play_trick_sfx("rare")
+			
+			
+			if get_input_axis(): #if pressing something
+				var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
+				var keyDir = get_input_axis().normalized()
+				var drift = keyDir*moveDir.length()
+				linear_velocity.x = drift.x
+				linear_velocity.z = drift.y
+				var dotProd = moveDir.normalized().dot(drift.normalized())
+				if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
+					$quickTurn.play()
+			
+			
+			
 		else:
 			%brakingPivot.rotation.x = 0
-		
-		
 		
 		
 		
@@ -674,8 +690,8 @@ func _physics_process(_delta: float) -> void:
 				printerr("PLAY LANDING ", $skateLanding.volume_linear)
 				var force = linear_velocity
 				force.y = 0
-				apply_central_impulse(force*$surfPivot.global_transform.basis.y.y)
-				print("applying impulse of force: ", force*$surfPivot.global_transform.basis.y.y*3)
+				#apply_central_impulse(force*$surfPivot.global_transform.basis.y.y)
+				#print("applying impulse of force: ", force*$surfPivot.global_transform.basis.y.y*3)
 		
 		
 		
@@ -691,13 +707,6 @@ func _physics_process(_delta: float) -> void:
 			inputHistory = ["","",""]
 			
 		else: ##Rotating in the air
-			
-			if brakeJump == true:
-				brakeJump = false
-				surfRotationType = "backFlip"
-				if angular_velocity.length() < 100:
-					angular_velocity *= 100/angular_velocity.length()
-			
 			
 			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping:
 				if surfState == "Jumping" and linear_velocity.y > 20:
@@ -834,7 +843,6 @@ func _physics_process(_delta: float) -> void:
 		$speedWind.pitch_scale =clamp( (speed-50)*0.013 + 1, 1, 3)
 	
 	
-	
 	#DEBUG_INFO
 	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",
 	"spin: ", snapped(angular_velocity.length(), 0.01), " ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "
@@ -890,6 +898,8 @@ func activateSurfMode(sprite : String, signObj : Node):
 	if sprite.get_file().begins_with("tri_"):
 		%brakingPivot.position.z = 0.2
 		$surfPivot/brakingPivot/counterPivot.position.z = -0.2
+	if  sprite.get_file().contains("piano"):
+		PianoManager.activate = true
 	%surfSignUnder.visible = sprite.get_file().contains("skateBoard") #skateboard underside
 	%surfSign.double_sided = !%surfSignUnder.visible
 	$surfPivot.visible = true
@@ -911,6 +921,7 @@ func deactivateSurfMode():
 	surfSignRef.throwAway()
 	$surfPivot.visible = false
 	$shadowMesh.visible = true
+	PianoManager.activate = false
 	$collision.set_deferred("disabled", false)
 	$collisionSphere.set_deferred("disabled", true)
 	skateboardSurf = false
@@ -1029,7 +1040,7 @@ func detailed_name(object):
 ## You can also use it as a boolean: no input == false, any input == true
 func get_input_axis():
 	var x = Input.get_axis("left", "right")
-	var y = Input.get_axis("back", "forward")
+	var y = Input.get_axis("forward", "back")
 	return Vector2(x,y)
 
 ##Temporarily change the FOV of the camera for a zoom-in impact effect

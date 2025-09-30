@@ -2,6 +2,7 @@ extends Node
 
 var transitionStart : int = 0
 var transitionEnd : int = 0
+var focus
 
 func _ready():
 	print("menu manager ready")
@@ -16,6 +17,17 @@ func _process(_delta):
 	#splash screen fadeout
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
+	
+	if !%trickTabs.get_tab_bar().has_focus() and %TrickList.visible:
+		if Input.is_action_just_pressed("ui_left"):
+			%trickTabs.current_tab = wrap(%trickTabs.current_tab-1, 0, 4)
+			#%trickTabs.get_tab_bar().grab_focus()
+			%trickTabs.get_current_tab_control().get_child(0).get_child(0).get_child(0).grab_focus()
+		if Input.is_action_just_pressed("ui_right"):
+			%trickTabs.current_tab = wrapi(%trickTabs.current_tab+1, 0, 4)
+			#%trickTabs.get_tab_bar().grab_focus()
+			%trickTabs.get_current_tab_control().get_child(0).get_child(0).get_child(0).grab_focus()
+	
 	
 	transitionStart = -($transitionScreen.size.x + %fishHead.size.x*0.5) - 100
 	transitionEnd = $transitionScreen.size.x + %fishTail.size.x + 100
@@ -83,7 +95,7 @@ func _on_tricks_pressed():
 	%TrickList.visible = true
 	GameManager.disableMenuControl = false
 	%movement.grab_focus()
-	$PauseMenu/TrickList/Panel/ScrollContainer.scroll_vertical = -500
+	#$PauseMenu/TrickList/Panel/ScrollContainer.scroll_vertical = -500
 	
 
 func _on_exit_pressed(): 

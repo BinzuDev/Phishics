@@ -14,8 +14,9 @@ static var pitch := 1.0
 static var timeSinceLastStrike := 0
 
 
+
 func _process(_delta):
-	if currFrame != Engine.get_process_frames():
+	if currFrame != Engine.get_process_frames(): #so it only does it once per frame across ALL pins
 		timeSinceLastStrike += 1
 		if timeSinceLastStrike > 200:
 			pitch = 1.0
@@ -49,7 +50,12 @@ func apply_force_to_rigidbodies():
 			child.apply_torque_impulse(randSpin)
 			child.gravity_scale = 1.0 #reset gravity if floating
 			child.get_node("./model").cast_shadow = true
-			child.get_node("./Collision_Bottom").disabled = true
+			child.get_node("./Collision_Bottom").set_deferred("disabled", true)
+	
+	await get_tree().create_timer(1).timeout #wait one second
+	for pin in $Pins.get_children(): #reenable collisions with the fish
+		pin.set_collision_layer_value(1, true)
+		pin.set_collision_mask_value(2, true)
 
 
 

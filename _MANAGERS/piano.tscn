@@ -1,0 +1,126 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1wvvgl40mwi0"]
+
+[ext_resource type="AudioStream" uid="uid://co0gundioo7h6" path="res://Sounds/piano/note1.ogg" id="1_4fst4"]
+[ext_resource type="AudioStream" uid="uid://dy8k3p5qyush" path="res://Sounds/piano/note2.ogg" id="2_b2dhn"]
+[ext_resource type="AudioStream" uid="uid://b7fe4ajf28uxr" path="res://Sounds/piano/note3.ogg" id="3_iob1r"]
+[ext_resource type="AudioStream" uid="uid://cea872euwu410" path="res://Sounds/piano/note4.ogg" id="4_3txxw"]
+[ext_resource type="AudioStream" uid="uid://bjtrn20ucqs52" path="res://Sounds/piano/note5.ogg" id="5_2wact"]
+[ext_resource type="AudioStream" uid="uid://vl7eft3h1spe" path="res://Sounds/piano/note6.ogg" id="6_sw5ru"]
+[ext_resource type="AudioStream" uid="uid://copwlcfkkslyc" path="res://Sounds/piano/note7.ogg" id="7_woe1x"]
+[ext_resource type="AudioStream" uid="uid://cwrv7y7n0oru3" path="res://Sounds/piano/note8.ogg" id="8_f6qo1"]
+[ext_resource type="AudioStream" uid="uid://cbvdygl52q18p" path="res://Sounds/piano/note9.ogg" id="9_s0sxv"]
+[ext_resource type="AudioStream" uid="uid://d1yaao4kex8n0" path="res://Sounds/piano/note0.ogg" id="10_yrxp1"]
+
+[sub_resource type="GDScript" id="GDScript_4fst4"]
+script/source = "extends Node
+
+var heldKeys = [false,false,false,false,false,false,false,false,false,false]
+
+var activate : bool = false
+
+func _process(_delta):
+	if activate:
+		if Input.is_key_label_pressed(KEY_1):
+			if heldKeys[1] == false:
+				$piano1.play()
+				heldKeys[1] = true
+		else:
+			heldKeys[1] = false
+		if Input.is_key_label_pressed(KEY_2):
+			if heldKeys[2] == false:
+				$piano2.play()
+				heldKeys[2] = true
+		else:
+			heldKeys[2] = false
+		if Input.is_key_label_pressed(KEY_3):
+			if heldKeys[3] == false:
+				$piano3.play()
+				heldKeys[3] = true
+		else:
+			heldKeys[3] = false
+		if Input.is_key_label_pressed(KEY_4):
+			if heldKeys[4] == false:
+				$piano4.play()
+				heldKeys[4] = true
+		else:
+			heldKeys[4] = false
+		if Input.is_key_label_pressed(KEY_5):
+			if heldKeys[5] == false:
+				$piano5.play()
+				heldKeys[5] = true
+		else:
+			heldKeys[5] = false
+		if Input.is_key_label_pressed(KEY_6):
+			if heldKeys[6] == false:
+				$piano6.play()
+				heldKeys[6] = true
+		else:
+			heldKeys[6] = false
+		if Input.is_key_label_pressed(KEY_7):
+			if heldKeys[7] == false:
+				$piano7.play()
+				heldKeys[7] = true
+		else:
+			heldKeys[7] = false
+		if Input.is_key_label_pressed(KEY_8):
+			if heldKeys[8] == false:
+				$piano8.play()
+				heldKeys[8] = true
+		else:
+			heldKeys[8] = false
+		if Input.is_key_label_pressed(KEY_9):
+			if heldKeys[9] == false:
+				$piano9.play()
+				heldKeys[9] = true
+		else:
+			heldKeys[9] = false
+		if Input.is_key_label_pressed(KEY_0):
+			if heldKeys[0] == false:
+				$piano0.play()
+				heldKeys[0] = true
+		else:
+			heldKeys[0] = false
+"
+
+[node name="piano" type="Node"]
+script = SubResource("GDScript_4fst4")
+
+[node name="piano1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4fst4")
+max_polyphony = 3
+
+[node name="piano2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b2dhn")
+max_polyphony = 3
+
+[node name="piano3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iob1r")
+max_polyphony = 3
+
+[node name="piano4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3txxw")
+max_polyphony = 3
+
+[node name="piano5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2wact")
+max_polyphony = 3
+
+[node name="piano6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sw5ru")
+max_polyphony = 3
+
+[node name="piano7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_woe1x")
+max_polyphony = 3
+
+[node name="piano8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f6qo1")
+max_polyphony = 3
+
+[node name="piano9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s0sxv")
+max_polyphony = 3
+
+[node name="piano0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_yrxp1")
+max_polyphony = 3

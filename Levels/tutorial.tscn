@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=82 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_desr6"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cf81w8s7c7kox" path="res://Models/pillar.tscn" id="11_4wqju"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="11_to5w2"]
 [ext_resource type="PackedScene" uid="uid://cheqhyt0b5ovq" path="res://Models/pillarhalf.tscn" id="12_0tnf1"]
+[ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="12_2kmhi"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4wqju"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="14_0tnf1"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="14_so4kt"]
@@ -23,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://8df8du65vhkl" path="res://Sprites/fishwarning.png" id="19_p7ekk"]
 [ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="23_maxpf"]
+[ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="24_ygkl2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -171,17 +173,20 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "You can also JUMP using SPACE!          
-The faster you're spinning, the more powerful your jump becomes!
-(moving slow = small jump)"
+The faster you're spinning, the more powerful your jump becomes (moving slow = small jump)"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ygkl2"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "If you're having trouble, let go of the arrow keys before jumping, it makes you go higher!"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_0cfr2"]
 script = ExtResource("11_to5w2")
 automaticStart = true
 pauseGame = false
-keepOnScreenAfterEnd = true
-runOnlyOnce = true
-messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_8fyol"), SubResource("Resource_to5w2")])
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_8fyol"), SubResource("Resource_to5w2"), SubResource("Resource_ygkl2")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d1rn"]
@@ -243,117 +248,75 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_4d1rn"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "There's a variety of tricks you can perform!
-Play around and see what shows up at the bottom of the screen!"
+text = "There's a bunch of tricks you can perform!                     
+Play around and see what shows up at the bottom of the screen! (Feel free to play while I'm talking btw)"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_s0t66"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Each trick is worth a certain amount of POINTS along with a MULTipler value! The total POINTS and MULT of your current combo is displayed down here!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_p7ekk"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "If you stop doing tricks, your combo will end and the total value of your combo will be added to the score counter at the top!"
+text = "This game is all about being cool and stylish!    
+Do a bunch of tricks in a row and get a combo going!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_3l68j"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Doing tricks fills up the STYLE METER!
-Fill it up completely to reach a new STYLE RANK!"
+text = "The bigger the combo, the faster your STYLE METER fills up!
+Keep filling it up and reach new STYLE RANKS!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_fljuj"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "If you don't keep up the pace, the meter will deplete and you'll rank down. Higher ranks deplete even faster!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_desr6"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Oh, and here's a little advanced tip for you:
-LET GO of the arrow keys before jumping to go HIGHER!
-HOLD DOWN the arrow keys to jump FURTHER!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_5y3ho"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "The circular meter in the middle of the screen shows how much you've spun while in the air! So perform big jumps and max out the meter for a BIG bonus!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_maxpf"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Being stylish is all about mixing things up!
-Do the same trick over and over again and you'll be penalised, got it?"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_ygkl2"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "If you do a bunch of different tricks in a row, you'll get a freshness bonus!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_2kmhi"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Phew... Well I think that just about covers it up!
-Sorry if it's a lot to take in at once ahah... 
-Don't worry about remembering everything okay?"
+text = "Only the COOLEST fishes can reach PHISHICSSS rank!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_jbvdo"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "OH WAIT I ALMOST FORGOT!!!"
+text = "If you wanna learn more about every mechanic this game has to offer, check out the trick list in the menu!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_mydkt"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "The most crucial mechanic at your disposal..."
+text = "Simply pause the game with the ESC key, then select the \"TRICKS\" option!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_2esnd"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "THE FISH BUTTON!!!!
-                                     
-( press F to [fish] )"
-position = "top"
+text = "If there's ever anything you don't understand, it's probably explained in there!"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_83ucr"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "[fish] while at the peak of your jump to strike a cool pose!
-(If you're high enough)
-(There's a cooldown so dont spam it!)"
+text = "Just... Don't try to learn everything all at once... yeah?
+Check it out once in a while and try to learn something new!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_2kmhi"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Well... I think that just about covers it up!                           
+I know it's... A lot to get used to...
+But I'm sure you'll do juuust fine! :D"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_0mu0c"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Okay that's it for real this time.
-Meet me at the finish line to end the tutorial!
+text = "Well then, meet me at the finish line to end the tutorial!                          
 See yaaa~!!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
@@ -363,7 +326,7 @@ script = ExtResource("11_to5w2")
 automaticStart = true
 pauseGame = false
 runOnlyOnce = true
-messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubResource("Resource_td8ta"), SubResource("Resource_4d1rn"), SubResource("Resource_s0t66"), SubResource("Resource_p7ekk"), SubResource("Resource_3l68j"), SubResource("Resource_fljuj"), SubResource("Resource_desr6"), SubResource("Resource_5y3ho"), SubResource("Resource_maxpf"), SubResource("Resource_ygkl2"), SubResource("Resource_2kmhi"), SubResource("Resource_jbvdo"), SubResource("Resource_mydkt"), SubResource("Resource_2esnd"), SubResource("Resource_83ucr"), SubResource("Resource_0mu0c")])
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubResource("Resource_td8ta"), SubResource("Resource_4d1rn"), SubResource("Resource_s0t66"), SubResource("Resource_3l68j"), SubResource("Resource_fljuj"), SubResource("Resource_jbvdo"), SubResource("Resource_mydkt"), SubResource("Resource_2esnd"), SubResource("Resource_83ucr"), SubResource("Resource_2kmhi"), SubResource("Resource_0mu0c")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxMesh" id="BoxMesh_to5w2"]
@@ -460,7 +423,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.738795, 0.601859, -107.605)
+transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.738795, -0.25504702, -107.605)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -486,7 +449,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform3" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.7, 0, 13.8776, 0, -1.99394e-06, 0.738795, 3.94114, -125.427)
+transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.7, 0, 13.8776, 0, -1.99394e-06, 0.738795, 6.219404, -125.427)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -569,6 +532,10 @@ debug_color = Color(0, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1615, 0, 18.6913)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
+
+[node name="jelly_fish_girl_IK" parent="tutorialSpam" instance=ExtResource("12_2kmhi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.72935, 14.11557, -296.36603)
+defaultAnimation = "Cheering"
 
 [node name="tutorialRamp" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371541, 1.55035, -50.0872)
@@ -995,6 +962,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4803, 13.3952, -220.234)
 [node name="worm2" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0693, 13.4808, -220.234)
 
+[node name="worm17" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9781623, 5.4435234, -198.02898)
+
 [node name="worm3" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7885, 10.0102, -246.925)
 
@@ -1415,3 +1385,7 @@ newCameraAngle = Vector3(-60, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7256775, 0.29799414, 0.20007324)
 shape = SubResource("BoxShape3D_ygkl2")
+
+[node name="hook" parent="." instance=ExtResource("24_ygkl2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5212053, 21.916418, -225.12483)
+lineLength = 19.146417808532714
