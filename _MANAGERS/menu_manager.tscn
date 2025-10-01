@@ -355,9 +355,10 @@ drag_to_rearrange_enabled = true
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 768
+scroll_vertical = 2980
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 21
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics"]
@@ -480,21 +481,21 @@ custom_minimum_size = Vector2(1000, 350)
 layout_mode = 2
 trickName = "Combo timer"
 rarity = "Mechanic"
-description = "The white line at the very bottom of the screen represents how long you have left until your combo ends. Most tricks will reset that timer, the main exceptions being tricks that are awarded continuously over time. Some rare tricks may even give you extra time!
-Once your combo ends, the total value of your PTS times your MULT is calculated and gets added to your total score, shown at the top right of the screen."
+description = "-The white line at the very bottom of the screen represents how long you have left until your combo ends. Most tricks will reset that timer, the main exceptions being tricks that are awarded continuously over time. Some rare tricks may even give you extra time!
+-Once your combo ends, the total value of your PTS times your MULT is calculated and gets added to your total score, shown at the top right of the screen."
 
 [node name="style" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 470)
 layout_mode = 2
 trickName = "Style Meter"
 rarity = "Mechanic"
-description = "The style meter is the white bar at the top right of the screen. 
-It decreases over time but doing tricks fills it up.
-Filling it up completely makes you reach a higher STYLE RANK. 
-Let it drain fully and your rank will decrease.
-The higher the rank, the faster the style meter will deplete.
-Staying completely still will drain the style meter VERY quickly.
-The higher the MULT of your combo is, the more each point is worth and the easier it is to keep a high rank."
+description = "-The style meter is the white bar at the top right of the screen. 
+-It decreases over time but doing tricks fills it up.
+-Filling it up completely makes you reach a higher STYLE RANK. 
+-Let it drain fully and your rank will decrease.
+-The higher the rank, the faster the style meter will deplete.
+-Staying completely still will drain the style meter VERY quickly.
+-The higher the MULT of your combo is, the more each point is worth and the easier it is to keep a high rank."
 
 [node name="UiTricklist" type="Sprite2D" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/style"]
 position = Vector2(1304, 187.99998)
@@ -529,8 +530,13 @@ After a 6th time, you'll get a Spam Penalty and temporarily lose the ability to 
 Only the last 4 tricks are checked for spam, so even if the entire list is the same object, touching 4 new unique ones will clear the penalty."
 description2 = "Not interacting with anything for a while will also clear the freshness list."
 
-[node name="seperation" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer"]
+[node name="camera" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 290)
 layout_mode = 2
+trickName = "Camera Button"
+rarity = "Mechanic"
+description = "By holding the C key, and then pressing one of the arrow keys, you can tilt the camera, allowing you to see slightly further ahead.
+The camera will then stay in place as long as you keep holding C, even if you press other arrow keys."
 
 [node name="scrollSpacing" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Mechanics/HBoxContainer"]
 layout_mode = 2
@@ -690,9 +696,6 @@ rarity = "Rare"
 description = "Interact with 10 unique objects in a row."
 description2 = "Since the Taunt also counts as an interaction, try to only use it once per Fresh Bonus."
 
-[node name="seperation" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="scrollSpacing" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Fish tricks/HBoxContainer"]
 layout_mode = 2
 
@@ -701,7 +704,7 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 2450
+scroll_vertical = 2435
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 autoScroll = 9
@@ -836,9 +839,6 @@ score = "x2"
 rarity = "Uncommon"
 description = "Activate a sea mine with the explosion of another sea mine"
 
-[node name="seperation" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="scrollSpacing" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Interactibles/HBoxContainer"]
 layout_mode = 2
 
@@ -969,9 +969,6 @@ score = "2500pts"
 rarity = "Mechanic"
 description = "While braking, press a direction key to quickly rotate your momentum in the pre"
 
-[node name="seperation" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="scrollSpacing" type="Control" parent="PauseMenu/TrickList/Panel/trickTabs/Surfing/HBoxContainer"]
 layout_mode = 2
 
@@ -1098,7 +1095,6 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="FPScounter" type="Label" parent="FPSanchor"]
-visible = false
 z_index = 999
 layout_mode = 1
 offset_right = 83.0

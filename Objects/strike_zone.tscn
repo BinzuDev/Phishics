@@ -90,34 +90,34 @@ shape = SubResource("BoxShape3D_wt2jt")
 [node name="Pins" type="Node3D" parent="."]
 
 [node name="bowling_pin" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59, 0.294609, 0.52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59, 0.49483025, 0.52)
 
 [node name="bowling_pin2" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, 1.54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49483025, 1.54)
 
 [node name="bowling_pin3" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19, 0.294609, -0.52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19, 0.49483025, -0.52)
 
 [node name="bowling_pin4" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78, 0.294609, -1.54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78, 0.49483025, -1.54)
 
 [node name="bowling_pin5" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593982, 0.294609, 0.517203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593982, 0.49483025, 0.517203)
 
 [node name="bowling_pin6" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19, 0.294609, -0.52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19, 0.49483025, -0.52)
 
 [node name="bowling_pin7" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78366, 0.294609, -1.54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78366, 0.49483025, -1.54)
 
 [node name="bowling_pin8" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.294609, -1.54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.49483025, -1.54)
 
 [node name="bowling_pin9" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59507, 0.294609, -1.54239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59507, 0.49483025, -1.54239)
 
 [node name="bowling_pin10" parent="Pins" instance=ExtResource("1_5q7g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, -0.52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49483025, -0.52)
 
 [node name="strikeSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_fgkp4")

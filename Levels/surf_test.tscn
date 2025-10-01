@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=37 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="4_ab27v"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="4_j71bj"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="6_hswr3"]
+[ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="7_p34o4"]
 [ext_resource type="Shader" uid="uid://ddlqbkdpx3ho2" path="res://Shaders/auto_water_reflect.gdshader" id="8_jctnn"]
 [ext_resource type="Texture2D" uid="uid://com5tskr7puq8" path="res://Textures/water_reflection.png" id="9_j71bj"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_gx528"]
@@ -33,6 +34,14 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
 volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_4rq4h"]
+closed = true
+_data = {
+"points": PackedVector3Array(-2.5034504, -1.8537827, 3.7752419, 2.5034504, 1.8537827, -3.7752419, -0.40761948, 1.435791, -0.10836792, -3.5691128, 0.43653107, 0.064151764, 3.5691128, -0.43653107, -0.064151764, 10.178597, 1.8731766, -4.1769753, 1.595192, 1.3896561, -2.511837, -1.595192, -1.3896561, 2.511837, 17.957466, 2.3715668, 0.58636093, 3.6930008, -0.9597397, -0.97956085, -3.6930008, 0.9597397, 0.97956085, 10.233183, 1.6743088, 4.962063),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfxg8"]
 albedo_color = Color(0.266667, 0, 0.172549, 1)
@@ -198,7 +207,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185051, -2.762, -0.534088)
 size = Vector3(10.7602, 23.1842, 10.4157)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="half pipe2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 6.13, 1.22)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.658062, 4.8521347, 1.8407059)
 operation = 2
 radius = 6.007
 height = 13.7793
@@ -216,6 +225,14 @@ environment = SubResource("Environment_jctnn")
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.143922, 120.37161, 78.23588)
 gravity_scale = 1.5
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.906269, 118.97536, 54.182728)
+curve = SubResource("Curve3D_4rq4h")
+debug_custom_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="rail_grind" parent="Path3D" instance=ExtResource("7_p34o4")]
+transform = Transform3D(0.8334061, -0.20931463, -0.51148003, 7.450539e-09, 0.92549264, -0.37874642, 0.552651, 0.31564966, 0.7713196, -0.40761948, 1.435791, -0.10836792)
 
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.993, 119.427, 63.6214)

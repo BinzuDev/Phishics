@@ -8,24 +8,43 @@ var textBoxIndex := 0
 var currentDialogue
 var isRunning := false
 var coolDown := 0
+var currentDialogueOwner ##The parent node of the dialogue_area object 
+
+var jfgPosition : Vector2
 
 func _ready():
-	$textBoxControl.visible = false
+	%textBoxControl.visible = false
 	$enterTip.visible = false
+	$CanvasLayer/JFG.position = Vector2(1920,1080)
+	jfgPosition = Vector2(1920,1080)
 
 func show_prompt(state:bool = true):
 	$enterTip.visible = state
 
 
 func _process(_delta):
-	if !$textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
+	if !%textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
 		isRunning = false        #start a dialogue with the same input used to end another one
+	
+	
+	#fixes a dumbass glitch where jfg would show up for one frame only when RELOADING tutorial
+	$CanvasLayer/JFG.position = jfgPosition
 	
 	$SubViewport.size = DisplayServer.window_get_size() #jfg
 	
+	#put the Z icon at the end of the text
+	var finalChar = %textBox.get_character_bounds(%textBox.text.length())
+	%confirm.position = Vector2(finalChar.position.x+45, finalChar.position.y+30) 
+	if !finished:
+		%confirm.modulate.a = 0
+	else:
+		#%confirm.modulate.a = clamp(%confirm.modulate.a+0.1,0,1) #add 10 frames of delay
+		%confirm.modulate.a = move_toward(%confirm.modulate.a, 1, 0.033)
+	
+	
 	
 	$enterTip/Control.visible = !isRunning #dont show prompt if textbox active
-	%confirm.visible = finished and isRunning
+	%confirm.visible = finished and isRunning and %confirm.modulate.a == 1
 	if currentDialogue:
 		if textBoxIndex+1 == currentDialogue.messages.size() and currentDialogue.keepOnScreenAfterEnd:
 			%confirm.visible = false #dont show confirm prompt on last textbox with keepOnScreen
@@ -48,8 +67,9 @@ func _process(_delta):
 		if chara == text.length():
 			finished = true
 	if finished and Input.is_action_just_pressed("confirm"):
-		if $textBoxControl.visible and isRunning:
+		if %textBoxControl.visible and isRunning:
 			textBoxIndex += 1
+			%confirm.visible = false
 			continue_dialogue()
 	#Skip text button
 	if !finished and Input.is_action_just_pressed("confirm") and chara > 3:
@@ -64,10 +84,14 @@ func _process(_delta):
 	
 
 func start_dialogue_sequence(dialogue: Dialogue):
-	$textBoxControl.visible = true
+	%textBoxControl.visible = true
 	isRunning = true
 	currentDialogue = dialogue
 	textBoxIndex = 0
+	print("PAUSE STYLE SYSTEM IS")
+	print(currentDialogue.pauseStyleSystem)
+	if currentDialogue.pauseStyleSystem:
+		ScoreManager.hide()
 	if currentDialogue.pauseGame:
 		get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_DISABLED
 	continue_dialogue()
@@ -120,9 +144,11 @@ func end_textbox():
 	if currentDialogue.keepOnScreenAfterEnd:
 		isRunning = false 
 	else:
-		$textBoxControl.visible = false
+		%textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
+	if currentDialogue.pauseStyleSystem:
+		ScoreManager.show()
 	if currentDialogue.codePostDialogue != "":
 		run_code(currentDialogue.codePostDialogue)
 
@@ -136,8 +162,11 @@ func reset():
 	currentDialogue = null
 	isRunning = false
 	coolDown = 0
-	$textBoxControl.visible = false
+	%textBoxControl.visible = false
 	$enterTip.visible = false
+	$CanvasLayer/JFG.position = Vector2(1920,1080)
+	show_jfg(false)
+	
 
 
 func run_code(newCode:String):
@@ -153,5 +182,11 @@ func run_code(newCode:String):
 func set_position(newPos : Vector2):
 	%textBoxMargin.position = newPos
 
+##HACK I cant just simply use .visible because of some weird frame buffer bullshit I dont understand
 func show_jfg(value:bool = true):
-	$CanvasLayer.visible = value
+	if value == true:
+		jfgPosition = Vector2(0,0)
+	else:
+		jfgPosition = Vector2(1920,1080)
+		$CanvasLayer/JFG.position = Vector2(1920,1080)
+	

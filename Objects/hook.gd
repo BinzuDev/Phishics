@@ -18,7 +18,8 @@ var fish : player
 var lockFish: bool = false
 var descending: bool = false
 #Remember the fish's rotation speed to give it back to him after
-var storeFishSpeed : Vector3 
+var storeFishSpin : Vector3 
+var storeFishSpeed : Vector3
 #So that the reeling can ba slightly gradual
 var actualSpeed: float = 1.0
 var fastAccel : bool = false #accelerate faster when diving on the hook
@@ -35,7 +36,7 @@ func set_hook_lenght():
 	%hookArea.position.y = -lineLength
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	## Set the hook position if inside the editor
 	if Engine.is_editor_hint():
@@ -65,8 +66,11 @@ func _process(_delta: float) -> void:
 		if %hookSprite.global_position.y >= global_position.y:
 			lockFish = false
 			fish.isHeld = false #prevents tip landing
-			fish.apply_impulse(Vector3(0, 25 * reelingSpeed, 0))
-			fish.angular_velocity = storeFishSpeed
+			if fish.surfMode:
+				fish.apply_impulse(Vector3(storeFishSpeed.x, 25 * reelingSpeed, storeFishSpeed.z))
+			else:
+				fish.apply_impulse(Vector3(0, 25 * reelingSpeed, 0))
+			fish.angular_velocity = storeFishSpin
 			%sfxEnd.play()
 			%sfxLoop.stop()
 			$AnimationPlayer.play("reel_end")
@@ -95,7 +99,8 @@ func _on_body_entered(body: Node3D) -> void:
 			fish = body
 			lockFish = true
 			fish.isHeld = true #prevents tip landing
-			storeFishSpeed = fish.angular_velocity
+			storeFishSpin = fish.angular_velocity
+			storeFishSpeed = fish.linear_velocity
 			ScoreManager.give_points(500, 1, true, "HOOKED")
 			ScoreManager.update_freshness(self)
 			%hookArea.set_collision_layer_value(6, false)

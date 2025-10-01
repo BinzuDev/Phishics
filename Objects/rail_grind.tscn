@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://but2fghkuo68i"]
+
+[ext_resource type="Script" uid="uid://bhbxwcjt7ci1w" path="res://Objects/rail_grind.gd" id="1_efpfo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lmfq7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_efpfo"]
+radial_segments = 4
+rings = 1
+
+[node name="rail_grind" type="PathFollow3D"]
+transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, 0, 0, 0)
+script = ExtResource("1_efpfo")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, -1.4901161e-08, 0, -1.4901161e-08, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 0.9999999, -2.9802322e-08, -2.9802322e-08, -5.9604645e-08, 0.9999999, 0, 0, 0)
+shape = SubResource("SphereShape3D_lmfq7")
+
+[node name="debugVisual" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_efpfo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_entered"]

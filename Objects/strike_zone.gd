@@ -39,7 +39,7 @@ func _ready() -> void:
 
 func apply_force_to_rigidbodies():
 	var node_center = $Pins.global_transform.origin #get center of node
-	var force_range = fishSpeed * 0.1
+	var force_range = fishSpeed * 0.15
 	var node_3d = $Pins #store node
 	for child in node_3d.get_children(): #get children of node from earlier
 		if child is RigidBody3D:

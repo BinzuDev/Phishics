@@ -448,7 +448,7 @@ environment = SubResource("Environment_v72nc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.087868, 31.013958, 69.3061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 gravity_scale = 1.5
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
@@ -972,7 +972,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61124, 19.5706, -25.287)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98809, 26.7464, -5.78333)
 
 [node name="worm2" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4821, 47.3582, -51.1012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.627697, 47.3582, -51.184547)
 
 [node name="worm16" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3318, 35.4946, -25.8374)
@@ -1532,9 +1532,6 @@ debug_color = Color(1, 0, 0, 1)
 [node name="eel" parent="intro" instance=ExtResource("31_exl13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 30.0136, 59.9104)
 
-[node name="eel2" parent="intro" instance=ExtResource("31_exl13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.043, 21.372, -46.6723)
-
 [node name="group1" type="Node3D" parent="."]
 
 [node name="strike_zone5" parent="group1" instance=ExtResource("41_rneqk")]
@@ -1781,6 +1778,10 @@ texture = ExtResource("6_53g8k")
 transform = Transform3D(-0.863937, 0, -2.87291, 0, 3, 0, 2.87291, 0, -0.863937, 2.04362, -0.45768, -26.0222)
 skeleton = NodePath("../..")
 
+[node name="skateBoard" parent="group1" instance=ExtResource("47_bmonc")]
+transform = Transform3D(0.8397431, -0.04781506, 0.5408745, -0.542984, -0.07394762, 0.8364808, -1.0603742e-08, -0.9961151, -0.088059805, 8.204206, 0.30739367, -30.818516)
+signSprite = "uid://bopnbyxyecen8"
+
 [node name="MeshInstance3D" parent="group1" instance=ExtResource("16_h7041")]
 transform = Transform3D(0.287665, -0.879139, -0.379951, 0.93709, 0.34029, -0.0778884, 0.197768, -0.333642, 0.921721, -7.52119, 0.469891, -2.18451)
 
@@ -2022,7 +2023,7 @@ bounceForce = 30
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8161, 13.3117, -46.085)
 
 [node name="strike_zone3" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.0541501, 7.07259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.4303627, 7.07259)
 
 [node name="strike_zone18" parent="group1" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4757, -0.0541501, -14.4633)
@@ -2544,6 +2545,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group2/sphere11/StaticBody3D"]
 shape = SubResource("SphereShape3D_wvw3a")
+
+[node name="eel2" parent="group2" instance=ExtResource("31_exl13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.7455, 21.372, -46.6723)
 
 [node name="the pillar" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-2.52215e-07, 31.9988, -3.60608, 0, 25.6175, 4.50434, 5.77, 1.39871e-06, -1.57627e-07, 102.395, 30.3414, -26.1132)
@@ -3265,8 +3269,11 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, -3.23297e-13, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m3j4o")
 
+[node name="strike_zone" parent="highUpSection" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6081, 38.9935, -51.2123)
+
 [node name="Basketballhoop" parent="highUpSection" instance=ExtResource("11_vbdqq")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 63.612, 43.3847, -51.1557)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 63.61, 43.38, -51.21)
 
 [node name="Basketballhoop2" parent="highUpSection" instance=ExtResource("11_vbdqq")]
 transform = Transform3D(1.18021e-07, 0, -0.9, 0, 0.9, 0, 0.9, 0, 1.18021e-07, 149.37967, 44.6103, -26.1696)
@@ -3465,9 +3472,6 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign6/StaticBody3D"]
 transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
 shape = SubResource("BoxShape3D_w578l")
-
-[node name="strike_zone" parent="highUpSection" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6081, 38.9935, -51.2123)
 
 [node name="Enemy5" parent="highUpSection" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
@@ -3787,8 +3791,8 @@ mesh = SubResource("QuadMesh_kvfdy")
 skeleton = NodePath("../../sign5")
 
 [node name="base" type="CSGBox3D" parent="group3/half pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0413, 1.40884, 7.61407)
-size = Vector3(83.2455, 22.6864, 27.0202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.317877, 1.4088402, 7.6140747)
+size = Vector3(99.79865, 22.6864, 27.0202)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="group3/half pipe"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 17.45, 10.27, 6.83)
@@ -4396,8 +4400,9 @@ bounceForce = 24
 hSpeedMultiplier = 0.4
 
 [node name="Jellyfish5" parent="2Darea" instance=ExtResource("41_i76hq")]
-transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 49.7967, -4.85084, -13.4218)
+transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 48.342323, -4.8508377, -13.4218)
 bounceForce = 24
+hSpeedMultiplier = 0.4
 
 [node name="Jellyfish6" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 63.4062, -4.85084, -13.4218)
@@ -4619,9 +4624,5 @@ canRespawn = true
 [node name="signJump3" parent="group4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(2.72826e-08, -1, -1.19933e-08, 0.402427, -2.66454e-15, 0.915452, -0.915452, -2.98023e-08, 0.402427, 188.315, 59.5253, -234.043)
 canRespawn = true
-
-[node name="destructable_sign" parent="." instance=ExtResource("47_bmonc")]
-transform = Transform3D(0.8397431, -0.04781506, 0.5408745, -0.542984, -0.07394762, 0.8364808, -1.0603742e-08, -0.9961151, -0.088059805, 8.204206, 0.30739367, -30.818516)
-signSprite = "uid://bopnbyxyecen8"
 
 [editable path="group2/frickingAwesomeTube"]

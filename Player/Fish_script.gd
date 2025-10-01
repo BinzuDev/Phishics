@@ -15,6 +15,7 @@ var targetCamDist: float
 var camSpeed: float = 0.2
 var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
+var defaultCameraAngle : Vector3 = Vector3(-30,0,0)
 
 #other trick variables
 var tiplanding : bool = false
@@ -66,6 +67,7 @@ func _ready() -> void:
 	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
 	$Decal.visible = false
 	$surfPivot.visible = false
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if noScoreUI:
 		ScoreManager.hide()
 	
@@ -386,7 +388,10 @@ func _physics_process(_delta: float) -> void:
 		camSpeed = area.rate
 		cameraOverride = true #so you cant move the cam manually in switch areas
 	elif cameraOverride == false:
-		targetCamAngle = Vector3(-30,0,0) #default camera settings
+		#var mouse = Input.get_last_mouse_velocity()
+		#defaultCameraAngle.y -= mouse.x*0.001
+		#defaultCameraAngle.x -= mouse.y*0.001
+		targetCamAngle = defaultCameraAngle #default camera settings
 		targetCamOffset  = Vector3(0,0.58,0)
 		targetCamDist = 6
 		camSpeed = 0.2
@@ -403,14 +408,14 @@ func _physics_process(_delta: float) -> void:
 			cameraOverride = true
 		if get_input_axis().x != 0:
 			var LR = Input.get_axis("right", "left")
-			targetCamAngle.y = 30 * LR
-			targetCamOffset = Vector3(-2.5*LR, 0.58, 0.6)
+			targetCamAngle.y = 40 * LR
+			targetCamOffset = Vector3(-3.5*LR, 0.58, 1.02)
 		elif Input.is_action_pressed("forward"):
 			targetCamAngle.x += 40
 			targetCamOffset = Vector3(0, 2.3, -1.5)
 		elif Input.is_action_pressed("back"):
 			targetCamAngle.x -= 15
-			targetCamOffset = Vector3(0,-0.7,3.5)
+			targetCamOffset = Vector3(0,0,5)
 	
 	if !Input.is_action_pressed("camera"): #reset camera when you let go of C
 		cameraOverride = false
@@ -1072,9 +1077,9 @@ func set_skin(): #doesnt work yet
 
 func force_position(newPos : Vector3):
 	global_position = newPos
-	if not surfMode: #when surfing, this causes some weird divide by 0 glitch 
-		linear_velocity = Vector3(0,0,0) 
-		angular_velocity = Vector3(0,0,0)
+	#if not surfMode: #when surfing, this causes some weird divide by 0 glitch 
+	linear_velocity = Vector3(0.001,0.001,0.001) 
+	angular_velocity = Vector3(0.001,0.001,0.001)
 
 func get_closest_target():
 	var crabs = $homing/area.get_overlapping_areas()
@@ -1106,3 +1111,6 @@ func get_closest_target():
 	$homing/raycast.target_position = rcDirection*5
 	
 	return closest
+
+func play_skate_anim(anim_name : String):
+	$surfPivot/skateTricks.play(anim_name)

@@ -3,9 +3,13 @@ extends Node3D
 var fish : player
 var lockFish : bool = false
 
+static var talkedAlready : bool = false
+
+
 func _ready():
-	$Label3D.visible = false
 	$UI.visible = false
+	fish = get_tree().get_first_node_in_group("player")
+	talkedAlready = false
 	
 
 func _process(delta: float) -> void:
@@ -16,22 +20,11 @@ func _process(delta: float) -> void:
 	$UI/ColorRect.material.set_shader_parameter("screen_height", window_size.y)
 	
 	
+	#Disable the first meeting dialogue on ALL eels
+	if talkedAlready and !$firstMeeting/CollisionShape3D.disabled:
+		$firstMeeting/CollisionShape3D.disabled = true
+		$repeatMeeting/CollisionShape3D.disabled = false
 	
-	if !$appear.has_overlapping_bodies():
-		$Label3D.visible = false
-	else:
-		$Label3D.visible = true
-		## When confirmed pressed inside the area
-		if Input.is_action_just_pressed("confirm"):
-			lockFish = true
-			fish.isHeld = true
-			
-			#lil scope sound
-			%AudioScopeOpen.play()
-			
-			$AnimationPlayer.play("raise_high")
-			ScoreManager.reset_airspin()
-			
 	
 	
 	## When fish is on eel
@@ -50,7 +43,7 @@ func _process(delta: float) -> void:
 		%Camera3D.fov = clamp(%Camera3D.fov, 10, 80)
 		
 		
-		if Input.is_action_just_pressed("cancel"):
+		if Input.is_action_just_pressed("cancel") and !$AnimationPlayer.is_playing():
 			$AnimationPlayer.play("lower_to_floor")
 			$cam_anchor/Camera3D.current = false
 			fish.visible = true
@@ -63,9 +56,20 @@ func _process(delta: float) -> void:
 	
 
 
-func _on_area_eel_body_entered(body: Node3D) -> void:
-	if body is player:
-		fish = body
+## When textbox is closed
+func start_eel_ride():
+	lockFish = true
+	fish.isHeld = true
+	
+	#lil scope sound
+	%AudioScopeOpen.play()
+	
+	$AnimationPlayer.play("raise_high")
+	ScoreManager.reset_airspin()
+	
+	talkedAlready = true
+
+
 
 func _on_animation_finished(anim_name):
 	if anim_name == "raise_high":

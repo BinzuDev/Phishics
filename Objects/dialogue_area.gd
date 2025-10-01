@@ -46,6 +46,7 @@ func start_dialogue():
 		if dialogue.cameraOverride:
 			get_node(dialogue.cameraOverride).current = true
 		DialogueManager.start_dialogue_sequence(dialogue)
+		DialogueManager.currentDialogueOwner = get_parent()
 		alreadyRan = true
 	
 

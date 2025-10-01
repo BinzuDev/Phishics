@@ -21,6 +21,9 @@ func _on_area_3d_body_entered(body):
 		body.linear_velocity *= 2
 		var speed = clamp(body.angular_velocity.length() * 2, 60, 200)
 		body.angular_velocity = Vector3(0,speed,0)
+		if body.surfMode:
+			body.linear_velocity *= 1.4
+			body.play_skate_anim("tornado")
 		$AnimationPlayer.play("spin")
 		fishTouched = true
 		ScoreManager.give_points(500, 0, true, "TORNADO")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnhb3jni2j0rt"]
+
+[ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_rbi8j"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_rshia"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_02uie"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="4_fksqx"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="5_4p0jq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
+panorama = ExtResource("2_rshia")
+
+[sub_resource type="Sky" id="Sky_28m7t"]
+sky_material = SubResource("PanoramaSkyMaterial_qcxce")
+
+[sub_resource type="Environment" id="Environment_4autd"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_28m7t")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2i2tq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43g2l"]
+
+[node name="level_template" type="Node3D"]
+script = ExtResource("1_rbi8j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4autd")
+
+[node name="fish" parent="." instance=ExtResource("3_02uie")]
+gravity_scale = 1.5
+
+[node name="Platform1" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 1.9, 0, 0, 0, 200, 0, -0.99999976, 0)
+material_override = ExtResource("4_fksqx")
+material_overlay = ExtResource("5_4p0jq")
+mesh = SubResource("BoxMesh_2i2tq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_43g2l")

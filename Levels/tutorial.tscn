@@ -140,8 +140,7 @@ size = Vector3(19.038, 9.74719, 12.8198)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "See that ramp over there?
-Try building up enough speed to cross the gap!
-"
+Try building up enough speed to cross the gap!"
 JFG_animation = "tuto_point"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -164,8 +163,7 @@ size = Vector3(55.0235, 26.9082, 20.7333)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Very goooood!!
-Look at youuuu!!!
-"
+Look at youuuu!!!"
 code = "DialogueManager.show_jfg(true)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -1304,6 +1302,7 @@ transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.0
 
 [node name="Seaweed" type="Sprite3D" parent="seeweed4"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture_filter = 0
 texture = ExtResource("20_3l68j")
 
 [node name="Seaweed16" type="Sprite3D" parent="seeweed4"]
@@ -1388,4 +1387,4 @@ shape = SubResource("BoxShape3D_ygkl2")
 
 [node name="hook" parent="." instance=ExtResource("24_ygkl2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5212053, 21.916418, -225.12483)
-lineLength = 19.146417808532714
+lineLength = 19.14641780853271

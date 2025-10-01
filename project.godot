@@ -158,3 +158,7 @@ resync={
 3d_physics/layer_5="enemies"
 3d_physics/layer_6="homing target"
 3d_physics/layer_7="MineDominoEffect"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=2

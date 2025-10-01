@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://camhknuxnb4ml"
-path="res://.godot/imported/z_tip.png-eab5c86e86bb2eacbdd9083b2cbf1108.ctex"
+uid="uid://dmepdx1tygigg"
+path="res://.godot/imported/z_tip_on.png-bbf96e3b4eb901ed4d0a11e6fb20bcb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/z_tip.png"
-dest_files=["res://.godot/imported/z_tip.png-eab5c86e86bb2eacbdd9083b2cbf1108.ctex"]
+source_file="res://Sprites/UI/z_tip_on.png"
+dest_files=["res://.godot/imported/z_tip_on.png-bbf96e3b4eb901ed4d0a11e6fb20bcb1.ctex"]
 
 [params]
 
