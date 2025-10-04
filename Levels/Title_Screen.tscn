@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=33 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -116,13 +116,6 @@ font_size = 30
 font_color = Color(0.984314, 0, 1, 1)
 outline_size = 14
 
-[sub_resource type="LabelSettings" id="LabelSettings_w1112"]
-line_spacing = 11.0
-font = ExtResource("8_4kyk8")
-font_size = 35
-font_color = Color(0.983334, 0, 1, 1)
-outline_size = 19
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imy30"]
 bg_color = Color(0, 0.751334, 0.98, 0.945098)
 border_width_left = 10
@@ -236,6 +229,97 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_1em2i")
 
+[node name="logo" type="Sprite3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -38.996, 51.0354, -225.683)
+no_depth_test = true
+render_priority = -5
+texture = ExtResource("7_t7vd5")
+
+[node name="Funbox" parent="." instance=ExtResource("12_imy30")]
+transform = Transform3D(-0.912519, 0, -1.77969, 0, 2, 0, 1.77969, 0, -0.912519, -3.36764, -0.0500727, -11.7397)
+
+[node name="Corals" type="Node3D" parent="."]
+
+[node name="CoralSprite" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -0.414465, 0.377909, -4.61403)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite2" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -5.70469, 0.377909, -3.21842)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite3" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 4.174, 0.377909, -2.62891)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite4" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.00643, 0.377909, -1.94794)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite5" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.01521, 0.377909, 2.64061)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite6" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 1.43435, 0.377909, 0.485107)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite8" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.48107, 0.377909, 1.92428)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite16" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.43447, 0.377909, -1.08612)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite17" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.2686, 0.377909, -6.97524)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite9" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -4.97296, 0.377909, 0.0738752)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite19" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -7.50427, 0.377909, 0.10357)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite20" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -10.1988, 0.377909, -1.97133)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite10" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -10.5598)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite18" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -21.4711)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite11" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.05425, 0.377909, -8.32095)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite12" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.37046, 0.377909, -6.07432)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite13" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.3226, 0.377909, -13.9841)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite14" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.5991, 0.377909, -13.9841)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite15" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.58389, 0.377909, -5.60146)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite7" type="Sprite3D" parent="Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 2.92938, 0.377909, -7.15759)
+texture = ExtResource("13_13dlr")
+
 [node name="UI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -271,6 +355,7 @@ focus_neighbor_top = NodePath("../Exit")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1bnno")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1bnno")
 text = "TUTORIAL"
+helpText = "Learn the basics of how to play."
 
 [node name="play" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
@@ -278,6 +363,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_68fed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_68fed")
 text = "PLAY"
+helpText = "Start a game of Phishics!"
 
 [node name="tricks" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
@@ -285,6 +371,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5cjeb")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5cjeb")
 text = "TRICKS"
+helpText = "Discover all the techniques you can pull off!"
 
 [node name="credits" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
@@ -292,6 +379,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4kyk8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4kyk8")
 text = "CREDITS"
+helpText = "Learn about the creators of Phishics."
 
 [node name="Exit" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
@@ -300,6 +388,7 @@ focus_neighbor_bottom = NodePath("../tutorial")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1em2i")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1em2i")
 text = "QUIT"
+helpText = "Close the game."
 
 [node name="keypTips" type="HBoxContainer" parent="UI/MenuOptions"]
 layout_mode = 2
@@ -357,30 +446,6 @@ text = ": Select"
 label_settings = SubResource("LabelSettings_pyvl3")
 horizontal_alignment = 1
 vertical_alignment = 2
-
-[node name="tips" type="MarginContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -320.5
-offset_top = -61.0
-offset_right = 320.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_bottom = 14
-metadata/_edit_lock_ = true
-
-[node name="HelpTip" type="Label" parent="UI/tips"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 8
-text = "Extra info on the selected menu option"
-label_settings = SubResource("LabelSettings_w1112")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Credits" type="Control" parent="UI"]
 visible = false
@@ -612,102 +677,12 @@ position = Vector2(1252, 834)
 scale = Vector2(0.19, 0.19)
 texture = ExtResource("10_68fed")
 
-[node name="logo" type="Sprite3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -38.996, 51.0354, -225.683)
-no_depth_test = true
-render_priority = -5
-texture = ExtResource("7_t7vd5")
-
-[node name="Funbox" parent="." instance=ExtResource("12_imy30")]
-transform = Transform3D(-0.912519, 0, -1.77969, 0, 2, 0, 1.77969, 0, -0.912519, -3.36764, -0.0500727, -11.7397)
-
-[node name="Corals" type="Node3D" parent="."]
-
-[node name="CoralSprite" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -0.414465, 0.377909, -4.61403)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite2" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -5.70469, 0.377909, -3.21842)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite3" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 4.174, 0.377909, -2.62891)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite4" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.00643, 0.377909, -1.94794)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite5" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.01521, 0.377909, 2.64061)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite6" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 1.43435, 0.377909, 0.485107)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite8" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.48107, 0.377909, 1.92428)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite16" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.43447, 0.377909, -1.08612)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite17" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.2686, 0.377909, -6.97524)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite9" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -4.97296, 0.377909, 0.0738752)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite19" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -7.50427, 0.377909, 0.10357)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite20" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -10.1988, 0.377909, -1.97133)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite10" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -10.5598)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite18" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -21.4711)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite11" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.05425, 0.377909, -8.32095)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite12" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.37046, 0.377909, -6.07432)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite13" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.3226, 0.377909, -13.9841)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite14" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.5991, 0.377909, -13.9841)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite15" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.58389, 0.377909, -5.60146)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite7" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 2.92938, 0.377909, -7.15759)
-texture = ExtResource("13_13dlr")
-
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/play" to="." method="_on_play_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/play" to="." method="_on_play_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tricks" to="." method="_on_tricks_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/tricks" to="." method="_on_tricks_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_hovered"]

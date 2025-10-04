@@ -4,6 +4,7 @@ var gamePaused : bool
 var isOnTitleScreen : bool = false
 ##Stops you from pausing/unpausing during button animations or screen transitions
 var disableMenuControl : bool = false 
+var previousUIselection = [] ##Stores the last buttons you were hovering before you switched menu
 var gameTimer : int = 0
 var framefwrd
 
@@ -66,11 +67,17 @@ func level_transition():
 ##After the level is loaded, level_class.gd tells menu manager
 ##to play the 2nd screen transition animation
 
+##Stores what you were hovering on before entering a submenu
+func rememberUichoice():
+	previousUIselection.append(get_viewport().gui_get_focus_owner())
 
+##Focus on previous selection after closing a submenu
+func focusPreviousUI():
+	previousUIselection.pop_back().grab_focus()
 
 
 func _process(_delta):
-	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner())
+	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner(), " ", previousUIselection)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	gameTimer += 1
 	

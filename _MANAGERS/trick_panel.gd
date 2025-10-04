@@ -26,8 +26,7 @@ func set_text():
 
 func _ready():
 	set_text()
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(grab_focus)
 	focus_entered.connect(_on_focus_entered)
 	focus_exited.connect(_on_focus_exited)
 
@@ -36,12 +35,7 @@ func _process(_delta):
 		set_text()
 
 
-func _on_mouse_entered():
-	grab_focus()
 
-func _on_mouse_exited():
-	release_focus()
-	
 func set_border_width(value: float):
 	stylebox.border_width_left = value
 	stylebox.border_width_top = value

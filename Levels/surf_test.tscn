@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=39 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -141,6 +141,10 @@ uv1_world_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfxg8"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_p34o4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl2w4"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
 
@@ -223,7 +227,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.143922, 120.37161, 78.23588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.649315, 120.37161, 86.68622)
 gravity_scale = 1.5
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -246,7 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0569, 119.266, 65.4554)
 signSprite = "uid://2jdkufiby1by"
 
 [node name="destructable_sign10" parent="." instance=ExtResource("3_wstlt")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.019517, 118.407936, 65.18756)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.994185, 118.40793, 65.53877)
 signSprite = "uid://bopnbyxyecen8"
 
 [node name="destructable_sign12" parent="." instance=ExtResource("3_wstlt")]
@@ -580,3 +584,138 @@ transform = Transform3D(0.7198246, 0.694156, 0, -0.694156, 0.7198246, 0, 0, 0, 1
 [node name="hook" parent="." instance=ExtResource("13_p34o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 124.518585, 70.40018)
 lineLength = 5.452883911132813
+
+[node name="tornado2" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 64.67393)
+
+[node name="tornado3" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 59.964333)
+
+[node name="tornado4" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 53.75583)
+
+[node name="tornado5" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 41.617825)
+
+[node name="tornado6" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 28.29845)
+
+[node name="tornado7" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 3.3641472)
+
+[node name="tornado8" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -14.288502)
+
+[node name="tornado9" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -33.961803)
+
+[node name="tornado10" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -57.214817)
+
+[node name="tornado11" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -73.02161)
+
+[node name="tornado12" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -76.042145)
+
+[node name="tornado13" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -79.477264)
+
+[node name="tornado14" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -82.438446)
+
+[node name="tornado15" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -85.758835)
+
+[node name="tornado16" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -89.37635)
+
+[node name="tornado17" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -93.11146)
+
+[node name="tornado18" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -97.48878)
+
+[node name="tornado19" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -102.175446)
+
+[node name="tornado20" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -106.469185)
+
+[node name="tornado21" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -111.05098)
+
+[node name="tornado22" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -115.62345)
+
+[node name="tornado23" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -119.89451)
+
+[node name="tornado24" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -123.838684)
+
+[node name="tornado25" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -128.69244)
+
+[node name="tornado26" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -134.34224)
+
+[node name="tornado27" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -140.09656)
+
+[node name="tornado28" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -146.60759)
+
+[node name="tornado29" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -146.60759)
+
+[node name="tornado30" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -151.9942)
+
+[node name="tornado31" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -156.56667)
+
+[node name="tornado32" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -160.83774)
+
+[node name="tornado33" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -164.7819)
+
+[node name="tornado34" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -169.63568)
+
+[node name="tornado35" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -175.28546)
+
+[node name="tornado36" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -181.03978)
+
+[node name="tornado37" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -187.55081)
+
+[node name="tornado38" parent="." instance=ExtResource("4_j71bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, -187.55081)
+
+[node name="Platform37" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, -1.717832e-14, 0, 1.717832e-14, 5, 0, 0, 0, 200, -99.78476, 117.74579, -26.821415)
+material_override = ExtResource("1_hsesv")
+material_overlay = ExtResource("2_wstlt")
+mesh = SubResource("BoxMesh_p34o4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform37/StaticBody3D"]
+shape = SubResource("BoxShape3D_gl2w4")
+
+[node name="Platform38" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, -1.717832e-14, 0, 1.717832e-14, 5, 0, 0, 0, 200, -92.01344, 117.74579, -26.821415)
+material_override = ExtResource("1_hsesv")
+material_overlay = ExtResource("2_wstlt")
+mesh = SubResource("BoxMesh_p34o4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform38/StaticBody3D"]
+shape = SubResource("BoxShape3D_gl2w4")

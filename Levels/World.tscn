@@ -421,7 +421,7 @@ size = Vector3(4.58386, 2.21405, 0.2)
 size = Vector3(17.8735, 34.4618, 58.2001)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_581hb"]
-size = Vector3(108.891, 82.4746, 9.29117)
+size = Vector3(112.22174, 82.4746, 9.29117)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71q2h"]
 size = Vector3(60.8563, 63.8001, 18.077)
@@ -3573,6 +3573,9 @@ size = Vector3(49.051, 103.991, 180.842)
 [node name="tornado5" parent="group3" instance=ExtResource("17_w578l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.058, 18.9514, -39.8067)
 
+[node name="tornado6" parent="group3" instance=ExtResource("17_w578l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.44183, 18.9514, -21.340061)
+
 [node name="BoostRing" parent="group3" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 213.967, 20.1925, -34.0318)
 strength = 15.0
@@ -3862,6 +3865,7 @@ operation = 2
 radius = 10.0
 height = 20.0
 sides = 24
+metadata/_edit_lock_ = true
 
 [node name="corner" type="CSGSphere3D" parent="group3/quarterPipe"]
 radius = 10.0
@@ -3879,6 +3883,7 @@ inner_radius = 0.001
 outer_radius = 20.0
 sides = 16
 ring_sides = 24
+metadata/_edit_lock_ = true
 
 [node name="corner2" type="CSGSphere3D" parent="group3/quarterPipe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
@@ -3897,6 +3902,7 @@ inner_radius = 0.001
 outer_radius = 20.0
 sides = 16
 ring_sides = 24
+metadata/_edit_lock_ = true
 
 [node name="wall2" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(-7.72065e-06, 1.806, 5.87228e-06, 0, -7.89428e-08, 134.342, 176.628, 7.89428e-08, 2.56685e-13, 229.91, -6.95, -72.23)
@@ -4225,11 +4231,7 @@ disableHoming = true
 floating = true
 
 [node name="strike_zone6" parent="group3" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.4595, -135.593)
-
-[node name="destructable_sign2" parent="group3" instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2513, 30.4711, 51.7738)
-signSprite = "uid://bopnbyxyecen8"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.270195, -135.593)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="group3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.465, 29.0233, -35.403)
@@ -4433,8 +4435,8 @@ reelingSpeed = 1.5
 
 [node name="Jellyfish9" parent="2Darea" instance=ExtResource("41_i76hq")]
 transform = Transform3D(0.999998, 4.67609e-08, 0, -4.6761e-08, 0.999997, 0, 0, 0, 0.999999, 78.4206, 8.20706, -64.7995)
-bounceForce = 80
-hSpeedMultiplier = 0.6
+bounceForce = 55
+hSpeedMultiplier = 0.4
 
 [node name="antiLookDownJF" parent="2Darea" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8797, 3.30712, -20.5299)
@@ -4449,7 +4451,7 @@ debug_color = Color(0, 0.85, 1, 1)
 transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 17.2445, -3.38872, -11.8021)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2Darea/forceField"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5109, 4.42506, 4.62914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.17627, 4.4250584, 4.62914)
 shape = SubResource("BoxShape3D_581hb")
 
 [node name="scoreRing9" parent="2Darea" instance=ExtResource("45_s7dn7")]

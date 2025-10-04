@@ -25,7 +25,7 @@ func _ready():
 
 func _process(_delta):
 	if Engine.is_editor_hint() and animationPreview:
-		$AnimationPlayer.play("Cheering")
+		$AnimationPlayer.play("tuto_think")
 		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
 	
@@ -37,6 +37,10 @@ func play_animation(anim : String):
 		$AnimationPlayer.play(anim)
 	else:
 		$AnimationPlayer.play("A-Pose")  #default to A pose as a backup
+	
+	##Dont reset animation is current animation is already the right one
+	if $AnimationExtras.is_playing() and $AnimationExtras.current_animation == anim:
+		return
 	
 	$AnimationExtras.play("RESET") #play reset for 1 frame to reset everything
 	$AnimationExtras.advance(0)

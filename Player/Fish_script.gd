@@ -70,7 +70,10 @@ func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if noScoreUI:
 		ScoreManager.hide()
-	
+	#set debug switch effects
+	MenuManager._on_noclip_toggled() 
+	%debugLabel.visible = MenuManager.fish_debug_on()
+	%debugLabel2.visible = MenuManager.surf_debug_on()
 
 
 func _physics_process(_delta: float) -> void:
@@ -616,7 +619,6 @@ func _physics_process(_delta: float) -> void:
 				ScoreManager.give_points(2500, 0, false, "KICKFLIP")
 				ScoreManager.play_trick_sfx("rare")
 			
-			
 			if get_input_axis(): #if pressing something
 				var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
 				var keyDir = get_input_axis().normalized()
@@ -627,10 +629,13 @@ func _physics_process(_delta: float) -> void:
 				if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
 					$quickTurn.play()
 			
-			
-			
 		else:
 			%brakingPivot.rotation.x = 0
+		
+		if $surfPivot.global_transform.basis.y.y < 0.2 and %surfRC2.is_colliding():
+			var worth = clamp(linear_velocity.length()*height, 0, 1000)
+			ScoreManager.give_points(worth, 0, false, "WALLRIDE")
+			print(worth)
 		
 		
 		
@@ -656,6 +661,8 @@ func _physics_process(_delta: float) -> void:
 		if abs($surfPivot.rotation_degrees.y) > 170 or abs($surfPivot.rotation_degrees.y) < 10:
 			if surfRotationType == "":
 				%fishPivot.rotation_degrees.y = -30 
+		
+		
 		
 		
 		#landing sfx volume

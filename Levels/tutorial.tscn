@@ -81,7 +81,7 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Say, Mr Fish...                     
 It looks like you don't know how to swim, right?"
-JFG_animation = "tuto_talk"
+JFG_animation = "tuto_think"
 code = "print(\"this code run from a cutscene\")"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -89,6 +89,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Don't worry! You can use the arrow keys to flip yourself!"
+JFG_animation = "tuto_talk"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_l8sr5"]
