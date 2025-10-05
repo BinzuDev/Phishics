@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=132 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -342,6 +342,12 @@ size = Vector3(30.6068, 17.7794, 19.6494)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_grwv0"]
 size = Vector3(7.07935, 3.20593, 13.6348)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4ps87"]
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_grwv0"]
+flip_faces = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvfdy"]
 shading_mode = 0
@@ -3640,7 +3646,7 @@ explosionStrength = 200
 explosionRadius = 8.0
 
 [node name="Platform1" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(18.043, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 154.58, 9.18, -21.26)
+transform = Transform3D(18.043, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 154.58, 9.18, -6.3046017)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -3652,9 +3658,10 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform5" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(49.0248, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 210.046, 9.18, -21.7131)
+transform = Transform3D(49.0248, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 210.05, 9.18, -21.26)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
+transparency = 1.0
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
@@ -3663,8 +3670,20 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/Platform5/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
+[node name="fakeFloor" type="MeshInstance3D" parent="group3/Platform5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("4_vbdqq")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("QuadMesh_4ps87")
+
+[node name="fakeFloor2" type="MeshInstance3D" parent="group3/Platform5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+material_override = ExtResource("4_vbdqq")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("QuadMesh_grwv0")
+
 [node name="Platform7" type="MeshInstance3D" parent="group3"]
-transform = Transform3D(23.311, 0, 0, 0, 20.0182, 0, 0, 0, 79.8456, 174.54, -0.74, -30.59)
+transform = Transform3D(23.311, 0, 0, 0, 20.0182, 0, 0, 0, 79.8456, 174.54, -0.74, -17.34)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -3792,6 +3811,14 @@ transform = Transform3D(-1.4219671e-07, 0.9999999, -8.599977e-08, 0.9674443, 1.1
 material_override = SubResource("StandardMaterial3D_kvfdy")
 mesh = SubResource("QuadMesh_kvfdy")
 skeleton = NodePath("../../sign5")
+
+[node name="hideEdges2" type="CSGBox3D" parent="group3/half pipe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.92, -0.5, 24.61)
+size = Vector3(15.32, 22.3, 7.73)
+
+[node name="hideEdges" type="CSGBox3D" parent="group3/half pipe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.92202, -0.5026369, -27.47467)
+size = Vector3(15.32, 22.3, 43.72)
 
 [node name="base" type="CSGBox3D" parent="group3/half pipe"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.317877, 1.4088402, 7.6140747)

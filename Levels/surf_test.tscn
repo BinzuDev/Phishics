@@ -582,8 +582,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.117529, 118.6671, 72.78833
 transform = Transform3D(0.7198246, 0.694156, 0, -0.694156, 0.7198246, 0, 0, 0, 1, 37.505123, 122.1088, 84.79285)
 
 [node name="hook" parent="." instance=ExtResource("13_p34o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 124.518585, 70.40018)
-lineLength = 5.452883911132813
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 143.49173, 70.40018)
+lineLength = 24.426028442382812
 
 [node name="tornado2" parent="." instance=ExtResource("4_j71bj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.93943, 118.2657, 64.67393)

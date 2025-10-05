@@ -58,6 +58,8 @@ func _process(_delta: float) -> void:
 ## When something touches the mine
 func _on_mine_touched(body: Node3D) -> void: 
 	if body is RigidBody3D:
+		if body is enemy:
+			ScoreManager.give_points(0, 10, true, "SACRIFICE")
 		if body is player and body.homing:
 			_on_animation_finished("diving") #explode instantly when diving
 		else:

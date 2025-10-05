@@ -63,6 +63,7 @@ var noclip := false
 
 func _ready() -> void:
 	checkpoint_pos = position
+	posLastFrame = global_position
 	ScoreManager.fish = self
 	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
 	$Decal.visible = false
@@ -319,7 +320,6 @@ func _physics_process(_delta: float) -> void:
 		var smearLength = global_position.distance_to(posLastFrame)
 		#print(smearLength)
 		$homing/smear.scale.z = smearLength * 0.4
-		posLastFrame = global_position
 	else:
 		$homing/smear.visible = false
 	
@@ -581,8 +581,6 @@ func _physics_process(_delta: float) -> void:
 		newDecal.visible = true
 		
 	
-	##TODO: UI follows camera change,
-	##TODO: combo list on screen whenever u do a surf trick,
 	
 	var surfSparkSpd
 	var surfSparkRate
@@ -838,7 +836,7 @@ func _physics_process(_delta: float) -> void:
 	## Speed wind SFX
 	#DECIBEL TO LINEAR CHEAT SHEET
 	#-20 : 0.1     -6 : 0.5   0 : 1.0   6 : 2.0   12 : 4.0    20 : 10.0
-	var speed = linear_velocity.length()
+	var speed = global_position.distance_to(posLastFrame)*60
 	var windVolume
 	if speed < 15:
 		windVolume = 0
@@ -848,12 +846,16 @@ func _physics_process(_delta: float) -> void:
 	#adds fade in and fade out
 	$speedWind.volume_linear = move_toward($speedWind.volume_linear, windVolume, 0.2)
 	
+	
+	
 	#extra pitch when you go really fast
 	if speed <= 40:
 		$speedWind.pitch_scale = 1
 	else:                             #1 at 50     3 at 200
 		$speedWind.pitch_scale =clamp( (speed-50)*0.013 + 1, 1, 3)
 	
+	
+	posLastFrame = global_position
 	
 	#DEBUG_INFO
 	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",

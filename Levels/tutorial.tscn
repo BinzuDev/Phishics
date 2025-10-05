@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=83 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_desr6"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -329,6 +329,9 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxMesh" id="BoxMesh_to5w2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kmhi"]
+size = Vector3(8.545486, 1.2592773, 1.9713135)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l68j"]
 albedo_texture = ExtResource("17_s0t66")
@@ -857,6 +860,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform9/StaticBody3D"]
 shape = SubResource("BoxShape3D_avars")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="funArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37914, 1.191351, -233.69002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0052108765, 1.3290199, -4.0707855)
+shape = SubResource("BoxShape3D_2kmhi")
+debug_color = Color(0, 16.198252, 18.892157, 1)
 
 [node name="Platform11" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(-1.70086e-06, 0, -8.59321, -25.1517, 2.7604477, 2.42798e-07, 29.6893, 2.3385515, -2.86602e-07, 6.37914, 1.191351, -233.69002)

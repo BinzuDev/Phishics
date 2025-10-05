@@ -7,6 +7,7 @@ var focus
 func _ready():
 	print("menu manager ready")
 	%TrickList.visible = false
+	%Settings.visible = false
 	$splashScreen.visible = true
 	$transitionScreen.visible = true
 	$transitionScreen.position = Vector2(-99999, 0)
@@ -18,7 +19,7 @@ func _process(_delta):
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
 	
-	$tips.visible = (GameManager.gamePaused or GameManager.isOnTitleScreen) and !isSubmenuOpen()
+	$tips.visible = ($PauseMenu.visible or GameManager.isOnTitleScreen) and !isSubmenuOpen()
 	
 	
 	#backup in case no option is selected
@@ -46,19 +47,26 @@ func _process(_delta):
 func switch_tab(rightSide : bool = true):
 	%arrowAnim.stop()
 	if rightSide:
-		%trickTabs.current_tab = wrapi(%trickTabs.current_tab+1, 0, 4)
+		%trickTabs.current_tab = clamp(%trickTabs.current_tab+1, 0, 3)
 		%arrowAnim.play("right_arrow")
 	else:
-		%trickTabs.current_tab = wrap(%trickTabs.current_tab-1, 0, 4)
+		if %trickTabs.current_tab == 0:
+			printerr("no")
+			%trickGoBack.grab_focus()
+			return
+		%trickTabs.current_tab = clamp(%trickTabs.current_tab-1, 0, 3)
 		%arrowAnim.play("left_arrow")
-	%trickTabs.get_current_tab_control().get_child(0).get_child(0).get_child(0).grab_focus()
+	if !%trickGoBack.has_focus():
+		%trickTabs.get_current_tab_control().get_child(0).get_child(0).get_child(0).grab_focus()
 	%trickTabs.get_current_tab_control().scroll_vertical = 0
+	
 
 
 func toggleMenu():
 	$PauseMenu.visible = GameManager.gamePaused
 	%TrickList.visible = false
 	%Tricks.forceReset()
+	%Settings.visible = false
 	GameManager.previousUIselection = []
 	if GameManager.gamePaused:
 		%Continue.grab_focus()
@@ -107,7 +115,7 @@ func isSubmenuOpen():
 	return %TrickList.visible
 
 
-#Pause menu options
+	## Pause menu options ##
 func _on_continue_pressed():
 	GameManager.toggle_pause()
 
@@ -118,8 +126,10 @@ func _on_tricks_pressed():
 	GameManager.rememberUichoice()
 	%PauseList.visible = false
 	%TrickList.visible = true
+	$tips.visible = false
 	GameManager.disableMenuControl = false
 	%trickTabs.current_tab = 0
+	%trickGoBack.forceReset()
 	%movement.grab_focus()
 	$TrickList/Panel/trickTabs/Mechanics.scroll_vertical = 0
 	
@@ -132,6 +142,21 @@ func close_tricks():
 	%TrickList.visible = false
 	
 
+func _on_settings_pressed():
+	GameManager.rememberUichoice()
+	GameManager.disableMenuControl = false
+	%PauseList.visible = false
+	%Settings.visible = true
+	%settingsTabs.current_tab = 0
+	%settingsGoBack.grab_focus()
+	
+
+func _on_settings_go_back():
+	GameManager.disableMenuControl = false
+	if GameManager.gamePaused:
+		%PauseList.visible = true
+	GameManager.focusPreviousUI()
+	%Settings.visible = false
 
 func _on_exit_pressed(): 
 	GameManager.change_scene("res://Levels/Title_Screen.tscn")
@@ -192,3 +217,10 @@ func _on_mute_music_toggled(toggled_on):
 
 func _on_fps_toggled(toggled_on):
 	$FPSanchor.visible = toggled_on
+
+
+	## SETTINGS MENU ##
+func _on_master_volume_changed(value):
+	AudioServer.set_bus_volume_linear(0, value)
+	%masterVol.text = str(" ", int(value*100), "%")
+	print("linear: ", AudioServer.get_bus_volume_linear(0), " db: ", AudioServer.get_bus_volume_db(0))

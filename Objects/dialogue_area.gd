@@ -13,7 +13,7 @@ func _ready():
 		printerr("you forgot to fill the dialogue export!!!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !dialogue:
 		return
 	
@@ -34,9 +34,11 @@ func _process(_delta: float) -> void:
 				isInside = true
 				start_dialogue()
 		else:
+			get_child(0).scale = Vector3(1.30,1.30,1.30)
+			#get_child(0).reset_physics_interpolation()
 			if Input.is_action_just_pressed("confirm") and !DialogueManager.isRunning:
 				start_dialogue()
-	
+		
 	
 	
 
@@ -52,7 +54,9 @@ func start_dialogue():
 
 
 func _on_body_exited(_body):
-	DialogueManager.show_prompt(false)
+	if !dialogue.automaticStart:
+		DialogueManager.show_prompt(false)
+		get_child(0).scale = Vector3(1,1,1)
 
 
 func _on_body_entered(_body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=100 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
 [ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="3_sv072"]
@@ -360,6 +360,16 @@ _data = {
 &"spam_penalty": SubResource("Animation_eyaen"),
 &"spam_warn": SubResource("Animation_mvj7n")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_ma5d6"]
+font = ExtResource("4_bfd2b")
+font_size = 66
+outline_size = 22
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 3
+stacked_outline_0/color = Color(1, 1, 1, 1)
+stacked_outline_1/color = Color(1, 0.4117647, 1, 1)
+stacked_outline_2/color = Color(0, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5htxl"]
 font = ExtResource("4_bfd2b")
@@ -1027,7 +1037,7 @@ grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "999 999 999 999"
-label_settings = SubResource("LabelSettings_7cib2")
+label_settings = SubResource("LabelSettings_ma5d6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1190,34 +1200,42 @@ bus = &"tricks"
 
 [node name="damp" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_q2qio")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="coastal" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_pb5r6")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="buoyant" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_nuf03")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="aquatic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gthnu")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="splashing" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mbogq")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="phishics" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mqv3u")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="phishicss" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_5v7dj")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="phishicsss" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_o5qv3")
+volume_db = 6.0
 bus = &"rankUp"
 
 [node name="lowFreshness" type="AudioStreamPlayer" parent="."]

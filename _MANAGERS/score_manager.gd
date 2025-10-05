@@ -50,6 +50,16 @@ var ASrankColor = []
 var fish #gets set automatically inside the fish script
 
 
+##Make the airspin meter follow the fish
+func _process(_delta):
+	var cam = get_viewport().get_camera_3d()
+	if fish and cam:
+		var pos_3d = fish.global_position
+		var pos_2d = cam.unproject_position(pos_3d)
+		pos_2d = Vector2(round(pos_2d.x + 38.5), round(pos_2d.y -109) )
+		%spinMeter.global_position = pos_2d
+
+
 
 func _physics_process(_delta: float) -> void:
 	ASrequirements = ASnormalRequirements
@@ -129,6 +139,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			%spinRank.label_settings.font_color = "ff00ff"
 			%spinRank.label_settings.outline_color = "00ffff"
+		
 	else:
 		$UI/airSpin.modulate.a = 0 #hide if no fish
 	
@@ -363,6 +374,8 @@ func end_combo():
 		$comboEnd.play() #play sfx only once
 	if mult >= 1 and freshState != FRESH.LOW:
 		combo_end_animation()
+		set_label_settings(points * mult)
+	
 	finalScore += points * mult
 	styleScore += points * mult
 	points = 0
@@ -597,7 +610,6 @@ func format_big_number(value:String):
 	return value
 
 
-
 ## Used so whole decimal numbers shown on UI are shown like "5" instead of "5.0"
 func format_decimal(value):
 	if int(value) == value:
@@ -612,3 +624,29 @@ func hide():
 func show():
 	$UI.visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
+
+func set_label_settings(value : int):
+	%comboEndText.label_settings.font_color = Color("ffffff")
+	%comboEndText.label_settings.outline_color = Color("000000")
+	%comboEndText.label_settings.set_stacked_outline_size(0, 0)
+	%comboEndText.label_settings.set_stacked_outline_size(1, 0)
+	%comboEndText.label_settings.set_stacked_outline_size(2, 0)
+	if value > 100000: #100k
+		%comboEndText.label_settings.font_color = Color("00ffff")
+	if value > 1000000: #1M
+		%comboEndText.label_settings.font_color = Color("ff00ff")
+		%comboEndText.label_settings.outline_color = Color("ffffff")
+	if value > 10000000: #10M
+		%comboEndText.label_settings.font_color = Color("00ffff")
+		%comboEndText.label_settings.outline_color = Color("ff00ff")
+		%comboEndText.label_settings.set_stacked_outline_size(0, 25)
+		%comboEndText.label_settings.set_stacked_outline_color(0, "00ffff") 
+	if value > 1000000000: #1B >:3c no one will ever know
+		%comboEndText.label_settings.font_color = Color("00ffff")
+		%comboEndText.label_settings.outline_color = Color("ff69ff") 
+		%comboEndText.label_settings.set_stacked_outline_size(0, 25)
+		%comboEndText.label_settings.set_stacked_outline_color(0, Color("ffffff"))
+		%comboEndText.label_settings.set_stacked_outline_size(1, 25)
+		%comboEndText.label_settings.set_stacked_outline_color(1, Color("ff69ff"))
+		%comboEndText.label_settings.set_stacked_outline_size(2, 25)
+		%comboEndText.label_settings.set_stacked_outline_color(2, Color("00ffff")) 
