@@ -77,7 +77,7 @@ func focusPreviousUI():
 
 
 func _process(_delta):
-	print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner(), " ", previousUIselection)
+	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner(), " ", previousUIselection)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	gameTimer += 1
 	
