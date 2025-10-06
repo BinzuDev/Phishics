@@ -219,8 +219,30 @@ func _on_fps_toggled(toggled_on):
 	$FPSanchor.visible = toggled_on
 
 
-	## SETTINGS MENU ##
+
+
+	#####################
+	##  SETTINGS MENU  ##
+	#####################
+
+## Audio
 func _on_master_volume_changed(value):
 	AudioServer.set_bus_volume_linear(0, value)
 	%masterVol.text = str(" ", int(value*100), "%")
 	print("linear: ", AudioServer.get_bus_volume_linear(0), " db: ", AudioServer.get_bus_volume_db(0))
+func _on_music_volume_changed(value):
+	AudioServer.set_bus_volume_linear(4, value) #music bus
+	%musicVol.text = str(int(value*100), "%")
+func _on_voice_volume_changed(value):
+	AudioServer.set_bus_volume_linear(3, value) #rankUp bus
+	%voiceVol.text = str(int(value*100), "%")
+	$Settings/settingsTabs/Audio/voicePreview.play()
+func _on_tricks_volume_changed(value):
+	AudioServer.set_bus_volume_linear(2, value) #tricks bus
+	%trickVol.text = str(int(value*100), "%")
+	$Settings/settingsTabs/Audio/trickPreview.play()
+func _on_sfx_volume_changed(value):
+	AudioServer.set_bus_volume_linear(1, value) #fishsfx bus
+	AudioServer.set_bus_volume_linear(5, value) #soundEffects bus
+	%sfxVol.text = str(int(value*100), "%")
+	$Settings/settingsTabs/Audio/sfxPreview.play()

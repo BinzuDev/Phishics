@@ -456,7 +456,7 @@ radius = 0.25
 height = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_nmgcd"]
-font_size = 30
+font_size = 40
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
@@ -1381,20 +1381,19 @@ mesh = SubResource("SphereMesh_lt56d")
 [node name="debugLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 16.0
-offset_top = 297.0
-offset_right = 282.0
-offset_bottom = 544.0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 274.0
+offset_bottom = 367.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_nmgcd")
 
 [node name="debugLabel2" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 13.0
-offset_top = 16.0
-offset_right = 590.0
-offset_bottom = 263.0
+offset_top = 27.0
+offset_right = 577.0
+offset_bottom = 274.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_q0y68")
 
@@ -1406,6 +1405,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="speedLinesShader" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
@@ -1668,13 +1668,13 @@ bus = &"fishsfx"
 stream = SubResource("AudioStreamRandomizer_23obf")
 bus = &"fishsfx"
 
-[node name="THPS_low" type="AudioStreamPlayer" parent="."]
+[node name="spin_low" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xsxx4")
 volume_db = -3.0
-bus = &"tricks"
+bus = &"fishsfx"
 
-[node name="THPS_high" type="AudioStreamPlayer" parent="."]
+[node name="spin_high" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4buur")
 volume_db = -3.0
 pitch_scale = 1.1
-bus = &"tricks"
+bus = &"fishsfx"

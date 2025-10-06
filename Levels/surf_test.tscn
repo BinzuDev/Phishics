@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=40 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -144,6 +144,13 @@ uv1_world_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_p34o4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gl2w4"]
+
+[sub_resource type="Curve3D" id="Curve3D_p34o4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -719,3 +726,10 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform38/StaticBody3D"]
 shape = SubResource("BoxShape3D_gl2w4")
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.898502, 119.9089, 68.31583)
+curve = SubResource("Curve3D_p34o4")
+debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
+
+[node name="rail_grind" parent="Path3D2" instance=ExtResource("7_p34o4")]

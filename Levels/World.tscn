@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=134 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://ghxwq1l37dj5" path="res://Sprites/flipflop.png" id="20_bccto"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="21_46o8p"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="22_u27i5"]
+[ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="24_ie2ey"]
 [ext_resource type="Texture2D" uid="uid://cdpllqpaqnt51" path="res://Sprites/tutorialwall_dive.png" id="28_u27i5"]
 [ext_resource type="Texture2D" uid="uid://bvh653h3ktdm6" path="res://Sprites/jellyfishwarning.png" id="30_i76hq"]
 [ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="31_exl13"]
@@ -261,6 +262,13 @@ uv1_scale = Vector3(0.07, 1, 1)
 size = Vector3(1, 1.89026, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_63vwh"]
+
+[sub_resource type="Curve3D" id="Curve3D_kvfdy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7.605807, -0.0003170967, 2.2968063),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myu2g"]
 albedo_color = Color(0.266667, 0, 0.172549, 1)
@@ -1783,6 +1791,14 @@ texture = ExtResource("6_53g8k")
 [node name="Funbox" parent="group1" instance=ExtResource("14_63vwh")]
 transform = Transform3D(-0.863937, 0, -2.87291, 0, 3, 0, 2.87291, 0, -0.863937, 2.04362, -0.45768, -26.0222)
 skeleton = NodePath("../..")
+
+[node name="railgrind1" type="Path3D" parent="group1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9367323, 4.140005, -23.263306)
+curve = SubResource("Curve3D_kvfdy")
+debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="rail_grind" parent="group1/railgrind1" instance=ExtResource("24_ie2ey")]
+transform = Transform3D(-0.2890853, 3.8206887e-05, -0.9573003, 0, 0.99999195, 3.991119e-05, 0.9572975, 1.153774e-05, -0.28908613, 0, 0, 0)
 
 [node name="skateBoard" parent="group1" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.8397431, -0.04781506, 0.5408745, -0.542984, -0.07394762, 0.8364808, -1.0603742e-08, -0.9961151, -0.088059805, 8.204206, 0.30739367, -30.818516)

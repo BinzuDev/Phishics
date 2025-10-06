@@ -60,6 +60,7 @@ var sfxCoolDown : int = 0
 
 var noclip := false
 
+var trueSpeed := Vector3(0,0,0) #Keeps track of how fast you're moving in global space
 
 func _ready() -> void:
 	checkpoint_pos = position
@@ -847,18 +848,19 @@ func _physics_process(_delta: float) -> void:
 	$speedWind.volume_linear = move_toward($speedWind.volume_linear, windVolume, 0.2)
 	
 	
-	
 	#extra pitch when you go really fast
 	if speed <= 40:
 		$speedWind.pitch_scale = 1
 	else:                             #1 at 50     3 at 200
 		$speedWind.pitch_scale =clamp( (speed-50)*0.013 + 1, 1, 3)
 	
+	trueSpeed = (global_position-posLastFrame) * 60
 	
 	posLastFrame = global_position
 	
 	#DEBUG_INFO
-	%debugLabel2.text = str("speed: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",
+	%debugLabel2.text = str("true speed: ", snapped(trueSpeed.length(), 0.01)," ",snapped(trueSpeed, Vector3(0.01,0.01,0.01)),"\n",
+	"velocity: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",
 	"spin: ", snapped(angular_velocity.length(), 0.01), " ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "
 	surf jump: ", surfJumpHolding, "
 	surf state: ", surfState, "
@@ -876,10 +878,8 @@ func _physics_process(_delta: float) -> void:
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
 	"height: ", snapped(height, 0.01), "\n",
-	"linear velocity: ", snapped(linear_velocity, Vector3(0.01,0.01,0.01)), "\n",
-	"speed: ",  snapped(linear_velocity.length(), 0.01), " (",windVolume,")",  "\n",
-	"angular velocity: ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
-	"spin speed: ", snapped(angular_velocity.length(), 0.01), "\n",
+	"linear velocity: ", snapped(linear_velocity.length(), 0.1)," ",snapped(linear_velocity, Vector3(0.1,0.1,0.1)), "\n",
+	"angular velocity: ", snapped(angular_velocity.length(), 0.1), " ", snapped(angular_velocity, Vector3(0.1,0.1,0.1)), "\n",
 	"diving: ", diving, "\n",
 	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
@@ -1019,13 +1019,13 @@ func updateInputHistory():
 			if angular_velocity.length() < 180:
 				angular_velocity *= 1.05 #doing the same rotation twice in a row
 			spinBoostBonus = 2.7
-			$THPS_low.play()
+			$spin_low.play()
 		else:
 			ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
 			if angular_velocity.length() < 220:
 				angular_velocity *= 1.13 #doing a different rotation
 			spinBoostBonus = 3.8
-			$THPS_high.play()
+			$spin_high.play()
 			
 		
 

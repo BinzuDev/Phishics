@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="9_cx0ei"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhqs"]
-bg_color = Color(1, 0.25, 0.8625, 0.917647)
+bg_color = Color(1, 0.36, 0.88266665, 0.8666667)
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20

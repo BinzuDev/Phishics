@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=81 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -16,6 +16,41 @@
 [ext_resource type="Texture2D" uid="uid://iff24ooevm5j" path="res://Sprites/UI/right_arrow_tip.png" id="10_m1dqt"]
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="12_lic3k"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="12_o7i77"]
+[ext_resource type="AudioStream" uid="uid://qgecunu61mnb" path="res://Sounds/tricks/rare/divestart.ogg" id="14_6xlky"]
+[ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="14_gqsjg"]
+[ext_resource type="AudioStream" uid="uid://dwnsd8h7fk6ql" path="res://Sounds/style_ranks/Splashing2.ogg" id="14_r6urg"]
+[ext_resource type="AudioStream" uid="uid://dmv3h5optlt8h" path="res://Sounds/tricks/rare/FL_hit_1.ogg" id="15_bkakf"]
+[ext_resource type="AudioStream" uid="uid://dlx5xikvttv6w" path="res://Sounds/style_ranks/Aquatic1.ogg" id="15_ftyur"]
+[ext_resource type="AudioStream" uid="uid://b2uje1y503456" path="res://Sounds/impact_bloody/bloody2.ogg" id="15_nrlde"]
+[ext_resource type="AudioStream" uid="uid://c6wye6lhd2i0h" path="res://Sounds/tricks/legendary/oh_the_misery.ogg" id="16_6200f"]
+[ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="16_g062r"]
+[ext_resource type="AudioStream" uid="uid://h3bt3361ccr3" path="res://Sounds/style_ranks/Buoyant2.ogg" id="16_mfo2v"]
+[ext_resource type="AudioStream" uid="uid://dc73ttft37818" path="res://Sounds/tricks/trick1.ogg" id="17_6f478"]
+[ext_resource type="AudioStream" uid="uid://cbjpwnpspesm" path="res://Sounds/style_ranks/Coastal2.ogg" id="17_soyml"]
+[ext_resource type="AudioStream" uid="uid://b60yp7u0psrm4" path="res://Sounds/style_ranks/Damp1.ogg" id="18_sdr3h"]
+[ext_resource type="AudioStream" uid="uid://dj271uuc65mds" path="res://Sounds/tricks/trick2.ogg" id="18_ucssa"]
+[ext_resource type="AudioStream" uid="uid://cu4adehe2o5ag" path="res://Sounds/tricks/trick3.ogg" id="19_3dtuq"]
+[ext_resource type="AudioStream" uid="uid://dnphskcuvtm1c" path="res://Sounds/style_ranks/PhishicSSS1.ogg" id="19_ivbfd"]
+[ext_resource type="AudioStream" uid="uid://bitbhb4x5mkdo" path="res://Sounds/tricks/rare/FL_hit_2.ogg" id="20_2m7we"]
+[ext_resource type="AudioStream" uid="uid://cvo4j1k3x2blu" path="res://Sounds/style_ranks/PhishicSS1.ogg" id="20_wa78b"]
+[ext_resource type="AudioStream" uid="uid://d1mnm1fx20bk" path="res://Sounds/style_ranks/Phishics3.ogg" id="21_derq4"]
+[ext_resource type="AudioStream" uid="uid://ccc5os2uty2jw" path="res://Sounds/tricks/rare/FL_hit_3.ogg" id="21_u03so"]
+[ext_resource type="AudioStream" uid="uid://b7dnvusks7vwv" path="res://Sounds/tricks/rare/FL_hit_4.ogg" id="22_oo8ty"]
+[ext_resource type="AudioStream" uid="uid://cyltwf5dvuj5d" path="res://Sounds/tricks/rare/gambling.ogg" id="23_a35ka"]
+[ext_resource type="AudioStream" uid="uid://cl3mngag8w3pm" path="res://Sounds/tricks/rare/scratch2.ogg" id="24_aygwn"]
+[ext_resource type="AudioStream" uid="uid://b7a85qb5hsgf2" path="res://Sounds/tricks/rare/scratch.ogg" id="25_y450c"]
+[ext_resource type="AudioStream" uid="uid://cwbyge4sbo6ch" path="res://Sounds/tricks/rare/tony_hawk_trick_low.ogg" id="26_4iwno"]
+[ext_resource type="AudioStream" uid="uid://dav807pihtf7q" path="res://Sounds/tricks/legendary/tony_hawk_trick_high.ogg" id="27_whv2q"]
+[ext_resource type="AudioStream" uid="uid://vx80lpkiv53p" path="res://Sounds/mine_activated.ogg" id="30_a35ka"]
+[ext_resource type="AudioStream" uid="uid://bykjymt7hrou2" path="res://Sounds/zipline/zipline_start.ogg" id="31_aygwn"]
+[ext_resource type="AudioStream" uid="uid://fnadeg5y52e6" path="res://Sounds/bowling/STRIKE.ogg" id="32_aygwn"]
+[ext_resource type="AudioStream" uid="uid://ced3chei8hbe3" path="res://Sounds/ringboost.ogg" id="33_y450c"]
+[ext_resource type="AudioStream" uid="uid://c6au0422c773r" path="res://Sounds/FISH.ogg" id="34_4iwno"]
+[ext_resource type="AudioStream" uid="uid://bm8tigdhl3rf2" path="res://Sounds/crabbump.ogg" id="35_whv2q"]
+[ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="36_1sy8g"]
+[ext_resource type="AudioStream" uid="uid://bu7um2p6lj37" path="res://Sounds/sign_hit.ogg" id="37_a84nt"]
+[ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="38_fatt0"]
+[ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="39_4h2r5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
 line_spacing = 11.0
@@ -323,6 +358,50 @@ font = ExtResource("12_lic3k")
 font_size = 30
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i2psa"]
+streams_count = 8
+stream_0/stream = ExtResource("14_r6urg")
+stream_1/stream = ExtResource("15_ftyur")
+stream_2/stream = ExtResource("16_mfo2v")
+stream_3/stream = ExtResource("17_soyml")
+stream_4/stream = ExtResource("18_sdr3h")
+stream_5/stream = ExtResource("19_ivbfd")
+stream_6/stream = ExtResource("20_wa78b")
+stream_7/stream = ExtResource("21_derq4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1sy8g"]
+streams_count = 14
+stream_0/stream = ExtResource("14_6xlky")
+stream_1/stream = ExtResource("15_bkakf")
+stream_2/stream = ExtResource("20_2m7we")
+stream_3/stream = ExtResource("21_u03so")
+stream_4/stream = ExtResource("22_oo8ty")
+stream_5/stream = ExtResource("23_a35ka")
+stream_6/stream = ExtResource("24_aygwn")
+stream_7/stream = ExtResource("25_y450c")
+stream_8/stream = ExtResource("26_4iwno")
+stream_9/stream = ExtResource("27_whv2q")
+stream_10/stream = ExtResource("16_6200f")
+stream_11/stream = ExtResource("17_6f478")
+stream_12/stream = ExtResource("18_ucssa")
+stream_13/stream = ExtResource("19_3dtuq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_geibm"]
+streams_count = 13
+stream_0/stream = ExtResource("14_gqsjg")
+stream_1/stream = ExtResource("15_nrlde")
+stream_2/stream = ExtResource("16_g062r")
+stream_3/stream = ExtResource("33_y450c")
+stream_4/stream = ExtResource("34_4iwno")
+stream_5/stream = ExtResource("35_whv2q")
+stream_6/stream = ExtResource("36_1sy8g")
+stream_7/stream = ExtResource("37_a84nt")
+stream_8/stream = ExtResource("38_fatt0")
+stream_9/stream = ExtResource("39_4h2r5")
+stream_10/stream = ExtResource("30_a35ka")
+stream_11/stream = ExtResource("31_aygwn")
+stream_12/stream = ExtResource("32_aygwn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ewwa"]
 font_size = 20
@@ -764,7 +843,7 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 2634
+scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 autoScroll = 24
@@ -924,7 +1003,7 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 2634
+scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 autoScroll = 91
@@ -1271,12 +1350,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+alignment = 1
 
 [node name="Label" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -1290,14 +1371,16 @@ layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("6_m1dqt")
 max_value = 2.0
-step = 0.1
+step = 0.05
 value = 1.0
 
 [node name="masterVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 text = " 100%"
 label_settings = SubResource("LabelSettings_1nkoj")
+clip_text = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="Settings/settingsTabs/Audio"]
 layout_mode = 1
@@ -1306,6 +1389,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 150
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2"]
@@ -1352,6 +1436,12 @@ text = "Tricks"
 label_settings = SubResource("LabelSettings_o7i77")
 horizontal_alignment = 2
 
+[node name="Label5" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_o7i77")
+horizontal_alignment = 2
+
 [node name="volumeSliders" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1380,6 +1470,14 @@ size_flags_vertical = 1
 theme = ExtResource("6_m1dqt")
 max_value = 1.0
 step = 0.05
+value = 0.35
+
+[node name="HSlider5" type="HSlider" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("6_m1dqt")
+max_value = 1.0
+step = 0.05
 value = 1.0
 
 [node name="volumeLabel" type="Control" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2"]
@@ -1402,19 +1500,42 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 42
 
 [node name="musicVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_o7i77")
 
 [node name="voiceVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_o7i77")
 
 [node name="trickVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "35%"
+label_settings = SubResource("LabelSettings_o7i77")
+
+[node name="sfxVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_o7i77")
+
+[node name="voicePreview" type="AudioStreamPlayer" parent="Settings/settingsTabs/Audio"]
+stream = SubResource("AudioStreamRandomizer_i2psa")
+volume_db = 6.0
+bus = &"rankUp"
+
+[node name="trickPreview" type="AudioStreamPlayer" parent="Settings/settingsTabs/Audio"]
+stream = SubResource("AudioStreamRandomizer_1sy8g")
+bus = &"tricks"
+
+[node name="sfxPreview" type="AudioStreamPlayer" parent="Settings/settingsTabs/Audio"]
+stream = SubResource("AudioStreamRandomizer_geibm")
+max_polyphony = 3
+bus = &"fishsfx"
 
 [node name="Controls" type="Panel" parent="Settings/settingsTabs"]
 visible = false
@@ -1552,6 +1673,7 @@ script = SubResource("GDScript_juhqs")
 [connection signal="on_button_pressed" from="TrickList/Panel/trickGoBack" to="." method="close_tricks"]
 [connection signal="on_button_pressed" from="Settings/settingsTabs/Graphics/settingsGoBack" to="." method="_on_settings_go_back"]
 [connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer/HBoxContainer/HSlider" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider2" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider3" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider4" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider2" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider3" to="." method="_on_voice_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider4" to="." method="_on_tricks_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider5" to="." method="_on_sfx_volume_changed"]

@@ -29,7 +29,6 @@ func _process(_delta):
 		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
 	
-	
 
 
 func play_animation(anim : String):
