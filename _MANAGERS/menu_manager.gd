@@ -14,12 +14,18 @@ func _ready():
 	toggleMenu()
 
 
+func get_UI_size():
+	return $screenSizeDetect.global_position
+
 func _process(_delta):
 	#splash screen fadeout
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
 	
 	$tips.visible = ($PauseMenu.visible or GameManager.isOnTitleScreen) and !isSubmenuOpen()
+	
+	
+	#AudioServer.set_bus_mute(0, !get_window().has_focus())
 	
 	
 	#backup in case no option is selected
@@ -149,6 +155,7 @@ func _on_settings_pressed():
 	%Settings.visible = true
 	%settingsTabs.current_tab = 0
 	%settingsGoBack.grab_focus()
+	%Options.forceReset()
 	
 
 func _on_settings_go_back():
@@ -208,16 +215,18 @@ func _on_noclip_toggled(_toggled_on = true):
 	Player.noclip = value
 	Player.set_collision_mask_value(1, !value)
 	Player.set_collision_mask_value(3, !value)
-
-
-func _on_mute_music_toggled(toggled_on):
-	AudioServer.set_bus_mute(4, toggled_on) 
 	
 
 
 func _on_fps_toggled(toggled_on):
 	$FPSanchor.visible = toggled_on
 
+
+func _on_mobile_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_size(Vector2(1080, 1920), 0)
+	else:
+		DisplayServer.window_set_size(Vector2(1152, 648), 0)
 
 
 
@@ -232,17 +241,41 @@ func _on_master_volume_changed(value):
 	print("linear: ", AudioServer.get_bus_volume_linear(0), " db: ", AudioServer.get_bus_volume_db(0))
 func _on_music_volume_changed(value):
 	AudioServer.set_bus_volume_linear(4, value) #music bus
-	%musicVol.text = str(int(value*100), "%")
+	%musicVol.set_percentage(int(value*100))
 func _on_voice_volume_changed(value):
 	AudioServer.set_bus_volume_linear(3, value) #rankUp bus
-	%voiceVol.text = str(int(value*100), "%")
+	%voiceVol.set_percentage(int(value*100))
 	$Settings/settingsTabs/Audio/voicePreview.play()
 func _on_tricks_volume_changed(value):
-	AudioServer.set_bus_volume_linear(2, value) #tricks bus
-	%trickVol.text = str(int(value*100), "%")
+	AudioServer.set_bus_volume_linear(2, value*0.1) #tricks bus
+	%trickVol.set_percentage(int(value*20))
 	$Settings/settingsTabs/Audio/trickPreview.play()
 func _on_sfx_volume_changed(value):
 	AudioServer.set_bus_volume_linear(1, value) #fishsfx bus
 	AudioServer.set_bus_volume_linear(5, value) #soundEffects bus
-	%sfxVol.text = str(int(value*100), "%")
+	%sfxVol.set_percentage(int(value*100))
 	$Settings/settingsTabs/Audio/sfxPreview.play()
+
+## Graphics
+var viewport_start_size := Vector2(
+	ProjectSettings.get_setting(&"display/window/size/viewport_width"),
+	ProjectSettings.get_setting(&"display/window/size/viewport_height")
+)
+
+
+func _on_UIscale_value_changed(value):
+	var new_size := viewport_start_size
+	new_size /= value #get in percents
+	%UIscale.set_percentage(roundi(value*100))
+	get_tree().root.set_content_scale_size(new_size)
+
+
+func _on_3d_res_scale_value_changed(value):
+	get_viewport().scaling_3d_scale = value
+	%"3DresScale".set_custom_value(str(roundi(value*100)," % ", get_resolution()   ))
+	
+
+func get_resolution():
+	var viewport_render_size = get_viewport().size * get_viewport().scaling_3d_scale
+	return "(%d × %d)" \
+			% [viewport_render_size.x, viewport_render_size.y]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=81 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=83 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
 [ext_resource type="PackedScene" uid="uid://danbt80ck41n5" path="res://_MANAGERS/trick_panel.tscn" id="3_lv8kq"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="3_p1amj"]
-[ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/button_manager.tscn" id="3_tgkfp"]
+[ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/menu_button.tscn" id="3_tgkfp"]
 [ext_resource type="Texture2D" uid="uid://hmdmgl20jrvs" path="res://Sprites/UI/transition_head.png" id="4_s0yte"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="5_06qk8"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="5_juhqs"]
@@ -14,9 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://46vohkmotujj" path="res://Sprites/UI/UI_tricklist.png" id="8_l76pd"]
 [ext_resource type="Texture2D" uid="uid://u4qmfo5alnhi" path="res://Sprites/UI/left_arrow_tip.png" id="9_pp8og"]
 [ext_resource type="Texture2D" uid="uid://iff24ooevm5j" path="res://Sprites/UI/right_arrow_tip.png" id="10_m1dqt"]
-[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="12_lic3k"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="12_o7i77"]
+[ext_resource type="PackedScene" uid="uid://u0rqprt81pas" path="res://_MANAGERS/small_button.tscn" id="13_ftyur"]
 [ext_resource type="AudioStream" uid="uid://qgecunu61mnb" path="res://Sounds/tricks/rare/divestart.ogg" id="14_6xlky"]
+[ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/slider_manager.tscn" id="14_ftyur"]
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="14_gqsjg"]
 [ext_resource type="AudioStream" uid="uid://dwnsd8h7fk6ql" path="res://Sounds/style_ranks/Splashing2.ogg" id="14_r6urg"]
 [ext_resource type="AudioStream" uid="uid://dmv3h5optlt8h" path="res://Sounds/tricks/rare/FL_hit_1.ogg" id="15_bkakf"]
@@ -341,6 +342,16 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfo2v"]
+resource_local_to_scene = true
+content_margin_top = 6.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 15
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 15
+
 [sub_resource type="LabelSettings" id="LabelSettings_juf4l"]
 font = ExtResource("12_o7i77")
 font_size = 37
@@ -353,11 +364,15 @@ font_size = 37
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_o7i77"]
-font = ExtResource("12_lic3k")
-font_size = 30
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftyur"]
+resource_local_to_scene = true
+content_margin_top = 6.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 15
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 15
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i2psa"]
 streams_count = 8
@@ -563,15 +578,15 @@ text = "Hide all UI"
 layout_mode = 2
 text = "noclip"
 
-[node name="muteMusic" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
-layout_mode = 2
-text = "mute music"
-
 [node name="fps" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../../PauseList/optionList/Continue")
 button_pressed = true
 text = "FPS counter"
+
+[node name="mobile" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../PauseList/optionList/Continue")
+text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -1329,14 +1344,59 @@ metadata/_tab_index = 0
 [node name="settingsGoBack" parent="Settings/settingsTabs/Graphics" instance=ExtResource("3_tgkfp")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 718.0
-offset_top = 419.0
-offset_right = 1062.0
-offset_bottom = 517.0
+offset_left = 580.0
+offset_top = 825.0
+offset_right = 924.0
+offset_bottom = 923.0
 size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_juf4l")
 theme_override_styles/focus = SubResource("StyleBoxFlat_juf4l")
 text = "      Back      "
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/settingsTabs/Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+
+[node name="GridContainer" type="VBoxContainer" parent="Settings/settingsTabs/Graphics/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="UIscale" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("14_ftyur")]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.7
+sliderName = "UI scale"
+helpText = ""
+
+[node name="3DresScale" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("14_ftyur")]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.2
+sliderName = "3D resolution scale"
+helpText = ""
+
+[node name="Button" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("13_ftyur")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_mfo2v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mfo2v")
+text = "Button"
+
+[node name="CheckButton" type="CheckButton" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_m1dqt")
+text = "ggkghklghlkghlkghm"
 
 [node name="Audio" type="Panel" parent="Settings/settingsTabs"]
 layout_mode = 2
@@ -1392,136 +1452,50 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 150
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2"]
-layout_mode = 2
-alignment = 1
-
-[node name="nameLabel" type="Control" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel"]
-anchors_preset = 0
-offset_left = -12.0
-offset_right = 28.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -171.0
-offset_top = 6.0
-offset_right = -44.0
-offset_bottom = 932.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-theme_override_constants/separation = 42
-
-[node name="Label2" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control/VBoxContainer"]
-layout_mode = 2
-text = "Music"
-label_settings = SubResource("LabelSettings_o7i77")
-horizontal_alignment = 2
-
-[node name="Label3" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control/VBoxContainer"]
-layout_mode = 2
-text = "Voice"
-label_settings = SubResource("LabelSettings_o7i77")
-horizontal_alignment = 2
-
-[node name="Label4" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control/VBoxContainer"]
-layout_mode = 2
-text = "Tricks"
-label_settings = SubResource("LabelSettings_o7i77")
-horizontal_alignment = 2
-
-[node name="Label5" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/nameLabel/Control/VBoxContainer"]
-layout_mode = 2
-text = "SFX"
-label_settings = SubResource("LabelSettings_o7i77")
-horizontal_alignment = 2
-
-[node name="volumeSliders" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2"]
+[node name="volumeSliders" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 25
 
-[node name="HSlider2" type="HSlider" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("6_m1dqt")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="HSlider3" type="HSlider" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders"]
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("6_m1dqt")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="HSlider4" type="HSlider" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders"]
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("6_m1dqt")
-max_value = 1.0
-step = 0.05
-value = 0.35
-
-[node name="HSlider5" type="HSlider" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders"]
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("6_m1dqt")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="volumeLabel" type="Control" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel"]
-anchors_preset = 0
-offset_left = 8.0
-offset_top = 3.0
-offset_right = 48.0
-offset_bottom = 43.0
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control"]
-layout_mode = 1
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 104.0
-offset_bottom = 928.0
-size_flags_horizontal = 8
-theme_override_constants/separation = 42
-
-[node name="musicVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+[node name="musicVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "100%"
-label_settings = SubResource("LabelSettings_o7i77")
+sliderName = "Music"
+helpText = ""
 
-[node name="voiceVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+[node name="voiceVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "100%"
-label_settings = SubResource("LabelSettings_o7i77")
+sliderName = "Voice"
+helpText = ""
 
-[node name="trickVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+[node name="trickVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "35%"
-label_settings = SubResource("LabelSettings_o7i77")
+max_value = 5.0
+step = 0.25
+value = 3.5
+sliderName = "Tricks"
+helpText = ""
 
-[node name="sfxVol" type="Label" parent="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeLabel/Control/VBoxContainer3"]
+[node name="sfxVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "100%"
-label_settings = SubResource("LabelSettings_o7i77")
+sliderName = "SFX"
+helpText = ""
+
+[node name="Button" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("13_ftyur")]
+custom_minimum_size = Vector2(350, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_ftyur")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ftyur")
+text = "Reset volume to default"
+
+[node name="CheckButton" type="CheckButton" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders"]
+layout_mode = 2
+tooltip_text = "SGKGnskfgdfkgkjdfk"
+text = "Mute when game is unfocused"
 
 [node name="voicePreview" type="AudioStreamPlayer" parent="Settings/settingsTabs/Audio"]
 stream = SubResource("AudioStreamRandomizer_i2psa")
@@ -1656,6 +1630,16 @@ text = "FPS: 60.0"
 label_settings = SubResource("LabelSettings_6ewwa")
 script = SubResource("GDScript_juhqs")
 
+[node name="screenSizeDetect" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Continue" to="." method="_on_continue_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Restart" to="." method="_on_restart_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Tricks" to="." method="_on_tricks_pressed"]
@@ -1668,12 +1652,14 @@ script = SubResource("GDScript_juhqs")
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/style" to="." method="_on_style_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/hideUI" to="." method="_on_hide_ui_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/noclip" to="." method="_on_noclip_toggled"]
-[connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/muteMusic" to="." method="_on_mute_music_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/fps" to="." method="_on_fps_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/mobile" to="." method="_on_mobile_toggled"]
 [connection signal="on_button_pressed" from="TrickList/Panel/trickGoBack" to="." method="close_tricks"]
 [connection signal="on_button_pressed" from="Settings/settingsTabs/Graphics/settingsGoBack" to="." method="_on_settings_go_back"]
+[connection signal="value_changed" from="Settings/settingsTabs/Graphics/MarginContainer/GridContainer/UIscale" to="." method="_on_UIscale_value_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Graphics/MarginContainer/GridContainer/3DresScale" to="." method="_on_3d_res_scale_value_changed"]
 [connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer/HBoxContainer/HSlider" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider2" to="." method="_on_music_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider3" to="." method="_on_voice_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider4" to="." method="_on_tricks_volume_changed"]
-[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/HBoxContainer2/volumeSliders/HSlider5" to="." method="_on_sfx_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/musicVol" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/voiceVol" to="." method="_on_voice_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/trickVol" to="." method="_on_tricks_volume_changed"]
+[connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/sfxVol" to="." method="_on_sfx_volume_changed"]

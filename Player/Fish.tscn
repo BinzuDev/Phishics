@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=157 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -28,18 +28,27 @@
 [ext_resource type="AudioStream" uid="uid://436nxm2fmpx7" path="res://Sounds/sparks/sparks_high_intensity_06.wav" id="11_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://drrw7ys5t8wyt" path="res://Sounds/impact_medium/medium1.ogg" id="11_uucyj"]
 [ext_resource type="AudioStream" uid="uid://cwilbc1payrwb" path="res://Sounds/impact_medium/medium2.ogg" id="12_5m7cr"]
+[ext_resource type="Texture2D" uid="uid://biorl74il5l8l" path="res://Sprites/UI/aim_reticle_off_screen.png" id="12_23obf"]
 [ext_resource type="AudioStream" uid="uid://c33xu632s2u2j" path="res://Sounds/sparks/sparks_high_intensity_08.wav" id="12_dp2w5"]
+[ext_resource type="Texture2D" uid="uid://d3rmwbct3cbu3" path="res://icons/crab.png" id="12_vttj7"]
 [ext_resource type="AudioStream" uid="uid://erap2b7fnpmt" path="res://Sounds/sparks/sparks_high_intensity_11.wav" id="13_d6s4o"]
 [ext_resource type="AudioStream" uid="uid://c267enlul74gu" path="res://Sounds/impact_medium/medium3.ogg" id="13_l2vbt"]
+[ext_resource type="Texture2D" uid="uid://dyeb4smsyuvcn" path="res://icons/boost_ring.png" id="13_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://dmwqt72t5kd3j" path="res://Sounds/sparks/sparks_high_intensity_12.wav" id="14_3jkku"]
 [ext_resource type="AudioStream" uid="uid://hjy4niapmm7d" path="res://Sounds/impact_medium/medium4.ogg" id="14_17eip"]
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="15_5m7cr"]
 [ext_resource type="AudioStream" uid="uid://by0unykljxxjg" path="res://Sounds/sparks/sparks_low_intensity_04.wav" id="15_bsrx0"]
+[ext_resource type="Texture2D" uid="uid://mdoqsqh3p6kx" path="res://icons/jellyfish_target.png" id="15_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://blaew5gn1ol7j" path="res://Sounds/sparks/sparks_low_intensity_06.wav" id="16_3jjx5"]
 [ext_resource type="AudioStream" uid="uid://b2uje1y503456" path="res://Sounds/impact_bloody/bloody2.ogg" id="16_l2vbt"]
+[ext_resource type="Texture2D" uid="uid://bb2dcsrc2jdnh" path="res://icons/hook_target.png" id="16_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="17_17eip"]
+[ext_resource type="Texture2D" uid="uid://cqfmsvk50uoq8" path="res://icons/bowlingPins_target.png" id="17_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://c77aqd8m0ea3d" path="res://Sounds/sparks/sparks_low_intensity_07.wav" id="17_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://bfrairy2vrx6r" path="res://Sounds/sparks/sparks_low_intensity_11.wav" id="18_4buur"]
+[ext_resource type="Texture2D" uid="uid://cdt5xohv2eypg" path="res://icons/warning_sign.png" id="18_ukjyi"]
+[ext_resource type="Texture2D" uid="uid://c3wlgqe8jicw3" path="res://icons/mine.png" id="19_dafiy"]
+[ext_resource type="Texture2D" uid="uid://cx3jri7bd8mio" path="res://icons/railGrind.png" id="20_h8lso"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="24_40mal"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
@@ -470,12 +479,47 @@ shader = ExtResource("49_ny41d")
 shader_parameter/speedScale = 16.0
 shader_parameter/clipPosition = 0.7
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv0xx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mn8qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vttj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mn8qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mn8qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mn8qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ukjyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dafiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h8lso")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_lt56d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("reticleR:offset")
+tracks/0/path = NodePath("rotate/reticleR:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -487,7 +531,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("reticleL:offset")
+tracks/1/path = NodePath("rotate/reticleL:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -499,7 +543,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("reticleD:offset")
+tracks/2/path = NodePath("rotate/reticleD:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -511,7 +555,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("reticleU:offset")
+tracks/3/path = NodePath("rotate/reticleU:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -527,7 +571,7 @@ length = 0.333337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("reticleR:offset")
+tracks/0/path = NodePath("rotate/reticleR:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -539,7 +583,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("reticleL:offset")
+tracks/1/path = NodePath("rotate/reticleL:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -551,7 +595,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("reticleD:offset")
+tracks/2/path = NodePath("rotate/reticleD:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -563,7 +607,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("reticleU:offset")
+tracks/3/path = NodePath("rotate/reticleU:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -579,7 +623,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("reticleR:offset")
+tracks/0/path = NodePath("rotate/reticleR:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -591,7 +635,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("reticleL:offset")
+tracks/1/path = NodePath("rotate/reticleL:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -603,7 +647,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("reticleD:offset")
+tracks/2/path = NodePath("rotate/reticleD:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -615,7 +659,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("reticleU:offset")
+tracks/3/path = NodePath("rotate/reticleU:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1480,30 +1524,43 @@ tint_progress = Color(1, 0.466667, 0, 1)
 
 [node name="reticle" type="Node2D" parent="."]
 
+[node name="offScreenArrow" type="Sprite2D" parent="reticle"]
+z_index = 5
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_23obf")
+offset = Vector2(140, 0)
+
+[node name="icon" type="AnimatedSprite2D" parent="reticle"]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jv0xx")
+
 [node name="sfx" type="AudioStreamPlayer2D" parent="reticle"]
 stream = ExtResource("8_6h88e")
 panning_strength = 20.0
 bus = &"fishsfx"
 
-[node name="reticleR" type="Sprite2D" parent="reticle"]
+[node name="rotate" type="Node2D" parent="reticle"]
+
+[node name="reticleR" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
 offset = Vector2(73, 0)
 region_enabled = true
 region_rect = Rect2(146, 0, 56, 202)
 
-[node name="reticleL" type="Sprite2D" parent="reticle"]
+[node name="reticleL" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
 offset = Vector2(-73, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 202)
 
-[node name="reticleD" type="Sprite2D" parent="reticle"]
+[node name="reticleD" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
 offset = Vector2(0, 73)
 region_enabled = true
 region_rect = Rect2(0, 146, 202, 56)
 
-[node name="reticleU" type="Sprite2D" parent="reticle"]
+[node name="reticleU" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
 offset = Vector2(0, -73)
 region_enabled = true
@@ -1670,11 +1727,11 @@ bus = &"fishsfx"
 
 [node name="spin_low" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xsxx4")
-volume_db = -3.0
+volume_db = -10.0
 bus = &"fishsfx"
 
 [node name="spin_high" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4buur")
-volume_db = -3.0
+volume_db = -10.0
 pitch_scale = 1.1
 bus = &"fishsfx"

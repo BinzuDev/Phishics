@@ -1,5 +1,6 @@
 @tool
 @icon("res://icons/warning_sign.png")
+class_name sign
 extends RigidBody3D
 
 var fellOff: bool = false

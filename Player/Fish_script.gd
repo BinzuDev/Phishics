@@ -222,13 +222,27 @@ func _physics_process(_delta: float) -> void:
 					$reticle/reticleAnimation.play("reticle_appear1")
 					$reticle/sfx.play()
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
-			$reticle.rotation_degrees += 3
+			var center =  MenuManager.get_UI_size()/2
+			#If the target is behind the camera, the reticle gets reversed, so unreverse it.
+			if get_viewport().get_camera_3d().is_position_behind(closest.global_transform.origin):
+				$reticle.position = center - ($reticle.position - center).normalized() * center.length()
+			
+			var posBefore = $reticle.position
+			$reticle.position.x = clamp($reticle.position.x, 50, MenuManager.get_UI_size().x-50)
+			$reticle.position.y = clamp($reticle.position.y, 50, MenuManager.get_UI_size().y-50)
+			
+			if posBefore != $reticle.position: ##When target is off screen
+				set_offscreen_reticle(center, posBefore, closest)
+			else:
+				$reticle/offScreenArrow.visible = false
+				$reticle/icon.visible = false
+			
+			$reticle/rotate.rotation_degrees += 3
 			var newScale = sin(flopTimer*0.157) * 0.15 + 1
-			$reticle.scale = Vector2(newScale, newScale)
+			$reticle/rotate.scale = Vector2(newScale, newScale)
 			$reticle.visible = true
-			$reticle.position.y = clamp($reticle.position.y, 0, 1080)
-			$reticle.position.x = clamp($reticle.position.x, 0, 1920)
-			if $reticle.position.y >= 1000 and homing:
+			print($reticle.position.y)
+			if $reticle.position.y >= 945 and homing:
 				homingLookDown = true
 		else:
 			$reticle.visible = false
@@ -1120,6 +1134,40 @@ func get_closest_target():
 	$homing/raycast.target_position = rcDirection*5
 	
 	return closest
+
+func set_offscreen_reticle(center, posBefore, closest):
+	$reticle/offScreenArrow.visible = true
+	$reticle/icon.visible = true
+	var angle = center.angle_to_point(posBefore)
+	var edge_dir = Vector2(cos(angle), sin(angle))
+	
+	var t_x = INF
+	var t_y = INF #prevents division by 0
+	if abs(edge_dir.x) > 0.0001:
+		t_x = center.x / abs(edge_dir.x)
+	if abs(edge_dir.y) > 0.0001:
+		t_y = center.y / abs(edge_dir.y)
+	var t = min(t_x, t_y)
+	$reticle.position = center+(edge_dir*t*0.75)
+	$reticle/offScreenArrow.rotation = angle
+	$reticle/icon.frame = 0
+	if closest.get_parent() is boostRing:
+		$reticle/icon.frame = 1
+	if closest.get_parent() is enemy:
+		$reticle/icon.frame = 2
+	if closest.get_parent() is jellyfish:
+		$reticle/icon.frame = 3
+	if closest.get_parent() is hook:
+		$reticle/icon.frame = 4
+	if closest.get_parent() is bowlingPins:
+		$reticle/icon.frame = 5
+	if closest.get_parent() is sign:
+		$reticle/icon.frame = 6
+	if closest.get_parent() is Mine:
+		$reticle/icon.frame = 7
+	if closest.get_parent() is railGrind:
+		$reticle/icon.frame = 8
+
 
 func play_skate_anim(anim_name : String):
 	$surfPivot/skateTricks.play(anim_name)

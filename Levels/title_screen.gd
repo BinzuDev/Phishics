@@ -18,7 +18,6 @@ func _process(_delta):
 	
 	$UI.visible = !MenuManager.isSubmenuOpen()
 	
-	
 	#backup in case no option is selected
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
 		if get_viewport().gui_get_focus_owner() == null:

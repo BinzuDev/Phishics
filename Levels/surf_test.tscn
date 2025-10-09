@@ -733,3 +733,27 @@ curve = SubResource("Curve3D_p34o4")
 debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind" parent="Path3D2" instance=ExtResource("7_p34o4")]
+
+[node name="BoostRing" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2.8142698, 118.25492, 108.68952)
+strength = 20.0
+
+[node name="BoostRing3" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 12.543309, 118.25492, 119.026115)
+strength = 20.0
+
+[node name="BoostRing5" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 25.885592, 118.25492, 109.05077)
+strength = 20.0
+
+[node name="BoostRing6" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -20.23309, 118.25493, 108.79425)
+strength = 20.0
+
+[node name="BoostRing4" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8.24487, 118.25492, 118.869774)
+strength = 20.0
+
+[node name="BoostRing7" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8.361444, 118.25492, 94.39668)
+strength = 20.0

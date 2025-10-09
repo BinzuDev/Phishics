@@ -1,5 +1,6 @@
 @tool
 @icon("res://icons/hook.png")
+class_name hook
 extends Node3D
 
 @export_tool_button("Auto set line length") var action = autoLineLength

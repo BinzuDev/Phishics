@@ -1,5 +1,7 @@
 @icon("res://icons/jellyfish.png")
+class_name jellyfish
 extends PathFollow3D
+
 
 
 @export var speed = 5

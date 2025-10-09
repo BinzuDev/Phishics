@@ -4,7 +4,6 @@ class_name uiButton
 #static means that it affects all instances globally
 static var ignoreInputs : bool = false #so that during animations you cant press anything
 var hovered : bool = false
-var timer := 0
 
 @export var helpText: String = ""
 
@@ -80,9 +79,8 @@ func _on_timer_timeout():
 
 
 func _process(_delta):
-	timer += 1  #things can be buggy if you click during loading
-	
-	if has_focus() and timer > 10:
+	#things can be buggy if you click during loading, so wait 10 frames
+	if has_focus() and GameManager.gameTimer > 10:
 		if Input.is_action_just_pressed("confirm"):
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and !hovered:
 				print("CANCEL MENU INPUT")

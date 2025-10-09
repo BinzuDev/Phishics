@@ -2080,7 +2080,7 @@ transform = Transform3D(1, 9.31323e-10, -7.45058e-09, 9.31323e-10, 1, -1.49012e-
 signSprite = "uid://2tlrr0ix011u"
 
 [node name="sign6" type="Node3D" parent="group2"]
-transform = Transform3D(0.911502, 0.0941262, -0.400381, -0.19856, 0.953213, -0.227946, 0.360192, 0.287273, 0.887545, 33.8482, 18.7019, -49.5803)
+transform = Transform3D(0.911502, 0.0941262, -0.400381, -0.19856, 0.953213, -0.227946, 0.360192, 0.287273, 0.887545, 35.064594, 18.7019, -50.88187)
 metadata/_edit_group_ = true
 
 [node name="streetsign" parent="group2/sign6" instance=ExtResource("19_28m7t")]

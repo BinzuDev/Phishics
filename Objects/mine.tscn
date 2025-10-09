@@ -351,8 +351,8 @@ metadata/_edit_lock_ = true
 
 [node name="explosion_sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_fhvvj")
+volume_db = -4.0
 unit_size = 70.0
-max_db = 5.0
 panning_strength = 3.0
 bus = &"soundEffects"
 
