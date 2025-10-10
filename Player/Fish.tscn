@@ -981,6 +981,7 @@ script = ExtResource("2_lt56d")
 recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
+replayAccuracy = 1
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1194,9 +1195,9 @@ transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 0.58,
 
 [node name="cam" type="Camera3D" parent="cameraAnchor/camFocus" groups=["camera"]]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 current = true
-fov = 80.0
+fov = 85.0
 
 [node name="camFocusDebug" type="MeshInstance3D" parent="cameraAnchor/camFocus"]
 visible = false
@@ -1502,10 +1503,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = -71.0
-offset_right = 23.0
-offset_bottom = 54.0
+offset_left = -103.0
+offset_top = -122.0
+offset_right = 22.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

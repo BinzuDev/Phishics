@@ -1333,10 +1333,9 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Graphics" type="Panel" parent="Settings/settingsTabs"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7i77")
 metadata/_tab_index = 0
@@ -1375,15 +1374,16 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 0.7
+max_value = 1.7
 sliderName = "UI scale"
-helpText = ""
+helpText = "Adjust the size of the user interface."
 
 [node name="3DresScale" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 0.2
 sliderName = "3D resolution scale"
-helpText = ""
+helpText = "Lower the game's resolution without affecting UI. (May help with performance on low end computers.)"
 
 [node name="Button" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("13_ftyur")]
 layout_mode = 2
@@ -1392,13 +1392,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mfo2v")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mfo2v")
 text = "Button"
 
-[node name="CheckButton" type="CheckButton" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer"]
+[node name="alwaysTop" type="CheckButton" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("6_m1dqt")
-text = "ggkghklghlkghlkghm"
+text = "Always on top"
 
 [node name="Audio" type="Panel" parent="Settings/settingsTabs"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7i77")
 metadata/_tab_index = 1
@@ -1658,6 +1659,7 @@ grow_vertical = 0
 [connection signal="on_button_pressed" from="Settings/settingsTabs/Graphics/settingsGoBack" to="." method="_on_settings_go_back"]
 [connection signal="value_changed" from="Settings/settingsTabs/Graphics/MarginContainer/GridContainer/UIscale" to="." method="_on_UIscale_value_changed"]
 [connection signal="value_changed" from="Settings/settingsTabs/Graphics/MarginContainer/GridContainer/3DresScale" to="." method="_on_3d_res_scale_value_changed"]
+[connection signal="toggled" from="Settings/settingsTabs/Graphics/MarginContainer/GridContainer/alwaysTop" to="." method="_on_always_top_toggled"]
 [connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer/HBoxContainer/HSlider" to="." method="_on_master_volume_changed"]
 [connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/musicVol" to="." method="_on_music_volume_changed"]
 [connection signal="value_changed" from="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders/voiceVol" to="." method="_on_voice_volume_changed"]

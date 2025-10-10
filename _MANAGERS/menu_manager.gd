@@ -279,3 +279,7 @@ func get_resolution():
 	var viewport_render_size = get_viewport().size * get_viewport().scaling_3d_scale
 	return "(%d × %d)" \
 			% [viewport_render_size.x, viewport_render_size.y]
+
+
+func _on_always_top_toggled(toggled_on):
+	get_window().always_on_top = toggled_on
