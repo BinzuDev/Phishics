@@ -56,6 +56,7 @@ func _process(_delta):
 	if fish and cam:
 		var pos_3d = fish.global_position
 		var pos_2d = cam.unproject_position(pos_3d)
+		fish.set_jump_meter_pos(pos_2d)
 		pos_2d = Vector2(round(pos_2d.x + 38.5), round(pos_2d.y -109) )
 		%spinMeter.global_position = pos_2d
 

@@ -458,12 +458,12 @@ directional_shadow_fade_start = 0.647
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v72nc")
 
-[node name="FISH_SPAWN_POINT" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
-
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 gravity_scale = 1.5
+
+[node name="FISH_SPAWN_POINT" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 
 [node name="invisible wall" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 203.01, 28.12, 29.37)
@@ -980,7 +980,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7197, 5.1155, 27.3681)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.2298, 8.49199, 0.252899)
 
 [node name="worm4" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61124, 19.5706, -25.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.032429, 19.5706, -25.287)
 
 [node name="worm3" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98809, 26.7464, -5.78333)
@@ -1801,7 +1801,7 @@ debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 transform = Transform3D(-0.2890853, 3.8206887e-05, -0.9573003, 0, 0.99999195, 3.991119e-05, 0.9572975, 1.153774e-05, -0.28908613, 0, 0, 0)
 
 [node name="skateBoard" parent="group1" instance=ExtResource("47_bmonc")]
-transform = Transform3D(0.8397431, -0.04781506, 0.5408745, -0.542984, -0.07394762, 0.8364808, -1.0603742e-08, -0.9961151, -0.088059805, 8.204206, 0.30739367, -30.818516)
+transform = Transform3D(0.8402063, 0.40915906, 0.35586855, -0.38257784, -0.017816395, 0.92375153, 0.3843016, -0.91228914, 0.14156578, 7.97229, 0.53949296, -31.055552)
 signSprite = "uid://bopnbyxyecen8"
 
 [node name="MeshInstance3D" parent="group1" instance=ExtResource("16_h7041")]
@@ -2048,7 +2048,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8161, 13.3117, -46.085)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.4303627, 7.07259)
 
 [node name="strike_zone18" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4757, -0.0541501, -14.4633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773844, -0.054146286, -16.885735)
 
 [node name="Basketballhoop3" parent="group1" instance=ExtResource("11_vbdqq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 181.761, 22.3385, -50.2573)
@@ -3211,7 +3211,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4515, 21.0554, -28.3292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6318, 12.7282, -17.3495)
 
 [node name="Enemy12" parent="group2" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8049, 12.0099, -25.0831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.526482, 15.428666, -25.45415)
 
 [node name="Enemy11" parent="group2" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4738, 0.638682, -3.80544)

@@ -241,7 +241,6 @@ func _physics_process(_delta: float) -> void:
 			var newScale = sin(flopTimer*0.157) * 0.15 + 1
 			$reticle/rotate.scale = Vector2(newScale, newScale)
 			$reticle.visible = true
-			print($reticle.position.y)
 			if $reticle.position.y >= 945 and homing:
 				homingLookDown = true
 		else:
@@ -368,9 +367,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		$BubbleRing.emitting = false
 	
-
-	
-	
 	
 	
 	## Restart
@@ -385,70 +381,7 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	
-	################
-	##   CAMERA   ##
-	################
-	#fov
-	%cam.fov = lerp(%cam.fov, 85.0, 0.1)   
-	if %cam.fov > 84.99:
-		%cam.fov = 85
 	
-	#camera controller areas
-	if $detectCamSwitch.has_overlapping_areas():
-		var area = $detectCamSwitch.get_overlapping_areas()[0]
-		targetCamAngle = area.newCameraAngle
-		targetCamOffset = area.newCameraOffset
-		targetCamDist = area.newCameraDistance
-		if area.target != null:
-			%camera_target.global_position = area.target.global_position
-			targetCamOffset = %camera_target.position
-			targetCamOffset += area.newCameraOffset
-		camSpeed = area.rate
-		cameraOverride = true #so you cant move the cam manually in switch areas
-	elif cameraOverride == false:
-		#var mouse = Input.get_last_mouse_velocity()
-		#defaultCameraAngle.y -= mouse.x*0.001
-		#defaultCameraAngle.x -= mouse.y*0.001
-		targetCamAngle = defaultCameraAngle #default camera settings
-		targetCamOffset  = Vector3(0,0.58,0)
-		targetCamDist = 6
-		camSpeed = 0.2
-		#lower camera when close to a ceiling
-		if %ceilDetect.is_colliding():                                   #clamp min to 1
-			var dist = max(%ceilDetect.get_collision_point().y - global_position.y, 1)
-			targetCamOffset.y = 0.58 - (4 - dist)
-		
-	 
-	
-	#Manual camera control
-	if Input.is_action_pressed("camera") and !cameraOverride:
-		if get_input_axis():
-			cameraOverride = true
-		if get_input_axis().x != 0:
-			var LR = Input.get_axis("right", "left")
-			targetCamAngle.y = 40 * LR
-			targetCamOffset = Vector3(-3.5*LR, 0.58, 1.02)
-		elif Input.is_action_pressed("forward"):
-			targetCamAngle.x += 40
-			targetCamOffset = Vector3(0, 2.3, -1.5)
-		elif Input.is_action_pressed("back"):
-			targetCamAngle.x -= 15
-			targetCamOffset = Vector3(0,0,5)
-	
-	if !Input.is_action_pressed("camera"): #reset camera when you let go of C
-		cameraOverride = false
-	
-	
-	
-	##Slowly pan the camera towards the desired location
-	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) #angle of focus
-	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed) #Position of focus
-	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
-	#%camFocus.global_position = camLockOnTarget.global_position
-	var targetTilt = 0.0
-	if homingLookDown and !$detectCamSwitch.has_overlapping_areas():
-		targetTilt = -24.0
-	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, 0.1)
 	
 	
 	
@@ -648,7 +581,7 @@ func _physics_process(_delta: float) -> void:
 		if $surfPivot.global_transform.basis.y.y < 0.2 and %surfRC2.is_colliding():
 			var worth = clamp(linear_velocity.length()*height, 0, 1000)
 			ScoreManager.give_points(worth, 0, false, "WALLRIDE")
-			print(worth)
+			#print(worth)
 		
 		
 		
@@ -904,6 +837,77 @@ func _physics_process(_delta: float) -> void:
 	)
 	
 	
+	
+
+
+################
+##   CAMERA   ##
+################
+#(I have to put the camera inside process because it needs to be synced up with the screen
+#otherwise, in physics process theres a delay, even when the cam rate is set to be instant)
+func _process(_delta):
+	
+	#fov
+	%cam.fov = lerp(%cam.fov, 85.0, 0.1)   
+	if %cam.fov > 84.99:
+		%cam.fov = 85
+	
+	
+	#camera controller areas
+	if $detectCamSwitch.has_overlapping_areas():
+		var area = $detectCamSwitch.get_overlapping_areas()[0]
+		targetCamAngle = area.newCameraAngle
+		targetCamOffset = area.newCameraOffset
+		targetCamDist = area.newCameraDistance
+		if area.target != null:
+			%camera_target.global_position = area.target.global_position
+			targetCamOffset = %camera_target.position
+			targetCamOffset += area.newCameraOffset
+		camSpeed = area.rate
+		cameraOverride = true #so you cant move the cam manually in switch areas
+	elif cameraOverride == false:
+		#var mouse = Input.get_last_mouse_velocity()
+		#defaultCameraAngle.y -= mouse.x*0.001
+		#defaultCameraAngle.x -= mouse.y*0.001
+		targetCamAngle = defaultCameraAngle #default camera settings
+		targetCamOffset  = Vector3(0,0.58,0)
+		targetCamDist = 6
+		camSpeed = 0.2
+		#lower camera when close to a ceiling
+		if %ceilDetect.is_colliding():                                   #clamp min to 1
+			var dist = max(%ceilDetect.get_collision_point().y - global_position.y, 1)
+			targetCamOffset.y = 0.58 - (4 - dist)
+		
+	 
+	#Manual camera control
+	if Input.is_action_pressed("camera") and !cameraOverride:
+		if get_input_axis():
+			cameraOverride = true
+		if get_input_axis().x != 0:
+			var LR = Input.get_axis("right", "left")
+			targetCamAngle.y = 40 * LR
+			targetCamOffset = Vector3(-3.5*LR, 0.58, 1.02)
+		elif Input.is_action_pressed("forward"):
+			targetCamAngle.x += 40
+			targetCamOffset = Vector3(0, 2.3, -1.5)
+		elif Input.is_action_pressed("back"):
+			targetCamAngle.x -= 15
+			targetCamOffset = Vector3(0,0,5)
+	
+	if !Input.is_action_pressed("camera"): #reset camera when you let go of C
+		cameraOverride = false
+	
+	
+	
+	##Slowly pan the camera towards the desired location
+	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) #angle of focus
+	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed) #Position of focus
+	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
+	#%camFocus.global_position = camLockOnTarget.global_position
+	var targetTilt = 0.0
+	if homingLookDown and !$detectCamSwitch.has_overlapping_areas():
+		targetTilt = -24.0
+	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, 0.1)
 	
 
 
@@ -1168,6 +1172,9 @@ func set_offscreen_reticle(center, posBefore, closest):
 	if closest.get_parent() is railGrind:
 		$reticle/icon.frame = 8
 
+func set_jump_meter_pos(newPos: Vector2):
+	$UI/airSpin.global_position = newPos
+	
 
 func play_skate_anim(anim_name : String):
 	$surfPivot/skateTricks.play(anim_name)
