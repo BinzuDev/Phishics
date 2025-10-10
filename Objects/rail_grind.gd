@@ -15,9 +15,9 @@ func _ready():
 		printerr("RAILGRIND OBJECT \"", name, "\" IS A CHILD OF \"", get_parent().name, "\", WHICH IS NOT A PATH3D NODE, STOPPING PROCESS.")
 		process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
 
-##TODO: You should only railgrind while surfing
+##TODO: You should only railgrind while surfing 👍
 ##TODO: when mounting, you should be placed upright, and ABOVE the rail
-##TODO: starting a railgrind should add it to the freshness list
+##TODO: starting a railgrind should add it to the freshness list 👍
 ##TODO: trick every frame during railgrind
 ##TODO: during railgrind, the fish should probably have its collisions turned off, to avoid unintended interactions and crashes
 ##TODO: when unmounting, you should keep your momentum
@@ -57,10 +57,12 @@ func _process(_delta):
 
 ## When the fish touches the path
 func _on_area_entered(body):
-	if mountingCooldown > 60: #so you can't reenter a railgrind for 1s after leaving it
-		mountingCooldown = 0 #in case you somehow unmount on the same frame, stops the game from crashing :sobbing:
-		isRailgrinding = true
-		body.reparent(self) #make the fish a child of the railgrind object
+	if body is player and body.surfMode:
+		if mountingCooldown > 60: #so you can't reenter a railgrind for 1s after leaving it
+			mountingCooldown = 0 #in case you somehow unmount on the same frame, stops the game from crashing :sobbing:
+			isRailgrinding = true
+			body.reparent(self) #make the fish a child of the railgrind object
+			ScoreManager.update_freshness(self) #freshness
 
 
 ## Makes the fish unmount the rail and return to normal
