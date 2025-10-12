@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=46 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_gx528"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4rq4h"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="13_p34o4"]
+[ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_gl2w4"]
+[ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="16_v1hpu"]
+[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="17_eej72"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -152,8 +155,26 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_gl2w4"]
+closed = true
+_data = {
+"points": PackedVector3Array(-1.7897835, 0.89308167, -10.486996, 1.7897835, -0.89308167, 10.486996, -1.2627583, -0.22460175, -0.0111579895, -3.9738016, -0.14705658, 9.904087, 3.9738016, 0.14705658, -9.904087, 15.620439, -0.19168091, 1.2380981, 8.189247, -0.42190552, -13.040588, -8.189247, 0.42190552, 13.040588, 13.758232, 15.083572, -1.6558647, 2.3753052, -0.30710602, 6.9436226, -2.3753052, 0.30710602, -6.9436226, 0.5424671, 15.740112, -4.0132675),
+"tilts": PackedFloat32Array(0, 0, -3.1415927, -3.1415927)
+}
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
+
+[node name="Mine" parent="." instance=ExtResource("16_v1hpu")]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 30.777254, 122.35334, 80.71461)
+explosionStrength = 12
+explosionRadius = 5.0
+knockbackMultiplier = 0.1
 
 [node name="half pipe" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 87.2576, 0)
@@ -238,7 +259,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.649315, 120.37161, 86.6862
 gravity_scale = 1.5
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.906269, 118.97536, 54.182728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.906269, 118.912445, 54.182728)
 curve = SubResource("Curve3D_4rq4h")
 debug_custom_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 
@@ -246,7 +267,7 @@ debug_custom_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 transform = Transform3D(0.8334061, -0.20931463, -0.51148003, 7.450539e-09, 0.92549264, -0.37874642, 0.552651, 0.31564966, 0.7713196, -0.40761948, 1.435791, -0.10836792)
 
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.993, 119.427, 63.6214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.972294, 119.427, 63.530895)
 
 [node name="destructable_sign11" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6359, 119.427, 63.6214)
@@ -586,7 +607,9 @@ shape = SubResource("SphereShape3D_yfxg8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.117529, 118.6671, 72.78833)
 
 [node name="BoostRing2" parent="." instance=ExtResource("13_4rq4h")]
-transform = Transform3D(0.7198246, 0.694156, 0, -0.694156, 0.7198246, 0, 0, 0, 1, 37.505123, 122.1088, 84.79285)
+transform = Transform3D(0.10782579, 0, -0.9941698, 0, 1, 0, 0.9941698, 0, 0.10782579, -30.611704, 119.11675, 73.56242)
+strength = 60.0
+centerPlayer = true
 
 [node name="hook" parent="." instance=ExtResource("13_p34o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 143.49173, 70.40018)
@@ -733,6 +756,16 @@ curve = SubResource("Curve3D_p34o4")
 debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind" parent="Path3D2" instance=ExtResource("7_p34o4")]
+transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, 0, 0, -72.45022)
+progress = 72.450195
+
+[node name="Path3D3" type="Path3D" parent="."]
+transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, -31.423298, 119.66412, 54.135517)
+curve = SubResource("Curve3D_gl2w4")
+debug_custom_color = Color(4.459082e-05, 4.459082e-05, 4.459082e-05, 1)
+
+[node name="rail_grind" parent="Path3D3" instance=ExtResource("7_p34o4")]
+transform = Transform3D(-0.98574495, 0.014073236, -0.1676444, 0, 0.9964917, 0.083652705, 0.16823399, 0.08246028, -0.98229027, -1.2627583, -0.22460175, -0.0111579895)
 
 [node name="BoostRing" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2.8142698, 118.25492, 108.68952)
@@ -743,7 +776,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 12.5
 strength = 20.0
 
 [node name="BoostRing5" parent="." instance=ExtResource("13_4rq4h")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 25.885592, 118.25492, 109.05077)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 21.917114, 118.25492, 107.76915)
 strength = 20.0
 
 [node name="BoostRing6" parent="." instance=ExtResource("13_4rq4h")]
@@ -757,3 +790,24 @@ strength = 20.0
 [node name="BoostRing7" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8.361444, 118.25492, 94.39668)
 strength = 20.0
+
+[node name="PathFollowJellyfish" parent="." instance=ExtResource("15_gl2w4")]
+transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, -0.32299137, 117.31663, 48.527878)
+
+[node name="BoostRing8" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 143.98047, 119.92335, 92.81964)
+
+[node name="Platform31" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.2827334, 0, 0, 0, 5.5059013, 0, 0, 0, 2.479401, -59.721283, 121.00265, 43.51121)
+material_override = ExtResource("1_hsesv")
+material_overlay = ExtResource("2_wstlt")
+mesh = SubResource("BoxMesh_gl2w4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform31/StaticBody3D"]
+shape = SubResource("BoxShape3D_v1hpu")
+
+[node name="strike_zone" parent="." instance=ExtResource("17_eej72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.16513, 118.3488, 85.898964)

@@ -12,7 +12,7 @@ render_priority = 0
 shader = ExtResource("2_gehki")
 shader_parameter/texture_albedo = ExtResource("2_jgq83")
 shader_parameter/frequency = Vector2(0, -7.36)
-shader_parameter/amplitutde = Vector2(0, 0.05)
+shader_parameter/amplitutde = Vector2(0, 0.5)
 shader_parameter/speed = 0.5
 shader_parameter/movement = Vector2(-1, 0)
 

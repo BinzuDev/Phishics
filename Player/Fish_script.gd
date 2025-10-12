@@ -45,6 +45,7 @@ var isHalfPiping : bool = false
 var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a combo
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
+var isRailGrinding : bool = false
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -82,6 +83,7 @@ func _physics_process(_delta: float) -> void:
 	var accel = ACCEL
 	if surfMode:
 		accel = SURFACCEL
+	
 	
 	## Movement
 	if Input.is_action_just_pressed("forward"):
@@ -196,7 +198,7 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	## Surf Jump
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump") and !isRailGrinding:
 		surfJumpHolding += 1
 		if surfJumpHolding >= 20 and surfMode:
 			deactivateSurfMode()
@@ -541,6 +543,7 @@ func _physics_process(_delta: float) -> void:
 	$sign_scraping.volume_linear = 0
 	$skateboarding.volume_linear = 0
 	%surfSparks.emitting = surfMode and %surfRC3.is_colliding() and !skateboardSurf
+	$RemoteTransformSurf.update_rotation = isRailGrinding #stops the fish from rotating during railgrind
 	
 	if surfMode:
 		#Particles
@@ -621,31 +624,33 @@ func _physics_process(_delta: float) -> void:
 		#if linear_velocity.y < -1: 
 		#	print(fallSpeeds,  " vol: ", snapped($skateLanding.volume_linear, 0.01))
 		
-		
-		if %canSurf.is_colliding(): #the one thats always pointing globally down
-			isHalfPiping = false
-			if %surfRC2.is_colliding(): #the one thats pointing under the surf board
-				surfState = "Normal surfing"
-				floor_normal = getSurfNormal()
-			else:
-				surfState = "landing after a tumble"
-				floor_normal = %canSurf.get_collision_normal().normalized() 
+		if isRailGrinding:
+			surfState = "railGrinding"
 		else:
-			if %surfRC1.is_colliding(): #pointing under the board but at the front
-				surfState = "Slope surfing"
-				isHalfPiping = true
-				floor_normal = getSurfNormal()
+			if %canSurf.is_colliding(): #the one thats always pointing globally down
+				isHalfPiping = false
+				if %surfRC2.is_colliding(): #the one thats pointing under the surf board
+					surfState = "Normal surfing"
+					floor_normal = getSurfNormal()
+				else:
+					surfState = "landing after a tumble"
+					floor_normal = %canSurf.get_collision_normal().normalized() 
 			else:
-				surfState = "Jumping"
-				$sign_scraping.volume_linear = 0
-				$skateboarding.volume_linear = 0
-				updateInputHistory()
+				if %surfRC1.is_colliding(): #pointing under the board but at the front
+					surfState = "Slope surfing"
+					isHalfPiping = true
+					floor_normal = getSurfNormal()
+				else:
+					surfState = "Jumping"
+					$sign_scraping.volume_linear = 0
+					$skateboarding.volume_linear = 0
+					updateInputHistory()
 		
 		if surfJumpLastFrame and surfState != "Jumping":
 			if !$skateLanding.playing and linear_velocity.y < -1:
 				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 3)
 				$skateLanding.play()
-				printerr("PLAY LANDING ", $skateLanding.volume_linear)
+				print("PLAY LANDING ", $skateLanding.volume_linear)
 				var force = linear_velocity
 				force.y = 0
 				#apply_central_impulse(force*$surfPivot.global_transform.basis.y.y)
@@ -654,7 +659,7 @@ func _physics_process(_delta: float) -> void:
 		
 		
 		##Surfing or non-halfpipe jump
-		if surfState != "Jumping" and linear_velocity.length() > 0.1:
+		if surfState != "Jumping" and linear_velocity.length() > 0.1 and surfState != "railGrinding":
 			var vel_dir = linear_velocity.normalized()
 			var forward = vel_dir.slide(floor_normal).normalized()
 			var right = forward.cross(floor_normal).normalized()
@@ -664,7 +669,7 @@ func _physics_process(_delta: float) -> void:
 			surfRotationType = ""
 			inputHistory = ["","",""]
 			
-		else: ##Rotating in the air
+		elif surfState != "railGrinding": ##Rotating in the air
 			
 			if $surfPivot.global_transform.basis.y.y < 0.45 and isHalfPiping:
 				if surfState == "Jumping" and linear_velocity.y > 20:

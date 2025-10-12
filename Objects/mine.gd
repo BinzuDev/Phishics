@@ -21,10 +21,12 @@ var timer : int = 0
 
 func _ready() -> void:
 	previewExplosionSize = false
-	toolScriptShit()
-	$detectFloor.add_exception($base/StaticBody3D)#cause the raycase to not detect the base
+	$detectFloor.add_exception($base/base/StaticBody3D)#cause the raycase to not detect the base
 	if !Engine.is_editor_hint():
 		$hitArea.set_collision_layer_value(6, homingTarget)
+		$AnimationPlayer.play("float")
+		await get_tree().create_timer(0.2).timeout #for some reason CSG can't be detected on the very first frame, so wait a bit
+		toolScriptShit()                           #without this, the base doesn't get set if the mine is on a CSG
 
 
 ##Set all of the tool script stuff
@@ -50,25 +52,25 @@ func _process(_delta: float) -> void:
 			timer += 1   #advance the animation one frame every 4 frames
 			if timer % 4 == 0 and $explosion.frame < 23: 
 				$explosion.frame += 1
-	else:
+	else: #when in the editor
 		toolScriptShit()
 
 
 
 ## When something touches the mine
 func _on_mine_touched(body: Node3D) -> void: 
-	if body is RigidBody3D:
+	if body is RigidBody3D and !isExploding and $AnimationPlayer.current_animation != "click":
 		if body is enemy:
 			ScoreManager.give_points(0, 10, true, "SACRIFICE")
 		if body is player and body.homing:
 			_on_animation_finished("diving") #explode instantly when diving
-		else:
-			activate_mine()
+			return #skip running activate_mine()
+		activate_mine()
 	
 
 ## Start the pin clicking animation
 func activate_mine(chainReaction:bool = false):
-	if !isExploding and !$AnimationPlayer.is_playing():
+	if !isExploding and $AnimationPlayer.current_animation != "click":
 		$AnimationPlayer.play("click")
 		if chainReaction:
 			ScoreManager.give_points(0, 2, true, "CHAIN REACTION")
@@ -80,7 +82,7 @@ func activate_mine(chainReaction:bool = false):
 func _on_animation_finished(_anim_name):
 	ScoreManager.give_points(9999, 0, true, "KABOOM")
 	$explosion.frame = 0
-	$sphere.visible = false
+	%sphere.visible = false
 	$StaticBody3D.process_mode = Node.PROCESS_MODE_DISABLED #disable collision
 	$hitArea.set_collision_layer_value(6, false) #so it can't be targeted during the explosion
 	$explosion_sfx.play()

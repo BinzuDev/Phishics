@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b58npw2l2i2jo"]
+[gd_scene load_steps=25 format=3 uid="uid://b58npw2l2i2jo"]
 
 [ext_resource type="Script" uid="uid://cp6gbd4aas5rn" path="res://Objects/mine.gd" id="1_ddm8m"]
 [ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="2_8o44x"]
@@ -71,10 +71,12 @@ rings = 0
 [sub_resource type="CylinderMesh" id="CylinderMesh_xjdej"]
 top_radius = 1.0
 bottom_radius = 1.0
+height = 3.0
 radial_segments = 12
 rings = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fhvvj"]
+height = 3.0
 radius = 1.0
 
 [sub_resource type="Animation" id="Animation_xjdej"]
@@ -82,7 +84,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sphere/Rods:scale")
+tracks/0/path = NodePath("movement/sphere/Rods:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -103,6 +105,42 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("movement/sphere:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("movement:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("movement/sphere/chain:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.744982, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_fhvvj"]
 resource_name = "click"
@@ -111,7 +149,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sphere/Rods:scale")
+tracks/0/path = NodePath("movement/sphere/Rods:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -133,10 +171,53 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_vgf5o"]
+resource_name = "float"
+length = 8.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("movement/sphere:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8),
+"transitions": PackedFloat32Array(0.5, -2, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.20123625, 0, 0), Vector3(-0.2, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("movement:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("movement/sphere/chain:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, -3.744982, 0), Vector3(-0.1, -3.74, 0), Vector3(0, -3.744982, 0), Vector3(0.1, -3.74, 0), Vector3(0, -3.744982, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xjdej"]
 _data = {
 &"RESET": SubResource("Animation_xjdej"),
-&"click": SubResource("Animation_fhvvj")
+&"click": SubResource("Animation_fhvvj"),
+&"float": SubResource("Animation_vgf5o")
 }
 
 [node name="Mine" type="Node3D"]
@@ -146,7 +227,7 @@ explosionRadius = 45.0
 
 [node name="hitArea" type="Area3D" parent="."]
 collision_layer = 96
-collision_mask = 18
+collision_mask = 82
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitArea"]
 shape = SubResource("SphereShape3D_n6nrv")
@@ -175,161 +256,164 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("SphereShape3D_xjdej")
 
-[node name="sphere" type="MeshInstance3D" parent="."]
+[node name="movement" type="Node3D" parent="."]
+
+[node name="sphere" type="MeshInstance3D" parent="movement"]
+unique_name_in_owner = true
 material_override = SubResource("StandardMaterial3D_5ryc8")
 mesh = SubResource("SphereMesh_ddm8m")
-skeleton = NodePath("../hitArea")
+skeleton = NodePath("../../hitArea")
 
-[node name="bottom" type="MeshInstance3D" parent="sphere"]
+[node name="bottom" type="MeshInstance3D" parent="movement/sphere"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.273441, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_5ryc8")
 skeleton = NodePath("../Rods")
 
-[node name="Rods" type="Node3D" parent="sphere"]
+[node name="Rods" type="Node3D" parent="movement/sphere"]
 
-[node name="Rod" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_ib7dw")
 
-[node name="Rod2" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod2" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod3" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod3" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod4" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod4" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod5" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod5" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod6" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod6" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod7" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod7" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod8" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod8" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.70710677, 0.64085627, 0.29883623, -3.6946457e-08, -0.4226182, 0.9063078, 0.70710665, -0.6408564, -0.29883623, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod9" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod9" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.70710677, 0.6408564, -0.29883623, 0, 0.42261824, 0.9063078, 0.70710677, -0.6408564, 0.29883623, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod10" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod10" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.70710665, -0.64085644, -0.29883632, -3.694646e-08, -0.42261827, 0.9063078, -0.7071068, -0.6408563, -0.29883626, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="Rod11" type="MeshInstance3D" parent="sphere/Rods"]
+[node name="Rod11" type="MeshInstance3D" parent="movement/sphere/Rods"]
 transform = Transform3D(0.70710677, -0.6408565, 0.2988363, 0, 0.4226183, 0.90630794, -0.7071068, -0.64085644, 0.29883626, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_fhvvj")
 
-[node name="bases" type="Node3D" parent="sphere"]
+[node name="bases" type="Node3D" parent="movement/sphere"]
 
-[node name="base" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base" type="MeshInstance3D" parent="movement/sphere/bases"]
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base2" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base2" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base3" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base3" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(-4.371139e-08, 1, 2.9802322e-08, 0, 2.9802322e-08, -1, -1, -4.371139e-08, -1.3027009e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base4" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base4" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(-3.090862e-08, 0.70710677, -0.70710677, 3.090862e-08, -0.70710677, -0.70710677, -1, -4.371139e-08, -1.3027009e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base5" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base5" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(-3.0908623e-08, 0.7071067, 0.7071068, -3.0908613e-08, 0.7071068, -0.7071067, -1, -4.3711385e-08, -2.6054016e-15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base6" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base6" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base7" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base7" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base8" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base8" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(0.2988362, -0.6408563, 0.7071067, 0.90630776, 0.4226182, 0, -0.2988362, 0.6408563, 0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base9" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base9" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(0.2988362, 0.6408563, 0.7071067, -0.90630776, 0.4226182, 0, -0.2988362, -0.6408563, 0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base10" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base10" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(-0.29883617, 0.64085627, 0.7071066, 0.90630776, 0.4226182, 0, -0.29883617, 0.64085627, -0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="base11" type="MeshInstance3D" parent="sphere/bases"]
+[node name="base11" type="MeshInstance3D" parent="movement/sphere/bases"]
 transform = Transform3D(-0.29883617, -0.64085627, 0.7071066, -0.90630776, 0.4226182, 0, -0.29883617, -0.64085627, -0.7071067, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_8o44x")
 
-[node name="chain" type="Sprite3D" parent="sphere"]
+[node name="chain" type="Sprite3D" parent="movement/sphere"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.744982, 0)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("3_5ryc8")
 
-[node name="chain" type="Sprite3D" parent="sphere/chain"]
+[node name="chain" type="Sprite3D" parent="movement/sphere/chain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.68, 0)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("3_5ryc8")
 
-[node name="chain" type="Sprite3D" parent="sphere/chain/chain"]
+[node name="chain" type="Sprite3D" parent="movement/sphere/chain/chain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.68, 0)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("3_5ryc8")
 
-[node name="chain" type="Sprite3D" parent="sphere/chain/chain/chain"]
+[node name="chain" type="Sprite3D" parent="movement/sphere/chain/chain/chain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.68, 0)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("3_5ryc8")
 
-[node name="chain" type="Sprite3D" parent="sphere/chain/chain/chain/chain"]
+[node name="chain" type="Sprite3D" parent="movement/sphere/chain/chain/chain/chain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.68, 0)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("3_5ryc8")
 
-[node name="chain" type="Sprite3D" parent="sphere/chain/chain/chain/chain/chain"]
+[node name="chain" type="Sprite3D" parent="movement/sphere/chain/chain/chain/chain/chain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.68, 0)
 pixel_size = 0.03
 billboard = 2
@@ -360,15 +444,18 @@ bus = &"soundEffects"
 target_position = Vector3(0, -47, 0)
 hit_back_faces = false
 
-[node name="base" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+[node name="base" type="Node3D" parent="."]
+
+[node name="base" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_ib7dw")
 mesh = SubResource("CylinderMesh_xjdej")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="base"]
+[node name="StaticBody3D" type="StaticBody3D" parent="base/base"]
 process_mode = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="base/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="base/base/StaticBody3D"]
 shape = SubResource("CylinderShape3D_fhvvj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

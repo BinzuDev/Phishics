@@ -91,6 +91,7 @@ shape = SubResource("BoxShape3D_wt2jt")
 
 [node name="bowling_pin" parent="Pins" instance=ExtResource("1_5q7g6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59, 0.49483025, 0.52)
+collision_layer = 1
 
 [node name="bowling_pin2" parent="Pins" instance=ExtResource("1_5q7g6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49483025, 1.54)

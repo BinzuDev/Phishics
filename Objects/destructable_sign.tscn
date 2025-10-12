@@ -16,7 +16,7 @@ size = Vector3(0.899707, 1.57, 0.15)
 size = Vector3(1.9, 1.67, 0.36)
 
 [node name="destructable_sign" type="RigidBody3D"]
-collision_layer = 4
+collision_layer = 68
 collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_egdn7")
