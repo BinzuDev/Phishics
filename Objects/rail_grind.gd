@@ -20,9 +20,9 @@ func _ready():
 		process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
 
 
-##TODO: trick that gives mult when you mount, then trick that gives points every frame during railgrind
-##TODO: when unmounting, you should keep your momentum (use fish.trueSpeed to set fish.linear_velocity)
-##TODO: clamp mountingSpeed to your liking so there's a minimum speed 
+##TODO: trick that gives mult when you mount, then trick that gives points every frame during railgrind 👍
+##TODO: when unmounting, you should keep your momentum (use fish.trueSpeed to set fish.linear_velocity) 👍
+##TODO: clamp mountingSpeed to your liking so there's a minimum speed 👍
 ##TODO: Use the tutorial to learn how to generate rail meshes from a path node
 ##TODO: homing diving during railgrind is uhhhh.......
 
@@ -46,7 +46,10 @@ func _process(delta):
 			direction = "forward" 
 		else:
 			direction = "backward"
-		
+	
+	if fish.isRailGrinding:
+		ScoreManager.give_points(200, 0, false, "GRINDING") #gives points every frame
+	
 	
 	## All the code that should run during railgrinding
 	if isBeingUsed:
@@ -89,11 +92,16 @@ func _on_area_entered(body):
 			fish.reparent(self) #make the fish a child of the railgrind object
 			fish.surfRotationType = ""
 			fish.inputHistory = ["","",""] #reset a bunch of stuff
+			
 			ScoreManager.reset_airspin()
 			ScoreManager.update_freshness(self) #freshness
+			ScoreManager.give_points(200, 2, true, "GRIND") #trick
+			ScoreManager.play_trick_sfx("rare") #trick sfx
+			
 			lock_fish_in_place()
 			var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation
-			mountingSpeed = hspeed.length()##sets how fast you'll move on the rail
+			mountingSpeed = clamp(hspeed.length(), 15, 50)##sets how fast you'll move on the rail (with clamps)
+			
 			
 			
 
@@ -104,7 +112,7 @@ func unmount():
 	fish.isRailGrinding = false
 	fish.reparent(get_tree().get_current_scene()) #make the fish a child of the level
 	fish.linear_velocity = Vector3(0.001,0.001,0.001)
-	
+	fish.linear_velocity = fish.trueSpeed #true speed (might be a bit redunant)
 
 ## Sets where the fish is going to be relative to the rail
 func lock_fish_in_place():
