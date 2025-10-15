@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dl0tegipr4hke"]
+[gd_scene load_steps=16 format=3 uid="uid://dl0tegipr4hke"]
 
 [ext_resource type="Script" uid="uid://i64vykvxs4e2" path="res://Objects/Enemy_script.gd" id="1_edmjf"]
 [ext_resource type="Texture2D" uid="uid://uksyye4xv1r2" path="res://Sprites/crabs/crab.png" id="2_dnm5c"]
@@ -72,6 +72,9 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3xos"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_d3xos"]
+radius = 1.0
+
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 16
 collision_mask = 23
@@ -88,7 +91,7 @@ update_rotation = false
 [node name="Area3D" type="Area3D" parent="."]
 top_level = true
 collision_layer = 0
-collision_mask = 2
+collision_mask = 130
 metadata/_edit_lock_ = true
 
 [node name="EnemeyDetect" type="CollisionShape3D" parent="Area3D"]
@@ -169,6 +172,14 @@ priority = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="homingTarget"]
 shape = SubResource("BoxShape3D_d3xos")
 
+[node name="getParriedIdiot" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="getParriedIdiot"]
+shape = SubResource("SphereShape3D_d3xos")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="Bump" to="." method="_on_bump_body_entered"]
+[connection signal="area_entered" from="getParriedIdiot" to="." method="_on_getting_parried"]

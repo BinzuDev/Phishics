@@ -28,6 +28,7 @@ texture = ExtResource("2_rg727")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.457958)
+visible = false
 material_override = SubResource("StandardMaterial3D_epypp")
 mesh = SubResource("PlaneMesh_0hol4")
 

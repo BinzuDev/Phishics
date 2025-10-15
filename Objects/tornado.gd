@@ -23,6 +23,8 @@ func _on_area_3d_body_entered(body):
 		body.angular_velocity = Vector3(0,speed,0)
 		if body.surfMode:
 			body.play_skate_anim("tornado")
+		if body.isRailGrinding and body.currentRailObj:
+			body.currentRailObj.mountingSpeed += 10
 		$AnimationPlayer.play("spin")
 		fishTouched = true
 		ScoreManager.give_points(500, 0, true, "TORNADO")

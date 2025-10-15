@@ -254,7 +254,7 @@ shape = SubResource("SphereShape3D_affe2")
 
 [node name="airHitbox" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 130
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="airHitbox"]
 shape = SubResource("SphereShape3D_77qcx")
@@ -304,4 +304,5 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_j5b4d")
 
 [connection signal="body_entered" from="." to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="airHitbox" to="." method="_on_parry_detected"]
 [connection signal="body_entered" from="airHitbox" to="." method="_on_air_hitbox_body_entered"]

@@ -168,6 +168,7 @@ resync={
 3d_physics/layer_5="enemies"
 3d_physics/layer_6="homing target"
 3d_physics/layer_7="MineDominoEffect"
+3d_physics/layer_8="parry"
 
 [rendering]
 

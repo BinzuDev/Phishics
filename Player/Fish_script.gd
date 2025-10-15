@@ -46,6 +46,7 @@ var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
 var isRailGrinding : bool = false
+var currentRailObj : Node = null
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -719,7 +720,7 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	
-	if linear_velocity.length() < 0.1 and !tiplanding and !isHeld:
+	if trueSpeed.length() < 0.1 and !tiplanding and !isHeld:
 		ScoreManager.idle = true
 	else:
 		ScoreManager.idle = false
@@ -735,14 +736,19 @@ func _physics_process(_delta: float) -> void:
 	%dead_fish.modulate.a -= 0.05
 	%dead_fish.scale -= Vector2(0.01, 0.01)
 	fishCooldown += 1
+	%parry.disabled = true
+	$antiRotation.global_rotation.y = %camFocus.global_rotation.y #make anti rotation rotate with the camera
+	
 	if Input.is_action_just_pressed("FIsh") and !isHeld:
 		$FIsh.play()
 		$recordingManager.fishPressed = true
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			GameManager.hitstop(20)
 			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
-			ScoreManager.comboTimer += 80 #give you extra time
+			if ScoreManager.freshState != ScoreManager.FRESH.LOW: #if you dont have a spam penalty
+				ScoreManager.comboTimer += 80 #give you extra time
 			ScoreManager.update_freshness(self)
+			%parry.disabled = false
 			$taunt.play()
 			$pivotUpper.visible = false
 			$pivotLower.visible = false
@@ -772,7 +778,9 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	##speed lines 
-	var target = 0.5 - (linear_velocity.length()-25.0)*0.0125 #0.7 at <30 | 0.43 at 30 | 0.0 at 65
+	var target = 0.5 - (trueSpeed.length()-25.0)*0.0125 #0.7 at <30 | 0.43 at 30 | 0.0 at 65
+	if isHeld: #so it doesnt do it on the hook or eel
+		target = 0.7
 	target = clamp(target, 0, 7)
 	if target > 0.5: #if slowly then 30, well slowly make it too big to be visible
 		target = 0.7 #at 0.7 its just enough to not be visible
@@ -784,7 +792,7 @@ func _physics_process(_delta: float) -> void:
 	else:                #when slowing down, make the speed lines slowly go away
 		lineLen = move_toward(current, target, 0.01)
 	%speedLinesShader.material.set_shader_parameter("clipPosition", lineLen)
-	#print("cur: ", current, " target: ", target)
+	print("cur: ", current, " target: ", target)
 	
 	## Speed wind SFX
 	#DECIBEL TO LINEAR CHEAT SHEET
@@ -811,9 +819,11 @@ func _physics_process(_delta: float) -> void:
 	posLastFrame = global_position
 	
 	#DEBUG_INFO
-	%debugLabel2.text = str("true speed: ", snapped(trueSpeed.length(), 0.01)," ",snapped(trueSpeed, Vector3(0.01,0.01,0.01)),"\n",
+	%debugLabel2.text = str("global_pos: ", global_position, "\n",
+	"true speed: ", snapped(trueSpeed.length(), 0.01)," ",snapped(trueSpeed, Vector3(0.01,0.01,0.01)),"\n",
 	"velocity: ", snapped(linear_velocity.length(), 0.01)," ",snapped(linear_velocity, Vector3(0.01,0.01,0.01)),"\n",
-	"spin: ", snapped(angular_velocity.length(), 0.01), " ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "
+	"spin: ", snapped(angular_velocity.length(), 0.01), " ", snapped(angular_velocity, Vector3(0.01,0.01,0.01)), "\n",
+	"current railgrind: ", currentRailObj, "
 	surf jump: ", surfJumpHolding, "
 	surf state: ", surfState, "
 	Rotation Type: ", surfRotationType, "
@@ -984,7 +994,7 @@ func getSurfNormal():
 
 func updateInputHistory():
 	timeSinceLastInput += 1
-	if timeSinceLastInput == 1: #so you can just spam keys randomly super fast
+	if timeSinceLastInput == 1: #so you can't just spam keys randomly super fast
 		return
 	if Input.is_action_just_pressed("forward"):
 		inputHistory.append("up")
@@ -1183,3 +1193,7 @@ func set_jump_meter_pos(newPos: Vector2):
 
 func play_skate_anim(anim_name : String):
 	$surfPivot/skateTricks.play(anim_name)
+
+func play_shock_wave():
+	if !$UI/shockWaveAnim.is_playing():
+		$UI/shockWaveAnim.play("shockwave")

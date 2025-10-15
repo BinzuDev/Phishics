@@ -17,10 +17,12 @@ func set_text():
 	%rarity.text = rarity
 	%description.text = description
 	%description2.text = "  " + description2
-	if description2 != "":
-		$MarginContainer3.add_theme_constant_override("margin_top", 85)
+	
+	if description2 == "":
+		$MarginDesc.add_theme_constant_override("margin_top", 95)
 	else:
-		$MarginContainer3.add_theme_constant_override("margin_top", 95)
+		$MarginDesc.add_theme_constant_override("margin_top", 85)
+	
 	if rarity == "Mechanic" or rarity == "Surf Combo Input":
 		%score.text = ""
 

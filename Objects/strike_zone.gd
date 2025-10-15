@@ -63,6 +63,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is player:
 		strike(body.linear_velocity.length())
 
+func _on_parry_area_entered(_area):
+	if not touched:
+		get_tree().get_first_node_in_group("player").play_shock_wave()
+		strike(40)
 
 func strike(strength: float):
 	if not touched:

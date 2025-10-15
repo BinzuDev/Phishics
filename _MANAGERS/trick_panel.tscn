@@ -61,9 +61,9 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_juhqs")
 script = ExtResource("1_5qu7t")
 trickName = "dfgdfgdfg"
-description = "dfgdfgdfgdfgdfg"
+description = "ddsgsgfsgdfggfdgdf"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginName" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,10 +75,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 10
 
-[node name="Control" type="Control" parent="MarginContainer"]
+[node name="Control" type="Control" parent="MarginName"]
 layout_mode = 2
 
-[node name="name" type="Label" parent="MarginContainer/Control"]
+[node name="name" type="Label" parent="MarginName/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 300.0
@@ -89,7 +89,7 @@ text = "dfgdfgdfg"
 label_settings = SubResource("LabelSettings_p1amj")
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginInfo" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +100,7 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = 16
 
-[node name="score" type="Label" parent="MarginContainer2"]
+[node name="score" type="Label" parent="MarginInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -108,7 +108,7 @@ text = "Value: "
 label_settings = SubResource("LabelSettings_x8feo")
 horizontal_alignment = 1
 
-[node name="rarity" type="Label" parent="MarginContainer2"]
+[node name="rarity" type="Label" parent="MarginInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -116,7 +116,7 @@ text = "Common"
 label_settings = SubResource("LabelSettings_x8feo")
 horizontal_alignment = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="."]
+[node name="MarginDesc" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 85)
 layout_mode = 1
 anchors_preset = 15
@@ -127,19 +127,29 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 95
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 8
 
-[node name="description" type="Label" parent="MarginContainer3"]
+[node name="description" type="Label" parent="MarginDesc"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-size_flags_vertical = 0
-text = "dfgdfgdfgdfgdfg"
+size_flags_vertical = 1
+text = "ddsgsgfsgdfggfdgdf"
 label_settings = SubResource("LabelSettings_5qu7t")
-vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="description2" type="Label" parent="MarginContainer3"]
+[node name="marginDesc2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 3
+
+[node name="description2" type="Label" parent="marginDesc2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_vertical = 8
 text = "  "

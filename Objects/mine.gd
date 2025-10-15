@@ -68,6 +68,13 @@ func _on_mine_touched(body: Node3D) -> void:
 		activate_mine()
 	
 
+func _on_parry_detected(_area):
+	if !isExploding and $AnimationPlayer.current_animation != "click":
+		get_tree().get_first_node_in_group("player").play_shock_wave()
+		activate_mine()
+
+
+
 ## Start the pin clicking animation
 func activate_mine(chainReaction:bool = false):
 	if !isExploding and $AnimationPlayer.current_animation != "click":

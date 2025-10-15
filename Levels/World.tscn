@@ -965,7 +965,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 7.89321)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.994, 20.8323, -25.9339)
 
 [node name="worm19" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.339, 4.86614, -27.4871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.72668, 7.6399136, -24.219378)
+
+[node name="worm20" parent="worms" instance=ExtResource("16_e1uki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.89328, 62.443893, -53.988842)
+onlyCollectByParry = true
+
+[node name="worm21" parent="worms" instance=ExtResource("16_e1uki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.71002, 60.493813, -15.630172)
 
 [node name="worm17" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.291, 20.8724, -47.5174)

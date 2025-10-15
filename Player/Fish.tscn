@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=166 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -30,7 +30,9 @@
 [ext_resource type="AudioStream" uid="uid://cwilbc1payrwb" path="res://Sounds/impact_medium/medium2.ogg" id="12_5m7cr"]
 [ext_resource type="Texture2D" uid="uid://biorl74il5l8l" path="res://Sprites/UI/aim_reticle_off_screen.png" id="12_23obf"]
 [ext_resource type="AudioStream" uid="uid://c33xu632s2u2j" path="res://Sounds/sparks/sparks_high_intensity_08.wav" id="12_dp2w5"]
+[ext_resource type="Shader" uid="uid://ewoutu00ebej" path="res://Shaders/shockwave.gdshader" id="12_jap5e"]
 [ext_resource type="Texture2D" uid="uid://d3rmwbct3cbu3" path="res://icons/crab.png" id="12_vttj7"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://shader_preview_screenshot.png" id="13_5lkdo"]
 [ext_resource type="AudioStream" uid="uid://erap2b7fnpmt" path="res://Sounds/sparks/sparks_high_intensity_11.wav" id="13_d6s4o"]
 [ext_resource type="AudioStream" uid="uid://c267enlul74gu" path="res://Sounds/impact_medium/medium3.ogg" id="13_l2vbt"]
 [ext_resource type="Texture2D" uid="uid://dyeb4smsyuvcn" path="res://icons/boost_ring.png" id="13_mn8qi"]
@@ -358,6 +360,18 @@ _data = {
 radius = 0.1
 height = 0.2
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mn8qi"]
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn8qi"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jap5e"]
+radius = 10.0
+height = 20.0
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uucyj"]
 height = 0.5
 radius = 0.65
@@ -478,6 +492,53 @@ outline_color = Color(0, 0, 0, 1)
 shader = ExtResource("49_ny41d")
 shader_parameter/speedScale = 16.0
 shader_parameter/clipPosition = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lkdo"]
+shader = ExtResource("12_jap5e")
+shader_parameter/strength = 0.050000002375
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[sub_resource type="Animation" id="Animation_b7r8c"]
+resource_name = "shockwave"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shockWave:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1250000059375, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ipcik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shockWave:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sj4g2"]
+_data = {
+&"RESET": SubResource("Animation_ipcik"),
+&"shockwave": SubResource("Animation_b7r8c")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jv0xx"]
 animations = [{
@@ -1210,6 +1271,26 @@ update_rotation = false
 [node name="antiRotation" type="Node3D" parent="."]
 top_level = true
 
+[node name="parryArea" type="Area3D" parent="antiRotation"]
+process_mode = 3
+collision_layer = 128
+collision_mask = 0
+
+[node name="parry" type="CollisionShape3D" parent="antiRotation/parryArea"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -3)
+shape = SubResource("SphereShape3D_mn8qi")
+debug_color = Color(1, 0, 0.016666412, 1)
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="antiRotation/parryArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -3)
+visible = false
+material_override = SubResource("StandardMaterial3D_mn8qi")
+transparency = 0.8
+cast_shadow = 0
+mesh = SubResource("SphereMesh_jap5e")
+
 [node name="floorDetection" type="ShapeCast3D" parent="antiRotation"]
 unique_name_in_owner = true
 visible = false
@@ -1452,6 +1533,11 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
+[node name="ShaderPreviewScreenshot" type="Sprite2D" parent="UI"]
+visible = false
+texture = ExtResource("13_5lkdo")
+centered = false
+
 [node name="speedLinesShader" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_q0y68")
@@ -1522,6 +1608,22 @@ texture_under = ExtResource("11_dp2w5")
 texture_progress = ExtResource("11_dp2w5")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.466667, 0, 1)
+
+[node name="shockWave" type="ColorRect" parent="UI"]
+process_mode = 3
+material = SubResource("ShaderMaterial_5lkdo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shockWaveAnim" type="AnimationPlayer" parent="UI"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_sj4g2")
+}
 
 [node name="reticle" type="Node2D" parent="."]
 

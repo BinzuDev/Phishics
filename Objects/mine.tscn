@@ -232,6 +232,14 @@ collision_mask = 82
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitArea"]
 shape = SubResource("SphereShape3D_n6nrv")
 
+[node name="parryDetect" type="Area3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="parryDetect"]
+shape = SubResource("SphereShape3D_n6nrv")
+
 [node name="boomArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 82
@@ -470,5 +478,6 @@ unit_size = 50.0
 max_db = 5.0
 
 [connection signal="body_entered" from="hitArea" to="." method="_on_mine_touched"]
+[connection signal="area_entered" from="parryDetect" to="." method="_on_parry_detected"]
 [connection signal="finished" from="explosion_sfx" to="." method="_on_explosion_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

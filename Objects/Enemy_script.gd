@@ -228,3 +228,14 @@ func change_sprite():
 			$CrabSprite.modulate = Color(0.0, 0.29, 0.47, 1)
 			
 	%AnimationCrab.play("RESET") #no more immortal dancer
+
+
+func _on_getting_parried(area):
+	hp = 0
+	change_sprite()
+	get_tree().get_first_node_in_group("player").play_shock_wave()
+	var direction = global_transform.origin - area.global_transform.origin
+	direction = direction.normalized()
+	direction = Vector3(direction.x*20, abs(direction.y*25), direction.z*20)
+	apply_central_impulse(direction)
+	apply_torque_impulse(Vector3(5, 3, 5))

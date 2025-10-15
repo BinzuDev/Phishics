@@ -590,7 +590,6 @@ text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -661,16 +660,19 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Mechanics" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 3950
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 19
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Mechanics"]
@@ -858,10 +860,9 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 24
+autoScroll = -19
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -935,6 +936,14 @@ score = "[altitude*500]pts + x5"
 rarity = "Uncommon"
 description = "Press the fish button while at the peak of your jump to perform a taunt!"
 description2 = "It won't work if you spam the fish button. You also need to be at least 4 meters off the ground."
+
+[node name="taunt2" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+trickName = "Aura"
+rarity = "Mechanic"
+description = "Taunting will also kill nearby crabs, collect nearby worms, strike nearby bowling pins and activate nearby mines.
+"
 
 [node name="dive" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1021,7 +1030,7 @@ follow_focus = true
 scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 91
+autoScroll = 5
 metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Interactibles"]
@@ -1164,12 +1173,13 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 1874
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 5
 metadata/_tab_index = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Surfing"]
@@ -1317,6 +1327,7 @@ helpText = "Resume the game."
 
 [node name="Settings" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0

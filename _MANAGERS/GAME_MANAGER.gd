@@ -28,6 +28,7 @@ func hitstop(frames: int, objToPause: Node3D = null):
 	#objToPause.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
+
 func toggle_pause():
 	if !isOnTitleScreen:
 		disableMenuControl = false

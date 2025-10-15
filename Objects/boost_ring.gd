@@ -81,6 +81,8 @@ func _on_body_entered(body: Node3D) -> void:
 				freshCooldown = 0 
 			ScoreManager.play_trick_sfx("rare")
 			$AnimationPlayer.play("boost")
+			if body.isRailGrinding:
+				body.currentRailObj.mountingSpeed += 10
 		#body.play_random_trick()
 		
 		#sound 
