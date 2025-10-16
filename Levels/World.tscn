@@ -105,7 +105,7 @@ size = Vector3(13.86, 92.4906, 12.2205)
 size = Vector3(13.8649, 43.2688, 21.6247)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1uki"]
-size = Vector3(106.811, 78.6736, 80.4697)
+size = Vector3(110.26929, 80.8512, 91.61752)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sehqq"]
 size = Vector3(7.84224, 54.0969, 7.08103)
@@ -473,6 +473,7 @@ collision_mask = 0
 [node name="middleFront" type="CollisionShape3D" parent="invisible wall"]
 transform = Transform3D(1, 0, -3.2685e-13, 0, 2, 0, 1.06581e-14, 0, 5.07478, 0, 29.9709, 122.787)
 shape = SubResource("BoxShape3D_2mkqt")
+disabled = true
 debug_color = Color(1, 0, 0, 1)
 
 [node name="leftWall" type="CollisionShape3D" parent="invisible wall"]
@@ -513,6 +514,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Invisible roof"]
 transform = Transform3D(1, 4.01334e-35, 0, 1.06109e-35, 2, 0, 0, 0, 1, 66.4047, 6.09009, -89.4084)
 shape = SubResource("BoxShape3D_63vwh")
+disabled = true
 debug_color = Color(1, 0, 0, 1)
 
 [node name="AllCoralGroups" type="Node3D" parent="."]
@@ -924,7 +926,7 @@ shape = SubResource("BoxShape3D_h7041")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="lookDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.272064, 47.85666, 4.4499817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.287327, 48.945457, 10.023895)
 shape = SubResource("BoxShape3D_e1uki")
 debug_color = Color(1, 1, 1, 1)
 
@@ -3229,9 +3231,9 @@ audio_file = "uid://cv7x2xq8oskhx"
 
 [node name="Mine" parent="group2" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.095886, 7.3326654, -5.270503)
-explosionStrength = 600
-explosionRadius = 12.0
-knockbackMultiplier = 2.0
+explosionStrength = 1750
+explosionRadius = 50.0
+knockbackMultiplier = 1.4
 
 [node name="Pillar4" parent="group2" instance=ExtResource("33_fbdpx")]
 transform = Transform3D(0.999997, -0.00170896, 0.00151882, 0.00170895, 0.999999, 1.33931e-05, -0.00151884, -1.07887e-05, 0.999999, 73.3934, -0.330253, 6.3211)
@@ -3665,8 +3667,8 @@ explosionRadius = 8.0
 
 [node name="Mine3" parent="group3" instance=ExtResource("51_4ps87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.44655, 22.486662, -47.032524)
-explosionStrength = 200
-explosionRadius = 8.0
+explosionStrength = 250
+explosionRadius = 10.0
 
 [node name="Platform1" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(18.043, 0, 0, 0, 20.0182, 0, 0, 0, 99.3909, 154.58, 9.18, -6.3046017)

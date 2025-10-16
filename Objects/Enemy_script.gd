@@ -118,6 +118,9 @@ func _on_bump_body_entered(body: Node3D) -> void:
 	#so it doesnt fall out of the way
 	gravity_scale = 1
 	
+	print("---------------------------------")
+	print("BUMP BODY ENTERED ON ", name)
+	print("SPD IS: ", body.linear_velocity, " ", body.linear_velocity.length())
 	
 	#horsehoe crabs can only be damaged if diving
 	if enemyType == Enum1.Horse_Shoe and not body.diving:
@@ -137,7 +140,8 @@ func _on_bump_body_entered(body: Node3D) -> void:
 	
 	
 	#regular crab logic
-	if body.linear_velocity.length() < 4 and not body.isTipSpinning:
+	if body.linear_velocity.length() < 6 and not body.isTipSpinning:
+		print("PUSHING THE PLAYER AWAY FROM MOVING AT LESS THAN 4")
 		if hp > 0:
 			print("WEAK")
 			
@@ -151,8 +155,9 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			body.apply_central_impulse((-body.linear_velocity.normalized() + Vector3.UP * 0.5) * push_force)
 			#
 	
-	
+	#damage the crab
 	if body.linear_velocity.length() >= 6 or body.isTipSpinning:
+		print("ATTACKING THE CRAB CAUSE SPEED IS HIGHER THAN 6")
 		
 		if enemyType == Enum1.Regular_Crab: #regular crab logic
 			#player pushing

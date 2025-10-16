@@ -502,6 +502,21 @@ shader_parameter/aberration = 0.425
 shader_parameter/width = 0.04
 shader_parameter/feather = 0.135
 
+[sub_resource type="Animation" id="Animation_ipcik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shockWave:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_b7r8c"]
 resource_name = "shockwave"
 length = 0.5
@@ -517,21 +532,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.1250000059375, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_ipcik"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shockWave:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sj4g2"]
@@ -1028,7 +1028,7 @@ stream_0/stream = ExtResource("52_4buur")
 
 [node name="fish" type="RigidBody3D" groups=["player"]]
 collision_layer = 2
-collision_mask = 21
+collision_mask = 5
 mass = 1.5
 continuous_cd = true
 contact_monitor = true
@@ -1039,7 +1039,7 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
+recordingMode = "replay"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1
@@ -1618,6 +1618,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="shockWaveAnim" type="AnimationPlayer" parent="UI"]
 process_mode = 3

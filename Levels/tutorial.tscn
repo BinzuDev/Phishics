@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=84 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_desr6"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -350,6 +350,9 @@ size = Vector3(0.38, 4, 0.38)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ygkl2"]
 size = Vector3(17.929626, 3.7285156, 4.690674)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbvdo"]
+size = Vector3(48.779907, 14.651855, 7.75)
+
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_desr6")
 
@@ -363,10 +366,13 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_0xeif")
 
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, 12.529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, -124.3032)
 gravity_scale = 1.5
-canJump = false
 noScoreUI = true
+
+[node name="jelly_fish_girl_IK" parent="." instance=ExtResource("12_2kmhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9160542, 15.66592, -302.9687)
+defaultAnimation = "Cheering"
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
@@ -425,7 +431,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.738795, -0.25504702, -107.605)
+transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511221, -0.25504702, -107.605)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -438,7 +444,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform2" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.30611e-07, 0, -45.6159, 0, 7.46886, 0, 7.56346, 0, -1.99394e-06, 0.738795, 2.35432, -114.829)
+transform = Transform3D(-3.30611e-07, 0, -45.6159, 0, 7.46886, 0, 7.56346, 0, -1.99394e-06, 0.08511221, 2.35432, -114.829)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -451,7 +457,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform3" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.7, 0, 13.8776, 0, -1.99394e-06, 0.738795, 6.219404, -125.427)
+transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.963144, 0, 13.8776, 0, -1.99394e-06, 0.08511221, 5.7990055, -125.427)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -535,10 +541,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1615, 0, 18.6913)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="jelly_fish_girl_IK" parent="tutorialSpam" instance=ExtResource("12_2kmhi")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.72935, 14.11557, -296.36603)
-defaultAnimation = "Cheering"
-
 [node name="tutorialRamp" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371541, 1.55035, -50.0872)
 dialogue = SubResource("Resource_bu5na")
@@ -566,12 +568,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, 1.55035, -98.6253)
 dialogue = SubResource("Resource_0cfr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialJump"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0442, 6.99554, 7.54743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0442, 6.99554, 7.56176)
 shape = SubResource("BoxShape3D_4d1rn")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="tutorialDive" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.999992, 0.00402024, 0.00142043, -0.00402129, 0.999991, 0.900684, 10.7023, -119.938)
+transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.999992, 0.00402024, 0.00142043, -0.00402129, 0.999991, 0.87354565, 10.702281, -119.938034)
 dialogue = SubResource("Resource_rf3la")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialDive"]
@@ -595,43 +597,43 @@ debug_color = Color(0, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -149.436)
 
 [node name="Enemy" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311973, 0.889149, 5.74237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.528463, 0.8891471, -16.314789)
 
 [node name="Enemy7" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09939, 0.889149, 1.29823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0887113, 0.8891509, -22.945866)
 
 [node name="Enemy8" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85012, 0.889149, 9.75783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.845621, 0.889149, 2.5765553)
 
 [node name="Enemy9" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76707, 1.26618, 8.32529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49539876, 1.266182, -2.5290651)
 
 [node name="Enemy13" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14747, 1.26618, -1.98997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.777091, 1.2661858, -23.182842)
 
 [node name="Enemy2" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.70929, 0.889149, 0.0979767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.313149, 0.8891471, -11.923889)
 
 [node name="Enemy3" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6909, 0.889149, -4.98146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.807276, 0.889149, -4.1628566)
 
 [node name="Enemy4" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86145, 0.889149, 3.983)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.998948, 0.889149, -6.21274)
 
 [node name="Enemy10" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9444, 0.889148, -0.558517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9905148, 0.889148, -11.216705)
 
 [node name="Enemy11" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5112, 0.889148, 1.87862)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.034859, 0.889148, 6.6474953)
 
 [node name="Enemy12" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07698, 0.889148, 3.07153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.02862, 0.889148, 3.0236938)
 
 [node name="Enemy5" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95019, 0.889149, -2.63347)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.132471, 0.8891452, -14.678759)
 
 [node name="Enemy6" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46, 0.889149, 10.0959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6260023, 0.889149, 8.615095)
 
 [node name="funArea" type="Node3D" parent="."]
 
@@ -1400,3 +1402,12 @@ shape = SubResource("BoxShape3D_ygkl2")
 [node name="hook" parent="." instance=ExtResource("24_ygkl2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5212053, 21.916418, -225.12483)
 lineLength = 19.14641780853271
+
+[node name="cameraController2" parent="." instance=ExtResource("23_maxpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4593925, 13.154713, -131.10738)
+newCameraAngle = Vector3(-60, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51163, 3.9796944, 0.4482422)
+shape = SubResource("BoxShape3D_jbvdo")
+debug_color = Color(1, 1, 1, 1)

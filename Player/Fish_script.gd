@@ -585,6 +585,8 @@ func _physics_process(_delta: float) -> void:
 		if $surfPivot.global_transform.basis.y.y < 0.2 and %surfRC2.is_colliding():
 			var worth = clamp(linear_velocity.length()*height, 0, 1000)
 			ScoreManager.give_points(worth, 0, false, "WALLRIDE")
+			if GameManager.gameTimer % 2: #make combo timer 50% slower
+				ScoreManager.comboTimer += 1
 			#print(worth)
 		
 		
@@ -777,7 +779,7 @@ func _physics_process(_delta: float) -> void:
 		
 	
 	
-	##speed lines 
+	##speed lines
 	var target = 0.5 - (trueSpeed.length()-25.0)*0.0125 #0.7 at <30 | 0.43 at 30 | 0.0 at 65
 	if isHeld: #so it doesnt do it on the hook or eel
 		target = 0.7
@@ -792,7 +794,7 @@ func _physics_process(_delta: float) -> void:
 	else:                #when slowing down, make the speed lines slowly go away
 		lineLen = move_toward(current, target, 0.01)
 	%speedLinesShader.material.set_shader_parameter("clipPosition", lineLen)
-	print("cur: ", current, " target: ", target)
+	#print("cur: ", current, " target: ", target)
 	
 	## Speed wind SFX
 	#DECIBEL TO LINEAR CHEAT SHEET

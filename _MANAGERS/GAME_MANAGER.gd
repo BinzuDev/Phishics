@@ -99,6 +99,10 @@ func _process(_delta):
 			reset_level()
 		
 	
+	if Input.is_action_just_pressed("quit_game_safely"):
+		get_tree().quit() #closes the game unforcefully, unlike F8
+	
+	
 	if Input.is_action_just_pressed("F11"): #fullscreen toggle
 		if DisplayServer.window_get_mode() == 4:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
