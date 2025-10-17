@@ -351,7 +351,7 @@ size = Vector3(0.38, 4, 0.38)
 size = Vector3(17.929626, 3.7285156, 4.690674)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbvdo"]
-size = Vector3(48.779907, 14.651855, 7.75)
+size = Vector3(48.779907, 14.651855, 8.98291)
 
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_desr6")
@@ -366,8 +366,9 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_0xeif")
 
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, -124.3032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, 12.7987175)
 gravity_scale = 1.5
+canJump = false
 noScoreUI = true
 
 [node name="jelly_fish_girl_IK" parent="." instance=ExtResource("12_2kmhi")]
@@ -1405,9 +1406,9 @@ lineLength = 19.14641780853271
 
 [node name="cameraController2" parent="." instance=ExtResource("23_maxpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4593925, 13.154713, -131.10738)
-newCameraAngle = Vector3(-60, 0, 0)
+newCameraAngle = Vector3(-65, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51163, 3.9796944, 0.4482422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51163, 3.9796944, -0.16821289)
 shape = SubResource("BoxShape3D_jbvdo")
 debug_color = Color(1, 1, 1, 1)

@@ -14,7 +14,7 @@ func _ready():
 
 func _process(_delta):
 	logoTimer += 1
-	$logo.rotation_degrees.z = sin(logoTimer*0.02) * 3
+	$PhishicsUnwavy.rotation_degrees.z = sin(logoTimer*0.01) * 3
 	
 	$UI.visible = !MenuManager.isSubmenuOpen()
 	

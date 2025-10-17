@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cu87u6588tm6x"]
+[gd_scene load_steps=24 format=3 uid="uid://cu87u6588tm6x"]
 
 [ext_resource type="Script" uid="uid://1b1lupixtjff" path="res://Objects/boost_ring.gd" id="1_5o6kl"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="2_rd0gv"]
@@ -60,11 +60,6 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_5o6kl"]
 top_radius = 0.0
 height = 0.3
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_75vsp"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("4_rd0gv")
 
 [sub_resource type="TorusMesh" id="TorusMesh_rd0gv"]
 inner_radius = 1.0
@@ -135,6 +130,14 @@ _data = {
 &"boost": SubResource("Animation_75vsp")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_75vsp"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_rd0gv")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_75vsp"]
+radius = 35.0
+
 [node name="BoostRing" type="Area3D"]
 process_priority = 5
 process_physics_priority = 5
@@ -144,7 +147,7 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.8439414e-07, -1.7, -2.3188723e-07, -1.5357199, 6.7128845e-08, 0.7290615, -0.7290615, 2.8856132e-07, -1.5357199, 0, 0, 0)
+transform = Transform3D(-3.6871015e-07, -1.7, 9.0085415e-08, 0.5966087, -4.504297e-08, 1.5918618, -1.5918618, 3.768758e-07, 0.5966087, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
@@ -191,21 +194,10 @@ skeleton = NodePath("goal")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="BoostSound" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_75vsp")
-max_distance = 35.0
-bus = &"soundEffects"
-
 [node name="shadow" type="MeshInstance3D" parent="."]
 transform = Transform3D(-7.43094e-08, -1.7, 0, 1.7, -7.43094e-08, 0, 0, 0, 1.7, 0, 0, 0)
 cast_shadow = 3
 mesh = SubResource("TorusMesh_rd0gv")
-
-[node name="bubbling" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_75vsp")
-autoplay = true
-max_distance = 35.0
-bus = &"soundEffects"
 
 [node name="homingTarget" type="Area3D" parent="."]
 collision_layer = 32
@@ -220,4 +212,27 @@ libraries = {
 &"": SubResource("AnimationLibrary_leupk")
 }
 
+[node name="BoostSound" type="AudioStreamPlayer3D" parent="."]
+process_mode = 4
+stream = SubResource("AudioStreamRandomizer_75vsp")
+max_distance = 35.0
+bus = &"soundEffects"
+
+[node name="bubbling" type="AudioStreamPlayer3D" parent="."]
+process_mode = 4
+stream = ExtResource("5_75vsp")
+autoplay = true
+max_distance = 35.0
+bus = &"soundEffects"
+
+[node name="shouldSFXplay" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shouldSFXplay"]
+visible = false
+shape = SubResource("SphereShape3D_75vsp")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="shouldSFXplay" to="." method="_on_bubbling_control_body_entered"]
+[connection signal="body_exited" from="shouldSFXplay" to="." method="_on_bubbling_control_body_exited"]

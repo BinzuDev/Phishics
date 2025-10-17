@@ -46,7 +46,7 @@ environment = SubResource("Environment_4autd")
 gravity_scale = 1.5
 
 [node name="Platform1" type="MeshInstance3D" parent="."]
-transform = Transform3D(200, 0, 0, 0, 1.9, 0, 0, 0, 200, 0, -0.99999976, 0)
+transform = Transform3D(200, 0, 0, 0, 1.9, 0, 0, 0, 200, 0, -1.5, 0)
 material_override = ExtResource("4_fksqx")
 material_overlay = ExtResource("5_4p0jq")
 mesh = SubResource("BoxMesh_2i2tq")

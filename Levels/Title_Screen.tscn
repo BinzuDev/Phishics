@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=36 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_68fed"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/menu_button.tscn" id="6_t7vd5"]
 [ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
+[ext_resource type="Shader" uid="uid://bk36u2ky74cec" path="res://Shaders/Goal_scroll.gdshader" id="7_txomp"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="8_4kyk8"]
+[ext_resource type="Texture2D" uid="uid://da7bcr7veo7gn" path="res://Sprites/words/phishics_unwavy.png" id="8_ewc74"]
 [ext_resource type="Texture2D" uid="uid://camhknuxnb4ml" path="res://Sprites/UI/z_tip.png" id="8_w1112"]
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="9_1bnno"]
 [ext_resource type="Texture2D" uid="uid://b5f7hqp8djo8w" path="res://Sprites/godot_logo.png" id="10_68fed"]
@@ -43,6 +45,15 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_yt0yj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1em2i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rv3p5"]
+render_priority = 0
+shader = ExtResource("7_txomp")
+shader_parameter/texture_albedo = ExtResource("8_ewc74")
+shader_parameter/frequency = Vector2(0, 18.46)
+shader_parameter/amplitutde = Vector2(0, 0.3)
+shader_parameter/speed = -2.0
+shader_parameter/movement = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bnno"]
 resource_local_to_scene = true
@@ -229,8 +240,16 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_1em2i")
 
+[node name="PhishicsUnwavy" type="Sprite3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -49.226307, 54.018845, -226.38275)
+material_override = SubResource("ShaderMaterial_rv3p5")
+texture = ExtResource("8_ewc74")
+region_enabled = true
+region_rect = Rect2(8, 16, 1456, 400)
+
 [node name="logo" type="Sprite3D" parent="."]
 transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -38.996, 51.0354, -225.683)
+visible = false
 no_depth_test = true
 render_priority = -5
 texture = ExtResource("7_t7vd5")

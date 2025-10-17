@@ -1039,7 +1039,6 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "replay"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1

@@ -77,7 +77,7 @@ script = ExtResource("1_p8utt")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 96
-collision_mask = 130
+collision_mask = 134
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00396204, 0.484923, 0.794761)

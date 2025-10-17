@@ -87,3 +87,12 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		#sound 
 		$BoostSound.play() 
+
+
+func _on_bubbling_control_body_entered(_body):
+	$bubbling.process_mode = Node.PROCESS_MODE_INHERIT
+	$BoostSound.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_bubbling_control_body_exited(_body):
+	$bubbling.process_mode = Node.PROCESS_MODE_DISABLED
+	$BoostSound.process_mode = Node.PROCESS_MODE_DISABLED
