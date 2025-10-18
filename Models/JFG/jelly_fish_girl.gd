@@ -10,26 +10,22 @@ func _ready():
 		if defaultAnimation:
 			play_animation(defaultAnimation)
 			print(get_parent().name, "'s jfg is starting to play ", defaultAnimation)
-		else:
-			$AnimationPlayer.play("A-Pose")
-	else:
-		$AnimationPlayer.play("T-Pose")
-	
+		
 	if get_tree().current_scene == self:
-		print("JFG is in a her own scene")
+		print("Debug mode")
 		$DirectionalLight3D.visible = true
 		$Platform.visible = true
+		var list = "string"
+		list.length()
 		play_animation("Cheering")
 	else:
-		print("JFG is in a different scene")
 		$DirectionalLight3D.visible = false
 		$Platform.visible = false
-		animationPreview = false
 	
 
 func _process(_delta):
 	if Engine.is_editor_hint() and animationPreview:
-		$AnimationPlayer.play("tuto_hello")
+		$AnimationPlayer.play("tuto_think")
 		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
 	
@@ -53,10 +49,3 @@ func play_animation(anim : String):
 		$AnimationExtras.play("Blinking") #default to blinking as a backup
 	
 	
-
-##if you want an aniation to transition into a looping version
-func _on_animation_finished(anim_name):
-	if !Engine.is_editor_hint():
-		if anim_name == "tuto_hello":
-			$AnimationPlayer.play("tuto_hello_end")
-			$AnimationExtras.play("Blinking")

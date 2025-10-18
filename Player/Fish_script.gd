@@ -5,7 +5,6 @@ extends RigidBody3D
 #jump check
 @export var canJump: bool = true
 @export var noScoreUI : bool = false
-@export var canMove : bool = true #so you cant move at the start of the tutorial
 
 var checkpoint_pos: Vector3
 
@@ -88,26 +87,25 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	## Movement
-	if canMove:
-		if Input.is_action_just_pressed("forward"):
-			if !surfMode or !%SRCACforward.is_colliding(): #fixes the ability to infinitely climb walls while surfing. yes this is stupid.
-				apply_torque_impulse(rotate_by_cam(torque_impulse))
-				apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
-		
-		if Input.is_action_just_pressed("back"):
-			if !surfMode or !%SRCACbackwards.is_colliding():
-				apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
-				apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
-		
-		if Input.is_action_just_pressed("right"):
-			if !surfMode or !%SRCACright.is_colliding():
-				apply_torque_impulse(rotate_by_cam(torque_side * -1))
-				apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
-		 
-		if Input.is_action_just_pressed("left"):
-			if !surfMode or !%SRCACleft.is_colliding():
-				apply_torque_impulse(rotate_by_cam(torque_side))
-				apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
+	if Input.is_action_just_pressed("forward"):
+		if !surfMode or !%SRCACforward.is_colliding(): #fixes the ability to infinitely climb walls while surfing. yes this is stupid.
+			apply_torque_impulse(rotate_by_cam(torque_impulse))
+			apply_impulse(rotate_by_cam(Vector3(0, 0, -accel)))
+	
+	if Input.is_action_just_pressed("back"):
+		if !surfMode or !%SRCACbackwards.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_impulse * -1))
+			apply_impulse(rotate_by_cam(Vector3(0, 0, accel)))
+	
+	if Input.is_action_just_pressed("right"):
+		if !surfMode or !%SRCACright.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_side * -1))
+			apply_impulse(rotate_by_cam(Vector3(accel, 0, 0)))
+	 
+	if Input.is_action_just_pressed("left"):
+		if !surfMode or !%SRCACleft.is_colliding():
+			apply_torque_impulse(rotate_by_cam(torque_side))
+			apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
 	
 	
 	
@@ -266,7 +264,7 @@ func _physics_process(_delta: float) -> void:
 		timeSinceNoTargets += 1
 	else:
 		timeSinceNoTargets = 0 
-	if timeSinceNoTargets > 30 or isHeld:
+	if timeSinceNoTargets > 15 or isHeld:
 		homingLookDown = false
 	
 	
