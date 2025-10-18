@@ -799,6 +799,21 @@ transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, -31.
 curve = SubResource("Curve3D_gl2w4")
 debug_custom_color = Color(4.459082e-05, 4.459082e-05, 4.459082e-05, 1)
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D3"]
+transform = Transform3D(0.9999978, 0, 0, 0, 0.99999666, 0, 0, 0, 0.9999982, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0, 1, 0.7805519, 0.5131149, 1, 0, 0, 0, 0, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
 [node name="rail_grind" parent="Path3D3" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-0.98574495, 0.014073236, -0.1676444, 0, 0.9964917, 0.083652705, 0.16823399, 0.08246028, -0.98229027, -1.2627583, -0.22460175, -0.0111579895)
 
@@ -911,3 +926,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.96512, 118.81424, 116.367
 
 [node name="Enemy18" parent="." instance=ExtResource("18_y18wb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.477406, 150.02646, 100.38409)
+
+[connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
