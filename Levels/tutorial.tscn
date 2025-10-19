@@ -1,6 +1,6 @@
-[gd_scene load_steps=84 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=89 format=3 uid="uid://dkidvdubjn0p"]
 
-[ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_desr6"]
+[ext_resource type="Script" uid="uid://f0h5r84k4ug6" path="res://Levels/tutorial.gd" id="1_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_lalqu"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_gdvy0"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_td8ta"]
 [ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="17_s0t66"]
 [ext_resource type="Texture2D" uid="uid://dkv87xhsk84pr" path="res://Sprites/crabwarning.png" id="18_p7ekk"]
+[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="19_jbvdo"]
 [ext_resource type="Texture2D" uid="uid://8df8du65vhkl" path="res://Sprites/fishwarning.png" id="19_p7ekk"]
 [ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="23_maxpf"]
@@ -88,7 +89,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_pl552"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Don't worry! You can use the arrow keys to flip yourself!"
+text = "No worries! You can use the arrow keys to flip yourself!"
 JFG_animation = "tuto_talk"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -98,6 +99,8 @@ automaticStart = true
 keepOnScreenAfterEnd = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_m0lrx"), SubResource("Resource_kx2g6"), SubResource("Resource_pl552")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent1();
+"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wqju"]
@@ -107,6 +110,7 @@ size = Vector3(11.5216, 2.6936893, 10.1921)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Not... very fast... Hm...."
+JFG_animation = "tuto_think"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_f2byx"]
@@ -114,12 +118,14 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Okay, so you don't wanna hold the arrow keys alright?
 Instead, spam the keys as faaast as you can!!"
+JFG_animation = "tuto_talk"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_wpr1m"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "The more you press the more momentum you gain!"
+JFG_animation = "tuto_talk"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_i8qca"]
@@ -131,11 +137,42 @@ runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_ilxjc"), SubResource("Resource_f2byx"), SubResource("Resource_wpr1m")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0tnf1"]
-size = Vector3(45.5049, 9.74719, 12.8198)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_td8ta"]
 size = Vector3(19.038, 9.74719, 12.8198)
+
+[sub_resource type="Resource" id="Resource_exwpa"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "There you go, just like that!"
+JFG_animation = "Clapping"
+code = "DialogueManager.currentDialogueOwner.tutorialEvent2();"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_uaqtc"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "If you wanna go fast, spam the arrow keys as faaast as you can!!"
+JFG_animation = "tuto_talk"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_m4fsp"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "The more you press the more momentum you gain!"
+JFG_animation = "tuto_talk"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_emqes"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+keepOnScreenAfterEnd = true
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_exwpa"), SubResource("Resource_uaqtc"), SubResource("Resource_m4fsp")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tnf1"]
+size = Vector3(45.5049, 9.74719, 12.8198)
 
 [sub_resource type="Resource" id="Resource_3p1xt"]
 script = ExtResource("10_3hhjp")
@@ -165,14 +202,16 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Very goooood!!
 Look at youuuu!!!"
+JFG_animation = "Clapping"
 code = "DialogueManager.show_jfg(true)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_to5w2"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "You can also JUMP using SPACE!          
-The faster you're spinning, the more powerful your jump becomes (moving slow = small jump)"
+text = "You can also JUMP using the SPACEBAR!               
+The faster you're spinning, the more powerful your jump becomes! (moving slow = small jump)"
+JFG_animation = "tuto_talk"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_ygkl2"]
@@ -185,6 +224,8 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("11_to5w2")
 automaticStart = true
 pauseGame = false
+keepOnScreenAfterEnd = true
+runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_8fyol"), SubResource("Resource_to5w2"), SubResource("Resource_ygkl2")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
@@ -195,6 +236,7 @@ size = Vector3(47.9379, 18.3858, 16.6607)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Urghh crabs....."
+JFG_animation = "tuto_crabs"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_4wqju"]
@@ -225,6 +267,7 @@ automaticStart = true
 keepOnScreenAfterEnd = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_avars"), SubResource("Resource_4wqju"), SubResource("Resource_rmd0x"), SubResource("Resource_tbpdk")])
+codePostDialogue = "DialogueManager.show_jfg(false)"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0t66"]
@@ -354,7 +397,7 @@ size = Vector3(17.929626, 3.7285156, 4.690674)
 size = Vector3(48.779907, 14.651855, 8.98291)
 
 [node name="Tutorial" type="Node3D"]
-script = ExtResource("1_desr6")
+script = ExtResource("1_2kmhi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
@@ -370,9 +413,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, 12.7987175)
 gravity_scale = 1.5
 canJump = false
 noScoreUI = true
+canMove = false
 
 [node name="jelly_fish_girl_IK" parent="." instance=ExtResource("12_2kmhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9160542, 15.66592, -302.9687)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.9160542, 15.66592, -302.9687)
 defaultAnimation = "Cheering"
 
 [node name="LevelGeometry" type="Node3D" parent="."]
@@ -432,7 +476,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511221, -0.25504702, -107.605)
+transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511221, -0.13224858, -107.605)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -445,7 +489,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform2" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.30611e-07, 0, -45.6159, 0, 7.46886, 0, 7.56346, 0, -1.99394e-06, 0.08511221, 2.35432, -114.829)
+transform = Transform3D(-3.30611e-07, 0, -45.6159, 0, 7.46886, 0, 7.56346, 0, -1.99394e-06, 0.08511221, 2.5589833, -114.829)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -458,7 +502,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform3" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.963144, 0, 13.8776, 0, -1.99394e-06, 0.08511221, 5.7990055, -125.427)
+transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.963144, 0, 13.8776, 0, -1.99394e-06, 0.08511221, 5.880872, -125.427)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -518,26 +562,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4949, -2.8841105, 12.7362)
 shape = SubResource("BoxShape3D_4wqju")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="tutorialSpam" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 1.55035, -6.60267)
+[node name="tutorialSpamSlow" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 30.161304, 12.864229)
 dialogue = SubResource("Resource_i8qca")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialSpam"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpamSlow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8497362, 0, -0.5007882)
+shape = SubResource("BoxShape3D_td8ta")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="tutorialSpamFast" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 1.55035, -6.60267)
+dialogue = SubResource("Resource_emqes")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialSpamFast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 7.21107)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialSpam"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialSpamFast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 30.4585)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpam"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpamFast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0174, 0, 18.6913)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="tutorialSpam"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="tutorialSpamFast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1615, 0, 18.6913)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
@@ -590,7 +643,7 @@ transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.99999
 dialogue = SubResource("Resource_0tnf1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialStyle"]
-transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, -0.133468, 15.4891, -7.37212)
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, -0.133468, 15.4891, -27.042156)
 shape = SubResource("BoxShape3D_s0t66")
 debug_color = Color(0, 0, 0, 1)
 
@@ -598,10 +651,10 @@ debug_color = Color(0, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -149.436)
 
 [node name="Enemy" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.528463, 0.8891471, -16.314789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.264545, 0.8891471, -11.7438965)
 
 [node name="Enemy7" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0887113, 0.8891509, -22.945866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.585486, 0.889149, -16.064838)
 
 [node name="Enemy8" parent="enemyGroup" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.845621, 0.889149, 2.5765553)
@@ -610,22 +663,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.845621, 0.889149, 2.5765553
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49539876, 1.266182, -2.5290651)
 
 [node name="Enemy13" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.777091, 1.2661858, -23.182842)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9719954, 1.2661858, -22.936687)
 
 [node name="Enemy2" parent="enemyGroup" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.313149, 0.8891471, -11.923889)
 
 [node name="Enemy3" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.807276, 0.889149, -4.1628566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.751457, 0.889149, -0.20660353)
 
 [node name="Enemy4" parent="enemyGroup" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.998948, 0.889149, -6.21274)
 
 [node name="Enemy10" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9905148, 0.889148, -11.216705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.388376, 0.889148, -6.490814)
 
 [node name="Enemy11" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.034859, 0.889148, 6.6474953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.023598, 0.8891499, 7.8305244)
 
 [node name="Enemy12" parent="enemyGroup" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.02862, 0.889148, 3.0236938)
@@ -761,7 +814,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform4" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-4.11682e-07, 0, -11.7043, 0, 15.1003, 0, 9.41815, 0, -5.11611e-07, -10.0183, -2.79395, -200.601)
+transform = Transform3D(-4.11682e-07, 0, -11.7043, 0, 15.1003, 0, 9.41815, 0, -5.11611e-07, -10.0183, -3.1069255, -200.601)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -774,7 +827,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform14" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-3.00911e-07, 0, -11.7043, 0, 15.1003, 0, 6.88402, 0, -5.11611e-07, -12.1394, 0.178792, -203.779)
+transform = Transform3D(-3.6657624e-07, 0, -11.7043, 0, 15.1003, 0, 8.38626, 0, -5.11611e-07, -13.046524, -0.20787862, -204.73433)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -886,7 +939,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform5" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-3.00911e-07, 0, -11.7043, 0, 15.1003, 0, 6.88402, 0, -5.11611e-07, -8.71249, 3.6811, -207.662)
+transform = Transform3D(-3.00911e-07, 0, -11.272645, 0, 15.1003, 0, 6.88402, 0, -4.927428e-07, -7.0610795, 3.1914988, -208.22214)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -976,7 +1029,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4803, 13.3952, -220.234)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0693, 13.4808, -220.234)
 
 [node name="worm17" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9781623, 5.4435234, -198.02898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9781623, 5.3579698, -198.02898)
 
 [node name="worm3" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7885, 10.0102, -246.925)
@@ -1021,8 +1074,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4170842, 2.47873, -240.735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79322, 23.8722, -306.1)
 
 [node name="PathFollowJellyfish" parent="funArea" instance=ExtResource("15_td8ta")]
-transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.27533, 6.00981, -279.88846)
+transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.6611514, 6.00981, -277.69415)
 hSpeedMultiplier = 0.3
+
+[node name="strike_zone" parent="funArea" instance=ExtResource("19_jbvdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2128386, 15.502571, -287.37024)
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236072, 17.528, -305.986)
