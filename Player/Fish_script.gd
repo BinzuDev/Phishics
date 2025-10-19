@@ -543,15 +543,21 @@ func _physics_process(_delta: float) -> void:
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
 	$skateboarding.volume_linear = 0
-	%surfSparks.emitting = surfMode and %surfRC3.is_colliding() and !skateboardSurf
+	%surfSparks.emitting = (surfMode and %surfRC3.is_colliding() and !skateboardSurf) or isRailGrinding
+	
+	
 	$RemoteTransformSurf.update_rotation = isRailGrinding #stops the fish from rotating during railgrind
 	
 	if surfMode:
 		#Particles
-		surfSparkSpd = clamp(( linear_velocity.length()-5)*0.1 +1, 1, 5) #1 at 5, 5 at 45
-		%surfSparks.speed_scale = surfSparkSpd
-		surfSparkRate = clamp( (linear_velocity.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
-		%surfSparks.amount_ratio = surfSparkRate
+		surfSparkSpd = clamp(( trueSpeed.length()-5)*0.1 +1, 1, 5) #1 at 5, 5 at 45
+		%surfSparks.speed_scale = surfSparkSpd 
+		surfSparkRate = clamp( (trueSpeed.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
+		%surfSparks.amount_ratio = surfSparkRate 
+		
+		
+		
+		
 		
 		##Braking/Drifting
 		if surfState == "Normal surfing" and Input.is_action_pressed("dive") and $surfPivot.global_transform.basis.y.y > 0.5:

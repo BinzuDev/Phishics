@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://7te8f7vyrekm"]
+
+[ext_resource type="Texture2D" uid="uid://bmicnl83wgipw" path="res://Textures/coral.png" id="1_se3ka"]
+[ext_resource type="ArrayMesh" uid="uid://cmjwabx1pjeav" path="res://Models/coral/coral.obj" id="2_28n5d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3fbq"]
+cull_mode = 2
+disable_fog = true
+albedo_texture = ExtResource("1_se3ka")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r4rmu"]
+height = 1.6906738
+radius = 0.30517578
+
+[node name="coral" type="RigidBody3D"]
+collision_mask = 6
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("2_28n5d")
+
+[node name="collison" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59081984, 0)
+shape = SubResource("CylinderShape3D_r4rmu")
