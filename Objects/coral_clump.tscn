@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc52vg4b35xsw"]
 
 [ext_resource type="PackedScene" uid="uid://douc4l3asshcq" path="res://Objects/coral.tscn" id="1_0ue2m"]
-[ext_resource type="Script" uid="uid://e6rns7lp5ird" path="res://destructable_coral.gd" id="1_l8aji"]
+[ext_resource type="Script" uid="uid://e6rns7lp5ird" path="res://Objects/coral_clump.gd" id="1_l8aji"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ue2m"]
 radius = 1.0767866
@@ -10,7 +10,8 @@ radius = 1.0767866
 script = ExtResource("1_l8aji")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5493721, 0)

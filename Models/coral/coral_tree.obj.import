@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://sr7pj0xjr3l5"
+path="res://.godot/imported/coral_tree.obj-dc916de8b67935cf398f750df0d9b192.mesh"
+
+[deps]
+
+files=["res://.godot/imported/coral_tree.obj-dc916de8b67935cf398f750df0d9b192.mesh"]
+
+source_file="res://Models/coral/coral_tree.obj"
+dest_files=["res://.godot/imported/coral_tree.obj-dc916de8b67935cf398f750df0d9b192.mesh", "res://.godot/imported/coral_tree.obj-dc916de8b67935cf398f750df0d9b192.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=140 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -50,6 +50,9 @@
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="47_bmonc"]
 [ext_resource type="ArrayMesh" uid="uid://begvgj4h00n1y" path="res://Models/skate_mountain/skateMountain.obj" id="49_kvfdy"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="51_4ps87"]
+[ext_resource type="ArrayMesh" uid="uid://dew6ixfm8uud5" path="res://Models/coral/broken_coral.obj" id="51_pj311"]
+[ext_resource type="ArrayMesh" uid="uid://f6m1lp5rbnxb" path="res://Models/coral/coral_stem.obj" id="52_wb77i"]
+[ext_resource type="ArrayMesh" uid="uid://sr7pj0xjr3l5" path="res://Models/coral/coral_tree.obj" id="53_vok04"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -4751,5 +4754,17 @@ rate = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21520233, 1.277832, 8.999634)
 shape = SubResource("BoxShape3D_44bkj")
 debug_color = Color(0, 0.85000014, 1, 1)
+
+[node name="BrokenCoral" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1895425, 1.311296, 8.946245)
+mesh = ExtResource("51_pj311")
+
+[node name="CoralStem" type="MeshInstance3D" parent="BrokenCoral"]
+mesh = ExtResource("52_wb77i")
+skeleton = NodePath("../..")
+
+[node name="CoralTree" type="MeshInstance3D" parent="BrokenCoral"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84074616, -1.4037784, 1.5812511)
+mesh = ExtResource("53_vok04")
 
 [editable path="group2/frickingAwesomeTube"]

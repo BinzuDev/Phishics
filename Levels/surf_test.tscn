@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=53 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="16_v1hpu"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="17_eej72"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="18_y18wb"]
-[ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://destructable_coral.tscn" id="20_b2h0t"]
+[ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/coral_clump.tscn" id="20_b2h0t"]
+[ext_resource type="ArrayMesh" uid="uid://dew6ixfm8uud5" path="res://Models/coral/broken_coral.obj" id="21_vjny7"]
+[ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/coral_tree.tscn" id="22_s5qhn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
@@ -862,7 +864,7 @@ transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, -0.3229913
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 143.98047, 119.92335, 92.81964)
 
 [node name="Platform31" type="MeshInstance3D" parent="."]
-transform = Transform3D(6.282733, 0, 0, 0, 5.5055995, 0.025963752, 0, -0.05765661, 2.4792652, -18.473976, 145.93697, 100.19656)
+transform = Transform3D(2, 0, 0, 0, 1.9998903, 0.020943567, 0, -0.020943567, 1.9998903, -17.65975, 148.10031, 100.44438)
 material_override = ExtResource("1_hsesv")
 material_overlay = ExtResource("2_wstlt")
 mesh = SubResource("BoxMesh_gl2w4")
@@ -943,12 +945,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.96512, 118.81424, 116.367
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.477406, 150.02646, 100.38409)
 
 [node name="destructable_corals" parent="." instance=ExtResource("20_b2h0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.954645, 118.64134, 89.44454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.122356, 118.27926, 80.858025)
 
-[node name="destructable_corals2" parent="." instance=ExtResource("20_b2h0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.133413, 118.64134, 81.652336)
+[node name="BrokenCoral" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.677835, 118.32745, 87.997925)
+mesh = ExtResource("21_vjny7")
 
-[node name="destructable_corals3" parent="." instance=ExtResource("20_b2h0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1295013, 118.64134, 84.34595)
+[node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.903595, 118.21084, 80.366844)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
