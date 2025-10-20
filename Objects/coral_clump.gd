@@ -7,7 +7,7 @@ func _coral_spread():
 	for child in $corals.get_children():
 		if child is RigidBody3D:
 			child.set_collision_mask_value(1, true)#enables collison with the world so we can plant it in sand
-			child.gravity_scale = 0.01
+			child.gravity_scale = 1
 
 
 
