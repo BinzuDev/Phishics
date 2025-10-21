@@ -13,8 +13,8 @@ height = 1.6906738
 radius = 0.30517578
 
 [node name="coral" type="RigidBody3D"]
-collision_layer = 4
-collision_mask = 6
+collision_layer = 0
+collision_mask = 0
 mass = 0.01
 gravity_scale = 0.0
 
