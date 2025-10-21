@@ -1,6 +1,10 @@
+@tool
 @icon("res://icons/railGrind.png")
 class_name railGrind
 extends PathFollow3D
+
+@export var invisibleRail : bool = false ##If you want to make a railgrind area on an existing piece of geometry, and don't need the pipe.
+
 
 var isBeingUsed: bool = false #if the fish is currently using this rail
 var fish: player
@@ -13,24 +17,43 @@ var direction := "forward"
 func _ready():
 	fish = get_tree().get_first_node_in_group("player") #get the fish
 	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
+		$railMetal.path_node = get_parent().get_path()
+		toolScript() #sets the railpipe model
 		path_3d = get_parent()
 		loop = path_3d.curve.closed #make the railgrind not loop around 
-	else:
+	elif !Engine.is_editor_hint():
 		printerr("RAILGRIND OBJECT \"", name, "\" IS A CHILD OF \"", get_parent().name, "\", WHICH IS NOT A PATH3D NODE, STOPPING PROCESS.")
 		process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
-
-
-##TODO: Use the tutorial to learn how to generate rail meshes from a path node
-##TODO: particles from railgrinding (should prolly reuse the one in player (might have to rotate it))
+	
+	
+	if !Engine.is_editor_hint(): #when playing the game
+		if !get_tree().debug_collisions_hint: #if "visible collision shapes" is off
+			$debugStuff.visible = false #hide the debug visuals in game
+	
+	
+##TODO: rotate the player to face the other way when DIRECTION is "BACKWARDS"
 ##TODO: homing diving during railgrind is uhhhh.......
+##TODO: needs sound effects
 
 ##NOTICE: using fish.trueSpeed, you can now get how fast the fish is ACTUALLY moving, use this instead of linear_velocity for calculations.
 ##fish.trueSpeed is a Vector3, so just like with with velocity, you can use fish.trueSpeed.length() to get the total speed without direction
 ##(this is a getter only variable, setting it does NOTHING)
 ##(you can monitor the value by turning on surf debug)
 
+
+## Sets the rail pipe
+func toolScript():
+	if get_parent() is Path3D:
+		$railMetal.global_transform = get_parent().global_transform
+	$railMetal.visible = !invisibleRail
+
 func _process(delta):
-	
+	if Engine.is_editor_hint():
+		toolScript()
+	else:
+		real_process(delta)
+
+func real_process(delta):
 	## When NOT railgrinding
 	#Makes the hitbox be as close as possible to the fish, while staying on the path
 	if fish and path_3d and not isBeingUsed:
@@ -134,10 +157,10 @@ func lock_fish_in_place():
 
 
 func debug_stuff():
-	$debugLabel.text = str("Prog: ", snapped(progress_ratio*100, 0.01), "%", 
+	$debugStuff/Label.text = str("Prog: ", snapped(progress_ratio*100, 0.01), "%", 
 						"\nCooldown: ", mountingCooldown, 
 						"\nDirection: ", direction,
 						"\nSpeed: ", mountingSpeed)
-	$debugVisual.material_override.albedo_color = Color("ff0000")
+	$debugStuff/Visual.material_override.albedo_color = Color("ff0000")
 	if isBeingUsed:
-		$debugVisual.material_override.albedo_color = Color("00ff00")
+		$debugStuff/Visual.material_override.albedo_color = Color("00ff00")

@@ -101,8 +101,17 @@ func _on_animation_finished(_anim_name):
 			
 		if otherArea.get_parent() is bowlingPins:
 			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins
+		
+		if otherArea.get_parent().get_parent() is Coral:
+			var knockback = otherArea.global_transform.origin - $explosionOrigin.global_transform.origin
+			knockback = knockback.normalized() * getKnockBackTo(otherArea)
+			otherArea.get_parent().get_parent().explode(knockback)
+		
+		
+	
 	
 	for victim in $boomArea.get_overlapping_bodies(): #give knockback to detected physics objects
+		print(victim.name)
 		var direction = victim.global_transform.origin - $explosionOrigin.global_transform.origin #go higher on average
 		if _anim_name == "diving": #keep your forward momentum when diving
 			direction.x *= -1
@@ -110,17 +119,20 @@ func _on_animation_finished(_anim_name):
 			victim.linear_velocity.y = 0
 		else:
 			victim.linear_velocity = Vector3(0.001, 0.001, 0.001) #surf glitch prevention
-		var knockback = victim.global_transform.origin - global_transform.origin #use the actual origin to calculate distance
-		knockback = max(knockback.length(), 5) #cap at 5 if any closer
-		knockback = explosionStrength/knockback 
-		victim.apply_central_impulse(direction.normalized() *  knockback) #apply force opposite of mine that gets weaker with distance
-		print("distance to ", victim.name, ": ", (victim.global_transform.origin - global_transform.origin).length(), ", knockback received: ", knockback )
+		victim.apply_central_impulse(direction.normalized() * getKnockBackTo(victim)) #apply force opposite of mine that gets weaker with distance
+		print("distance to ", victim.name, ": ", (victim.global_transform.origin - global_transform.origin).length(), ", knockback received: ", getKnockBackTo(victim) )
 		
 		if victim is enemy:
 			victim.hp = 0 #kill crab
 			victim.change_sprite()
 			victim.apply_torque_impulse(Vector3(5, 3, 5))
 		
+
+func getKnockBackTo(target):
+	var knockback = target.global_transform.origin - global_transform.origin #use the actual origin to calculate distance
+	knockback = max(knockback.length(), 5) #cap at 5 if any closer
+	knockback = explosionStrength/knockback
+	return knockback
 
 ## When the explosion sfx is done playing
 func _on_explosion_finished():

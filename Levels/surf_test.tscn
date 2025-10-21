@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=50 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -15,24 +15,22 @@
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4rq4h"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="13_p34o4"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_gl2w4"]
-[ext_resource type="Shader" uid="uid://bl3gqn2ff7hix" path="res://Shaders/stylized_metal.gdshader" id="16_e1gyu"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="16_v1hpu"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="17_eej72"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="18_y18wb"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/coral_clump.tscn" id="20_b2h0t"]
-[ext_resource type="ArrayMesh" uid="uid://dew6ixfm8uud5" path="res://Models/coral/broken_coral.obj" id="21_vjny7"]
 [ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/coral_tree.tscn" id="22_s5qhn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
 panorama = ExtResource("3_hswr3")
 
-[sub_resource type="Sky" id="Sky_s7dn7"]
+[sub_resource type="Sky" id="Sky_vjny7"]
 sky_material = SubResource("PanoramaSkyMaterial_yfxg8")
 
 [sub_resource type="Environment" id="Environment_jctnn"]
 background_mode = 2
 background_energy_multiplier = 1.6
-sky = SubResource("Sky_s7dn7")
+sky = SubResource("Sky_vjny7")
 glow_levels/3 = 16.0
 glow_levels/5 = 0.0
 fog_mode = 1
@@ -175,17 +173,6 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2h0t"]
-render_priority = 0
-shader = ExtResource("16_e1gyu")
-shader_parameter/baseColor = Color(0.72, 0.91599995, 1, 1)
-shader_parameter/gradientBasis = Vector3(3, 3, 3)
-shader_parameter/gradientBasisDistort = Vector3(0, 0, 0)
-shader_parameter/gradientBasisSpeed = 0.0
-shader_parameter/refractionSplit = 2.0
-shader_parameter/refractionSplitPower = 0.00999999977648
-shader_parameter/refractionAffect = 0.8
-
 [sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
@@ -194,9 +181,9 @@ shader_parameter/refractionAffect = 0.8
 script = ExtResource("1_ab27v")
 
 [node name="Mine" parent="." instance=ExtResource("16_v1hpu")]
-transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 30.777254, 122.35334, 80.71461)
-explosionStrength = 12
-explosionRadius = 5.0
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 109.593864, 123.05431, 102.04625)
+explosionStrength = 27
+explosionRadius = 11.0
 knockbackMultiplier = 0.1
 
 [node name="half pipe" type="CSGCombiner3D" parent="."]
@@ -258,11 +245,11 @@ material_overlay = ExtResource("2_wstlt")
 use_collision = true
 
 [node name="base" type="CSGBox3D" parent="half pipe2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185051, -2.762, -0.534088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7796669, -3.1606064, -0.53408813)
 size = Vector3(10.7602, 23.1842, 10.4157)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="half pipe2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.658062, 4.8521347, 1.8407059)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.658062, 6.059456, 3.5276718)
 operation = 2
 radius = 6.007
 height = 13.7793
@@ -278,7 +265,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.675747, 119.6651, 86.645065)
+transform = Transform3D(0.9919608, 0, -0.12654525, 0, 1, 0, 0.12654525, 0, 0.9919608, -13.034424, 119.6651, 87.1646)
 gravity_scale = 1.5
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -785,6 +772,7 @@ curve = SubResource("Curve3D_p34o4")
 debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind1" parent="Path3D2" instance=ExtResource("7_p34o4")]
+loop = false
 
 [node name="Path3D6" type="Path3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -44.11975, 118.64925, 19.90998)
@@ -792,6 +780,7 @@ curve = SubResource("Curve3D_p34o4")
 debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind3" parent="Path3D6" instance=ExtResource("7_p34o4")]
+loop = false
 
 [node name="Path3D4" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.261734, 118.64925, 29.009876)
@@ -800,6 +789,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind2" parent="Path3D4" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, 0, 0, 0)
+loop = false
 
 [node name="Path3D5" type="Path3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -35.12465, 118.64925, 59.535225)
@@ -808,31 +798,15 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind4" parent="Path3D5" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, 0, 0, 0)
+loop = false
 
 [node name="Path3D3" type="Path3D" parent="."]
-transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, -31.423298, 119.66412, 54.135517)
+transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, -31.729862, 119.66412, 53.598602)
 curve = SubResource("Curve3D_gl2w4")
 debug_custom_color = Color(4.459082e-05, 4.459082e-05, 4.459082e-05, 1)
 
-[node name="rail" type="CSGPolygon3D" parent="Path3D3"]
-transform = Transform3D(0.99999785, 0, 0, 0, 0.9999966, 0, 0, 0, 0.99999815, 0, 0, 0)
-polygon = PackedVector2Array(-5.340576e-05, -0.30122375, -0.21248055, -0.21205139, -0.3007698, -0.0002746582, -0.2122631, 0.21289063, 0.00012207031, 0.2997284, 0.21142387, 0.21179199, 0.30083466, 0.00076293945, 0.21378899, -0.2119751)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = true
-path_continuous_u = true
-path_u_distance = 6.33
-path_joined = false
-smooth_faces = true
-material = SubResource("ShaderMaterial_b2h0t")
-
 [node name="rail_grind" parent="Path3D3" instance=ExtResource("7_p34o4")]
-transform = Transform3D(-0.98574495, 0.014073236, -0.1676444, 0, 0.9964917, 0.083652705, 0.16823399, 0.08246028, -0.98229027, -1.2627583, -0.22460175, -0.0111579895)
+transform = Transform3D(-0.9857448, 0.014073231, -0.1676444, 0, 0.9964913, 0.083652705, 0.16823396, 0.08246025, -0.98229027, -1.2627583, -0.22460175, -0.0111579895)
 
 [node name="BoostRing" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2.8142698, 118.25492, 108.68952)
@@ -861,7 +835,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 32.2
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, -0.32299137, 117.31663, 48.527878)
 
 [node name="BoostRing8" parent="." instance=ExtResource("13_4rq4h")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 143.98047, 119.92335, 92.81964)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 154.28964, 119.92335, 119.65213)
 
 [node name="Platform31" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 1.9998903, 0.020943567, 0, -0.020943567, 1.9998903, -17.65975, 148.10031, 100.44438)
@@ -876,7 +850,13 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_v1hpu")
 
 [node name="strike_zone" parent="." instance=ExtResource("17_eej72")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.16513, 118.3488, 85.898964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.897705, 118.3488, 97.02364)
+
+[node name="strike_zone2" parent="." instance=ExtResource("17_eej72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.207054, 118.3488, 92.6536)
+
+[node name="strike_zone3" parent="." instance=ExtResource("17_eej72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.46209, 118.3488, 92.45094)
 
 [node name="BoostRing9" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -66.51926, 119.6529, 12.564653)
@@ -942,16 +922,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.671682, 118.81424, 117.81
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.96512, 118.81424, 116.36778)
 
 [node name="Enemy18" parent="." instance=ExtResource("18_y18wb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.477406, 150.02646, 100.38409)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.724476, 150.02646, 100.65725)
 
 [node name="destructable_corals" parent="." instance=ExtResource("20_b2h0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.122356, 118.27926, 80.858025)
 
-[node name="BrokenCoral" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.677835, 118.32745, 87.997925)
-mesh = ExtResource("21_vjny7")
-
 [node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.903595, 118.21084, 80.366844)
+transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
+color = Color(0.5337249, 0.8496037, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree2" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(0.966967, 0, 0.2548991, 0, 1, 0, -0.2548991, 0, 0.966967, 107.47085, 118.26219, 99.93042)
+color = Color(1, 0.6765131, 0.39426774, 1)
+randomColorOnReady = true
+
+[node name="coral_tree3" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(-0.9713577, 0, 0.23761901, 0, 1, 0, -0.23761901, 0, -0.9713577, 111.351944, 118.26219, 100.13271)
+color = Color(0.67920685, 0.79098576, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree4" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(-0.98015356, 0, -0.19823657, 0, 1, 0, 0.19823657, 0, -0.98015356, 104.006355, 118.26219, 105.0314)
+color = Color(0.5540121, 0.78752655, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree5" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(0.89718664, 0, -0.4416506, 0, 1, 0, 0.4416506, 0, 0.89718664, 107.30346, 118.26219, 104.118965)
+color = Color(1, 0.37765056, 0.7164376, 1)
+randomColorOnReady = true
+
+[node name="coral_tree6" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(-0.7316614, 0, 0.6816679, 0, 1, 0, -0.6816681, 0, -0.7316612, 111.184555, 118.241234, 104.32126)
+color = Color(1, 0.9593415, 0.6535109, 1)
+randomColorOnReady = true
+
+[node name="coral_tree7" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(0.17851184, 0, -0.98393726, 0, 1, 0, 0.98393726, 0, 0.17851184, 103.72505, 118.26219, 108.63383)
+color = Color(1, 0.34303224, 0.8626977, 1)
+randomColorOnReady = true
+
+[node name="coral_tree8" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(0.94662356, 0, -0.32234016, 0, 1, 0, 0.32234016, 0, 0.94662356, 107.022156, 118.26219, 107.72139)
+color = Color(1, 0.5219095, 0.42409813, 1)
+randomColorOnReady = true
+
+[node name="coral_tree9" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(-0.96172935, 0, -0.27399874, 0, 1, 0, 0.27399874, 0, -0.96172935, 110.90325, 118.26219, 107.92368)
+color = Color(0.87308747, 1, 0.65566945, 1)
+randomColorOnReady = true
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]

@@ -1,45 +1,104 @@
-[gd_scene load_steps=10 format=3 uid="uid://djiuoll4ydw1r"]
+[gd_scene load_steps=25 format=3 uid="uid://djiuoll4ydw1r"]
 
 [ext_resource type="Script" uid="uid://deogwmsiujuk4" path="res://Objects/coral_tree.gd" id="1_b4knm"]
 [ext_resource type="Texture2D" uid="uid://bmicnl83wgipw" path="res://Textures/coral.png" id="1_j1y36"]
 [ext_resource type="ArrayMesh" uid="uid://sr7pj0xjr3l5" path="res://Models/coral/coral_tree.obj" id="2_2cayi"]
 [ext_resource type="ArrayMesh" uid="uid://dew6ixfm8uud5" path="res://Models/coral/broken_coral.obj" id="3_tdyoq"]
 [ext_resource type="ArrayMesh" uid="uid://f6m1lp5rbnxb" path="res://Models/coral/coral_stem.obj" id="4_b4knm"]
+[ext_resource type="AudioStream" uid="uid://bm8tigdhl3rf2" path="res://Sounds/crabbump.ogg" id="6_r8adn"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="7_mh43r"]
+[ext_resource type="ArrayMesh" uid="uid://cmyieqsb3bq21" path="res://Models/coral/coral_gib_00.obj" id="8_2kfsx"]
+[ext_resource type="ArrayMesh" uid="uid://c1dnrmp5lawsy" path="res://Models/coral/coral_gib_01.obj" id="9_0n7s1"]
+[ext_resource type="ArrayMesh" uid="uid://b2l6kd1aqty13" path="res://Models/coral/coral_gib_02.obj" id="10_e47k8"]
+[ext_resource type="ArrayMesh" uid="uid://do02aryu0jh7f" path="res://Models/coral/coral_gib_03.obj" id="11_hn8yk"]
+[ext_resource type="ArrayMesh" uid="uid://khedwinopfr3" path="res://Models/coral/coral_gib_04.obj" id="12_lpgk4"]
+[ext_resource type="ArrayMesh" uid="uid://daqt8xv50pvh7" path="res://Models/coral/coral_gib_05.obj" id="12_ukl1o"]
+[ext_resource type="ArrayMesh" uid="uid://bfsp7yyd0e6b5" path="res://Models/coral/coral_gib_06.obj" id="13_3uebl"]
+[ext_resource type="ArrayMesh" uid="uid://bkhy02boitlcn" path="res://Models/coral/coral_gib_07.obj" id="14_k16u6"]
+[ext_resource type="ArrayMesh" uid="uid://t0sh5qr1170m" path="res://Models/coral/coral_gib_08.obj" id="15_covnj"]
+[ext_resource type="ArrayMesh" uid="uid://bvggk6qaybwl" path="res://Models/coral/coral_gib_09.obj" id="16_hxbvh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdyoq"]
+resource_local_to_scene = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.85, 0.51000005, 0.5156666, 1)
 albedo_texture = ExtResource("1_j1y36")
 uv1_scale = Vector3(2, 2, 2)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_b4knm"]
+radius = 1.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r8adn"]
 radius = 0.40039063
-height = 1.7510986
+height = 1.6846313
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mh43r"]
 height = 0.4359131
 radius = 0.76953125
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_b4knm"]
-radius = 1.0
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1kwgx"]
+panorama = ExtResource("7_mh43r")
+
+[sub_resource type="Sky" id="Sky_s7dn7"]
+sky_material = SubResource("PanoramaSkyMaterial_1kwgx")
+
+[sub_resource type="Environment" id="Environment_j7cgk"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_s7dn7")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
 [node name="coral_tree" type="Node3D"]
+rotation_order = 1
 script = ExtResource("1_b4knm")
+color = Color(0.85, 0.51000005, 0.5156666, 1)
 
 [node name="CoralTree" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_tdyoq")
 mesh = ExtResource("2_2cayi")
+surface_material_override/0 = SubResource("StandardMaterial3D_tdyoq")
 
 [node name="CoralStem" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19235504, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_tdyoq")
 mesh = ExtResource("4_b4knm")
 
 [node name="physicsBody" type="RigidBody3D" parent="."]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-collision_layer = 4
+visible = false
+collision_layer = 68
 collision_mask = 7
-mass = 0.1
+mass = 0.05
+gravity_scale = 0.3
+inertia = Vector3(0.1, 0.1, 0.1)
+linear_damp = 2.0
+angular_damp = 0.2
+constant_force = Vector3(0, -0.2, 0)
+
+[node name="Area3D" type="Area3D" parent="physicsBody"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10187268, 0)
+collision_layer = 64
+collision_mask = 66
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="physicsBody/Area3D"]
+shape = SubResource("SphereShape3D_b4knm")
+
+[node name="crack" type="AudioStreamPlayer3D" parent="physicsBody"]
+unique_name_in_owner = true
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+stream = ExtResource("6_r8adn")
+bus = &"soundEffects"
 
 [node name="BrokenCoral" type="MeshInstance3D" parent="physicsBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
@@ -48,19 +107,150 @@ mesh = ExtResource("3_tdyoq")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="physicsBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19561768, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22885132, 0)
 shape = SubResource("CapsuleShape3D_r8adn")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="physicsBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17823112, 0)
 shape = SubResource("CylinderShape3D_mh43r")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8518727, 0)
+[node name="gibs" type="Node3D" parent="physicsBody"]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+visible = false
+
+[node name="gib" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42197037, 0.72252256, -0.4928282)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_b4knm")
+[node name="CoralGib00" type="MeshInstance3D" parent="physicsBody/gibs/gib"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42197037, -0.72252256, 0.4928282)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("8_2kfsx")
+skeleton = NodePath("../../../..")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="gib1" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3784039, 0.7101456, -0.4931864)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib01" type="MeshInstance3D" parent="physicsBody/gibs/gib1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3784039, -0.7101456, 0.4931864)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("9_0n7s1")
+skeleton = NodePath("../../../..")
+
+[node name="gib2" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17474687, 0.87644005, 0.56337875)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib02" type="MeshInstance3D" parent="physicsBody/gibs/gib2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17474687, -0.87644005, -0.56337875)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("10_e47k8")
+skeleton = NodePath("../../../..")
+
+[node name="gib3" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23669636, 0.59348935, 0.45591766)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+angular_damp = 1.0
+
+[node name="CoralGib03" type="MeshInstance3D" parent="physicsBody/gibs/gib3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23669636, -0.59348935, -0.45591766)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("11_hn8yk")
+skeleton = NodePath("../../../..")
+
+[node name="gib4" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21403417, 0.9211527, -0.4449837)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib04" type="MeshInstance3D" parent="physicsBody/gibs/gib4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21403417, -0.9211527, 0.4449837)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("12_lpgk4")
+skeleton = NodePath("../../../..")
+
+[node name="gib5" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34010714, 0.736387, 0.4662247)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib05" type="MeshInstance3D" parent="physicsBody/gibs/gib5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34010714, -0.736387, -0.4662247)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("12_ukl1o")
+skeleton = NodePath("../../../..")
+
+[node name="gib6" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23493731, 1.4001034, 0.18751392)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib06" type="MeshInstance3D" parent="physicsBody/gibs/gib6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23493731, -1.4001034, -0.18751392)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("13_3uebl")
+skeleton = NodePath("../../../..")
+
+[node name="gib7" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042303734, 1.2725999, -0.25684887)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib07" type="MeshInstance3D" parent="physicsBody/gibs/gib7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042303734, -1.2725999, 0.25684887)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("14_k16u6")
+skeleton = NodePath("../../../..")
+
+[node name="gib8" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5647798, 0.5771933, 0.020430408)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib08" type="MeshInstance3D" parent="physicsBody/gibs/gib8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647798, -0.5771933, -0.020430408)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("15_covnj")
+skeleton = NodePath("../../../..")
+
+[node name="gib9" type="RigidBody3D" parent="physicsBody/gibs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45520008, 0.810243, 0.31701374)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.5
+linear_damp = 1.0
+
+[node name="CoralGib09" type="MeshInstance3D" parent="physicsBody/gibs/gib9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45520008, -0.810243, -0.31701374)
+material_override = SubResource("StandardMaterial3D_tdyoq")
+mesh = ExtResource("16_hxbvh")
+skeleton = NodePath("../../../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j7cgk")
+
+[connection signal="body_entered" from="physicsBody/Area3D" to="." method="_on_area_3d_body_entered"]

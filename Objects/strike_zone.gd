@@ -54,13 +54,15 @@ func apply_force_to_rigidbodies():
 	
 	await get_tree().create_timer(1).timeout #wait one second
 	for pin in $Pins.get_children(): #reenable collisions with the fish
-		pin.set_collision_layer_value(1, true)
+		pin.set_collision_layer_value(3, true)
+		pin.set_collision_layer_value(7, true)
 		pin.set_collision_mask_value(2, true)
 
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is player or body is sign:
+	print("body entered: ", body)
+	if body is RigidBody3D:
 		strike(body.linear_velocity.length())
 	
 

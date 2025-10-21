@@ -139,7 +139,7 @@ func _physics_process(_delta: float) -> void:
 			#mid Air extra control
 			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.15, 0, 20)
 			
-			print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
+			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
 			
 			if Input.is_action_pressed("forward"):
 				apply_torque_impulse(rotate_by_cam(torque_impulse))
@@ -176,7 +176,7 @@ func _physics_process(_delta: float) -> void:
 				
 				apply_impulse(rotate_by_cam(Vector3(0, xtraYspd, 0)))
 				
-				print("high jump! spd: ", linear_velocity.length(), " xtra: ", xtraYspd )
+				#print("high jump! spd: ", linear_velocity.length(), " xtra: ", xtraYspd )
 				
 				if linear_velocity.length() > 12: #Points
 					ScoreManager.give_points(500, 1, true, "HIGH JUMP", "uncommon")
