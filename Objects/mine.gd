@@ -106,8 +106,10 @@ func _on_animation_finished(_anim_name):
 			var knockback = otherArea.global_transform.origin - $explosionOrigin.global_transform.origin
 			knockback = knockback.normalized() * getKnockBackTo(otherArea)
 			otherArea.get_parent().get_parent().explode(knockback)
-		
-		
+			
+		if otherArea.get_parent().get_parent() is coral_tube:
+			print("TUBE EXPLODE")
+
 	
 	
 	for victim in $boomArea.get_overlapping_bodies(): #give knockback to detected physics objects
