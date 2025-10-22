@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=106 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://f0h5r84k4ug6" path="res://Levels/tutorial.gd" id="1_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -15,10 +15,17 @@
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="11_to5w2"]
 [ext_resource type="PackedScene" uid="uid://cheqhyt0b5ovq" path="res://Models/pillarhalf.tscn" id="12_0tnf1"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="12_2kmhi"]
+[ext_resource type="Texture2D" uid="uid://hibyuf0jiqrv" path="res://Sprites/tutorialwall.png" id="13_3p1xt"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4wqju"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://shader_preview_screenshot.png" id="13_8fyol"]
+[ext_resource type="Texture2D" uid="uid://b0wa7hredvp5c" path="res://Sprites/tutorial_key_mask.png" id="13_bu5na"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="14_0tnf1"]
+[ext_resource type="Texture2D" uid="uid://crhny214v7mdk" path="res://Sprites/tutorialwall_up.png" id="14_bu5na"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="14_so4kt"]
+[ext_resource type="Texture2D" uid="uid://ggum8m4ienj" path="res://Sprites/tutorialwall_right.png" id="15_8fyol"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_td8ta"]
+[ext_resource type="Texture2D" uid="uid://b1foay3kpnoqs" path="res://Sprites/tutorialwall_down.png" id="16_0cfr2"]
+[ext_resource type="Texture2D" uid="uid://xvf53qur516b" path="res://Sprites/tutorialwall_left.png" id="17_rmd0x"]
 [ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="17_s0t66"]
 [ext_resource type="Texture2D" uid="uid://dkv87xhsk84pr" path="res://Sprites/crabwarning.png" id="18_p7ekk"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="19_jbvdo"]
@@ -26,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="23_maxpf"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="24_ygkl2"]
+[ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="34_rmd0x"]
+[ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="35_rf3la"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -106,6 +115,76 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wqju"]
 size = Vector3(11.5216, 2.6936893, 10.1921)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rf3la"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_bu5na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_bu5na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_8fyol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_8fyol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_0cfr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_0cfr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("17_rmd0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("17_rmd0x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fyol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_3p1xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bu5na")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="Resource" id="Resource_ilxjc"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
@@ -119,6 +198,7 @@ name = "Jelly Fishgirl"
 text = "Okay, so you don't wanna hold the arrow keys alright?
 Instead, spam the keys as faaast as you can!!"
 JFG_animation = "tuto_talk"
+code = "DialogueManager.currentDialogueOwner.tutorialEvent3();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_wpr1m"]
@@ -138,7 +218,7 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_ilxjc"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_td8ta"]
-size = Vector3(19.038, 9.74719, 12.8198)
+size = Vector3(19.038, 9.74719, 13.139881)
 
 [sub_resource type="Resource" id="Resource_exwpa"]
 script = ExtResource("10_3hhjp")
@@ -153,6 +233,7 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "If you wanna go fast, spam the arrow keys as faaast as you can!!"
 JFG_animation = "tuto_talk"
+code = "DialogueManager.currentDialogueOwner.tutorialEvent3();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_m4fsp"]
@@ -172,7 +253,7 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_exwpa"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tnf1"]
-size = Vector3(45.5049, 9.74719, 12.8198)
+size = Vector3(45.5049, 9.74719, 11.554554)
 
 [sub_resource type="Resource" id="Resource_3p1xt"]
 script = ExtResource("10_3hhjp")
@@ -180,6 +261,7 @@ name = "Jelly Fishgirl"
 text = "See that ramp over there?
 Try building up enough speed to cross the gap!"
 JFG_animation = "tuto_point"
+code = "DialogueManager.currentDialogueOwner.tutorialEvent4();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_bu5na"]
@@ -188,7 +270,7 @@ cameraOverride = NodePath("Camera3DCam")
 automaticStart = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_3p1xt")])
-codePostDialogue = "DialogueManager.show_jfg(false)"
+codePostDialogue = "DialogueManager.show_jfg(false); DialogueManager.currentDialogueOwner.tutorialEvent3();"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_so4kt"]
@@ -203,15 +285,16 @@ name = "Jelly Fishgirl"
 text = "Very goooood!!
 Look at youuuu!!!"
 JFG_animation = "Clapping"
-code = "DialogueManager.show_jfg(true)"
+code = "DialogueManager.show_jfg(true); DialogueManager.currentDialogueOwner.tutorialEvent4();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_to5w2"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "You can also JUMP using the SPACEBAR!               
-The faster you're spinning, the more powerful your jump becomes! (moving slow = small jump)"
+The faster you're spinning, the more powerful your jump becomes!"
 JFG_animation = "tuto_talk"
+code = "GameManager.get_tree().get_first_node_in_group(\"player\").setJumpPreview(true);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_ygkl2"]
@@ -237,19 +320,22 @@ script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Urghh crabs....."
 JFG_animation = "tuto_crabs"
+code = "GameManager.get_tree().get_first_node_in_group(\"player\").setJumpPreview(false);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_4wqju"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "I'm, what I guess you could say, (not too fond of them)."
+JFG_animation = "tuto_crabs2"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_rmd0x"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "You can attack by diving on them!
+text = "You can attack by diving on them!            
 Jump above one, wait until the AIM RETICLE locks on, then press D for a homing attack!"
+code = "DialogueManager.currentDialogueOwner.tutorialEvent5();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_tbpdk"]
@@ -267,11 +353,232 @@ automaticStart = true
 keepOnScreenAfterEnd = true
 runOnlyOnce = true
 messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_avars"), SubResource("Resource_4wqju"), SubResource("Resource_rmd0x"), SubResource("Resource_tbpdk")])
-codePostDialogue = "DialogueManager.show_jfg(false)"
+codePostDialogue = "DialogueManager.show_jfg(false);DialogueManager.currentDialogueOwner.tutorialEvent6();"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0t66"]
 size = Vector3(46.0083, 31.9782, 9.56519)
+
+[sub_resource type="Animation" id="Animation_lt56d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotate/reticleR:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(73, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotate/reticleL:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-73, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rotate/reticleD:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 73)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rotate/reticleU:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_ipqbp"]
+resource_name = "reticle_appear1"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotate/reticleR:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [Vector2(1000, 0), Vector2(18, 0), Vector2(73, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotate/reticleL:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(-18, 0), Vector2(-73, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rotate/reticleD:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, 18), Vector2(0, 73)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rotate/reticleU:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [Vector2(0, -1000), Vector2(0, -18), Vector2(0, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_ie0qp"]
+resource_name = "reticle_appear2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotate/reticleR:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(18, 0), Vector2(73, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotate/reticleL:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(-18, 0), Vector2(-73, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rotate/reticleD:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 18), Vector2(0, 73)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rotate/reticleU:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, -18), Vector2(0, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_rmd0x"]
+resource_name = "preset_reticle"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotate/reticleR:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(1000, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotate/reticleL:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(-1000, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rotate/reticleD:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rotate/reticleU:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(0, -1000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lt56d"]
+_data = {
+&"RESET": SubResource("Animation_lt56d"),
+&"preset_reticle": SubResource("Animation_rmd0x"),
+&"reticle_appear1": SubResource("Animation_ipqbp"),
+&"reticle_appear2": SubResource("Animation_ie0qp")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbvdo"]
+size = Vector3(48.779907, 17.273682, 25.419678)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmd0x"]
+size = Vector3(51.829712, 20.892822, 20.858276)
 
 [sub_resource type="Resource" id="Resource_so4kt"]
 script = ExtResource("10_3hhjp")
@@ -336,6 +643,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "If there's ever anything you don't understand, it's probably explained in there!"
+position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_83ucr"]
@@ -393,9 +701,6 @@ size = Vector3(0.38, 4, 0.38)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ygkl2"]
 size = Vector3(17.929626, 3.7285156, 4.690674)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jbvdo"]
-size = Vector3(48.779907, 14.651855, 8.98291)
-
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_2kmhi")
 
@@ -409,11 +714,9 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_0xeif")
 
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.728952, 12.7987175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.69, 13.537672)
 gravity_scale = 1.5
-canJump = false
 noScoreUI = true
-canMove = false
 
 [node name="jelly_fish_girl_IK" parent="." instance=ExtResource("12_2kmhi")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.9160542, 15.66592, -302.9687)
@@ -476,7 +779,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511221, -0.13224858, -107.605)
+transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511217, -0.13224858, -106.68665)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -489,7 +792,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform2" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.30611e-07, 0, -45.6159, 0, 7.46886, 0, 7.56346, 0, -1.99394e-06, 0.08511221, 2.5589833, -114.829)
+transform = Transform3D(-3.7368926e-07, 0, -45.6159, 0, 7.46886, 0, 8.548971, 0, -1.99394e-06, 0.085112184, 2.5589833, -114.328125)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -562,12 +865,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4949, -2.8841105, 12.7362)
 shape = SubResource("BoxShape3D_4wqju")
 debug_color = Color(0, 0, 0, 1)
 
+[node name="ShaderPreviewScreenshot" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("13_8fyol")
+centered = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="keys" type="Sprite2D" parent="Control"]
+clip_children = 1
+position = Vector2(-2, -75)
+texture = ExtResource("13_bu5na")
+offset = Vector2(-100, 60)
+
+[node name="slowKeypress" type="AnimatedSprite2D" parent="Control/keys"]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_rf3la")
+autoplay = "default"
+frame_progress = 0.86512244
+offset = Vector2(-100, 60)
+
+[node name="spammingKeys" type="AnimatedSprite2D" parent="Control/keys"]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_8fyol")
+frame = 1
+frame_progress = 1.0
+offset = Vector2(-100, 60)
+
 [node name="tutorialSpamSlow" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 30.161304, 12.864229)
 dialogue = SubResource("Resource_i8qca")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpamSlow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8497362, 0, -0.5007882)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8497362, 0, -0.66082764)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
@@ -576,22 +916,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 1.55035, -6.60267)
 dialogue = SubResource("Resource_emqes")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 7.21107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243016, 0, 5.778181)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 30.4585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 30.986841)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0174, 0, 18.6913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0174, 0, 18.422915)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1615, 0, 18.6913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1615, 0, 18.335577)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
@@ -609,7 +949,7 @@ transform = Transform3D(0.926463, -0.156383, 0.34236, -1.26983e-08, 0.909599, 0.
 top_level = true
 
 [node name="jumpToggle2" parent="." instance=ExtResource("6_mscth")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 6.32122, -89.2794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25604, 6.32122, -87.18962)
 Enables_jump = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jumpToggle2"]
@@ -618,7 +958,7 @@ shape = SubResource("BoxShape3D_to5w2")
 debug_color = Color(0, 1, 0.733333, 1)
 
 [node name="tutorialJump" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, 1.55035, -98.6253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4232, 1.55035, -96.504326)
 dialogue = SubResource("Resource_0cfr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialJump"]
@@ -637,6 +977,64 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="Camera3DCrab" type="Camera3D" parent="tutorialDive"]
 transform = Transform3D(0.851814, -0.312132, 0.420698, -0.00180573, 0.801342, 0.598203, -0.523841, -0.510317, 0.682031, 15.0788, 6.19083, -12.9568)
+
+[node name="reticle" type="Node2D" parent="."]
+position = Vector2(1393, 364)
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="reticle"]
+stream = ExtResource("34_rmd0x")
+panning_strength = 20.0
+bus = &"fishsfx"
+
+[node name="rotate" type="Node2D" parent="reticle"]
+
+[node name="reticleR" type="Sprite2D" parent="reticle/rotate"]
+texture = ExtResource("35_rf3la")
+offset = Vector2(73, 0)
+region_enabled = true
+region_rect = Rect2(146, 0, 56, 202)
+
+[node name="reticleL" type="Sprite2D" parent="reticle/rotate"]
+texture = ExtResource("35_rf3la")
+offset = Vector2(-73, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 202)
+
+[node name="reticleD" type="Sprite2D" parent="reticle/rotate"]
+texture = ExtResource("35_rf3la")
+offset = Vector2(0, 73)
+region_enabled = true
+region_rect = Rect2(0, 146, 202, 56)
+
+[node name="reticleU" type="Sprite2D" parent="reticle/rotate"]
+texture = ExtResource("35_rf3la")
+offset = Vector2(0, -73)
+region_enabled = true
+region_rect = Rect2(0, 0, 202, 56)
+
+[node name="reticleAnimation" type="AnimationPlayer" parent="reticle"]
+libraries = {
+&"": SubResource("AnimationLibrary_lt56d")
+}
+
+[node name="diveLookDown" parent="." instance=ExtResource("23_maxpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4593925, 13.154713, -131.10738)
+newCameraAngle = Vector3(-65, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="diveLookDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51163, 2.6687813, -5.903549)
+shape = SubResource("BoxShape3D_jbvdo")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="slowmo" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08511345, 12.189866, -135.92671)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="slowmo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3469849, 5.4432364, -5.831238)
+shape = SubResource("BoxShape3D_rmd0x")
+debug_color = Color(1, 0.45000005, 0, 1)
 
 [node name="tutorialStyle" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.999992, 0.00402024, 0.00142043, -0.00402129, 0.999991, 0.900684, -2.2609, -167.87)
@@ -657,10 +1055,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.264545, 0.8891471, -11.743
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.585486, 0.889149, -16.064838)
 
 [node name="Enemy8" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.845621, 0.889149, 2.5765553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8830628, 0.889149, -1.4459515)
 
-[node name="Enemy9" parent="enemyGroup" instance=ExtResource("8_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49539876, 1.266182, -2.5290651)
+[node name="RETICLETARGET" parent="enemyGroup" instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4493065, 1.266182, 2.7900724)
 
 [node name="Enemy13" parent="enemyGroup" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9719954, 1.2661858, -22.936687)
@@ -814,7 +1212,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform4" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-4.11682e-07, 0, -11.7043, 0, 15.1003, 0, 9.41815, 0, -5.11611e-07, -10.0183, -3.1069255, -200.601)
+transform = Transform3D(-4.11682e-07, 0, -11.7043, 0, 15.1003, 0, 9.41815, 0, -5.11611e-07, -10.0183, -2.9456306, -200.601)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -827,7 +1225,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform14" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-3.6657624e-07, 0, -11.7043, 0, 15.1003, 0, 8.38626, 0, -5.11611e-07, -13.046524, -0.20787862, -204.73433)
+transform = Transform3D(-3.6657624e-07, 0, -11.7043, 0, 15.1003, 0, 8.38626, 0, -5.11611e-07, -13.046524, -0.08848861, -204.73433)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -939,7 +1337,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform5" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-3.00911e-07, 0, -11.272645, 0, 15.1003, 0, 6.88402, 0, -4.927428e-07, -7.0610795, 3.1914988, -208.22214)
+transform = Transform3D(-3.2739828e-07, 0, -12, 0, 15.1, 0, 7.49, 0, -5.2453663e-07, -7.3378534, 2.690001, -208.40324)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -978,7 +1376,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform7" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(2.63218, 0, -32.9336, 0, 0.870733, 0, 6.36092, 0, 13.6281, 7.50271, 11.6306, -215.753)
+transform = Transform3D(2.6321802, 0, -32.933605, 0, 0.870733, 0, 6.36092, 0, 13.628089, 7.5, 11.59, -215.75)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -988,6 +1386,19 @@ metadata/_edit_group_ = true
 [node name="StaticBody3D" type="StaticBody3D" parent="funArea/Platform7"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform7/StaticBody3D"]
+shape = SubResource("BoxShape3D_avars")
+
+[node name="Platform19" type="MeshInstance3D" parent="funArea"]
+transform = Transform3D(2.6306448, 0, -6.357209, 0, 1, 0, 6.357209, 0, 2.6306448, -5.79, 10.75, -210.25)
+material_override = ExtResource("3_gdvy0")
+material_overlay = ExtResource("4_hga2d")
+mesh = SubResource("BoxMesh_lojvt")
+skeleton = NodePath("../../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="funArea/Platform19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform19/StaticBody3D"]
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform8" type="MeshInstance3D" parent="funArea"]
@@ -1018,6 +1429,9 @@ shape = SubResource("BoxShape3D_avars")
 
 [node name="Enemy15" parent="funArea" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6023, 3.39461, -211.148)
+
+[node name="Enemy28" parent="funArea" instance=ExtResource("8_lojvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.652056, 8.248184, -206.15834)
 
 [node name="Enemy16" parent="funArea" instance=ExtResource("8_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.48, 3.39461, -230.501)
@@ -1090,13 +1504,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22959, 15.7771, -306.125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83127, 15.7771, -306.125)
 
 [node name="Pillar3" parent="." instance=ExtResource("11_4wqju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, 3.75815, -220.125)
-
-[node name="Pillar4" parent="." instance=ExtResource("11_4wqju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0002, -3.83333, -220.125)
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 22.0002, 2.2229533, -220.125)
 
 [node name="streetsign" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.985049, 0.172273, 8.61157e-08, 0.172273, 0.985049, -1.50606e-08, -8.74228e-08, 0, -1, 9.9606, 11.65, -131.115)
+transform = Transform3D(-0.985049, 0.172273, 8.61157e-08, 0.172273, 0.985049, -1.50606e-08, -8.74228e-08, 0, -1, 10.150236, 12.734329, -131.115)
 material_override = SubResource("StandardMaterial3D_3l68j")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("CylinderMesh_5y3ho")
@@ -1132,7 +1543,7 @@ transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 
 texture = ExtResource("19_p7ekk")
 
 [node name="seeweed" type="Node3D" parent="."]
-transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, 20.7761, 0.902186, -71.9224)
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, 21.352674, 0.902186, -71.91878)
 
 [node name="Seaweed" type="Sprite3D" parent="seeweed"]
 transform = Transform3D(0.990183, 0, 0.139778, 0, 1, 0, -0.139778, 0, 0.990183, 0.0522003, 0, -0.50893)
@@ -1211,7 +1622,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065,
 texture = ExtResource("20_3l68j")
 
 [node name="seeweed2" type="Node3D" parent="."]
-transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, -21.856, 0.902186, -71.9224)
+transform = Transform3D(-0.0067645283, 0, -0.3799393, 0, 0.47, 0, 0.3799393, 0, -0.0067645283, -22.440231, 0.902186, -71.92324)
 
 [node name="Seaweed" type="Sprite3D" parent="seeweed2"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
@@ -1290,7 +1701,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065,
 texture = ExtResource("20_3l68j")
 
 [node name="seeweed3" type="Node3D" parent="."]
-transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, -21.3001, 0.902186, -34.9185)
+transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, -22.272411, 0.902186, -34.924606)
 
 [node name="Seaweed" type="Sprite3D" parent="seeweed3"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
@@ -1369,7 +1780,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065,
 texture = ExtResource("20_3l68j")
 
 [node name="seeweed4" type="Node3D" parent="."]
-transform = Transform3D(-0.00238759, 0, -0.379992, 0, 0.47, 0, 0.379992, 0, -0.00238759, 21.2656, 0.902186, -34.9185)
+transform = Transform3D(-0.011604618, 0, -0.37982228, 0, 0.47, 0, 0.37982228, 0, -0.011604618, 21.593912, 0.902186, -34.916435)
 
 [node name="Seaweed" type="Sprite3D" parent="seeweed4"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
@@ -1448,6 +1859,166 @@ texture = ExtResource("20_3l68j")
 transform = Transform3D(1, 0, 7.91624e-09, 0, 1, 0, -7.91624e-09, 0, 1, 72.5136, 0.370433, -2.88037)
 texture = ExtResource("20_3l68j")
 
+[node name="seeweed5" type="Node3D" parent="."]
+transform = Transform3D(-0.01133945, 0, -0.3798303, 0, 0.47, 0, 0.3798303, 0, -0.01133945, 21.334166, 0.902186, 1.9600549)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3663, -0.16662, -2.30561)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed5"]
+transform = Transform3D(1, 0, 7.91624e-09, 0, 1, 0, -7.91624e-09, 0, 1, 72.5136, 0.370433, -2.88037)
+texture = ExtResource("20_3l68j")
+
+[node name="seeweed6" type="Node3D" parent="."]
+transform = Transform3D(-0.01133945, 0, -0.3798303, 0, 0.47, 0, 0.3798303, 0, -0.01133945, -22.179342, 0.902186, 0.66100305)
+
+[node name="Seaweed" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed16" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -4.8942, 0.324043, -0.639999)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed17" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8.59154, 0.324043, 0.198753)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed18" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.414, 0.324043, 0.0310745)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed20" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.4846, 0.324043, -0.408325)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed2" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 5.03394, 0, -1.2631)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed3" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 10.5405, 0, -1.7015)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed4" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 14.9867, 0, -1.06845)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed5" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 20.3548, 0, -1.86248)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed6" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 24.9869, 0, -1.29928)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed7" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 28.5446, 0, -2.21591)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed8" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 34.4316, 0, -1.35453)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed9" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 39.8108, 0, -1.659)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed10" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349, -0.16662, -1.78337)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed11" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3663, -0.16662, -2.30561)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed12" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 55.4224, -0.16662, -2.4238)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed13" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 60.9474, -0.16662, -3.44512)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed14" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 66.8036, -0.16662, -2.90662)
+texture = ExtResource("20_3l68j")
+
+[node name="Seaweed15" type="Sprite3D" parent="seeweed6"]
+transform = Transform3D(1, 0, 7.91624e-09, 0, 1, 0, -7.91624e-09, 0, 1, 72.5136, 0.370433, -2.88037)
+texture = ExtResource("20_3l68j")
+
 [node name="cameraController" parent="." instance=ExtResource("23_maxpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003187418, 1.0326874, -77.33739)
 newCameraAngle = Vector3(-60, 0, 0)
@@ -1459,12 +2030,3 @@ shape = SubResource("BoxShape3D_ygkl2")
 [node name="hook" parent="." instance=ExtResource("24_ygkl2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5212053, 21.916418, -225.12483)
 lineLength = 19.14641780853271
-
-[node name="cameraController2" parent="." instance=ExtResource("23_maxpf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4593925, 13.154713, -131.10738)
-newCameraAngle = Vector3(-65, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51163, 3.9796944, -0.16821289)
-shape = SubResource("BoxShape3D_jbvdo")
-debug_color = Color(1, 1, 1, 1)

@@ -1,5 +1,12 @@
+@tool
 extends Node3D
 #var touched = false
+
+@export_color_no_alpha var color = Color("FFFFFF"):
+	set(new_value):
+		color = new_value
+		$corals/coral/model.material_override.albedo_color = color
+		
 
 
 
@@ -21,4 +28,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#ScoreManager.update_freshness(self)
 		#ScoreManager.play_trick_sfx("uncommon")
 		$corals/AnimationPlayer.play("coral_wiggle")
-		print("touched")
+		

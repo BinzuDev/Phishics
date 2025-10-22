@@ -110,4 +110,4 @@ func explode(knockback):
 	$CoralStem.visible = true
 	$physicsBody.visible = true
 	$physicsBody.process_mode = Node.PROCESS_MODE_INHERIT
-	_on_area_3d_body_entered(null, knockback*30)
+	_on_area_3d_body_entered(null, knockback*2)

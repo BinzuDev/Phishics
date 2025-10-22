@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=169 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="15_5m7cr"]
 [ext_resource type="AudioStream" uid="uid://by0unykljxxjg" path="res://Sounds/sparks/sparks_low_intensity_04.wav" id="15_bsrx0"]
 [ext_resource type="Texture2D" uid="uid://mdoqsqh3p6kx" path="res://icons/jellyfish_target.png" id="15_mn8qi"]
+[ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="15_vxyr1"]
 [ext_resource type="AudioStream" uid="uid://blaew5gn1ol7j" path="res://Sounds/sparks/sparks_low_intensity_06.wav" id="16_3jjx5"]
 [ext_resource type="AudioStream" uid="uid://b2uje1y503456" path="res://Sounds/impact_bloody/bloody2.ogg" id="16_l2vbt"]
 [ext_resource type="Texture2D" uid="uid://bb2dcsrc2jdnh" path="res://icons/hook_target.png" id="16_mn8qi"]
@@ -540,6 +541,12 @@ _data = {
 &"shockwave": SubResource("Animation_b7r8c")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_ukjyi"]
+font = ExtResource("15_vxyr1")
+font_size = 40
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jv0xx"]
 animations = [{
 "frames": [{
@@ -730,9 +737,62 @@ tracks/3/keys = {
 "values": [Vector2(0, -18), Vector2(0, -73)]
 }
 
+[sub_resource type="Animation" id="Animation_rmd0x"]
+resource_name = "preset_reticle"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotate/reticleR:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(1000, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotate/reticleL:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(-1000, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rotate/reticleD:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rotate/reticleU:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 0,
+"values": [Vector2(0, -1000)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lt56d"]
 _data = {
 &"RESET": SubResource("Animation_lt56d"),
+&"preset_reticle": SubResource("Animation_rmd0x"),
 &"reticle_appear1": SubResource("Animation_ipqbp"),
 &"reticle_appear2": SubResource("Animation_ie0qp")
 }
@@ -1301,6 +1361,7 @@ collision_mask = 17
 unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, -150, 0)
+collision_mask = 5
 
 [node name="nearFloor" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
@@ -1624,6 +1685,62 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_sj4g2")
 }
+
+[node name="jumpPreview" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = -35.0
+offset_top = 86.0
+offset_right = -35.0
+offset_bottom = 86.0
+
+[node name="ColorRect2" type="ColorRect" parent="UI/jumpPreview"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 464.0
+offset_right = 585.0
+offset_bottom = 484.0
+rotation = -1.5707941
+
+[node name="ColorRect" type="ColorRect" parent="UI/jumpPreview"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 444.0
+offset_right = 505.0
+offset_bottom = 464.0
+
+[node name="Line1" type="Line2D" parent="UI/jumpPreview/ColorRect"]
+z_index = -2
+points = PackedVector2Array(15, -15, 40, -40)
+width = 25.0
+default_color = Color(1, 0, 0.5647059, 1)
+begin_cap_mode = 2
+
+[node name="Line2" type="Line2D" parent="UI/jumpPreview/ColorRect"]
+show_behind_parent = true
+z_index = -1
+points = PackedVector2Array(15, -15, 40, -40)
+width = 15.0
+default_color = Color(0, 0.972549, 0.93333334, 1)
+begin_cap_mode = 2
+end_cap_mode = 1
+
+[node name="arrow" type="Sprite2D" parent="UI/jumpPreview/ColorRect"]
+z_index = -2
+position = Vector2(40, -40)
+rotation = -0.7853982
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("12_23obf")
+
+[node name="Label" type="Label" parent="UI/jumpPreview"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 462.0
+offset_right = 429.0
+offset_bottom = 517.0
+text = "JUMP METER"
+label_settings = SubResource("LabelSettings_ukjyi")
 
 [node name="reticle" type="Node2D" parent="."]
 

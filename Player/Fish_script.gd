@@ -61,7 +61,9 @@ var timeSinceJump : int = 0
 var flopTimer : int = 0
 var sfxCoolDown : int = 0
 
+#OTHER
 var noclip := false
+var jumpPreview : Vector2
 
 var trueSpeed := Vector3(0,0,0) #Keeps track of how fast you're moving in global space
 
@@ -131,6 +133,8 @@ func _physics_process(_delta: float) -> void:
 			$JumpPuff.restart()
 			$JumpPuff.emitting = true
 			
+			
+			
 			#apply vertical speed
 			apply_impulse(JUMP_STRENGTH)
 			if !get_input_axis():
@@ -156,6 +160,8 @@ func _physics_process(_delta: float) -> void:
 				
 			if get_input_axis(): #if one of the keys are pressed (long jump)
 				apply_impulse(rotate_by_cam(Vector3(0, boost*0.2, 0)))
+				
+				
 			
 			## Style Meter and jump related tricks
 			superJumpTimer = 5 #check your speed 5 frames after jumping
@@ -188,6 +194,22 @@ func _physics_process(_delta: float) -> void:
 				if linear_velocity.length() > 12:
 					ScoreManager.give_points(200, 1, true, "LONG JUMP", "uncommon")
 				
+	
+	## Tutorial jump preview:
+	jumpPreview.y = JUMP_STRENGTH.y
+	jumpPreview.x = ACCEL
+	if get_input_axis():
+		var Ljump = (ACCEL * 3) + angular_velocity.length()*0.15
+		jumpPreview.x += Ljump
+		jumpPreview.y += Ljump*0.2
+	else:
+		jumpPreview.y += angular_velocity.length()*0.35
+	$UI/jumpPreview/ColorRect/arrow.position.x = jumpPreview.x*10 + 35
+	$UI/jumpPreview/ColorRect/arrow.position.y = jumpPreview.y*-7
+	$UI/jumpPreview/ColorRect/Line1.points[1] = $UI/jumpPreview/ColorRect/arrow.position
+	$UI/jumpPreview/ColorRect/Line2.points[1] = $UI/jumpPreview/ColorRect/arrow.position
+	$UI/jumpPreview/ColorRect/arrow.rotation = Vector2(0,0).angle_to_point($UI/jumpPreview/ColorRect/arrow.position)
+	
 	
 	## Super Jump tricks
 	if superJumpTimer >= 0:
@@ -273,6 +295,8 @@ func _physics_process(_delta: float) -> void:
 	## Diving
 	if %heightDetect.is_colliding():
 		height = global_position.y - %heightDetect.get_collision_point().y
+	else:
+		height = 150
 		
 	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld:
 		var newSpd = clamp(height*-1.5 -10, -90, -10) 
@@ -1201,3 +1225,6 @@ func play_skate_anim(anim_name : String):
 func play_shock_wave():
 	if !$UI/shockWaveAnim.is_playing():
 		$UI/shockWaveAnim.play("shockwave")
+
+func setJumpPreview(value : bool):
+	$UI/jumpPreview.visible = value

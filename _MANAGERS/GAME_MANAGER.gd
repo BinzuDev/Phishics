@@ -30,6 +30,8 @@ func hitstop(frames: int, objToPause: Node3D = null):
 
 
 func toggle_pause():
+	Engine.time_scale = 1 #in case you pause inside a slowmo area
+	AudioServer.get_bus_effect(4,0).pitch_scale = 1
 	if !isOnTitleScreen:
 		disableMenuControl = false
 		get_tree().paused = !get_tree().paused

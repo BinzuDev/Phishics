@@ -27,6 +27,7 @@ func _process(_delta):
 		isRunning = false        #start a dialogue with the same input used to end another one
 	
 	
+	
 	#fixes a dumbass glitch where jfg would show up for one frame only when RELOADING tutorial
 	$CanvasLayer/JFG.position = jfgPosition
 	
@@ -75,11 +76,13 @@ func _process(_delta):
 	if !finished and Input.is_action_just_pressed("confirm") and chara > 3:
 		#%textBox.text = text
 		%textBox.visible_characters = text.length()
+		chara = text.length()
 		finished = true
 	#Instant text boxes
 	if !finished and currentDialogue.messages[textBoxIndex].instant:
 		#%textBox.text = text
 		%textBox.visible_characters = text.length()
+		chara = text.length()
 		finished = true
 	
 
@@ -125,10 +128,16 @@ func continue_dialogue():
 	set_text(currentDialogue.messages[textBoxIndex].text)
 	
 	if currentDialogue.messages[textBoxIndex].position == "top":
-		%textBoxMargin.position.y = -820
+		%textBoxControl.anchor_top = 0
+		%textBoxControl.anchor_bottom = 0
+		%textBoxControl.offset_left = -420
+		%textBoxControl.offset_bottom = 290
 		%nameBox.position.y = 240
 	else:
-		%textBoxMargin.position.y = 0
+		%textBoxControl.anchor_top = 1
+		%textBoxControl.anchor_bottom = 1
+		%textBoxControl.offset_left = 0
+		%textBoxControl.offset_bottom = 0
 		%nameBox.position.y = -45
 	
 

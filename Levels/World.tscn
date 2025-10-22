@@ -1815,6 +1815,7 @@ debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 
 [node name="rail_grind" parent="group1/railgrind1" instance=ExtResource("24_ie2ey")]
 transform = Transform3D(-0.2890853, 3.8206887e-05, -0.9573003, 0, 0.99999195, 3.991119e-05, 0.9572975, 1.153774e-05, -0.28908613, 0, 0, 0)
+loop = false
 
 [node name="skateBoard" parent="group1" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.8402063, 0.40915906, 0.35586855, -0.38257784, -0.017816395, 0.92375153, 0.3843016, -0.91228914, 0.14156578, 7.97229, 0.53949296, -31.055552)

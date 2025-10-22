@@ -1,0 +1,238 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc52vg4b35xsw"]
+
+[ext_resource type="Script" uid="uid://e6rns7lp5ird" path="res://Objects/coral_tube.gd" id="1_l8aji"]
+[ext_resource type="Texture2D" uid="uid://bmicnl83wgipw" path="res://Textures/coral.png" id="2_kx758"]
+[ext_resource type="ArrayMesh" uid="uid://cmjwabx1pjeav" path="res://Models/coral/coral_tube.obj" id="3_bs882"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ue2m"]
+radius = 1.0767866
+
+[sub_resource type="Animation" id="Animation_kx758"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coral:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coral2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.06179984, 0.034133434, 0.15197022)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coral3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.11859813, -0.030368786, -0.132732)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("coral4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.123902656, 0.051214453, -0.20544161)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("coral5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1940457, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("coral6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.19404568, -2.655344, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1so48"]
+resource_name = "coral_wiggle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coral:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.5, 0.8333333),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0.040142573, 0, 0.050614547), Vector3(0.05235988, 0, -0.059341196), Vector3(0.040142573, 0, 0.08028515), Vector3(0.040142573, 0, 0.050614547)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coral2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.6, 0.93333346),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0.06179984, 0.034133434, 0.15197022), Vector3(0.2617994, 0.017453292, 0.23561946), Vector3(0.02094395, 0.034906585, 0.090757124), Vector3(0.06179984, 0.034133434, 0.15197022)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coral3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.93333334),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0.11859813, -0.030368786, -0.132732), Vector3(0.25132743, 0.017453292, -0.012217305), Vector3(0.006981317, 0.055850536, -0.17453292), Vector3(0.11859813, -0.030368786, -0.132732)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("coral4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8666667),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(-0.123902656, 0.051214453, -0.20544161), Vector3(-0.28099802, 0.050614547, -0.21642083), Vector3(-0.010471975, 0.050614547, -0.17976892), Vector3(-0.123902656, 0.051214453, -0.20544161)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("coral5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.5, 0.93333346),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(-0.2197772, 0.27633876, 0.107159965), Vector3(-0.31760767, -0.09645316, 0.30043623), Vector3(-0.15533431, 0.31415927, 0.054105207), Vector3(-0.2197772, 0.27633876, 0.107159965)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("coral6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6666667, 1),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(-0.19404568, -2.655344, 0), Vector3(-0.027925268, -2.6214845, -0.18849556), Vector3(-0.24784352, -2.678875, 0.10723652), Vector3(-0.19404568, -2.655344, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs882"]
+_data = {
+&"RESET": SubResource("Animation_kx758"),
+&"coral_wiggle": SubResource("Animation_1so48")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3fbq"]
+resource_local_to_scene = true
+cull_mode = 2
+disable_fog = true
+albedo_color = Color(0.9000001, 0.39999998, 1, 1)
+albedo_texture = ExtResource("2_kx758")
+
+[node name="coral_tube" type="Node3D"]
+script = ExtResource("1_l8aji")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5493721, 0)
+shape = SubResource("SphereShape3D_0ue2m")
+
+[node name="corals" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="corals"]
+libraries = {
+&"": SubResource("AnimationLibrary_bs882")
+}
+
+[node name="coral" type="Node3D" parent="corals"]
+
+[node name="model" type="MeshInstance3D" parent="corals/coral"]
+transform = Transform3D(0.3, 0, 0, 0, 0.29793283, -0.035157226, 0, 0.035157226, 0.29793283, -6.548362e-11, 0.056803457, 0.0067030285)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[node name="coral2" type="Node3D" parent="corals"]
+transform = Transform3D(0.98821795, -0.14921427, 0.034061663, 0.15109693, 0.9865871, -0.061760515, -0.02438926, 0.066179425, 0.9975097, -0.34219038, -0.3433534, 0.13735032)
+
+[node name="model" type="MeshInstance3D" parent="corals/coral2"]
+transform = Transform3D(0.35, 1.406685e-10, 1.086543e-09, -1.6977234e-10, 0.29, 0, -1.086543e-09, -4.3669253e-19, 0.35, -0.14674622, -0.14943174, 0.06351672)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[node name="coral3" type="Node3D" parent="corals"]
+transform = Transform3D(0.9912222, 0.12872048, -0.030150812, -0.13141294, 0.98424125, -0.11832025, 0.014445435, 0.12124393, 0.9925172, 0.37472188, -0.18682563, 0.10953826)
+
+[node name="model" type="MeshInstance3D" parent="corals/coral3"]
+transform = Transform3D(0.25, 3.4924588e-09, 3.4924585e-09, -2.9103822e-09, 0.3, 0, -3.4924585e-09, -4.8789068e-17, 0.25, 0.2275584, -0.0416623, 0.071930945)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[node name="coral4" type="Node3D" parent="corals"]
+transform = Transform3D(0.9789779, 0.19753842, 0.05079963, -0.2024356, 0.971466, 0.123585895, -0.024937144, -0.1312715, 0.9910329, 0.44515258, -0.25817728, -0.3686064)
+
+[node name="model" type="MeshInstance3D" parent="corals/coral4"]
+transform = Transform3D(0.4, -1.9092107e-08, -6.208824e-10, 2.5456144e-08, 0.3, 1.4901156e-08, 6.208815e-10, -1.1175867e-08, 0.4, -0.23244032, -0.28775322, 0.05154747)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[node name="coral5" type="Node3D" parent="corals"]
+transform = Transform3D(1, 0, 0, 0, 0.98123163, 0.19283022, 0, -0.19283013, 0.9812321, -0.3496818, -0.1868254, -0.41603965)
+
+[node name="model" type="MeshInstance3D" parent="corals/coral5"]
+transform = Transform3D(0.3, -5.2154068e-09, 7.4505815e-09, 5.5879363e-09, 0.28, -7.4505815e-09, -7.4505815e-09, 6.9538757e-09, 0.3, 0.035707965, 0.039412227, 0.11107105)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[node name="coral6" type="Node3D" parent="corals"]
+transform = Transform3D(-0.8840921, 0.09011195, -0.4585422, 0, 0.9812317, 0.1928302, 0.4673126, 0.1704796, -0.86749965, 0.062770426, -0.49027848, 0.28780228)
+
+[node name="model" type="MeshInstance3D" parent="corals/coral6"]
+transform = Transform3D(0.25000003, -3.7252903e-09, 7.450581e-09, -1.8626451e-09, 0.25, 0, 0, 0, 0.25, 0.005056644, 0.01853757, -0.22798671)
+material_override = SubResource("StandardMaterial3D_x3fbq")
+mesh = ExtResource("3_bs882")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
