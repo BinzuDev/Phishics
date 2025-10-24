@@ -145,7 +145,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_bottom = 7
 
 [node name="description2" type="Label" parent="marginDesc2"]
 unique_name_in_owner = true

@@ -91,6 +91,7 @@ collision_layer = 64
 collision_mask = 66
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="physicsBody/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("SphereShape3D_b4knm")
 
 [node name="crack" type="AudioStreamPlayer3D" parent="physicsBody"]
@@ -99,6 +100,7 @@ process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 stream = ExtResource("6_r8adn")
 bus = &"soundEffects"
+attenuation_filter_db = 0.0
 
 [node name="BrokenCoral" type="MeshInstance3D" parent="physicsBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)

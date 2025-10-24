@@ -566,7 +566,7 @@ tracks/3/keys = {
 "values": [Vector2(0, -18), Vector2(0, -73)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lt56d"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rmd0x"]
 _data = {
 &"RESET": SubResource("Animation_lt56d"),
 &"preset_reticle": SubResource("Animation_rmd0x"),
@@ -716,7 +716,9 @@ environment = SubResource("Environment_0xeif")
 [node name="fish" parent="." instance=ExtResource("2_lalqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.69, 13.537672)
 gravity_scale = 1.5
+canJump = false
 noScoreUI = true
+canMove = false
 
 [node name="jelly_fish_girl_IK" parent="." instance=ExtResource("12_2kmhi")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.9160542, 15.66592, -302.9687)
@@ -1014,7 +1016,7 @@ region_rect = Rect2(0, 0, 202, 56)
 
 [node name="reticleAnimation" type="AnimationPlayer" parent="reticle"]
 libraries = {
-&"": SubResource("AnimationLibrary_lt56d")
+&"": SubResource("AnimationLibrary_rmd0x")
 }
 
 [node name="diveLookDown" parent="." instance=ExtResource("23_maxpf")]
@@ -1098,8 +1100,8 @@ transform = Transform3D(-2.32863e-08, -3.69923e-08, -1, -0.695913, 0.718126, -1.
 strength = 15.0
 
 [node name="BoostRing5" parent="funArea" instance=ExtResource("13_4wqju")]
-transform = Transform3D(-0.863131, -0.504979, -4.85127e-09, -0.50498, 0.863131, -1.75168e-08, 0, 2.98023e-08, -1, -35.9345, 39.6875, -304.67)
-strength = 20.0
+transform = Transform3D(-0.76051897, -0.6493147, -4.85127e-09, -0.64931566, 0.7605191, -1.75168e-08, 2.0305e-09, 3.229994e-08, -1, -35.9345, 39.6875, -304.67)
+strength = 15.0
 centerPlayer = true
 
 [node name="BoostRing10" parent="funArea" instance=ExtResource("13_4wqju")]

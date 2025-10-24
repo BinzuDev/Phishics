@@ -255,7 +255,7 @@ render_priority = -5
 texture = ExtResource("7_t7vd5")
 
 [node name="Funbox" parent="." instance=ExtResource("12_imy30")]
-transform = Transform3D(-0.912519, 0, -1.77969, 0, 2, 0, 1.77969, 0, -0.912519, -3.36764, -0.0500727, -11.7397)
+transform = Transform3D(-0.30113176, 0, -0.58729863, 0, 0.66, 0, 0.58729863, 0, -0.30113176, -3.36764, -0.0500727, -11.7397)
 
 [node name="Corals" type="Node3D" parent="."]
 

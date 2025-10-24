@@ -107,7 +107,7 @@ func _on_animation_finished(_anim_name):
 			knockback = knockback.normalized() * getKnockBackTo(otherArea)
 			otherArea.get_parent().get_parent().explode(knockback)
 			
-		if otherArea.get_parent().get_parent() is coral_tube:
+		if otherArea.get_parent() is coral_tube:
 			print("TUBE EXPLODE")
 
 	

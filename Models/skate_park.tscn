@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://biji6soms632"]
+[gd_scene load_steps=11 format=3 uid="uid://biji6soms632"]
 
 [ext_resource type="Texture2D" uid="uid://djh7lqbrrnb7t" path="res://Models/skatepark/funbox_diff_graf.png" id="1_65jcy"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="2_x1j47"]
 [ext_resource type="ArrayMesh" uid="uid://beb714r2jqu7i" path="res://Models/skatepark/Funbox.obj" id="3_0tpsb"]
 [ext_resource type="Script" uid="uid://v7rfvjgj8ha8" path="res://Objects/skate_park.gd" id="4_x1j47"]
+[ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="5_801vs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7041"]
 albedo_texture = ExtResource("1_65jcy")
@@ -14,24 +15,62 @@ data = PackedVector3Array(-1.304, 0, -1.304, -1.304, 0, 1.3039, 1.3039, 0, -1.30
 [sub_resource type="BoxShape3D" id="BoxShape3D_65jcy"]
 size = Vector3(2.55823, 0.148834, 2.69284)
 
-[node name="Funbox" type="MeshInstance3D"]
+[sub_resource type="Curve3D" id="Curve3D_m2mbo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7.801511),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_g827w"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9250898, -8.242014),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="skatePark" type="Node3D"]
+
+[node name="Funbox" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_h7041")
 material_overlay = ExtResource("2_x1j47")
 mesh = ExtResource("3_0tpsb")
 script = ExtResource("4_x1j47")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Funbox"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funbox/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_63vwh")
 
-[node name="glitch" type="Area3D" parent="."]
+[node name="glitch" type="Area3D" parent="Funbox"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="glitch"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funbox/glitch"]
 transform = Transform3D(1, 0, 0, 0, 1.00008, 0, 0, 0, 1, -0.00115967, 0.0668244, 0.0216827)
 shape = SubResource("BoxShape3D_65jcy")
 
-[connection signal="body_entered" from="glitch" to="." method="_on_glitch_body_entered"]
+[node name="railgrind1" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0844398, 3.9167624, 3.9273896)
+curve = SubResource("Curve3D_m2mbo")
+debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="rail_grind" parent="railgrind1" instance=ExtResource("5_801vs")]
+transform = Transform3D(0.9999922, 0, 0, 0, 0.9999841, 0, 0, 0, 0.99999213, 0, 0, -3.6399376)
+progress = 3.64
+loop = false
+invisibleRail = true
+
+[node name="railgrind2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41615057, 1.6724052, 9.268742)
+curve = SubResource("Curve3D_g827w")
+debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="rail_grind" parent="railgrind2" instance=ExtResource("5_801vs")]
+transform = Transform3D(0.9999873, 0, 0, 0, 0.973775, -0.2274466, 0, 0.22744492, 0.97378224, 0, 0.82791144, -3.544592)
+progress = 3.64
+loop = false
+invisibleRail = true
+
+[connection signal="body_entered" from="Funbox/glitch" to="Funbox" method="_on_glitch_body_entered"]

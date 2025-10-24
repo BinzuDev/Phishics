@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=51 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="17_eej72"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="18_y18wb"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/coral_tube.tscn" id="20_b2h0t"]
+[ext_resource type="PackedScene" uid="uid://biji6soms632" path="res://Models/skate_park.tscn" id="21_650ha"]
 [ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/coral_tree.tscn" id="22_s5qhn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]
@@ -248,7 +249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7796669, -3.1606064, -0.534
 size = Vector3(10.7602, 23.1842, 10.4157)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="half pipe2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.658062, 6.059456, 3.5276718)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.658062, 5.9494095, 3.5276718)
 operation = 2
 radius = 6.007
 height = 13.7793
@@ -928,47 +929,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.57525, 150.02646, 103.512
 
 [node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
-color = Color(1, 0.35652608, 0.95360667, 1)
+color = Color(0.44427925, 0.83210397, 0.85, 1)
 randomColorOnReady = true
 
 [node name="coral_tree2" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.966967, 0, 0.2548991, 0, 1, 0, -0.2548991, 0, 0.966967, 107.47085, 118.26219, 99.93042)
-color = Color(0.88228923, 1, 0.54306126, 1)
+color = Color(0.6316245, 0.8225827, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree3" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.9713577, 0, 0.23761901, 0, 1, 0, -0.23761901, 0, -0.9713577, 111.351944, 118.26219, 100.13271)
-color = Color(1, 0.94008374, 0.67852825, 1)
+color = Color(0.634529, 0.5259248, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree4" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.98015356, 0, -0.19823657, 0, 1, 0, 0.19823657, 0, -0.98015356, 104.006355, 118.26219, 105.0314)
-color = Color(0.7245877, 0.6047633, 1, 1)
+color = Color(0.6355859, 0.59071016, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree5" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.89718664, 0, -0.4416506, 0, 1, 0, 0.4416506, 0, 0.89718664, 107.30346, 118.26219, 104.118965)
-color = Color(0.6743891, 1, 0.7453809, 1)
+color = Color(0.95952183, 1, 0.5596386, 1)
 randomColorOnReady = true
 
 [node name="coral_tree6" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.7316614, 0, 0.6816679, 0, 1, 0, -0.6816681, 0, -0.7316612, 111.184555, 118.241234, 104.32126)
-color = Color(1, 0.4103418, 0.73203903, 1)
+color = Color(0.55623335, 1, 0.57666767, 1)
 randomColorOnReady = true
 
 [node name="coral_tree7" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.17851184, 0, -0.98393726, 0, 1, 0, 0.98393726, 0, 0.17851184, 103.72505, 118.26219, 108.63383)
-color = Color(0.82434833, 1, 0.6730572, 1)
+color = Color(1, 0.98927224, 0.58210254, 1)
 randomColorOnReady = true
 
 [node name="coral_tree8" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.94662356, 0, -0.32234016, 0, 1, 0, 0.32234016, 0, 0.94662356, 107.022156, 118.26219, 107.72139)
-color = Color(1, 0.36904067, 0.76599276, 1)
+color = Color(1, 0.42630923, 0.8378485, 1)
 randomColorOnReady = true
 
 [node name="coral_tree9" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.96172935, 0, -0.27399874, 0, 1, 0, 0.27399874, 0, -0.96172935, 110.90325, 118.26219, 107.92368)
-color = Color(0.5800642, 1, 0.5921011, 1)
+color = Color(0.9819415, 1, 0.59601223, 1)
 randomColorOnReady = true
 
 [node name="coral_tube" parent="." instance=ExtResource("20_b2h0t")]
@@ -982,5 +983,8 @@ color = Color(1, 0.6, 0, 1)
 [node name="coral_tube3" parent="." instance=ExtResource("20_b2h0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.0354, 118.565704, 104.99145)
 color = Color(1, 0.6, 0, 1)
+
+[node name="skatePark" parent="." instance=ExtResource("21_650ha")]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 155.75186, 118.2657, 77.859215)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
