@@ -4836,7 +4836,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.948356, 6.051972, -8.82393
 color = Color(0.6269754, 0.58030677, 1, 1)
 
 [node name="coral_tube8" parent="newCoral" instance=ExtResource("52_pj311")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.98563, 13.455428, -16.839352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.98563, 13.378654, -16.839352)
+color = Color(0.78039217, 0.26666668, 0.40784314, 1)
 
 [node name="coral_tree14" parent="newCoral" instance=ExtResource("18_grwv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.25366, 12.933297, -21.620953)
@@ -4844,7 +4845,7 @@ color = Color(0.97490984, 0.5297152, 1, 1)
 
 [node name="coral_tree15" parent="newCoral" instance=ExtResource("18_grwv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.114307, 12.929643, -23.793127)
-color = Color(0.61026967, 0.5476775, 1, 1)
+color = Color(1, 0.6019492, 0.37799454, 1)
 
 [node name="coral_tube9" parent="newCoral" instance=ExtResource("52_pj311")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.399837, 13.455426, -14.703508)
@@ -4969,5 +4970,23 @@ color = Color(1, 0.3541401, 0.6738598, 1)
 [node name="coral_tree36" parent="newCoral" instance=ExtResource("18_grwv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.14502, 20.995916, -37.00063)
 color = Color(1, 0.4790445, 0.41507018, 1)
+
+[node name="coral_tube18" parent="newCoral" instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3551025, 0.5793983, -20.846092)
+
+[node name="coral_tree44" parent="newCoral" instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.15611, 20.738161, 2.040331)
+color = Color(0.62371504, 1, 0.6799432, 1)
+
+[node name="coral_tree" parent="." instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.996124, 20.317812, -2.9289913)
+
+[node name="coral_tube" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.60347, 20.542727, -11.387987)
+color = Color(1, 0.45490196, 0.49803922, 1)
+
+[node name="coral_tube2" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.1936, 20.584167, -21.361837)
+color = Color(0.60784316, 0.53333336, 0.7058824, 1)
 
 [editable path="group2/frickingAwesomeTube"]

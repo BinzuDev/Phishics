@@ -109,6 +109,16 @@ func _on_animation_finished(_anim_name):
 			
 		if otherArea.get_parent() is coral_tube:
 			print("TUBE EXPLODE")
+			
+			var parent = otherArea.get_parent()
+			
+			if parent is coral_tube:
+				parent.has_method("_coral_spread()")
+				parent._coral_spread()
+				print("TUBE HAS EXPLODED")
+				
+			else:
+					print("Parent does not have _coral_spread method")
 
 	
 	

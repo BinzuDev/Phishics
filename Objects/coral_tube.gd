@@ -10,14 +10,34 @@ class_name coral_tube
 		$corals/coral/model.material_override.albedo_color = color
 		
 
+@export_tool_button("Generate random color") var action = setRandColor
+func setRandColor():
+	var hue = randf_range(0.0, 1.0)
+	var sat = 0.5
+	##Because of the world environment, it makes reds way LESS saturated
+	##and teals way MORE saturated, so I have to compensate here
+	if (hue > 0.133 and hue < 0.833): #less saturated when blue-green
+		sat = 0.4
+	else: #more saturated when red
+		sat = 0.6
+	sat += randf_range(-0.08, 0.08) #extra randomness
+	var val = 1.0
+	if (hue > 0.45 and hue < 0.547):
+		val = 0.85 #darker when perfectly teal
+	color = Color.from_hsv(hue, sat, val)
+
+
+
+
 
 
 func _coral_spread():
-	for child in $corals.get_children():
-		if child is RigidBody3D:
-			child.set_collision_mask_value(1, true)#enables collison with the world so we can plant it in sand
-			child.gravity_scale = 1
-			print("tube has spreaded")
+	#for child in $corals.get_children():
+		#if child is RigidBody3D:
+			#child.set_collision_mask_value(1, true)#enables collison with the world so we can plant it in sand
+			#child.gravity_scale = 1
+	queue_free()
+	print("TUBE CORAL SPREAD FUNC")
 
 
 
