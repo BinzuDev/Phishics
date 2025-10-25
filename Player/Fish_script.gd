@@ -48,6 +48,7 @@ var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboar
 var fallSpeeds : Array = [0, 0]
 var isRailGrinding : bool = false
 var currentRailObj : Node = null
+var targetingRail : bool = false #if the current homing target is a railgrind
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -248,6 +249,15 @@ func _physics_process(_delta: float) -> void:
 				if !$reticle.visible: #only play the animation when it first appears
 					$reticle/reticleAnimation.play("reticle_appear1")
 					$reticle/sfx.play()
+					
+					#regular reticle or railgrind reticle
+					targetingRail = closest.get_parent() is railGrind and surfMode == true
+					for child in $reticle/rotate.get_children():
+						child.self_modulate.a = float(!targetingRail)
+						child.get_child(0).visible = targetingRail
+						
+					
+					
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			var center =  MenuManager.get_UI_size()/2
 			#If the target is behind the camera, the reticle gets reversed, so unreverse it.
@@ -336,7 +346,7 @@ func _physics_process(_delta: float) -> void:
 				#print("SMEAR FIX")
 			homing = true
 			$diveSFX.play()
-			if surfMode:
+			if surfMode and not targetingRail:
 				deactivateSurfMode()
 	
 	
@@ -573,10 +583,17 @@ func _physics_process(_delta: float) -> void:
 	$RemoteTransformSurf.update_rotation = isRailGrinding #stops the fish from rotating during railgrind
 	
 	if surfMode:
-		#Particles
+		##Particles
 		surfSparkSpd = clamp( (trueSpeed.length()-5)*0.1 +1, 1, 5) #1 at 5, 5 at 45
-		%surfSparks.speed_scale = surfSparkSpd
 		surfSparkRate = clamp( (trueSpeed.length()-5)*0.03, 0, 1) #0 at 5, 1 at 38
+		
+		$surfPivot/sparkPivot.rotation_degrees.y = 0
+		if isRailGrinding:
+			surfSparkSpd = max(surfSparkSpd, 2.5)
+			surfSparkRate = max(surfSparkRate, 0.5)
+			$surfPivot/sparkPivot.rotation_degrees.y = 45
+		
+		%surfSparks.speed_scale = surfSparkSpd
 		%surfSparks.amount_ratio = surfSparkRate
 		
 		##Braking/Drifting
@@ -843,7 +860,6 @@ func _physics_process(_delta: float) -> void:
 		$speedWind.pitch_scale =clamp( (speed-50)*0.013 + 1, 1, 3)
 	
 	trueSpeed = (global_position-posLastFrame) * 60
-	
 	posLastFrame = global_position
 	
 	#DEBUG_INFO
@@ -1161,6 +1177,13 @@ func get_closest_target():
 		$homing/raycast.target_position = direction*5
 		$homing/raycast.force_raycast_update()
 		if $homing/raycast.get_collider() == crab:
+			#Ignore railgrinds when not in surf mode
+			if crab.get_parent() is railGrind and not surfMode:
+				continue
+			#ignore everything BUT railgrinds when in surf mode
+			if crab.get_parent() is not railGrind and surfMode:
+				continue
+			
 			detectedCrabs.append(crab)
 	
 	if detectedCrabs.is_empty(): ## If every crab is behind a wall

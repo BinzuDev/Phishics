@@ -125,7 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 150
+theme_override_constants/margin_right = 140
 theme_override_constants/margin_bottom = 30
 
 [node name="textBox" type="Label" parent="CanvasLayer/textBoxControl/dialogueColorRect/textMargin"]
@@ -133,7 +133,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_vertical = 1
-text = "1fgdfgdfgdfgfdgdfg
+text = "1fgdfgdfgdfgfdgdfg fgh fh gh fh fh fh fh fh fh fgh fgh fh i i i i i
 2dfgfgdfgdfgrgdgrgdfgfd
 3gfdgdfgfddfgdfdfgdfgdfgdfgdfjdnjnjkfdhjadbsak
 "

@@ -142,6 +142,13 @@ func continue_dialogue():
 	
 
 func set_text(newText: String):
+	newText = newText.replace("? ", "? ​​​​​​​​​​​​​​​​​​​​") ##Waits 40 frames after a "? " (Adds 20 Zero width spaces)
+	newText = newText.replace("! ", "! ​​​​​​​​​​​​​​​​​​​​") ##Waits 40 frames after a "! " (Adds 20 Zero width spaces)
+	newText = newText.replace("...", "​​​​​.​​​​​.​​​​​.​​​​​") ##wait 10 frames "." wait 10 frames "."  wait 10 frames "."  wait 10 frames 
+	newText = newText.replace(". ", ". ​​​​​​​​​​​​​​​​​​​​") ##Waits 40 frames after a ". " (Adds 20 Zero width spaces) 
+	newText = newText.replace(",", ",​​​​​​​​​​") ##Waits 20 frames after a "," (Adds 10 Zero width spaces)
+	newText = newText.replace("/w", "​​​​​​​​​​") ##replaces "/w" with a 20 frame wait (Adds 10 Zero width spaces)
+	
 	text = newText
 	finished = false
 	chara = 0

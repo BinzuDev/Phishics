@@ -63,6 +63,8 @@ func _process(_delta):
 
 
 func _physics_process(_delta: float) -> void:
+	$UI.visible = true
+	
 	ASrequirements = ASnormalRequirements
 	ASrankColor = ASnormalRankColor
 	if fish:
@@ -156,7 +158,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if comboTimer <= 0:
 		end_combo()  ##add pts x mult to score then reset the combo
-
+	
 	## Combo UI
 	%points.text = str(points)
 	%mult.text = format_decimal(mult)
@@ -319,7 +321,7 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 	if process_mode == PROCESS_MODE_DISABLED:
 		return #disable scoring system when the ui is hidden
 	
-	trickName = trickName.replace(" ", " ") ##REPLACES EVERY SPACE WITH A NON-BRAKING SPACE
+	trickName = trickName.replace(" ", " ") ##WARNING REPLACES EVERY SPACE WITH A NON-BRAKING SPACE
 	
 	
 				 #let the airspin reset timer but ONLY when theres no combo yet
@@ -623,8 +625,8 @@ func hide():
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func show():
-	$UI.visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
+	
 
 func set_label_settings(value : int):
 	%comboEndText.label_settings.font_color = Color("ffffff")

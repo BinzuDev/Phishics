@@ -660,7 +660,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -860,9 +860,9 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 2849
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = -19
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1023,6 +1023,7 @@ description2 = "Since the Taunt also counts as an interaction, try to only use i
 layout_mode = 2
 
 [node name="Interactibles" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1170,14 +1171,12 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 2835
+scroll_vertical = 1693
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 5
 metadata/_tab_index = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Surfing"]
@@ -1276,6 +1275,14 @@ score = "1x"
 rarity = "Uncommon"
 description = "Fill up the Sign Surf AirSpin Meter."
 description2 = "Further ranks will give 720°, 1080°, 1440°, 1800°, 2160°, 2520°, 2880°, and finally, 3600°"
+
+[node name="sign15" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Rail grind"
+score = "[depends*]pts + 2x"
+rarity = "Uncommon"
+description = "Touch a railling or pipe to start railgrinding."
+description2 = "*From around 100 to 500 pts per frame depending on speed. The 2x is awarded only once."
 
 [node name="sign11" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2

@@ -98,7 +98,7 @@ func _on_animation_finished(_anim_name):
 	for otherArea in $boomArea.get_overlapping_areas(): #explode any area on layer 7
 		if otherArea.get_parent() is Mine:
 			otherArea.get_parent().activate_mine(true)
-			
+		
 		if otherArea.get_parent() is bowlingPins:
 			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins
 		
@@ -106,19 +106,10 @@ func _on_animation_finished(_anim_name):
 			var knockback = otherArea.global_transform.origin - $explosionOrigin.global_transform.origin
 			knockback = knockback.normalized() * getKnockBackTo(otherArea)
 			otherArea.get_parent().get_parent().explode(knockback)
-			
+		
 		if otherArea.get_parent() is coral_tube:
-			print("TUBE EXPLODE")
+			otherArea.get_parent().coral_spread()
 			
-			var parent = otherArea.get_parent()
-			
-			if parent is coral_tube:
-				parent.has_method("_coral_spread()")
-				parent._coral_spread()
-				print("TUBE HAS EXPLODED")
-				
-			else:
-					print("Parent does not have _coral_spread method")
 
 	
 	

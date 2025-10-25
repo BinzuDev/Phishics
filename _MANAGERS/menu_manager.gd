@@ -224,7 +224,8 @@ func _on_fps_toggled(toggled_on):
 
 func _on_mobile_toggled(toggled_on):
 	if toggled_on:
-		DisplayServer.window_set_size(Vector2(1080, 1920), 0)
+		DisplayServer.window_set_size(Vector2(1080, 1312), 0)
+		#DisplayServer.window_set_size(Vector2(1080, 1920), 0)
 	else:
 		DisplayServer.window_set_size(Vector2(1152, 648), 0)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=170 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="24_40mal"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
+[ext_resource type="Texture2D" uid="uid://banxnie7e78w5" path="res://Sprites/UI/aim_reticle_surf.png" id="26_ukjyi"]
 [ext_resource type="Texture2D" uid="uid://baga7qw4us4yf" path="res://Sprites/spark.png" id="27_div8h"]
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
@@ -485,7 +486,7 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q0y68"]
-font_size = 50
+font_size = 40
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
@@ -1184,7 +1185,6 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
-visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
@@ -1280,9 +1280,11 @@ transparency = 0.47
 mesh = SubResource("CylinderMesh_dp2w5")
 skeleton = NodePath("../..")
 
-[node name="surfSparks" type="GPUParticles3D" parent="surfPivot"]
+[node name="sparkPivot" type="Node3D" parent="surfPivot"]
+
+[node name="surfSparks" type="GPUParticles3D" parent="surfPivot/sparkPivot"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, -0.707107, 0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0, -0.3, 0.8)
+transform = Transform3D(-5.2764328e-08, -9.052929e-09, 1, -0.70710695, 0.70710695, -3.0908616e-08, -0.70710695, -0.70710695, -4.371139e-08, 0, -0.3, 0.8)
 amount = 50
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_bsrx0")
@@ -1576,10 +1578,10 @@ label_settings = SubResource("LabelSettings_nmgcd")
 
 [node name="debugLabel2" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
-offset_top = 27.0
-offset_right = 577.0
-offset_bottom = 274.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 582.0
+offset_bottom = 253.0
 text = "debug info"
 label_settings = SubResource("LabelSettings_q0y68")
 
@@ -1763,7 +1765,14 @@ bus = &"fishsfx"
 [node name="rotate" type="Node2D" parent="reticle"]
 
 [node name="reticleR" type="Sprite2D" parent="reticle/rotate"]
+self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("24_40mal")
+offset = Vector2(73, 0)
+region_enabled = true
+region_rect = Rect2(146, 0, 56, 202)
+
+[node name="surfR" type="Sprite2D" parent="reticle/rotate/reticleR"]
+texture = ExtResource("26_ukjyi")
 offset = Vector2(73, 0)
 region_enabled = true
 region_rect = Rect2(146, 0, 56, 202)
@@ -1774,14 +1783,32 @@ offset = Vector2(-73, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 202)
 
+[node name="surfL" type="Sprite2D" parent="reticle/rotate/reticleL"]
+texture = ExtResource("26_ukjyi")
+offset = Vector2(-73, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 202)
+
 [node name="reticleD" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
 offset = Vector2(0, 73)
 region_enabled = true
 region_rect = Rect2(0, 146, 202, 56)
 
+[node name="surfD" type="Sprite2D" parent="reticle/rotate/reticleD"]
+texture = ExtResource("26_ukjyi")
+offset = Vector2(0, 73)
+region_enabled = true
+region_rect = Rect2(0, 146, 202, 56)
+
 [node name="reticleU" type="Sprite2D" parent="reticle/rotate"]
 texture = ExtResource("24_40mal")
+offset = Vector2(0, -73)
+region_enabled = true
+region_rect = Rect2(0, 0, 202, 56)
+
+[node name="surfU" type="Sprite2D" parent="reticle/rotate/reticleU"]
+texture = ExtResource("26_ukjyi")
 offset = Vector2(0, -73)
 region_enabled = true
 region_rect = Rect2(0, 0, 202, 56)

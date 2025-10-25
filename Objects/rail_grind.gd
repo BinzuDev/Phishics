@@ -15,7 +15,7 @@ var progress_last_frame #used to figure out in which direction the hitbox is mov
 var direction := "forward"
 
 func _ready():
-	fish = get_tree().get_first_node_in_group("player") #get the fish
+		
 	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
 		$railMetal.path_node = get_parent().get_path()
 		toolScript() #sets the railpipe model
@@ -27,13 +27,15 @@ func _ready():
 	
 	
 	if !Engine.is_editor_hint(): #when playing the game
+		fish = get_tree().get_first_node_in_group("player") #get the fish
 		if !get_tree().debug_collisions_hint: #if "visible collision shapes" is off
 			$debugStuff.visible = false #hide the debug visuals in game
 	
-	
-##TODO: rotate the player to face the other way when DIRECTION is "BACKWARDS"
-##TODO: homing diving during railgrind is uhhhh.......
+
+
+
 ##TODO: needs sound effects
+##TODO: jumping off of a rail thats close to the ground counts as a pogo jump?????
 
 ##NOTICE: using fish.trueSpeed, you can now get how fast the fish is ACTUALLY moving, use this instead of linear_velocity for calculations.
 ##fish.trueSpeed is a Vector3, so just like with with velocity, you can use fish.trueSpeed.length() to get the total speed without direction
@@ -70,6 +72,12 @@ func real_process(delta):
 			direction = "backward"
 	
 	
+	if direction == "forward":
+		$Area3D.position.z = -3
+		$Area3D.rotation.y = PI
+	else:
+		$Area3D.position.z = 3
+		$Area3D.rotation.y = 0
 	
 	## All the code that should run during railgrinding
 	if isBeingUsed:
@@ -111,11 +119,12 @@ func real_process(delta):
 ## When the fish touches the path
 func _on_area_entered(body):
 	if body is player and fish.surfMode:
-		if mountingCooldown > 30: #so you can't reenter this railgrind for 0.5s after leaving it
+		
+		if mountingCooldown > 15: #so you can't reenter this railgrind for 0.25s after leaving it
 			if mountingCooldown > 100:
 				ScoreManager.update_freshness(self) #freshness
 				ScoreManager.give_points(0, 2, true, "RAILGRIND") #trick
-				mountingCooldown = -20 #stops you from unmounting for 20 frames in case you were spamming jump
+				mountingCooldown = -15 #stops you from unmounting for 15 frames in case you were spamming jump
 			else:
 				mountingCooldown = 0
 			isBeingUsed = true
@@ -133,8 +142,13 @@ func _on_area_entered(body):
 			
 			lock_fish_in_place()
 			var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation
-			mountingSpeed = clamp(hspeed.length()*1.2, 15, 60)  ##sets how fast you'll move on the rail (with clamps)
+			if fish.homing:
+				hspeed *= 0.5
 			
+			mountingSpeed = clamp(hspeed.length()*1.2, 13, 60)  ##sets how fast you'll move on the rail (with clamps)
+			
+			fish.posLastFrame = fish.global_position ##stops trueSpeed from becoming absurdly high from the instant teleportation
+			fish.posLastFrame.x += hspeed.length()/60   #modifiy posLastFrame so trueSpeed isnt 0 either, so you keep your overall speed
 			
 			
 
@@ -150,8 +164,11 @@ func unmount():
 
 ## Sets where the fish is going to be relative to the rail
 func lock_fish_in_place():
-	fish.position = Vector3(0,0.7,0)
-	fish.rotation_degrees = Vector3(0,-45,0)
+	fish.position = Vector3(0,0.5,0)
+	if direction == "forward":
+		fish.rotation_degrees = Vector3(0,-45,0)
+	else:
+		fish.rotation_degrees = Vector3(0,-225,0)
 	fish.linear_velocity = Vector3(0.001,0.001,0.001)
 	fish.angular_velocity = Vector3(0.001,0.001,0.001)
 
@@ -159,7 +176,7 @@ func lock_fish_in_place():
 func debug_stuff():
 	$debugStuff/Label.text = str("Prog: ", snapped(progress_ratio*100, 0.01), "%", 
 						"\nCooldown: ", mountingCooldown, 
-						"\nDirection: ", direction,
+						"\nDirection: ", direction, " (", progress - progress_last_frame, ")",
 						"\nSpeed: ", mountingSpeed)
 	$debugStuff/Visual.material_override.albedo_color = Color("ff0000")
 	if isBeingUsed:

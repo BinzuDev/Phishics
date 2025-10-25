@@ -4322,7 +4322,7 @@ explosionRadius = 50.0
 knockbackMultiplier = 0.7999999999999999
 
 [node name="strike_zone4" parent="group3" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.727, 19.4595, -53.4845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.727, 19.243868, -53.4845)
 disableHoming = true
 
 [node name="strike_zone5" parent="group3" instance=ExtResource("41_rneqk")]
@@ -4768,6 +4768,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.488709, 3.0409703, 6.63947
 
 [node name="coral_tube" parent="newCoral" instance=ExtResource("52_pj311")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.301327, 30.156954, 67.23147)
+color = Color(0.8928293, 0.5639441, 1, 1)
 
 [node name="coral_tree3" parent="newCoral" instance=ExtResource("18_grwv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.976372, 29.844946, 52.5926)
