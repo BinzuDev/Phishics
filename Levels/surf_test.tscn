@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=54 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -185,6 +185,13 @@ point_count = 4
 [sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
+
+[sub_resource type="Curve3D" id="Curve3D_vjny7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7.801511),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -958,47 +965,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.27553, 150.02646, 103.512
 
 [node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
-color = Color(0.62080264, 0.5852254, 1, 1)
+color = Color(0.89609814, 1, 0.66575086, 1)
 randomColorOnReady = true
 
 [node name="coral_tree2" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.966967, 0, 0.2548991, 0, 1, 0, -0.2548991, 0, 0.966967, 107.47085, 118.26219, 99.93042)
-color = Color(0.6005249, 0.83024454, 1, 1)
+color = Color(0.5167332, 0.85, 0.7565927, 1)
 randomColorOnReady = true
 
 [node name="coral_tree3" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.9713577, 0, 0.23761901, 0, 1, 0, -0.23761901, 0, -0.9713577, 111.351944, 118.26219, 100.13271)
-color = Color(0.6302992, 1, 0.87600213, 1)
+color = Color(0.6470686, 0.8049037, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree4" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.98015356, 0, -0.19823657, 0, 1, 0, 0.19823657, 0, -0.98015356, 104.006355, 118.26219, 105.0314)
-color = Color(0.75365114, 0.5419532, 1, 1)
+color = Color(0.64617544, 1, 0.71966696, 1)
 randomColorOnReady = true
 
 [node name="coral_tree5" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.89718664, 0, -0.4416506, 0, 1, 0, 0.4416506, 0, 0.89718664, 107.30346, 118.26219, 104.118965)
-color = Color(0.616617, 0.5904833, 1, 1)
+color = Color(0.5191997, 0.85, 0.7674686, 1)
 randomColorOnReady = true
 
 [node name="coral_tree6" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.7316614, 0, 0.6816679, 0, 1, 0, -0.6816681, 0, -0.7316612, 111.184555, 118.241234, 104.32126)
-color = Color(0.64263517, 1, 0.65588474, 1)
+color = Color(1, 0.415421, 0.874859, 1)
 randomColorOnReady = true
 
 [node name="coral_tree7" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.17851184, 0, -0.98393726, 0, 1, 0, 0.98393726, 0, 0.17851184, 103.72505, 118.26219, 108.63383)
-color = Color(0.57188547, 1, 0.80812865, 1)
+color = Color(0.56788945, 1, 0.5412298, 1)
 randomColorOnReady = true
 
 [node name="coral_tree8" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.94662356, 0, -0.32234016, 0, 1, 0, 0.32234016, 0, 0.94662356, 107.022156, 118.26219, 107.72139)
-color = Color(0.6137637, 1, 0.8694687, 1)
+color = Color(0.9044779, 1, 0.5715134, 1)
 randomColorOnReady = true
 
 [node name="coral_tree9" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.96172935, 0, -0.27399874, 0, 1, 0, 0.27399874, 0, -0.96172935, 110.90325, 118.26219, 107.92368)
-color = Color(1, 0.74087024, 0.46957815, 1)
+color = Color(0.48392177, 0.85, 0.74896914, 1)
 randomColorOnReady = true
 
 [node name="coral_tube" parent="." instance=ExtResource("20_b2h0t")]
@@ -1022,5 +1029,16 @@ color = Color(1, 0.5030652, 0.4604488, 1)
 
 [node name="tripod_family" parent="." instance=ExtResource("22_vjny7")]
 transform = Transform3D(0.9571933, 0, 0.28944948, 0, 1, 0, -0.28944948, 0, 0.9571933, -5.5563965, 120.57838, 85.73564)
+
+[node name="railgrind1" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0844398, 3.9167624, 3.9273896)
+curve = SubResource("Curve3D_vjny7")
+debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="rail_grind" parent="railgrind1" instance=ExtResource("7_p34o4")]
+transform = Transform3D(0.9999922, 0, 0, 0, 0.9999841, 0, 0, 0, 0.99999213, 0, 0, -3.6399376)
+progress = 3.64
+loop = false
+invisibleRail = true
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]

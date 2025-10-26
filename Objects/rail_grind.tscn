@@ -61,6 +61,7 @@ process_priority = -1
 process_physics_priority = -1
 transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, 0, 0, 0)
 script = ExtResource("1_efpfo")
+enableAreaCollison = null
 
 [node name="Area3D" type="Area3D" parent="."]
 process_priority = -1
@@ -73,6 +74,7 @@ priority = 10
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 0, 0.9999999, 5.9604645e-08, -2.9802322e-08, -5.9604645e-08, 0.9999999, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_efpfo")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9999999, 2.9802013e-08, 1.7763568e-15, 0, 1.5892947e-08, -0.9999947, -2.9802166e-08, 0.9999947, 1.5892947e-08, 0, 0, 0)

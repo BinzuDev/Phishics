@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://kfqjubvfovw2"]
+[gd_scene load_steps=12 format=3 uid="uid://kfqjubvfovw2"]
 
+[ext_resource type="Script" uid="uid://dmsqwq8qq85ko" path="res://Objects/tripod_family.gd" id="1_asaya"]
 [ext_resource type="PackedScene" uid="uid://kqms307ljru5" path="res://Models/tripod_fish.tscn" id="1_uk283"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="2_1vmv4"]
+[ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="2_asaya"]
 [ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="3_asaya"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="4_wjwj0"]
 
@@ -27,8 +29,16 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 [sub_resource type="SphereShape3D" id="SphereShape3D_5yavy"]
 radius = 2.9706066
 
+[sub_resource type="Curve3D" id="Curve3D_asaya"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.9540324, -6.290509, -3.8951473, 0, 0, 0, 0, 0, 0, -2.1754694, -3.3231616, -3.859011, 0, 0, 0, 0, 0, 0, -6.3207097, -3.723816, -3.9221923),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="tripod_family" type="Node3D"]
 transform = Transform3D(0.9571933, 0, 0.28944948, 0, 1, 0, -0.28944948, 0, 0.9571933, 0, 0, 0)
+script = ExtResource("1_asaya")
 
 [node name="tripod_fish_dad" parent="." instance=ExtResource("1_uk283")]
 
@@ -55,3 +65,14 @@ transform = Transform3D(0.13913496, 0, 0.14367142, 0, 0.2, 0, -0.14367142, 0, 0.
 
 [node name="tripod_fish3" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
 transform = Transform3D(0.1673311, 0, 0.101503044, 0, 0.1957104, 0, -0.101503044, 0, 0.1673311, -2.5233688, -1.881691, -2.079689)
+
+[node name="railgrind1" type="Path3D" parent="tripod_fish_dad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0844398, 3.9167624, 3.9273896)
+curve = SubResource("Curve3D_asaya")
+debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[node name="rail_grind" parent="tripod_fish_dad/railgrind1" instance=ExtResource("2_asaya")]
+transform = Transform3D(0.01800276, -0.09570316, 0.9952376, -0.028657401, 0.99493223, 0.096193776, -0.99941605, -0.03025276, 0.015169218, -2.6026137, -3.3644469, -3.8655214)
+progress = 3.64
+loop = false
+invisibleRail = true
