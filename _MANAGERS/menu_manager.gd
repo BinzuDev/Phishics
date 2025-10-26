@@ -22,7 +22,15 @@ func _process(_delta):
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
 	
-	$tips.visible = ($PauseMenu.visible or GameManager.isOnTitleScreen) and !isSubmenuOpen()
+	%HelpTip.visible = GameManager.gamePaused or GameManager.isOnTitleScreen
+	if %TrickList.visible:
+		%HelpTip.visible = false
+	
+	%HelpTip.label_settings.font_size = 40
+	%HelpTip.label_settings.outline_size = 20
+	if %Settings.visible:
+		%HelpTip.label_settings.font_size = 30
+		%HelpTip.label_settings.outline_size = 15
 	
 	
 	#AudioServer.set_bus_mute(0, !get_window().has_focus())
@@ -118,7 +126,7 @@ func resetFocus():
 	
 
 func isSubmenuOpen():
-	return %TrickList.visible
+	return %TrickList.visible or %Settings.visible
 
 
 	## Pause menu options ##
@@ -132,7 +140,7 @@ func _on_tricks_pressed():
 	GameManager.rememberUichoice()
 	%PauseList.visible = false
 	%TrickList.visible = true
-	$tips.visible = false
+	%HelpTip.visible = false
 	GameManager.disableMenuControl = false
 	%trickTabs.current_tab = 0
 	%trickGoBack.forceReset()
@@ -176,7 +184,7 @@ func set_help_tip(newText: String):
 func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 	$PauseMenu.visible = false
 	%TrickList.visible = false
-	$tips.visible = false
+	%HelpTip.visible = false
 
 func _on_fish_debug_toggled(toggled_on):
 	get_tree().get_first_node_in_group("player").find_child("debugLabel").visible = toggled_on
@@ -224,8 +232,8 @@ func _on_fps_toggled(toggled_on):
 
 func _on_mobile_toggled(toggled_on):
 	if toggled_on:
-		DisplayServer.window_set_size(Vector2(1080, 1312), 0)
-		#DisplayServer.window_set_size(Vector2(1080, 1920), 0)
+		#DisplayServer.window_set_size(Vector2(1080, 1312), 0)
+		DisplayServer.window_set_size(Vector2(1080, 1920), 0)
 	else:
 		DisplayServer.window_set_size(Vector2(1152, 648), 0)
 

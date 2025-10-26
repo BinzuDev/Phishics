@@ -3584,6 +3584,9 @@ transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 162.
 [node name="Basketballhoop5" parent="highUpSection" instance=ExtResource("11_vbdqq")]
 transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 164.088, 32.3458, -157.613)
 
+[node name="Worm" parent="highUpSection" instance=ExtResource("16_e1uki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.72995, 104.40183, -158.90443)
+
 [node name="group3" type="Node3D" parent="."]
 
 [node name="OOBarea" type="CSGCombiner3D" parent="group3"]

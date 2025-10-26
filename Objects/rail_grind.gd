@@ -64,30 +64,30 @@ func real_process(delta):
 		var closest_offset = path_3d.curve.get_closest_offset(target_position) #calculate where the hitbox should move
 		self.progress = closest_offset #move hitbox
 		#set the movement direction by comparing where it was last frame to where it is now
-		if (progress - progress_last_frame) >= 0: 
+		if (progress - progress_last_frame) > 0 or progress_ratio == 0.0: 
 			direction = "forward" 
-		else:
+		elif (progress - progress_last_frame) < 0 or progress_ratio == 1.0: 
 			direction = "backward"
-		if progress_ratio == 1.0: #special exception so mounting at the end of the rail doesnt make you unmount instantly
-			direction = "backward"
+		#if its exactly 0 then dont change
+		
+		
 	
 	
-	if direction == "forward":
-		$Area3D.position.z = -3
-		$Area3D.rotation.y = PI
-	else:
-		$Area3D.position.z = 3
-		$Area3D.rotation.y = 0
+	#if direction == "forward":
+		#$Area3D.position.z = -2.5
+		#$Area3D.rotation.y = PI
+	#else:
+		#$Area3D.position.z = 2.5
+		#$Area3D.rotation.y = 0
 	
 	## All the code that should run during railgrinding
 	if isBeingUsed:
-		ScoreManager.give_points(mountingSpeed*8, 0, false, "RAILGRIND") #gives points every frame
+		ScoreManager.give_points(mountingSpeed*6, 0, false, "RAILGRIND") #gives points every frame
 		
 		lock_fish_in_place() #put the fish above the rail
 		
-		#Make the combo timer go down 50% slower by doing +1 every two frames
-		if GameManager.gameTimer % 2:
-			ScoreManager.comboTimer += 1
+		#Make the combo timer go down 33% slower
+		ScoreManager.comboTimer += 0.33
 		
 		## Movement
 		if direction == "forward":

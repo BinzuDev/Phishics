@@ -36,6 +36,10 @@ func _on_tricks_button_pressed():
 	$UI.visible = false
 
 
+func _on_settings_button_pressed():
+	MenuManager._on_settings_pressed()
+	$UI.visible = false
+
 
 func _on_credits_button_pressed():
 	$UI/MenuOptions.visible = false

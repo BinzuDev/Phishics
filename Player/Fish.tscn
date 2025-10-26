@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=172 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -245,6 +245,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%surfingFish:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.7423004e-08, 3.1415925, -1.5707964)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%surfingFish:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2, 0.2, 0.21)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%surfingFish:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.67, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2owy6"]
 resource_name = "kick_flip"
@@ -285,6 +321,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%brakingPivot/counterPivot/boardPivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0m6um"]
@@ -351,9 +399,199 @@ tracks/4/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ukjyi"]
+resource_name = "clockwise"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%brakingPivot/counterPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%fishPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0.6981317, 0), Vector3(0, -0.3351032, 0), Vector3(0, -0.3351032, 0), Vector3(0, -0.5235988, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%brakingPivot/counterPivot/boardPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.5, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.7853982, 0), Vector3(0, -6.806784, 0), Vector3(0, -6.2831855, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%fishPivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0.019999996, 0), Vector3(0, 0.5, 0), Vector3(0, 0.019999996, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%brakingPivot/counterPivot/boardPivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%surfingFish:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.67, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%surfingFish:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.7423004e-08, 3.1415925, -1.5707964)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%surfingFish:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2, 0.2, 0.21)]
+}
+
+[sub_resource type="Animation" id="Animation_dafiy"]
+resource_name = "counterClockwise"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%brakingPivot/counterPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0.5235988, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%fishPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%brakingPivot/counterPivot/boardPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2617994, 0), Vector3(0, 0.13962634, -0.15707964), Vector3(-0.12287118, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%fishPivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.25, 3, 1),
+"update": 0,
+"values": [Vector3(0, 0.019999996, 0), Vector3(0, 0.8, 0), Vector3(0, 0.019999996, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%brakingPivot/counterPivot/boardPivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%surfingFish:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.333, 3, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, -1.5707964), Vector3(1.5707964, 3.1415927, -1.5707964), Vector3(0, 3.1415927, -1.5707964)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%surfingFish:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.2, 0.2, 0.21), Vector3(0.32, 0.32, 0.28), Vector3(0.2, 0.2, 0.21)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m6um"]
 _data = {
 &"RESET": SubResource("Animation_urbyt"),
+&"clockwise": SubResource("Animation_ukjyi"),
+&"counterClockwise": SubResource("Animation_dafiy"),
 &"kick_flip": SubResource("Animation_2owy6"),
 &"tornado": SubResource("Animation_0m6um")
 }
@@ -1219,9 +1457,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.17, 0.2)
 
 [node name="counterPivot" type="Node3D" parent="surfPivot/brakingPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -0.2)
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, -0.2)
 
 [node name="boardPivot" type="Node3D" parent="surfPivot/brakingPivot/counterPivot"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="surfSign" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/boardPivot"]
 unique_name_in_owner = true
@@ -1245,17 +1484,17 @@ skeleton = NodePath("../../../..")
 
 [node name="fishPivot" type="Node3D" parent="surfPivot/brakingPivot/counterPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019999996, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.019999996, 0)
 
 [node name="shadowMesh" type="MeshInstance3D" parent="surfPivot/brakingPivot/counterPivot/fishPivot"]
-transform = Transform3D(-4.37114e-08, 7.43094e-09, 0.38, 1, 0, 1.66103e-08, 0, 0.17, -1.66103e-08, -2.51183e-08, 0.724639, -1.18023e-22)
+transform = Transform3D(-4.3711395e-08, 7.4309368e-09, 0.38, 1, -7.430936e-09, 1.6610331e-08, 4.3711392e-08, 0.17, -1.6610327e-08, -2.51183e-08, 0.724639, -1.18023e-22)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_j2ykt")
 skeleton = NodePath("../../boardPivot/surfShadow")
 
 [node name="surfingFish" type="Sprite3D" parent="surfPivot/brakingPivot/counterPivot/fishPivot"]
 unique_name_in_owner = true
-transform = Transform3D(3.82137e-16, -0.2, 9.17939e-09, -0.2, 1.09268e-15, 1.83588e-08, -1.74846e-08, -8.74228e-09, -0.21, 0, 0.67, 0)
+transform = Transform3D(8.742281e-09, -0.2, 3.1709117e-08, -0.2, -8.742278e-09, 1.8358831e-08, -1.74846e-08, -3.019916e-08, -0.21, 0, 0.67, 0)
 axis = 1
 texture = ExtResource("2_j2ykt")
 

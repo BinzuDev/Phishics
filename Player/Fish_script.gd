@@ -244,20 +244,19 @@ func _physics_process(_delta: float) -> void:
 	if $homing/area.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
 		closest = get_closest_target()
 		if closest != null:
-			if closestLastFrame != closest:
+			if closestLastFrame != closest: #when the target changes
 				closestLastFrame = closest
+				
+				#regular reticle or railgrind reticle
+				targetingRail = closest.get_parent() is railGrind and surfMode == true
+				for child in $reticle/rotate.get_children():
+					child.self_modulate.a = float(!targetingRail)
+					child.get_child(0).visible = targetingRail
+				
 				if !$reticle.visible: #only play the animation when it first appears
 					$reticle/reticleAnimation.play("reticle_appear1")
 					$reticle/sfx.play()
-					
-					#regular reticle or railgrind reticle
-					targetingRail = closest.get_parent() is railGrind and surfMode == true
-					for child in $reticle/rotate.get_children():
-						child.self_modulate.a = float(!targetingRail)
-						child.get_child(0).visible = targetingRail
-						
-					
-					
+			
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			var center =  MenuManager.get_UI_size()/2
 			#If the target is behind the camera, the reticle gets reversed, so unreverse it.
@@ -628,8 +627,7 @@ func _physics_process(_delta: float) -> void:
 		if $surfPivot.global_transform.basis.y.y < 0.2 and %surfRC2.is_colliding():
 			var worth = clamp(linear_velocity.length()*height, 0, 1000)
 			ScoreManager.give_points(worth, 0, false, "WALLRIDE")
-			if GameManager.gameTimer % 2: #make combo timer 50% slower
-				ScoreManager.comboTimer += 1
+			ScoreManager.comboTimer += 0.5  #make combo timer 50% slower
 			#print(worth)
 		
 		
@@ -672,6 +670,7 @@ func _physics_process(_delta: float) -> void:
 		
 		if isRailGrinding:
 			surfState = "railGrinding"
+			updateInputHistory()
 		else:
 			if %canSurf.is_colliding(): #the one thats always pointing globally down
 				isHalfPiping = false
@@ -764,7 +763,7 @@ func _physics_process(_delta: float) -> void:
 		
 		
 	
-	
+	#lose style points very quickly when not moving
 	if trueSpeed.length() < 0.1 and !tiplanding and !isHeld:
 		ScoreManager.idle = true
 	else:
@@ -1084,25 +1083,31 @@ func updateInputHistory():
 		if surfRotationType != "clockwise":
 			surfRotationType = "counterClockwise"
 			newTrick = true
+	
 	if newTrick:
 		inputHistory = ["","",""]
-		if angular_velocity.length() < 80:
-			angular_velocity *= 80/angular_velocity.length()
-		
-		
-		
-		if surfRotationType == prevRotation: 
+		if isRailGrinding:
+			$surfPivot/skateTricks.play(surfRotationType)
 			ScoreManager.give_points(800, 0, true, "INPUT COMBO")
-			if angular_velocity.length() < 180:
-				angular_velocity *= 1.05 #doing the same rotation twice in a row
-			spinBoostBonus = 2.7
-			$spin_low.play()
-		else:
-			ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
-			if angular_velocity.length() < 220:
-				angular_velocity *= 1.13 #doing a different rotation
-			spinBoostBonus = 3.8
 			$spin_high.play()
+			surfRotationType = ""
+			
+		else: ##when not railgrinding
+			if angular_velocity.length() < 80:
+				angular_velocity *= 80/angular_velocity.length()
+			
+			if surfRotationType == prevRotation: 
+				ScoreManager.give_points(800, 0, true, "INPUT COMBO")
+				if angular_velocity.length() < 180:
+					angular_velocity *= 1.05 #doing the same rotation twice in a row
+				spinBoostBonus = 2.7
+				$spin_low.play()
+			else:
+				ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
+				if angular_velocity.length() < 220:
+					angular_velocity *= 1.13 #doing a different rotation
+				spinBoostBonus = 3.8
+				$spin_high.play()
 			
 		
 
@@ -1169,6 +1174,7 @@ func force_position(newPos : Vector3):
 
 func get_closest_target():
 	var crabs = $homing/area.get_overlapping_areas()
+
 	var detectedCrabs = []
 	
 	## Weed out all of the crabs behind a walls
@@ -1180,8 +1186,8 @@ func get_closest_target():
 			#Ignore railgrinds when not in surf mode
 			if crab.get_parent() is railGrind and not surfMode:
 				continue
-			#ignore everything BUT railgrinds when in surf mode
-			if crab.get_parent() is not railGrind and surfMode:
+			#ignore everything BUT railgrinds when in railgrinding
+			if crab.get_parent() is not railGrind and isRailGrinding:
 				continue
 			
 			detectedCrabs.append(crab)

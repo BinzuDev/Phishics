@@ -106,11 +106,11 @@ func _process(_delta):
 	
 	
 	if Input.is_action_just_pressed("F11"): #fullscreen toggle
-		if DisplayServer.window_get_mode() == 4:
+		if DisplayServer.window_get_mode() >= 3:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			get_window().size = Vector2(1152, 648)
 		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	if freezeframe > 0:
 		freezeframe -= 1

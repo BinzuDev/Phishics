@@ -54,11 +54,11 @@
 [ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="39_4h2r5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
-line_spacing = 11.0
+line_spacing = 0.0
 font = ExtResource("3_p1amj")
 font_size = 40
 font_color = Color(0.983334, 0, 1, 1)
-outline_size = 19
+outline_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s76r"]
 resource_local_to_scene = true
@@ -443,28 +443,28 @@ process_mode = 3
 script = ExtResource("1_kt1dn")
 
 [node name="tips" type="MarginContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.5
-offset_top = -61.0
-offset_right = 320.5
+offset_top = -45.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_bottom = 22
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 20
 metadata/_edit_lock_ = true
 
 [node name="HelpTip" type="Label" parent="tips"]
 unique_name_in_owner = true
 z_index = 998
+custom_minimum_size = Vector2(500, 20)
 layout_mode = 2
-size_flags_vertical = 8
-text = "Extra info on the selected menu option"
+text = "Extra info on the selected menu option
+g  ggf gf gf fg gf fg fg "
 label_settings = SubResource("LabelSettings_lv8kq")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
@@ -565,6 +565,10 @@ text = "Fish debug info"
 layout_mode = 2
 text = "Surf debug info"
 
+[node name="noclip" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
+layout_mode = 2
+text = "noclip"
+
 [node name="style" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
 text = "Style debug info"
@@ -573,10 +577,6 @@ text = "Style debug info"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Hide all UI"
-
-[node name="noclip" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
-layout_mode = 2
-text = "noclip"
 
 [node name="fps" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
@@ -660,7 +660,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 3
+current_tab = 2
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -860,7 +860,6 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 2849
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 1
@@ -1023,7 +1022,6 @@ description2 = "Since the Taunt also counts as an interaction, try to only use i
 layout_mode = 2
 
 [node name="Interactibles" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1171,10 +1169,10 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 1693
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 3
@@ -1259,12 +1257,13 @@ description = "Airborne while surfing: Input the keyboard equivalent of spinning
 description2 = "Clockwise (right flip):  🡄🡅🡆, 🡅🡆🡇, 🡆🡇🡄, 🡇🡄🡅    counterClockwise (left flip): 🡆🡅🡄, 🡅🡄🡇, 🡄🡇🡆, 🡇🡆🡅"
 
 [node name="sign9" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 205)
 layout_mode = 2
 trickName = "Input Combo"
 score = "800pts"
 rarity = "Uncommon"
-description = ""
-description2 = "Perform a surf spin combo input.
+description = "Perform a surf spin combo input."
+description2 = "
   Alternating your spin combos will reward you with more points and spinning speed than if you input the same one over and over.
   Its impossible to reverse spin direction. AKA: frontflip to backflip is impossible. But you CAN do frontflip->sideflip->backflip"
 
@@ -1282,7 +1281,15 @@ trickName = "Rail grind"
 score = "[depends*]pts + 2x"
 rarity = "Uncommon"
 description = "Touch a railling or pipe to start railgrinding."
-description2 = "*From around 100 to 500 pts per frame depending on speed. The 2x is awarded only once."
+description2 = "*From around 80 to 350 pts per frame depending on speed. The 2x is awarded only once."
+
+[node name="sign16" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Rail input combo"
+score = "800pts"
+rarity = "Uncommon"
+description = "Perform any of the surf spin combo inputs while on a rail."
+description2 = "Unlike regurlar airborne combo inputs, they can be performed in any order with no penality or bonus."
 
 [node name="sign11" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1399,7 +1406,8 @@ unique_name_in_owner = true
 layout_mode = 2
 min_value = 0.2
 sliderName = "3D resolution scale"
-helpText = "Lower the game's resolution without affecting UI. (May help with performance on low end computers.)"
+helpText = "Lower the game's resolution without affecting UI
+(May help with performance on low end computers.)"
 
 [node name="Button" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("13_ftyur")]
 layout_mode = 2
@@ -1429,6 +1437,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 60
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer"]
 layout_mode = 2
@@ -1468,6 +1477,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 150
+metadata/_edit_lock_ = true
 
 [node name="volumeSliders" type="VBoxContainer" parent="Settings/settingsTabs/Audio/MarginContainer2"]
 layout_mode = 2
@@ -1478,13 +1488,11 @@ theme_override_constants/separation = 25
 unique_name_in_owner = true
 layout_mode = 2
 sliderName = "Music"
-helpText = ""
 
 [node name="voiceVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
 sliderName = "Voice"
-helpText = ""
 
 [node name="trickVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
@@ -1493,13 +1501,11 @@ max_value = 5.0
 step = 0.25
 value = 3.5
 sliderName = "Tricks"
-helpText = ""
 
 [node name="sfxVol" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("14_ftyur")]
 unique_name_in_owner = true
 layout_mode = 2
 sliderName = "SFX"
-helpText = ""
 
 [node name="Button" parent="Settings/settingsTabs/Audio/MarginContainer2/volumeSliders" instance=ExtResource("13_ftyur")]
 custom_minimum_size = Vector2(350, 70)
@@ -1533,6 +1539,15 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7i77")
 metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="Settings/settingsTabs/Controls"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TOdo:
+left handed mode
+comfort mode
+Jump meter"
 
 [node name="Save data" type="Panel" parent="Settings/settingsTabs"]
 visible = false
@@ -1666,9 +1681,9 @@ grow_vertical = 0
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/music" to="." method="_on_music_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/fish" to="." method="_on_fish_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/surf" to="." method="_on_surf_debug_toggled"]
+[connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/noclip" to="." method="_on_noclip_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/style" to="." method="_on_style_debug_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/hideUI" to="." method="_on_hide_ui_toggled"]
-[connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/noclip" to="." method="_on_noclip_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/fps" to="." method="_on_fps_toggled"]
 [connection signal="toggled" from="PauseMenu/DebugList/HBoxContainer/mobile" to="." method="_on_mobile_toggled"]
 [connection signal="on_button_pressed" from="TrickList/Panel/trickGoBack" to="." method="close_tricks"]

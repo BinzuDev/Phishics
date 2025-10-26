@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=37 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -82,6 +82,19 @@ shadow_color = Color(0.02, 0.02, 0.02, 0.6)
 shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cjeb"]
+resource_local_to_scene = true
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.25, 0.7875, 1)
+border_color = Color(0, 0.966667, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 15
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 15
+shadow_color = Color(0.02, 0.02, 0.02, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txomp"]
 resource_local_to_scene = true
 content_margin_top = 8.0
 content_margin_bottom = 8.0
@@ -276,7 +289,7 @@ transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.
 texture = ExtResource("13_13dlr")
 
 [node name="CoralSprite5" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.01521, 0.377909, 2.64061)
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.353708, 0.37790924, 2.834032)
 texture = ExtResource("13_13dlr")
 
 [node name="CoralSprite6" type="Sprite3D" parent="Corals"]
@@ -386,11 +399,20 @@ helpText = "Start a game of Phishics!"
 
 [node name="tricks" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5cjeb")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5cjeb")
 text = "TRICKS"
 helpText = "Discover all the techniques you can pull off!"
+
+[node name="settings" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_txomp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_txomp")
+text = "SETTINGS"
+helpText = "Adjust the game to fit your preferences."
 
 [node name="credits" parent="UI/MenuOptions/optionList" instance=ExtResource("6_t7vd5")]
 unique_name_in_owner = true
@@ -702,6 +724,8 @@ texture = ExtResource("10_68fed")
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/play" to="." method="_on_play_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tricks" to="." method="_on_tricks_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/tricks" to="." method="_on_tricks_button_pressed"]
+[connection signal="on_button_hovered" from="UI/MenuOptions/optionList/settings" to="." method="_on_tricks_hovered"]
+[connection signal="on_button_pressed" from="UI/MenuOptions/optionList/settings" to="." method="_on_settings_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/credits" to="." method="_on_credits_button_pressed"]
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/Exit" to="." method="_on_exit_hovered"]
