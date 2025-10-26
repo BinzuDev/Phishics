@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://kqms307ljru5"]
+
+[ext_resource type="Texture2D" uid="uid://qwf48li303oi" path="res://Sprites/tripod_fish/tripod_fish_sprite.png" id="1_ooidj"]
+[ext_resource type="Texture2D" uid="uid://dmjabhebbfx21" path="res://Sprites/tripod_fish/tripod_legs_sprite.png" id="2_b7qo2"]
+
+[node name="tripod_fish" type="Node3D"]
+
+[node name="tripod_fish_sprite" type="Sprite3D" parent="."]
+texture_filter = 0
+texture = ExtResource("1_ooidj")
+
+[node name="tripod_fish_legs_sprite" type="Sprite3D" parent="tripod_fish_sprite"]
+transform = Transform3D(1, 0, 0, 0, 0.93059015, 0.36606273, 0, -0.36606273, 0.93059015, -0.47531796, -1.2129823, 0.4902606)
+texture_filter = 0
+texture = ExtResource("2_b7qo2")
+
+[node name="tripod_fish_legs_sprite2" type="Sprite3D" parent="tripod_fish_sprite"]
+transform = Transform3D(1, 0, 0, 0, 0.93041754, -0.36650118, 0, 0.36650118, 0.93041754, -0.45299745, -1.213, -0.5051055)
+texture_filter = 0
+texture = ExtResource("2_b7qo2")

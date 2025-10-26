@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://kfqjubvfovw2"]
+
+[ext_resource type="PackedScene" uid="uid://kqms307ljru5" path="res://Models/tripod_fish.tscn" id="1_uk283"]
+[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="2_1vmv4"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="3_asaya"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="4_wjwj0"]
+
+[sub_resource type="Resource" id="Resource_grv4d"]
+script = ExtResource("3_asaya")
+name = "Tripod Fish"
+text = "I'm a tripod fish, yo."
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_c2ka6"]
+script = ExtResource("3_asaya")
+name = "Tripod Fish"
+text = "Find my kids, yo."
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_iixud"]
+script = ExtResource("4_wjwj0")
+cameraOverride = NodePath("Camera3D")
+pauseStyleSystem = true
+messages = Array[ExtResource("3_asaya")]([SubResource("Resource_grv4d"), SubResource("Resource_c2ka6")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5yavy"]
+radius = 2.9706066
+
+[node name="tripod_family" type="Node3D"]
+transform = Transform3D(0.9571933, 0, 0.28944948, 0, 1, 0, -0.28944948, 0, 0.9571933, 0, 0, 0)
+
+[node name="tripod_fish_dad" parent="." instance=ExtResource("1_uk283")]
+
+[node name="dialogueArea" parent="tripod_fish_dad" instance=ExtResource("2_1vmv4")]
+dialogue = SubResource("Resource_iixud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tripod_fish_dad/dialogueArea"]
+shape = SubResource("SphereShape3D_5yavy")
+
+[node name="Camera3D" type="Camera3D" parent="tripod_fish_dad/dialogueArea"]
+transform = Transform3D(0.7858695, -0.4176454, -0.45604998, 0.17504452, 0.85755205, -0.48369825, 0.59310097, 0.30029452, 0.7470305, -1.9547993, -0.20420937, 0.61573)
+
+[node name="tripod_fish2" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
+transform = Transform3D(0.19143866, 0, -0.057889897, 0, 0.2, 0, 0.057889897, 0, 0.19143866, -0.6600418, -1.881691, 2.290863)
+
+[node name="tripod_fish4" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
+transform = Transform3D(0.19523878, 0, 0.04337992, 0, 0.2, 0, -0.04337992, 0, 0.19523878, 1.141058, -1.881691, -2.3568954)
+
+[node name="tripod_fish5" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
+transform = Transform3D(0.14625885, 0, -0.13641247, 0, 0.2, 0, 0.13641247, 0, 0.14625885, 1.5371304, -1.881691, 1.4304276)
+
+[node name="tripod_fish6" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
+transform = Transform3D(0.13913496, 0, 0.14367142, 0, 0.2, 0, -0.14367142, 0, 0.13913496, -2.1264534, -1.881691, 0.32257843)
+
+[node name="tripod_fish3" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
+transform = Transform3D(0.1673311, 0, 0.101503044, 0, 0.1957104, 0, -0.101503044, 0, 0.1673311, -2.5233688, -1.881691, -2.079689)
