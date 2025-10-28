@@ -656,6 +656,10 @@ transform = Transform3D(-0.4851486, -0.24056609, -0.8406894, -0.4442443, 0.89590
 strength = 50.0
 centerPlayer = true
 
+[node name="BoostRing14" parent="." instance=ExtResource("13_4rq4h")]
+transform = Transform3D(-4.371139e-08, 1.0000001, 0, -1, -4.3711392e-08, 0, 0, 0, 0.99999994, 35.97394, 119.11675, -9.453312)
+strength = 18.0
+
 [node name="hook" parent="." instance=ExtResource("13_p34o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.362331, 143.49173, 70.40018)
 lineLength = 24.426028442382812
@@ -979,47 +983,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.27553, 150.02646, 103.512
 
 [node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
-color = Color(0.71317697, 1, 0.6738674, 1)
+color = Color(0.59385365, 0.7794206, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree2" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.966967, 0, 0.2548991, 0, 1, 0, -0.2548991, 0, 0.966967, 107.47085, 118.26219, 99.93042)
-color = Color(0.5635753, 1, 0.78480226, 1)
+color = Color(0.64011574, 0.6119381, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree3" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.9713577, 0, 0.23761901, 0, 1, 0, -0.23761901, 0, -0.9713577, 111.351944, 118.26219, 100.13271)
-color = Color(0.9089683, 0.52721727, 1, 1)
+color = Color(0.6669247, 0.8957893, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree4" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.98015356, 0, -0.19823657, 0, 1, 0, 0.19823657, 0, -0.98015356, 104.006355, 118.26219, 105.0314)
-color = Color(0.5576159, 0.66256785, 1, 1)
+color = Color(0.5339615, 0.64405656, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree5" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.89718664, 0, -0.4416506, 0, 1, 0, 0.4416506, 0, 0.89718664, 107.30346, 118.26219, 104.118965)
-color = Color(0.56594574, 0.7485553, 1, 1)
+color = Color(0.80803716, 0.5540346, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree6" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.7316614, 0, 0.6816679, 0, 1, 0, -0.6816681, 0, -0.7316612, 111.184555, 118.241234, 104.32126)
-color = Color(0.8379395, 0.59227335, 1, 1)
+color = Color(1, 0.992544, 0.5367116, 1)
 randomColorOnReady = true
 
 [node name="coral_tree7" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.17851184, 0, -0.98393726, 0, 1, 0, 0.98393726, 0, 0.17851184, 103.72505, 118.26219, 108.63383)
-color = Color(0.57014227, 0.85, 0.7682816, 1)
+color = Color(0.58085525, 0.6541137, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree8" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.94662356, 0, -0.32234016, 0, 1, 0, 0.32234016, 0, 0.94662356, 107.022156, 118.26219, 107.72139)
-color = Color(1, 0.32452714, 0.34902924, 1)
+color = Color(0.79285485, 0.58375585, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree9" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.96172935, 0, -0.27399874, 0, 1, 0, 0.27399874, 0, -0.96172935, 110.90325, 118.26219, 107.92368)
-color = Color(0.910674, 0.6107384, 1, 1)
+color = Color(0.69323313, 1, 0.65546846, 1)
 randomColorOnReady = true
 
 [node name="coral_tube" parent="." instance=ExtResource("20_b2h0t")]

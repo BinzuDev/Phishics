@@ -578,7 +578,8 @@ func _physics_process(_delta: float) -> void:
 	var floor_normal = %canSurf.get_collision_normal().normalized() #deaulf value to avoid crash
 	$sign_scraping.volume_linear = 0
 	$skateboarding.volume_linear = 0
-	%surfSparks.emitting = (surfMode and %surfRC3.is_colliding() and !skateboardSurf) or isRailGrinding
+	if !$surfPivot/skateTricks.is_playing():
+		%surfSparks.emitting = (surfMode and %surfRC3.is_colliding() and !skateboardSurf) or isRailGrinding
 	$RemoteTransformSurf.update_rotation = isRailGrinding #stops the fish from rotating during railgrind
 	
 	if surfMode:

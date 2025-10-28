@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://but2fghkuo68i"]
+[gd_scene load_steps=14 format=3 uid="uid://but2fghkuo68i"]
 
 [ext_resource type="Script" uid="uid://bhbxwcjt7ci1w" path="res://Objects/rail_grind.gd" id="1_efpfo"]
 [ext_resource type="Shader" uid="uid://bl3gqn2ff7hix" path="res://Shaders/stylized_metal.gdshader" id="2_3r5ah"]
@@ -56,12 +56,15 @@ height = 4.5
 radial_segments = 8
 rings = 0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_fhqtv"]
+top_radius = 0.0
+radial_segments = 8
+
 [node name="rail_grind" type="PathFollow3D"]
 process_priority = -1
 process_physics_priority = -1
 transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, 0, 0, 0)
 script = ExtResource("1_efpfo")
-enableAreaCollison = null
 
 [node name="Area3D" type="Area3D" parent="."]
 process_priority = -1
@@ -74,27 +77,26 @@ priority = 10
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 0, 0.9999999, 5.9604645e-08, -2.9802322e-08, -5.9604645e-08, 0.9999999, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_efpfo")
-disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9999999, 2.9802013e-08, 1.7763568e-15, 0, 1.5892947e-08, -0.9999947, -2.9802166e-08, 0.9999947, 1.5892947e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_3r5ah")
 
-[node name="homingTargetFront" type="Area3D" parent="."]
+[node name="HomingTargetBack" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 2.5)
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="homingTargetFront"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HomingTargetBack"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 4.440892e-16, 1, 4.4703494e-08, -2.9802322e-08, -7.450581e-08, 0.99999994, 0, 0, 0)
 shape = SubResource("SphereShape3D_3r5ah")
 
-[node name="HomingTargetBack" type="Area3D" parent="."]
+[node name="HomingTargetFront" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, -2.5)
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="HomingTargetBack"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HomingTargetFront"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 0, 0.9999999, 5.9604645e-08, -2.9802322e-08, -5.9604645e-08, 0.9999999, 0, 0, 0)
 shape = SubResource("SphereShape3D_3r5ah")
 
@@ -120,13 +122,15 @@ material = SubResource("ShaderMaterial_fhqtv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="debugStuff"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 4.4408916e-16, 0.9999999, 4.4703484e-08, -2.9802319e-08, -7.450579e-08, 0.99999976, 0, 0, 2.4999998)
+visible = false
 mesh = SubResource("SphereMesh_3r5ah")
-skeleton = NodePath("../../homingTargetFront/CollisionShape3D2")
+skeleton = NodePath("../../HomingTargetBack/CollisionShape3D2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="debugStuff"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 4.4408916e-16, 0.9999999, 4.4703484e-08, -2.9802319e-08, -7.450579e-08, 0.99999976, 0, 0, -2.5)
+visible = false
 mesh = SubResource("SphereMesh_3r5ah")
-skeleton = NodePath("../../homingTargetFront/CollisionShape3D2")
+skeleton = NodePath("../../HomingTargetBack/CollisionShape3D2")
 
 [node name="hitbox" type="MeshInstance3D" parent="debugStuff"]
 transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0, 0.49999994, -7.450579e-09)
@@ -156,5 +160,10 @@ font_size = 38
 transform = Transform3D(1, 0, 0, 0, -4.371138e-08, 0.9999999, 0, -0.9999999, -4.371138e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_efpfo")
 skeleton = NodePath("../..")
+
+[node name="oneWayDirection" type="MeshInstance3D" parent="debugStuff"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 1.69, -0.1)
+visible = false
+mesh = SubResource("CylinderMesh_fhqtv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_entered"]

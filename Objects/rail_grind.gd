@@ -4,7 +4,8 @@ class_name railGrind
 extends PathFollow3D
 
 @export var invisibleRail : bool = false ##If you want to make a railgrind area on an existing piece of geometry, and don't need the pipe.
-
+@export var faceStraightAhead : bool = false ##Makes the surfboard point forward instead of at an angle
+@export var oneWay : bool = false ##The rail will always make you move in the FORWARD direction (in the order of the points in the curve3D)
 
 var isBeingUsed: bool = false #if the fish is currently using this rail
 var fish: player
@@ -15,7 +16,7 @@ var progress_last_frame #used to figure out in which direction the hitbox is mov
 var direction := "forward"
 
 func _ready():
-		
+	
 	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
 		$railMetal.path_node = get_parent().get_path()
 		toolScript() #sets the railpipe model
@@ -24,6 +25,9 @@ func _ready():
 	elif !Engine.is_editor_hint():
 		printerr("RAILGRIND OBJECT \"", name, "\" IS A CHILD OF \"", get_parent().name, "\", WHICH IS NOT A PATH3D NODE, STOPPING PROCESS.")
 		process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
+	
+	if oneWay:
+		$HomingTargetBack.set_collision_layer_value(6, false)
 	
 	
 	if !Engine.is_editor_hint(): #when playing the game
@@ -48,6 +52,7 @@ func toolScript():
 	if get_parent() is Path3D:
 		$railMetal.global_transform = get_parent().global_transform
 	$railMetal.visible = !invisibleRail
+	$debugStuff/oneWayDirection.visible = oneWay
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -69,6 +74,8 @@ func real_process(delta):
 		elif (progress - progress_last_frame) < 0 or progress_ratio == 1.0: 
 			direction = "backward"
 		#if its exactly 0 then dont change
+		if oneWay:
+			direction = "forward" 
 		
 		
 	
@@ -121,8 +128,8 @@ func _on_area_entered(body):
 	if body is player and fish.surfMode:
 		
 		if mountingCooldown > 15: #so you can't reenter this railgrind for 0.25s after leaving it
+			ScoreManager.update_freshness(self) #freshness
 			if mountingCooldown > 100:
-				ScoreManager.update_freshness(self) #freshness
 				ScoreManager.give_points(0, 2, true, "RAILGRIND") #trick
 				mountingCooldown = -15 #stops you from unmounting for 15 frames in case you were spamming jump
 			else:
@@ -165,10 +172,14 @@ func unmount():
 ## Sets where the fish is going to be relative to the rail
 func lock_fish_in_place():
 	fish.position = Vector3(0,0.5,0)
-	if direction == "forward":
-		fish.rotation_degrees = Vector3(0,-45,0)
-	else:
-		fish.rotation_degrees = Vector3(0,-225,0)
+	fish.rotation_degrees = Vector3(0,0,0)
+	if direction == "backward": #if backwards, face the other way
+		fish.rotation_degrees = Vector3(0,180,0)
+	if !faceStraightAhead: #turn 45 degrees unless faceStraightAhead is on
+		fish.rotation_degrees.y -= 45
+	
+	
+	
 	fish.linear_velocity = Vector3(0.001,0.001,0.001)
 	fish.angular_velocity = Vector3(0.001,0.001,0.001)
 
