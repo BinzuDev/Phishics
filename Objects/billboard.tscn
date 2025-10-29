@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgpdkxtjjhcdf"]
+[gd_scene load_steps=13 format=3 uid="uid://dgpdkxtjjhcdf"]
 
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="1_ksbwx"]
 [ext_resource type="ArrayMesh" uid="uid://i8lqsdnx65k" path="res://Models/billboard/billboard.obj" id="2_ksbwx"]
 [ext_resource type="Texture2D" uid="uid://w4uot4u4ctj2" path="res://Models/billboard/billboard_texture.png" id="3_spaj0"]
 [ext_resource type="Texture2D" uid="uid://dwwaqd0ly25sr" path="res://Models/billboard/billboard_ad_saul.png" id="4_3g2f4"]
-[ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="5_3g2f4"]
-[ext_resource type="Script" path="res://testing_skewing.gd" id="5_k85nm"]
 
 [sub_resource type="Curve3D" id="Curve3D_spaj0"]
 _data = {
@@ -137,13 +135,3 @@ light_energy = 5.5
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3
-
-[node name="transform" type="Node2D" parent="."]
-rotation = -0.5235988
-scale = Vector2(1, 0.5)
-script = ExtResource("5_k85nm")
-
-[node name="PhishicsLogo" type="Sprite2D" parent="transform"]
-rotation = 0.2617994
-scale = Vector2(1, 2)
-texture = ExtResource("5_3g2f4")
