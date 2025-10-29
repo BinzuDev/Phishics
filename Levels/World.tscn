@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=138 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="47_bmonc"]
 [ext_resource type="ArrayMesh" uid="uid://begvgj4h00n1y" path="res://Models/skate_mountain/skateMountain.obj" id="49_kvfdy"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="51_4ps87"]
+[ext_resource type="PackedScene" uid="uid://b8o6wso73ekvv" path="res://Objects/traffic_cone.tscn" id="52_grwv0"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/coral_tube.tscn" id="52_pj311"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
@@ -4992,5 +4993,8 @@ color = Color(1, 0.45490196, 0.49803922, 1)
 [node name="coral_tube2" parent="." instance=ExtResource("52_pj311")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.1936, 20.584167, -21.361837)
 color = Color(0.60784316, 0.53333336, 0.7058824, 1)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("52_grwv0")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 25.930565, 29.568691, 58.101173)
 
 [editable path="group2/frickingAwesomeTube"]

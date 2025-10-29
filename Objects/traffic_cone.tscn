@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8o6wso73ekvv"]
+
+[ext_resource type="Texture2D" uid="uid://c6070bshtd75h" path="res://Models/traffic_cone/coneuv.png" id="1_mrd6r"]
+[ext_resource type="ArrayMesh" uid="uid://catgkdeehlhst" path="res://Models/traffic_cone/trafficone.obj" id="2_6sqhk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jnui"]
+cull_mode = 2
+albedo_texture = ExtResource("1_mrd6r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrd6r"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6sqhk"]
+size = Vector3(0.9309664, 2.1903992, 0.74420166)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+collision_layer = 4
+collision_mask = 7
+mass = 0.5
+
+[node name="Trafficone" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_0jnui")
+mesh = ExtResource("2_6sqhk")
+
+[node name="CollisionShapeBase" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mrd6r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0073246844, 1.1189808, 0.0118102925)
+shape = SubResource("BoxShape3D_6sqhk")
