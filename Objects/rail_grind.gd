@@ -12,11 +12,11 @@ var fish: player
 var path_3d: Path3D #the parent path object of railgrind
 var mountingCooldown = 0 #cooldown after unmounting
 var mountingSpeed #How fast the fish was going when mounting
-var progress_last_frame #used to figure out in which direction the hitbox is moving
+var progress_last_frame := 0.0 #used to figure out in which direction the hitbox is moving
 var direction := "forward"
 
 func _ready():
-	
+	#print("getting rail grind parent")
 	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
 		$railMetal.path_node = get_parent().get_path()
 		toolScript() #sets the railpipe model
@@ -77,15 +77,17 @@ func real_process(delta):
 		if oneWay:
 			direction = "forward" 
 		
-		
+	
+	##Move the homing hitbox to the center when at the very end
+	if progress_ratio == 0 or progress_ratio == 1:
+		$HomingTargetFront.position.z = 0
+		$HomingTargetBack.position.z = 0
+	else:
+		$HomingTargetBack.position.z = -2.5
+		$HomingTargetFront.position.z = 2.5
 	
 	
-	#if direction == "forward":
-		#$Area3D.position.z = -2.5
-		#$Area3D.rotation.y = PI
-	#else:
-		#$Area3D.position.z = 2.5
-		#$Area3D.rotation.y = 0
+	
 	
 	## All the code that should run during railgrinding
 	if isBeingUsed:
@@ -93,8 +95,7 @@ func real_process(delta):
 		
 		lock_fish_in_place() #put the fish above the rail
 		
-		#Make the combo timer go down 33% slower
-		ScoreManager.comboTimer += 0.33
+		ScoreManager.comboTimer += 0.33 #Make the combo timer go down 33% slower
 		
 		## Movement
 		if direction == "forward":
@@ -110,6 +111,7 @@ func real_process(delta):
 		#unmount if you reach the end (unless its a closed loop)
 		if (progress_ratio == 0.0 or progress_ratio == 1.0) and !path_3d.curve.closed:
 			unmount()
+			
 		
 		
 	
@@ -128,9 +130,12 @@ func _on_area_entered(body):
 	if body is player and fish.surfMode:
 		
 		if mountingCooldown > 15: #so you can't reenter this railgrind for 0.25s after leaving it
-			ScoreManager.update_freshness(self) #freshness
+			
+			if mountingCooldown > 40:
+				ScoreManager.update_freshness(self) #freshness
 			if mountingCooldown > 100:
 				ScoreManager.give_points(0, 2, true, "RAILGRIND") #trick
+				ScoreManager.play_trick_sfx("rare") #trick sfx
 				mountingCooldown = -15 #stops you from unmounting for 15 frames in case you were spamming jump
 			else:
 				mountingCooldown = 0
@@ -145,7 +150,6 @@ func _on_area_entered(body):
 			fish.currentRailObj = self #set the the current activated railgrind to itself
 			
 			ScoreManager.reset_airspin()
-			ScoreManager.play_trick_sfx("rare") #trick sfx
 			
 			lock_fish_in_place()
 			var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation

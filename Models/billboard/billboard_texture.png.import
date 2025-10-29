@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yh7vk0kf61t7"
-path.s3tc="res://.godot/imported/phishics_logo.png-fbdbcc42f288134a1d63ef051470b034.s3tc.ctex"
+uid="uid://w4uot4u4ctj2"
+path.s3tc="res://.godot/imported/billboard_texture.png-c4737fd0c99a0e1c9b8ee8f1b61f9e38.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/words/phishics_logo.png"
-dest_files=["res://.godot/imported/phishics_logo.png-fbdbcc42f288134a1d63ef051470b034.s3tc.ctex"]
+source_file="res://Models/billboard/billboard_texture.png"
+dest_files=["res://.godot/imported/billboard_texture.png-c4737fd0c99a0e1c9b8ee8f1b61f9e38.s3tc.ctex"]
 
 [params]
 
