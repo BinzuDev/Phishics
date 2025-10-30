@@ -31,10 +31,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.46667),
-"transitions": PackedFloat32Array(0.784584, 1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [Vector3(1, 1.12, 1), Vector3(1, 0.545, 1)]
+"values": [Vector3(1, 1.12, 1), Vector3(1.2, 0.55, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c7hmj"]

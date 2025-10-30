@@ -16,6 +16,7 @@ var progress_last_frame := 0.0 #used to figure out in which direction the hitbox
 var direction := "forward"
 
 func _ready():
+	
 	#print("getting rail grind parent")
 	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
 		$railMetal.path_node = get_parent().get_path()
