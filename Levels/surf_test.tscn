@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=62 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/coral_tree.tscn" id="22_s5qhn"]
 [ext_resource type="PackedScene" uid="uid://kfqjubvfovw2" path="res://Objects/tripod_family.tscn" id="22_vjny7"]
 [ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="24_wetnp"]
+[ext_resource type="Texture2D" uid="uid://bch6jk45x4hmg" path="res://Sprites/bigmouth.jpg" id="25_bkvjd"]
+[ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Models/flat_coral.tscn" id="26_bkvjd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5qhn"]
 
@@ -201,6 +203,10 @@ point_count = 5
 [sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en0s3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("25_bkvjd")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -1028,47 +1034,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.27553, 150.02646, 103.512
 
 [node name="coral_tree" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
-color = Color(1, 0.42207873, 0.5636281, 1)
+color = Color(1, 0.4153337, 0.9906839, 1)
+randomColorOnReady = true
+
+[node name="coral_tree10" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(0.90359145, 0, 0.42839375, 0, 1, 0, -0.42839375, 0, 0.90359145, 98.21951, 118.26219, 100.84286)
+color = Color(0.67447823, 0.8540761, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree2" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.966967, 0, 0.2548991, 0, 1, 0, -0.2548991, 0, 0.966967, 107.47085, 118.26219, 99.93042)
-color = Color(1, 0.47339362, 0.79883134, 1)
+color = Color(0.9975252, 0.56915355, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree3" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.9713577, 0, 0.23761901, 0, 1, 0, -0.23761901, 0, -0.9713577, 111.351944, 118.26219, 100.13271)
-color = Color(0.7220665, 0.5827389, 1, 1)
+color = Color(0.82837474, 0.6421385, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree4" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.98015356, 0, -0.19823657, 0, 1, 0, 0.19823657, 0, -0.98015356, 104.006355, 118.26219, 105.0314)
-color = Color(0.5685356, 0.85, 0.7752719, 1)
+color = Color(1, 0.44032097, 0.4844206, 1)
 randomColorOnReady = true
 
 [node name="coral_tree5" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.89718664, 0, -0.4416506, 0, 1, 0, 0.4416506, 0, 0.89718664, 107.30346, 118.26219, 104.118965)
-color = Color(1, 0.8142482, 0.4026866, 1)
+color = Color(1, 0.5088663, 0.44696003, 1)
 randomColorOnReady = true
 
 [node name="coral_tree6" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.7316614, 0, 0.6816679, 0, 1, 0, -0.6816681, 0, -0.7316612, 111.184555, 118.241234, 104.32126)
-color = Color(0.7711298, 0.59335744, 1, 1)
+color = Color(1, 0.51979935, 0.3905214, 1)
 randomColorOnReady = true
 
 [node name="coral_tree7" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.17851184, 0, -0.98393726, 0, 1, 0, 0.98393726, 0, 0.17851184, 103.72505, 118.26219, 108.63383)
-color = Color(1, 0.43534416, 0.58083606, 1)
+color = Color(0.8516499, 0.67719865, 1, 1)
 randomColorOnReady = true
 
 [node name="coral_tree8" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(0.94662356, 0, -0.32234016, 0, 1, 0, 0.32234016, 0, 0.94662356, 107.022156, 118.26219, 107.72139)
-color = Color(0.7345165, 0.6698413, 1, 1)
+color = Color(0.733693, 1, 0.52823126, 1)
 randomColorOnReady = true
 
 [node name="coral_tree9" parent="." instance=ExtResource("22_s5qhn")]
 transform = Transform3D(-0.96172935, 0, -0.27399874, 0, 1, 0, 0.27399874, 0, -0.96172935, 110.90325, 118.26219, 107.92368)
-color = Color(0.56999755, 1, 0.79947615, 1)
+color = Color(1, 0.34376574, 0.6562445, 1)
 randomColorOnReady = true
 
 [node name="coral_tube" parent="." instance=ExtResource("20_b2h0t")]
@@ -1078,6 +1089,10 @@ color = Color(0.8693332, 0.44, 1, 1)
 [node name="coral_tube2" parent="." instance=ExtResource("20_b2h0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.016304, 118.565704, 82.084915)
 color = Color(1, 0.6, 0, 1)
+
+[node name="coral_tube5" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.465193, 118.565704, 60.7304)
+color = Color(1, 0.8103093, 0.44716048, 1)
 
 [node name="coral_tube3" parent="." instance=ExtResource("20_b2h0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.0354, 118.565704, 104.99145)
@@ -1093,7 +1108,27 @@ color = Color(1, 0.5030652, 0.4604488, 1)
 [node name="tripod_family" parent="." instance=ExtResource("22_vjny7")]
 transform = Transform3D(0.9571933, 0, 0.28944948, 0, 1, 0, -0.28944948, 0, 0.9571933, -5.5563965, 120.57838, 85.73564)
 
+[node name="billboard2" parent="." instance=ExtResource("24_wetnp")]
+transform = Transform3D(0.41421667, 0, -0.91017824, 0, 1, 0, 0.91017824, 0, 0.41421667, -0.609635, 118.265686, -45.453617)
+
 [node name="billboard" parent="." instance=ExtResource("24_wetnp")]
-transform = Transform3D(-0.6296595, 0, -0.77687126, 0, 1, 0, 0.77687126, 0, -0.6296595, 39.31423, 118.2657, -16.508453)
+transform = Transform3D(-0.79274726, 0, -0.6095505, 0, 1, 0, 0.6095505, 0, -0.79274726, 44.60861, 118.2657, -32.1855)
+
+[node name="billboardMesh" parent="billboard" index="3"]
+surface_material_override/4 = SubResource("StandardMaterial3D_en0s3")
+
+[node name="coral_tree11" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.214024, 118.639496, 57.68275)
+color = Color(1, 0.37806493, 0.61473095, 1)
+
+[node name="flat_coral" parent="." instance=ExtResource("26_bkvjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.076876, 120.411476, 58.731724)
+color = Color(0.9178425, 1, 0.5701276, 1)
+
+[node name="flat_coral2" parent="." instance=ExtResource("26_bkvjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.282288, 119.07835, 57.992935)
+color = Color(0.624151, 0.6042502, 1, 1)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
+
+[editable path="billboard"]

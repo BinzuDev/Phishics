@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwwaqd0ly25sr"
-path.s3tc="res://.godot/imported/billboard_ad_saul.png-401572819e6639ab3ac63a441170e07b.s3tc.ctex"
+path.s3tc="res://.godot/imported/billboard_ad_saul.png-f7d9b06dafeb4f99de10cbf1b653b855.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/billboard/billboard_ad_saul.png"
-dest_files=["res://.godot/imported/billboard_ad_saul.png-401572819e6639ab3ac63a441170e07b.s3tc.ctex"]
+source_file="res://Models/billboard/billboard_ads/billboard_ad_saul.png"
+dest_files=["res://.godot/imported/billboard_ad_saul.png-f7d9b06dafeb4f99de10cbf1b653b855.s3tc.ctex"]
 
 [params]
 

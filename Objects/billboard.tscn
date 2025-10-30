@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgpdkxtjjhcdf"]
+[gd_scene load_steps=14 format=3 uid="uid://dgpdkxtjjhcdf"]
 
+[ext_resource type="Script" uid="uid://bnkyy0b47lhgi" path="res://Objects/billboard.gd" id="1_3g2f4"]
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="1_ksbwx"]
 [ext_resource type="ArrayMesh" uid="uid://i8lqsdnx65k" path="res://Models/billboard/billboard.obj" id="2_ksbwx"]
 [ext_resource type="Texture2D" uid="uid://w4uot4u4ctj2" path="res://Models/billboard/billboard_texture.png" id="3_spaj0"]
-[ext_resource type="Texture2D" uid="uid://dwwaqd0ly25sr" path="res://Models/billboard/billboard_ad_saul.png" id="4_3g2f4"]
+[ext_resource type="Texture2D" uid="uid://dwwaqd0ly25sr" path="res://Models/billboard/billboard_ads/billboard_ad_saul.png" id="4_3g2f4"]
 
 [sub_resource type="Curve3D" id="Curve3D_spaj0"]
 _data = {
@@ -16,6 +17,7 @@ point_count = 2
 albedo_texture = ExtResource("3_spaj0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvsb7"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("4_3g2f4")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ksbwx"]
@@ -37,6 +39,7 @@ size = Vector3(0.46, 15.2, 34.6)
 size = Vector3(1.31, 0.5, 35.27)
 
 [node name="billboard" type="Node3D"]
+script = ExtResource("1_3g2f4")
 
 [node name="Path3DTop" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3412228, 37.10542, 0)

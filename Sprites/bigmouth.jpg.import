@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdt5xohv2eypg"
-path.s3tc="res://.godot/imported/warning_sign.png-c7937e053e1019f234b103a17e16a701.s3tc.ctex"
+uid="uid://bch6jk45x4hmg"
+path.s3tc="res://.godot/imported/bigmouth.jpg-7fa39f7b6f319361e0860a800f5bcc51.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://icons/warning_sign.png"
-dest_files=["res://.godot/imported/warning_sign.png-c7937e053e1019f234b103a17e16a701.s3tc.ctex"]
+source_file="res://Sprites/bigmouth.jpg"
+dest_files=["res://.godot/imported/bigmouth.jpg-7fa39f7b6f319361e0860a800f5bcc51.s3tc.ctex"]
 
 [params]
 
