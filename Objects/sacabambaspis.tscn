@@ -1,0 +1,63 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8j81r35bfvf7"]
+
+[ext_resource type="Script" uid="uid://dhm32d8gke55e" path="res://Objects/sacabambaspis.gd" id="1_2e5n4"]
+[ext_resource type="Texture2D" uid="uid://dy6r5kx1yy6m0" path="res://Sprites/sacabambaspis.png" id="1_x1x3i"]
+[ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="2_cuac1"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="3_2e5n4"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="4_jscc7"]
+[ext_resource type="AudioStream" uid="uid://foigtclqhie3" path="res://Sounds/sacabambaspis/saca1.ogg" id="6_lpxhm"]
+[ext_resource type="AudioStream" uid="uid://dcj7gjxjhb26v" path="res://Sounds/sacabambaspis/saca2.ogg" id="7_rwgdf"]
+[ext_resource type="AudioStream" uid="uid://doj00kvmcuuyy" path="res://Sounds/sacabambaspis/saca3.ogg" id="8_ggwhs"]
+[ext_resource type="AudioStream" uid="uid://c30cbskumf1on" path="res://Sounds/sacabambaspis/saca4.ogg" id="9_gns0v"]
+
+[sub_resource type="Resource" id="Resource_lpxhm"]
+script = ExtResource("3_2e5n4")
+name = "Tripod Fish"
+text = "oh mah gah u actaully came!"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_rwgdf"]
+script = ExtResource("3_2e5n4")
+name = "Tripod Fish"
+text = "do... do... do u wanna be frensssss?"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ggwhs"]
+script = ExtResource("4_jscc7")
+cameraOverride = NodePath("Camera3D")
+pauseStyleSystem = true
+messages = Array[ExtResource("3_2e5n4")]([SubResource("Resource_lpxhm"), SubResource("Resource_rwgdf")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gns0v"]
+radius = 2.9706066
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ggwhs"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("6_lpxhm")
+stream_1/stream = ExtResource("7_rwgdf")
+stream_2/stream = ExtResource("8_ggwhs")
+stream_3/stream = ExtResource("9_gns0v")
+
+[node name="sacabambaspis" type="Node3D"]
+script = ExtResource("1_2e5n4")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0, 0)
+billboard = 2
+texture_filter = 2
+texture = ExtResource("1_x1x3i")
+
+[node name="dialogueArea" parent="." instance=ExtResource("2_cuac1")]
+dialogue = SubResource("Resource_ggwhs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogueArea"]
+shape = SubResource("SphereShape3D_gns0v")
+
+[node name="Camera3D" type="Camera3D" parent="dialogueArea"]
+transform = Transform3D(0.9309272, 0.34631023, 0.11594762, -0.27399552, 0.8722018, -0.40520442, -0.24145614, 0.3454467, 0.9068437, 0.8062887, -0.54609305, 0.42148614)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ggwhs")
+volume_db = 20.0

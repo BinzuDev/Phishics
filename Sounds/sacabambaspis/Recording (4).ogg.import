@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://djtn1r1vnon2g"
+path="res://.godot/imported/Recording (4).ogg-921af8aa27573e054471de14020fcf63.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/sacabambaspis/Recording (4).ogg"
+dest_files=["res://.godot/imported/Recording (4).ogg-921af8aa27573e054471de14020fcf63.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

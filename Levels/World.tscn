@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=143 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -49,9 +49,13 @@
 [ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="45_s7dn7"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="47_bmonc"]
 [ext_resource type="ArrayMesh" uid="uid://begvgj4h00n1y" path="res://Models/skate_mountain/skateMountain.obj" id="49_kvfdy"]
+[ext_resource type="PackedScene" uid="uid://c8j81r35bfvf7" path="res://Objects/sacabambaspis.tscn" id="50_wb77i"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="51_4ps87"]
 [ext_resource type="PackedScene" uid="uid://b8o6wso73ekvv" path="res://Objects/traffic_cone.tscn" id="52_grwv0"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/coral_tube.tscn" id="52_pj311"]
+[ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Models/flat_coral.tscn" id="53_pj311"]
+[ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="55_fcuyb"]
+[ext_resource type="Texture2D" uid="uid://5aivmk2p7lrr" path="res://Models/billboard/billboard_ads/piss.png" id="56_cxcqp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
 panorama = ExtResource("1_hmvop")
@@ -449,6 +453,10 @@ data = PackedVector3Array(33, 12, -33, 28, 12, -33, 33, 13, -33, 33, 13, -33, 28
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44bkj"]
 size = Vector3(9.511917, 4.182617, 31.50122)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71q2h"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("56_cxcqp")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_kvfdy")
@@ -3814,6 +3822,30 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/sphere5/StaticBody3D"]
 shape = SubResource("SphereShape3D_wvw3a")
 
+[node name="sphere8" type="MeshInstance3D" parent="group3"]
+transform = Transform3D(-1.00973e-06, 0, -23.1, 0, 23.1, 0, 23.1, 0, -1.00973e-06, 229.25752, 18.2934, -272.2109)
+material_override = SubResource("StandardMaterial3D_myu2g")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("SphereMesh_dcke8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group3/sphere8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/sphere8/StaticBody3D"]
+shape = SubResource("SphereShape3D_wvw3a")
+
+[node name="sphere9" type="MeshInstance3D" parent="group3"]
+transform = Transform3D(-1.00973e-06, 0, -23.1, 0, 23.1, 0, 23.1, 0, -1.00973e-06, 206.2965, 14.229576, -244.05147)
+material_override = SubResource("StandardMaterial3D_myu2g")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("SphereMesh_dcke8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group3/sphere9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/sphere9/StaticBody3D"]
+shape = SubResource("SphereShape3D_wvw3a")
+
 [node name="sphere6" type="MeshInstance3D" parent="group3"]
 transform = Transform3D(-1.15879e-06, 0, -26.51, 0, 26.51, 0, 26.51, 0, -1.15879e-06, 195.72406, 11.2421, -40.09)
 material_override = SubResource("StandardMaterial3D_myu2g")
@@ -4997,4 +5029,59 @@ color = Color(0.60784316, 0.53333336, 0.7058824, 1)
 [node name="RigidBody3D" parent="." instance=ExtResource("52_grwv0")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 25.930565, 29.568691, 58.101173)
 
+[node name="coral_tube3" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225.87854, 19.61601, -250.78946)
+color = Color(1, 0.4356966, 0.40319753, 1)
+
+[node name="coral_tree2" parent="." instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.68924, 19.563795, -256.06668)
+color = Color(1, 0.43495256, 0.69795513, 1)
+
+[node name="coral_tree3" parent="." instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.75728, 19.563797, -254.14536)
+color = Color(1, 0.4700014, 0.51642334, 1)
+
+[node name="coral_tree4" parent="." instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.90262, 19.563797, -245.39813)
+color = Color(0.6131407, 0.62065214, 1, 1)
+
+[node name="flat_coral" parent="." instance=ExtResource("53_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.53596, 28.077324, -259.01175)
+
+[node name="flat_coral2" parent="." instance=ExtResource("53_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220.20389, 25.879879, -244.0819)
+
+[node name="flat_coral3" parent="." instance=ExtResource("53_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.61505, 23.517836, -248.06439)
+
+[node name="flat_coral5" parent="." instance=ExtResource("53_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.61505, 21.235472, -252.46585)
+
+[node name="flat_coral4" parent="." instance=ExtResource("53_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.68068, 22.414192, -244.66652)
+
+[node name="coral_tube4" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220.73276, 19.515005, -256.89417)
+
+[node name="sacabambaspis" parent="." instance=ExtResource("50_wb77i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.83104, 20.355225, -250.27701)
+
+[node name="coral_tree5" parent="." instance=ExtResource("18_grwv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216.87894, 19.253315, -250.13858)
+color = Color(1, 0.6496072, 0.40942323, 1)
+
+[node name="coral_tube5" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.5313, 19.606138, -246.57887)
+
+[node name="coral_tube6" parent="." instance=ExtResource("52_pj311")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.14876, 19.646568, -260.949)
+color = Color(0.9279847, 0.57790357, 1, 1)
+
+[node name="billboard" parent="." instance=ExtResource("55_fcuyb")]
+transform = Transform3D(-0.8625048, 0, -0.50604886, 0, 1, 0, 0.50604886, 0, -0.8625048, 213.23433, 72.18, -230.70804)
+
+[node name="billboardMesh" parent="billboard" index="3"]
+surface_material_override/4 = SubResource("StandardMaterial3D_71q2h")
+
 [editable path="group2/frickingAwesomeTube"]
+[editable path="billboard"]
