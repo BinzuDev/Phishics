@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=65 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="28_c2ka6"]
 [ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="28_grv4d"]
 [ext_resource type="PackedScene" uid="uid://c8j81r35bfvf7" path="res://Objects/sacabambaspis.tscn" id="29_c2ka6"]
+[ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="29_iixud"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5qhn"]
 
@@ -1142,5 +1143,61 @@ newCameraDistance = 12.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.660095, 21.854431, -71.489075)
 shape = SubResource("BoxShape3D_iixud")
+
+[node name="stone_pillar" parent="." instance=ExtResource("29_iixud")]
+transform = Transform3D(4.76, 0, 0, 0, 4.76, 0, 0, 0, 4.76, 78.61679, 118.38087, -52.498924)
+
+[node name="stone_pillar2" parent="." instance=ExtResource("29_iixud")]
+transform = Transform3D(2.7686083, 0, 3.8720033, 0, 4.76, 0, -3.8720033, 0, 2.7686083, 93.18248, 107.40681, -52.498924)
+
+[node name="stone_pillar3" parent="." instance=ExtResource("29_iixud")]
+transform = Transform3D(-1.1490496, 0, -3.4907463, 0, 3.675, 0, 3.4907463, 0, -1.1490496, 83.66937, 106.525696, -40.86906)
+
+[node name="coral_flat" parent="." instance=ExtResource("26_bkvjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.15384, 136.39592, -42.900116)
+color = Color(1, 0.36248767, 0.7774529, 1)
+
+[node name="coral_flat2" parent="." instance=ExtResource("26_bkvjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.952415, 134.72832, -42.731434)
+color = Color(1, 0.32642877, 0.43771577, 1)
+
+[node name="coral_flat3" parent="." instance=ExtResource("26_bkvjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.82249, 136.42014, -42.780968)
+color = Color(0.7190032, 0.54145074, 1, 1)
+
+[node name="coral_tube6" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5909, 130.01422, -41.586617)
+
+[node name="coral_tube7" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.51628, 130.23422, -39.500256)
+color = Color(1, 0.41491175, 0.32463247, 1)
+
+[node name="coral_tree12" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.65052, 136.87352, -44.446774)
+color = Color(1, 0.46031094, 0.7707499, 1)
+
+[node name="coral_tree13" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.33096, 148.25894, -54.007908)
+color = Color(0.52494717, 0.5318434, 1, 1)
+
+[node name="coral_tree14" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.19288, 148.28255, -55.54662)
+color = Color(1, 0.32663304, 0.9925386, 1)
+
+[node name="coral_tube8" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.057175, 137.6917, -54.646484)
+color = Color(1, 0.60982925, 0.39034897, 1)
+
+[node name="coral_tube9" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90447, 137.83374, -48.910774)
+color = Color(0.8963725, 0.5502644, 1, 1)
+
+[node name="coral_tree15" parent="." instance=ExtResource("22_s5qhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.73827, 129.90099, -41.156418)
+color = Color(1, 0.59462124, 0.42253548, 1)
+
+[node name="coral_tube10" parent="." instance=ExtResource("20_b2h0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.73618, 149.01967, -57.502003)
+color = Color(1, 0.4282751, 0.6571715, 1)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
