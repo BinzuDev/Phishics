@@ -26,8 +26,9 @@ pauseStyleSystem = true
 messages = Array[ExtResource("3_asaya")]([SubResource("Resource_grv4d"), SubResource("Resource_c2ka6")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5yavy"]
-radius = 2.9706066
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_asaya"]
+height = 1.5454102
+radius = 3.1914063
 
 [sub_resource type="Curve3D" id="Curve3D_asaya"]
 _data = {
@@ -46,10 +47,11 @@ script = ExtResource("1_asaya")
 dialogue = SubResource("Resource_iixud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tripod_fish_dad/dialogueArea"]
-shape = SubResource("SphereShape3D_5yavy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85055524, -1.6785654, 0.026987642)
+shape = SubResource("CylinderShape3D_asaya")
 
 [node name="Camera3D" type="Camera3D" parent="tripod_fish_dad/dialogueArea"]
-transform = Transform3D(0.7858695, -0.4176454, -0.45604998, 0.17504452, 0.85755205, -0.48369825, 0.59310097, 0.30029452, 0.7470305, -1.9547993, -0.20420937, 0.61573)
+transform = Transform3D(0.7858694, -0.41764545, -0.4560501, 0.1750445, 0.85755205, -0.4836982, 0.59310097, 0.30029455, 0.7470305, -1.9547994, -0.20420937, 0.61573005)
 
 [node name="tripod_fish2" parent="tripod_fish_dad" instance=ExtResource("1_uk283")]
 transform = Transform3D(0.19143866, 0, -0.057889897, 0, 0.2, 0, 0.057889897, 0, 0.19143866, -0.6600418, -1.881691, 2.290863)
@@ -72,7 +74,6 @@ curve = SubResource("Curve3D_asaya")
 debug_custom_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 
 [node name="rail_grind" parent="tripod_fish_dad/railgrind1" instance=ExtResource("2_asaya")]
-transform = Transform3D(0.01800276, -0.09570316, 0.9952376, -0.028657401, 0.99493223, 0.096193776, -0.99941605, -0.03025276, 0.015169218, -2.6026137, -3.3644469, -3.8655214)
-progress = 3.64
+transform = Transform3D(-0.02957194, 0.9242359, 0.38061205, -2.9802033e-08, 0.38077232, -0.9246555, -0.9995529, -0.027343681, -0.011260442, -0.9540324, -6.290509, -3.8951473)
 loop = false
 invisibleRail = true

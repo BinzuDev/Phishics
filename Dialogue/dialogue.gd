@@ -13,6 +13,8 @@ class_name Dialogue extends Resource
 @export var runOnlyOnce : bool = false
 ##This hides and pauses the style system during the dialogue. If this is on, it'll unpause the style system EVEN if it was already paused before the dialogue.
 @export var pauseStyleSystem : bool = false
+##Plays this sound effect every time the dialogue progresses
+@export_node_path("AudioStreamPlayer", "AudioStreamPlayer3D") var speechSFX : NodePath
 ##List of all the textboxes within this dialogue sequence
 @export var messages : Array[textBoxSettings]
 ##Run code after closing the textbox. NOTICE: this code doesn't run "from" anywhere, so you don't have access to any Node functions.

@@ -1259,3 +1259,6 @@ func play_shock_wave():
 
 func setJumpPreview(value : bool):
 	$UI/jumpPreview.visible = value
+
+func forceMakeCameraCurrent():
+	%cam.current = true

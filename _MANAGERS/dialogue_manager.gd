@@ -5,7 +5,8 @@ var timer := 0
 var chara := 0
 var finished := true
 var textBoxIndex := 0
-var currentDialogue
+var currentDialogue: Dialogue
+var currentDialogueArea: Area3D ##The dialogue_area node
 var isRunning := false
 var coolDown := 0
 var currentDialogueOwner ##The parent node of the dialogue_area object 
@@ -90,6 +91,7 @@ func start_dialogue_sequence(dialogue: Dialogue):
 	%textBoxControl.visible = true
 	isRunning = true
 	currentDialogue = dialogue
+	
 	textBoxIndex = 0
 	print("PAUSE STYLE SYSTEM IS")
 	print(currentDialogue.pauseStyleSystem)
@@ -102,24 +104,23 @@ func start_dialogue_sequence(dialogue: Dialogue):
 
 func continue_dialogue():
 	if !currentDialogue:
-		printerr("The dialogue export var is empty!!")
-		return
+		printerr("The dialogue export var is empty!!"); return
 	if !currentDialogue.messages:
-		printerr("The dialogue doesn't have any messages!!")
-		return
+		printerr("The dialogue doesn't have any messages!!"); return
 	if textBoxIndex == currentDialogue.messages.size():
 		print("reached the end of the dialogue")
-		end_textbox()
-		return
+		end_textbox(); return
 	if !currentDialogue.messages[textBoxIndex]:
-		printerr("Textbox at index ", textBoxIndex, " doesn't exist!!")
-		return
+		printerr("Textbox at index ", textBoxIndex, " doesn't exist!!"); return
 	var code = currentDialogue.messages[textBoxIndex].code
 	if code != "":
 		run_code(code)
 	var jfg = currentDialogue.messages[textBoxIndex].JFG_animation
 	if jfg != "":
 		$SubViewport/jelly_fish_girl_IK.play_animation(jfg)
+	
+	if currentDialogue.speechSFX: #play sound effect if there is one
+		currentDialogueArea.get_node(currentDialogue.speechSFX).play()
 	
 	%nameBox.text = currentDialogue.messages[textBoxIndex].name
 	%nameBox.visible = true
@@ -163,6 +164,7 @@ func end_textbox():
 		%textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().get_first_node_in_group("player").forceMakeCameraCurrent()
 	if currentDialogue.pauseStyleSystem:
 		ScoreManager.show()
 	if currentDialogue.codePostDialogue != "":

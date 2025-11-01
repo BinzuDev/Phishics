@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://djiuoll4ydw1r"]
 
-[ext_resource type="Script" uid="uid://deogwmsiujuk4" path="res://Objects/coral_tree.gd" id="1_b4knm"]
+[ext_resource type="Script" uid="uid://deogwmsiujuk4" path="res://Objects/Corals/coral_tree.gd" id="1_b4knm"]
 [ext_resource type="Texture2D" uid="uid://bmicnl83wgipw" path="res://Textures/coral.png" id="1_j1y36"]
 [ext_resource type="ArrayMesh" uid="uid://sr7pj0xjr3l5" path="res://Models/coral/coral_tree.obj" id="2_2cayi"]
 [ext_resource type="ArrayMesh" uid="uid://dew6ixfm8uud5" path="res://Models/coral/broken_coral.obj" id="3_tdyoq"]
@@ -60,10 +60,11 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 rotation_order = 1
 script = ExtResource("1_b4knm")
 color = Color(0.85, 0.51000005, 0.5156666, 1)
+meshToChangeColorOf = NodePath("CoralTree")
 
 [node name="CoralTree" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tdyoq")
 mesh = ExtResource("2_2cayi")
-surface_material_override/0 = SubResource("StandardMaterial3D_tdyoq")
 
 [node name="CoralStem" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19235504, 0)
@@ -252,7 +253,11 @@ material_override = SubResource("StandardMaterial3D_tdyoq")
 mesh = ExtResource("16_hxbvh")
 skeleton = NodePath("../../../..")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="environmentPreview" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j7cgk")
+
+[node name="detectFloor" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)
+collision_mask = 5
 
 [connection signal="body_entered" from="physicsBody/Area3D" to="." method="_on_area_3d_body_entered"]

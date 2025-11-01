@@ -102,7 +102,7 @@ func _on_animation_finished(_anim_name):
 		if otherArea.get_parent() is bowlingPins:
 			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins
 		
-		if otherArea.get_parent().get_parent() is Coral:
+		if otherArea.get_parent().get_parent() is coral_tree:
 			var knockback = otherArea.global_transform.origin - $explosionOrigin.global_transform.origin
 			knockback = knockback.normalized() * getKnockBackTo(otherArea)
 			otherArea.get_parent().get_parent().explode(knockback)

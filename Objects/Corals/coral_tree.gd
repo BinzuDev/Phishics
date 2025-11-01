@@ -1,57 +1,31 @@
 @tool
 @icon("res://icons/coral.png")
-extends Node3D
-class_name Coral
-
-
-
-
-@export_tool_button("Generate random color") var action = setRandColor
-func setRandColor():
-	var hue = randf_range(0.0, 1.0)
-	var sat = 0.5
-	##Because of the world environment, it makes reds way LESS saturated
-	##and teals way MORE saturated, so I have to compensate here
-	if (hue > 0.133 and hue < 0.833): #less saturated when blue-green
-		sat = 0.4
-	else: #more saturated when red
-		sat = 0.6
-	sat += randf_range(-0.08, 0.08) #extra randomness
-	var val = 1.0
-	if (hue > 0.45 and hue < 0.547):
-		val = 0.85 #darker when perfectly teal
-	color = Color.from_hsv(hue, sat, val)
-@export_color_no_alpha var color = Color("FFFFFF")
-@export var randomColorOnReady : bool = false #new random color every time the level loads
-
+extends Coral
+class_name coral_tree
 
 var touched : bool = false
 var gibbed : bool = false
 
 func _ready():
-	if randomColorOnReady:
-		setRandColor()
-	toolScript()
+	super() #calls the ready function of the Coral class
+	##don't do this in the editor or else it makes github mad
 	if !Engine.is_editor_hint():
 		rotation.y = randf_range(0, 2*PI) #give them a random rotation so they look extra random
 		var newScale = randf_range(0.85, 1.15)
 		scale = Vector3(newScale,newScale,newScale)
-		 
+		
+	
 	$CoralTree.visible = true
 	$physicsBody.visible = false
 	$CoralStem.visible = false
 	$physicsBody/BrokenCoral.visible = true
 	%gibs.visible = false
 	
-
-
-func _process(_delta):
-	if Engine.is_editor_hint():
-		toolScript()
-
-func toolScript():
-	$CoralTree.get_surface_override_material(0).albedo_color = color
-
+	#Force the coral to set itself on the floor correctly, so ham stops making them mf floating
+	await get_tree().create_timer(0.2).timeout #wait a bit cause collision doesn't exist on the first frame
+	if $detectFloor.is_colliding():
+		global_position = $detectFloor.get_collision_point()
+	
 
 
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dydx5che4wr0x"]
+
+[ext_resource type="ArrayMesh" uid="uid://dam67u2vum1pm" path="res://Models/coral/flatcoral.obj" id="1_8oxv5"]
+[ext_resource type="Texture2D" uid="uid://bmicnl83wgipw" path="res://Textures/coral.png" id="1_as8sh"]
+[ext_resource type="Script" uid="uid://b6mx0u4tef103" path="res://Objects/Corals/Coral_class.gd" id="1_b431i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_764a7"]
+height = 0.35
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_as8sh"]
+resource_local_to_scene = true
+albedo_color = Color(0.84313726, 0.3882353, 0.63529414, 1)
+albedo_texture = ExtResource("1_as8sh")
+
+[node name="coral_flat" type="Node3D"]
+script = ExtResource("1_b431i")
+meshToChangeColorOf = NodePath("StaticBody3D/flatcoralMesh")
+metadata/_custom_type_script = "uid://b6mx0u4tef103"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05487287, 0.3816222, 0.2508371)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06536865, 0)
+shape = SubResource("CylinderShape3D_764a7")
+
+[node name="flatcoralMesh" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_as8sh")
+mesh = ExtResource("1_8oxv5")
+skeleton = NodePath("")

@@ -40,6 +40,7 @@ size = Vector3(1.31, 0.5, 35.27)
 
 [node name="billboard" type="Node3D"]
 script = ExtResource("1_3g2f4")
+billboardTexture = "uid://dwwaqd0ly25sr"
 
 [node name="Path3DTop" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3412228, 37.10542, 0)
