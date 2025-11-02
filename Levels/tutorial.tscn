@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="12_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://hibyuf0jiqrv" path="res://Sprites/tutorialwall.png" id="13_3p1xt"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="13_4wqju"]
-[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://shader_preview_screenshot.png" id="13_8fyol"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="13_8fyol"]
 [ext_resource type="Texture2D" uid="uid://b0wa7hredvp5c" path="res://Sprites/tutorial_key_mask.png" id="13_bu5na"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="14_0tnf1"]
 [ext_resource type="Texture2D" uid="uid://crhny214v7mdk" path="res://Sprites/tutorialwall_up.png" id="14_bu5na"]

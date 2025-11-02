@@ -1,3 +1,7 @@
+//--------------------------------------------------------------------
+// Cause the anime white speed lines when moving quickly
+//--------------------------------------------------------------------
+
 shader_type canvas_item;
 
 uniform float speedScale = 16.0;

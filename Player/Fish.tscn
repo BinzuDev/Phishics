@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="10_ipqbp"]
 [ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="10_mf1i0"]
 [ext_resource type="AudioStream" uid="uid://diu6e6ohohx7d" path="res://Sounds/sparks/sparks_medium_intensity_28.wav" id="10_q0y68"]
+[ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/speed_lines.gdshader" id="10_ukjyi"]
 [ext_resource type="Texture2D" uid="uid://wd70c8b4u4o" path="res://Sprites/UI/surf_jump_meter.png" id="11_dp2w5"]
 [ext_resource type="AudioStream" uid="uid://436nxm2fmpx7" path="res://Sounds/sparks/sparks_high_intensity_06.wav" id="11_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://drrw7ys5t8wyt" path="res://Sounds/impact_medium/medium1.ogg" id="11_uucyj"]
@@ -32,7 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://c33xu632s2u2j" path="res://Sounds/sparks/sparks_high_intensity_08.wav" id="12_dp2w5"]
 [ext_resource type="Shader" uid="uid://ewoutu00ebej" path="res://Shaders/shockwave.gdshader" id="12_jap5e"]
 [ext_resource type="Texture2D" uid="uid://d3rmwbct3cbu3" path="res://icons/crab.png" id="12_vttj7"]
-[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://shader_preview_screenshot.png" id="13_5lkdo"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="13_5lkdo"]
 [ext_resource type="AudioStream" uid="uid://erap2b7fnpmt" path="res://Sounds/sparks/sparks_high_intensity_11.wav" id="13_d6s4o"]
 [ext_resource type="AudioStream" uid="uid://c267enlul74gu" path="res://Sounds/impact_medium/medium3.ogg" id="13_l2vbt"]
 [ext_resource type="Texture2D" uid="uid://dyeb4smsyuvcn" path="res://icons/boost_ring.png" id="13_mn8qi"]
@@ -67,7 +68,6 @@
 [ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
-[ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/blurLines.gdshader" id="49_ny41d"]
 [ext_resource type="AudioStream" uid="uid://bj14bvmj4frr" path="res://Sounds/surfing/spinning_okay.ogg" id="51_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://bkjc2yj1y5xha" path="res://Sounds/surfing/spinning_good.ogg" id="52_4buur"]
 [ext_resource type="AudioStream" uid="uid://cblmacgdfisqv" path="res://Sounds/surfing/ollie_landing.ogg" id="57_25ixj"]
@@ -1505,7 +1505,7 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q0y68"]
-shader = ExtResource("49_ny41d")
+shader = ExtResource("10_ukjyi")
 shader_parameter/speedScale = 16.0
 shader_parameter/clipPosition = 0.7
 
@@ -2692,7 +2692,6 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.466667, 0, 1)
 
 [node name="shockWave" type="ColorRect" parent="UI"]
-process_mode = 3
 material = SubResource("ShaderMaterial_5lkdo")
 layout_mode = 1
 anchors_preset = 15
@@ -2703,7 +2702,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="shockWaveAnim" type="AnimationPlayer" parent="UI"]
-process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_sj4g2")
 }
@@ -2964,23 +2962,26 @@ bus = &"fishsfx"
 stream = ExtResource("30_d6s4o")
 volume_db = -2.0
 unit_size = 20.0
-max_db = 0.0
 autoplay = true
-max_polyphony = 3
 bus = &"fishsfx"
-attenuation_filter_db = 0.0
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="skateboarding" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("31_4buur")
 volume_db = -5.0
-unit_size = 50.0
+unit_size = 20.0
+max_db = 0.0
 autoplay = true
 bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="skateJumping" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_v5ton")
-unit_size = 40.0
+volume_db = -6.0
+unit_size = 20.0
+max_db = 0.0
 bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="skateLanding" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gqgm8")
@@ -2988,22 +2989,26 @@ bus = &"fishsfx"
 
 [node name="halfpipe" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("62_2owy6")
-unit_size = 40.0
+volume_db = -10.0
+unit_size = 20.0
+max_db = 0.0
 bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="quickTurn" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_23obf")
-volume_db = -2.0
+volume_db = -14.0
 unit_size = 20.0
 bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="spin_low" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xsxx4")
-volume_db = -10.0
+volume_db = -13.0
 bus = &"fishsfx"
 
 [node name="spin_high" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4buur")
-volume_db = -10.0
+volume_db = -15.0
 pitch_scale = 1.1
 bus = &"fishsfx"

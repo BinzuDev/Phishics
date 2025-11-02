@@ -1,3 +1,8 @@
+//--------------------------------------------------------------------
+// This shader is used for the shockwave effect when taunting
+// near an object affecte by the "parry" mechanic
+//--------------------------------------------------------------------
+
 shader_type canvas_item;
 
 uniform float strength: hint_range(0.0, 0.1, 0.001) = 0.08;

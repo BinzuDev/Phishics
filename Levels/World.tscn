@@ -4652,6 +4652,7 @@ debug_color = Color(1, 1, 1, 1)
 [node name="SkateMountain" type="MeshInstance3D" parent="group4"]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.03354, 19.069355, -132.05807)
+visible = false
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 cast_shadow = 0
@@ -4670,16 +4671,8 @@ material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 use_collision = true
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="group4/skateCSG"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.328766, 3.3184414, -45.017113)
-operation = 2
-inner_radius = 7.4721656
-outer_radius = 26.78146
-sides = 14
-ring_sides = 16
-
 [node name="coolSlideUp" type="CSGBox3D" parent="group4/skateCSG"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.13513, 5.72205e-06, -28.864838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -29)
 size = Vector3(20, 20, 20)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="group4/skateCSG/coolSlideUp"]
@@ -4695,23 +4688,6 @@ operation = 2
 radius = 10.0
 height = 20.0
 sides = 24
-
-[node name="corner" type="CSGSphere3D" parent="group4/skateCSG/coolSlideUp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-radius = 10.0
-
-[node name="base" type="CSGBox3D" parent="group4/skateCSG/coolSlideUp/corner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-operation = 2
-size = Vector3(10, 20, 20)
-
-[node name="torusRemove" type="CSGTorus3D" parent="group4/skateCSG/coolSlideUp/corner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-operation = 2
-inner_radius = 0.001
-outer_radius = 20.0
-sides = 16
-ring_sides = 24
 
 [node name="corner2" type="CSGSphere3D" parent="group4/skateCSG/coolSlideUp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
@@ -4730,6 +4706,61 @@ inner_radius = 0.001
 outer_radius = 20.0
 sides = 16
 ring_sides = 24
+
+[node name="rightExtension" type="CSGBox3D" parent="group4/skateCSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 5, -24)
+size = Vector3(28, 10, 10)
+
+[node name="removeSphereCorner" type="CSGSphere3D" parent="group4/skateCSG/rightExtension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 5, 5)
+operation = 2
+radius = 10.0
+radial_segments = 16
+rings = 12
+
+[node name="firstPlatform" type="CSGBox3D" parent="group4/skateCSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 5, -53)
+size = Vector3(79, 10, 48)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="group4/skateCSG/firstPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.67, 5, 6.98)
+operation = 2
+inner_radius = 1.09
+outer_radius = 15.0
+sides = 14
+ring_sides = 16
+
+[node name="loopdeloop" type="CSGBox3D" parent="group4/skateCSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 15.000002, -63)
+size = Vector3(18, 12, 9)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="group4/skateCSG/loopdeloop"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, -1.75)
+operation = 2
+radius = 5.0
+height = 15.5
+sides = 16
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="group4/skateCSG/loopdeloop"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -7.1243134, -3.0584183, 2.391739)
+visible = false
+operation = 2
+size = Vector3(14.396606, 16.024536, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="group4/skateCSG/loopdeloop"]
+transform = Transform3D(0.99317056, 0.0020565428, -0.116652615, 1.8786918e-16, 0.99984485, 0.017626917, 0.11667072, -0.017506517, 0.9930164, -6.8613434, -2.1674118, 4.763977)
+operation = 2
+size = Vector3(14.396606, 17.899963, 6)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="group4/skateCSG/loopdeloop"]
+transform = Transform3D(0.94523394, 0.04649672, -0.3230643, 6.8391257e-09, 0.989801, 0.14245616, 0.3263932, -0.13465442, 0.9355936, 7.319168, 0.3892975, -3.68602)
+operation = 2
+size = Vector3(14.11416, 11.399754, 6)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="group4/skateCSG/loopdeloop"]
+transform = Transform3D(-0.9999999, 5.2697587e-08, 6.975459e-08, 3.8227586e-08, 0.9811581, -0.19320695, -7.8621824e-08, -0.19320692, -0.981158, 2.083496, 2.174492, 6.4477844)
+operation = 2
+size = Vector3(24.46962, 13.433031, 6.560425)
 
 [node name="BoostRing" parent="group4" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.197918, 0.171652, -1.47694, -1.00884, 1.11005, -0.00617843, 1.09228, 0.994146, 0.261912, 202.406, 44.4216, -194.615)

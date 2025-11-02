@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader is used by the metal on the railgrind rails to give it
+// a reflective mettalic effect
+//--------------------------------------------------------------------
+
+
 shader_type spatial;
 render_mode unshaded;
 

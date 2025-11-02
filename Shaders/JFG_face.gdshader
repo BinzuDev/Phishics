@@ -1,3 +1,11 @@
+//--------------------------------------------------------------------
+// Used to animate JFG's face by switching between faces on a tileset.
+// Its the same concept as when you have a sprite2D and give it an 
+// hframe and vframe value in the animation category.
+// Its used for the eyes/eyebrows, mouth, and eye whites.
+//--------------------------------------------------------------------
+
+
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, depth_test_disabled, unshaded;
 

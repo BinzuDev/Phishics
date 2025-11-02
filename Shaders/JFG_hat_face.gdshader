@@ -1,4 +1,12 @@
 // NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
+//--------------------------------------------------------------------
+// This shader is used on the face on JFG's jellyfish hat.
+// It allows the face to be INSIDE the hat, while being rendered ABOVE it,
+// while still being rendered UNDER things in front, like the rim of the hat.
+// This gives the face an "anime mouth viewed from the side" effect, where
+// no matter at what angle you look from, the face will never touch the edge
+// of the hat.
+
 
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;

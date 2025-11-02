@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=92 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -52,6 +52,8 @@
 [ext_resource type="AudioStream" uid="uid://bu7um2p6lj37" path="res://Sounds/sign_hit.ogg" id="37_a84nt"]
 [ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="38_fatt0"]
 [ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="39_4h2r5"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="53_mfo2v"]
+[ext_resource type="Shader" uid="uid://cdxrwfbkv2de7" path="res://Shaders/menu_water.gdshader" id="57_wa78b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
 line_spacing = 0.0
@@ -438,11 +440,238 @@ func _process(_delta):
 	text = str(\"FPS: \", fps)
 "
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_derq4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i2psa"]
+noise = SubResource("FastNoiseLite_derq4")
+seamless = true
+seamless_blend_skirt = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2psa"]
+shader = ExtResource("57_wa78b")
+shader_parameter/big_wave = true
+shader_parameter/big_amplitude = 0.10000000149012
+shader_parameter/big_frequency = 0.7
+shader_parameter/big_speed = 0.3
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_i2psa")
+shader_parameter/small_wave = true
+shader_parameter/small_amplitude = 0.10000000149012
+shader_parameter/small_frequency = 5.00000023424012
+shader_parameter/small_speed = 3.0000001425
+shader_parameter/tint_enabled = true
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/small_wave_reflection = 2.00000007125
+shader_parameter/final_color = Color(0, 0, 0.5, 1)
+shader_parameter/final_color_alpha = 0.0
+shader_parameter/transparency = 1.0
+
+[sub_resource type="Animation" id="Animation_derq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/big_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.10000000149012]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/small_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.10000000149012]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/tint_strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/final_color_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material:shader_parameter/transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_i2psa"]
+resource_name = "end_water_effect"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/big_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 0.10000000149012]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/small_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.00000047174012, 0.10000000149012]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/tint_strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/final_color_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2000000095, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material:shader_parameter/transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wa78b"]
+resource_name = "start_water_effect"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/big_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.10000000149012, 40.0, 30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/small_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.10000000149012, 20.00000094674012, 10.00000047174012]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/tint_strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, 0.6000000285, 0.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/final_color_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, 0.2000000095]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material:shader_parameter/transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_derq4"]
+_data = {
+&"RESET": SubResource("Animation_derq4"),
+&"end_water_effect": SubResource("Animation_i2psa"),
+&"start_water_effect": SubResource("Animation_wa78b")
+}
+
 [node name="menu_manager" type="Node"]
 process_mode = 3
 script = ExtResource("1_kt1dn")
 
 [node name="tips" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -660,19 +889,18 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Mechanics" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3950
+scroll_vertical = 3204
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 19
+autoScroll = 31
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Mechanics"]
@@ -852,6 +1080,13 @@ rarity = "Mechanic"
 description = "By holding the C key, and then pressing one of the arrow keys, you can tilt the camera, allowing you to see slightly further ahead.
 The camera will then stay in place as long as you keep holding C, even if you press other arrow keys."
 
+[node name="dive2" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+trickName = "Homing Cancel"
+rarity = "Mechanic"
+description = "By holding left+up+right, you can temporarily turn off homing. Allowing you to perform regular dives even when homing targets are under you."
+
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer"]
 layout_mode = 2
 
@@ -1022,6 +1257,7 @@ description2 = "Since the Taunt also counts as an interaction, try to only use i
 layout_mode = 2
 
 [node name="Interactibles" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1672,6 +1908,29 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="ShaderPreviewScreenshot" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("53_mfo2v")
+centered = false
+
+[node name="pauseBG" type="TextureRect" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_i2psa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("53_mfo2v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pauseBG"]
+libraries = {
+&"": SubResource("AnimationLibrary_derq4")
+}
+
+[connection signal="on_button_just_pressed" from="PauseMenu/PauseList/optionList/Continue" to="." method="_on_continue_just_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Continue" to="." method="_on_continue_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Restart" to="." method="_on_restart_pressed"]
 [connection signal="on_button_pressed" from="PauseMenu/PauseList/optionList/Tricks" to="." method="_on_tricks_pressed"]

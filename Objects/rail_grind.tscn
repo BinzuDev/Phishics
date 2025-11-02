@@ -183,6 +183,7 @@ mesh = SubResource("CylinderMesh_fhqtv")
 
 [node name="contact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fhqtv")
+volume_db = -10.0
 unit_size = 20.0
 max_db = 0.0
 bus = &"soundEffects"
@@ -190,7 +191,7 @@ attenuation_filter_cutoff_hz = 20000.0
 
 [node name="grinding" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_e8a2b")
-volume_db = -8.0
+volume_db = -17.0
 max_db = 0.0
 pitch_scale = 0.91
 bus = &"soundEffects"

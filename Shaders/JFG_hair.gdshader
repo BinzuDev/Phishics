@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// Used for JFG's hair and hat. It makes it wobbly and transparent.
+// It needs its own seperate shader because there was a bug that 
+// made the reflection lighting VERY glitchy whenever JFG moved.
+//--------------------------------------------------------------------
+
 shader_type spatial;
 
 render_mode depth_draw_always; //fixes an issue with the transparency

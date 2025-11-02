@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader is what causes the water reflection effect on every
+// surface on the level. 
+// Every single one shares the "water_shader_material.tres" material file
+//--------------------------------------------------------------------
+
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
 

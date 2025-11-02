@@ -49,6 +49,7 @@ var fallSpeeds : Array = [0, 0]
 var isRailGrinding : bool = false
 var currentRailObj : Node = null
 var targetingRail : bool = false #if the current homing target is a railgrind
+var railCooldown : int = 0 #Stops the game from fucking crashing and somehow also crashing hams's audio
 
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
@@ -243,6 +244,9 @@ func _physics_process(_delta: float) -> void:
 	## HOMING ATTACK
 	if $homing/area.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
 		closest = get_closest_target()
+		if Input.is_action_pressed("left") and Input.is_action_pressed("right") and Input.is_action_pressed("forward"):
+			closest = null
+		
 		if closest != null:
 			if closestLastFrame != closest: #when the target changes
 				closestLastFrame = closest
@@ -582,6 +586,9 @@ func _physics_process(_delta: float) -> void:
 		%surfSparks.emitting = (surfMode and %surfRC3.is_colliding() and !skateboardSurf) or isRailGrinding
 	$RemoteTransformSurf.update_rotation = isRailGrinding #stops the fish from rotating during railgrind
 	
+	railCooldown = max(0, railCooldown-1) #stops the game from crashing by entering 2 rails on the same frame
+	
+	
 	if surfMode:
 		##Particles
 		surfSparkSpd = clamp( (trueSpeed.length()-5)*0.1 +1, 1, 5) #1 at 5, 5 at 45
@@ -598,29 +605,31 @@ func _physics_process(_delta: float) -> void:
 		
 		##Braking/Drifting
 		if surfState == "Normal surfing" and Input.is_action_pressed("dive") and $surfPivot.global_transform.basis.y.y > 0.5:
-			if !get_input_axis(): #slow down faster when not holding any direction keys
-				apply_central_force(linear_velocity*-3)
-			else:
-				apply_central_force(linear_velocity*-1)
 			%brakingPivot.rotation_degrees.x = clamp(linear_velocity.length()*1.5,15, 45)
 			#print(%brakingPivot.rotation_degrees.x)
 			%surfSparks.emitting = true
 			%surfSparks.speed_scale *= 2
 			%surfSparks.amount_ratio *= 2
 			if Input.is_action_just_pressed("jump"):
+				print("KICKFLIP JUMP")
 				$surfPivot/skateTricks.play("kick_flip")
 				ScoreManager.give_points(2500, 0, false, "KICKFLIP")
 				ScoreManager.play_trick_sfx("rare")
-			
-			if get_input_axis(): #if pressing something
-				var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
-				var keyDir = get_input_axis().normalized()
-				var drift = keyDir*moveDir.length()
-				linear_velocity.x = drift.x
-				linear_velocity.z = drift.y
-				var dotProd = moveDir.normalized().dot(drift.normalized())
-				if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
-					$quickTurn.play()
+				
+			elif $surfPivot/skateTricks.current_animation != "kick_flip":
+				if !get_input_axis(): #slow down faster when not holding any direction keys
+					apply_central_force(linear_velocity*-3)
+				else:
+					apply_central_force(linear_velocity*-1)
+					
+					var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
+					var keyDir = get_input_axis().normalized()
+					var drift = keyDir*moveDir.length()
+					linear_velocity.x = drift.x
+					linear_velocity.z = drift.y
+					var dotProd = moveDir.normalized().dot(drift.normalized())
+					if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
+						$quickTurn.play()
 			
 		else:
 			%brakingPivot.rotation.x = 0
@@ -635,14 +644,15 @@ func _physics_process(_delta: float) -> void:
 		
 		#audio
 		if skateboardSurf:
-			$skateboarding.volume_linear = clamp(linear_velocity.length()*0.02 -0.02, 0, 0.3)
+			$skateboarding.volume_linear = clamp(linear_velocity.length()*0.015 -0.015, 0, 0.15)
 			$skateboarding.pitch_scale = clamp(0.5 + linear_velocity.length()/30, 0.8, 2)
 		else:
-			$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.05 -0.1, 0, 0.5)
+			$sign_scraping.volume_linear = clamp(linear_velocity.length()*0.025 -0.02, 0, 0.25)
 			$sign_scraping.pitch_scale = clamp(0.5 + linear_velocity.length()/25, 0.5, 2)
 		#print("v: ", $skateboarding.volume_linear, "  p: ", $skateboarding.pitch_scale)
 		#print($skateboarding.pitch_scale)
 		
+		#print(linear_to_db(0.5))
 		
 		#leaning
 		%fishPivot.visible = true
@@ -694,9 +704,9 @@ func _physics_process(_delta: float) -> void:
 		
 		if surfJumpLastFrame and surfState != "Jumping":
 			if !$skateLanding.playing and linear_velocity.y < -1:
-				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.06 + 0.2, 0.5, 3)
+				$skateLanding.volume_linear = clamp(fallSpeeds[0]*-0.03 + 0.2, 0.4, 1.5)
 				$skateLanding.play()
-				print("PLAY LANDING ", $skateLanding.volume_linear)
+				print("PLAY LANDING ", $skateLanding.volume_linear, " fall speed: ", fallSpeeds[0])
 				var force = linear_velocity
 				force.y = 0
 				#apply_central_impulse(force*$surfPivot.global_transform.basis.y.y)

@@ -1,3 +1,7 @@
+//--------------------------------------------------------------------
+// This shader makes JFG's skirt and shirt wobbly and watery.
+//--------------------------------------------------------------------
+
 shader_type spatial;
 
 render_mode depth_draw_always; //transparency works but cant see other body parts through

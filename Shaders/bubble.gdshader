@@ -1,3 +1,7 @@
+//--------------------------------------------------------------------
+// Used for the bubble effect on the boost ring, worm, and fish particle
+//--------------------------------------------------------------------
+
 shader_type spatial;
 
 uniform sampler2D noise_tex;

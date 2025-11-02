@@ -135,7 +135,8 @@ func real_process(delta):
 ## When the fish touches the path
 func _on_area_entered(body):
 	print("entering ", name, " on frame, ", Engine.get_frames_drawn())
-	if body is player and fish.surfMode:
+	if body is player and fish.surfMode and fish.railCooldown == 0:
+		fish.railCooldown = 5 #stops crashes when mounting two railgrinds on the same frame
 		
 		if mountingCooldown > 15: #so you can't reenter this railgrind for 0.25s after leaving it
 			

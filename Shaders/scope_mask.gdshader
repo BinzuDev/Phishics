@@ -1,3 +1,8 @@
+//--------------------------------------------------------------------
+// This shader is used by the eel's scope to make a circular hole in a 
+// black rectangle, which fits the screen no matter the aspect ratio
+//--------------------------------------------------------------------
+
 shader_type canvas_item;
 render_mode unshaded;
 

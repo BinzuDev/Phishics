@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader allows me to animate JFG pupils by moving them around
+// and only rendering them on pixels with the eye whites.
+// You can change the frame of the eye white to make her wink or squint.
+//--------------------------------------------------------------------
+
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, depth_test_disabled, unshaded;
 

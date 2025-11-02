@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader is used to make JFG's skin wobbly and transparent EXCEPT
+// on pixels where she has clothes, like her socks, fishnets and underwear.
+// This allows us to have skintight clothing that aren't 3D modeled
+//--------------------------------------------------------------------
+
 shader_type spatial;
 
 render_mode depth_draw_always; //transparency works but cant see other body parts through

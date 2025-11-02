@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader is used to add a sine wave effect to a sprite, 
+// it was first used on the goal flag but I reused it on
+// the logo on the title screen
+//--------------------------------------------------------------------
+
 shader_type spatial;
 render_mode unshaded;
 

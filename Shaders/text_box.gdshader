@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------
+// This shader is used for the background of the dialogue textbox
+// shamelessly stolen from someone who stole it from balatro
+//--------------------------------------------------------------------
+
+
 shader_type canvas_item;
 //took it directly from balatro source code
 //buy balatro now: https://www.playbalatro.com
