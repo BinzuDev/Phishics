@@ -48,6 +48,15 @@ movie_writer/video_quality=1.0
 movie_writer/movie_file="C:/Users/Utilisateur/Documents/Godot 4/fish flopper/phishics/Recordings/Movie.avi"
 movie_writer/mjpeg_quality=0.9
 
+[file_customization]
+
+folder_colors={
+"res://Levels/": "blue",
+"res://Models/": "orange",
+"res://Music/": "teal",
+"res://Objects/": "pink"
+}
+
 [global_group]
 
 camera=""

@@ -1247,17 +1247,14 @@ transform = Transform3D(0.3350734, 0, -0.942192, 0, 1, 0, 0.942192, 0, 0.3350734
 [node name="Anchor" parent="." instance=ExtResource("30_iixud")]
 transform = Transform3D(0.84657705, 0.2634235, -0.4625104, 0.055710666, 0.82031876, 0.5691865, 0.5293429, -0.50762695, 0.6797876, 120.87196, 114.20746, -15.152485)
 
-[node name="rail_grind" parent="Anchor/Path3D" index="0"]
-transform = Transform3D(-0.99994576, 9.807915e-08, 0.009854768, 0.009853849, 0.013382868, 0.99986017, -0.00013175403, 0.9999028, -0.013382297, 0.15203047, 41.947693, 0)
-loop = false
-
 [node name="Worm" parent="." instance=ExtResource("33_djbud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.19003, 158.34702, -42.295673)
 
 [node name="Worm2" parent="." instance=ExtResource("33_djbud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.4029, 140.63628, -42.680428)
 
-[connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
+[node name="strike_zone5" parent="." instance=ExtResource("17_eej72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.90346, 148.32027, -45.546112)
+floating = true
 
-[editable path="stone_pillar"]
-[editable path="Anchor"]
+[connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
