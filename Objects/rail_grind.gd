@@ -162,9 +162,10 @@ func _on_area_entered(body):
 			$grinding.play()
 			
 			lock_fish_in_place()
-			var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation
+			#var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation
+			var hspeed = fish.trueSpeed
 			if fish.homing:
-				hspeed *= 0.5
+				hspeed *= 0.3
 			
 			mountingSpeed = clamp(hspeed.length()*1.2, 13, 60)  ##sets how fast you'll move on the rail (with clamps)
 			
