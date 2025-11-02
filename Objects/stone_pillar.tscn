@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt40ku2iol014"]
 
-[ext_resource type="Texture2D" uid="uid://kjqvbp7aktdi" path="res://Models/stone_pillar/pillaruv.png" id="1_sahu6"]
+[ext_resource type="Texture2D" uid="uid://n1uvtxdu0we1" path="res://Models/stone_pillar/pillaruv3.png" id="1_sahu6"]
 [ext_resource type="ArrayMesh" uid="uid://csm7oxo6t4q53" path="res://Models/stone_pillar/stone_pillar.obj" id="2_1rx3e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlrrj"]

@@ -1162,7 +1162,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.952415, 134.72832, -42.731
 color = Color(1, 0.32642877, 0.43771577, 1)
 
 [node name="coral_flat3" parent="." instance=ExtResource("26_bkvjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.82249, 136.42014, -42.780968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.25869, 135.94919, -42.780968)
 color = Color(0.7190032, 0.54145074, 1, 1)
 
 [node name="coral_tube6" parent="." instance=ExtResource("20_b2h0t")]
@@ -1185,8 +1185,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.19288, 148.28255, -55.5466
 color = Color(1, 0.32663304, 0.9925386, 1)
 
 [node name="coral_tube8" parent="." instance=ExtResource("20_b2h0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.057175, 137.6917, -54.646484)
-color = Color(1, 0.60982925, 0.39034897, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.06687, 137.6917, -52.5014)
+color = Color(1, 0.7468488, 0.46778727, 1)
 
 [node name="coral_tube9" parent="." instance=ExtResource("20_b2h0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90447, 137.83374, -48.910774)
@@ -1201,3 +1201,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.73618, 149.01967, -57.5020
 color = Color(1, 0.4282751, 0.6571715, 1)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
+
+[editable path="stone_pillar"]
+[editable path="stone_pillar2"]
