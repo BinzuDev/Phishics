@@ -12,8 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://yq6okvtmi78h" path="res://Sounds/scope/scope close3.ogg" id="8_ujmdm"]
 [ext_resource type="Texture2D" uid="uid://omd54fh2yfyl" path="res://Sprites/Garden Eel/eel_body.png" id="9_uscsh"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="10_kqlh1"]
-[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="11_2jba0"]
-[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="12_6fklc"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="11_2jba0"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="12_6fklc"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvi72"]
 random_pitch = 1.2

@@ -227,14 +227,15 @@ func _physics_process(_delta: float) -> void:
 	%score.text = str("%010d" % clamp(scoreUI, 0, 9999999999)) #Display score
 	var scoreDiff = scoreUI-scoreBefore
 	var everyXframe = 1
-	if scoreDiff <= 50000:
-		everyXframe = 2
-	if scoreDiff <= 5000:
-		everyXframe = 3
-	if scoreDiff <= 500:
-		everyXframe = 4
 	if scoreDiff <= 50:
 		everyXframe = 5
+	elif scoreDiff <= 500:
+		everyXframe = 4
+	elif scoreDiff <= 5000:
+		everyXframe = 3
+	elif scoreDiff <= 50000:
+		everyXframe = 2
+	
 	if scoreBefore != scoreUI and GameManager.gameTimer % everyXframe == 0 and scoreBefore != 9999999999:
 		#print(scoreDiff, " (",everyXframe, ")")
 		$tick.play()

@@ -51,10 +51,22 @@ movie_writer/mjpeg_quality=0.9
 [file_customization]
 
 folder_colors={
+"res://ConceptArt/": "gray",
+"res://Fonts/": "gray",
 "res://Levels/": "blue",
 "res://Models/": "orange",
 "res://Music/": "teal",
-"res://Objects/": "pink"
+"res://Objects/": "pink",
+"res://Particles/": "gray",
+"res://Player/": "purple",
+"res://Recordings/": "gray",
+"res://Shaders/": "gray",
+"res://Skins/": "gray",
+"res://Sounds/": "teal",
+"res://Sprites/": "yellow",
+"res://Textures/": "yellow",
+"res://_MANAGERS/": "red",
+"res://icons/": "gray"
 }
 
 [global_group]
@@ -184,6 +196,7 @@ quit_game_safely={
 3d_physics/layer_6="homing target"
 3d_physics/layer_7="physicsDominoEffect"
 3d_physics/layer_8="parry"
+3d_physics/layer_9="CEILLING"
 
 [rendering]
 

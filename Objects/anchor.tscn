@@ -53,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.365755)
 curve = SubResource("Curve3D_lihhe")
 
 [node name="rail_grind" parent="Path3D" instance=ExtResource("3_lihhe")]
-transform = Transform3D(-0.99993527, 9.807791e-08, 0.00985475, 0.009853746, 0.013382698, 0.99985826, -0.00013175265, 0.99989015, -0.013382272, 0.15203047, 41.947693, 0)
+transform = Transform3D(-0.99993527, 9.807792e-08, 0.009854753, 0.009853746, 0.0133827, 0.9998585, -0.00013175265, 0.99989027, -0.013382275, 0.15203047, 41.947693, 0)
+loop = false
 invisibleRail = true
 oneWay = true

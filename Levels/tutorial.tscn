@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_lojvt"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="9_avars"]
 [ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="9_lojvt"]
-[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="10_3hhjp"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="10_3hhjp"]
 [ext_resource type="PackedScene" uid="uid://cf81w8s7c7kox" path="res://Models/pillar.tscn" id="11_4wqju"]
-[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="11_to5w2"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="11_to5w2"]
 [ext_resource type="PackedScene" uid="uid://cheqhyt0b5ovq" path="res://Models/pillarhalf.tscn" id="12_0tnf1"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="12_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://hibyuf0jiqrv" path="res://Sprites/tutorialwall.png" id="13_3p1xt"]
@@ -1326,7 +1326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0052108765, 1.3290199, -4.0
 shape = SubResource("BoxShape3D_2kmhi")
 debug_color = Color(0, 16.198252, 18.892157, 1)
 
-[node name="Platform11" type="MeshInstance3D" parent="funArea"]
+[node name="Platform11CEIL" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(-1.70086e-06, 0, -8.59321, -25.1517, 2.7604477, 2.42798e-07, 29.6893, 2.3385515, -2.86602e-07, 6.37914, 1.191351, -233.69002)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
@@ -1334,9 +1334,10 @@ mesh = SubResource("BoxMesh_lojvt")
 skeleton = NodePath("../../..")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="funArea/Platform11"]
+[node name="StaticBody3D" type="StaticBody3D" parent="funArea/Platform11CEIL"]
+collision_layer = 257
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform11/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform11CEIL/StaticBody3D"]
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform5" type="MeshInstance3D" parent="funArea"]

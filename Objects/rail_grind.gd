@@ -39,7 +39,6 @@ func _ready():
 
 
 
-##TODO: needs sound effects
 ##TODO: jumping off of a rail thats close to the ground counts as a pogo jump?????
 
 ##NOTICE: using fish.trueSpeed, you can now get how fast the fish is ACTUALLY moving, use this instead of linear_velocity for calculations.
@@ -55,7 +54,7 @@ func toolScript():
 	$railMetal.visible = !invisibleRail
 	$debugStuff/oneWayDirection.visible = oneWay
 
-func _process(delta):
+func _physics_process(delta):
 	if Engine.is_editor_hint():
 		toolScript()
 	else:
@@ -185,6 +184,7 @@ func unmount():
 	fish.currentRailObj = null
 	fish.reparent(get_tree().get_current_scene()) #make the fish a child of the level
 	fish.linear_velocity = Vector3(0.001,0.001,0.001)
+	print("UNMOUNTING, the true speed is: ", fish.trueSpeed)
 	fish.linear_velocity = fish.trueSpeed*1.2 #true speed (might be a bit redunant)
 
 func switchRails():

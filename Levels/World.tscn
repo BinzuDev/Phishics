@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=145 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -318,6 +318,9 @@ edge_fade = 0.857419
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ps87"]
 size = Vector3(5.98592, 5.6731, 18.7399)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qui2a"]
+size = Vector3(2.4299316, 1.2538452, 15.917175)
+
 [sub_resource type="SphereMesh" id="SphereMesh_dcke8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wvw3a"]
@@ -474,6 +477,7 @@ environment = SubResource("Environment_v72nc")
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
 gravity_scale = 1.5
+legacyCamera = false
 
 [node name="FISH_SPAWN_POINT" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
@@ -2315,40 +2319,43 @@ transform = Transform3D(-7.18457e-07, 0, -12.464, 0, 13.1646, 0, 16.4362, 0, -5.
 size = Vector3(1.91351, 0.121948, 3.68066)
 material = SubResource("FogMaterial_u27i5")
 
-[node name="Platform17" type="MeshInstance3D" parent="group2"]
+[node name="Platform17CEIL" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-1.39734e-06, 0, -17.4497, 0, 1.29169, 0, 31.9673, 0, -7.62753e-07, 32.22, 11.91, -28.89)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform17"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform17CEIL"]
+collision_layer = 257
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform17/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform17CEIL/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform18" type="MeshInstance3D" parent="group2"]
+[node name="Platform18CEIL" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-1.39734e-06, 0.227851, -8.18142, 0, 1.27144, 1.46617, 31.9673, 9.95972e-09, -3.57622e-07, 47.345, 11.176, -29.0434)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform18"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform18CEIL"]
+collision_layer = 257
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform18/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform18CEIL/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform26" type="MeshInstance3D" parent="group2"]
+[node name="PlatformCEILING" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(28.4333, -0.640157, 2.64237, 9.80039, 1.82542, 3.92892, -2.54317, -0.122651, 44.6829, 61.81, 14.1, -33.57)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform26"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/PlatformCEILING"]
+collision_layer = 257
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform26/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/PlatformCEILING/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform27" type="MeshInstance3D" parent="group2"]
@@ -2444,88 +2451,98 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform28/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform19" type="MeshInstance3D" parent="group2"]
+[node name="crackCEILING" type="StaticBody3D" parent="group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.26777, 12.723711, -16.9581)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crackCEILING"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11932373, -0.8136902, -4.070099)
+shape = SubResource("BoxShape3D_qui2a")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="crack1" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-4.71175, 0, -5.6857, 0, 1.29, 0, 6.58858, 0, -4.06606, 43.2989, 11.9145, -27.6878)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform19"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform19/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack1/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform20" type="MeshInstance3D" parent="group2"]
+[node name="crack2" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(1.82623, 0, -6.81002, 0, 1.29, 0, 7.89144, 0, 1.57597, 38.0332, 11.9145, -23.9502)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform20"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform20/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack2/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform21" type="MeshInstance3D" parent="group2"]
+[node name="crack3" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(3.93365, -0.306525, -5.88031, -0.581403, 1.22325, -2.16186, 7.05679, 0.271649, 3.09974, 37.6233, 11.9598, -20.5051)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform21"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform21/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack3/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform22" type="MeshInstance3D" parent="group2"]
+[node name="crack4" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(3.42922, 0.255899, 2.56393, -0.619355, 1.26385, -0.618201, -2.63514, 0.0359603, 3.48185, 45.2686, 11.9371, -19.7623)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform22"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform22/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack4/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform24" type="MeshInstance3D" parent="group2"]
+[node name="crack5" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(2.0803, -0.105192, -1.84105, 0.0397412, 1.28496, -0.184662, 3.8416, 0.0436703, 0.998871, 40.197, 12.0391, -16.5683)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform24"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack5"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform24/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack5/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform25" type="MeshInstance3D" parent="group2"]
+[node name="crack6" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-2.3041, -0.17143, -1.76451, -0.734185, 1.27, -0.105749, 3.63857, 0.147702, -1.1387, 43.5911, 12.2317, -15.4068)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform25"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack6"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform25/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack6/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform23" type="MeshInstance3D" parent="group2"]
+[node name="crack7" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(2.52397, 0.086277, 3.55332, 0, 1.28566, -0.357905, -3.56605, 0.0610649, 2.51496, 44.6742, 11.9222, -16.9581)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="group2/Platform23"]
+[node name="StaticBody3D" type="StaticBody3D" parent="group2/crack7"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/Platform23/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/crack7/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="sphere" type="MeshInstance3D" parent="group2"]
@@ -2599,6 +2616,7 @@ mesh = SubResource("BoxMesh_w578l")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group2/the pillar"]
+collision_layer = 257
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group2/the pillar/StaticBody3D"]
 shape = SubResource("BoxShape3D_5g6ug")
@@ -3363,7 +3381,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform5/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
-[node name="Platform4" type="MeshInstance3D" parent="highUpSection"]
+[node name="Platform4CEIL" type="MeshInstance3D" parent="highUpSection"]
 transform = Transform3D(-2.54667e-07, 0, -6.27939, 0, 1.8051, 0, 5.82609, 0, -2.74481e-07, 72.1706, 32.7577, -50.7782)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
@@ -3371,9 +3389,10 @@ mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 metadata/_edit_group_ = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Platform4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/Platform4CEIL"]
+collision_layer = 257
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/Platform4CEIL/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="Platform6" type="MeshInstance3D" parent="highUpSection"]

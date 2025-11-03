@@ -462,7 +462,7 @@ shader_parameter/tint_enabled = true
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.0
 shader_parameter/small_wave_reflection = 2.00000007125
-shader_parameter/final_color = Color(0, 0, 0.5, 1)
+shader_parameter/final_color = Color(0.3311, 0.3311, 0.77, 1)
 shader_parameter/final_color_alpha = 0.0
 shader_parameter/transparency = 1.0
 
@@ -668,6 +668,8 @@ _data = {
 
 [node name="menu_manager" type="Node"]
 process_mode = 3
+process_priority = -1
+process_physics_priority = -1
 script = ExtResource("1_kt1dn")
 
 [node name="tips" type="MarginContainer" parent="."]
@@ -819,6 +821,7 @@ text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -1914,7 +1917,6 @@ texture = ExtResource("53_mfo2v")
 centered = false
 
 [node name="pauseBG" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_i2psa")
 anchors_preset = 15

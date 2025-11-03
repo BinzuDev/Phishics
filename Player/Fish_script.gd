@@ -6,6 +6,7 @@ extends RigidBody3D
 @export var canJump: bool = true
 @export var noScoreUI : bool = false
 @export var canMove : bool = true #so you cant move at the start of the tutorial
+@export var legacyCamera : bool = true
 
 var checkpoint_pos: Vector3
 
@@ -17,6 +18,7 @@ var camSpeed: float = 0.2
 var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
 var defaultCameraAngle : Vector3 = Vector3(-30,0,0)
+var rotateRight : bool = false #keeps track of if the camera should rotate left or right
 
 #other trick variables
 var tiplanding : bool = false
@@ -242,7 +244,7 @@ func _physics_process(_delta: float) -> void:
 	
 	var closest = null
 	## HOMING ATTACK
-	if $homing/area.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
+	if %homingArea.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
 		closest = get_closest_target()
 		if Input.is_action_pressed("left") and Input.is_action_pressed("right") and Input.is_action_pressed("forward"):
 			closest = null
@@ -297,7 +299,7 @@ func _physics_process(_delta: float) -> void:
 		$reticle.modulate.a = 1
 		%speedLinesShader.visible = true
 	
-	if !$homing/area.has_overlapping_areas() or height < 3:
+	if !%homingArea.has_overlapping_areas() or height < 3:
 		timeSinceNoTargets += 1
 	else:
 		timeSinceNoTargets = 0 
@@ -312,7 +314,7 @@ func _physics_process(_delta: float) -> void:
 		height = 150
 		
 	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld:
-		var newSpd = clamp(height*-1.5 -10, -90, -10) 
+		var newSpd = clamp(height*-1.5 -10, -90, -10)
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
 		linear_velocity.z *= 0.5
@@ -351,8 +353,20 @@ func _physics_process(_delta: float) -> void:
 			$diveSFX.play()
 			if surfMode and not targetingRail:
 				deactivateSurfMode()
+			#move the camera in freecam mode
+			if legacyCamera == false:
+				var hDir = Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x)
+				var oldAng = defaultCameraAngle.y
+				var newAng = rad_to_deg(hDir.angle())
+				defaultCameraAngle.y = newAng
+				if oldAng-newAng < -180:
+					%camFocus.rotation_degrees.y += 360
+				if oldAng-newAng > 180:
+					%camFocus.rotation_degrees.y -= 360
+				
+				
 	
-	
+	#$homing/TEST.rotation_degrees.y = rad_to_deg(Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x).angle()) 
 	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
 	#	if diving or homing:
 	#		printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
@@ -386,10 +400,10 @@ func _physics_process(_delta: float) -> void:
 	
 	%homingTarget.position.x = lerp(%homingTarget.position.x, 5 * Input.get_axis("left", "right"), lerpSpeed)
 	%homingTarget.position.z = lerp(%homingTarget.position.z, 5 * Input.get_axis("forward", "back"), lerpSpeed)
-	$homing/area.rotation_degrees.z = lerp($homing/area.rotation_degrees.z, 28 * Input.get_axis("left", "right"), lerpSpeed)
-	$homing/area.rotation_degrees.x = lerp($homing/area.rotation_degrees.x, 28 * Input.get_axis("back", "forward"), lerpSpeed)
-	#$homing/area.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
-	
+	%homingArea.rotation_degrees.z = lerp(%homingArea.rotation_degrees.z, 28 * Input.get_axis("left", "right"), lerpSpeed)
+	%homingArea.rotation_degrees.x = lerp(%homingArea.rotation_degrees.x, 28 * Input.get_axis("back", "forward"), lerpSpeed)
+	#%homingArea.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
+	$homing/camRotation.global_rotation.y = %camFocus.global_rotation.y
 	## Diving/homing end ##
 	
 	
@@ -656,7 +670,7 @@ func _physics_process(_delta: float) -> void:
 		
 		#leaning
 		%fishPivot.visible = true
-		%fishPivot.rotation = %area.rotation #use the rotation of homing hitbox to lean
+		%fishPivot.rotation = %homingArea.global_rotation #use the rotation of homing hitbox to lean
 		var vec3 : Vector3 = %fishPivot.rotation
 		%fishPivot.rotation = vec3.rotated(Vector3(0,1,0), -$surfPivot.rotation.y)
 		%fishPivot.rotation *= -0.5
@@ -903,6 +917,9 @@ func _physics_process(_delta: float) -> void:
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
 	"position ", global_position, "\n",
+	"CameraAngle: ", %camFocus.rotation_degrees, "\n",
+	"CameraTarget: ", defaultCameraAngle, "\n",
+	#"homeDir: ", rad_to_deg(Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x).angle()) 
 	)
 	
 	
@@ -922,7 +939,52 @@ func _process(_delta):
 		%cam.fov = 85
 	
 	
-	#camera controller areas
+		## CONTROLS ##
+	if legacyCamera:
+		## CLASSIC CAMERA CONTROLS
+		if Input.is_action_pressed("camera") and !cameraOverride:
+			if get_input_axis():
+				cameraOverride = true
+			if get_input_axis().x != 0:
+				var LR = Input.get_axis("right", "left")
+				targetCamAngle.y = 40 * LR
+				targetCamOffset = Vector3(-3.5*LR, 0.58, 1.02)
+			elif Input.is_action_pressed("forward"):
+				targetCamAngle.x += 40
+				targetCamOffset = Vector3(0, 2.3, -1.5)
+			elif Input.is_action_pressed("back"):
+				targetCamAngle.x -= 15
+				targetCamOffset = Vector3(0,0,5)
+		
+		if !Input.is_action_pressed("camera"): #reset camera when you let go of C
+			cameraOverride = false
+		
+	else:
+		## NEW CAMERA CONTROLS
+		cameraOverride = false
+		if Input.is_action_just_pressed("left"):
+			rotateRight = false
+		if Input.is_action_just_pressed("right"):
+			rotateRight = true
+		if Input.is_action_just_pressed("camera"):
+			##Do special shit so the camera can go from -180 to 180
+			##by "rotating" 0 degrees instead of 360
+			if defaultCameraAngle.y >= 135 and !rotateRight:
+				%camFocus.rotation_degrees.y -= 360
+				defaultCameraAngle.y -= 360
+			if defaultCameraAngle.y <= -135 and rotateRight:
+				%camFocus.rotation_degrees.y += 360
+				defaultCameraAngle.y += 360
+			
+			if rotateRight:
+				defaultCameraAngle.y -= 45
+			else:
+				defaultCameraAngle.y += 45
+			wrap(defaultCameraAngle.y, -180, 180)
+			
+	
+	
+	## inside camera controller areas
 	if $detectCamSwitch.has_overlapping_areas():
 		var area = $detectCamSwitch.get_overlapping_areas()[0]
 		targetCamAngle = area.newCameraAngle
@@ -935,7 +997,7 @@ func _process(_delta):
 		camSpeed = area.rate
 		cameraOverride = true #so you cant move the cam manually in switch areas
 	elif cameraOverride == false:
-		#var mouse = Input.get_last_mouse_velocity()
+		#var mouse = Input.get_last_mouse_velocity() #hack tessting mouse controls
 		#defaultCameraAngle.y -= mouse.x*0.001
 		#defaultCameraAngle.x -= mouse.y*0.001
 		targetCamAngle = defaultCameraAngle #default camera settings
@@ -948,24 +1010,6 @@ func _process(_delta):
 			targetCamOffset.y = 0.58 - (4 - dist)
 		
 	 
-	#Manual camera control
-	if Input.is_action_pressed("camera") and !cameraOverride:
-		if get_input_axis():
-			cameraOverride = true
-		if get_input_axis().x != 0:
-			var LR = Input.get_axis("right", "left")
-			targetCamAngle.y = 40 * LR
-			targetCamOffset = Vector3(-3.5*LR, 0.58, 1.02)
-		elif Input.is_action_pressed("forward"):
-			targetCamAngle.x += 40
-			targetCamOffset = Vector3(0, 2.3, -1.5)
-		elif Input.is_action_pressed("back"):
-			targetCamAngle.x -= 15
-			targetCamOffset = Vector3(0,0,5)
-	
-	if !Input.is_action_pressed("camera"): #reset camera when you let go of C
-		cameraOverride = false
-	
 	
 	
 	##Slowly pan the camera towards the desired location
@@ -1185,7 +1229,7 @@ func force_position(newPos : Vector3):
 	angular_velocity = Vector3(0.001,0.001,0.001)
 
 func get_closest_target():
-	var crabs = $homing/area.get_overlapping_areas()
+	var crabs = %homingArea.get_overlapping_areas()
 
 	var detectedCrabs = []
 	
@@ -1272,3 +1316,8 @@ func setJumpPreview(value : bool):
 
 func forceMakeCameraCurrent():
 	%cam.current = true
+
+##So that we can stop renering the world when the game is paused, causing a HUGE performance boost
+func should_camera_render(value: bool):
+	%cam.set_cull_mask_value(1, value)
+	%cam.set_cull_mask_value(2, value)

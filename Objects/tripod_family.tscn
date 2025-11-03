@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://kqms307ljru5" path="res://Models/tripod_fish.tscn" id="1_uk283"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="2_1vmv4"]
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="2_asaya"]
-[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://Dialogue/textBoxSettings.gd" id="3_asaya"]
-[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://Dialogue/dialogue.gd" id="4_wjwj0"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="3_asaya"]
+[ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="4_wjwj0"]
 
 [sub_resource type="Resource" id="Resource_grv4d"]
 script = ExtResource("3_asaya")

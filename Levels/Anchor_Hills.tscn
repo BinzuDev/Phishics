@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="18_dfos0"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="19_21ejt"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="21_qgejm"]
-[ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Levels/chain.tscn" id="23_vf164"]
+[ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Models/chain/chain.tscn" id="23_vf164"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
 panorama = ExtResource("2_o0o2q")
@@ -81,8 +81,9 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_4autd")
 
 [node name="fish" parent="." instance=ExtResource("3_ca8kd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8289843, 30.410473, 139.28249)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0748353, 32.62684, 142.45804)
 gravity_scale = 1.5
+legacyCamera = false
 
 [node name="Platform1" type="MeshInstance3D" parent="."]
 transform = Transform3D(300, 0, 0, 0, 2.851, 0, 0, 0, 300, 0, -1.5, 0)
@@ -103,6 +104,7 @@ shape = SubResource("BoxShape3D_takjo")
 [node name="Path3D" type="Path3D" parent="TheHills/Chains"]
 transform = Transform3D(0.9142398, 0, 0.40517348, 0, 1, 0, -0.40517348, 0, 0.9142398, 50.243233, 43.133774, 68.04015)
 curve = SubResource("Curve3D_rmb8m")
+debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D" instance=ExtResource("6_cd55a")]
 transform = Transform3D(0.6224818, 0.40444618, -0.67001134, -1.4900601e-08, 0.8560693, 0.5168171, 0.7825862, -0.32170308, 0.5329379, 4.710169, 3.9986076, 5.896988)
@@ -511,7 +513,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 9.33614e-10, -7.51587e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.0701047, 0.99754, 0.171497, 2.55157, 0.251998)
 
 [node name="eel" parent="start" instance=ExtResource("16_vcbwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018234253, 29.219885, 134.419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8132973, 29.219885, 134.419)
 
 [node name="big_stone_pillar" parent="start" instance=ExtResource("6_xkte1")]
 transform = Transform3D(4.7130494, 0, -0.66690606, 0, 4.7599993, 0, 0.66690606, 0, 4.7130494, -5.9462967, -0.6047945, 135.61526)
@@ -540,3 +542,8 @@ transform = Transform3D(3.556111, 0, -4.3840733, 0, 5.645, 0, 4.3840733, 0, 3.55
 
 [node name="stone_pillar2" parent="." instance=ExtResource("6_xkte1")]
 transform = Transform3D(-4.460365, 0, -3.459938, 0, 5.645, 0, 3.459938, 0, -4.460365, 22.552402, -7.782213, -13.381779)
+
+[node name="destructable_sign" parent="." instance=ExtResource("12_rehwy")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.89439, -0.03859043, 101.430336)
+signSprite = "uid://bm74cvbdnkudp"
+canRespawn = true

@@ -78,11 +78,13 @@ func switch_tab(rightSide : bool = true):
 
 
 func toggleMenu():
+	$pauseBG/AnimationPlayer.play("RESET")
 	if GameManager.gamePaused: ##Take a screenshot of the game and use it as a background
 		var screenshot = get_viewport().get_texture().get_image()
 		$pauseBG.texture = ImageTexture.create_from_image(screenshot)
 		$pauseBG/AnimationPlayer.play("start_water_effect")
 	$pauseBG.visible = GameManager.gamePaused
+	get_tree().get_first_node_in_group("player").should_camera_render(!$pauseBG.visible)
 	$PauseMenu.visible = GameManager.gamePaused
 	%TrickList.visible = false
 	%Tricks.forceReset()
@@ -91,6 +93,7 @@ func toggleMenu():
 	if GameManager.gamePaused:
 		%Continue.grab_focus()
 		%PauseList.visible = true
+		
 		
 
 
@@ -137,6 +140,7 @@ func isSubmenuOpen():
 
 	## Pause menu options ##
 func _on_continue_just_pressed():
+	get_tree().get_first_node_in_group("player").should_camera_render(true)
 	$pauseBG/AnimationPlayer.play("end_water_effect")
 func _on_continue_pressed():
 	GameManager.toggle_pause()
@@ -194,6 +198,7 @@ func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 	%TrickList.visible = false
 	%HelpTip.visible = false
 	$pauseBG.visible = false
+	get_tree().get_first_node_in_group("player").should_camera_render(true)
 
 func _on_fish_debug_toggled(toggled_on):
 	get_tree().get_first_node_in_group("player").find_child("debugLabel").visible = toggled_on

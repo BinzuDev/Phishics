@@ -112,6 +112,8 @@ func _process(_delta):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
+
+func _physics_process(delta):
 	if freezeframe > 0:
 		freezeframe -= 1
 		if freezeframe == 0:

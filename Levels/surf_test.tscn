@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=69 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://kfqjubvfovw2" path="res://Objects/tripod_family.tscn" id="22_vjny7"]
 [ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="24_wetnp"]
 [ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Objects/Corals/coral_flat.tscn" id="26_bkvjd"]
-[ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="28_c2ka6"]
 [ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="28_grv4d"]
 [ext_resource type="PackedScene" uid="uid://c8j81r35bfvf7" path="res://Objects/sacabambaspis.tscn" id="29_c2ka6"]
 [ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="29_iixud"]
@@ -211,12 +210,17 @@ point_count = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iixud"]
-size = Vector3(67.59778, 44.708862, 214.10266)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlrrj"]
 albedo_texture = ExtResource("30_nggdu")
 texture_filter = 2
+
+[sub_resource type="Curve3D" id="Curve3D_djbud"]
+closed = true
+_data = {
+"points": PackedVector3Array(-0.26316833, 3.8146973e-05, 2.0724716, 0.26316833, -3.8146973e-05, -2.0724716, 5.726942, -0.8854065, -0.635849, 1.76544, -5.340576e-05, 1.5134201, -1.76544, 5.340576e-05, -1.5134201, 4.651716, -1.4760971, -6.380417, 1.528799, 0, -1.9006653, -1.528799, 0, 1.9006653, -3.3788176, -0.81694794, -5.907799, -1.0742912, 0, -2.4791336, 1.0742912, 0, 2.4791336, -4.8249807, -0.3203659, 0.41399384, -2.0883703, -3.8146973e-05, 0.25090027, 2.0883703, 3.8146973e-05, -0.25090027, 0.527586, -0.55397034, 3.7991638),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ab27v")
@@ -310,8 +314,9 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.48796177, 119.6651, 85.78045)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 11.215834, 142.84254, 100.25514)
 gravity_scale = 1.5
+legacyCamera = false
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.906269, 120.04394, 54.182728)
@@ -927,14 +932,16 @@ loop = false
 [node name="BoostRing" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2.8142698, 118.25492, 108.68952)
 strength = 20.0
+targetableByHoming = false
 
 [node name="BoostRing3" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 12.543309, 118.25492, 119.026115)
 strength = 20.0
 
 [node name="BoostRing5" parent="." instance=ExtResource("13_4rq4h")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 21.917114, 118.25492, 107.76915)
-strength = 20.0
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 10.199794, 119.54309, 99.6714)
+strength = 30.0
+targetableByHoming = false
 
 [node name="BoostRing6" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -20.23309, 118.25493, 108.79425)
@@ -1148,14 +1155,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2607689, 119.14654, 75.6107
 [node name="sacabambaspis" parent="." instance=ExtResource("29_c2ka6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.025785, 119.43092, 77.88963)
 
-[node name="cameraController" parent="." instance=ExtResource("28_c2ka6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098427, 119.41391, 69.606544)
-newCameraDistance = 12.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.660095, 21.854431, -71.489075)
-shape = SubResource("BoxShape3D_iixud")
-
 [node name="stone_pillar" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(4.76, 0, 0, 0, 4.76, 0, 0, 0, 4.76, 78.61679, 118.38087, -52.498924)
 
@@ -1248,7 +1247,7 @@ transform = Transform3D(0.3350734, 0, -0.942192, 0, 1, 0, 0.942192, 0, 0.3350734
 transform = Transform3D(0.84657705, 0.2634235, -0.4625104, 0.055710666, 0.82031876, 0.5691865, 0.5293429, -0.50762695, 0.6797876, 120.87196, 114.20746, -15.152485)
 
 [node name="Worm" parent="." instance=ExtResource("33_djbud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.19003, 158.34702, -42.295673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.07582, 158.75053, -42.402763)
 
 [node name="Worm2" parent="." instance=ExtResource("33_djbud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.4029, 140.63628, -42.680428)
@@ -1256,5 +1255,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.4029, 140.63628, -42.6804
 [node name="strike_zone5" parent="." instance=ExtResource("17_eej72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.90346, 148.32027, -45.546112)
 floating = true
+
+[node name="PathJF" type="Path3D" parent="."]
+transform = Transform3D(-0.99992746, 0.012042383, 0, -0.012042383, -0.99992746, 0, 0, 0, 1, 10.7901, 118.99287, 101.67588)
+curve = SubResource("Curve3D_djbud")
+debug_custom_color = Color(0.19, 0, 0, 1)
+
+[node name="Jellyfish" parent="PathJF" instance=ExtResource("15_gl2w4")]
+transform = Transform3D(0.99202925, 2.300211e-06, -0.12597086, -1.136863e-13, 0.9999958, 1.825982e-05, 0.12597068, -1.8114344e-05, 0.99203056, 5.726942, -0.8854065, -0.635849)
+speed = 3
+bounceForce = 50
+hSpeedMultiplier = 0.0
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
