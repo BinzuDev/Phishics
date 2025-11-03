@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=35 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="19_21ejt"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="21_qgejm"]
 [ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Models/chain/chain.tscn" id="23_vf164"]
+[ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="25_rmb8m"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
 panorama = ExtResource("2_o0o2q")
@@ -526,6 +527,7 @@ strength = 13.0
 
 [node name="BoostRing3" parent="TheHills" instance=ExtResource("19_21ejt")]
 transform = Transform3D(-0.13772115, 0.99047107, 0, -0.9799363, -0.13625634, 0.14546143, 0.14407533, 0.020033116, 0.9893639, 23.2898, 2.376243, 66.57339)
+strength = 13.0
 
 [node name="strike_zone" parent="TheHills" instance=ExtResource("21_qgejm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2612467, 28.436722, 49.029808)
@@ -569,7 +571,7 @@ strength = 20.1
 centerPlayer = true
 
 [node name="BoostRing4" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.019886723, 0.84990025, -0.5265673, -0.40154284, 0.4755395, 0.7827041, 0.91562474, 0.2270048, 0.33181423, 57.90863, 7.761953, 62.971664)
+transform = Transform3D(-0.46453953, 0.6240914, -0.6282612, -0.3411615, 0.5285698, 0.77731746, 0.81719816, 0.5754333, -0.0326256, 54.94919, 8.97877, 60.806705)
 strength = 20.1
 centerPlayer = true
 
@@ -583,3 +585,10 @@ transform = Transform3D(-4.460365, 0, -3.459938, 0, 5.645, 0, 3.459938, 0, -4.46
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.89439, -0.03859043, 101.430336)
 signSprite = "uid://bm74cvbdnkudp"
 canRespawn = true
+
+[node name="billboard" parent="." instance=ExtResource("25_rmb8m")]
+transform = Transform3D(0.46785277, 0, -0.88380665, 0, 1, 0, 0.88380665, 0, 0.46785277, -22.780872, -0.11342603, 97.755646)
+billboardTexture = "uid://c7m5pw5cqoc16"
+
+[node name="stone_pillar3" parent="." instance=ExtResource("6_xkte1")]
+transform = Transform3D(-0.8373535, 0, -2.1904027, 0, 2.345, 0, 2.1904027, 0, -0.8373535, 51.53423, -10.58179, 60.392845)
