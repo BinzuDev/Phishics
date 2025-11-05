@@ -988,6 +988,7 @@ func _process(_delta):
 		if (Input.is_action_just_pressed("camera") and !get_input_axis() and trueSpeed.length() > 4): #or isRailGrinding:
 			var hDir = Vector2(-trueSpeed.z, -trueSpeed.x)
 			defaultCameraAngle.y = rad_to_deg(hDir.angle())
+			
 		
 		#look down
 		if Input.is_action_pressed("camera") and Input.is_action_pressed("back"):
