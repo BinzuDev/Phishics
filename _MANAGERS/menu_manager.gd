@@ -84,7 +84,9 @@ func toggleMenu():
 		$pauseBG.texture = ImageTexture.create_from_image(screenshot)
 		$pauseBG/AnimationPlayer.play("start_water_effect")
 	$pauseBG.visible = GameManager.gamePaused
-	get_tree().get_first_node_in_group("player").should_camera_render(!$pauseBG.visible)
+	var fish = get_tree().get_first_node_in_group("player")
+	if fish:
+		fish.should_camera_render(!$pauseBG.visible)
 	$PauseMenu.visible = GameManager.gamePaused
 	%TrickList.visible = false
 	%Tricks.forceReset()

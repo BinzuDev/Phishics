@@ -2714,6 +2714,7 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.466667, 0, 1)
 
 [node name="shockWave" type="ColorRect" parent="UI"]
+process_mode = 3
 material = SubResource("ShaderMaterial_5lkdo")
 layout_mode = 1
 anchors_preset = 15
@@ -2724,6 +2725,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="shockWaveAnim" type="AnimationPlayer" parent="UI"]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_sj4g2")
 }

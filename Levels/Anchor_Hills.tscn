@@ -91,7 +91,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_4autd")
 
 [node name="fish" parent="." instance=ExtResource("3_ca8kd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0748353, 32.62684, 142.45804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.494087, 81.16855, 68.89331)
 gravity_scale = 1.5
 legacyCamera = false
 
@@ -140,7 +140,7 @@ curve = SubResource("Curve3D_rmb8m")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D2" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.021754505, 0.4159607, -0.90910006, 0, 0.90926963, 0.4160801, 0.9996923, 0.009051804, -0.019783108, 0, 0, 0)
+transform = Transform3D(-0.021754479, 0.41596004, -0.90909946, 0, 0.90926814, 0.4160798, 0.9996911, 0.0090517895, -0.019783095, 0, 0, 0)
 loop = false
 invisibleRail = true
 
@@ -624,21 +624,25 @@ strength = 13.0
 [node name="BoostRing3" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
 transform = Transform3D(-0.13772115, 0.99047107, 0, -0.9799363, -0.13625634, 0.14546143, 0.14407533, 0.020033116, 0.9893639, 23.2898, 2.376243, 66.57339)
 strength = 13.0
+recenterCamera = true
 
 [node name="BoostRing4" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(0.48380828, 0.7759075, -0.40484154, -0.69625646, 0.62150866, 0.35910162, 0.5302424, 0.10813723, 0.8409215, 41.469116, 2.4610147, 100.75553)
+transform = Transform3D(0.4838083, 0.7759076, -0.40484148, -0.69625646, 0.62150866, 0.35910138, 0.5302424, 0.108137205, 0.84092164, 41.469116, 2.4610147, 100.75553)
 strength = 15.0
 centerPlayer = true
+recenterCamera = true
 
 [node name="BoostRing5" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(0.6480901, 0.5731601, 0.6793134, -0.728724, 0.8239912, 2.8391829e-09, -0.508862, -0.45002908, 0.86517817, 83.21937, 8.773006, -10.250115)
+transform = Transform3D(0.6480902, 0.5731602, 0.67931336, -0.728724, 0.8239912, 2.581082e-10, -0.508862, -0.45002905, 0.8651782, 83.21937, 8.773006, -10.250115)
 strength = 25.0
 centerPlayer = true
+recenterCamera = true
 
 [node name="BoostRing6" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.53073364, 1.0822663, -0.8927606, -1.018024, 0.35971004, 1.0412666, 0.9653751, 0.9743246, 0.6072419, 55.770725, 8.664876, 59.883556)
+transform = Transform3D(-0.53073364, 1.0822663, -0.89276075, -1.018024, 0.35971013, 1.0412666, 0.9653751, 0.9743246, 0.60724187, 55.770725, 8.664876, 59.883556)
 strength = 20.0
 centerPlayer = true
+recenterCamera = true
 
 [node name="stone_pillar" parent="TheHills" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.556111, 0, -4.3840733, 0, 5.645, 0, 4.3840733, 0, 3.556111, 92.781075, 0.040657774, 20.673477)
@@ -717,6 +721,45 @@ transform = Transform3D(1, 9.33614e-10, -7.51587e-09, 9.31323e-10, 0.99754, 0.07
 signSprite = "uid://bm74cvbdnkudp"
 canRespawn = true
 
+[node name="sign2" type="Node3D" parent="."]
+transform = Transform3D(-0.112613544, 0, -0.993639, 0, 1.0000001, 0, 0.9936387, 0, -0.11261356, 83.97023, 2.7643914, 71.062225)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="sign2" instance=ExtResource("11_bv6eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1243303, 0)
+skeleton = NodePath("../../..")
+
+[node name="destructable_sign" parent="sign2" instance=ExtResource("12_rehwy")]
+transform = Transform3D(1, 9.313226e-10, -7.450581e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.07010469, 0.99754, -0.02960205, 1.810755, 0.24008179)
+signSprite = "uid://s5egjbmsoc15"
+canRespawn = true
+
+[node name="sign3" type="Node3D" parent="."]
+transform = Transform3D(0.9168231, 0, 0.39929336, 0, 1.0000001, 0, -0.3992932, 0, 0.9168234, 84.46608, 38.875748, 22.161152)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="sign3" instance=ExtResource("11_bv6eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1243303, 0)
+skeleton = NodePath("../../..")
+
+[node name="destructable_sign" parent="sign3" instance=ExtResource("12_rehwy")]
+transform = Transform3D(1, 9.313226e-10, -7.450581e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.07010469, 0.99754, -0.02960205, 1.810755, 0.24008179)
+signSprite = "uid://s5egjbmsoc15"
+canRespawn = true
+
+[node name="sign4" type="Node3D" parent="."]
+transform = Transform3D(0.25576717, 0.3112154, -0.91527504, 0.29403114, 0.87687004, 0.38032186, 0.92093897, -0.36639327, 0.1327676, 57.207764, 27.21077, 60.027397)
+metadata/_edit_group_ = true
+
+[node name="streetsign" parent="sign4" instance=ExtResource("11_bv6eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1243303, 0)
+skeleton = NodePath("../../..")
+
+[node name="destructable_sign" parent="sign4" instance=ExtResource("12_rehwy")]
+transform = Transform3D(1, 9.313226e-10, -7.450581e-09, 9.31323e-10, 0.99754, 0.0701047, 0, -0.07010469, 0.99754, -0.02960205, 1.810755, 0.24008179)
+signSprite = "uid://s5egjbmsoc15"
+canRespawn = true
+
 [node name="hook" parent="." instance=ExtResource("27_kl2hu")]
 transform = Transform3D(0.59008443, 0, -0.8073415, 0, 1, 0, 0.8073415, 0, 0.59008443, 33.114326, 15.277766, 71.58999)
 lineLength = 13.82618625164032
@@ -728,6 +771,7 @@ strength = 20.0
 [node name="BoostRing2" parent="." instance=ExtResource("19_21ejt")]
 transform = Transform3D(-4.371139e-08, 1, 0, -0.8277275, -3.618112e-08, 0.5611303, 0.5611303, 2.4527782e-08, 0.8277275, 47.424885, 40.27812, 16.686989)
 strength = 20.0
+recenterCamera = true
 
 [node name="PathFollowJellyfish" parent="." instance=ExtResource("17_vcbwq")]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 47.71025, 52.360134, -27.650013)

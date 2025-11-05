@@ -12,6 +12,8 @@ extends Area3D
 @export var deactivateParticles : bool = false
 @export var targetableByHoming : bool = true
 @export var affectFreshness : bool = true
+##If free roam camera is on, turn the camera to face the launch direction upon contact
+@export var recenterCamera : bool = false 
 
 var strengthLastFrame = strength
 
@@ -83,6 +85,13 @@ func _on_body_entered(body: Node3D) -> void:
 			$AnimationPlayer.play("boost")
 			if body.isRailGrinding:
 				body.currentRailObj.mountingSpeed += 10
+			##Rotate the camera
+			if !body.legacyCamera and recenterCamera:
+				var hDir = Vector2(-distance.z, -distance.x)
+				body.defaultCameraAngle.y = rad_to_deg(hDir.angle())
+				#body.defaultCameraAngle.y = global_rotation_degrees.y
+				print("BOOST ANGLE: ", rad_to_deg(hDir.angle()), global_rotation_degrees.y)
+				
 		#body.play_random_trick()
 		
 		#sound 

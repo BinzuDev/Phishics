@@ -147,7 +147,7 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.1288184e-08, -1.7, -2.3822602e-07, -1.5776998, 6.896385e-08, -0.63311106, 0.63311106, 2.2901851e-07, -1.5776998, 0, 0, 0)
+transform = Transform3D(-2.0665425e-07, -1.7, -2.4445495e-07, -1.618952, 1.222282e-07, 0.5186142, -0.5186142, 2.9584737e-07, -1.618952, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 

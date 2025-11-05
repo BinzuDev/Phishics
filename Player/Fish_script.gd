@@ -353,16 +353,24 @@ func _physics_process(_delta: float) -> void:
 			$diveSFX.play()
 			if surfMode and not targetingRail:
 				deactivateSurfMode()
-			#move the camera in freecam mode
+			## Move the camera in freecam mode
 			if legacyCamera == false:
 				var hDir = Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x)
 				var oldAng = defaultCameraAngle.y
 				var newAng = rad_to_deg(hDir.angle())
-				defaultCameraAngle.y = newAng
-				if oldAng-newAng < -180:
-					%camFocus.rotation_degrees.y += 360
-				if oldAng-newAng > 180:
-					%camFocus.rotation_degrees.y -= 360
+				var angleDiff = abs(wrap(oldAng-newAng, -180, 180))
+				if angleDiff < 120: #don't rotate when behind you
+					defaultCameraAngle.y = newAng
+					if oldAng-newAng < -180:
+						%camFocus.rotation_degrees.y += 360
+					if oldAng-newAng > 180:
+						%camFocus.rotation_degrees.y -= 360
+				
+				
+				
+				
+				
+				
 				
 				
 	
@@ -923,7 +931,6 @@ func _physics_process(_delta: float) -> void:
 	)
 	
 	
-	
 
 
 ################
@@ -962,26 +969,32 @@ func _process(_delta):
 	else:
 		## NEW CAMERA CONTROLS
 		cameraOverride = false
-		if Input.is_action_just_pressed("left"):
-			rotateRight = false
-		if Input.is_action_just_pressed("right"):
-			rotateRight = true
-		if Input.is_action_just_pressed("camera"):
-			##Do special shit so the camera can go from -180 to 180
-			##by "rotating" 0 degrees instead of 360
-			if defaultCameraAngle.y >= 135 and !rotateRight:
+		
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("left") \
+		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("left"):
+			if defaultCameraAngle.y >= 135: #wrap angles
 				%camFocus.rotation_degrees.y -= 360
 				defaultCameraAngle.y -= 360
-			if defaultCameraAngle.y <= -135 and rotateRight:
+			defaultCameraAngle.y += 45
+		
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("right") \
+		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("right"):
+			if defaultCameraAngle.y <= -135: #wrap angles
 				%camFocus.rotation_degrees.y += 360
 				defaultCameraAngle.y += 360
-			
-			if rotateRight:
-				defaultCameraAngle.y -= 45
-			else:
-				defaultCameraAngle.y += 45
-			wrap(defaultCameraAngle.y, -180, 180)
-			
+			defaultCameraAngle.y -= 45
+		
+		#center camera
+		if (Input.is_action_just_pressed("camera") and !get_input_axis() and trueSpeed.length() > 4) or isRailGrinding:
+			var hDir = Vector2(-trueSpeed.z, -trueSpeed.x)
+			defaultCameraAngle.y = rad_to_deg(hDir.angle())
+		
+		#look down
+		if Input.is_action_pressed("camera") and Input.is_action_pressed("back"):
+			homingLookDown = true
+			timeSinceNoTargets = 0
+		
+		
 	
 	
 	## inside camera controller areas

@@ -5,6 +5,5 @@ extends Node3D
 	set(new_value):
 		billboardTexture = new_value
 		if get_node_or_null("billboardMesh"):
-			print("test")
 			$billboardMesh.get_surface_override_material(4).albedo_texture = load(billboardTexture)
 		

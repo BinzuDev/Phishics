@@ -16,19 +16,20 @@ var progress_last_frame := 0.0 #used to figure out in which direction the hitbox
 var direction := "forward"
 
 func _ready():
-	
-	#print("getting rail grind parent")
-	if get_parent() is Path3D: #get the path3d parent, with a proper safety net
-		$railMetal.path_node = get_parent().get_path()
-		toolScript() #sets the railpipe model
-		path_3d = get_parent()
-		loop = path_3d.curve.closed #make the railgrind not loop around 
-	elif !Engine.is_editor_hint():
-		printerr("RAILGRIND OBJECT \"", name, "\" IS A CHILD OF \"", get_parent().name, "\", WHICH IS NOT A PATH3D NODE, STOPPING PROCESS.")
-		process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
-	
-	if oneWay:
-		$HomingTargetBack.set_collision_layer_value(6, false)
+	#this check removes the "can't use get_node" errors we get when opening the project
+	if Engine.get_frames_drawn() > 30 or !Engine.is_editor_hint():
+		#print("getting rail grind parent")
+		if get_parent() is Path3D: #get the path3d parent, with a proper safety net
+			$railMetal.path_node = get_parent().get_path()
+			toolScript() #sets the railpipe model
+			path_3d = get_parent()
+			loop = path_3d.curve.closed #make the railgrind not loop around 
+		elif !Engine.is_editor_hint():
+			printerr("RAILGRIND OBJECT \"", name, "\" IS A CHILD OF \"", get_parent().name, "\", WHICH IS NOT A PATH3D NODE, STOPPING PROCESS.")
+			process_mode = Node.PROCESS_MODE_DISABLED #the safety net in question
+		
+		if oneWay:
+			$HomingTargetBack.set_collision_layer_value(6, false)
 	
 	
 	if !Engine.is_editor_hint(): #when playing the game
