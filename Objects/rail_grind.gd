@@ -17,7 +17,7 @@ var direction := "forward"
 
 func _ready():
 	#this check removes the "can't use get_node" errors we get when opening the project
-	if Engine.get_frames_drawn() > 30 or !Engine.is_editor_hint():
+	if Engine.get_frames_drawn() > 120 or !Engine.is_editor_hint():
 		#print("getting rail grind parent")
 		if get_parent() is Path3D: #get the path3d parent, with a proper safety net
 			$railMetal.path_node = get_parent().get_path()
@@ -166,6 +166,7 @@ func _on_area_entered(body):
 			#var hspeed = Vector2(fish.trueSpeed.x, fish.trueSpeed.z) #remove Y speed from the equation
 			var hspeed = fish.trueSpeed
 			if fish.homing:
+				hspeed.y *= 2
 				hspeed *= 0.3
 			
 			mountingSpeed = clamp(hspeed.length()*1.2, 13, 60)  ##sets how fast you'll move on the rail (with clamps)

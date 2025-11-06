@@ -103,10 +103,12 @@ func _physics_process(_delta: float) -> void:
 			$airSpin.play()
 			airSpinUIgrow()
 			if fish.surfMode:
-				if airSpinRank == 9:
-					give_points(0, 1, true, str(8*360,"°")) #special exception bcs you skip a rank
+				#if airSpinRank == 9:
+				#	give_points(0, 1, true, str(8*360,"°")) #special exception bcs you skip a rank
+				if airSpinRank == 10:
+					give_points(5000, 5, true, "3600°")
 				else:
-					give_points(0, 1, true, str(airSpinRank*360, "°"))
+					give_points(0, 1, true, "360°")  #str(airSpinRank*360, "°")
 				
 			else:
 				if airSpinRank == 10:

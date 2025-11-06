@@ -12,13 +12,16 @@ var checkpoint_pos: Vector3
 
 #camera
 var targetCamAngle: Vector3
+var defaultCameraAngle : Vector3 = Vector3(-30,0,0)
 var targetCamOffset : Vector3
+var defaultCameraOffset : Vector3 = Vector3(0,0.58,0)
 var targetCamDist: float
+var defaultCameraDistance: float = 6.0
 var camSpeed: float = 0.2
 var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
-var defaultCameraAngle : Vector3 = Vector3(-30,0,0)
-var rotateRight : bool = false #keeps track of if the camera should rotate left or right
+
+var VcameraSetting : int = 1 #0: looking up/forward 1: regular 2: homing looking down 3: topdown
 
 #other trick variables
 var tiplanding : bool = false
@@ -985,22 +988,48 @@ func _process(_delta):
 			defaultCameraAngle.y -= 45
 		
 		#center camera
-		if (Input.is_action_just_pressed("camera") and !get_input_axis() and trueSpeed.length() > 4): #or isRailGrinding:
+		if (Input.is_action_just_pressed("camera") and !get_input_axis() and trueSpeed.length() > 4) or isRailGrinding:
 			var hDir = Vector2(-trueSpeed.z, -trueSpeed.x)
-			defaultCameraAngle.y = rad_to_deg(hDir.angle())
-			
+			var oldAng = defaultCameraAngle.y
+			var newAng = rad_to_deg(hDir.angle())
+			defaultCameraAngle.y = newAng
+			VcameraSetting = 1
+			if oldAng-newAng < -180:
+				%camFocus.rotation_degrees.y += 360
+			if oldAng-newAng > 180:
+				%camFocus.rotation_degrees.y -= 360
+		
 		
 		#look down
-		if Input.is_action_pressed("camera") and Input.is_action_pressed("back"):
-			homingLookDown = true
-			timeSinceNoTargets = 0
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("back") \
+		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("back"):
+			VcameraSetting = clamp(VcameraSetting+1, 0, 3)
+			homingLookDown = false
+		#look up
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("forward") \
+		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("forward"):
+			VcameraSetting = clamp(VcameraSetting-1, 0, 3)
+			homingLookDown = false
 		
-		
+		if VcameraSetting == 0:
+			defaultCameraAngle.x = 10
+			defaultCameraOffset = Vector3(0, 2.3, 0)
+		else:
+			defaultCameraOffset = Vector3(0, 0.58, 0)
+		if VcameraSetting == 1 or VcameraSetting == 2:
+			defaultCameraAngle.x = -30
+		if VcameraSetting == 3:
+			defaultCameraAngle.x = -70
+			defaultCameraDistance = 8
+		else:
+			defaultCameraDistance = 6
 	
+	
+	#print($detectCamSwitch.get_overlapping_areas())
 	
 	## inside camera controller areas
 	if $detectCamSwitch.has_overlapping_areas():
-		var area = $detectCamSwitch.get_overlapping_areas()[0]
+		var area = $detectCamSwitch.get_overlapping_areas()[-1]
 		targetCamAngle = area.newCameraAngle
 		targetCamOffset = area.newCameraOffset
 		targetCamDist = area.newCameraDistance
@@ -1015,8 +1044,8 @@ func _process(_delta):
 		#defaultCameraAngle.y -= mouse.x*0.001
 		#defaultCameraAngle.x -= mouse.y*0.001
 		targetCamAngle = defaultCameraAngle #default camera settings
-		targetCamOffset  = Vector3(0,0.58,0)
-		targetCamDist = 6
+		targetCamOffset  = defaultCameraOffset
+		targetCamDist = defaultCameraDistance
 		camSpeed = 0.2
 		#lower camera when close to a ceiling
 		if %ceilDetect.is_colliding():                                   #clamp min to 1
@@ -1032,9 +1061,9 @@ func _process(_delta):
 	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
 	#%camFocus.global_position = camLockOnTarget.global_position
 	var targetTilt = 0.0
-	if homingLookDown and !$detectCamSwitch.has_overlapping_areas():
+	if (homingLookDown or VcameraSetting == 2) and !$detectCamSwitch.has_overlapping_areas():
 		targetTilt = -24.0
-	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, 0.1)
+	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, camSpeed)
 	
 
 
@@ -1158,7 +1187,7 @@ func updateInputHistory():
 		if isRailGrinding:
 			$surfPivot/skateTricks.play("RESET")
 			$surfPivot/skateTricks.play(surfRotationType)
-			ScoreManager.give_points(800, 0, true, "INPUT COMBO")
+			ScoreManager.give_points(500, 0, true, "INPUT COMBO")
 			$spin_high.play()
 			surfRotationType = ""
 			
@@ -1167,13 +1196,13 @@ func updateInputHistory():
 				angular_velocity *= 80/angular_velocity.length()
 			
 			if surfRotationType == prevRotation: 
-				ScoreManager.give_points(800, 0, true, "INPUT COMBO")
+				ScoreManager.give_points(500, 0, true, "INPUT COMBO")
 				if angular_velocity.length() < 180:
 					angular_velocity *= 1.05 #doing the same rotation twice in a row
 				spinBoostBonus = 2.7
 				$spin_low.play()
 			else:
-				ScoreManager.give_points(1000, 0, true, "INPUT COMBO")
+				ScoreManager.give_points(800, 0, true, "INPUT COMBO")
 				if angular_velocity.length() < 220:
 					angular_velocity *= 1.13 #doing a different rotation
 				spinBoostBonus = 3.8

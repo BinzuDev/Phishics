@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=35 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="6_cd55a"]
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="6_s8o57"]
 [ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="6_xkte1"]
-[ext_resource type="Texture2D" uid="uid://byvdci71xehgj" path="res://Models/stone_pillar/pillaruv3.png" id="7_dodtx"]
-[ext_resource type="ArrayMesh" uid="uid://csm7oxo6t4q53" path="res://Models/stone_pillar/stone_pillar.obj" id="8_nad3r"]
 [ext_resource type="PackedScene" uid="uid://5lcphi6a3exn" path="res://Objects/anchor.tscn" id="9_bv6eu"]
 [ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Objects/Corals/coral_flat.tscn" id="10_dodtx"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/Corals/coral_tube.tscn" id="11_8l0wt"]
@@ -24,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="19_21ejt"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="21_qgejm"]
 [ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Models/chain/chain.tscn" id="23_vf164"]
+[ext_resource type="PackedScene" uid="uid://075khmta8th3" path="res://Objects/stone_pillar_fat.tscn" id="24_b1j38"]
 [ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="25_rmb8m"]
 [ext_resource type="PackedScene" uid="uid://d3gmdvl5bas25" path="res://Objects/score_ring.tscn" id="26_b1j38"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="27_kl2hu"]
@@ -54,21 +53,17 @@ volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_cd55a"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.7806053, 1.3186264, 0.1739502, 1.7806053, -1.3186264, -0.1739502, 8.171925, -4.4632034, -0.60702515, -1.1609011, 2.2165651, -0.19870317, 1.1609011, -2.2165651, 0.19870317, 11.081147, -11.741597, -1.950894, -1.6456604, 2.1503716, 0.22563171, 1.6456604, -2.1503716, -0.22563171, 12.140886, -18.100252, -3.4185333, -0.50559235, 0.8522835, -0.07047272, 0.50559235, -0.8522835, 0.07047272, 15.511938, -22.240345, -2.995552, 0.042045593, 1.2029457, -0.6326523, -0.042045593, -1.2029457, 0.6326523, 17.271559, -28.843655, -2.7180252, -0.5062294, 1.2617531, -0.5736084, 0.5062294, -1.2617531, 0.5736084, 18.688265, -36.476463, -1.9634552, 0, 0, 0, 0, 0, 0, 20.907099, -38.590645, -0.5632858),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(-1.9244709, 1.9903831, -0.115875244, 1.9244709, -1.9903831, 0.115875244, -2.5377274, -4.5948334, 2.454216, -2.5803146, 0.8782768, 1.1902542, 2.5803146, -0.8782768, -1.1902542, 4.056719, -8.62952, 1.9031372, -1.4386349, 1.4357071, -0.039665222, 1.4386349, -1.4357071, 0.039665222, 10.4167595, -14.91983, 1.2537308, -1.5859585, 2.621975, -0.05227661, 1.5859585, -2.621975, 0.05227661, 13.563183, -19.26553, 1.0840225, -0.62387085, 1.5144596, 0.22802734, 0.62387085, -1.5144596, -0.22802734, 16.656458, -25.779196, 0.90711975, -0.5070343, 1.4727173, 0.21516418, 0.5070343, -1.4727173, -0.21516418, 20.331953, -34.74351, -0.052520752, 0, 0, 0, 1.1588669, -0.2036438, 0.6472702, 21.307505, -37.08072, -0.15261841),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.56897736)
 }
-point_count = 8
+point_count = 7
 
 [sub_resource type="Curve3D" id="Curve3D_rmb8m"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.8195534, -1.7481465, 0.08311844, -1.3021927, -0.073459625, 0.14461136, 1.3021927, 0.073459625, -0.14461136, 6.748104, -2.8132715, 0.035945892, -1.3792114, 0.17949629, 0.26739883, 1.3792114, -0.17949629, -0.26739883, 19.800892, -2.297853, -0.0015258789, -0.4786682, -0.77539825, 0.75798416, 0, 0, 0, 24.245525, -1.3616133, -3.1029663, 0.27899933, -1.5242662, 0.49344254, -0.27899933, 1.5242662, -0.49344254, 24.402935, 1.7694578, -5.579624, 0.23764801, -0.978549, 0.4362564, -0.23764801, 0.978549, -0.4362564, 24.413975, 5.1778526, -8.285393, -0.22422028, -1.7273045, -0.119377136, 0.22422028, 1.7273045, 0.119377136, 24.988995, 11.327082, -9.593212, -0.1463089, -1.2686825, 0.70710754, 0.1463089, 1.2686825, -0.70710754, 25.57941, 16.161587, -11.821487, -0.5062332, -1.3110695, 0.98215103, 0.5062332, 1.3110695, -0.98215103, 26.993534, 22.35879, -15.221695, -0.22579956, -0.62044907, 0.6815758, 0.22579956, 0.62044907, -0.6815758, 28.189587, 26.071306, -18.122826, 0.12615204, -0.70877075, 1.3120041, -0.12615204, 0.70877075, -1.3120041, 28.705372, 31.11564, -24.344433, -0.029342651, -0.1734848, 1.267376, 0.029342651, 0.1734848, -1.267376, 31.315823, 33.8191, -35.504665, 0, 0, 0, 0, 0, 0, 34.195385, 32.796165, -50.601433, 0.020729065, 3.250431, 0.872036, -0.020729065, -3.250431, -0.872036, 36.579937, 27.60496, -61.604973, -0.38263702, 2.7464104, 3.6703033, 1, -2.746, -3.67, 37.038593, 18.46939, -65.94939, 2.949379, -0.090322495, 1.6923218, -2.949379, 0.090322495, -1.6923218, 32.41824, 16.687252, -81.37044, 13.461308, -2.0045547, -1.9819717, -13.461308, 2.0045547, 1.9819717, -0.48986053, 18.01152, -82.97776, 10.364571, 0.15689087, -1.8169098, -10.364571, -0.15689087, 1.8169098, -33.429214, 25.734217, -79.64775, 0, 0, 0, 0, 0, 0, -47.24895, 25.938025, -67.5459),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.82624054, 1.8843899, -0.85058975, -1.5044632, 1.6833754, -0.3241501, 1.5044632, -1.6833754, 0.3241501, 6.745659, -0.1133976, -0.17788315, -2.3869247, 1.1208744, -0.29678345, 2.3869247, -1.1208744, 0.29678345, 13.569595, -0.6549978, -0.14776611, -1.3792114, 0.17949629, 0.26739883, 1.3792114, -0.17949629, -0.26739883, 19.210594, -2.259139, -0.13180923, -0.946846, -0.6368928, 1.0390778, 0.946846, 0.6368928, -1.0390778, 23.043339, -1.3242364, -1.6684799, -0.34799957, -1.2080526, 1.3624954, 0.34799957, 1.2080526, -1.3624954, 24.469807, 0.644763, -4.944145, -0.37174988, -4.2300663, 2.9341316, 0.37174988, 4.2300663, -2.9341316, 24.88699, 6.9821606, -8.533821, -0.122406006, -1.2535229, 0.3088417, 0.122406006, 1.2535229, -0.3088417, 25.28165, 12.80118, -10.6073, -0.1463089, -1.2686825, 0.70710754, 0.1463089, 1.2686825, -0.70710754, 25.91518, 15.503496, -12.47562, -0.5062332, -1.3110695, 0.98215103, 0.5062332, 1.3110695, -0.98215103, 27.0013, 21.732775, -14.958862, -0.22579956, -0.62044907, 0.6815758, 0.22579956, 0.62044907, -0.6815758, 28.189587, 26.071306, -18.122826, 0.099990845, -2.1145, 3.6645546, -0.099990845, 2.1145, -3.6645546, 28.705372, 31.11564, -24.344433, -0.41532135, 0.007972717, 3.3689957, 0.41532135, -0.007972717, -3.3689957, 31.299313, 33.189148, -34.419525, -0.4101715, 1.3250866, 3.8041496, 0.4101715, -1.3250866, -3.8041496, 34.27589, 32.536224, -51.591183, 0.64019775, 2.1996574, 2.8692398, -0.64019775, -2.1996574, -2.8692398, 36.967373, 27.02926, -60.36803, -1.1493988, 3.3970985, 4.333786, 1.1493988, -3.3970985, -4.333786, 36.92796, 19.297308, -67.45465, 2.949379, -0.090322495, 1.6923218, -2.949379, 0.090322495, -1.6923218, 32.41824, 16.687252, -81.37044, 13.461308, -2.0045547, -1.9819717, -13.461308, 2.0045547, 1.9819717, -0.48986053, 18.01152, -82.97776, 10.364571, 0.15689087, -1.8169098, -10.364571, -0.15689087, 1.8169098, -33.429214, 25.734217, -79.64775, 0, 0, 0, 0, 0, 0, -47.24895, 25.938025, -67.5459),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 20
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rehwy"]
-albedo_texture = ExtResource("7_dodtx")
-texture_filter = 2
 
 [sub_resource type="Curve3D" id="Curve3D_dfos0"]
 closed = true
@@ -129,68 +124,69 @@ curve = SubResource("Curve3D_cd55a")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(0.17095456, 0.94417864, -0.28141406, -0.20739411, 0.31369054, 0.92659163, 0.96313775, -0.100041844, 0.24947485, 11.549819, -16.96746, -3.1993477)
-progress = 22.924322
-loop = false
-invisibleRail = true
-
-[node name="Path3D2" type="Path3D" parent="TheHills/Chains"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.782513, 8.247164, 61.97904)
-curve = SubResource("Curve3D_rmb8m")
-debug_custom_color = Color(18.892157, 0, 0, 1)
-
-[node name="rail_grind" parent="TheHills/Chains/Path3D2" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.021754479, 0.41596004, -0.90909946, 0, 0.90926814, 0.4160798, 0.9996911, 0.0090517895, -0.019783095, 0, 0, 0)
+transform = Transform3D(-0.463073, 0.74929756, -0.47323987, -0.13437577, 0.46837696, 0.8732044, 0.87593645, 0.46797675, -0.11622655, 21.307499, -37.080715, -0.15261841)
+progress = 41.96401
 loop = false
 invisibleRail = true
 
 [node name="Chain" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(3.8110886, 2.5592709, 2.2896805, -3.3747957, 3.4238257, 1.7902707, -0.6350251, -2.836274, 4.2271967, 53.43176, 44.2362, 69.194244)
+transform = Transform3D(3.9127796, 2.9148755, 1.5844748, -3.0210857, 4.142944, -0.1611372, -1.3711665, -0.810203, 4.876512, 52, 38.73, 71.21)
+
+[node name="Path3D2" type="Path3D" parent="TheHills/Chains/Chain"]
+transform = Transform3D(0.1486511, -0.11487759, -0.052003797, 0.11083887, 0.1573675, -0.03079938, 0.060133174, -0.006082534, 0.18532513, 5.584734, -3.3164973, -0.87680435)
+curve = SubResource("Curve3D_rmb8m")
+debug_custom_color = Color(18.892157, 0, 0, 1)
+
+[node name="rail_grind" parent="TheHills/Chains/Chain/Path3D2" instance=ExtResource("6_cd55a")]
+transform = Transform3D(0.053586863, -0.15234698, -0.98684055, -0.04265848, 0.9869433, -0.15469983, 0.99756205, 0.050388146, 0.046395533, 10.704009, -0.44332555, -0.19973136)
+progress = 10.571818
+loop = false
+invisibleRail = true
 
 [node name="Chain2" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-1.4522939, -3.3331103, -3.6191323, 4.7825117, -0.07006466, -1.8546088, 1.1555642, -3.8990223, 3.1271715, 57.49414, 39.12359, 67.598694)
+transform = Transform3D(-3.1561127, -1.879226, -3.5811121, 3.7989228, 0.18042529, -3.4427516, 1.3871019, -4.769997, 1.280622, 56.116093, 35.091064, 69.73955)
 
 [node name="Chain3" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.29899684, -4.2689915, 2.8289914, 5.091185, -0.5545281, -0.2987028, 0.5543711, 2.7901788, 4.269012, 58.606167, 32.406597, 65.48861)
+transform = Transform3D(-3.088746, -3.99235, 0.9152477, 4.095908, -3.0130842, 0.6795211, 0.0087403, 1.1398919, 5.001746, 59.51315, 30.24498, 68.89104)
 
 [node name="Chain4" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-3.214522, 3.000458, 2.6421547, 3.680655, 0.89733326, 3.4589682, 1.5609361, 4.063118, -2.7150378, 59.57842, 27.422548, 64.65875)
+transform = Transform3D(-2.0133777, 2.6506279, 3.9035058, 4.5767813, 0.06515397, 2.3164024, 1.1472898, 4.391675, -2.390355, 62.00835, 26.95396, 67.60836)
 
 [node name="Chain5" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-1.420488, 4.579152, -1.8249532, 4.8877234, 1.5548726, 0.09701536, 0.63973016, -1.7119031, -4.793433, 62.141796, 21.647318, 63.4749)
+transform = Transform3D(-0.8421737, 4.579152, -2.1538298, 4.6578565, 1.5548725, 1.4844604, 1.9778762, -1.7119031, -4.4129653, 63.56842, 21.357819, 65.57284)
 
 [node name="Chain6" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.9004057, -2.1257436, -4.5811963, 5.042902, -0.12560296, -0.93286806, 0.27439192, -4.6671524, 2.111698, 63.667366, 15.293484, 62.16432)
+transform = Transform3D(-1.915868, -0.14536151, -4.756595, 4.3915486, 1.9212662, -1.8275453, 1.833206, -4.7544165, -0.5930861, 65.41096, 16.455624, 63.38628)
 
 [node name="Chain7" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(0.28604478, -4.6391945, 2.1709266, 5.0718775, -0.04694067, -0.7685873, 0.71491987, 2.1891873, 4.584018, 63.667366, 8.440651, 62.16432)
+transform = Transform3D(-0.65461785, -5.0820456, 0.24729824, 5.031729, -0.68360484, -0.7288728, 0.7550154, 0.14955312, 5.071929, 65.793594, 11.1652565, 61.79519)
 
 [node name="Chain8" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-4.762965, -0.59133446, -1.811456, 1.9001545, -1.1078513, -4.6345387, 0.14302954, -4.9739184, 1.2476188, 66.190506, 3.1593285, 62.16432)
+transform = Transform3D(-3.9778342, 0.07266408, -3.238584, 3.2039735, -0.66815674, -3.9503145, -0.4777637, -5.0857806, 0.47271, 68.22129, 5.1879873, 61.971695)
 
 [node name="Chain9" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-5.1263223, 0.18408215, 0.06178098, -0.18776166, -5.1154194, -0.33781737, 0.049485087, -0.33983618, 5.118491, 72.57556, 2.2074847, 62.16432)
+transform = Transform3D(-5.1194167, -0.3008536, 0.13394956, 0.31858328, -5.052848, 0.82712084, 0.08342941, 0.8337337, 5.0611086, 73.24357, 4.1550546, 61.999516)
 
 [node name="Chain10" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-5.1263223, 0.18408214, 0.061780978, 0.069964014, 0.22846976, 5.124431, 0.18113045, 5.121601, -0.23081622, 78.74337, 2.8778896, 62.16432)
+transform = Transform3D(-4.95037, 0.1840821, 1.3329768, 1.3404335, 0.22846979, 4.9465075, 0.11813189, 5.121601, -0.2685689, 78.44723, 3.4116504, 61.881916)
 
 [node name="Chain11" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-4.97696, 0.24532968, -1.219247, 0.18705513, 5.11965, 0.26658726, 1.2295344, 0.21417665, -4.975867, 85.074104, 1.8299026, 61.35846)
+transform = Transform3D(-4.9769597, 0.8960886, -0.86242306, 0.18705517, 4.056233, 3.135102, 1.2295345, 3.0101285, -3.967903, 84.3385, 2.347889, 62.044067)
 
 [node name="Chain12" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.89615285, -5.039093, 0.3482875, -3.6567812, 0.40321285, -3.5752275, 3.4844978, -0.8728198, -3.6624203, 87.348625, 3.8367596, 57.300148)
+transform = Transform3D(-1.8104622, -4.7978673, -0.13988744, -2.3811636, 1.0275753, -4.4261756, 4.167631, -1.4971411, -2.589649, 86.58228, 4.700844, 57.601196)
 
 [node name="Chain13" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.67256963, 0.17102371, 5.082841, -3.8630333, -3.351883, -0.3983828, 3.3077922, -3.8797517, 0.5682362, 87.348625, 7.9543505, 52.715576)
+transform = Transform3D(-0.19582069, 0.28842697, 5.118138, -4.358032, -2.7063282, -0.014228424, 2.699273, -4.3484983, 0.34832996, 87.62465, 9.22784, 53.030487)
 
 [node name="Chain14" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.3863401, 4.735654, -1.9342103, -5.0067263, 0.04769515, 1.1168202, 1.0489551, 1.9718393, 4.618271, 88.05934, 13.581358, 50.247658)
+transform = Transform3D(-0.50140303, 5.0731063, -0.5736061, -4.513008, -0.17092907, 2.4331903, 2.3870966, 0.74243677, 4.4796705, 88.015396, 13.767774, 50.590862)
 
 [node name="Chain15" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
 transform = Transform3D(-0.4572874, 0.67263997, 5.065108, -4.6773934, -2.1019878, -0.14314422, 2.0566325, -4.6309867, 0.800666, 88.529434, 19.27421, 48.196724)
 
 [node name="Chain16" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-1.030822, -4.85767, 1.2873508, -4.416529, 0.24872002, -2.5979366, 2.3976097, -1.6303395, -4.2320585, 89.54872, 25.199022, 46.274822)
+transform = Transform3D(-0.8852738, -4.85767, 1.3914584, -4.672007, 0.24872, -2.1041284, 1.9249674, -1.6303395, -4.466918, 89.73124, 24.92302, 45.68889)
 
 [node name="Chain17" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
 transform = Transform3D(-0.82794255, -1.7046981, -4.7671137, -4.072847, 3.0934894, -0.39885554, 3.0072045, 3.720369, -1.8526726, 90.749245, 29.942873, 42.741653)
@@ -199,7 +195,7 @@ transform = Transform3D(-0.82794255, -1.7046981, -4.7671137, -4.072847, 3.093489
 transform = Transform3D(-0.27143732, -5.0856113, -0.61619407, -3.3305511, 0.64403856, -3.8483105, 3.8923752, 0.19642982, -3.3358145, 91.136055, 34.15975, 39.052086)
 
 [node name="Chain19" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-1.2926563, -0.94592345, 4.87351, -0.5971035, -4.9698243, -1.1229976, 4.9284196, -0.8502227, 1.1421986, 91.136055, 37.325573, 34.32852)
+transform = Transform3D(-0.33993226, -0.4519793, 5.0987253, -1.8208911, -4.7650228, -0.5438002, 4.783891, -1.8458259, 0.15531833, 91.08465, 36.783627, 34.118587)
 
 [node name="Chain20" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
 transform = Transform3D(-1.832954, 4.7668333, 0.48412696, -0.17577541, -0.5848923, 5.0935087, 4.7881293, 1.8033303, 0.37231708, 92.807816, 38.133953, 28.692844)
@@ -208,26 +204,26 @@ transform = Transform3D(-1.832954, 4.7668333, 0.48412696, -0.17577541, -0.584892
 transform = Transform3D(-1.3064939, -0.42509025, 4.9425907, -0.099316336, -5.1078568, -0.4655596, 4.9598403, -0.21425541, 1.2926291, 94.57738, 38.133953, 23.38051)
 
 [node name="Chain22" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.86027473, 4.977995, 0.89236, 0.20918679, -0.8693759, 5.051461, 5.0530167, 0.8834932, -0.057197332, 94.57738, 38.133953, 16.999994)
+transform = Transform3D(-1.1127445, 4.927708, 0.89236, 0.25320268, -0.8575909, 5.051461, 5.001449, 1.1397545, -0.057197332, 95.16486, 38.03201, 17.162182)
 
 [node name="Chain23" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
 transform = Transform3D(-1.306494, -0.42509025, 4.9425907, 1.0231023, -5.0243335, -0.16168222, 4.854188, 0.94455093, 1.3643659, 96.405365, 36.96019, 11.163471)
 
 [node name="Chain24" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.86027473, 4.9779944, 0.89235973, 2.8181882, -0.27974626, 4.277427, 4.199351, 1.207525, -2.6877768, 98.38833, 35.45825, 5.9040565)
+transform = Transform3D(-0.7680718, 4.977995, 0.9728539, 3.2263098, -0.27974623, 3.9786294, 3.9137955, 1.207525, -3.0888343, 98.158745, 34.722755, 6.680099)
 
 [node name="Chain25" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.48500675, 0.61379546, -5.069996, 4.7077913, 2.0276942, -0.20487434, 1.9794664, -4.6721, -0.75498694, 99.236244, 30.290283, 2.7413146)
+transform = Transform3D(-0.73433906, 0.2696752, -5.0699954, 2.9531221, 4.189738, -0.20487443, 4.129967, -2.9479103, -0.75498694, 99.04143, 31.02138, 2.6444197)
 
 [node name="Chain26" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-0.73888165, 5.066696, 0.31535786, 3.849314, 0.35142037, 3.3728502, 3.3096294, 0.722426, -3.8524373, 99.0242, 25.253513, -0.024722576)
+transform = Transform3D(-0.20432702, 5.11621, 0.3153579, 3.864951, -0.053542037, 3.3728502, 3.367078, 0.37193024, -3.8524373, 99.33092, 27.514818, -0.90838987)
 
 [node name="Chain27" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(-1.4302129, 0.2577104, -4.9198475, 1.7673147, 4.8088284, -0.2618663, 4.5986853, -1.7679251, -1.4294589, 100.0173, 21.969233, -4.9708934)
+transform = Transform3D(-0.30562627, 0.3323195, -5.110087, 2.788344, 4.3045483, 0.11316881, 4.295177, -2.770781, -0.43707925, 100.05238, 24.329975, -4.769721)
 metadata/_edit_group_ = true
 
 [node name="Chain28" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
-transform = Transform3D(0.86058086, -5.034928, 0.47506708, 0.45285052, -0.40324324, -5.094029, 5.0369763, 0.8964844, 0.37681377, 99.53634, 21.026009, -10.801477)
+transform = Transform3D(0.83508176, -5.034928, 0.5185811, 0.71352804, -0.40324324, -5.0640974, 5.0110197, 0.8964844, 0.63466513, 99.5383, 21.509151, -10.573138)
 metadata/_edit_group_ = true
 
 [node name="Chain29" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
@@ -335,7 +331,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.79211, 25.740229, 73.36763
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.56469, 25.812948, 63.964825)
 
 [node name="Enemy16" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.53625, 25.769373, 67.124275)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.53625, 27.481348, 70.27569)
 
 [node name="Enemy17" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.63067, 17.493343, 54.95298)
@@ -375,40 +371,23 @@ transform = Transform3D(4.7130494, 0, -0.66690606, 0, 4.7599993, 0, 0.66690606, 
 [node name="stone_pillar2" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.2837923, 0, 3.4459114, 0, 4.76, 0, -3.4459114, 0, 3.2837923, 8.47572, -7.0826826, 51.44554)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="TheHills/Main/stone_pillar2"]
-material_override = SubResource("StandardMaterial3D_rehwy")
-mesh = ExtResource("8_nad3r")
-skeleton = NodePath("../../..")
-
 [node name="stone_pillar4" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.2837923, 0, 3.4459114, 0, 4.76, 0, -3.4459114, 0, 3.2837923, 49.561287, -5.126521, 69.25905)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="TheHills/Main/stone_pillar4"]
-material_override = SubResource("StandardMaterial3D_rehwy")
-mesh = ExtResource("8_nad3r")
-skeleton = NodePath("../../..")
+[node name="stone_pillar7" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
+transform = Transform3D(1.4970233, 0, 1.5709301, 0, 2.17, 0, -1.5709301, 0, 1.4970233, 57.14999, 12.77085, 71.56105)
 
 [node name="stone_pillar5" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.2837923, 0, 3.4459114, 0, 4.76, 0, -3.4459114, 0, 3.2837923, 37.66467, -14.066554, 59.02877)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="TheHills/Main/stone_pillar5"]
-material_override = SubResource("StandardMaterial3D_rehwy")
-mesh = ExtResource("8_nad3r")
-skeleton = NodePath("../../..")
-
 [node name="stone_pillar6" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.2837923, 0, 3.4459114, 0, 4.76, 0, -3.4459114, 0, 3.2837923, 26.044054, -18.927242, 51.767296)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="TheHills/Main/stone_pillar6"]
-material_override = SubResource("StandardMaterial3D_rehwy")
-mesh = ExtResource("8_nad3r")
-skeleton = NodePath("../../..")
 
 [node name="stone_pillar3" parent="TheHills/Main" instance=ExtResource("6_xkte1")]
 transform = Transform3D(-1.6267923, 0, -3.2953265, 0, 3.675, 0, 3.2953265, 0, -1.6267923, -2.5729733, -7.9637938, 61.62785)
 
 [node name="Anchor" parent="TheHills/Main" instance=ExtResource("9_bv6eu")]
-transform = Transform3D(0.7640623, 0.3319469, -0.5531909, 0.055710703, 0.82031876, 0.5691865, 0.6427323, -0.46571264, 0.6082818, 30.659615, -0.28203106, 92.3031)
+transform = Transform3D(0.7640623, 0.3319469, -0.5531909, 0.055710703, 0.82031876, 0.5691865, 0.6427323, -0.46571264, 0.6082818, 29.95855, -3.2866898, 93.39694)
 
 [node name="Mines" type="Node3D" parent="TheHills/Main"]
 
@@ -694,7 +673,7 @@ transform = Transform3D(0.4797642, 0, -0.8773974, 0, 1, 0, 0.8773974, 0, 0.47976
 [node name="StonePillars" type="Node3D" parent="TheHills"]
 
 [node name="stone_pillar" parent="TheHills/StonePillars" instance=ExtResource("6_xkte1")]
-transform = Transform3D(3.556111, 0, -4.3840733, 0, 5.645, 0, 4.3840733, 0, 3.556111, 92.781075, 0.040657774, 20.673477)
+transform = Transform3D(3.556111, 0, -4.3840733, 0, 5.645, 0, 4.3840733, 0, 3.556111, 92.156715, 0.040657774, 22.329298)
 
 [node name="stone_pillar2" parent="TheHills/StonePillars" instance=ExtResource("6_xkte1")]
 transform = Transform3D(-4.460365, 0, -3.459938, 0, 5.645, 0, 3.459938, 0, -4.460365, 22.552402, -7.782213, -13.381779)
@@ -746,7 +725,7 @@ transform = Transform3D(3.877909, 0, 1.664398, 0, 4.22, 0, -1.664398, 0, 3.87790
 [node name="worms" type="Node3D" parent="."]
 
 [node name="Worm" parent="worms" instance=ExtResource("18_dfos0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.767742, 45.018063, 68.290344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.767742, 42.708466, 68.290344)
 metadata/_edit_group_ = true
 
 [node name="Worm2" parent="worms" instance=ExtResource("18_dfos0")]
@@ -762,8 +741,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.042427, 58.761578, -19.775
 transform = Transform3D(0.6869735, 0, -0.72668266, 0, 1, 0, 0.72668266, 0, 0.6869735, -25.996037, -0.11342603, 96.79304)
 billboardTexture = "uid://c7m5pw5cqoc16"
 
-[node name="stone_pillar3" parent="." instance=ExtResource("6_xkte1")]
-transform = Transform3D(-0.8373535, 0, -2.1904027, 0, 2.345, 0, 2.1904027, 0, -0.8373535, 51.53423, -10.58179, 60.392845)
+[node name="stone_pillar_fat" parent="." instance=ExtResource("24_b1j38")]
+transform = Transform3D(2.3385427, 0.23176886, -1.8626451e-09, -0.231167, 2.33247, 0.16924626, 0.016691923, -0.16842112, 2.3438976, 51.459747, -10.510117, 59.26687)
 
 [node name="scoreRing" parent="." instance=ExtResource("26_b1j38")]
 transform = Transform3D(-0.47171998, 0, -0.8817485, 0, 1, 0, 0.8817485, 0, -0.47171998, 5.992234, 38.403538, 11.291779)
@@ -838,3 +817,6 @@ transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 47.71025, 
 
 [node name="scoreRing2" parent="." instance=ExtResource("26_b1j38")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.164864, 59.00541, -19.877838)
+
+[node name="stone_pillar_fat2" parent="." instance=ExtResource("24_b1j38")]
+transform = Transform3D(0.8824856, -0.31453001, -0.7657611, 0, 1.1192633, -0.45972806, 0.82784003, 0.3352921, 0.81630886, 41.279045, -2.0005383, 68.882935)

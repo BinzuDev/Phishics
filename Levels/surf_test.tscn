@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=66 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -29,8 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://c8j81r35bfvf7" path="res://Objects/sacabambaspis.tscn" id="29_c2ka6"]
 [ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="29_iixud"]
 [ext_resource type="PackedScene" uid="uid://5lcphi6a3exn" path="res://Objects/anchor.tscn" id="30_iixud"]
-[ext_resource type="Texture2D" uid="uid://byvdci71xehgj" path="res://Models/stone_pillar/pillaruv3.png" id="30_nggdu"]
-[ext_resource type="ArrayMesh" uid="uid://csm7oxo6t4q53" path="res://Models/stone_pillar/stone_pillar.obj" id="31_djbud"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="33_djbud"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5qhn"]
@@ -209,10 +207,6 @@ point_count = 5
 [sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1hpu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlrrj"]
-albedo_texture = ExtResource("30_nggdu")
-texture_filter = 2
 
 [sub_resource type="Curve3D" id="Curve3D_djbud"]
 closed = true
@@ -1161,34 +1155,14 @@ transform = Transform3D(4.76, 0, 0, 0, 4.76, 0, 0, 0, 4.76, 78.61679, 118.38087,
 [node name="stone_pillar2" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(2.7686083, 0, 3.8720033, 0, 4.76, 0, -3.8720033, 0, 2.7686083, 93.18248, 107.40681, -52.498924)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="stone_pillar2"]
-material_override = SubResource("StandardMaterial3D_xlrrj")
-mesh = ExtResource("31_djbud")
-skeleton = NodePath("../..")
-
 [node name="stone_pillar4" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(2.7686083, 0, 3.8720033, 0, 4.76, 0, -3.8720033, 0, 2.7686083, 136.35858, 109.36297, -40.617474)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="stone_pillar4"]
-material_override = SubResource("StandardMaterial3D_xlrrj")
-mesh = ExtResource("31_djbud")
-skeleton = NodePath("../..")
 
 [node name="stone_pillar5" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(2.7686083, 0, 3.8720033, 0, 4.76, 0, -3.8720033, 0, 2.7686083, 123.14598, 100.422935, -49.080055)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="stone_pillar5"]
-material_override = SubResource("StandardMaterial3D_xlrrj")
-mesh = ExtResource("31_djbud")
-skeleton = NodePath("../..")
-
 [node name="stone_pillar6" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(2.7686083, 0, 3.8720033, 0, 4.76, 0, -3.8720033, 0, 2.7686083, 110.622604, 95.56225, -54.641785)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="stone_pillar6"]
-material_override = SubResource("StandardMaterial3D_xlrrj")
-mesh = ExtResource("31_djbud")
-skeleton = NodePath("../..")
 
 [node name="stone_pillar3" parent="." instance=ExtResource("29_iixud")]
 transform = Transform3D(-1.1490496, 0, -3.4907463, 0, 3.675, 0, 3.4907463, 0, -1.1490496, 83.66937, 106.525696, -40.86906)
