@@ -103,7 +103,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_takjo")
 
 [node name="Platform2" type="MeshInstance3D" parent="."]
-transform = Transform3D(19.546682, 0, 0, 0, 11.007984, 0, 0, 0, 4.129713, 96.156876, 41.992496, -41.200504)
+transform = Transform3D(16.633013, 0, 0, 0, 1.9681566, 0, 0, 0, 12.070672, 47.65567, 79.62597, -42.00706)
 material_override = ExtResource("4_nldhj")
 material_overlay = ExtResource("5_xkte1")
 mesh = SubResource("BoxMesh_qgejm")
@@ -137,7 +137,7 @@ curve = SubResource("Curve3D_rmb8m")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D2" instance=ExtResource("6_cd55a")]
-transform = Transform3D(0.053582773, -0.15233761, -0.98684055, -0.04265523, 0.98688257, -0.15469983, 0.99748594, 0.050385043, 0.046395533, 10.704009, -0.44332555, -0.19973136)
+transform = Transform3D(0.05358276, -0.15233761, -0.98684055, -0.04265522, 0.98688257, -0.15469983, 0.9974857, 0.050385043, 0.046395533, 10.704009, -0.44332555, -0.19973136)
 progress = 10.571818
 loop = false
 invisibleRail = true
@@ -827,3 +827,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.1
 
 [node name="stone_pillar_fat2" parent="." instance=ExtResource("24_b1j38")]
 transform = Transform3D(0.8824856, -0.31453001, -0.7657611, 0, 1.1192633, -0.45972806, 0.82784003, 0.3352921, 0.81630886, 41.279045, -2.0005383, 68.882935)
+
+[node name="strike_zone" parent="." instance=ExtResource("21_qgejm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.472626, 80.56488, -38.46637)

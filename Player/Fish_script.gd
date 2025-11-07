@@ -21,7 +21,7 @@ var camSpeed: float = 0.2
 var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
 var VcameraSetting : int = 1 ##0: looking up/forward 1: regular 2: homing looking down 3: topdown
-var autoCamTurning : bool = false
+var autoCamTurning : bool = true
 
 
 #other trick variables
