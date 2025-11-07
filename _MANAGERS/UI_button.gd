@@ -34,7 +34,7 @@ func set_border_width(value: float):
 	$backPanel/blueBorder.add_theme_stylebox_override("panel", stylebox)
 	
 func _on_focus_entered():
-	print(name, " focus enter")
+	#print(name, " focus enter")
 	if !ignoreInputs and !GameManager.disableMenuControl:
 		$selectSFX.play()
 		on_button_hovered.emit()
@@ -45,7 +45,7 @@ func _on_focus_entered():
 			.set_ease(Tween.EASE_OUT)
 
 func _on_focus_exited():
-	print(name, " focus exited")
+	#print(name, " focus exited")
 	if !ignoreInputs and !GameManager.disableMenuControl:
 		on_button_exited.emit()
 		var tween = create_tween()

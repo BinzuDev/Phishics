@@ -20,8 +20,9 @@ var defaultCameraDistance: float = 6.0
 var camSpeed: float = 0.2
 var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
+var VcameraSetting : int = 1 ##0: looking up/forward 1: regular 2: homing looking down 3: topdown
+var autoCamTurning : bool = false
 
-var VcameraSetting : int = 1 #0: looking up/forward 1: regular 2: homing looking down 3: topdown
 
 #other trick variables
 var tiplanding : bool = false
@@ -245,12 +246,18 @@ func _physics_process(_delta: float) -> void:
 		%surfJumpMeter.tint_under.a = 0
 		%surfJumpMeter.modulate.a = clamp((surfJumpHolding * 0.25) - 1, 0, 1)
 	
-	var closest = null
 	## HOMING ATTACK
-	if %homingArea.has_overlapping_areas() and !%nearFloor.is_colliding() and !isHeld:
-		closest = get_closest_target()
+	var closest = null
+	var coyoteTimeTarget = false
+	if !%homingArea.has_overlapping_areas() and timeSinceNoTargets < 10:
+		closest = closestLastFrame           #coyote time
+		coyoteTimeTarget = true
+		#printerr("TARGET COYOTE TIME")
+	if (%homingArea.has_overlapping_areas() or closest) and !%nearFloor.is_colliding() and !isHeld:
+		if !coyoteTimeTarget: #dont get closest target in coyote time bcs there isnt one
+			closest = get_closest_target()
 		if Input.is_action_pressed("left") and Input.is_action_pressed("right") and Input.is_action_pressed("forward"):
-			closest = null
+			closest = null #target canceling
 		
 		if closest != null:
 			if closestLastFrame != closest: #when the target changes
@@ -265,6 +272,7 @@ func _physics_process(_delta: float) -> void:
 				if !$reticle.visible: #only play the animation when it first appears
 					$reticle/reticleAnimation.play("reticle_appear1")
 					$reticle/sfx.play()
+					
 			
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			var center =  MenuManager.get_UI_size()/2
@@ -302,7 +310,7 @@ func _physics_process(_delta: float) -> void:
 		$reticle.modulate.a = 1
 		%speedLinesShader.visible = true
 	
-	if !%homingArea.has_overlapping_areas() or height < 3:
+	if closest == null or height < 3 or coyoteTimeTarget:
 		timeSinceNoTargets += 1
 	else:
 		timeSinceNoTargets = 0 
@@ -335,6 +343,7 @@ func _physics_process(_delta: float) -> void:
 			global_rotation = Vector3(0,0,-90)
 		diving = true #DIVING VARIABLE
 		
+		print("DIVING, TIME SINCE NO TARGET: ", timeSinceNoTargets, " closest: ", closest, " last frame: ", closestLastFrame)
 		
 		
 		if closest != null: #Homing attack
@@ -363,21 +372,16 @@ func _physics_process(_delta: float) -> void:
 				var newAng = rad_to_deg(hDir.angle())
 				var angleDiff = abs(wrap(oldAng-newAng, -180, 180))
 				if angleDiff < 120: #don't rotate when behind you
+					wrap_camera(oldAng, newAng)
 					defaultCameraAngle.y = newAng
-					if oldAng-newAng < -180:
-						%camFocus.rotation_degrees.y += 360
-					if oldAng-newAng > 180:
-						%camFocus.rotation_degrees.y -= 360
-				
-				
-				
+					
 				
 				
 				
 				
 				
 	
-	#$homing/TEST.rotation_degrees.y = rad_to_deg(Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x).angle()) 
+	
 	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
 	#	if diving or homing:
 	#		printerr("DIVING WOULD HAVE GOTTEN RESET BEFORE")
@@ -772,7 +776,7 @@ func _physics_process(_delta: float) -> void:
 			if height > 10 and linear_velocity.y < 0 and surfRotationType == "":
 				surfRotationType = "tumble"
 			if surfRotationType == "tumble":
-				print("AIR TUMBLE")                                 #this adds a bit of non-rng randomness 
+				#print("AIR TUMBLE")                                 #this adds a bit of non-rng randomness 
 																	#to the tumble spin direction
 				curBasis = curBasis.rotated(curBasis.y, spinSpeed*0.2*sign(angular_velocity.y))
 				curBasis = curBasis.rotated(curBasis.x, spinSpeed*0.2*sign(angular_velocity.x))
@@ -916,14 +920,20 @@ func _physics_process(_delta: float) -> void:
 	"spark rate: ", %surfSparks.amount_ratio, "\n",)
 	
 	
+	var closestName = "null"
+	if closest:
+		closestName = str(closest.name, " (", closest.get_parent().name, ")")
+	
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
 	"height: ", snapped(height, 0.01), "\n",
 	"linear velocity: ", snapped(linear_velocity.length(), 0.1)," ",snapped(linear_velocity, Vector3(0.1,0.1,0.1)), "\n",
 	"angular velocity: ", snapped(angular_velocity.length(), 0.1), " ", snapped(angular_velocity, Vector3(0.1,0.1,0.1)), "\n",
 	"diving: ", diving, "\n",
-	"target: ", get_collider_name($homing/raycast), "\n",
 	"camera rc: ", get_collider_name(%ceilDetect), "\n",
+	"target: ", get_collider_name($homing/raycast), "\n",
+	"closest: ",  closestName, "\n",
+	"closestLastFrame: ", closestLastFrame, "\n",
 	"timeSinceNoTargets: ", timeSinceNoTargets, "\n",
 	"homingLookDown: ", homingLookDown, "\n",
 	"gravity scale: ", gravity_scale, "\n", 
@@ -973,56 +983,79 @@ func _process(_delta):
 		## NEW CAMERA CONTROLS
 		cameraOverride = false
 		
-		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("left") \
-		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("left"):
-			if defaultCameraAngle.y >= 135: #wrap angles
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("left"):
+		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("left"):
+			defaultCameraAngle.y += 45
+			VcameraSetting = 1
+			if defaultCameraAngle.y >= 180: #wrap angles
 				%camFocus.rotation_degrees.y -= 360
 				defaultCameraAngle.y -= 360
-			defaultCameraAngle.y += 45
+			
 		
-		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("right") \
-		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("right"):
-			if defaultCameraAngle.y <= -135: #wrap angles
+		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("right"):
+		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("right"):
+			defaultCameraAngle.y -= 45
+			VcameraSetting = 1
+			if defaultCameraAngle.y <= -180: #wrap angles
 				%camFocus.rotation_degrees.y += 360
 				defaultCameraAngle.y += 360
-			defaultCameraAngle.y -= 45
+			
 		
 		#center camera
-		if (Input.is_action_just_pressed("camera") and !get_input_axis() and trueSpeed.length() > 4) or isRailGrinding:
-			var hDir = Vector2(-trueSpeed.z, -trueSpeed.x)
-			var oldAng = defaultCameraAngle.y
-			var newAng = rad_to_deg(hDir.angle())
-			defaultCameraAngle.y = newAng
-			VcameraSetting = 1
-			if oldAng-newAng < -180:
-				%camFocus.rotation_degrees.y += 360
-			if oldAng-newAng > 180:
-				%camFocus.rotation_degrees.y -= 360
+		var hDir = Vector2(-trueSpeed.z, -trueSpeed.x)
+		var newAng = rad_to_deg(hDir.angle())
+		if Input.is_action_just_pressed("camera") and !get_input_axis():
+			autoCamTurning = !autoCamTurning
+			$UI/camIcon/ColorRect/manual.visible = !autoCamTurning
+			$UI/camIcon/ColorRect/auto.visible = autoCamTurning
+			if hDir.length() > 4: #instantly turn camera at first (if not standing still)
+				wrap_camera(defaultCameraAngle.y, newAng)
+				defaultCameraAngle.y = newAng
+				VcameraSetting = 1
+			
+		
+		#Auto cam rotation
+		if autoCamTurning and hDir.length() > 4:
+			wrap_camera(defaultCameraAngle.y, newAng, true)
+			var turningSpd = clamp(hDir.length()*0.002, 0, 0.1) #0.02 at spd=10, 0.1 at spd=50
+			#print("lerping from ", snapped(defaultCameraAngle.y, 0.01), " to ", snapped(newAng, 0.01), " @ ", snapped(turningSpd, 0.01) )
+			defaultCameraAngle.y = lerp(defaultCameraAngle.y, newAng, turningSpd)
+			
 		
 		
-		#look down
-		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("back") \
-		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("back"):
-			VcameraSetting = clamp(VcameraSetting+1, 0, 3)
-			homingLookDown = false
-		#look up
-		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("forward") \
-		or Input.is_action_pressed("camera") and Input.is_action_just_pressed("forward"):
-			VcameraSetting = clamp(VcameraSetting-1, 0, 3)
-			homingLookDown = false
 		
-		if VcameraSetting == 0:
+		
+		#Vertical camera control
+		#don't allow if left or right is pressed so you can spam diagonally
+		if !Input.is_action_pressed("right") and !Input.is_action_pressed("left"):
+			if Input.is_action_just_pressed("camera") and Input.is_action_pressed("back"):
+			#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("back"):
+				VcameraSetting = clamp(VcameraSetting+1, 0, 3)
+				homingLookDown = false
+			
+			if Input.is_action_just_pressed("camera") and Input.is_action_pressed("forward"):
+			#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("forward"):
+				VcameraSetting = clamp(VcameraSetting-1, 0, 3)
+				homingLookDown = false
+		
+		if VcameraSetting == 0: #look up
 			defaultCameraAngle.x = 10
 			defaultCameraOffset = Vector3(0, 2.3, 0)
 		else:
-			defaultCameraOffset = Vector3(0, 0.58, 0)
-		if VcameraSetting == 1 or VcameraSetting == 2:
+			defaultCameraOffset = Vector3(0, 0.58, 0) #default
+		if VcameraSetting == 1 or VcameraSetting == 2:  #(effect of setting 2 happens with the hominglookdown)
 			defaultCameraAngle.x = -30
-		if VcameraSetting == 3:
+		if VcameraSetting == 3:         #top down
 			defaultCameraAngle.x = -70
 			defaultCameraDistance = 8
 		else:
 			defaultCameraDistance = 6
+		
+		#Railgrind camera
+		if isRailGrinding and currentRailObj:
+			if currentRailObj.overrideCamDistance != 0:
+				defaultCameraDistance = currentRailObj.overrideCamDistance 
+		
 	
 	
 	#print($detectCamSwitch.get_overlapping_areas())
@@ -1065,6 +1098,19 @@ func _process(_delta):
 		targetTilt = -24.0
 	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, camSpeed)
 	
+
+##Rotates camFocus by 360 degrees if the current camera and target angle crosses over the -180\180 point
+##This function uses degrees, make sure you're not using radians
+func wrap_camera(oldAngle:float, newAngle:float, wrapDefaultCamAngleY:bool=false):
+	if oldAngle-newAngle < -180:
+		%camFocus.rotation_degrees.y += 360
+		if wrapDefaultCamAngleY:
+			defaultCameraAngle.y += 360
+	if oldAngle-newAngle > 180:
+		%camFocus.rotation_degrees.y -= 360
+		if wrapDefaultCamAngleY:
+			defaultCameraAngle.y -= 360
+		
 
 
 
@@ -1237,6 +1283,7 @@ func get_input_axis():
 	var x = Input.get_axis("left", "right")
 	var y = Input.get_axis("forward", "back")
 	return Vector2(x,y)
+
 
 ##Temporarily change the FOV of the camera for a zoom-in impact effect
 func set_fov(newFov:float):

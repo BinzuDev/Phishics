@@ -88,7 +88,9 @@ func _on_body_entered(body: Node3D) -> void:
 			##Rotate the camera
 			if !body.legacyCamera and recenterCamera:
 				var hDir = Vector2(-distance.z, -distance.x)
+				body.wrap_camera(body.defaultCameraAngle.y, rad_to_deg(hDir.angle()))
 				body.defaultCameraAngle.y = rad_to_deg(hDir.angle())
+				
 				#body.defaultCameraAngle.y = global_rotation_degrees.y
 				print("BOOST ANGLE: ", rad_to_deg(hDir.angle()), global_rotation_degrees.y)
 				

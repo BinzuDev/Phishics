@@ -308,7 +308,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_jctnn")
 
 [node name="fish" parent="." instance=ExtResource("4_ab27v")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 11.215834, 142.84254, 100.25514)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1.7334657, 119.78541, 92.91447)
 gravity_scale = 1.5
 legacyCamera = false
 
@@ -359,6 +359,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5608, 132.321, 12.4446)
 
 [node name="destructable_sign6" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6432, 136.685, -3.59786)
+
+[node name="destructable_sign13" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.392242, 123.324, -122.53678)
+canRespawn = true
+
+[node name="destructable_sign14" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 69.44771, 123.324, -121.12903)
+canRespawn = true
+
+[node name="destructable_sign15" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64.71574, 123.324, -133.99126)
+canRespawn = true
+
+[node name="destructable_sign16" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.389015, 123.324, -137.61513)
+canRespawn = true
+
+[node name="destructable_sign22" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 59.739914, 119.916435, -143.40042)
+canRespawn = true
+
+[node name="destructable_sign17" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.846855, 121.4833, -140.32903)
+canRespawn = true
+
+[node name="destructable_sign18" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.472744, 124.340675, -150.93517)
+canRespawn = true
+
+[node name="destructable_sign19" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, -0.25881904, 0.9659259, 0, -0.9659259, -0.25881904, 73.66249, 124.340675, -147.4803)
+canRespawn = true
+
+[node name="destructable_sign20" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 78.013985, 122.72906, -127.7529)
+canRespawn = true
+
+[node name="destructable_sign21" parent="." instance=ExtResource("3_wstlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.631042, 119.34988, -127.7529)
+canRespawn = true
 
 [node name="pillar rock2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.99207e-08, -3.60038e-08, -2, -1.5939, 1.20809, 8.20746e-08, 1.20809, 1.5939, 4.2197e-08, 3.04865, 118.174, 60.9473)

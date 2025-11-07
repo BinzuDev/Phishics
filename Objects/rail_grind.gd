@@ -6,6 +6,7 @@ extends PathFollow3D
 @export var invisibleRail : bool = false ##If you want to make a railgrind area on an existing piece of geometry, and don't need the pipe.
 @export var faceStraightAhead : bool = false ##Makes the surfboard point forward instead of at an angle
 @export var oneWay : bool = false ##The rail will always make you move in the FORWARD direction (in the order of the points in the curve3D)
+@export_range(0, 20, 0.1, "or_greater") var overrideCamDistance := 0.0 ##Set the camera distance, default is 6. 0 = do nothing
 
 var isBeingUsed: bool = false #if the fish is currently using this rail
 var fish: player
