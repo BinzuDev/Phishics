@@ -1008,14 +1008,13 @@ func _process(_delta):
 		var newAng = rad_to_deg(hDir.angle())
 		if Input.is_action_just_pressed("camera") and !get_input_axis():
 			autoCamTurning = !autoCamTurning
-			$UI/camIcon/ColorRect/manual.visible = !autoCamTurning
-			$UI/camIcon/ColorRect/auto.visible = autoCamTurning
 			if hDir.length() > 4: #instantly turn camera at first (if not standing still)
 				wrap_camera(defaultCameraAngle.y, newAng)
 				defaultCameraAngle.y = newAng
 				VcameraSetting = 1
 			
-		
+		$UI/camIcon/ColorRect/manual.visible = !autoCamTurning
+		$UI/camIcon/ColorRect/auto.visible = autoCamTurning
 		#Auto cam rotation
 		if autoCamTurning and hDir.length() > 4:
 			wrap_camera(defaultCameraAngle.y, newAng, true)
