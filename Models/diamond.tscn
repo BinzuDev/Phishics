@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://u26mo88looqv"]
+
+[ext_resource type="Texture2D" uid="uid://cktinvkrrfcdm" path="res://Textures/purple_stone.png" id="1_mx73m"]
+[ext_resource type="ArrayMesh" uid="uid://ckeo4brqm85r3" path="res://Models/diamond/diamond.obj" id="2_rqjsn"]
+[ext_resource type="Script" uid="uid://hp8av86afbj1" path="res://Objects/rotating_obj.gd" id="3_wkyjm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kow38"]
+albedo_texture = ExtResource("1_mx73m")
+texture_filter = 2
+
+[sub_resource type="Animation" id="Animation_rqjsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mx73m"]
+resource_name = "Floating"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 2.9666667),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqjsn"]
+_data = {
+&"Floating": SubResource("Animation_mx73m"),
+&"RESET": SubResource("Animation_rqjsn")
+}
+
+[node name="Diamond" type="Node3D"]
+
+[node name="Diamond" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_kow38")
+mesh = ExtResource("2_rqjsn")
+skeleton = NodePath("../..")
+script = ExtResource("3_wkyjm")
+yRotation = true
+yRandom = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Diamond"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_rqjsn")
+}
