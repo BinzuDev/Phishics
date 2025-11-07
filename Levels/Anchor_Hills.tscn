@@ -137,7 +137,7 @@ curve = SubResource("Curve3D_rmb8m")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D2" instance=ExtResource("6_cd55a")]
-transform = Transform3D(0.05358281, -0.15233761, -0.98684055, -0.04265526, 0.98688257, -0.15469983, 0.9974866, 0.050385043, 0.046395533, 10.704009, -0.44332555, -0.19973136)
+transform = Transform3D(0.053582773, -0.15233761, -0.98684055, -0.04265523, 0.98688257, -0.15469983, 0.99748594, 0.050385043, 0.046395533, 10.704009, -0.44332555, -0.19973136)
 progress = 10.571818
 loop = false
 invisibleRail = true

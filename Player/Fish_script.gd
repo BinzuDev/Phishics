@@ -1232,9 +1232,13 @@ func updateInputHistory():
 	if newTrick:
 		inputHistory = ["","",""]
 		if isRailGrinding:
+			if !$surfPivot/skateTricks.is_playing() or $surfPivot/skateTricks.current_animation_position > 0.8:
+				ScoreManager.give_points(1200, 0, true, "INPUT COMBO")
+				currentRailObj.mountingSpeed += 5
+			else:
+				ScoreManager.give_points(300, 0, true, "INPUT COMBO")
 			$surfPivot/skateTricks.play("RESET")
 			$surfPivot/skateTricks.play(surfRotationType)
-			ScoreManager.give_points(500, 0, true, "INPUT COMBO")
 			$spin_high.play()
 			surfRotationType = ""
 			

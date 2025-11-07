@@ -42,6 +42,8 @@ func _ready():
 
 
 ##TODO: jumping off of a rail thats close to the ground counts as a pogo jump?????
+##TODO: rail tricks should do less points when going slower, maybe give you points
+
 
 ##NOTICE: using fish.trueSpeed, you can now get how fast the fish is ACTUALLY moving, use this instead of linear_velocity for calculations.
 ##fish.trueSpeed is a Vector3, so just like with with velocity, you can use fish.trueSpeed.length() to get the total speed without direction
@@ -93,7 +95,7 @@ func real_process(delta):
 	
 	## All the code that should run during railgrinding
 	if isBeingUsed:
-		ScoreManager.give_points(mountingSpeed*6, 0, false, "RAILGRIND") #gives points every frame
+		ScoreManager.give_points(mountingSpeed*2, 0, false, "RAILGRIND") #gives points every frame
 		
 		lock_fish_in_place() #put the fish above the rail
 		

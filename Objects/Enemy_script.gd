@@ -184,7 +184,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			
 			if not body.diving and enemyType == Enum1.Regular_Crab:
 				#trick
-				ScoreManager.give_points(1000, 1, true, "CRAB TOSS")
+				ScoreManager.give_points(800, 0, true, "CRAB TOSS")
 				#$AudioStreamPlayer3D.play()
 				#body.body.func_set_fov()
 			
@@ -200,9 +200,11 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			body.linear_velocity.z *= 0.4
 			
 			if $FloorCast/airshot.is_colliding():
-				if hp > 0:
+				if hp == 2:
+					ScoreManager.give_points(1000, 0, true, "HOMING ATTACK")
+				if hp == 1:
 					ScoreManager.give_points(2000, 1, true, "HOMING ATTACK")
-					ScoreManager.update_freshness(self)
+				ScoreManager.update_freshness(self)
 			else:
 				ScoreManager.give_points(0, 5, true, "HOMING AIRSHOT")
 				ScoreManager.update_freshness(self)

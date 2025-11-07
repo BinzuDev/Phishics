@@ -2202,7 +2202,6 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
-visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
@@ -2585,6 +2584,7 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="homingTarget" type="Node3D" parent="homing/camRotation"]
 unique_name_in_owner = true
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="homing/camRotation/homingTarget"]
 material_override = SubResource("StandardMaterial3D_ipqbp")

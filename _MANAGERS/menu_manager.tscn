@@ -821,7 +821,6 @@ text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -892,11 +891,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Mechanics" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1260,10 +1260,10 @@ description2 = "Since the Taunt also counts as an interaction, try to only use i
 layout_mode = 2
 
 [node name="Interactibles" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 2014
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 2
@@ -1360,7 +1360,7 @@ description = "Dunk from REALLY high up"
 [node name="crab" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Crab Toss"
-score = "1000pts + 1x"
+score = "800pts"
 description = "Run into a crab fast enough to hurt it."
 
 [node name="crab2" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
@@ -1375,6 +1375,7 @@ trickName = "Homing Attack"
 score = "2000pts + x1"
 rarity = "Uncommon"
 description = "Use the homing dive to attack a crab."
+description2 = "First hit only gives 1000pts. The killing blow gives the full 2000pts + x1"
 
 [node name="crab4" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1917,6 +1918,7 @@ texture = ExtResource("53_mfo2v")
 centered = false
 
 [node name="pauseBG" type="TextureRect" parent="."]
+visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_i2psa")
 anchors_preset = 15
