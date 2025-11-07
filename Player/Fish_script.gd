@@ -987,6 +987,7 @@ func _process(_delta):
 		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("left"):
 			defaultCameraAngle.y += 45
 			VcameraSetting = 1
+			autoCamTurning = false
 			if defaultCameraAngle.y >= 180: #wrap angles
 				%camFocus.rotation_degrees.y -= 360
 				defaultCameraAngle.y -= 360
@@ -996,6 +997,7 @@ func _process(_delta):
 		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("right"):
 			defaultCameraAngle.y -= 45
 			VcameraSetting = 1
+			autoCamTurning = false
 			if defaultCameraAngle.y <= -180: #wrap angles
 				%camFocus.rotation_degrees.y += 360
 				defaultCameraAngle.y += 360
