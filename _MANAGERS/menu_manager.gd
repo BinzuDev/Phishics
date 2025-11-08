@@ -92,10 +92,11 @@ func toggleMenu():
 	%Tricks.forceReset()
 	%Settings.visible = false
 	GameManager.previousUIselection = []
+	print("toggleMenu")
+	MusicManager.muffle_music(GameManager.gamePaused)
 	if GameManager.gamePaused:
 		%Continue.grab_focus()
 		%PauseList.visible = true
-		
 		
 
 

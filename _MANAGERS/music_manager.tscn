@@ -43,6 +43,7 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [node name="music_manager" type="Node"]
+process_mode = 3
 script = ExtResource("1_tylfe")
 
 [node name="OST1" type="AudioStreamPlayer" parent="."]

@@ -178,7 +178,33 @@ func _on_song_end_timeout():
 	
 	
 
+func muffle_music(value:bool):
+	#AudioServer.get_bus_effect(4,1).set_band_gain_db(3, 0)
+	print("MUFFLE MUSIC")
+	if value == true:
+		print("muffle ON")
+		AudioServer.set_bus_volume_db(4, -5)
+		tween_muffle(-20)
+		#var tween = get_tree().create_tween()
+		#tween.tween_method(tween_muffle, 0, -20, 1)
+	else:
+		print("muffle OFF")
+		AudioServer.set_bus_volume_db(4, 0)
+		tween_muffle(0)
+		#var tween = get_tree().create_tween()
+		#tween.tween_method(tween_muffle, -20, 0, 1)
+	
 
+
+func tween_muffle(value):
+	print(value)
+	AudioServer.get_bus_effect(4,1).set_band_gain_db(3, value)
+	AudioServer.get_bus_effect(4,1).set_band_gain_db(4, value*2)
+	AudioServer.get_bus_effect(4,1).set_band_gain_db(5, value*3)
+
+
+
+##DEBUG
 func _on_button_pressed():
 	play_track(2)
 
