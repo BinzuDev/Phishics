@@ -19,9 +19,15 @@ func _ready() -> void:
 	if yRandom:
 		randomOfY = randi_range(1, 2)
 	
+	
+	
+	### randomizes the aniamtion start
 	%AnimationPlayer.play("Floating")
-
-
+	%AnimationPlayer.seek(randf_range(0, 5))
+	###
+	
+	
+	
 func _process(_delta: float) -> void:
 	
 	
