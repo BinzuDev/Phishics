@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://clte0yvm0fx3x"]
+
+[ext_resource type="Texture2D" uid="uid://cnvdnbsgfugxw" path="res://Textures/bricks.png" id="1_csj17"]
+[ext_resource type="ArrayMesh" uid="uid://c1wlubp80y88b" path="res://Models/brick_wall/brick_wall.obj" id="2_278xf"]
+[ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="3_278xf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssuxe"]
+albedo_texture = ExtResource("1_csj17")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jl8sq"]
+data = PackedVector3Array(-5.0729, 5.9216, -0.17909999, 5.0729, 5.9216, -0.17909999, -5.0729, 5.9216, 0.17909999, -5.0729, 5.9216, 0.17909999, 5.0729, 5.9216, -0.17909999, 5.0729, 5.9216, 0.17909999, 5.0729, 5.9216, 0.17909999, 5.0729, 0.049799997, 0.17909999, -5.0729, 5.9216, 0.17909999, -5.0729, 5.9216, 0.17909999, 5.0729, 0.049799997, 0.17909999, -5.0729, 0.049799997, 0.17909999, -5.0729, 5.9216, 0.17909999, -5.0729, 0.049799997, 0.17909999, -5.0729, 5.9216, -0.17909999, -5.0729, 5.9216, -0.17909999, -5.0729, 0.049799997, 0.17909999, -5.0729, 0.049799997, -0.17909999, 5.0729, 0.049799997, -0.17909999, -5.0729, 0.049799997, -0.17909999, 5.0729, 0.049799997, 0.17909999, 5.0729, 0.049799997, 0.17909999, -5.0729, 0.049799997, -0.17909999, -5.0729, 0.049799997, 0.17909999, 5.0729, 5.9216, -0.17909999, 5.0729, 0.049799997, -0.17909999, 5.0729, 5.9216, 0.17909999, 5.0729, 5.9216, 0.17909999, 5.0729, 0.049799997, -0.17909999, 5.0729, 0.049799997, 0.17909999, -5.0729, 5.9216, -0.17909999, -5.0729, 0.049799997, -0.17909999, 5.0729, 5.9216, -0.17909999, 5.0729, 5.9216, -0.17909999, -5.0729, 0.049799997, -0.17909999, 5.0729, 0.049799997, -0.17909999)
+
+[sub_resource type="Curve3D" id="Curve3D_csj17"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.99, 6, -0.045, 0, 0, 0, 0, 0, 0, 4.99, 6, -0.045),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="brick_wall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_ssuxe")
+mesh = ExtResource("2_278xf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl8sq")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_csj17")
+
+[node name="rail_grind" parent="Path3D" instance=ExtResource("3_278xf")]
+transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, -4.99, 6, -0.045)
+loop = false
+invisibleRail = true

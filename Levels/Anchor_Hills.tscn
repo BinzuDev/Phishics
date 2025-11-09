@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=39 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="27_kl2hu"]
 [ext_resource type="PackedScene" uid="uid://3rwl6pgnr4ga" path="res://Models/island.tscn" id="27_qmqkv"]
 [ext_resource type="PackedScene" uid="uid://u26mo88looqv" path="res://Models/diamond.tscn" id="28_pgsm2"]
+[ext_resource type="PackedScene" uid="uid://clte0yvm0fx3x" path="res://Models/brickw_all.tscn" id="29_awgq2"]
+[ext_resource type="Texture2D" uid="uid://du5y60syohu2l" path="res://Sprites/grafitti/sharkgirl_graf.png" id="30_0qcaj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
 panorama = ExtResource("2_o0o2q")
@@ -1109,3 +1111,13 @@ signSprite = "uid://dakyqhyrdardk"
 [node name="stars7" parent="starfishes" instance=ExtResource("12_rehwy")]
 transform = Transform3D(0.08352406, -0.7326308, -0.6754818, 0.7471901, 0.49454522, -0.44399542, 0.6593409, -0.46762896, 0.58872104, -2.6884525, 4.984127, 119.90228)
 signSprite = "uid://dakyqhyrdardk"
+
+[node name="brick_wall" parent="." instance=ExtResource("29_awgq2")]
+transform = Transform3D(-0.60791636, 0, -0.79400104, 0, 1, 0, 0.79400104, 0, -0.60791636, 32.885582, -0.07450271, 136.53671)
+
+[node name="grafitti" type="Sprite3D" parent="brick_wall"]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0.17919922, 2.7943692, 0.23405457)
+texture = ExtResource("30_0qcaj")
+
+[node name="brick_wall2" parent="." instance=ExtResource("29_awgq2")]
+transform = Transform3D(-0.6812705, 0, 0.73203176, 0, 1, 0, -0.73203176, 0, -0.6812705, 40.994938, -0.07450271, 133.9524)
