@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://u26mo88looqv"]
 
 [ext_resource type="Texture2D" uid="uid://cktinvkrrfcdm" path="res://Textures/purple_stone.png" id="1_mx73m"]
-[ext_resource type="ArrayMesh" uid="uid://ckeo4brqm85r3" path="res://Models/diamond/diamond.obj" id="2_rqjsn"]
+[ext_resource type="ArrayMesh" uid="uid://bq7aymwstgyq2" path="res://Models/rocks2/rock1.obj" id="3_mx73m"]
 [ext_resource type="Script" uid="uid://hp8av86afbj1" path="res://Objects/rotating_obj.gd" id="3_wkyjm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kow38"]
@@ -48,16 +48,16 @@ _data = {
 }
 
 [node name="Diamond" type="Node3D"]
-
-[node name="Diamond" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_kow38")
-mesh = ExtResource("2_rqjsn")
-skeleton = NodePath("../..")
 script = ExtResource("3_wkyjm")
-yRotation = true
-yRandom = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Diamond"]
+[node name="Rock" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.9450189, 0, -0.3270158, 0, 1, 0, 0.3270158, 0, 0.9450189, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_kow38")
+mesh = ExtResource("3_mx73m")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rock"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_rqjsn")
