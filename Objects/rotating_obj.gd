@@ -13,8 +13,7 @@ var randomOfX = 1
 var randomOfY = 1
 ###
 
-###
-@export_file("*.obj") var currentMesh: String
+
 
 
 func _ready() -> void:

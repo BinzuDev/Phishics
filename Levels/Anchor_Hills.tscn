@@ -691,6 +691,18 @@ strength = 20.0
 centerPlayer = true
 recenterCamera = true
 
+[node name="BoostRing11" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-0.79870045, 0.06438802, -0.59827363, 0.34453732, 0.86407787, -0.36696553, 0.49332654, -0.49922305, -0.71232367, 3.6810963, 30.234085, 124.05434)
+strength = 21.0
+
+[node name="BoostRing12" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-0.17563593, -0.32844242, -0.9280506, 0.32623953, 0.87001723, -0.36964577, 0.92882687, -0.36768964, -0.04565546, -3.627732, 30.234085, 119.68743)
+strength = 21.0
+
+[node name="BoostRing13" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(0.6151109, -0.60689706, -0.5033034, 0.5865168, 0.778827, -0.22232105, 0.5269121, -0.15844359, 0.8350206, -12.262825, 30.234085, 121.38389)
+strength = 21.0
+
 [node name="Hoops" type="Node3D" parent="TheHills"]
 
 [node name="Basketballhoop" parent="TheHills/Hoops" instance=ExtResource("13_7rcag")]
@@ -762,6 +774,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32014596, 29.219885, 132.70
 [node name="big_stone_pillar" parent="start" instance=ExtResource("6_xkte1")]
 transform = Transform3D(4.7130494, 0, -0.66690606, 0, 4.7599993, 0, 0.66690606, 0, 4.7130494, -5.9462967, -0.6047945, 135.61526)
 
+[node name="coral_tube" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
+transform = Transform3D(0.20801191, 0, 0.029434107, 0, 0.21008411, 0, -0.029434107, 0, 0.20801191, -1.1695592, 6.423476, -0.8009987)
+color = Color(0.91805243, 0.65907973, 1, 1)
+
+[node name="coral_tube2" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
+transform = Transform3D(0.20801193, 0, 0.029434111, 0, 0.21008413, 0, -0.029434111, 0, 0.20801193, -1.7525759, 6.3850865, -0.68094635)
+
+[node name="coral_tube3" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
+transform = Transform3D(0.20801188, 0, 0.029434104, 0, 0.21008408, 0, -0.029434104, 0, 0.20801188, -1.359946, 6.3720217, -0.45132828)
+color = Color(1, 0.34119028, 0.44450188, 1)
+meshToChangeColorOf = NodePath("../coral_tube/corals/coral/model")
+
+[node name="coral_tube4" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
+transform = Transform3D(0.20801188, 0, 0.029434104, 0, 0.21008408, 0, -0.029434104, 0, 0.20801188, -1.7927482, 6.239919, -0.21311188)
+color = Color(1, 0.5661067, 0.34226984, 1)
+meshToChangeColorOf = NodePath("../coral_tube/corals/coral/model")
+
 [node name="big_stone_pillar3" parent="start" instance=ExtResource("6_xkte1")]
 transform = Transform3D(4.193228, 0, -0.5933503, 0, 4.235, 0, 0.5933503, 0, 4.193228, 3.008915, -9.4579, 132.42395)
 
@@ -770,6 +799,18 @@ transform = Transform3D(2.9753602, 0, -0.42101955, 0, 3.005, 0, 0.42101955, 0, 2
 
 [node name="big_stone_pillar2" parent="start" instance=ExtResource("6_xkte1")]
 transform = Transform3D(3.877909, 0, 1.664398, 0, 4.22, 0, -1.664398, 0, 3.877909, -13.106271, -14.779588, 124.90755)
+
+[node name="coral_tree" parent="start" instance=ExtResource("12_7fwu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4512424, 29.527536, 135.18452)
+color = Color(0.9863211, 0.6577122, 1, 1)
+
+[node name="coral_tree2" parent="start" instance=ExtResource("12_7fwu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.354658, 29.52775, 137.44296)
+color = Color(1, 0.6731335, 0.4511299, 1)
+
+[node name="coral_tree3" parent="start" instance=ExtResource("12_7fwu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1510174, 29.576834, 137.09691)
+color = Color(1, 0.33358765, 0.46244568, 1)
 
 [node name="worms" type="Node3D" parent="."]
 
@@ -797,7 +838,7 @@ billboardTexture = "uid://c7m5pw5cqoc16"
 transform = Transform3D(2.3385427, 0.23176886, -1.8626451e-09, -0.231167, 2.33247, 0.16924626, 0.016691923, -0.16842112, 2.3438976, 51.459747, -10.510117, 59.26687)
 
 [node name="scoreRing" parent="." instance=ExtResource("26_b1j38")]
-transform = Transform3D(-0.47171998, 0, -0.8817485, 0, 1, 0, 0.8817485, 0, -0.47171998, 5.992234, 38.403538, 11.291779)
+transform = Transform3D(-0.47171998, 0, -0.8817485, 0, 1, 0, 0.8817485, 0, -0.47171998, 5.992234, 36.558346, 11.291779)
 
 [node name="sign" type="Node3D" parent="."]
 transform = Transform3D(0.7755023, 0.41756514, 0.47353494, -0.47408813, 0.8804775, -1.4901161e-08, -0.41693667, -0.22449733, 0.8807752, 35.07532, 0.520377, 97.36125)
@@ -889,6 +930,7 @@ floating = true
 [node name="BoostRing" parent="Islands/island" instance=ExtResource("19_21ejt")]
 transform = Transform3D(0.03967922, -0.058595195, -0.10303961, -0.08134009, 0.06557942, -0.068615824, 0.08622264, 0.08883097, -0.017312001, -0.050924778, 4.4465427, -1.2723703)
 strength = 25.0
+centerPlayer = true
 recenterCamera = true
 
 [node name="Basketballhoop" parent="Islands/island" instance=ExtResource("13_7rcag")]
@@ -901,8 +943,9 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -82.83221, 17.208435, 157.461
 transform = Transform3D(-7.0113945, 0, 3.8523169, 0, 8, 0, -3.8523169, 0, -7.0113945, 18.194542, 62.385254, -137.14792)
 
 [node name="BoostRing" parent="Islands/island3" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.029751115, -0.10342722, -0.063582025, -0.08134009, 0.06557942, -0.068615824, 0.09013134, 0.025042947, -0.08291076, 0.5976057, 4.4465427, -1.1481028)
+transform = Transform3D(-0.01408636, -0.10213205, -0.07067959, -0.11091948, 0.042351782, -0.039092135, 0.055887718, 0.058312625, -0.0954002, 0.59760666, 4.4465427, -1.1481028)
 strength = 25.0
+centerPlayer = true
 recenterCamera = true
 
 [node name="Enemy" parent="Islands/island3" instance=ExtResource("6_s8o57")]
@@ -917,13 +960,25 @@ transform = Transform3D(-0.10955304, 0, -0.06019245, 0, 0.125, 0, 0.06019245, 0,
 [node name="Enemy4" parent="Islands/island3" instance=ExtResource("6_s8o57")]
 transform = Transform3D(-0.10955304, 0, -0.06019245, 0, 0.125, 0, 0.06019245, 0, -0.10955304, -0.04940033, 4.142643, -0.28259468)
 
+[node name="island4" parent="Islands" instance=ExtResource("27_qmqkv")]
+transform = Transform3D(6.06, 0, 0, 0, 6.06, 0, 0, 0, 6.06, -50.492863, 123.83588, -110.031906)
+
+[node name="BoostRing" parent="Islands/island4" instance=ExtResource("19_21ejt")]
+transform = Transform3D(0.06565489, 0, 0.15139315, -0.13389114, 0.07702009, 0.058064766, -0.070661485, -0.14593956, 0.030643871, -0.032283306, 4.4763947, -0.43963814)
+
+[node name="island5" parent="Islands" instance=ExtResource("27_qmqkv")]
+transform = Transform3D(2.2828588, 0, -5.613569, 0, 6.06, 0, 5.613569, 0, 2.2828588, -6.59449, 121.95397, -71.08393)
+
+[node name="BoostRing" parent="Islands/island5" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-0.068614885, -0.08231142, 0.12548815, -0.14262623, 0.078695506, -0.026366996, -0.046692595, -0.119424894, -0.103865035, -0.5153923, 4.489872, -0.49438572)
+strength = 20.0
+
 [node name="brokenBits" type="Node3D" parent="Islands"]
 
 [node name="Diamond" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(0.97, 0, 0, 0, 0.63994724, 0.72894967, 0, -0.72894967, 0.63994724, 52.83372, 50.008343, -56.156124)
 yRotation = true
 yRandom = true
-currentMesh = "uid://bq7aymwstgyq2"
 
 [node name="Diamond2" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.465, 0, 0, 0, -0.18011199, -1.4538862, 0, 1.4538862, -0.18011199, 37.55215, 49.352222, -59.562077)
@@ -964,3 +1019,93 @@ yRandom = true
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 4.412134, 65.47891, -128.93735)
 yRotation = true
 yRandom = true
+
+[node name="BoostRing" parent="Islands" instance=ExtResource("19_21ejt")]
+transform = Transform3D(0.4053234, 0.9085555, 0.10119222, -0.912654, 0.40854198, -0.0124822175, -0.052682094, -0.087294176, 0.99478865, -20.829988, 122.60079, -109.32491)
+strength = 20.0
+centerPlayer = true
+recenterCamera = true
+
+[node name="BoostRing2" parent="Islands" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-0.039917484, -0.05869674, 0.9974776, -0.912654, 0.40854198, -0.012482216, -0.40677884, -0.91085017, -0.06987778, -6.669587, 121.15876, -105.77307)
+strength = 20.0
+centerPlayer = true
+recenterCamera = true
+
+[node name="starfishes" type="Node3D" parent="."]
+
+[node name="stars" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(0.22909847, 0.9734033, -4.254881e-08, 0, -4.371139e-08, -1, -0.9734033, 0.22909847, -1.0014213e-08, 8.108393, 0.027083397, 120.237595)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars9" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 6.68676, 17.8064, 138.56079)
+signSprite = "uid://cgsqydmj4chng"
+
+[node name="stars12" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 5.9445324, 17.8064, 135.15176)
+signSprite = "uid://cgsqydmj4chng"
+
+[node name="stars13" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 8.868828, 17.8064, 137.1936)
+signSprite = "uid://cgsqydmj4chng"
+
+[node name="stars2" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9279079, -0.37280965, 1.6296028e-08, 0, -4.371139e-08, -1, 0.37280965, -0.9279079, 4.0560142e-08, -14.358048, 0.027083397, 112.29405)
+signSprite = "uid://bakyaqprnmtfq"
+
+[node name="stars11" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9279079, -0.37280965, 1.6296028e-08, 0, -4.371139e-08, -1, 0.37280965, -0.9279079, 4.0560142e-08, -16.502592, 12.077594, 129.71725)
+signSprite = "uid://bakyaqprnmtfq"
+
+[node name="stars14" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9279079, -0.37280965, 1.6296028e-08, 0, -4.371139e-08, -1, 0.37280965, -0.9279079, 4.0560142e-08, -8.610079, 12.077594, 126.354706)
+signSprite = "uid://bakyaqprnmtfq"
+
+[node name="stars15" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.9279079, -0.37280965, 1.6296028e-08, 0, -4.371139e-08, -1, 0.37280965, -0.9279079, 4.0560142e-08, -13.288652, 12.077594, 128.80106)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars3" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.49167898, 0.8707765, -3.8062847e-08, 0, -4.371139e-08, -1, -0.8707765, -0.49167898, 2.1491974e-08, 14.198662, 0.027083397, 132.53473)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars4" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.49167898, 0.8707765, -3.8062847e-08, 0, -4.371139e-08, -1, -0.8707765, -0.49167898, 2.1491974e-08, 16.614807, 0.027083397, 129.36945)
+signSprite = "uid://bakyaqprnmtfq"
+
+[node name="stars5" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.49167898, 0.8707765, -3.8062847e-08, 0, -4.371139e-08, -1, -0.8707765, -0.49167898, 2.1491974e-08, 14.141611, 0.027083397, 124.80545)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars10" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.93099844, -0.36502302, 1.595567e-08, 1.999849e-16, -4.3711392e-08, -1, 0.36502302, -0.93099844, 4.0695237e-08, 9.586719, 0.027083397, 124.80545)
+signSprite = "uid://cgsqydmj4chng"
+
+[node name="stars6" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.76573014, -0.64316183, 2.8113506e-08, 1.999849e-16, -4.3711392e-08, -1, 0.64316183, -0.76573014, 3.3471128e-08, -11.67259, 0.027083397, 109.44591)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars8" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.596547, 0.80257803, -3.50818e-08, 1.999849e-16, -4.3711392e-08, -1, -0.80257803, -0.596547, 2.6075902e-08, -15.501072, 0.027083397, 110.33542)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars16" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.596547, 0.80257803, -3.50818e-08, 1.999849e-16, -4.3711392e-08, -1, -0.80257803, -0.596547, 2.6075902e-08, -40.107536, 0.027083397, 96.30281)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars17" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.5380207, -0.8429316, 3.6845716e-08, 1.999849e-16, -4.3711392e-08, -1, 0.8429316, -0.5380207, 2.3517627e-08, -36.4094, 0.027083397, 99.64262)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars19" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.23330334, -0.6530673, -0.7204671, -0.9315699, 0.36255994, -0.026979277, 0.2788319, 0.66487116, -0.69296426, -21.003447, 30.792315, 94.051834)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars18" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(-0.5380207, -0.8429316, 3.6845716e-08, 1.999849e-16, -4.3711392e-08, -1, 0.8429316, -0.5380207, 2.3517627e-08, -42.870605, 0.027083397, 100.581696)
+signSprite = "uid://dakyqhyrdardk"
+
+[node name="stars7" parent="starfishes" instance=ExtResource("12_rehwy")]
+transform = Transform3D(0.08352406, -0.7326308, -0.6754818, 0.7471901, 0.49454522, -0.44399542, 0.6593409, -0.46762896, 0.58872104, -2.6884525, 4.984127, 119.90228)
+signSprite = "uid://dakyqhyrdardk"
