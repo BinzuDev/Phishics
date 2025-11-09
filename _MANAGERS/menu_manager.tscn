@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=95 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -12,11 +12,14 @@
 [ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="6_06qk8"]
 [ext_resource type="Theme" uid="uid://cs7cpy7hookvc" path="res://UI_THEME.tres" id="6_m1dqt"]
 [ext_resource type="Texture2D" uid="uid://46vohkmotujj" path="res://Sprites/UI/UI_tricklist.png" id="8_l76pd"]
+[ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="8_sdr3h"]
 [ext_resource type="Texture2D" uid="uid://u4qmfo5alnhi" path="res://Sprites/UI/left_arrow_tip.png" id="9_pp8og"]
 [ext_resource type="Texture2D" uid="uid://iff24ooevm5j" path="res://Sprites/UI/right_arrow_tip.png" id="10_m1dqt"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="12_o7i77"]
 [ext_resource type="PackedScene" uid="uid://u0rqprt81pas" path="res://_MANAGERS/small_button.tscn" id="13_ftyur"]
+[ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="13_wa78b"]
 [ext_resource type="AudioStream" uid="uid://qgecunu61mnb" path="res://Sounds/tricks/rare/divestart.ogg" id="14_6xlky"]
+[ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="14_derq4"]
 [ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/slider_manager.tscn" id="14_ftyur"]
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="14_gqsjg"]
 [ext_resource type="AudioStream" uid="uid://dwnsd8h7fk6ql" path="res://Sounds/style_ranks/Splashing2.ogg" id="14_r6urg"]
@@ -891,7 +894,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -900,10 +903,10 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 4165
+scroll_vertical = 2899
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 31
+autoScroll = 4
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Mechanics"]
@@ -945,6 +948,11 @@ score = "100pts"
 rarity = "Mechanic"
 description = "press the F key to [fish]"
 
+[node name="Fish" type="Sprite2D" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/fish"]
+position = Vector2(362, 119)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("8_sdr3h")
+
 [node name="dive" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Diving"
@@ -957,7 +965,7 @@ custom_minimum_size = Vector2(1000, 250)
 layout_mode = 2
 trickName = "Homing Dive"
 rarity = "Mechanic"
-description = "When above a targetable object, a reticle will apear around it. Once something has been locked on, press the dive button to dive towards the target at high speeds. 
+description = "When above a targetable object, a reticle will appear around it. Once something has been locked on, press the dive button to dive towards the target at high speeds. 
 When multiple targets are under you, you can choose the target using the arrow keys."
 
 [node name="AimReticle" type="Sprite2D" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/homing"]
@@ -966,7 +974,7 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("5_06qk8")
 
 [node name="spinMeter" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 330)
+custom_minimum_size = Vector2(1000, 340)
 layout_mode = 2
 trickName = "AirSpin Meter"
 rarity = "Mechanic"
@@ -1030,7 +1038,7 @@ description = "-The white line at the very bottom of the screen represents how l
 -Once your combo ends, the total value of your PTS times your MULT is calculated and gets added to your total score, shown at the top right of the screen."
 
 [node name="style" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 470)
+custom_minimum_size = Vector2(1000, 480)
 layout_mode = 2
 trickName = "Style Meter"
 rarity = "Mechanic"
@@ -1061,19 +1069,16 @@ layout_mode = 2
 trickName = "Freshness"
 rarity = "Mechanic"
 description = "The Freshness system rewards you for spicing things up, and punishes you for spamming.
-The Fresh Meter keeps track of the things you interact with, so hitting 10 different boost rings is a row is fresh, but hitting the same boost ring over and over is spamming."
+The Fresh Meter keeps track of the objects you interact with, so touching a bunch of different things is fresh, but doing the same thing over and over is not. "
 description2 = "The Taunt is also part of the Freshness calculations. Any other trick the fish can do on its own doesn't affect freshness."
 
-[node name="Freshness2" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 410)
+[node name="spam" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
-trickName = "Spam Warning/Penalty"
+trickName = "Spam Warning/Spam Penalty"
 rarity = "Mechanic"
-description = "The Fresh Meter keeps track of the last 15 things you've interacted with.
-If the same object appears in that list 4 or 5 times, you'll get a warning.
-After a 6th time, you'll get a Spam Penalty and temporarily lose the ability to keep a combo going.
-Only the last 4 tricks are checked for spam, so even if the entire list is the same object, touching 4 new unique ones will clear the penalty."
-description2 = "Not interacting with anything for a while will also clear the freshness list."
+description = "If you spam an interactible, you'll first get a warning. Keep spamming it and you'll get a penalty and temporarily lose the ability to keep a combo going.
+The warning will go away if you don't interact with anything for a bit, or start playing freshly."
 
 [node name="camera" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 290)
@@ -1083,23 +1088,17 @@ rarity = "Mechanic"
 description = "By holding the C key, and then pressing one of the arrow keys, you can tilt the camera, allowing you to see slightly further ahead.
 The camera will then stay in place as long as you keep holding C, even if you press other arrow keys."
 
-[node name="dive2" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-trickName = "Homing Cancel"
-rarity = "Mechanic"
-description = "By holding left+up+right, you can temporarily turn off homing. Allowing you to perform regular dives even when homing targets are under you."
-
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer"]
 layout_mode = 2
 
 [node name="Fish tricks" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 3254
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 30
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1129,14 +1128,14 @@ description2 = "If the timing is perfect you can even jump without resetting the
 [node name="high" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "High Jump"
-score = "500pts + x1"
+score = "800pts"
 description = "Let go of the arrow keys before jumping to jump higher."
 description2 = "Tip: The faster you're spinning the higher the jump will go!"
 
 [node name="long" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Long Jump"
-score = "200pts + x1"
+score = "600pts"
 description = "Keep a direction held before jumping to go further."
 
 [node name="wall" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
@@ -1173,6 +1172,18 @@ score = "[altitude*500]pts + x5"
 rarity = "Uncommon"
 description = "Press the fish button while at the peak of your jump to perform a taunt!"
 description2 = "It won't work if you spam the fish button. You also need to be at least 4 meters off the ground."
+
+[node name="PeppinoTauntFlash" type="Sprite2D" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer/taunt"]
+position = Vector2(1364, 123)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("13_wa78b")
+hframes = 4
+frame = 3
+
+[node name="Pose" type="Sprite2D" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer/taunt"]
+position = Vector2(1367, 129)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("14_derq4")
 
 [node name="taunt2" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 200)
@@ -1221,7 +1232,7 @@ description = "Perform a Wall Tipspin that lasts over a second long!"
 [node name="tipland" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "TIP LANDING"
-score = "999999pts x200"
+score = "999999pts + x200"
 rarity = "Legendary"
 description = "Land perfectly vertically either on your head or tail."
 description2 = "Instantly awards you with style rank PhishicSSS"
@@ -1253,18 +1264,34 @@ layout_mode = 2
 trickName = "Fresh Bonus"
 score = "10000pts + 5x"
 rarity = "Rare"
-description = "Interact with 10 unique objects in a row."
+description = "Interact with multiple different objects in a row without repeats."
 description2 = "Since the Taunt also counts as an interaction, try to only use it once per Fresh Bonus."
+
+[node name="dive2" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+trickName = "Homing Cancel"
+rarity = "Mechanic"
+description = "By holding left+up+right, you can temporarily turn off homing. Allowing you to perform regular dives even when homing targets are under you."
+
+[node name="dive3" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Dive Rebound"
+rarity = "Mechanic"
+description = "After landing from a regular dive, "
 
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer"]
 layout_mode = 2
 
 [node name="Interactibles" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 2634
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 8
 metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Interactibles"]
@@ -1287,13 +1314,13 @@ description = "Talk to the garden eel with the scope to get a view of the level 
 [node name="boost" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Boost"
-score = "500pts + 1x"
+score = "800pts"
 description = "Touch a boost ring bubble."
 
 [node name="hook" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Hooked"
-score = "500pts + 1x"
+score = "800pts"
 description = "Get caught by a fishing hook."
 
 [node name="jellyfish" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
@@ -1412,8 +1439,10 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 2639
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 33
 metadata/_tab_index = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Surfing"]
@@ -1428,13 +1457,14 @@ size_flags_vertical = 3
 theme_override_constants/separation = 15
 
 [node name="signMechanic" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 390)
 layout_mode = 2
 trickName = "Sign Surfing"
 rarity = "Mechanic"
-description = ""
-description2 = "Touch a street sign to rip it off the pole and start using it as a surf board! In sign surfing mode, you can to slide around smoothly
-  with very little friction. By holding space, you can disembark the sign and do a big double jump! (breaking the sign in the process)
-  During sign surf, you're unable to tipspin and wall jump, homing dive also makes you drop and break the sign."
+description = "-Touch a street sign to rip it off the pole and start using it as a surf board!
+-In sign surfing mode, you can to slide around smoothly with very little friction. 
+-By holding space, you can disembark the sign and do a big double jump! (breaking the sign in the process)
+-During sign surf, you're unable to tipspin and wall jump, homing dive also makes you drop and break the sign."
 
 [node name="sign" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1467,13 +1497,13 @@ description = "Slide up a half pipe."
 description2 = "This will also automatically put you in a clockwise/counterclockwise spin."
 
 [node name="sign5" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 315)
 layout_mode = 2
 trickName = "Surf AirSpin"
 rarity = "Mechanic"
-description = ""
-description2 = "While sign surfing, the AirSpin meter works a bit differently. Every rank now requires a full 360° rotation to fill up. (Except the final
-  rank, which requires two 360 spins.) By default, you won't spin just by being airborne, you now need to input a combination of 3
-  directional key presses to perform various types of spinning."
+description = "While sign surfing, the AirSpin meter works a bit differently. Every rank now requires a full 360° rotation to fill up. 
+By default, you won't spin just by being airborne, you now need to input a combination of 3 directional key presses to perform various types of spinning."
+description2 = "(the final rank requires two 360 spins.)"
 
 [node name="sign6" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2

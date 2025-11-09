@@ -3,14 +3,21 @@
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_j3pel"]
 resource_name = "PitchShift"
 
-[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
-resource_name = "EQ"
-
 [sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j3pel"]
 resource_name = "Phaser"
-range_min_hz = 200.0
-range_max_hz = 1000.0
-feedback = 0.2
+range_min_hz = 500.0
+range_max_hz = 800.0
+rate_hz = 0.4
+feedback = 0.6
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/32_hz = 10.0
+band_db/100_hz = 5.0
+band_db/320_hz = -10.0
+band_db/1000_hz = -20.0
+band_db/3200_hz = -40.0
+band_db/10000_hz = -60.0
 
 [resource]
 bus/1/name = &"fishsfx"
@@ -35,14 +42,14 @@ bus/4/name = &"music"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = 0.0
+bus/4/volume_db = -0.0016212463
 bus/4/send = &"Master"
 bus/4/effect/0/effect = SubResource("AudioEffectPitchShift_j3pel")
 bus/4/effect/0/enabled = true
-bus/4/effect/1/effect = SubResource("AudioEffectEQ_j3pel")
-bus/4/effect/1/enabled = true
-bus/4/effect/2/effect = SubResource("AudioEffectPhaser_j3pel")
-bus/4/effect/2/enabled = false
+bus/4/effect/1/effect = SubResource("AudioEffectPhaser_j3pel")
+bus/4/effect/1/enabled = false
+bus/4/effect/2/effect = SubResource("AudioEffectEQ_j3pel")
+bus/4/effect/2/enabled = true
 bus/5/name = &"soundEffects"
 bus/5/solo = false
 bus/5/mute = false

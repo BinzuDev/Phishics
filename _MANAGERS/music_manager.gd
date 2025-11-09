@@ -25,6 +25,8 @@ var playingAltTracks : bool = false
 var time : float = 0.0 #Keeps tracks of precisely where we are in the song
 var barProgress : int = 0 #How far along we are in the current bar, in seconds*100
 
+var shouldMusicMuffle : bool = false
+var muffleStrenght : float = 0
 
 func _ready():
 	reset_music()
@@ -107,8 +109,27 @@ func _physics_process(_delta):
 		#printerr("Frame time: ",  (end - start)/1000.0)
 	#else:
 		#print("Frame time: ",  (end - start)/1000.0)
+	#print()
+	
+	
+	if shouldMusicMuffle:
+		muffleStrenght = clamp(muffleStrenght-0.05, 0.0, 1)
+	else:
+		muffleStrenght = clamp(muffleStrenght+0.05, 0.1, 1.05)
+	if muffleStrenght >= 0.1 and muffleStrenght <= 1.0: #so it doesnt do it every frame
+		set_muffle_effect(muffleStrenght)
 	
 
+func set_muffle_effect(value):
+	value = linear_to_db(value)
+	#print("muffle: ", value, " linear: ",db_to_linear(value) )
+	AudioServer.set_bus_effect_enabled(4,1, shouldMusicMuffle)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(0, value*-0.50)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(1, value*-0.25)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(2, value*0.5)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(3, value*1)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(4, value*2)
+	AudioServer.get_bus_effect(4,2).set_band_gain_db(5, value*3)
 
 
 func _process(_delta):
@@ -178,29 +199,7 @@ func _on_song_end_timeout():
 	
 	
 
-func muffle_music(value:bool):
-	#AudioServer.get_bus_effect(4,1).set_band_gain_db(3, 0)
-	print("MUFFLE MUSIC")
-	if value == true:
-		print("muffle ON")
-		AudioServer.set_bus_volume_db(4, -5)
-		tween_muffle(-20)
-		#var tween = get_tree().create_tween()
-		#tween.tween_method(tween_muffle, 0, -20, 1)
-	else:
-		print("muffle OFF")
-		AudioServer.set_bus_volume_db(4, 0)
-		tween_muffle(0)
-		#var tween = get_tree().create_tween()
-		#tween.tween_method(tween_muffle, -20, 0, 1)
-	
 
-
-func tween_muffle(value):
-	print(value)
-	AudioServer.get_bus_effect(4,1).set_band_gain_db(3, value)
-	AudioServer.get_bus_effect(4,1).set_band_gain_db(4, value*2)
-	AudioServer.get_bus_effect(4,1).set_band_gain_db(5, value*3)
 
 
 

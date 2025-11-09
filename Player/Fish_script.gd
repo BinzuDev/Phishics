@@ -35,6 +35,8 @@ var height : float = 0 ##stores how for away you are to the nearest floor
 var fishCooldown : int = 0
 var diving := false
 var homing := false
+var diveReboundTimer : int = 0
+var lastDivingSpeed : float = 0
 var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the homing area has been empty
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
@@ -122,6 +124,9 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
+	diveReboundTimer -= 1
+	if diveReboundTimer == 0:
+		lastDivingSpeed = 0
 	
 		###############
 		##  Jumping  ##
@@ -151,6 +156,11 @@ func _physics_process(_delta: float) -> void:
 			
 			#mid Air extra control
 			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.15, 0, 20)
+			
+			
+			if diveReboundTimer > 0 and get_input_axis():
+				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+lastDivingSpeed)
+				boost += lastDivingSpeed
 			
 			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
 			
@@ -189,19 +199,23 @@ func _physics_process(_delta: float) -> void:
 			if !get_input_axis(): #High Jump
 				var xtraYspd = clamp(angular_velocity.length()*0.35, 0, 35)
 				
+				if diveReboundTimer > 0:
+					print("DIVE HIGH JUMP, boost before: ", xtraYspd, " and after: ",xtraYspd+lastDivingSpeed)
+					xtraYspd += lastDivingSpeed
+				
 				apply_impulse(rotate_by_cam(Vector3(0, xtraYspd, 0)))
 				
 				#print("high jump! spd: ", linear_velocity.length(), " xtra: ", xtraYspd )
 				
 				if linear_velocity.length() > 12: #Points
-					ScoreManager.give_points(500, 1, true, "HIGH JUMP", "uncommon")
+					ScoreManager.give_points(800, 0, true, "HIGH JUMP", "uncommon")
 			else:
 				var hspeed = linear_velocity #get your speed
 				hspeed.y = 0  #remove your vertical speed from the equation
 				hspeed = hspeed.length() #get your true horziontal speed 
 				#print("LONG JUMP, speed: ", hspeed)
 				if linear_velocity.length() > 12:
-					ScoreManager.give_points(200, 1, true, "LONG JUMP", "uncommon")
+					ScoreManager.give_points(600, 0, true, "LONG JUMP", "uncommon")
 				
 	
 	## Tutorial jump preview:
@@ -327,6 +341,8 @@ func _physics_process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld:
 		var newSpd = clamp(height*-1.5 -10, -90, -10)
+		lastDivingSpeed = max(height, lastDivingSpeed, 10) #use max so you can't override it by diving mid dive
+		
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
 		linear_velocity.z *= 0.5
@@ -389,6 +405,7 @@ func _physics_process(_delta: float) -> void:
 	if linear_velocity.y > -5: #otherwise dive can persist if you bounce 
 		if diving or homing:
 			print("RESETING DIVING")
+			diveReboundTimer = 20
 		diving = false
 		homing = false
 		
@@ -941,6 +958,8 @@ func _physics_process(_delta: float) -> void:
 	"position ", global_position, "\n",
 	"CameraAngle: ", %camFocus.rotation_degrees, "\n",
 	"CameraTarget: ", defaultCameraAngle, "\n",
+	"diveReboundTimer: ", diveReboundTimer, "\n",
+	"lastDivingSpeed: ", lastDivingSpeed, "\n",
 	#"homeDir: ", rad_to_deg(Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x).angle()) 
 	)
 	

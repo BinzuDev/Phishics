@@ -77,7 +77,7 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		if body is player:
 			ScoreManager.reset_airspin()
-			ScoreManager.give_points(500, 1, true, "BOOST")
+			ScoreManager.give_points(800, 0, true, "BOOST")
 			if affectFreshness and freshCooldown >= 4:
 				ScoreManager.update_freshness(self)
 				freshCooldown = 0 

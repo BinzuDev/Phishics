@@ -102,7 +102,7 @@ func _on_body_entered(body: Node3D) -> void:
 			fish.isHeld = true #prevents tip landing
 			storeFishSpin = fish.angular_velocity
 			storeFishSpeed = fish.linear_velocity
-			ScoreManager.give_points(500, 1, true, "HOOKED")
+			ScoreManager.give_points(800, 0, true, "HOOKED")
 			ScoreManager.update_freshness(self)
 			%hookArea.set_collision_layer_value(6, false)
 			%sfxStart.play()

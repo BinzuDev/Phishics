@@ -93,7 +93,7 @@ func toggleMenu():
 	%Settings.visible = false
 	GameManager.previousUIselection = []
 	print("toggleMenu")
-	MusicManager.muffle_music(GameManager.gamePaused)
+	MusicManager.shouldMusicMuffle = GameManager.gamePaused
 	if GameManager.gamePaused:
 		%Continue.grab_focus()
 		%PauseList.visible = true
@@ -145,6 +145,7 @@ func isSubmenuOpen():
 func _on_continue_just_pressed():
 	get_tree().get_first_node_in_group("player").should_camera_render(true)
 	$pauseBG/AnimationPlayer.play("end_water_effect")
+	MusicManager.shouldMusicMuffle = false
 func _on_continue_pressed():
 	GameManager.toggle_pause()
 
