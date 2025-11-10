@@ -1,3 +1,4 @@
+@icon("res://icons/score_ring.png")
 extends Area3D
 
 

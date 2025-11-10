@@ -2202,6 +2202,7 @@ update_rotation = false
 
 [node name="surfPivot" type="Node3D" parent="."]
 top_level = true
+visible = false
 
 [node name="surfRC1" type="RayCast3D" parent="surfPivot"]
 unique_name_in_owner = true
@@ -2855,7 +2856,6 @@ bus = &"fishsfx"
 [node name="rotate" type="Node2D" parent="reticle"]
 
 [node name="reticleR" type="Sprite2D" parent="reticle/rotate"]
-self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("24_40mal")
 offset = Vector2(73, 0)
 region_enabled = true

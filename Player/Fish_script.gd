@@ -91,6 +91,8 @@ func _ready() -> void:
 	MenuManager._on_noclip_toggled() 
 	%debugLabel.visible = MenuManager.fish_debug_on()
 	%debugLabel2.visible = MenuManager.surf_debug_on()
+	if legacyCamera == true:
+		$UI/camIcon.visible = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -132,7 +134,7 @@ func _physics_process(_delta: float) -> void:
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
 	if Input.is_action_just_pressed("jump") and canJump:
-		if !%nearFloor.is_colliding() and surfMode:
+		if !%nearFloor.is_colliding() and surfMode and !noclip:
 			pass #Disable walljumps in surf mode
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
 			timeSinceJump = 0
@@ -261,18 +263,21 @@ func _physics_process(_delta: float) -> void:
 		%surfJumpMeter.tint_under.a = 0
 		%surfJumpMeter.modulate.a = clamp((surfJumpHolding * 0.25) - 1, 0, 1)
 	
-	## HOMING ATTACK
+	## HOMING ATTACKs
 	var closest = null
 	var coyoteTimeTarget = false
-	if !%homingArea.has_overlapping_areas() and timeSinceNoTargets < 10:
-		closest = closestLastFrame           #coyote time
-		coyoteTimeTarget = true
-		#printerr("TARGET COYOTE TIME")
-	if (%homingArea.has_overlapping_areas() or closest) and !%nearFloor.is_colliding() and !isHeld:
-		if !coyoteTimeTarget: #dont get closest target in coyote time bcs there isnt one
-			closest = get_closest_target()
+	if (%homingArea.has_overlapping_areas() or timeSinceNoTargets < 16) and !%nearFloor.is_colliding() and !isHeld:
+		#if !coyoteTimeTarget: #dont get closest target in coyote time bcs there isnt one
+		closest = get_closest_target()
+		
+		if closest == null and timeSinceNoTargets < 16:
+			closest = closestLastFrame   ##coyote time
+			coyoteTimeTarget = true
+			#printerr("TARGET COYOTE TIME")
+		
 		if Input.is_action_pressed("left") and Input.is_action_pressed("right") and Input.is_action_pressed("forward"):
 			closest = null #target canceling
+			coyoteTimeTarget = false
 		
 		if closest != null:
 			if closestLastFrame != closest: #when the target changes
@@ -288,6 +293,11 @@ func _physics_process(_delta: float) -> void:
 					$reticle/reticleAnimation.play("reticle_appear1")
 					$reticle/sfx.play()
 					
+			
+			$reticle/rotate.modulate.a = abs(1-timeSinceNoTargets*0.05) - 0.2
+			if timeSinceNoTargets == 0:
+				$reticle/rotate.modulate.a = 1
+			print("no target: ", timeSinceNoTargets, " fade: ", $reticle/rotate.modulate.a)
 			
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			var center =  MenuManager.get_UI_size()/2
@@ -311,10 +321,10 @@ func _physics_process(_delta: float) -> void:
 			$reticle.visible = true
 			if $reticle.position.y >= 945 and homing:
 				homingLookDown = true
-		else:
+		else: #when closest is null
 			$reticle.visible = false
 			closestLastFrame = null
-	else:
+	else: #when you can't dive
 		$reticle.visible = false
 		closestLastFrame = null
 	
@@ -360,6 +370,8 @@ func _physics_process(_delta: float) -> void:
 			global_rotation = Vector3(0,0,-90)
 		diving = true #DIVING VARIABLE
 		
+		if timeSinceNoTargets > 0 and timeSinceNoTargets <= 16:
+			printerr("DOVE DURING CUYOTE TIME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		print("DIVING, TIME SINCE NO TARGET: ", timeSinceNoTargets, " closest: ", closest, " last frame: ", closestLastFrame)
 		
 		

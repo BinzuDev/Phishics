@@ -129,16 +129,17 @@ func continue_dialogue():
 	set_text(currentDialogue.messages[textBoxIndex].text)
 	
 	if currentDialogue.messages[textBoxIndex].position == "top":
-		%textBoxControl.anchor_top = 0
-		%textBoxControl.anchor_bottom = 0
-		%textBoxControl.offset_left = -420
-		%textBoxControl.offset_bottom = 290
+		#%textBoxControl.anchor_top = 0
+		#%textBoxControl.anchor_bottom = 0
+		#%textBoxControl.offset_left = -420
+		#%textBoxControl.offset_bottom = 290
 		%nameBox.position.y = 240
 	else:
-		%textBoxControl.anchor_top = 1
-		%textBoxControl.anchor_bottom = 1
-		%textBoxControl.offset_left = 0
-		%textBoxControl.offset_bottom = 0
+		print("botom")
+		#%textBoxControl.anchor_top = 1
+		#%textBoxControl.anchor_bottom = 1
+		#%textBoxControl.offset_left = 0
+		#%textBoxControl.offset_bottom = 0
 		%nameBox.position.y = -45
 	
 

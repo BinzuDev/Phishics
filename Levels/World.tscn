@@ -4692,6 +4692,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 153.00803, 19.185026, -132.09567)
 material_override = SubResource("StandardMaterial3D_myu2g")
 material_overlay = ExtResource("5_2uuim")
+use_collision = true
 
 [node name="CSGTorus3D3" type="CSGTorus3D" parent="group4/skateDarkrocks"]
 transform = Transform3D(-0.25, 0.25881907, 0.9330126, 0.9659258, -3.7252903e-08, 0.25881904, 0.06698736, 0.96592575, -0.25, -0.38168335, 19.574587, -52.46994)

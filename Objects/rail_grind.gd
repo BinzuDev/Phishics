@@ -65,6 +65,9 @@ func _physics_process(delta):
 		real_process(delta)
 
 func real_process(delta):
+	%sparkle1.visible = false
+	%sparkle2.visible = false
+	
 	## When NOT railgrinding
 	#Makes the hitbox be as close as possible to the fish, while staying on the path
 	if fish and path_3d and not isBeingUsed:
@@ -80,7 +83,14 @@ func real_process(delta):
 		#if its exactly 0 then dont change
 		if oneWay:
 			direction = "forward" 
-		
+		if fish.surfMode == true and fish.isRailGrinding == false and fish.height > 2:
+			%sparkle1.visible = true
+			%sparkle2.visible = true
+	
+	if GameManager.gameTimer % 3 == 0: #sparkles
+		%sparkle1.frame = wrap(%sparkle1.frame+1, 0, 11)
+		%sparkle2.frame = wrap(%sparkle1.frame+1, 0, 11)
+	
 	
 	##Move the homing hitbox to the center when at the very end
 	if progress_ratio == 0 or progress_ratio == 1:
@@ -89,7 +99,6 @@ func real_process(delta):
 	else:
 		$HomingTargetBack.position.z = -2.5
 		$HomingTargetFront.position.z = 2.5
-	
 	
 	
 	
