@@ -3,6 +3,7 @@ extends Node3D
 
 @export var defaultAnimation : String = ""
 @export var animationPreview : bool = false
+@export var hatFaceClipping : float = 5.0
 
 
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 	else:
 		$AnimationPlayer.play("T-Pose")
 	
+	$hatFace/HatFaceMesh.set_instance_shader_parameter("cam_distance", hatFaceClipping)
 	if get_tree().current_scene == self:
 		print("JFG is in a her own scene")
 		$DirectionalLight3D.visible = true
@@ -29,7 +31,7 @@ func _ready():
 
 func _process(_delta):
 	if Engine.is_editor_hint() and animationPreview:
-		$AnimationPlayer.play("tuto_hello")
+		$AnimationPlayer.play("Cheering")
 		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
 	
@@ -55,8 +57,12 @@ func play_animation(anim : String):
 	
 
 ##if you want an aniation to transition into a looping version
+##NOTE: THIS IS CALLED WHEN ANIMATION *EXTRA* IS DONE 
 func _on_animation_finished(anim_name):
 	if !Engine.is_editor_hint():
 		if anim_name == "tuto_hello":
 			$AnimationPlayer.play("tuto_hello_end")
 			$AnimationExtras.play("Blinking")
+		if anim_name == "YouCanDoIt":
+			$AnimationPlayer.play("YouCanDoIt_end")
+			$AnimationExtras.play("YouCanDoIt_end")

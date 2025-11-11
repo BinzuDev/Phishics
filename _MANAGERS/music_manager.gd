@@ -114,8 +114,10 @@ func _physics_process(_delta):
 	
 	if shouldMusicMuffle:
 		muffleStrenght = clamp(muffleStrenght-0.05, 0.0, 1)
+		$OST1.volume_db = -5 ##TODO: MAKE THIS WORK NO MATTER WHICH SONG IS PLAYING
 	else:
 		muffleStrenght = clamp(muffleStrenght+0.05, 0.1, 1.05)
+		$OST1.volume_db = 5
 	if muffleStrenght >= 0.1 and muffleStrenght <= 1.0: #so it doesnt do it every frame
 		set_muffle_effect(muffleStrenght)
 	

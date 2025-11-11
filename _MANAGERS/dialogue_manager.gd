@@ -12,27 +12,35 @@ var coolDown := 0
 var currentDialogueOwner ##The parent node of the dialogue_area object 
 
 var jfgPosition : Vector2
+var jfgInsideTextbox : bool = false
 
 func _ready():
 	%textBoxControl.visible = false
 	$enterTip.visible = false
-	$CanvasLayer/JFG.position = Vector2(1920,1080)
+	%JFG.position = Vector2(1920,1080)
 	jfgPosition = Vector2(1920,1080)
+	$SubViewport.size = Vector2(1920,1080)
 
 func show_prompt(state:bool = true):
 	$enterTip.visible = state
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	if !%textBoxControl.visible: #this is at the start so it waits an extra frame so you cant
 		isRunning = false        #start a dialogue with the same input used to end another one
 	
 	
 	
 	#fixes a dumbass glitch where jfg would show up for one frame only when RELOADING tutorial
-	$CanvasLayer/JFG.position = jfgPosition
+	#if %JFG.position != jfgPosition:
+		#%JFG.visible = false
+	#else:
+		#%JFG.visible = true
+	%JFG.position = jfgPosition
 	
-	$SubViewport.size = DisplayServer.window_get_size() #jfg
+	#$SubViewport.size = DisplayServer.window_get_size() #jfg
+	
+	
 	
 	#put the Z icon at the end of the text
 	var finalChar = %textBox.get_character_bounds(%textBox.text.length())
@@ -115,9 +123,9 @@ func continue_dialogue():
 	var code = currentDialogue.messages[textBoxIndex].code
 	if code != "":
 		run_code(code)
-	var jfg = currentDialogue.messages[textBoxIndex].JFG_animation
-	if jfg != "":
-		$SubViewport/jelly_fish_girl_IK.play_animation(jfg)
+	var jfgAnim = currentDialogue.messages[textBoxIndex].JFG_animation
+	if jfgAnim != "":
+		$SubViewport/jelly_fish_girl_IK.play_animation(jfgAnim)
 	
 	if currentDialogue.speechSFX: #play sound effect if there is one
 		currentDialogueArea.get_node(currentDialogue.speechSFX).play()
@@ -128,18 +136,22 @@ func continue_dialogue():
 		%nameBox.visible = false
 	set_text(currentDialogue.messages[textBoxIndex].text)
 	
+	%textBoxControl.anchor_left = 0.5
+	%textBoxControl.anchor_right = 0.5
+	%textBoxControl.offset_top = 0
+	%textBoxControl.offset_right = 0
 	if currentDialogue.messages[textBoxIndex].position == "top":
-		#%textBoxControl.anchor_top = 0
-		#%textBoxControl.anchor_bottom = 0
-		#%textBoxControl.offset_left = -420
-		#%textBoxControl.offset_bottom = 290
+		%textBoxControl.anchor_top = 0
+		%textBoxControl.anchor_bottom = 0
+		%textBoxControl.offset_left = -420
+		%textBoxControl.offset_bottom = 290
 		%nameBox.position.y = 240
+		
 	else:
-		print("botom")
-		#%textBoxControl.anchor_top = 1
-		#%textBoxControl.anchor_bottom = 1
-		#%textBoxControl.offset_left = 0
-		#%textBoxControl.offset_bottom = 0
+		%textBoxControl.anchor_top = 1
+		%textBoxControl.anchor_bottom = 1
+		%textBoxControl.offset_left = 0
+		%textBoxControl.offset_bottom = 0
 		%nameBox.position.y = -45
 	
 
@@ -183,7 +195,9 @@ func reset():
 	coolDown = 0
 	%textBoxControl.visible = false
 	$enterTip.visible = false
-	$CanvasLayer/JFG.position = Vector2(1920,1080)
+	%JFG.position = Vector2(1920,1080)
+	jfgPosition = Vector2(1920,1080)
+	$SubViewport/jelly_fish_girl_IK.play_animation("T-pose")
 	show_jfg(false)
 	
 
@@ -198,14 +212,28 @@ func run_code(newCode:String):
 
 
 
-func set_position(newPos : Vector2):
-	%textBoxMargin.position = newPos
-
 ##HACK I cant just simply use .visible because of some weird frame buffer bullshit I dont understand
 func show_jfg(value:bool = true):
 	if value == true:
-		jfgPosition = Vector2(0,0)
+		#jfgPosition = Vector2(0,0) #old
+		#jfgPosition = Vector2(-229,-810) #normal
+		#jfgPosition = Vector2(-442,-574) #inside textbox
+		jfgPosition = Vector2(-960,-1080) #new anchor
 	else:
-		jfgPosition = Vector2(1920,1080)
-		$CanvasLayer/JFG.position = Vector2(1920,1080)
+		jfgPosition = Vector2(1920,1080) #make it go offscreen
+		%JFG.position = Vector2(1920,1080)
+	
+
+func jfg_inside_textbox(value:bool):
+	jfgInsideTextbox = value
+	if jfgInsideTextbox:
+		jfgPosition = Vector2(-1120,-845)
+		%JFG.position = Vector2(-1120,-845)
+		%JFGcrop.self_modulate.a = 1
+		%JFGcrop.clip_children = %JFGcrop.CLIP_CHILDREN_ONLY
+	else:
+		jfgPosition = Vector2(-960,-1080)
+		%JFG.position = Vector2(-960,-1080)
+		%JFGcrop.self_modulate.a = 0
+		%JFGcrop.clip_children = %JFGcrop.CLIP_CHILDREN_DISABLED
 	

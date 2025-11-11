@@ -92,7 +92,6 @@ name = "Jelly Fishgirl"
 text = "Say, Mr Fish... 
 It looks like you don't know how to swim, right?"
 JFG_animation = "tuto_think"
-code = "print(\"this code run from a cutscene\")"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_pl552"]
@@ -326,7 +325,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_4wqju"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "I'm, what I guess you could say,  (not too fond of them)."
+text = "I'm, what I guess you could say, (not too fond of them)."
 JFG_animation = "tuto_crabs2"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -336,6 +335,7 @@ name = "Jelly Fishgirl"
 text = "You can attack by diving on them! 
 Jump above one, wait until the AIM RETICLE locks on, 
 then press D for a homing attack!"
+JFG_animation = "YouCanDoIt"
 code = "DialogueManager.currentDialogueOwner.tutorialEvent5();"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -345,6 +345,7 @@ text = "Dive with D (in the air)
 Change target with arrow keys"
 position = "top"
 instant = true
+code = "DialogueManager.show_jfg(false);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_rf3la"]
@@ -585,21 +586,25 @@ size = Vector3(51.829712, 20.892822, 20.858276)
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "And finally, the most crucial part:"
+JFG_animation = "WiggleFinger"
+code = "DialogueManager.show_jfg(true);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_td8ta"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Tricks and style!!"
+JFG_animation = "YouCanDoIt"
 position = "top"
-code = "ScoreManager.show();ScoreManager.reset_everything();DialogueManager.set_position(Vector2(-300,0))"
+code = "ScoreManager.show();ScoreManager.reset_everything(); DialogueManager.jfg_inside_textbox(true);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_4d1rn"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "There's a bunch of tricks you can perform! 
-Play around and see what shows up at the bottom of the screen!  (Feel free to play while I'm talking btw)"
+Play around and see what shows up at the 
+bottom of the screen!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -636,14 +641,16 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_mydkt"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Simply pause the game with the ESC key, then select the \"TRICKS\" option!"
+text = "Simply pause the game with the ESC key, then select
+the \"TRICKS\" option!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_2esnd"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "If there's ever anything you don't understand, it's probably explained in there!"
+text = "If there's ever anything you don't understand, 
+it's probably explained in there!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -651,7 +658,8 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "Just... Don't try to learn everything all at once... yeah? 
-Check it out once in a while and try to learn something new!"
+Check it out once in a while and try to learn 
+something new!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 

@@ -41,7 +41,7 @@ func _process(_delta):
 	$reticle/rotate.scale = Vector2(newScale, newScale)
 	$reticle.position = get_viewport().get_camera_3d().unproject_position($enemyGroup/RETICLETARGET.global_transform.origin)
 	if waitingForReticle:
-		if DialogueManager.chara > 76:
+		if DialogueManager.chara > 96:
 			$reticle.visible = true
 			$reticle/reticleAnimation.play("reticle_appear1")
 			$reticle/sfx.play()

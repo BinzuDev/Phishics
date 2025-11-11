@@ -321,6 +321,7 @@ func _physics_process(_delta: float) -> void:
 			$reticle.visible = true
 			if $reticle.position.y >= 945 and homing:
 				homingLookDown = true
+				VcameraSetting = 1
 		else: #when closest is null
 			$reticle.visible = false
 			closestLastFrame = null
@@ -1063,26 +1064,26 @@ func _process(_delta):
 		if !Input.is_action_pressed("right") and !Input.is_action_pressed("left"):
 			if Input.is_action_just_pressed("camera") and Input.is_action_pressed("back"):
 			#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("back"):
-				VcameraSetting = clamp(VcameraSetting+1, 0, 3)
+				VcameraSetting = clamp(VcameraSetting+1, 0, 2)
 				homingLookDown = false
 			
 			if Input.is_action_just_pressed("camera") and Input.is_action_pressed("forward"):
 			#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("forward"):
-				VcameraSetting = clamp(VcameraSetting-1, 0, 3)
+				VcameraSetting = clamp(VcameraSetting-1, 0, 2)
 				homingLookDown = false
 		
 		if VcameraSetting == 0: #look up
 			defaultCameraAngle.x = 10
 			defaultCameraOffset = Vector3(0, 2.3, 0)
-		else:
+		else: #1 or 2
 			defaultCameraOffset = Vector3(0, 0.58, 0) #default
-		if VcameraSetting == 1 or VcameraSetting == 2:  #(effect of setting 2 happens with the hominglookdown)
+		if VcameraSetting == 1: 
 			defaultCameraAngle.x = -30
-		if VcameraSetting == 3:         #top down
+		if VcameraSetting == 2:         #top down
 			defaultCameraAngle.x = -70
 			defaultCameraDistance = 8
 		else:
-			defaultCameraDistance = 6
+			defaultCameraDistance = 6 # 0 or 1
 		
 		#Railgrind camera
 		if isRailGrinding and currentRailObj:
@@ -1127,7 +1128,7 @@ func _process(_delta):
 	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
 	#%camFocus.global_position = camLockOnTarget.global_position
 	var targetTilt = 0.0
-	if (homingLookDown or VcameraSetting == 2) and !$detectCamSwitch.has_overlapping_areas():
+	if (homingLookDown) and !$detectCamSwitch.has_overlapping_areas():
 		targetTilt = -24.0
 	%cam.rotation_degrees.x = lerp(%cam.rotation_degrees.x, targetTilt, camSpeed)
 	
