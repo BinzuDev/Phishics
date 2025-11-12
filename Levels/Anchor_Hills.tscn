@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=46 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="18_dfos0"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="19_21ejt"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="21_qgejm"]
+[ext_resource type="PackedScene" uid="uid://o7epqkln0pgr" path="res://Models/rock_1.tscn" id="22_lr02x"]
 [ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Models/chain/chain.tscn" id="23_vf164"]
 [ext_resource type="PackedScene" uid="uid://075khmta8th3" path="res://Objects/stone_pillar_fat.tscn" id="24_b1j38"]
 [ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="25_rmb8m"]
@@ -857,6 +858,35 @@ color = Color(1, 0.6731335, 0.4511299, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1510174, 29.576834, 137.09691)
 color = Color(1, 0.33358765, 0.46244568, 1)
 
+[node name="rocks" type="Node3D" parent="start"]
+
+[node name="rock_1" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.8586316, -0.54657084, 118.534004)
+
+[node name="rock_5" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-0.5391962, 0, 3.9634917, -2.8792026, 2.7489586, -0.39168876, -2.7238686, -2.9057229, -0.370557, -11.422601, -0.54657084, 117.00698)
+
+[node name="rock_2" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(0.9486381, -2.5834835, -2.9027054, 0.80254155, 3.0537868, -2.4556696, 3.8021064, 0, 1.2425728, 3.3860679, -1.0996666, 124.94081)
+
+[node name="rock_3" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(0.9486381, -2.5834835, -2.9027054, 0.80254155, 3.0537868, -2.4556696, 3.8021064, 0, 1.2425728, 25.359236, -2.5314794, 89.15496)
+
+[node name="rock_6" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-3.184432, 2.41259, -0.19697806, -1.9673942, -2.3899791, 2.5332506, 1.4102309, 2.1136246, 3.0893114, 11.308802, -2.5314794, 86.63455)
+
+[node name="rock_8" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-1.041601, 1.5929796, -0.614397, -1.5549533, -0.5878469, 1.1120058, 0.7051155, 1.0568122, 1.5446553, 13.900507, -0.57845783, 86.29552)
+
+[node name="rock_7" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-3.9789715, -0.13881536, -0.3853729, 0.25330365, -3.7913232, -1.2496829, -0.32189858, -1.2675169, 3.7801828, 14.547749, -2.5314794, 89.17424)
+
+[node name="rock_9" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-4.937978, 1.670353, -6.068467, 0.5066075, -7.5826464, -2.4993649, -6.2737327, -1.9270169, 4.5745907, 9.053328, -2.5314794, 140.96376)
+
+[node name="rock_4" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-1.5448215, 4.708615, -0.66518575, -4.753137, -1.5074925, 0.36763525, 0.14565805, 0.74593, 4.9419, 16.00772, -2.5314794, 57.699673)
+
 [node name="worms" type="Node3D" parent="."]
 
 [node name="Worm" parent="worms" instance=ExtResource("18_dfos0")]
@@ -995,6 +1025,13 @@ recenterCamera = true
 
 [node name="Basketballhoop" parent="Islands/island" instance=ExtResource("13_7rcag")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.055999756, 3.4210176, 2.6615472)
+
+[node name="brick_wall" parent="Islands/island/Basketballhoop" instance=ExtResource("29_awgq2")]
+transform = Transform3D(0.8843041, 0, -0.4669114, 0, 1, 0, 0.4669114, 0, 0.8843041, 9.545734, 4.1391144, -30.693142)
+
+[node name="grafitti" type="Sprite3D" parent="Islands/island/Basketballhoop/brick_wall"]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0.17919922, 2.7943692, 0.23405457)
+texture = ExtResource("30_0qcaj")
 
 [node name="island2" parent="Islands" instance=ExtResource("27_qmqkv")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -82.83221, 17.208435, 157.46164)
@@ -1180,41 +1217,78 @@ texture = ExtResource("30_0qcaj")
 [node name="brick_wall2" parent="." instance=ExtResource("29_awgq2")]
 transform = Transform3D(-0.6812705, 0, 0.73203176, 0, 1, 0, -0.73203176, 0, -0.6812705, 40.994938, -0.07450271, 133.9524)
 
-[node name="seaweed" type="MultiMeshInstance3D" parent="."]
+[node name="seaweeds" type="Node3D" parent="."]
+
+[node name="seaweed" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.333803, -1.9073486e-06, 90.77387)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_pgsm2")
 
-[node name="seaweed2" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed2" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.487774, -1.9073486e-06, 93.14999)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_pgsm2")
 
-[node name="seaweed3" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed3" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.539979, -9.536743e-07, 96.095764)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_lr02x")
 
-[node name="seaweed4" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed13" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(0.36469805, 0, -0.9311258, 0, 1, 0, 0.9311258, 0, 0.36469805, 27.312252, -9.536743e-07, 85.01941)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed14" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(0.36469805, 0, -0.9311258, 0, 1, 0, 0.9311258, 0, 0.36469805, 34.975914, -9.536743e-07, 93.73237)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed4" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.832738, -9.536743e-07, 88.13457)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_lr02x")
 
-[node name="seaweed5" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed5" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.758386, -9.536743e-07, 95.806435)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_lr02x")
 
-[node name="seaweed6" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed11" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(0.56949466, 0, 0.8219949, 0, 1, 0, -0.8219949, 0, 0.56949466, 8.573945, -9.536743e-07, 63.204613)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed12" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(0.56949466, 0, 0.8219949, 0, 1, 0, -0.8219949, 0, 0.56949466, 21.15152, -9.536743e-07, 69.46106)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed6" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.05634, -9.536743e-07, 62.009033)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_kow38")
 
-[node name="seaweed7" type="MultiMeshInstance3D" parent="."]
+[node name="seaweed8" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(0.058126077, 0, 0.898121, 0, 0.9, 0, -0.898121, 0, 0.058126077, 91.98785, 35.43789, 22.376028)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_kow38")
+
+[node name="seaweed9" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8179603, 29.463173, 136.14622)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed10" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(-0.12215761, 0, 0.7247776, 0, 0.735, 0, -0.7247776, 0, -0.12215761, -13.218174, 11.688091, 122.732445)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_lr02x")
+
+[node name="seaweed7" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.60727, 6.67572e-06, 114.34408)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_flq2n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="seaweed7"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="seaweeds/seaweed7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2152476, 0)
 mesh = SubResource("SphereMesh_pwl4r")
