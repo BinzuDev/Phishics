@@ -147,7 +147,7 @@ collision_mask = 18
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(-3.30588e-07, -1.7, -1.4542993e-08, -0.09631389, 4.2100385e-09, 1.6972594, -1.6972594, 3.3088287e-07, -0.09631389, 0, 0, 0)
+transform = Transform3D(-1.8541054e-07, -1.7, 2.5026796e-07, 1.6574498, -1.2513472e-07, 0.37792352, -0.37792352, 2.8522547e-07, 1.6574498, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
@@ -230,7 +230,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="shouldSFXplay"]
-visible = false
 shape = SubResource("SphereShape3D_75vsp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

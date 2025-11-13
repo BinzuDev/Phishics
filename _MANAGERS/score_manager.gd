@@ -440,6 +440,10 @@ func update_style_meter():
 
 
 func update_freshness(object):
+	
+	if process_mode == PROCESS_MODE_DISABLED:
+		return #disable freshness system when the ui is hidden
+	
 	trickHistory.append(object)
 	
 	#remove the last one when more then 10

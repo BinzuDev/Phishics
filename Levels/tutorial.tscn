@@ -1275,7 +1275,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform13" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(-4.85466e-07, 0, -29.102, 0, 15.1003, 0, 11.1061, 0, -1.27209e-06, 10.4782, 1.69142, -247.177)
+transform = Transform3D(-4.856335e-07, 0, -22.8, 0, 15.1, 0, 11.11, 0, -9.966196e-07, 13.52166, 1.69142, -247.177)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")

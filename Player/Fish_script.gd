@@ -164,6 +164,9 @@ func _physics_process(_delta: float) -> void:
 				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+lastDivingSpeed)
 				boost += lastDivingSpeed
 			
+			
+			
+			
 			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
 			
 			if Input.is_action_pressed("forward"):
@@ -185,7 +188,7 @@ func _physics_process(_delta: float) -> void:
 				
 			
 			## Style Meter and jump related tricks
-			superJumpTimer = 5 #check your speed 5 frames after jumping
+			superJumpTimer = 3 #check your speed 3 frames after jumping
 			
 			if is_in_air() and %nearFloor.is_colliding():
 				ScoreManager.give_points(1000,0, true, "POGO JUMP", "uncommon")
@@ -205,6 +208,8 @@ func _physics_process(_delta: float) -> void:
 					print("DIVE HIGH JUMP, boost before: ", xtraYspd, " and after: ",xtraYspd+lastDivingSpeed)
 					xtraYspd += lastDivingSpeed
 				
+				
+				
 				apply_impulse(rotate_by_cam(Vector3(0, xtraYspd, 0)))
 				
 				#print("high jump! spd: ", linear_velocity.length(), " xtra: ", xtraYspd )
@@ -218,17 +223,23 @@ func _physics_process(_delta: float) -> void:
 				#print("LONG JUMP, speed: ", hspeed)
 				if linear_velocity.length() > 12:
 					ScoreManager.give_points(600, 0, true, "LONG JUMP", "uncommon")
-				
+			
+			
 	
-	## Tutorial jump preview:
+	## Tutorial jump preview / jump meter:
 	jumpPreview.y = JUMP_STRENGTH.y
 	jumpPreview.x = ACCEL
 	if get_input_axis():
 		var Ljump = (ACCEL * 3) + angular_velocity.length()*0.15
 		jumpPreview.x += Ljump
 		jumpPreview.y += Ljump*0.2
+		if diveReboundTimer > 0 or diving:
+			jumpPreview.x += lastDivingSpeed
+		
 	else:
 		jumpPreview.y += angular_velocity.length()*0.35
+		if diveReboundTimer > 0 or diving:
+			jumpPreview.y += lastDivingSpeed
 	$UI/jumpPreview/ColorRect/arrow.position.x = jumpPreview.x*10 + 35
 	$UI/jumpPreview/ColorRect/arrow.position.y = jumpPreview.y*-7
 	$UI/jumpPreview/ColorRect/Line1.points[1] = $UI/jumpPreview/ColorRect/arrow.position
@@ -245,6 +256,8 @@ func _physics_process(_delta: float) -> void:
 			ScoreManager.give_points(5000, 5, true, "VERTICAL JUMP")
 			ScoreManager.comboTimer += 80 #give you extra time
 			ScoreManager.play_trick_sfx("legendary")
+		$sparkCrown.jump(linear_velocity.y)
+		
 		
 	
 	## Surf Jump
@@ -297,7 +310,7 @@ func _physics_process(_delta: float) -> void:
 			$reticle/rotate.modulate.a = abs(1-timeSinceNoTargets*0.05) - 0.2
 			if timeSinceNoTargets == 0:
 				$reticle/rotate.modulate.a = 1
-			print("no target: ", timeSinceNoTargets, " fade: ", $reticle/rotate.modulate.a)
+			#print("no target: ", timeSinceNoTargets, " fade: ", $reticle/rotate.modulate.a)
 			
 			$reticle.position = get_viewport().get_camera_3d().unproject_position(closest.global_transform.origin)
 			var center =  MenuManager.get_UI_size()/2
@@ -347,6 +360,7 @@ func _physics_process(_delta: float) -> void:
 	## Diving
 	if %heightDetect.is_colliding():
 		height = global_position.y - %heightDetect.get_collision_point().y
+		$sparkCrown.global_position = %heightDetect.get_collision_point()
 	else:
 		height = 150
 		

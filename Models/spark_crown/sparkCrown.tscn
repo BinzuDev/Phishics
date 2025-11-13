@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy4era7oso7t8"]
+
+[ext_resource type="PackedScene" uid="uid://cawdnqofis0of" path="res://Models/spark_crown/sparkCrown.glb" id="1_72apj"]
+[ext_resource type="Script" uid="uid://d00jrgc2wkyf2" path="res://Models/spark_crown/sparkCrown.gd" id="2_f12iv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boxu2"]
+shading_mode = 0
+albedo_color = Color(1, 0.9666667, 0, 1)
+
+[node name="spark_crown" instance=ExtResource("1_72apj")]
+script = ExtResource("2_f12iv")
+
+[node name="Torus" parent="Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_boxu2")
+cast_shadow = 0

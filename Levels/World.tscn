@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=151 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -478,6 +478,18 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_cxcqp"]
+size = Vector3(182, 67, 19)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_71q2h"]
+size = Vector3(78, 22, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_fop6s"]
+size = Vector3(29, 28, 53)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1hfp4"]
+size = Vector3(30, 1, 45)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_kvfdy")
@@ -1595,58 +1607,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.675793, 29.568691, 52.0018
 
 [node name="group1" type="Node3D" parent="."]
 
-[node name="strike_zone5" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(2.05213e-08, 0.882948, -0.469472, 3.85949e-08, -0.469472, -0.882948, -1, 0, -4.37114e-08, 138.176, 60.5, -5.83872)
-floating = true
-
-[node name="strike_zone6" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1.10183e-08, 0.967709, -0.252069, 4.22999e-08, -0.252069, -0.967709, -1, 0, -4.37114e-08, 118.892, 73.2808, -5.83872)
-floating = true
-
-[node name="strike_zone7" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 107.447, 80.4864, -5.83872)
-floating = true
-
-[node name="strike_zone8" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 97.5727, 86.0431, -5.83872)
-floating = true
-
-[node name="strike_zone9" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 87.1312, 92.4, -5.83872)
-floating = true
-
-[node name="strike_zone10" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(0.00524472, 0.999958, -0.00754559, 0.00435378, -0.00756846, -0.999962, -0.999977, 0.00521166, -0.0043933, 80.4352, 96.1763, -5.83872)
-floating = true
-
-[node name="strike_zone11" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 74.7522, 99.0345, -5.83872)
-floating = true
-
-[node name="strike_zone13" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 57.1482, 106.208, -5.83872)
-floating = true
-
-[node name="strike_zone14" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 42.7172, 110.252, -5.83872)
-floating = true
-
-[node name="strike_zone15" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-4.22752e-09, 0.995312, 0.0967143, 4.35065e-08, 0.0967143, -0.995312, -1, 8.59498e-16, -4.37114e-08, 34.8101, 111.599, -5.83872)
-floating = true
-
-[node name="strike_zone16" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-1.53295e-08, 0.936489, 0.350698, 4.09352e-08, 0.350698, -0.936489, -1, 8.59498e-16, -4.37114e-08, 25.4425, 110.386, -5.83872)
-floating = true
-
-[node name="strike_zone17" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(-2.50656e-08, 0.819252, 0.573433, 3.58107e-08, 0.573433, -0.819252, -1, 8.59498e-16, -4.37114e-08, 14.8092, 104.966, -5.83872)
-floating = true
-
-[node name="strike_zone12" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97807, 53.562, -5.66906)
-floating = true
-
 [node name="hook2" parent="group1" instance=ExtResource("15_rk5xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3373, 12.7521, -51.2062)
 lineLength = 12.40977997779846
@@ -1753,19 +1713,6 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="group1/wall4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/wall4/StaticBody3D"]
-shape = SubResource("BoxShape3D_m3j4o")
-
-[node name="wall3" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(19.7673, 1.73136, 5.08554e-06, -2.204e-06, -5.43106e-08, 134.342, 66.6052, -0.513838, 2.93614e-06, -16.5563, -2.94874, 48.3716)
-visible = false
-material_override = ExtResource("4_vbdqq")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("BoxMesh_j5go0")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="group1/wall3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group1/wall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="back wall" type="MeshInstance3D" parent="group1"]
@@ -2098,6 +2045,60 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/homingBlocker3"]
 shape = SubResource("BoxShape3D_fcuyb")
 debug_color = Color(1, 0.983333, 0, 1)
+
+[node name="bowlingPinAirPath" type="Node3D" parent="group1"]
+
+[node name="strike_zone5" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(2.05213e-08, 0.882948, -0.469472, 3.85949e-08, -0.469472, -0.882948, -1, 0, -4.37114e-08, 138.176, 60.5, -5.83872)
+floating = true
+
+[node name="strike_zone6" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1.10183e-08, 0.967709, -0.252069, 4.22999e-08, -0.252069, -0.967709, -1, 0, -4.37114e-08, 118.892, 73.2808, -5.83872)
+floating = true
+
+[node name="strike_zone7" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 107.447, 80.4864, -5.83872)
+floating = true
+
+[node name="strike_zone8" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 97.5727, 86.0431, -5.83872)
+floating = true
+
+[node name="strike_zone9" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 87.1312, 92.4, -5.83872)
+floating = true
+
+[node name="strike_zone10" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(0.00524472, 0.999958, -0.00754559, 0.00435378, -0.00756846, -0.999962, -0.999977, 0.00521166, -0.0043933, 80.4352, 96.1763, -5.83872)
+floating = true
+
+[node name="strike_zone11" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 74.7522, 99.0345, -5.83872)
+floating = true
+
+[node name="strike_zone13" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 57.1482, 106.208, -5.83872)
+floating = true
+
+[node name="strike_zone14" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-3.05156e-10, 0.999976, 0.00698119, 4.37103e-08, 0.00698119, -0.999976, -1, 8.59498e-16, -4.37114e-08, 42.7172, 110.252, -5.83872)
+floating = true
+
+[node name="strike_zone15" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-4.22752e-09, 0.995312, 0.0967143, 4.35065e-08, 0.0967143, -0.995312, -1, 8.59498e-16, -4.37114e-08, 34.8101, 111.599, -5.83872)
+floating = true
+
+[node name="strike_zone16" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-1.53295e-08, 0.936489, 0.350698, 4.09352e-08, 0.350698, -0.936489, -1, 8.59498e-16, -4.37114e-08, 25.4425, 110.386, -5.83872)
+floating = true
+
+[node name="strike_zone17" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(-2.50656e-08, 0.819252, 0.573433, 3.58107e-08, 0.573433, -0.819252, -1, 8.59498e-16, -4.37114e-08, 14.8092, 104.966, -5.83872)
+floating = true
+
+[node name="strike_zone12" parent="group1/bowlingPinAirPath" instance=ExtResource("41_rneqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97807, 53.562, -5.66906)
+floating = true
 
 [node name="group2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2975, 0, 9.74655e-07)
@@ -5333,5 +5334,27 @@ color = Color(1, 0.4282751, 0.6571715, 1)
 
 [node name="billboard" parent="stone_pillars" instance=ExtResource("55_fcuyb")]
 transform = Transform3D(-0.8625048, 0, -0.50604886, 0, 1, 0, 0.50604886, 0, -0.8625048, 132.06683, 176.275, 6.013275)
+
+[node name="occlusionCulling" type="Node3D" parent="."]
+
+[node name="massiveBackWall" type="OccluderInstance3D" parent="occlusionCulling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 28, -64)
+occluder = SubResource("BoxOccluder3D_cxcqp")
+
+[node name="frontofTHEPIT" type="OccluderInstance3D" parent="occlusionCulling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191, 7, -65)
+occluder = SubResource("BoxOccluder3D_71q2h")
+
+[node name="sideOfMineField" type="OccluderInstance3D" parent="occlusionCulling"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 148, 7, -28)
+occluder = SubResource("BoxOccluder3D_71q2h")
+
+[node name="rightOfMineField" type="OccluderInstance3D" parent="occlusionCulling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 7, 15)
+occluder = SubResource("BoxOccluder3D_fop6s")
+
+[node name="aboveBoostTunnel" type="OccluderInstance3D" parent="occlusionCulling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 18, -33)
+occluder = SubResource("BoxOccluder3D_1hfp4")
 
 [editable path="group2/frickingAwesomeTube"]

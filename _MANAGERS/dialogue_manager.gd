@@ -15,11 +15,13 @@ var jfgPosition : Vector2
 var jfgInsideTextbox : bool = false
 
 func _ready():
+	$CanvasLayer.visible = false
 	%textBoxControl.visible = false
 	$enterTip.visible = false
 	%JFG.position = Vector2(1920,1080)
 	jfgPosition = Vector2(1920,1080)
 	$SubViewport.size = Vector2(1920,1080)
+	$SubViewport.disable_3d = true
 
 func show_prompt(state:bool = true):
 	$enterTip.visible = state
@@ -32,14 +34,9 @@ func _physics_process(_delta):
 	
 	
 	#fixes a dumbass glitch where jfg would show up for one frame only when RELOADING tutorial
-	#if %JFG.position != jfgPosition:
-		#%JFG.visible = false
-	#else:
-		#%JFG.visible = true
 	%JFG.position = jfgPosition
 	
-	#$SubViewport.size = DisplayServer.window_get_size() #jfg
-	
+	#$SubViewport.size = DisplayServer.window_get_size() 
 	
 	
 	#put the Z icon at the end of the text
@@ -96,7 +93,9 @@ func _physics_process(_delta):
 	
 
 func start_dialogue_sequence(dialogue: Dialogue):
+	$CanvasLayer.visible = true
 	%textBoxControl.visible = true
+	
 	isRunning = true
 	currentDialogue = dialogue
 	
@@ -174,6 +173,7 @@ func end_textbox():
 	if currentDialogue.keepOnScreenAfterEnd:
 		isRunning = false 
 	else:
+		$CanvasLayer.visible = false
 		%textBoxControl.visible = false
 	textBoxIndex = 0
 	get_tree().get_first_node_in_group("player").process_mode = Node.PROCESS_MODE_INHERIT
@@ -193,11 +193,13 @@ func reset():
 	currentDialogue = null
 	isRunning = false
 	coolDown = 0
+	$CanvasLayer.visible = false
 	%textBoxControl.visible = false
 	$enterTip.visible = false
 	%JFG.position = Vector2(1920,1080)
 	jfgPosition = Vector2(1920,1080)
 	$SubViewport/jelly_fish_girl_IK.play_animation("T-pose")
+	jfg_inside_textbox(false)
 	show_jfg(false)
 	
 
@@ -215,13 +217,12 @@ func run_code(newCode:String):
 ##HACK I cant just simply use .visible because of some weird frame buffer bullshit I dont understand
 func show_jfg(value:bool = true):
 	if value == true:
-		#jfgPosition = Vector2(0,0) #old
-		#jfgPosition = Vector2(-229,-810) #normal
-		#jfgPosition = Vector2(-442,-574) #inside textbox
 		jfgPosition = Vector2(-960,-1080) #new anchor
+		$SubViewport.disable_3d = false
 	else:
 		jfgPosition = Vector2(1920,1080) #make it go offscreen
 		%JFG.position = Vector2(1920,1080)
+		$SubViewport.disable_3d = true
 	
 
 func jfg_inside_textbox(value:bool):
