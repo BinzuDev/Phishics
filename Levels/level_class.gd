@@ -9,7 +9,7 @@ func _ready():
 	GameManager.isOnTitleScreen = false
 	#dont do the transition when the game opens
 	if GameManager.gameTimer > 15:
-		var waitTime = 0.5
+		var waitTime = 0.6
 		await get_tree().create_timer(waitTime).timeout
 		print(waitTime, "s long loading")
 		MenuManager.end_transition()

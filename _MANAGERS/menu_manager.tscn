@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=96 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="38_fatt0"]
 [ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="39_4h2r5"]
 [ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="53_mfo2v"]
+[ext_resource type="Texture2D" uid="uid://ftq86bc7dy1x" path="res://Sprites/UI/loading_icon.png" id="56_derq4"]
 [ext_resource type="Shader" uid="uid://cdxrwfbkv2de7" path="res://Shaders/menu_water.gdshader" id="57_wa78b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv8kq"]
@@ -1095,10 +1096,9 @@ layout_mode = 2
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3299
+scroll_vertical = 253
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 30
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1148,7 +1148,7 @@ description2 = "Tip: Try combining it with a high jump!"
 [node name="vertical" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Vertical Jump"
-score = "5000pts + x5"
+score = "2000pts + x5"
 rarity = "Rare"
 description = "Perfom a high jump that goes REALLY high."
 
@@ -1913,6 +1913,20 @@ layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("5_s0yte")
 expand_mode = 2
+
+[node name="loading" type="Control" parent="transitionScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="LoadingIcon" type="Sprite2D" parent="transitionScreen/loading"]
+unique_name_in_owner = true
+position = Vector2(154, -95)
+texture = ExtResource("56_derq4")
+hframes = 4
+vframes = 3
 
 [node name="FPSanchor" type="Control" parent="."]
 custom_minimum_size = Vector2(90, 0)

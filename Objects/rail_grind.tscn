@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://but2fghkuo68i"]
+[gd_scene load_steps=24 format=3 uid="uid://but2fghkuo68i"]
 
 [ext_resource type="Script" uid="uid://bhbxwcjt7ci1w" path="res://Objects/rail_grind.gd" id="1_efpfo"]
 [ext_resource type="Shader" uid="uid://bl3gqn2ff7hix" path="res://Shaders/stylized_metal.gdshader" id="2_3r5ah"]
 [ext_resource type="Texture2D" uid="uid://bvar6l55yty80" path="res://Sprites/sparkle.png" id="2_ryt78"]
 [ext_resource type="AudioStream" uid="uid://b006had3tp33d" path="res://Sounds/railgrind/start_railgrind.wav" id="3_fhqtv"]
 [ext_resource type="AudioStream" uid="uid://bsa651g3bqx66" path="res://Sounds/railgrind/rail_grind1.wav" id="4_jylvs"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="4_k4saa"]
 [ext_resource type="AudioStream" uid="uid://c2mb5ind4s8wb" path="res://Sounds/railgrind/rail_grind2.wav" id="5_ryt78"]
 [ext_resource type="AudioStream" uid="uid://dd31im04irmg8" path="res://Sounds/railgrind/rail_grind3.wav" id="6_k4saa"]
 
@@ -27,6 +28,13 @@ shader_parameter/gradientBasisSpeed = 0.0
 shader_parameter/refractionSplit = 2.0
 shader_parameter/refractionSplitPower = 0.00999999977648
 shader_parameter/refractionAffect = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8a2b"]
+cull_mode = 2
+albedo_texture = ExtResource("4_k4saa")
+
+[sub_resource type="QuadMesh" id="QuadMesh_65dfq"]
+orientation = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_3r5ah"]
 radial_segments = 8
@@ -158,6 +166,12 @@ smooth_faces = true
 material = SubResource("ShaderMaterial_fhqtv")
 
 [node name="debugStuff" type="Node3D" parent="."]
+
+[node name="fishPreview" type="MeshInstance3D" parent="debugStuff"]
+transform = Transform3D(-1, -8.742278e-08, 4.2351647e-22, -3.8213705e-15, 4.3711385e-08, 1.4, -8.742277e-08, 0.99999994, -6.119594e-08, -2.9754182e-22, 1.003749, 4.2993257e-08)
+material_override = SubResource("StandardMaterial3D_e8a2b")
+mesh = SubResource("QuadMesh_65dfq")
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="debugStuff"]
 transform = Transform3D(0.9999999, -1.776357e-15, 2.9802322e-08, 4.4408916e-16, 0.9999999, 4.4703484e-08, -2.9802319e-08, -7.450579e-08, 0.99999976, 0, 0, 2.4999998)

@@ -37,6 +37,7 @@ var diving := false
 var homing := false
 var diveReboundTimer : int = 0
 var lastDivingSpeed : float = 0
+var justDiveRebounded : bool = false
 var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the homing area has been empty
 var posLastFrame = Vector3(0,0,0)
 var closestLastFrame = null
@@ -133,7 +134,8 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
-	if Input.is_action_just_pressed("jump") and canJump:
+	if Input.is_action_just_pressed("jump") and canJump and !isRailGrinding:
+		print("tryna jump")
 		if !%nearFloor.is_colliding() and surfMode and !noclip:
 			pass #Disable walljumps in surf mode
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
@@ -163,6 +165,7 @@ func _physics_process(_delta: float) -> void:
 			if diveReboundTimer > 0 and get_input_axis():
 				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+lastDivingSpeed)
 				boost += lastDivingSpeed
+				justDiveRebounded = true
 			
 			
 			
@@ -207,6 +210,7 @@ func _physics_process(_delta: float) -> void:
 				if diveReboundTimer > 0:
 					print("DIVE HIGH JUMP, boost before: ", xtraYspd, " and after: ",xtraYspd+lastDivingSpeed)
 					xtraYspd += lastDivingSpeed
+					justDiveRebounded = true
 				
 				
 				
@@ -227,25 +231,26 @@ func _physics_process(_delta: float) -> void:
 			
 	
 	## Tutorial jump preview / jump meter:
-	jumpPreview.y = JUMP_STRENGTH.y
-	jumpPreview.x = ACCEL
-	if get_input_axis():
-		var Ljump = (ACCEL * 3) + angular_velocity.length()*0.15
-		jumpPreview.x += Ljump
-		jumpPreview.y += Ljump*0.2
-		if diveReboundTimer > 0 or diving:
-			jumpPreview.x += lastDivingSpeed
+	if $UI/jumpPreview.visible:
+		jumpPreview.y = JUMP_STRENGTH.y
+		jumpPreview.x = ACCEL
+		if get_input_axis():
+			var Ljump = (ACCEL * 3) + angular_velocity.length()*0.15
+			jumpPreview.x += Ljump
+			jumpPreview.y += Ljump*0.2
+			if diveReboundTimer > 0 or diving:
+				jumpPreview.x += lastDivingSpeed
+			
+		else:
+			jumpPreview.y += angular_velocity.length()*0.35
+			if diveReboundTimer > 0 or diving:
+				jumpPreview.y += lastDivingSpeed
+		$UI/jumpPreview/ColorRect/arrow.position.x = jumpPreview.x*10 + 35
+		$UI/jumpPreview/ColorRect/arrow.position.y = jumpPreview.y*-7
+		$UI/jumpPreview/ColorRect/Line1.points[1] = $UI/jumpPreview/ColorRect/arrow.position
+		$UI/jumpPreview/ColorRect/Line2.points[1] = $UI/jumpPreview/ColorRect/arrow.position
+		$UI/jumpPreview/ColorRect/arrow.rotation = Vector2(0,0).angle_to_point($UI/jumpPreview/ColorRect/arrow.position)
 		
-	else:
-		jumpPreview.y += angular_velocity.length()*0.35
-		if diveReboundTimer > 0 or diving:
-			jumpPreview.y += lastDivingSpeed
-	$UI/jumpPreview/ColorRect/arrow.position.x = jumpPreview.x*10 + 35
-	$UI/jumpPreview/ColorRect/arrow.position.y = jumpPreview.y*-7
-	$UI/jumpPreview/ColorRect/Line1.points[1] = $UI/jumpPreview/ColorRect/arrow.position
-	$UI/jumpPreview/ColorRect/Line2.points[1] = $UI/jumpPreview/ColorRect/arrow.position
-	$UI/jumpPreview/ColorRect/arrow.rotation = Vector2(0,0).angle_to_point($UI/jumpPreview/ColorRect/arrow.position)
-	
 	
 	## Super Jump tricks
 	if superJumpTimer >= 0:
@@ -253,10 +258,16 @@ func _physics_process(_delta: float) -> void:
 	if superJumpTimer == 0:
 		#print("super jump:  v: ", linear_velocity.y)
 		if linear_velocity.y > 25:
-			ScoreManager.give_points(5000, 5, true, "VERTICAL JUMP")
+			ScoreManager.give_points(2000, 5, true, "VERTICAL JUMP")
 			ScoreManager.comboTimer += 80 #give you extra time
 			ScoreManager.play_trick_sfx("legendary")
 		$sparkCrown.jump(linear_velocity.y)
+		$sparkCrown.global_position = %heightDetect.get_collision_point() #place the spark crown
+		if justDiveRebounded:
+			if trueSpeed.length() > 15:
+				ScoreManager.give_points(trueSpeed.length()*200, 0, true, "DIVE REBOUND")
+			
+			justDiveRebounded = false
 		
 		
 	
@@ -360,7 +371,6 @@ func _physics_process(_delta: float) -> void:
 	## Diving
 	if %heightDetect.is_colliding():
 		height = global_position.y - %heightDetect.get_collision_point().y
-		$sparkCrown.global_position = %heightDetect.get_collision_point()
 	else:
 		height = 150
 		
@@ -386,7 +396,7 @@ func _physics_process(_delta: float) -> void:
 		diving = true #DIVING VARIABLE
 		
 		if timeSinceNoTargets > 0 and timeSinceNoTargets <= 16:
-			printerr("DOVE DURING CUYOTE TIME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+			printerr("DOVE DURING COYOTE TIME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		print("DIVING, TIME SINCE NO TARGET: ", timeSinceNoTargets, " closest: ", closest, " last frame: ", closestLastFrame)
 		
 		

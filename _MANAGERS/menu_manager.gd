@@ -48,6 +48,8 @@ func _process(_delta):
 	transitionEnd = $transitionScreen.size.x + %fishTail.size.x + 100
 	#print("screen: ", $transitionScreen.size.x, " tail: ", %fishTail.size.x, " head: ", %fishHead.size.x*0.5)
 	#print("S: ", transitionStart, " C: ", $transitionScreen.position.x, " E: ", transitionEnd)
+	if GameManager.gameTimer % 2 == 0:
+		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12)
 	
 	
 	## Trick list tab 
