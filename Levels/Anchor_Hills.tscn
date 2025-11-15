@@ -1369,7 +1369,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.50177264, -0.24912088, -0.8286816, -0.15702568, 0.96795285, -0.19606522, 0.8506153, 0.031731572, -0.5250281, -46.779144, 2.177444, 32.46979)
+transform = Transform3D(-0.50177157, -0.24912088, -0.8286855, -0.15702534, 0.96795285, -0.19606616, 0.8506134, 0.031731572, -0.5250306, -46.779144, 2.177444, 32.46979)
 progress = 153.23833
 loop = false
 overrideCamDistance = 15.0

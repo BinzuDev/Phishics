@@ -2379,7 +2379,6 @@ mesh = SubResource("SphereMesh_jap5e")
 
 [node name="floorDetection" type="ShapeCast3D" parent="antiRotation"]
 unique_name_in_owner = true
-visible = false
 shape = SubResource("CylinderShape3D_uucyj")
 target_position = Vector3(0, -0.7, 0)
 collision_mask = 17
@@ -2392,9 +2391,8 @@ collision_mask = 5
 
 [node name="nearFloor" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
-visible = false
 target_position = Vector3(0, -1.5, 0)
-collision_mask = 17
+collision_mask = 21
 
 [node name="canSurf" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
@@ -2946,6 +2944,7 @@ frame = 3
 
 [node name="sparkCrown" parent="." instance=ExtResource("80_dafiy")]
 top_level = true
+visible = false
 
 [node name="Jumps" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_v25j4")

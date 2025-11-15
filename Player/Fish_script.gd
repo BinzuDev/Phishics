@@ -135,7 +135,6 @@ func _physics_process(_delta: float) -> void:
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
 	if Input.is_action_just_pressed("jump") and canJump and !isRailGrinding:
-		print("tryna jump")
 		if !%nearFloor.is_colliding() and surfMode and !noclip:
 			pass #Disable walljumps in surf mode
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
@@ -256,16 +255,25 @@ func _physics_process(_delta: float) -> void:
 	if superJumpTimer >= 0:
 		superJumpTimer -= 1
 	if superJumpTimer == 0:
-		#print("super jump:  v: ", linear_velocity.y)
+		#print("super jump:  v: ", linear_svelocity.y)
 		if linear_velocity.y > 25:
-			ScoreManager.give_points(2000, 5, true, "VERTICAL JUMP")
+			if !justDiveRebounded:
+				ScoreManager.give_points(5000, 5, true, "VERTICAL JUMP")
 			ScoreManager.comboTimer += 80 #give you extra time
 			ScoreManager.play_trick_sfx("legendary")
-		$sparkCrown.jump(linear_velocity.y)
-		$sparkCrown.global_position = %heightDetect.get_collision_point() #place the spark crown
+		if height < 4: #so it doesnt do it on walljumps
+			$sparkCrown.jump(linear_velocity.y)
+			$sparkCrown.global_position = %heightDetect.get_collision_point() #place the spark crown
+			if %heightDetect.get_collision_normal() == Vector3(0,1,0):
+				$sparkCrown.global_rotation = Vector3(0,0,0)
+			else:
+				$sparkCrown.look_at($sparkCrown.global_position+%heightDetect.get_collision_normal())
+				$sparkCrown.rotation_degrees.x -= 90
+		
 		if justDiveRebounded:
 			if trueSpeed.length() > 15:
-				ScoreManager.give_points(trueSpeed.length()*200, 0, true, "DIVE REBOUND")
+				ScoreManager.give_points(trueSpeed.length()*200, 1, true, "DIVE REBOUND")
+				ScoreManager.comboTimer += 80 #give you extra time
 			
 			justDiveRebounded = false
 		
@@ -386,9 +394,10 @@ func _physics_process(_delta: float) -> void:
 		if height > 10:
 			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
-		if newSpd <= -75:
+		if newSpd <= -75 and diving == false:
 			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
 			ScoreManager.play_trick_sfx("legendary")
+		#Put you in tipspin position if you were spinning fast enough
 		print("the transparency is ", %speedLines1.transparency)
 		if %speedLines1.transparency < 0.8:
 			print("yupp goodneough for me")
@@ -548,6 +557,7 @@ func _physics_process(_delta: float) -> void:
 	## SPEEN
 	if angular_velocity.length() > 100:
 		ScoreManager.give_points(angular_velocity.length()*0.05,0,false, "SPEEN")
+		
 	
 	
 	

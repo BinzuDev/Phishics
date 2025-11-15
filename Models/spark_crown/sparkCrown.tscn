@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cy4era7oso7t8"]
+[gd_scene load_steps=14 format=4 uid="uid://cy4era7oso7t8"]
 
 [ext_resource type="PackedScene" uid="uid://cawdnqofis0of" path="res://Models/spark_crown/sparkCrown.glb" id="1_72apj"]
 [ext_resource type="Script" uid="uid://d00jrgc2wkyf2" path="res://Models/spark_crown/sparkCrown.gd" id="2_f12iv"]
+[ext_resource type="AudioStream" uid="uid://bgvpu88t36upe" path="res://Sounds/diveRebound/rebound1.ogg" id="3_d11eg"]
+[ext_resource type="AudioStream" uid="uid://dv5al6hxj4wxt" path="res://Sounds/diveRebound/rebound2.ogg" id="4_lrl46"]
+[ext_resource type="AudioStream" uid="uid://bnabc6mo41dat" path="res://Sounds/diveRebound/rebound2b.ogg" id="5_lrl46"]
+[ext_resource type="AudioStream" uid="uid://dq0tkaf180pwd" path="res://Sounds/diveRebound/rebound3.ogg" id="5_slm37"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boxu2"]
 shading_mode = 0
@@ -90,6 +94,12 @@ bind/16/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f12iv"]
 shading_mode = 0
 albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_slm37"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("4_lrl46")
+stream_1/stream = ExtResource("5_lrl46")
 
 [node name="spark_crown" instance=ExtResource("1_72apj")]
 script = ExtResource("2_f12iv")
@@ -357,3 +367,23 @@ material_override = SubResource("StandardMaterial3D_f12iv")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_iis1t")
 skin = SubResource("Skin_rb774")
+
+[node name="rebound1" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("3_d11eg")
+volume_db = -6.0
+bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="rebound2" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = SubResource("AudioStreamRandomizer_slm37")
+volume_db = -4.0
+unit_size = 20.0
+bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="rebound3" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("5_slm37")
+volume_db = -2.0
+unit_size = 30.0
+bus = &"fishsfx"
+attenuation_filter_cutoff_hz = 20500.0

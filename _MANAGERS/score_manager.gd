@@ -565,8 +565,6 @@ func change_rank(amount: int, meterPercentage: float):
 ##It will also automatically NOT play any sounds if another sound of 
 ##equal or lower rarity is currently playing.
 func play_trick_sfx(type: String):
-	if type == "legendary":
-		print("TRYING TO PLAY LEGENDARY DAMNIT, is it playing: ", $legendary.playing)
 	if !$legendary.playing:     #dont play any trick if any legendary is playing
 		if type == "legendary":
 			$legendary.play()

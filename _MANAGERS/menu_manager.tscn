@@ -1096,9 +1096,10 @@ layout_mode = 2
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 253
+scroll_vertical = 3299
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = 138
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1148,7 +1149,7 @@ description2 = "Tip: Try combining it with a high jump!"
 [node name="vertical" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Vertical Jump"
-score = "2000pts + x5"
+score = "5000pts + x5"
 rarity = "Rare"
 description = "Perfom a high jump that goes REALLY high."
 
@@ -1278,9 +1279,10 @@ description = "By holding left+up+right, you can temporarily turn off homing. Al
 custom_minimum_size = Vector2(1000, 220)
 layout_mode = 2
 trickName = "Dive Rebound"
-rarity = "Mechanic"
+score = "[speed*200]pts +1x"
+rarity = "Rare"
 description = "After performing regular dive, jumping the moment you touch the ground will convert all of your diving speed into jumping speed!"
-description2 = "Works for both high jumps and longs jumps|"
+description2 = "Works for both high jumps and longs jumps! The \"VERTICAL JUMP\" trick doesn't score from dive rebounds."
 
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer"]
 layout_mode = 2

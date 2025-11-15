@@ -48,8 +48,11 @@ func _process(_delta):
 	transitionEnd = $transitionScreen.size.x + %fishTail.size.x + 100
 	#print("screen: ", $transitionScreen.size.x, " tail: ", %fishTail.size.x, " head: ", %fishHead.size.x*0.5)
 	#print("S: ", transitionStart, " C: ", $transitionScreen.position.x, " E: ", transitionEnd)
-	if GameManager.gameTimer % 2 == 0:
-		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12)
+	
+	if Engine.get_frames_per_second() < 30:
+		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12) #every frame if less than 30 fps
+	elif GameManager.gameTimer % 2 == 0:
+		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12) #every 2 frames if above 30 fps
 	
 	
 	## Trick list tab 
