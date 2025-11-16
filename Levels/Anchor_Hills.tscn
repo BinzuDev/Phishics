@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=55 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://du5y60syohu2l" path="res://Sprites/grafitti/sharkgirl_graf.png" id="30_0qcaj"]
 [ext_resource type="ArrayMesh" uid="uid://cl10mm78nouw3" path="res://Models/seaweed/seaweed_model.res" id="32_lr02x"]
 [ext_resource type="Texture2D" uid="uid://w2v780gesuuj" path="res://Sprites/grafitti/MrApothic-_No_Life_sticker_-_Big.png" id="32_w7dfq"]
+[ext_resource type="Texture2D" uid="uid://beqn7xd2dnuti" path="res://Sprites/grafitti/Enzo - JFG_SKETCH.png" id="33_6oh87"]
 [ext_resource type="ArrayMesh" uid="uid://csehhkp01tavt" path="res://Models/seaweed/seaweed_patch_generator.obj" id="33_kow38"]
 [ext_resource type="PackedScene" uid="uid://da7lf4yqtunqv" path="res://Objects/seaweed.tscn" id="34_flq2n"]
 [ext_resource type="PackedScene" uid="uid://b01eybe7aymqc" path="res://Models/half_loop.tscn" id="35_pwl4r"]
@@ -1035,6 +1036,18 @@ lineLength = 15.008374285697936
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 47.994316, 18.708231, 16.901894)
 strength = 20.0
 
+[node name="BoostRing3" parent="." instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 28.031727, 11.416604, 23.915356)
+strength = 15.0
+
+[node name="BoostRing4" parent="." instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 16.382256, 18.65778, 18.282196)
+strength = 15.0
+
+[node name="BoostRing5" parent="." instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 22.348007, 21.227905, 7.493273)
+strength = 15.0
+
 [node name="BoostRing2" parent="." instance=ExtResource("19_21ejt")]
 transform = Transform3D(-4.371139e-08, 1, 0, -0.8277275, -3.618112e-08, 0.5611303, 0.5611303, 2.4527782e-08, 0.8277275, 47.424885, 40.27812, 16.686989)
 strength = 20.0
@@ -1266,6 +1279,10 @@ texture = ExtResource("32_w7dfq")
 transform = Transform3D(0.5849999, 0, -1.7763568e-15, 0, 0.585, 0, 1.7763568e-15, 0, 0.5849999, -2.6568756, 2.2337387, 0.24245453)
 texture = ExtResource("30_0qcaj")
 
+[node name="Sprite3D3" type="Sprite3D" parent="brick_wall2"]
+transform = Transform3D(0.36999997, 0, -1.7763568e-15, 0, 0.37, 0, 1.7763568e-15, 0, 0.36999997, 2.1079102, 2.3050935, 0.24245453)
+texture = ExtResource("33_6oh87")
+
 [node name="seaweeds" type="Node3D" parent="."]
 
 [node name="sw_half_loop" type="MultiMeshInstance3D" parent="seaweeds"]
@@ -1329,7 +1346,7 @@ transform = Transform3D(0.99998534, 0, 0.0054104947, 0, 1.2, 0, -0.0054104947, 0
 multimesh = SubResource("MultiMesh_6oh87")
 
 [node name="sw_startingPlatform" type="MultiMeshInstance3D" parent="seaweeds"]
-transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -4.835551, 30.188616, 137.14488)
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -4.835551, 29.847803, 137.14488)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_pwl4r")
 
@@ -1369,7 +1386,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.50177157, -0.24912088, -0.8286855, -0.15702534, 0.96795285, -0.19606616, 0.8506134, 0.031731572, -0.5250306, -46.779144, 2.177444, 32.46979)
+transform = Transform3D(-0.5017715, -0.24912088, -0.8286863, -0.15702532, 0.96795285, -0.19606635, 0.85061336, 0.031731572, -0.52503115, -46.779144, 2.177444, 32.46979)
 progress = 153.23833
 loop = false
 overrideCamDistance = 15.0
