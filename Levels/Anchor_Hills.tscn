@@ -779,6 +779,27 @@ strength = 20.0
 centerPlayer = true
 recenterCamera = true
 
+[node name="BoostRing11" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 47.994316, 18.708231, 16.901894)
+strength = 20.0
+
+[node name="BoostRing12" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 28.031727, 11.416604, 23.915356)
+strength = 15.0
+
+[node name="BoostRing13" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 16.382256, 18.65778, 18.282196)
+strength = 15.0
+
+[node name="BoostRing14" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 22.348007, 21.227905, 7.493273)
+strength = 15.0
+
+[node name="BoostRing15" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
+transform = Transform3D(-4.371139e-08, 1, 0, -0.8277275, -3.618112e-08, 0.5611303, 0.5611303, 2.4527782e-08, 0.8277275, 47.424885, 40.27812, 16.686989)
+strength = 20.0
+recenterCamera = true
+
 [node name="Hoops" type="Node3D" parent="TheHills"]
 
 [node name="Basketballhoop" parent="TheHills/Hoops" instance=ExtResource("13_7rcag")]
@@ -917,6 +938,18 @@ transform = Transform3D(-4.937978, 1.670353, -6.068467, 0.5066075, -7.5826464, -
 [node name="rock_10" parent="start/rocks" instance=ExtResource("22_lr02x")]
 transform = Transform3D(-3.086236, 1.0439706, -3.7927923, 0.31662968, -4.739154, -1.5621029, -3.9210832, -1.2043859, 2.8591194, -37.041107, -2.5314794, -30.053528)
 
+[node name="rock_14" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(0.23211956, 2.8242247, -8.521168, 0.568667, -8.511521, -2.805537, -8.958969, -0.4670918, -0.39885664, 85.55956, 0.16457653, -24.47931)
+
+[node name="rock_15" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(-4.9273543, -0.54411614, 0.6520076, 0.31662965, -4.7391534, -1.5621026, 0.7879859, -1.4981177, 4.7047544, 58.3779, 0.16457653, 65.01417)
+
+[node name="rock_16" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(2.697134, -0.76061887, 2.8542821, 0.25330374, -3.7913232, -1.2496824, 2.9430094, 1.0233904, -2.50826, 28.04271, 0.16457653, 19.95143)
+
+[node name="rock_17" parent="start/rocks" instance=ExtResource("22_lr02x")]
+transform = Transform3D(1.348567, -0.38030943, 1.4271411, 0.12665187, -1.8956616, -0.6248412, 1.4715047, 0.5116952, -1.25413, 23.568964, 0.16457653, 22.248735)
+
 [node name="rock_11" parent="start/rocks" instance=ExtResource("22_lr02x")]
 transform = Transform3D(-3.946534, -1.1956898, 2.8275778, 0.31662968, -4.739154, -1.5621029, 3.0536232, -1.0539194, 3.8163652, -39.10528, -2.5314794, -22.532673)
 
@@ -1031,27 +1064,6 @@ lineLength = 13.82618625164032
 [node name="hook2" parent="." instance=ExtResource("27_kl2hu")]
 transform = Transform3D(0.10838109, 0, 0.99410945, 0, 1, 0, -0.99410945, 0, 0.10838109, 47.54686, 15.733874, 49.999107)
 lineLength = 15.008374285697936
-
-[node name="BoostRing" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 47.994316, 18.708231, 16.901894)
-strength = 20.0
-
-[node name="BoostRing3" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 28.031727, 11.416604, 23.915356)
-strength = 15.0
-
-[node name="BoostRing4" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 16.382256, 18.65778, 18.282196)
-strength = 15.0
-
-[node name="BoostRing5" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 22.348007, 21.227905, 7.493273)
-strength = 15.0
-
-[node name="BoostRing2" parent="." instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -0.8277275, -3.618112e-08, 0.5611303, 0.5611303, 2.4527782e-08, 0.8277275, 47.424885, 40.27812, 16.686989)
-strength = 20.0
-recenterCamera = true
 
 [node name="PathFollowJellyfish" parent="." instance=ExtResource("17_vcbwq")]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 47.71025, 52.360134, -27.650013)
@@ -1241,20 +1253,8 @@ signSprite = "uid://dakyqhyrdardk"
 transform = Transform3D(-0.596547, 0.80257803, -3.50818e-08, 1.999849e-16, -4.3711392e-08, -1, -0.80257803, -0.596547, 2.6075902e-08, -15.501072, 0.027083397, 110.33542)
 signSprite = "uid://dakyqhyrdardk"
 
-[node name="stars16" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.596547, 0.80257803, -3.50818e-08, 1.999849e-16, -4.3711392e-08, -1, -0.80257803, -0.596547, 2.6075902e-08, -40.107536, 0.027083397, 96.30281)
-signSprite = "uid://dakyqhyrdardk"
-
-[node name="stars17" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.5380207, -0.8429316, 3.6845716e-08, 1.999849e-16, -4.3711392e-08, -1, 0.8429316, -0.5380207, 2.3517627e-08, -36.4094, 0.027083397, 99.64262)
-signSprite = "uid://dakyqhyrdardk"
-
 [node name="stars19" parent="starfishes" instance=ExtResource("12_rehwy")]
 transform = Transform3D(-0.23330334, -0.6530673, -0.7204671, -0.9315699, 0.36255994, -0.026979277, 0.2788319, 0.66487116, -0.69296426, -21.003447, 30.792315, 94.051834)
-signSprite = "uid://dakyqhyrdardk"
-
-[node name="stars18" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.5380207, -0.8429316, 3.6845716e-08, 1.999849e-16, -4.3711392e-08, -1, 0.8429316, -0.5380207, 2.3517627e-08, -42.870605, 0.027083397, 100.581696)
 signSprite = "uid://dakyqhyrdardk"
 
 [node name="stars7" parent="starfishes" instance=ExtResource("12_rehwy")]
@@ -1336,6 +1336,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.05634, -9.536743e-07, 62.0
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_kow38")
 
+[node name="sw_mines" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.38805, -9.536743e-07, 31.141113)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_kow38")
+
+[node name="sw_mines2" type="MultiMeshInstance3D" parent="seaweeds"]
+transform = Transform3D(-0.9845614, 0, -0.17504036, 0, 1, 0, 0.17504036, 0, -0.9845614, 17.38805, -9.536743e-07, 16.740772)
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_kow38")
+
 [node name="sw_chains2" type="MultiMeshInstance3D" parent="seaweeds"]
 transform = Transform3D(0.058126077, 0, 0.898121, 0, 0.9, 0, -0.898121, 0, 0.058126077, 91.93805, 35.43789, 23.12069)
 cast_shadow = 0
@@ -1386,7 +1396,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5017715, -0.24912088, -0.8286863, -0.15702532, 0.96795285, -0.19606635, 0.85061336, 0.031731572, -0.52503115, -46.779144, 2.177444, 32.46979)
+transform = Transform3D(-0.5017715, -0.24912088, -0.8286875, -0.15702532, 0.96795285, -0.19606662, 0.85061336, 0.031731572, -0.52503186, -46.779144, 2.177444, 32.46979)
 progress = 153.23833
 loop = false
 overrideCamDistance = 15.0
