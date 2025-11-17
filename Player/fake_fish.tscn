@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu0225of8r2sg"]
 
-[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="1_atjba"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Player/Skins/tuna.png" id="1_atjba"]
 [ext_resource type="Script" uid="uid://3pwkyxpqmn2j" path="res://Player/fake_fish.gd" id="1_xhr18"]
 
 [node name="fakeFish" type="Node3D"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=178 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=180 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
-[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="2_j2ykt"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Player/Skins/tuna.png" id="2_j2ykt"]
 [ext_resource type="Script" uid="uid://ds6aunatkq5dv" path="res://_MANAGERS/recording_manager.gd" id="2_lt56d"]
 [ext_resource type="AudioStream" uid="uid://cksq7ka4w1bjq" path="res://Sounds/sparks/sparks_high_intensity_01.wav" id="3_dh0na"]
 [ext_resource type="Texture2D" uid="uid://drxd8lqdquu0g" path="res://Sprites/signs/tri_crabwarning.png" id="4_2owy6"]
@@ -78,8 +78,10 @@
 [ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
 [ext_resource type="AudioStream" uid="uid://db2o8qqcqpox0" path="res://Sounds/surfing/turn2.wav" id="63_0m6um"]
 [ext_resource type="AudioStream" uid="uid://kxuu5v8dn8i8" path="res://Sounds/surfing/turn3.wav" id="64_vttj7"]
+[ext_resource type="AudioStream" uid="uid://bpeq7h4tk3gnj" path="res://FISH_aura.ogg" id="69_h8lso"]
+[ext_resource type="AudioStream" uid="uid://chgdl0h5xl4nb" path="res://shockwave.ogg" id="70_jv0xx"]
 [ext_resource type="PackedScene" uid="uid://cy4era7oso7t8" path="res://Models/spark_crown/sparkCrown.tscn" id="80_dafiy"]
-[ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="82_jv0xx"]
+[ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Player/Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
 
@@ -2118,6 +2120,7 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
+recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1
@@ -2657,7 +2660,7 @@ mouse_filter = 2
 unique_name_in_owner = true
 texture = ExtResource("2_dhdhv")
 
-[node name="airSpin" type="Control" parent="UI"]
+[node name="surfJump" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2668,7 +2671,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="surfJumpMeter" type="TextureProgressBar" parent="UI/airSpin"]
+[node name="surfJumpMeter" type="TextureProgressBar" parent="UI/surfJump"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 1
@@ -3031,6 +3034,18 @@ bus = &"fishsfx"
 process_mode = 3
 stream = ExtResource("25_dhdhv")
 max_polyphony = 5
+bus = &"fishsfx"
+
+[node name="aura" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("69_h8lso")
+volume_db = 3.0
+pitch_scale = 0.8
+bus = &"fishsfx"
+
+[node name="shockwave" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("70_jv0xx")
 bus = &"fishsfx"
 
 [node name="sign_scraping" type="AudioStreamPlayer3D" parent="."]

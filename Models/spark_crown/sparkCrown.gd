@@ -7,7 +7,7 @@ func _ready():
 	$Armature.scale = Vector3(0.5,0.5,0.5)
 	
 
-var amp : float = 1.0
+var amp : float = 0.0
 var lerpAmp : float = 1.0 #moves towards amp
 var startingAmp : float = 1.0 #the initial amp value
 var sparkTier : int = 0

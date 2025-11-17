@@ -1139,27 +1139,32 @@ strength = 20.0
 [node name="brokenBits" type="Node3D" parent="Islands"]
 
 [node name="Diamond" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(0.97, 0, 0, 0, 0.63994724, 0.72894967, 0, -0.72894967, 0.63994724, 52.83372, 50.008343, -56.156124)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 52.83372, 47.192406, -62.83929)
 yRotation = true
 yRandom = true
 
 [node name="Diamond2" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(1.465, 0, 0, 0, -0.18011199, -1.4538862, 0, 1.4538862, -0.18011199, 37.55215, 49.352222, -59.562077)
+transform = Transform3D(1.5140299, 0.13459088, 0, -0.13459088, 1.5140299, 0, 0, 0, 1.5200002, 32.231567, 52.954147, -62.787888)
 yRotation = true
 yRandom = true
 
 [node name="Diamond3" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(0.3189332, -1.2783155, -0.7876651, 1.4893456, 0.37158412, 0, 0.19067352, -0.7642381, 1.3175011, 37.55215, 45.444626, -73.89282)
+transform = Transform3D(1.34, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 37.55215, 45.444626, -73.89282)
 yRotation = true
 yRandom = true
 
 [node name="Diamond4" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 56.694622, 49.861782, -81.30475)
+transform = Transform3D(1.9623835, -0.17306691, 0, 0.17306691, 1.9623835, 0, 0, 0, 1.9700003, 62.879997, 48.440075, -79.92191)
 yRotation = true
 yRandom = true
 
 [node name="Diamond5" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(1.86, 0, 0, 0, 1.86, 0, 0, 0, 1.86, 56.694622, 41.339943, -66.87315)
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 51.292248, 39.924038, -71.58475)
+yRotation = true
+yRandom = true
+
+[node name="Diamond10" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
+transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 44.767693, 36.12779, -75.039444)
 yRotation = true
 yRandom = true
 
@@ -1169,7 +1174,7 @@ yRotation = true
 yRandom = true
 
 [node name="Diamond9" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 20.665306, 72.69311, -151.96921)
+transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, 1.7341919, 78.01815, -151.96921)
 yRotation = true
 yRandom = true
 
@@ -1179,7 +1184,7 @@ yRotation = true
 yRandom = true
 
 [node name="Diamond8" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
-transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 4.412134, 65.47891, -128.93735)
+transform = Transform3D(1.11, 0, 0, 0, 1.11, 0, 0, 0, 1.11, 4.412134, 65.47891, -128.93735)
 yRotation = true
 yRandom = true
 
@@ -1202,15 +1207,15 @@ transform = Transform3D(0.22909847, 0.9734033, -4.254881e-08, 0, -4.371139e-08, 
 signSprite = "uid://dakyqhyrdardk"
 
 [node name="stars9" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 6.68676, 17.8064, 138.56079)
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 6.68676, 17.426134, 138.56079)
 signSprite = "uid://cgsqydmj4chng"
 
 [node name="stars12" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 5.9445324, 17.8064, 135.15176)
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 5.9445324, 17.222672, 135.15176)
 signSprite = "uid://cgsqydmj4chng"
 
 [node name="stars13" parent="starfishes" instance=ExtResource("12_rehwy")]
-transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 8.868828, 17.8064, 137.1936)
+transform = Transform3D(-0.9811075, 0.19346382, -8.456573e-09, 0, -4.371139e-08, -1, -0.19346382, -0.9811075, 4.288557e-08, 8.868828, 17.165106, 137.1936)
 signSprite = "uid://cgsqydmj4chng"
 
 [node name="stars2" parent="starfishes" instance=ExtResource("12_rehwy")]
@@ -1396,7 +1401,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5017715, -0.24912088, -0.8286875, -0.15702532, 0.96795285, -0.19606662, 0.85061336, 0.031731572, -0.52503186, -46.779144, 2.177444, 32.46979)
+transform = Transform3D(-0.5017715, -0.24912088, -0.8286932, -0.15702532, 0.96795285, -0.19606797, 0.85061336, 0.031731572, -0.5250355, -46.779144, 2.177444, 32.46979)
 progress = 153.23833
 loop = false
 overrideCamDistance = 15.0

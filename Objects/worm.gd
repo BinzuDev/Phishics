@@ -2,9 +2,15 @@
 extends Area3D
 
 @export var onlyCollectByParry : bool = false
+@export var glow : bool = false
+##The bigger hitbox thats used to make it easier to grab in midair will be used even if on the floor
+@export var forceBigHitbox : bool = false
 var collected: bool = false
 
 
+func _ready():
+	$glow.visible = glow
+	$OmniLight3D.visible = !glow
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -20,7 +26,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_air_hitbox_body_entered(body):
 	if body is player and not collected and !onlyCollectByParry:
-		if body.height > 10: #if the player enters the big hitbox while up in the air
+		#if the player enters the big hitbox while up in the air
+		if body.height > 8 or forceBigHitbox: 
 			print("COLLECTED WORM IN THE AIR")
 			collect() #run the regular function
 
@@ -34,5 +41,6 @@ func collect():
 	ScoreManager.give_points(800,5,true, "WORM")
 	ScoreManager.update_freshness(self)
 	collected = true
+	ScoreManager.increase_counter()
 	$WormSFX.play()
 	$WormAnimation.play("Collected") #animation

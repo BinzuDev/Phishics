@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=145 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://f0h5r84k4ug6" path="res://Levels/tutorial.gd" id="1_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -20,9 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="13_8fyol"]
 [ext_resource type="Texture2D" uid="uid://b0wa7hredvp5c" path="res://Sprites/tutorial_key_mask.png" id="13_bu5na"]
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="14_0tnf1"]
+[ext_resource type="Texture2D" uid="uid://c2qqsyrm2ejrx" path="res://Sprites/UI/esc_pink.png" id="14_2esnd"]
 [ext_resource type="Texture2D" uid="uid://crhny214v7mdk" path="res://Sprites/tutorialwall_up.png" id="14_bu5na"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="14_so4kt"]
 [ext_resource type="Texture2D" uid="uid://ggum8m4ienj" path="res://Sprites/tutorialwall_right.png" id="15_8fyol"]
+[ext_resource type="Texture2D" uid="uid://bp6rnu0nx3u8l" path="res://Sprites/UI/esc_blue.png" id="15_83ucr"]
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="15_td8ta"]
 [ext_resource type="Texture2D" uid="uid://b1foay3kpnoqs" path="res://Sprites/tutorialwall_down.png" id="16_0cfr2"]
 [ext_resource type="Texture2D" uid="uid://xvf53qur516b" path="res://Sprites/tutorialwall_left.png" id="17_rmd0x"]
@@ -33,8 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="23_maxpf"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="24_ygkl2"]
+[ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="30_rf3la"]
+[ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/Corals/coral_tube.tscn" id="34_f2byx"]
 [ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="34_rmd0x"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="35_rf3la"]
+[ext_resource type="PackedScene" uid="uid://da7lf4yqtunqv" path="res://Objects/seaweed.tscn" id="37_tbpdk"]
+[ext_resource type="ArrayMesh" uid="uid://cl10mm78nouw3" path="res://Models/seaweed/seaweed_model.res" id="38_pl552"]
+[ext_resource type="ArrayMesh" uid="uid://csehhkp01tavt" path="res://Models/seaweed/seaweed_patch_generator.obj" id="39_ilxjc"]
+[ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/Corals/coral_tree.tscn" id="40_i8qca"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lalqu"]
 panorama = ExtResource("1_i6m5q")
@@ -114,6 +122,20 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wqju"]
 size = Vector3(11.5216, 2.6936893, 10.1921)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mu0c"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("14_2esnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_83ucr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_rf3la"]
 animations = [{
 "frames": [{
@@ -187,7 +209,7 @@ animations = [{
 [sub_resource type="Resource" id="Resource_ilxjc"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Not... very/w fast... Hm...."
+text = "Not... very| fast... Hm...."
 JFG_animation = "tuto_think"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -291,7 +313,8 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "You can also JUMP using the SPACEBAR! 
-The faster you're spinning, the more powerful your jump becomes!"
+The faster you're spinning, the more powerful 
+your jump becomes!"
 JFG_animation = "tuto_talk"
 code = "GameManager.get_tree().get_first_node_in_group(\"player\").setJumpPreview(true);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
@@ -342,7 +365,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_tbpdk"]
 script = ExtResource("10_3hhjp")
 text = "Dive with D (in the air)
-Change target with arrow keys"
+Change target with arrow keys."
 position = "top"
 instant = true
 code = "DialogueManager.show_jfg(false);"
@@ -582,13 +605,25 @@ size = Vector3(48.779907, 17.273682, 25.419678)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmd0x"]
 size = Vector3(51.829712, 20.892822, 20.858276)
 
-[sub_resource type="Resource" id="Resource_so4kt"]
+[sub_resource type="Resource" id="Resource_xc5bl"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
 text = "And finally, the most crucial part:"
 JFG_animation = "WiggleFinger"
 code = "DialogueManager.show_jfg(true);"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ljj34"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+runOnlyOnce = true
+pauseStyleSystem = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_xc5bl")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent7();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rf3la"]
+size = Vector3(134.76233, 55.44723, 9.56519)
 
 [sub_resource type="Resource" id="Resource_td8ta"]
 script = ExtResource("10_3hhjp")
@@ -634,49 +669,17 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_jbvdo"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "If you wanna learn more about every mechanic this game has to offer, check out the trick list in the menu!"
+text = "If there's ever anything you don't understand, 
+check out the trick list in the menu!
+It's probably explained in there!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_mydkt"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Simply pause the game with the ESC key, then select
-the \"TRICKS\" option!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_2esnd"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "If there's ever anything you don't understand, 
-it's probably explained in there!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_83ucr"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Just... Don't try to learn everything all at once... yeah? 
-Check it out once in a while and try to learn 
-something new!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_2kmhi"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Well... I think that just about covers it up! 
-I know it's... A lot to get used to...
-But I'm sure you'll do juuust fine!"
-position = "top"
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_0mu0c"]
-script = ExtResource("10_3hhjp")
-name = "Jelly Fishgirl"
-text = "Well then, meet me at the finish line to end the tutorial! 
-See yaaa~!!"
+text = "Simply pause the game with the ESC key, 
+then select the \"TRICKS\" option!"
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
@@ -684,14 +687,229 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 script = ExtResource("11_to5w2")
 automaticStart = true
 pauseGame = false
+keepOnScreenAfterEnd = true
 runOnlyOnce = true
-messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_so4kt"), SubResource("Resource_td8ta"), SubResource("Resource_4d1rn"), SubResource("Resource_s0t66"), SubResource("Resource_3l68j"), SubResource("Resource_fljuj"), SubResource("Resource_jbvdo"), SubResource("Resource_mydkt"), SubResource("Resource_2esnd"), SubResource("Resource_83ucr"), SubResource("Resource_2kmhi"), SubResource("Resource_0mu0c")])
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_td8ta"), SubResource("Resource_4d1rn"), SubResource("Resource_s0t66"), SubResource("Resource_3l68j"), SubResource("Resource_fljuj"), SubResource("Resource_jbvdo"), SubResource("Resource_mydkt")])
+codePostDialogue = "MenuManager.tutorialTrickList = 1; DialogueManager.currentDialogueOwner.show_esc(true);"
 metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_2esnd"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "I know it might seem like... [i]a lot[/i]..."
+position = "top"
+code = "DialogueManager.currentDialogueOwner.show_esc(false);"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_83ucr"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "But you don't have to learn everything| [i]right now[/i]! 
+Just remember to check it out once in a while and
+try to learn something new!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_2kmhi"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Aaaaaalright! I'm gonna put you to the test now!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_0mu0c"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Lets see here... hmmmm...
+How about youuuuu..."
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_5l3rw"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = ".​.​.Try to find all 20 [img=65]res://Sprites/worm_bubble.tres[/img][color=00ea95] Worm bubbles[/color]! 
+Yeah!| They're all scattered around here somewhere!"
+position = "top"
+code = "ScoreManager.show_counter(true)"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_1h55b"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "So far you've already found...|"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_b5qdc"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+keepOnScreenAfterEnd = true
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_2esnd"), SubResource("Resource_83ucr"), SubResource("Resource_2kmhi"), SubResource("Resource_0mu0c"), SubResource("Resource_5l3rw"), SubResource("Resource_1h55b")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent8();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l3rw"]
+size = Vector3(173.5577, 145.59521, 388.86798)
+
+[sub_resource type="Resource" id="Resource_6suyx"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "...um.... 
+n-|none of them?"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_au66r"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Have you uhhh...
+Have you even been playing??"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_15r3r"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Were you like-| waiting for me to finish or something?
+You could have played while I was talking you know?"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ynlu2"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Well-| whatever, just go find the worms!
+They're inside a glowing green bubble,
+ you can't miss 'em."
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_l6w2y"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_6suyx"), SubResource("Resource_au66r"), SubResource("Resource_15r3r"), SubResource("Resource_ynlu2")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_kaioh"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "You're at [score] points right now...
+You got a score |[i]THIS high[/i]| and didn't
+pick up a single worm??"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_8dr6i"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Bro you're- |you're doing this on purpose I swear..."
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_fh6jg"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_6suyx"), SubResource("Resource_kaioh"), SubResource("Resource_8dr6i"), SubResource("Resource_ynlu2")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_x6ui2"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "A uh... a single one..."
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_eyheq"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "Ahah well, that's fine, good luck with the rest of them!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_a1ucd"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_x6ui2"), SubResource("Resource_eyheq")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_ymlgc"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "[collectedWorms] of them!
+Good start, keep it up!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_jgt6v"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_ymlgc")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_4s5ju"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "[collectedWorms] of them!
+Almost there, keep it up!"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ato8c"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_4s5ju")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_h4btf"]
+script = ExtResource("10_3hhjp")
+name = "Jelly Fishgirl"
+text = "H-|huh? ALL OF THEM???  Already???"
+position = "top"
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_wphou"]
+script = ExtResource("11_to5w2")
+automaticStart = true
+pauseGame = false
+runOnlyOnce = true
+messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_h4btf")])
+codePostDialogue = "DialogueManager.currentDialogueOwner.tutorialEvent9();"
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbpdk"]
+size = Vector3(27.497498, 17.77655, 6.56958)
 
 [sub_resource type="BoxMesh" id="BoxMesh_to5w2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kmhi"]
 size = Vector3(8.545486, 1.2592773, 1.9713135)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl552"]
+size = Vector3(19.662148, 54.662636, 95.62988)
+
+[sub_resource type="MultiMesh" id="MultiMesh_f2byx"]
+transform_format = 1
+instance_count = 128
+mesh = ExtResource("38_pl552")
+buffer = PackedFloat32Array(-1.5393833, 0, 1.5330256, -0.018392095, 0, 2.1725268, 0, 0, -1.5330256, 0, -1.5393833, -1.3214657, -0.2572656, 0, -2.3158119, 2.3872836, 0, 2.330058, 0, 0, 2.3158119, 0, -0.2572656, -4.7302713, -1.6860926, 0, 1.0751809, -1.3300769, 0, 1.9997317, 0, 0, -1.0751809, 0, -1.6860926, -5.5869617, 0.24861702, 0, -2.2189548, 3.3808138, 0, 2.232839, 0, 0, 2.2189548, 0, 0.24861702, -4.4187055, -2.2029672, 0, 1.1581826, -3.5530663, 0, 2.4888666, 0, 0, -1.1581826, 0, -2.2029672, -5.7688546, -1.3808086, 0, 1.2114745, 1.1571338, 0, 1.8369277, 0, 0, -1.2114745, 0, -1.3808086, -4.4907722, -0.8725416, 0, 1.250966, -0.3310501, 0, 1.5252031, 0, 0, -1.250966, 0, -0.8725416, -3.8946967, 0.34909973, 0, -2.2874908, -2.8778882, 0, 2.313976, 0, 0, 2.2874908, 0, 0.34909973, -2.7006414, 1.0781082, 0, 1.0703408, -0.019878244, 0, 1.5191927, 0, 0, -1.0703408, 0, 1.0781082, -2.2573004, -0.054299798, 0, -2.1442766, 0.9425646, 0, 2.144964, 0, 0, 2.1442766, 0, -0.054299798, -4.1374583, -1.9976954, 0, -0.9470926, -3.1662364, 0, 2.2108305, 0, 0, 0.9470926, 0, -1.9976954, 2.0766578, 1.7023613, 0, -0.7864402, -2.84099, 0, 1.8752393, 0, 0, 0.7864402, 0, 1.7023613, -3.9536347, 1.6431675, 0, -1.1235701, -4.727951, 0, 1.9905801, 0, 0, 1.1235701, 0, 1.6431675, 1.816756, -1.7718292, 0, -0.83938974, -0.11755347, 0, 1.9606011, 0, 0, 0.83938974, 0, -1.7718292, -0.81441915, -1.6390963, 0, 0.097528376, 4.228609, 0, 1.6419952, 0, 0, -0.097528376, 0, -1.6390963, -0.47310552, 1.898543, 0, 1.3696334, 1.9119393, 0, 2.3410172, 0, 0, -1.3696334, 0, 1.898543, -0.3356345, 0.6274044, 0, 1.3884125, -2.0362556, 0, 1.5235902, 0, 0, -1.3884125, 0, 0.6274044, -3.2778974, -1.4839929, 0, -0.35421252, -5.1348286, 0, 1.5256807, 0, 0, 0.35421252, 0, -1.4839929, -2.7407079, -1.6978072, 0, -0.4473256, -2.1350834, 0, 1.7557476, 0, 0, 0.4473256, 0, -1.6978072, 2.3004637, 2.1135557, 0, -0.42942512, -2.7991564, 0, 2.1567392, 0, 0, 0.42942512, 0, 2.1135557, 0.9003296, 0.21747708, 0, 2.0217278, -2.997701, 0, 2.0333912, 0, 0, -2.0217278, 0, 0.21747708, -3.3428018, 1.3217063, 0, -1.5849534, 2.595953, 0, 2.063731, 0, 0, 1.5849534, 0, 1.3217063, 1.5017159, -1.319925, 0, 1.1003851, 1.845592, 0, 1.7184438, 0, 0, -1.1003851, 0, -1.319925, -4.023308, 0.99815696, 0, 2.0030136, 4.6762724, 0, 2.2379413, 0, 0, -2.0030136, 0, 0.99815696, 0.624834, 0.73358446, 0, 1.5614327, -0.2871827, 0, 1.7251724, 0, 0, -1.5614327, 0, 0.73358446, 1.5041391, 1.5774801, 0, 0.6334477, 2.6363688, 0, 1.6999117, 0, 0, -0.6334477, 0, 1.5774801, -0.6624985, -1.6026218, 0, 1.9010268, -2.162499, 0, 2.486423, 0, 0, -1.9010268, 0, -1.6026218, -2.590316, -0.4076355, 0, -1.7306165, 1.9511256, 0, 1.7779763, 0, 0, 1.7306165, 0, -0.4076355, -1.6675451, -1.928763, 0, -1.4881585, -2.0836558, 0, 2.4361327, 0, 0, 1.4881585, 0, -1.928763, -0.563154, -0.23069169, 0, 1.4846218, 5.6223645, 0, 1.5024382, 0, 0, -1.4846218, 0, -0.23069169, -5.098581, 0.3947585, 0, 1.8466197, -2.5273867, 0, 1.8883429, 0, 0, -1.8466197, 0, 0.3947585, 0.5082489, 2.1133351, 0, -0.24555165, -0.09973433, 0, 2.1275527, 0, 0, 0.24555165, 0, 2.1133351, -0.9842528, -0.026392404, 0, -1.9775552, -1.5736666, 0, 1.9777312, 0, 0, 1.9775552, 0, -0.026392404, 0.5170971, 0.97473633, 0, -2.1398232, -0.5419695, 0, 2.351373, 0, 0, 2.1398232, 0, 0.97473633, -1.9362184, 1.5056671, 0, -0.21554212, 5.9623327, 0, 1.5210167, 0, 0, 0.21554212, 0, 1.5056671, -1.916215, 0.8025329, 0, 2.217338, 1.137511, 0, 2.3581026, 0, 0, -2.217338, 0, 0.8025329, -3.2420442, -2.402495, 0, 0.6443875, -1.0999421, 0, 2.487413, 0, 0, -0.6443875, 0, -2.402495, 1.2062092, -0.67618525, 0, -1.9401622, -1.5289136, 0, 2.0546181, 0, 0, 1.9401622, 0, -0.67618525, -3.72122, 2.2510526, 0, -0.7911503, -0.7270996, 0, 2.3860335, 0, 0, 0.7911503, 0, 2.2510526, -6.2168894, -1.9825258, 0, 1.134643, 1.1314784, 0, 2.2842555, 0, 0, -1.134643, 0, -1.9825258, -3.2965927, 2.3435469, 0, -0.22844939, -2.2514105, 0, 2.3546553, 0, 0, 0.22844939, 0, 2.3435469, 0.13474554, 2.349798, 0, 0.0853239, 4.330608, 0, 2.3513465, 0, 0, -0.0853239, 0, 2.349798, 0.6741026, -1.7188612, 0, 0.3537338, 2.0633368, 0, 1.7548822, 0, 0, -0.3537338, 0, -1.7188612, 2.950072, 0.330713, 0, -2.0908365, 2.3822532, 0, 2.1168299, 0, 0, 2.0908365, 0, 0.330713, 0.84187424, -1.720256, 0, -0.062250435, -1.1598736, 0, 1.7213818, 0, 0, 0.062250435, 0, -1.720256, 0.1681461, -0.72007275, 0, 1.7120017, -0.54459274, 0, 1.8572707, 0, 0, -1.7120017, 0, -0.72007275, 3.3385534, -1.515629, 0, 0.9778785, 2.9406796, 0, 1.8037131, 0, 0, -0.9778785, 0, -1.515629, 3.3361826, -1.0087265, 0, 1.1889133, -1.4059, 0, 1.5591805, 0, 0, -1.1889133, 0, -1.0087265, 4.654814, 1.8079461, 0, -0.07149412, 5.9260044, 0, 1.8093591, 0, 0, 0.07149412, 0, 1.8079461, 3.0352592, 2.1279364, 0, -0.25799704, 1.8584931, 0, 2.1435194, 0, 0, 0.25799704, 0, 2.1279364, -3.0670886, -0.39551485, 0, -2.4611545, -2.6472774, 0, 2.492732, 0, 0, 2.4611545, 0, -0.39551485, -1.3870616, 1.2883632, 0, 1.2643851, 2.5062442, 0, 1.8051456, 0, 0, -1.2643851, 0, 1.2883632, 1.0427097, 2.0964088, 0, 0.9201447, 5.216134, 0, 2.2894533, 0, 0, -0.9201447, 0, 2.0964088, 1.642036, 1.8176069, 0, -0.6391464, -2.870803, 0, 1.9267077, 0, 0, 0.6391464, 0, 1.8176069, 0.32575977, -0.91089386, 0, -2.289652, 0.36603498, 0, 2.4641905, 0, 0, 2.289652, 0, -0.91089386, -0.00041174144, 1.3973981, 0, -1.3562821, -0.802777, 0, 1.9473633, 0, 0, 1.3562821, 0, 1.3973981, -3.216844, 1.1759342, 0, -1.495921, -0.7859676, 0, 1.9027877, 0, 0, 1.495921, 0, 1.1759342, -3.0203614, 2.1360257, 0, 0.26991972, 2.6631374, 0, 2.1530125, 0, 0, -0.26991972, 0, 2.1360257, -4.3000317, -1.2520064, 0, -1.2063415, -0.06143023, 0, 1.7386143, 0, 0, 1.2063415, 0, -1.2520064, -4.9124436, -1.2916268, 0, -0.9736669, -1.6841269, 0, 1.6175064, 0, 0, 0.9736669, 0, -1.2916268, 2.288618, 0.8527418, 0, 1.5662526, 4.384329, 0, 1.783344, 0, 0, -1.5662526, 0, 0.8527418, -4.52505, -1.964864, 0, 0.4358451, -3.318611, 0, 2.012623, 0, 0, -0.4358451, 0, -1.964864, -4.1132402, -0.7156378, 0, 1.5189131, -3.7296133, 0, 1.6790584, 0, 0, -1.5189131, 0, -0.7156378, 0.13272318, 1.9301447, 0, -0.5947525, -3.6751676, 0, 2.0197003, 0, 0, 0.5947525, 0, 1.9301447, 1.3770533, -1.3993309, 0, 0.722493, -4.475366, 0, 1.5748405, 0, 0, -0.722493, 0, -1.3993309, -3.8225718, -0.90720856, 0, 2.2010236, 3.5059342, 0, 2.380658, 0, 0, -2.2010236, 0, -0.90720856, -2.1064942, 1.8590235, 0, 0.5270384, 3.5947783, 0, 1.9322882, 0, 0, -0.5270384, 0, 1.8590235, -2.7267308, -0.6115378, 0, -1.711625, -1.478212, 0, 1.8175914, 0, 0, 1.711625, 0, -0.6115378, -2.3645267, -1.6385787, 0, 0.35352284, -1.5744011, 0, 1.6762811, 0, 0, -0.35352284, 0, -1.6385787, 0.30857834, -1.4016278, 0, 1.3998885, -0.018222898, 0, 1.9809725, 0, 0, -1.3998885, 0, -1.4016278, -7.120076, 1.3518958, 0, 1.2097664, -0.3222775, 0, 1.814155, 0, 0, -1.2097664, 0, 1.3518958, 1.8769696, 1.6664892, 0, 1.8184634, -2.468657, 0, 2.4665756, 0, 0, -1.8184634, 0, 1.6664892, -0.80919874, -0.7167473, 0, 1.337908, 2.9103808, 0, 1.5178025, 0, 0, -1.337908, 0, -0.7167473, -1.5749307, 1.5350206, 0, -1.9671891, -1.3809595, 0, 2.4952197, 0, 0, 1.9671891, 0, 1.5350206, -0.2272445, 1.3730412, 0, 1.9913676, 3.4081316, 0, 2.41884, 0, 0, -1.9913676, 0, 1.3730412, -3.4779737, -0.6274196, 0, -1.5990261, 1.9073339, 0, 1.7177136, 0, 0, 1.5990261, 0, -0.6274196, 5.3685656, 0.29532918, 0, -1.717764, 1.5909498, 0, 1.7429667, 0, 0, 1.717764, 0, 0.29532918, -1.27682, -1.6877885, 0, -0.3362741, -3.5877018, 0, 1.720962, 0, 0, 0.3362741, 0, -1.6877885, 1.2298338, -1.1373619, 0, -1.9555895, -3.1294277, 0, 2.2622826, 0, 0, 1.9555895, 0, -1.1373619, -1.2050759, 0.7950187, 0, 1.5563109, 2.382316, 0, 1.7476151, 0, 0, -1.5563109, 0, 0.7950187, -2.0254202, -0.36232516, 0, -2.4694421, 1.5975165, 0, 2.4958816, 0, 0, 2.4694421, 0, -0.36232516, -4.681844, -1.0173252, 0, -1.3155059, 1.4660718, 0, 1.6629812, 0, 0, 1.3155059, 0, -1.0173252, -1.1316613, 0.29341722, 0, 2.2978055, -1.0733265, 0, 2.3164637, 0, 0, -2.2978055, 0, 0.29341722, -2.6687365, -0.72414833, 0, -1.657367, 1.3297294, 0, 1.8086617, 0, 0, 1.657367, 0, -0.72414833, 1.4607859, -2.2294016, 0, 0.8603208, 0.4560916, 0, 2.3896408, 0, 0, -0.8603208, 0, -2.2294016, -3.1996012, -0.39724296, 0, 2.4260664, -2.5606167, 0, 2.4583735, 0, 0, -2.4260664, 0, -0.39724296, 1.2312376, 1.266454, 0, -0.97375476, 2.4383163, 0, 1.5975306, 0, 0, 0.97375476, 0, 1.266454, -5.9591374, -1.8603165, 0, -0.64706546, 2.9397728, 0, 1.9696373, 0, 0, 0.64706546, 0, -1.8603165, -5.551448, 0.9443349, 0, 1.8796289, -2.1611252, 0, 2.1035144, 0, 0, -1.8796289, 0, 0.9443349, 2.286211, 1.8737029, 0, -1.536672, 2.1631117, 0, 2.4232466, 0, 0, 1.536672, 0, 1.8737029, -1.408882, 1.6247119, 0, -0.12623356, 2.0596159, 0, 1.6296084, 0, 0, 0.12623356, 0, 1.6247119, 4.427618, 1.6063572, 0, 0.2878785, -1.8783469, 0, 1.631949, 0, 0, -0.2878785, 0, 1.6063572, 1.5279989, 0.97270185, 0, 2.1798642, -1.2943525, 0, 2.3870392, 0, 0, -2.1798642, 0, 0.97270185, -3.4886158, 0.107776746, 0, -1.6330261, 1.8715703, 0, 1.6365788, 0, 0, 1.6330261, 0, 0.107776746, 5.201642, -1.5172907, 0, 0.8083404, 0.105558485, 0, 1.7191815, 0, 0, -0.8083404, 0, -1.5172907, -6.40904, -2.1244774, 0, 0.098426245, 1.6519749, 0, 2.1267562, 0, 0, -0.098426245, 0, -2.1244774, 2.9770317, -1.5155472, 0, -0.89282155, -2.660254, 0, 1.7589808, 0, 0, 0.89282155, 0, -1.5155472, -0.586704, -0.5059852, 0, -1.5209852, 0.079469286, 0, 1.6029401, 0, 0, 1.5209852, 0, -0.5059852, 3.355667, -1.2520351, 0, -0.84776306, 5.387605, 0, 1.5120497, 0, 0, 0.8477632, 0, -1.2520351, 1.4397993, -0.367788, 0, 2.4549804, 0.33293417, 0, 2.482377, 0, 0, -2.4549804, 0, -0.367788, -2.1414146, 1.2199703, 0, 1.3848116, -2.1456628, 0, 1.8455435, 0, 0, -1.3848116, 0, 1.2199703, -0.9944917, 0.43875802, 0, -1.799939, -2.9271107, 0, 1.8526438, 0, 0, 1.799939, 0, 0.43875802, 2.9732096, 0.24193856, 0, 1.8740945, 3.0178907, 0, 1.8896466, 0, 0, -1.8740945, 0, 0.24193856, 3.4214444, 1.795359, 0, -0.90895987, 1.690959, 0, 2.0123425, 0, 0, 0.90895987, 0, 1.795359, -0.13859816, -0.71600634, 0, -2.3686223, -1.7036784, 0, 2.474477, 0, 0, 2.3686223, 0, -0.71600634, -0.4546916, -1.6397672, 0, -0.3530229, 0.48310995, 0, 1.6773376, 0, 0, 0.3530229, 0, -1.6397672, 2.1834378, -1.4321321, 0, 1.644797, -0.2960124, 0, 2.180908, 0, 0, -1.644797, 0, -1.4321321, -3.0559874, 2.4114764, 0, 0.5407321, 0.106836304, 0, 2.4713578, 0, 0, -0.5407321, 0, 2.4114764, 2.2295957, 0.661899, 0, 2.305546, 1.0238211, 0, 2.3986773, 0, 0, -2.305546, 0, 0.661899, 0.42364913, 2.0411491, 0, -0.7637803, -4.497608, 0, 2.1793692, 0, 0, 0.7637803, 0, 2.0411491, 1.0856588, -0.7384033, 0, 2.2359283, 4.9187884, 0, 2.3547018, 0, 0, -2.2359283, 0, -0.7384033, 2.182688, -0.11771629, 0, 1.6076481, -2.9875972, 0, 1.6119521, 0, 0, -1.6076481, 0, -0.11771629, 0.21364594, -0.97206247, 0, 2.173817, -4.256342, 0, 2.381257, 0, 0, -2.173817, 0, -0.97206247, 0.7760702, 2.2499368, 0, 0.3701506, -2.6603699, 0, 2.2801814, 0, 0, -0.3701506, 0, 2.2499368, -4.297298, 2.0995362, 0, -0.7866941, -5.045436, 0, 2.2420838, 0, 0, 0.7866941, 0, 2.0995362, -3.8796632, 2.1515024, 0, -0.50281745, 0.20786335, 0, 2.2094767, 0, 0, 0.50281745, 0, 2.1515024, -0.68958, 0.3272814, 0, -1.8184186, -0.5888386, 0, 1.8476361, 0, 0, 1.8184186, 0, 0.3272814, 2.848837, -1.0513994, 0, 1.137548, -2.9741616, 0, 1.5490178, 0, 0, -1.137548, 0, -1.0513994, 1.826709, -0.7656707, 0, 2.032146, 1.7895057, 0, 2.171605, 0, 0, -2.032146, 0, -0.7656707, -1.4946429, 1.684322, 0, 0.5532835, -3.8596485, 0, 1.7728685, 0, 0, -0.5532835, 0, 1.684322, 0.14411207, 1.6145252, 0, -0.42713708, 0.10208802, 0, 1.6700711, 0, 0, 0.42713708, 0, 1.6145252, 1.6835766, -0.52129805, 0, -1.8987199, 4.0260158, 0, 1.9689817, 0, 0, 1.8987199, 0, -0.52129805, -1.7908876, 1.3885971, 0, 1.7237968, -4.2327185, 0, 2.2135215, 0, 0, -1.7237968, 0, 1.3885971, -4.011469, 0.6211995, 0, 1.4966851, 1.7130268, 0, 1.62048, 0, 0, -1.4966851, 0, 0.6211995, -0.91543376, -1.7118542, 0, -0.77250123, -0.14213708, 0, 1.8780849, 0, 0, 0.77250123, 0, -1.7118542, -3.954678, -2.0159204, 0, 0.7955215, 0.58543503, 0, 2.1672077, 0, 0, -0.7955215, 0, -2.0159204, -3.1744251, -2.2831697, 0, -0.8233327, -3.5998318, 0, 2.427085, 0, 0, 0.8233327, 0, -2.2831697, -1.6022642, -1.9441478, 0, -0.29955003, 0.38216352, 0, 1.9670894, 0, 0, 0.29955003, 0, -1.9441478, -0.85000026)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l68j"]
 albedo_texture = ExtResource("17_s0t66")
@@ -709,6 +927,28 @@ size = Vector3(0.38, 4, 0.38)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ygkl2"]
 size = Vector3(17.929626, 3.7285156, 4.690674)
+
+[sub_resource type="MultiMesh" id="MultiMesh_pl552"]
+transform_format = 1
+instance_count = 300
+mesh = ExtResource("38_pl552")
+buffer = PackedFloat32Array(-1.202767, 0, -1.0721761, -8.767141, 0, 1.6112759, 0, -0.121771395, 1.0721761, 0, -1.202767, 4.2847543, 1.478723, 0, -0.72479296, -9.168936, 0, 1.646799, 0, -0.121771395, 0.72479296, 0, 1.478723, -91.887, -1.3673764, 0, -0.54426306, -8.762808, 0, 1.4717135, 0, -0.121771395, 0.54426306, 0, -1.3673764, -86.920135, 0.11912152, 0, 1.6286912, -9.161486, 0, 1.6330416, 0, -0.121771395, -1.6286912, 0, 0.11912152, -94.80656, 0.33045936, 0, -1.3642682, -8.927456, 0, 1.4037205, 0, -0.121771395, 1.3642682, 0, 0.33045936, -43.049683, 0.854667, 0, -1.5429811, -8.811754, 0, 1.7638726, 0, -0.121771395, 1.5429811, 0, 0.854667, -92.230255, 1.6002784, 0, -0.23122297, -9.0299635, 0, 1.6168967, 0, -0.121771395, 0.23122297, 0, 1.6002784, -8.768256, -0.67819816, 0, 1.303686, -8.974543, 0, 1.4695407, 0, -0.121771395, -1.303686, 0, -0.67819816, -78.6481, 1.1683259, 0, -1.168171, -9.169292, 0, 1.6521528, 0, -0.121771395, 1.168171, 0, 1.1683259, -31.374386, -1.4238111, 0, 0.051211882, -8.853083, 0, 1.4247317, 0, -0.121771395, -0.051211882, 0, -1.4238111, -95.28472, 0.60931134, 0, 1.527428, -8.860836, 0, 1.6444745, 0, -0.121771395, -1.527428, 0, 0.60931134, -97.39315, -0.853642, 0, 1.4713353, -8.796606, 0, 1.7010386, 0, -0.121771395, -1.4713353, 0, -0.853642, -85.878204, 1.2256312, 0, -1.3167719, -8.762156, 0, 1.7989053, 0, -0.121771395, 1.3167719, 0, 1.2256312, -56.21141, 1.2157551, 0, -1.1424983, -9.041145, 0, 1.6683413, 0, -0.121771395, 1.1424983, 0, 1.2157551, -52.14424, -1.5777274, 0, 0.69023335, -8.84002, 0, 1.722105, 0, -0.121771395, -0.69023335, 0, -1.5777274, -86.76384, -0.023594556, 0, 1.4880899, -8.840929, 0, 1.488277, 0, -0.121771395, -1.4880899, 0, -0.023594556, -43.372105, 0.12796727, 0, 1.4472297, -8.776423, 0, 1.4528763, 0, -0.121771395, -1.4472297, 0, 0.12796727, -12.589443, 0.99023765, 0, -1.3239237, -8.7620325, 0, 1.653283, 0, -0.121771395, 1.3239237, 0, 0.99023765, -35.057274, 0.42714918, 0, 1.5723146, -8.800995, 0, 1.6293035, 0, -0.121771395, -1.5723146, 0, 0.42714918, -63.26974, -1.3790354, 0, -0.8859198, -9.029037, 0, 1.6390828, 0, -0.121771395, 0.8859198, 0, -1.3790354, 6.0582843, 1.4716456, 0, 0.4863647, -8.961267, 0, 1.5499327, 0, -0.121771395, -0.4863647, 0, 1.4716456, 9.119014, 0.87920016, 0, 1.3695996, -8.692493, 0, 1.6275122, 0, -0.121771395, -1.3695996, 0, 0.87920016, 8.216065, -1.2242411, 0, -0.9329972, -8.9112835, 0, 1.5392369, 0, -0.121771395, 0.9329972, 0, -1.2242411, -38.348625, -1.602293, 0, -0.45503962, -9.061962, 0, 1.6656542, 0, -0.121771395, 0.45503962, 0, -1.602293, -46.811867, 0.77327025, 0, 1.3984563, -9.127131, 0, 1.5980072, 0, -0.121771395, -1.3984563, 0, 0.77327025, -71.50671, 1.5445771, 0, -0.45513052, -8.872435, 0, 1.6102368, 0, -0.121771395, 0.45513052, 0, 1.5445771, -79.03039, 1.6442757, 0, -0.7074165, -8.711062, 0, 1.7899945, 0, -0.121771395, 0.7074165, 0, 1.6442757, -67.00207, -0.24711621, 0, -1.560919, -8.82502, 0, 1.580359, 0, -0.121771395, 1.560919, 0, -0.24711621, -85.842926, 1.4696295, 0, -0.44807234, -8.753284, 0, 1.5364178, 0, -0.121771395, 0.44807234, 0, 1.4696295, -44.79107, -0.6548397, 0, 1.4969, -8.764826, 0, 1.633868, 0, -0.121771395, -1.4969, 0, -0.6548397, -74.46845, -0.02461569, 0, 1.6710451, -8.698823, 0, 1.6712264, 0, -0.121771395, -1.6710451, 0, -0.02461569, -78.15463, -1.6013737, 0, -0.02959144, -8.947483, 0, 1.6016471, 0, -0.121771395, 0.02959144, 0, -1.6013737, -27.82556, -1.3290302, 0, 0.7209787, -8.992419, 0, 1.5119958, 0, -0.121771395, -0.7209787, 0, -1.3290302, -72.91446, 1.66163, 0, -0.29037395, -8.8710375, 0, 1.686811, 0, -0.121771395, 0.29037395, 0, 1.66163, -98.13596, 1.6020328, 0, 0.30457956, -8.977827, 0, 1.6307292, 0, -0.121771395, -0.30457956, 0, 1.6020328, -5.500661, -1.2244573, 0, 1.1986954, -9.182426, 0, 1.7135246, 0, -0.121771395, -1.1986954, 0, -1.2244573, -16.757074, 0.24982332, 0, -1.4867815, -8.797907, 0, 1.5076241, 0, -0.121771395, 1.4867815, 0, 0.24982332, -77.78058, 0.8697903, 0, -1.3185693, -8.761321, 0, 1.5796076, 0, -0.121771395, 1.3185693, 0, 0.8697903, -0.8625517, 1.4276687, 0, 0.052454658, -9.082296, 0, 1.428632, 0, -0.1217714, -0.052454658, 0, 1.4276687, -70.205055, -1.4850427, 0, -0.3228363, -9.073826, 0, 1.5197285, 0, -0.121771395, 0.3228363, 0, -1.4850427, -87.34627, 1.0617553, 0, -1.43468, -9.007194, 0, 1.7848337, 0, -0.121771395, 1.43468, 0, 1.0617553, -95.22486, 1.0865375, 0, -0.9728929, -9.1878605, 0, 1.4584527, 0, -0.1217714, 0.9728929, 0, 1.0865375, -59.087334, 1.5493755, 0, -0.16142204, -9.065324, 0, 1.5577618, 0, -0.121771395, 0.16142204, 0, 1.5493755, -90.34212, 1.7226727, 0, 0.25188714, -9.119306, 0, 1.7409906, 0, -0.121771395, -0.25188714, 0, 1.7226727, -63.804623, 0.27287817, 0, -1.7417827, -8.978991, 0, 1.7630285, 0, -0.121771395, 1.7417827, 0, 0.27287817, -38.048866, 1.6561555, 0, 0.3920239, -8.965582, 0, 1.7019206, 0, -0.121771395, -0.3920239, 0, 1.6561555, -50.25065, 0.018552016, 0, -1.6018547, -8.719368, 0, 1.6019621, 0, -0.121771395, 1.6018547, 0, 0.018552016, -28.315655, -1.3191137, 0, -1.1244127, -8.772106, 0, 1.7333103, 0, -0.121771395, 1.1244127, 0, -1.3191137, -96.60842, 0.0126803955, 0, 1.4562751, -8.730371, 0, 1.4563303, 0, -0.121771395, -1.4562751, 0, 0.0126803955, -59.208748, 0.8912281, 0, -1.3961143, -8.853746, 0, 1.6563281, 0, -0.121771395, 1.3961143, 0, 0.8912281, -92.33577, 0.016452411, 0, -1.5903729, -8.763479, 0, 1.590458, 0, -0.1217714, 1.5903729, 0, 0.016452411, -47.573128, 0.62112635, 0, -1.2674204, -9.0130415, 0, 1.4114363, 0, -0.121771395, 1.2674204, 0, 0.62112635, -35.311398, -1.2874132, 0, 0.58439523, -9.055578, 0, 1.4138426, 0, -0.121771395, -0.58439523, 0, -1.2874132, -61.045307, -1.4166075, 0, -0.61929506, -8.930556, 0, 1.5460606, 0, -0.121771395, 0.61929506, 0, -1.4166075, -24.08376, -1.5613794, 0, 0.8268692, -8.702939, 0, 1.7668103, 0, -0.121771395, -0.8268692, 0, -1.5613794, -91.11031, -1.5237072, 0, 0.7932431, -8.862045, 0, 1.7178236, 0, -0.121771395, -0.7932431, 0, -1.5237072, -33.464558, 1.4230498, 0, 0.48246652, -8.729161, 0, 1.5026126, 0, -0.121771395, -0.48246652, 0, 1.4230498, -7.565963, 1.5067481, 0, -0.17905116, -9.155928, 0, 1.5173494, 0, -0.121771395, 0.17905116, 0, 1.5067481, -69.34412, 0.9225697, 0, -1.0606934, -8.892046, 0, 1.4057757, 0, -0.12177139, 1.0606934, 0, 0.9225697, -66.17628, -1.3955408, 0, 0.7642469, -8.850556, 0, 1.5911026, 0, -0.121771395, -0.7642469, 0, -1.3955408, -55.478157, 1.4322913, 0, -0.10339476, -9.015254, 0, 1.4360183, 0, -0.121771395, 0.10339476, 0, 1.4322913, -51.82044, 0.7007842, 0, -1.5531281, -9.1002865, 0, 1.7039088, 0, -0.121771395, 1.5531281, 0, 0.7007842, 3.8041286, -1.4537156, 0, 0.30704585, -9.025837, 0, 1.4857881, 0, -0.121771395, -0.30704585, 0, -1.4537156, -43.876907, 1.1524553, 0, -1.2867792, -9.026355, 0, 1.7274126, 0, -0.1217714, 1.2867792, 0, 1.1524553, 3.676219, 1.4484987, 0, -0.42656827, -9.11647, 0, 1.5100031, 0, -0.121771395, 0.42656827, 0, 1.4484987, -55.991726, 0.8183655, 0, 1.2434, -8.750843, 0, 1.4885448, 0, -0.121771395, -1.2434, 0, 0.8183655, -7.377901, 0.51483595, 0, 1.3064028, -8.721058, 0, 1.4041882, 0, -0.121771395, -1.3064028, 0, 0.51483595, -69.0039, 0.86735964, 0, -1.4042945, -9.030227, 0, 1.6505623, 0, -0.12177139, 1.4042945, 0, 0.86735964, 1.4714994, 0.5917602, 0, 1.4720447, -8.844294, 0, 1.5865358, 0, -0.1217714, -1.4720447, 0, 0.5917602, -48.597702, 1.5828271, 0, -0.33841994, -8.733543, 0, 1.6186011, 0, -0.121771395, 0.33841994, 0, 1.5828271, -4.2635984, -0.8736876, 0, -1.1018809, -8.795226, 0, 1.406226, 0, -0.121771395, 1.1018809, 0, -0.8736876, -48.06177, 1.5335523, 0, 0.53963625, -8.717159, 0, 1.6257275, 0, -0.12177139, -0.53963625, 0, 1.5335523, -51.42896, 0.94030625, 0, 1.0709, -8.892652, 0, 1.4251325, 0, -0.121771395, -1.0709, 0, 0.94030625, 1.6283121, -1.1261816, 0, 0.8904609, -8.981888, 0, 1.4356899, 0, -0.121771395, -0.8904609, 0, -1.1261816, -26.073195, 1.5351026, 0, -0.68336153, -8.803162, 0, 1.6803342, 0, -0.121771395, 0.68336153, 0, 1.5351026, -90.30469, 0.7955461, 0, -1.1947525, -8.967474, 0, 1.4353839, 0, -0.121771395, 1.1947525, 0, 0.7955461, 9.468522, -0.7829433, 0, 1.1986616, -8.770271, 0, 1.4317087, 0, -0.121771395, -1.1986616, 0, -0.7829433, -71.21595, -0.8686727, 0, -1.1190236, -8.728718, 0, 1.4166179, 0, -0.121771395, 1.1190236, 0, -0.8686727, -76.88742, 1.0080116, 0, -1.1854529, -9.081999, 0, 1.5560803, 0, -0.121771395, 1.1854529, 0, 1.0080116, -3.5703325, 1.311423, 0, -0.7911855, -8.824512, 0, 1.5316019, 0, -0.121771395, 0.7911855, 0, 1.311423, -72.0819, 0.16917062, 0, -1.5989841, -8.825169, 0, 1.6079082, 0, -0.12177139, 1.5989841, 0, 0.16917062, -70.07964, 1.2889035, 0, 0.66254336, -8.7976, 0, 1.449219, 0, -0.121771395, -0.66254336, 0, 1.2889035, -27.84822, -1.7445474, 0, 0.27862194, -9.147152, 0, 1.7666566, 0, -0.121771395, -0.27862194, 0, -1.7445474, -24.482628, 1.615015, 0, 0.7023711, -9.057241, 0, 1.7611357, 0, -0.121771395, -0.7023711, 0, 1.615015, -6.095211, -1.0427068, 0, -1.0816752, -9.121225, 0, 1.5024177, 0, -0.121771395, 1.0816752, 0, -1.0427068, -76.89984, 0.75158495, 0, 1.5490081, -8.798941, 0, 1.721716, 0, -0.121771395, -1.5490081, 0, 0.75158495, -77.08312, 0.97037345, 0, 1.259005, -8.796303, 0, 1.5895654, 0, -0.121771395, -1.259005, 0, 0.97037345, -57.241817, 1.7510499, 0, -0.14026365, -8.769069, 0, 1.7566586, 0, -0.121771395, 0.14026365, 0, 1.7510499, -1.9095678, -1.5733159, 0, -0.66572684, -9.170104, 0, 1.7083662, 0, -0.121771395, 0.66572684, 0, -1.5733159, -13.488624, 1.1898, 0, 1.2891827, -9.18359, 0, 1.7543136, 0, -0.121771395, -1.2891827, 0, 1.1898, -2.156185, 0.9033032, 0, 1.5568571, -9.102678, 0, 1.7999336, 0, -0.121771395, -1.5568571, 0, 0.9033032, 5.3458595, 0.9931237, 0, -1.5001589, -8.7283745, 0, 1.799103, 0, -0.12177139, 1.5001589, 0, 0.9931237, -11.824882, -1.4899249, 0, -0.5245869, -9.161517, 0, 1.5795783, 0, -0.121771395, 0.5245869, 0, -1.4899249, -28.713274, -1.4194709, 0, 0.4714771, -8.7763405, 0, 1.4957234, 0, -0.121771395, -0.4714771, 0, -1.4194709, -1.7044935, -1.6108927, 0, 0.4260642, -9.070841, 0, 1.666285, 0, -0.12177139, -0.4260642, 0, -1.6108927, -13.878741, 1.3151435, 0, -0.9163199, -9.017382, 0, 1.6028863, 0, -0.121771395, 0.9163199, 0, 1.3151435, 7.85604, 1.3136744, 0, 1.1422493, -9.140268, 0, 1.7408257, 0, -0.121771395, -1.1422493, 0, 1.3136744, -94.41174, 0.42196268, 0, 1.3416295, -8.793751, 0, 1.4064218, 0, -0.121771395, -1.3416295, 0, 0.42196268, -13.029804, -1.1363698, 0, 1.2253959, -9.044385, 0, 1.6712066, 0, -0.121771395, -1.2253959, 0, -1.1363698, -95.7702, -1.3708109, 0, 1.0237484, -8.819529, 0, 1.7109013, 0, -0.121771395, -1.0237484, 0, -1.3708109, -17.02118, 1.6479601, 0, 0.63542336, -9.15629, 0, 1.7662206, 0, -0.121771395, -0.63542336, 0, 1.6479601, -42.486977, -0.5864237, 0, 1.2745695, -8.754997, 0, 1.4030039, 0, -0.121771395, -1.2745695, 0, -0.5864237, -34.74264, -1.2808424, 0, 0.92631143, -8.742921, 0, 1.5806993, 0, -0.121771395, -0.92631143, 0, -1.2808424, -8.186975, -0.5867313, 0, -1.3293464, -8.94293, 0, 1.4530711, 0, -0.121771395, 1.3293464, 0, -0.5867313, -25.297672, -1.2293744, 0, 0.78707755, -8.925049, 0, 1.459744, 0, -0.121771395, -0.78707755, 0, -1.2293744, -67.89098, -0.49932283, 0, 1.3097336, -8.709464, 0, 1.4016867, 0, -0.121771395, -1.3097336, 0, -0.49932283, 5.556743, 1.3713403, 0, 0.48485556, -8.898437, 0, 1.4545305, 0, -0.1217714, -0.48485556, 0, 1.3713403, 7.3236914, -0.52237195, 0, 1.5200922, -8.774721, 0, 1.6073434, 0, -0.121771395, -1.5200922, 0, -0.52237195, -85.97374, -0.69107175, 0, -1.622599, -8.900354, 0, 1.7636348, 0, -0.121771395, 1.622599, 0, -0.69107175, -13.84198, -0.039552487, 0, -1.413524, -8.728904, 0, 1.4140773, 0, -0.121771395, 1.413524, 0, -0.039552487, 10.357722, 1.4360169, 0, 0.25728133, -8.905394, 0, 1.4588826, 0, -0.121771395, -0.25728133, 0, 1.4360169, -77.48024, -1.0763906, 0, -1.4236101, -9.047999, 0, 1.7847359, 0, -0.121771395, 1.4236101, 0, -1.0763906, -37.265472, 0.842312, 0, -1.5562279, -9.039082, 0, 1.7695578, 0, -0.121771395, 1.5562279, 0, 0.842312, -6.874073, 1.2506324, 0, -1.2339035, -8.786397, 0, 1.756872, 0, -0.121771395, 1.2339035, 0, 1.2506324, 10.309427, -0.4894719, 0, 1.6086092, -8.828029, 0, 1.6814297, 0, -0.121771395, -1.6086092, 0, -0.4894719, -31.515789, -1.1928257, 0, 0.76483744, -8.977646, 0, 1.4169719, 0, -0.121771395, -0.76483744, 0, -1.1928257, -66.78296, 1.642801, 0, -0.40762693, -9.1271515, 0, 1.6926178, 0, -0.121771395, 0.40762693, 0, 1.642801, -55.73078, -0.25888386, 0, 1.4277343, -8.807837, 0, 1.4510155, 0, -0.121771395, -1.4277343, 0, -0.25888386, -13.507177, 1.4811306, 0, 0.5922303, -8.952272, 0, 1.595144, 0, -0.121771395, -0.5922303, 0, 1.4811306, -40.337994, 1.412155, 0, -0.61602646, -8.773735, 0, 1.5406721, 0, -0.121771395, 0.61602646, 0, 1.412155, -73.133965, -1.3951708, 0, -0.4899122, -9.05956, 0, 1.4786872, 0, -0.1217714, 0.4899122, 0, -1.3951708, -94.06108, 1.4347069, 0, 0.5107234, -8.769725, 0, 1.5228994, 0, -0.121771395, -0.5107234, 0, 1.4347069, 7.6316233, -0.058350436, 0, 1.642575, -9.109561, 0, 1.6436111, 0, -0.121771395, -1.642575, 0, -0.058350436, -96.25567, -1.5373763, 0, 0.017478501, -8.935254, 0, 1.5374756, 0, -0.121771395, -0.017478501, 0, -1.5373763, -18.616653, 0.71904254, 0, -1.2494872, -8.714494, 0, 1.4416103, 0, -0.121771395, 1.2494872, 0, 0.71904254, -25.799227, -1.0964953, 0, -0.9224133, -8.73167, 0, 1.4328811, 0, -0.1217714, 0.9224133, 0, -1.0964953, -86.68562, -1.1877594, 0, 0.93043786, -8.916662, 0, 1.5088031, 0, -0.121771395, -0.93043786, 0, -1.1877594, -89.14769, -0.31317967, 0, -1.7122144, -9.079998, 0, 1.7406204, 0, -0.121771395, 1.7122144, 0, -0.31317967, -41.202496, -0.77032554, 0, 1.5828482, -8.695232, 0, 1.7603437, 0, -0.121771395, -1.5828482, 0, -0.77032554, -27.012453, -1.3329624, 0, 0.6320255, -8.759475, 0, 1.4752102, 0, -0.121771395, -0.6320255, 0, -1.3329624, 9.556662, 1.4068209, 0, 0.11496189, -8.824662, 0, 1.4115102, 0, -0.121771395, -0.11496189, 0, 1.4068209, -29.447487, -0.71877104, 0, -1.3333001, -8.756239, 0, 1.5147016, 0, -0.121771395, 1.3333001, 0, -0.71877104, -95.558365, -0.11277788, 0, 1.7670392, -9.011409, 0, 1.7706344, 0, -0.12177139, -1.7670392, 0, -0.11277788, -96.60457, 1.5665029, 0, -0.5129502, -8.884108, 0, 1.6483474, 0, -0.121771395, 0.5129502, 0, 1.5665029, -27.80416, -0.99279606, 0, -1.416482, -8.940293, 0, 1.7297587, 0, -0.121771395, 1.416482, 0, -0.99279606, -70.767586, -1.6169623, 0, 0.16669291, -9.183032, 0, 1.6255318, 0, -0.12177139, -0.16669291, 0, -1.6169623, -19.48989, 1.5244656, 0, 0.102258466, -8.8405905, 0, 1.5278914, 0, -0.121771395, -0.102258466, 0, 1.5244656, -0.72180367, -1.1959713, 0, 1.0864167, -8.953274, 0, 1.6157502, 0, -0.121771395, -1.0864167, 0, -1.1959713, -77.35519, 0.766503, 0, 1.2388513, -9.074895, 0, 1.4568045, 0, -0.121771395, -1.2388513, 0, 0.766503, -18.600039, -1.152587, 0, 0.8127711, -8.883786, 0, 1.4103382, 0, -0.121771395, -0.8127711, 0, -1.152587, -13.692884, -1.3367682, 0, -1.0532029, -9.103033, 0, 1.7018182, 0, -0.121771395, 1.0532029, 0, -1.3367682, -77.11304, -1.7019322, 0, -0.4111789, -8.855059, 0, 1.7508973, 0, -0.1217714, 0.4111789, 0, -1.7019322, 9.322037, -1.4098486, 0, 0.53285086, -8.795107, 0, 1.5071838, 0, -0.121771395, -0.53285086, 0, -1.4098486, -93.60879, -0.54081196, 0, 1.5982708, -8.733361, 0, 1.6872898, 0, -0.121771395, -1.5982708, 0, -0.54081196, -4.6439486, 0.73363835, 0, 1.4628824, -8.693274, 0, 1.636536, 0, -0.121771395, -1.4628824, 0, 0.73363835, -33.644432, -0.10889622, 0, -1.7639632, -9.125104, 0, 1.7673212, 0, -0.12177139, 1.7639632, 0, -0.10889622, -37.38165, -0.49938902, 0, 1.5438911, -9.149312, 0, 1.6226487, 0, -0.12177139, -1.5438911, 0, -0.49938902, 1.96175, -0.5824221, 0, 1.2797594, -9.1665945, 0, 1.4060582, 0, -0.1217714, -1.2797594, 0, -0.5824221, -68.419945, 1.3699645, 0, -0.43882954, -8.841974, 0, 1.4385319, 0, -0.121771395, 0.43882954, 0, 1.3699645, -93.979065, 0.068540655, 0, 1.7140646, -9.051579, 0, 1.7154344, 0, -0.121771395, -1.7140646, 0, 0.068540655, -25.977896, -1.413594, 0, -0.0134829255, -9.096071, 0, 1.4136583, 0, -0.121771395, 0.0134829255, 0, -1.413594, -27.695053, 0.788134, 0, 1.3149939, -9.120386, 0, 1.5330896, 0, -0.121771395, -1.3149939, 0, 0.788134, -50.88539, -0.19010773, 0, 1.3914645, -8.872555, 0, 1.4043912, 0, -0.12177139, -1.3914645, 0, -0.19010773, -95.37822, 1.1321203, 0, -1.2200043, -9.049431, 0, 1.6643637, 0, -0.121771395, 1.2200043, 0, 1.1321203, -38.045345, 0.05927841, 0, 1.5036033, -8.763243, 0, 1.5047714, 0, -0.121771395, -1.5036033, 0, 0.05927841, -24.965218, 1.1540662, 0, -1.3579216, -9.043978, 0, 1.782083, 0, -0.121771395, 1.3579216, 0, 1.1540662, -88.61584, -1.2684733, 0, -0.7253518, -8.831311, 0, 1.4612186, 0, -0.121771395, 0.7253518, 0, -1.2684733, -26.090252, -1.4957293, 0, -0.55320615, -9.16546, 0, 1.5947549, 0, -0.121771395, 0.55320615, 0, -1.4957293, -70.59492, 0.6718244, 0, 1.2890613, -8.72529, 0, 1.4536256, 0, -0.121771395, -1.2890613, 0, 0.6718244, -54.654842, -1.7349935, 0, -0.32911485, -9.037803, 0, 1.7659328, 0, -0.121771395, 0.32911485, 0, -1.7349935, -72.73997, -0.3181816, 0, -1.4608344, -8.930143, 0, 1.4950842, 0, -0.12177139, 1.4608344, 0, -0.3181816, -80.77894, 1.3939034, 0, 0.5274842, -8.965527, 0, 1.4903712, 0, -0.121771395, -0.5274842, 0, 1.3939034, -57.544365, -0.43130082, 0, -1.4523437, -9.1717, 0, 1.5150322, 0, -0.121771395, 1.4523437, 0, -0.43130082, -39.588837, -0.9551539, 0, 1.2865704, -8.964886, 0, 1.6023678, 0, -0.121771395, -1.2865704, 0, -0.9551539, -88.46213, 1.536466, 0, 0.74386007, -8.759509, 0, 1.7070605, 0, -0.121771395, -0.74386007, 0, 1.536466, 5.885618, 1.076031, 0, 1.0862995, -9.021978, 0, 1.5290158, 0, -0.121771395, -1.0862995, 0, 1.076031, 10.349795, -1.1798666, 0, -0.7621167, -9.154972, 0, 1.404602, 0, -0.121771395, 0.7621167, 0, -1.1798666, -44.59894, -1.3939894, 0, -0.3294025, -9.106498, 0, 1.43238, 0, -0.121771395, 0.3294025, 0, -1.3939894, -18.049246, 0.55889225, 0, 1.6333942, -9.0313225, 0, 1.7263654, 0, -0.1217714, -1.6333942, 0, 0.55889225, -17.766214, -1.4813777, 0, -0.6205189, -8.773743, 0, 1.6060896, 0, -0.121771395, 0.6205189, 0, -1.4813777, -21.87211, 1.0203927, 0, 1.1389798, -9.021992, 0, 1.5292077, 0, -0.121771395, -1.1389798, 0, 1.0203927, -40.239147, -0.24174745, 0, -1.5103469, -8.917397, 0, 1.5295718, 0, -0.1217714, 1.5103469, 0, -0.24174745, -64.89078, 0.007848346, 0, -1.6239662, -9.105203, 0, 1.6239852, 0, -0.12177139, 1.6239662, 0, 0.007848346, -64.48708, -0.7583299, 0, 1.4571031, -8.998844, 0, 1.642624, 0, -0.121771395, -1.4571031, 0, -0.7583299, -44.933475, 0.86498374, 0, 1.4819094, -8.900481, 0, 1.7158824, 0, -0.121771395, -1.4819094, 0, 0.86498374, 2.826836, 0.99810255, 0, 1.1667842, -8.912831, 0, 1.5354458, 0, -0.121771395, -1.1667842, 0, 0.99810255, -11.300728, -0.13664532, 0, -1.5814312, -8.8257065, 0, 1.5873237, 0, -0.121771395, 1.5814312, 0, -0.13664532, -25.61883, 1.5940987, 0, 0.19702798, -9.002111, 0, 1.6062287, 0, -0.121771395, -0.19702798, 0, 1.5940987, -5.7258444, -1.3511634, 0, 1.014014, -8.83473, 0, 1.6893392, 0, -0.121771395, -1.014014, 0, -1.3511634, -62.310936, -1.445258, 0, -1.0648955, -8.874632, 0, 1.7952085, 0, -0.121771395, 1.0648955, 0, -1.445258, -23.75851, -1.6967149, 0, -0.525372, -8.810951, 0, 1.7761918, 0, -0.121771395, 0.525372, 0, -1.6967149, -80.203636, -1.6492884, 0, -0.40465966, -9.048557, 0, 1.6982055, 0, -0.121771395, 0.40465966, 0, -1.6492884, -56.25766, 0.6977967, 0, -1.2832105, -8.72369, 0, 1.4606675, 0, -0.1217714, 1.2832105, 0, 0.6977967, -96.45426, -0.24787672, 0, -1.5760407, -8.844839, 0, 1.5954144, 0, -0.121771395, 1.5760407, 0, -0.24787672, -98.883095, 1.6811073, 0, 0.5194023, -8.882467, 0, 1.7595172, 0, -0.121771395, -0.5194023, 0, 1.6811073, -83.24248, 1.2290485, 0, -1.14961, -8.696171, 0, 1.6829032, 0, -0.121771395, 1.14961, 0, 1.2290485, -74.59132, 1.3858845, 0, 1.0443738, -9.009798, 0, 1.7353364, 0, -0.12177139, -1.0443738, 0, 1.3858845, -35.919247, 0.94746435, 0, -1.161678, -8.975328, 0, 1.4990612, 0, -0.121771395, 1.161678, 0, 0.94746435, -16.505379, 1.7591275, 0, -0.32264632, -8.857904, 0, 1.7884715, 0, -0.121771395, 0.32264632, 0, 1.7591275, -14.115213, -1.4598315, 0, -0.30534592, -8.9355545, 0, 1.4914235, 0, -0.12177139, 0.30534592, 0, -1.4598315, -54.296474, -1.4287199, 0, -0.28748634, -9.085817, 0, 1.4573568, 0, -0.1217714, 0.28748634, 0, -1.4287199, -80.63472, -0.88280976, 0, -1.432545, -8.949578, 0, 1.6827174, 0, -0.121771395, 1.432545, 0, -0.88280976, -52.042564, 1.7477827, 0, 0.32057044, -8.733042, 0, 1.7769383, 0, -0.121771395, -0.32057044, 0, 1.7477827, -58.922764, -0.11436911, 0, 1.4468533, -8.975553, 0, 1.4513665, 0, -0.121771395, -1.4468533, 0, -0.11436911, -78.64111, 1.6523862, 0, 0.52975196, -9.130327, 0, 1.7352283, 0, -0.121771395, -0.52975196, 0, 1.6523862, -21.695591, 0.24318296, 0, -1.4297347, -8.987352, 0, 1.4502686, 0, -0.121771395, 1.4297347, 0, 0.24318296, -96.66826, -1.5224004, 0, 0.33267012, -8.872597, 0, 1.5583235, 0, -0.121771395, -0.33267012, 0, -1.5224004, -75.67168, -1.3692251, 0, -0.8254274, -8.999, 0, 1.5987833, 0, -0.121771395, 0.8254274, 0, -1.3692251, -69.77385, 1.3281474, 0, -1.0116847, -9.00231, 0, 1.6695752, 0, -0.121771395, 1.0116847, 0, 1.3281474, -39.575596, 1.7542983, 0, -0.118326105, -8.859668, 0, 1.7582842, 0, -0.12177139, 0.118326105, 0, 1.7542983, -45.454735, 0.29308882, 0, 1.524797, -8.939199, 0, 1.5527096, 0, -0.121771395, -1.524797, 0, 0.29308882, -11.595751, -1.5639094, 0, -0.794837, -9.135186, 0, 1.7543029, 0, -0.121771395, 0.794837, 0, -1.5639094, -54.16076, -0.23519725, 0, -1.5526328, -8.6937275, 0, 1.5703459, 0, -0.121771395, 1.5526328, 0, -0.23519725, -93.38061, -0.6366021, 0, -1.3370254, -9.165372, 0, 1.480844, 0, -0.12177139, 1.3370254, 0, -0.6366021, -64.84763, -1.6243644, 0, 0.0065627624, -9.000767, 0, 1.6243776, 0, -0.121771395, -0.0065627624, 0, -1.6243644, -52.743805, 0.011426372, 0, 1.5365125, -8.75979, 0, 1.5365549, 0, -0.121771395, -1.5365125, 0, 0.011426372, -57.66589, -0.41044086, 0, 1.347347, -8.795752, 0, 1.4084764, 0, -0.121771395, -1.347347, 0, -0.41044086, -39.966057, -1.154999, 0, 1.1828727, -9.027079, 0, 1.6532425, 0, -0.121771395, -1.1828727, 0, -1.154999, -35.57312, 1.6447302, 0, -0.22338803, -9.160057, 0, 1.6598313, 0, -0.1217714, 0.22338803, 0, 1.6447302, -47.863228, 0.0064221607, 0, 1.593053, -8.75322, 0, 1.5930659, 0, -0.121771395, -1.593053, 0, 0.0064221607, -70.36612, -1.4102864, 0, 0.1898484, -8.720779, 0, 1.4230075, 0, -0.1217714, -0.1898484, 0, -1.4102864, -76.57425, 1.5281308, 0, 0.64859766, -8.893594, 0, 1.6600791, 0, -0.121771395, -0.64859766, 0, 1.5281308, -9.658878, -1.0626235, 0, -1.2624446, -8.890575, 0, 1.6501318, 0, -0.121771395, 1.2624446, 0, -1.0626235, -81.83798, 1.0025254, 0, 1.337239, -8.897251, 0, 1.6713065, 0, -0.12177139, -1.337239, 0, 1.0025254, 7.5434713, 0.3530703, 0, 1.7383649, -9.095171, 0, 1.7738577, 0, -0.121771395, -1.7383649, 0, 0.3530703, -63.06571, -1.1698681, 0, 1.0510962, -9.144554, 0, 1.572703, 0, -0.121771395, -1.0510962, 0, -1.1698681, -31.337536, -1.7243972, 0, 0.16181758, -9.124323, 0, 1.7319729, 0, -0.121771395, -0.16181758, 0, -1.7243972, -6.538065, -1.1388371, 0, -1.2093955, -8.915176, 0, 1.6612006, 0, -0.121771395, 1.2093955, 0, -1.1388371, -91.82186, -0.10061712, 0, 1.6299862, -9.16036, 0, 1.6330887, 0, -0.121771395, -1.6299862, 0, -0.10061712, -27.824125, -0.959364, 0, -1.2249339, -8.79761, 0, 1.5559056, 0, -0.121771395, 1.2249339, 0, -0.959364, -22.042437, 1.5398408, 0, -0.5403252, -8.967234, 0, 1.6318887, 0, -0.121771395, 0.5403252, 0, 1.5398408, -94.284454, -0.7034034, 0, -1.4099605, -9.02117, 0, 1.5756792, 0, -0.121771395, 1.4099605, 0, -0.7034034, -44.731598, -1.5525855, 0, 0.5285195, -9.000465, 0, 1.6400776, 0, -0.12177139, -0.5285195, 0, -1.5525855, -20.761532, -0.6419277, 0, 1.5868613, -8.823055, 0, 1.7117827, 0, -0.121771395, -1.5868613, 0, -0.6419277, -89.48738, 0.6939115, 0, -1.3370453, -9.072346, 0, 1.5063875, 0, -0.121771395, 1.3370453, 0, 0.6939115, -45.893753, 0.49848884, 0, -1.5829684, -8.827515, 0, 1.6596024, 0, -0.121771395, 1.5829684, 0, 0.49848884, -14.734726, -1.5233276, 0, -0.07931638, -8.758026, 0, 1.5253911, 0, -0.121771395, 0.07931638, 0, -1.5233276, -15.212467, 0.6565626, 0, -1.4023336, -9.013274, 0, 1.548423, 0, -0.121771395, 1.4023336, 0, 0.6565626, -40.010056, -0.4542982, 0, -1.6097195, -8.720945, 0, 1.6725979, 0, -0.121771395, 1.6097195, 0, -0.4542982, 7.282555, -0.38106635, 0, 1.4359659, -9.064598, 0, 1.4856681, 0, -0.121771395, -1.4359659, 0, -0.38106635, -7.0785046, -1.7651507, 0, 0.100077294, -8.812078, 0, 1.7679853, 0, -0.121771395, -0.100077294, 0, -1.7651507, 7.0214553, 0.64333576, 0, 1.4975611, -8.696619, 0, 1.6298988, 0, -0.1217714, -1.4975611, 0, 0.64333576, -63.595615, -1.252027, 0, 0.7300434, -8.838377, 0, 1.4493222, 0, -0.121771395, -0.7300434, 0, -1.252027, -43.809425, -1.259155, 0, 0.78981364, -8.972353, 0, 1.4863636, 0, -0.121771395, -0.78981364, 0, -1.259155, -53.934883, -1.4064659, 0, 0.024336375, -8.841307, 0, 1.4066764, 0, -0.121771395, -0.024336375, 0, -1.4064659, -63.434025, 1.5348356, 0, -0.17959026, -9.049363, 0, 1.5453067, 0, -0.121771395, 0.17959026, 0, 1.5348356, -63.45082, 1.7183238, 0, 0.3119754, -9.0510645, 0, 1.746415, 0, -0.121771395, -0.3119754, 0, 1.7183238, -17.08056, 1.1085666, 0, 1.2675332, -8.799041, 0, 1.6839123, 0, -0.121771395, -1.2675332, 0, 1.1085666, -7.9847794, 0.44396916, 0, 1.3960958, -9.166875, 0, 1.4649887, 0, -0.121771395, -1.3960958, 0, 0.44396916, -95.15432, 1.0824416, 0, 0.9254809, -8.75276, 0, 1.424147, 0, -0.121771395, -0.9254809, 0, 1.0824416, -44.56807, 0.13328396, 0, 1.7514312, -8.875509, 0, 1.7564954, 0, -0.121771395, -1.7514312, 0, 0.13328396, -10.211292, 1.003274, 0, -1.045703, -8.884568, 0, 1.4491562, 0, -0.121771395, 1.045703, 0, 1.003274, -85.04199, -0.6183524, 0, 1.311422, -8.860399, 0, 1.4498922, 0, -0.121771395, -1.311422, 0, -0.6183524, -36.814735, 1.715179, 0, 0.122238025, -8.709681, 0, 1.7195294, 0, -0.121771395, -0.122238025, 0, 1.715179, -35.1057, 1.5477566, 0, 0.016935697, -8.921593, 0, 1.5478492, 0, -0.121771395, -0.016935697, 0, 1.5477566, -63.035248, -0.14052732, 0, -1.6280857, -8.947821, 0, 1.6341393, 0, -0.121771395, 1.6280857, 0, -0.14052732, -12.318717, 0.48396796, 0, -1.6279143, -8.812115, 0, 1.6983316, 0, -0.121771395, 1.6279143, 0, 0.48396796, -84.83472, -0.8573808, 0, 1.2821951, -8.932648, 0, 1.5424416, 0, -0.121771395, -1.2821951, 0, -0.8573808, -46.50845, -0.9722443, 0, 1.2227298, -9.103123, 0, 1.5621547, 0, -0.121771395, -1.2227298, 0, -0.9722443, -82.423706, -1.4590315, 0, 0.7365726, -9.100022, 0, 1.6344149, 0, -0.121771395, -0.7365726, 0, -1.4590315, -33.11458, -0.023517327, 0, -1.4863335, -9.001457, 0, 1.4865196, 0, -0.121771395, 1.4863335, 0, -0.023517327, -86.332016, -1.4718513, 0, -0.27654907, -9.053495, 0, 1.4976066, 0, -0.121771395, 0.27654907, 0, -1.4718513, 0.43950462, 0.69308114, 0, -1.5449867, -9.0087, 0, 1.6933237, 0, -0.121771395, 1.5449867, 0, 0.69308114, 9.125281, 1.6320704, 0, -0.123285614, -8.991462, 0, 1.6367202, 0, -0.121771395, 0.123285614, 0, 1.6320704, -92.648026, 0.6326401, 0, -1.514622, -8.692879, 0, 1.6414363, 0, -0.121771395, 1.514622, 0, 0.6326401, 2.9467478, -1.3416932, 0, -0.7016652, -8.77509, 0, 1.514092, 0, -0.121771395, 0.7016652, 0, -1.3416932, 8.999155, -1.6122608, 0, -0.7461565, -8.900264, 0, 1.7765514, 0, -0.121771395, 0.7461565, 0, -1.6122608, -11.431956, 1.454229, 0, 0.24957088, -8.708198, 0, 1.475489, 0, -0.121771395, -0.24957088, 0, 1.454229, -26.06129, -1.3980813, 0, -0.6485559, -8.82374, 0, 1.5411866, 0, -0.121771395, 0.6485559, 0, -1.3980813, -47.51095, -1.0132728, 0, -1.4300927, -8.977385, 0, 1.75268, 0, -0.121771395, 1.4300927, 0, -1.0132728, -34.499413, 0.6036932, 0, -1.3706332, -8.718711, 0, 1.4976919, 0, -0.121771395, 1.3706332, 0, 0.6036932, 4.7322826, 1.5753009, 0, 0.057400335, -8.730577, 0, 1.5763464, 0, -0.121771395, -0.057400335, 0, 1.5753009, -33.606712, -1.6433996, 0, -0.18353501, -9.030318, 0, 1.6536164, 0, -0.121771395, 0.18353501, 0, -1.6433996, -78.43905, -0.008936538, 0, -1.5736033, -9.069315, 0, 1.5736287, 0, -0.121771395, 1.5736033, 0, -0.008936538, -79.069, -1.7827983, 0, 0.23373224, -9.106311, 0, 1.7980546, 0, -0.121771395, -0.23373224, 0, -1.7827983, -30.79856, -1.6584944, 0, 0.45571703, -8.905703, 0, 1.7199656, 0, -0.121771395, -0.45571703, 0, -1.6584944, -89.65283, -1.0655245, 0, -0.98659676, -9.187583, 0, 1.4521418, 0, -0.121771395, 0.98659676, 0, -1.0655245, -33.477234, -0.9241346, 0, -1.1780797, -8.910622, 0, 1.4972965, 0, -0.121771395, 1.1780797, 0, -0.9241346, -98.27394, -1.1171317, 0, 1.1637794, -8.873971, 0, 1.6131849, 0, -0.121771395, -1.1637794, 0, -1.1171317, -0.7849827, -1.3766979, 0, -0.46965688, -8.790447, 0, 1.4546046, 0, -0.121771395, 0.46965688, 0, -1.3766979, -22.933546, -1.3481545, 0, 0.7020738, -8.849563, 0, 1.5200094, 0, -0.121771395, -0.7020738, 0, -1.3481545, -8.323193, 0.4331441, 0, -1.4164686, -8.911711, 0, 1.4812148, 0, -0.121771395, 1.4164686, 0, 0.4331441, -4.0972195, 1.3965529, 0, -1.1022328, -8.865003, 0, 1.7791227, 0, -0.1217714, 1.1022328, 0, 1.3965529, 6.1242943, 0.99469334, 0, 1.0779676, -8.8400345, 0, 1.4667751, 0, -0.121771395, -1.0779676, 0, 0.99469334, -10.267809, 1.1550057, 0, -0.8025947, -9.080748, 0, 1.4064837, 0, -0.121771395, 0.8025947, 0, 1.1550057, -61.910698, 0.5832862, 0, 1.5489203, -8.7116165, 0, 1.6551062, 0, -0.12177139, -1.5489203, 0, 0.5832862, -82.69751, 0.90280414, 0, -1.5343077, -8.712896, 0, 1.7802122, 0, -0.121771395, 1.5343077, 0, 0.90280414, -79.60361, -0.6583326, 0, -1.4284638, -8.754337, 0, 1.572867, 0, -0.121771395, 1.4284638, 0, -0.6583326, 3.497868, 1.676244, 0, 0.29197735, -8.899031, 0, 1.7014831, 0, -0.121771395, -0.29197735, 0, 1.676244, -86.67842, 1.736039, 0, -0.43821016, -8.993269, 0, 1.7904915, 0, -0.1217714, 0.43821016, 0, 1.736039, -3.6905918, 1.2742057, 0, -0.974027, -9.014504, 0, 1.6038481, 0, -0.121771395, 0.974027, 0, 1.2742057, -16.020983, -0.24885178, 0, 1.3888835, -8.821226, 0, 1.4110012, 0, -0.1217714, -1.3888835, 0, -0.24885178, -54.530754, -1.2414349, 0, 1.2229704, -8.790995, 0, 1.7426466, 0, -0.121771395, -1.2229704, 0, -1.2414349, -79.70692, -1.5395381, 0, 0.7168639, -9.045864, 0, 1.6982554, 0, -0.1217714, -0.7168639, 0, -1.5395381, -20.112541, -0.25927803, 0, -1.4621274, -8.910896, 0, 1.4849383, 0, -0.121771395, 1.4621274, 0, -0.25927803, -42.128414, 0.3315547, 0, 1.5638189, -8.852348, 0, 1.59858, 0, -0.121771395, -1.5638189, 0, 0.3315547, -38.48495, 0.7932907, 0, -1.1830193, -9.153035, 0, 1.4243752, 0, -0.121771395, 1.1830193, 0, 0.7932907, -63.781487, 1.4359292, 0, 0.1589229, -8.738274, 0, 1.4446969, 0, -0.121771395, -0.1589229, 0, 1.4359292, -35.59429, -1.474206, 0, -0.6211734, -8.828085, 0, 1.5997311, 0, -0.121771395, 0.6211734, 0, -1.474206, -91.051636, 1.592502, 0, 0.10236707, -8.807557, 0, 1.5957887, 0, -0.121771395, -0.10236707, 0, 1.592502, -61.78312, 1.1695234, 0, -0.99344563, -8.746765, 0, 1.5345094, 0, -0.121771395, 0.99344563, 0, 1.1695234, -41.431225, 0.6816026, 0, -1.511298, -9.187432, 0, 1.6578913, 0, -0.121771395, 1.511298, 0, 0.6816026, -12.64653, -1.1422365, 0, 1.2587442, -8.896041, 0, 1.6997473, 0, -0.121771395, -1.2587442, 0, -1.1422365, -90.94362, -1.7763233, 0, 0.007820001, -8.849392, 0, 1.7763406, 0, -0.121771395, -0.007820001, 0, -1.7763233, -30.833237, -0.67295486, 0, -1.6064982, -8.725485, 0, 1.7417535, 0, -0.121771395, 1.6064982, 0, -0.67295486, -44.110985, 1.7158918, 0, -0.044069942, -9.123489, 0, 1.7164577, 0, -0.12177139, 0.044069942, 0, 1.7158918, 9.146971, 0.18583225, 0, -1.4586561, -8.899361, 0, 1.4704459, 0, -0.121771395, 1.4586561, 0, 0.18583225, -78.27022, 1.4245507, 0, 0.019647066, -8.95331, 0, 1.4246861, 0, -0.1217714, -0.019647066, 0, 1.4245507, 1.5297623, -0.67390543, 0, -1.4105629, -8.905095, 0, 1.5632774, 0, -0.121771395, 1.4105629, 0, -0.67390543, -70.45505, 1.5900383, 0, -0.4392041, -8.859119, 0, 1.6495824, 0, -0.121771395, 0.4392041, 0, 1.5900383, -60.048714)
+
+[sub_resource type="QuadMesh" id="QuadMesh_pl552"]
+size = Vector2(0.5, 110)
+orientation = 1
+
+[sub_resource type="MultiMesh" id="MultiMesh_ilxjc"]
+transform_format = 1
+instance_count = 300
+mesh = ExtResource("38_pl552")
+buffer = PackedFloat32Array(-1.3593876, 0, -0.88161767, -8.796827, 0, 1.6202421, 0, -0.121771395, 0.88161767, 0, -1.3593876, -66.11777, 1.4295244, 0, 0.11792836, -8.970703, 0, 1.4343804, 0, -0.121771395, -0.11792836, 0, 1.4295244, -80.99458, 0.794312, 0, 1.4805734, -8.711443, 0, 1.6801872, 0, -0.121771395, -1.4805734, 0, 0.794312, -80.52053, -1.6692481, 0, -0.38694644, -9.091012, 0, 1.71351, 0, -0.121771395, 0.38694644, 0, -1.6692481, -89.38063, -1.5715544, 0, -0.58818656, -8.694171, 0, 1.6780187, 0, -0.121771395, 0.58818656, 0, -1.5715544, -87.61658, -0.16716151, 0, -1.6541657, -9.111481, 0, 1.6625906, 0, -0.121771395, 1.6541657, 0, -0.16716151, -28.83384, 1.3355156, 0, 0.8858004, -8.715725, 0, 1.6025743, 0, -0.12177139, -0.8858004, 0, 1.3355156, -2.4374332, -1.5759614, 0, 0.06805317, -8.945427, 0, 1.57743, 0, -0.121771395, -0.06805317, 0, -1.5759614, -76.4986, -0.32628334, 0, 1.4464107, -8.742048, 0, 1.4827558, 0, -0.121771395, -1.4464107, 0, -0.32628334, -95.30251, -0.35342285, 0, 1.615077, -9.057341, 0, 1.6532942, 0, -0.121771395, -1.615077, 0, -0.35342285, -36.72782, 1.477223, 0, -0.41433322, -9.169657, 0, 1.5342294, 0, -0.121771395, 0.41433322, 0, 1.477223, -5.3182063, -1.4965969, 0, 0.5292381, -9.066625, 0, 1.5874178, 0, -0.121771395, -0.5292381, 0, -1.4965969, -53.627453, 1.3926513, 0, -1.1295888, -8.901169, 0, 1.7931672, 0, -0.121771395, 1.1295888, 0, 1.3926513, -64.3807, -0.265704, 0, 1.4221323, -8.765393, 0, 1.4467407, 0, -0.121771395, -1.4221323, 0, -0.265704, 6.1277905, 1.492131, 0, 0.52274984, -9.056398, 0, 1.581051, 0, -0.121771395, -0.52274984, 0, 1.492131, -34.941986, -0.5177049, 0, 1.7123152, -9.099988, 0, 1.788866, 0, -0.121771395, -1.7123152, 0, -0.5177049, -75.26354, 1.0392499, 0, -0.98038405, -8.848675, 0, 1.4287033, 0, -0.121771395, 0.98038405, 0, 1.0392499, -9.767173, -1.232607, 0, -1.1856679, -9.103338, 0, 1.7103007, 0, -0.121771395, 1.1856679, 0, -1.232607, -39.486893, -1.2855402, 0, 0.9149204, -9.100583, 0, 1.5778761, 0, -0.121771395, -0.9149204, 0, -1.2855402, 10.279032, -1.5273277, 0, -0.3463277, -9.015568, 0, 1.5661011, 0, -0.121771395, 0.3463277, 0, -1.5273277, -26.411413, 0.34527743, 0, 1.4950831, -8.848045, 0, 1.5344347, 0, -0.121771395, -1.4950831, 0, 0.34527743, -94.0907, 1.1133022, 0, 1.1844889, -8.816999, 0, 1.6255633, 0, -0.121771395, -1.1844889, 0, 1.1133022, -55.967392, -1.5795035, 0, 0.2938332, -8.978214, 0, 1.6066017, 0, -0.121771395, -0.2938332, 0, -1.5795035, -34.657253, -0.94868207, 0, -1.2749704, -8.773776, 0, 1.589197, 0, -0.1217714, 1.2749704, 0, -0.94868207, -79.76278, 1.0118433, 0, -1.4782418, -8.729529, 0, 1.7913753, 0, -0.121771395, 1.4782418, 0, 1.0118433, 7.817166, 1.4274967, 0, -0.6851573, -9.184284, 0, 1.58341, 0, -0.121771395, 0.6851573, 0, 1.4274967, -70.03886, -1.735283, 0, -0.2603061, -9.0254, 0, 1.7546984, 0, -0.121771395, 0.2603061, 0, -1.735283, -78.17737, 0.2926284, 0, 1.5060242, -9.072517, 0, 1.5341904, 0, -0.12177139, -1.5060242, 0, 0.2926284, -64.36778, -0.55848634, 0, -1.3657761, -8.881071, 0, 1.4755511, 0, -0.121771395, 1.3657761, 0, -0.55848634, -67.78301, -1.2250466, 0, 1.2341664, -9.075308, 0, 1.7389382, 0, -0.121771395, -1.2341664, 0, -1.2250466, -87.95601, 0.23411514, 0, 1.5627677, -9.076385, 0, 1.5802066, 0, -0.121771395, -1.5627677, 0, 0.23411514, -65.76288, 0.6806234, 0, 1.4668354, -8.903356, 0, 1.6170511, 0, -0.121771395, -1.4668354, 0, 0.6806234, -53.67022, 1.263919, 0, 0.78458124, -8.919653, 0, 1.4876354, 0, -0.121771395, -0.78458124, 0, 1.263919, 7.2606764, -1.745336, 0, -0.30151817, -9.044516, 0, 1.7711891, 0, -0.121771395, 0.30151817, 0, -1.745336, -13.050181, -0.6929451, 0, 1.4636892, -8.928723, 0, 1.6194317, 0, -0.121771395, -1.4636892, 0, -0.6929451, -87.417404, 1.0188421, 0, -1.28595, -8.958286, 0, 1.640642, 0, -0.121771395, 1.28595, 0, 1.0188421, -73.46299, -1.2911166, 0, -0.7703803, -8.747738, 0, 1.5034852, 0, -0.121771395, 0.7703803, 0, -1.2911166, -98.723946, 1.6753582, 0, 0.56289935, -8.871374, 0, 1.7673938, 0, -0.1217714, -0.56289935, 0, 1.6753582, 10.875818, -0.11910814, 0, 1.7434692, -8.774155, 0, 1.7475331, 0, -0.1217714, -1.7434692, 0, -0.11910814, -5.54617, 0.13562573, 0, -1.5688787, -9.127605, 0, 1.5747299, 0, -0.121771395, 1.5688787, 0, 0.13562573, -18.92713, -1.2226746, 0, 1.2052264, -9.070196, 0, 1.7168297, 0, -0.121771395, -1.2052264, 0, -1.2226746, -72.87965, 1.3550781, 0, -1.0882442, -8.698067, 0, 1.737962, 0, -0.121771395, 1.0882442, 0, 1.3550781, -14.088983, 1.3985044, 0, -0.4623853, -9.03782, 0, 1.4729612, 0, -0.121771395, 0.4623853, 0, 1.3985044, -94.00772, 0.33947864, 0, 1.3617275, -8.935008, 0, 1.4034057, 0, -0.121771395, -1.3617275, 0, 0.33947864, -79.74461, 1.3969041, 0, 1.049642, -9.147127, 0, 1.7473092, 0, -0.121771395, -1.049642, 0, 1.3969041, -62.465218, 0.63086635, 0, -1.6032819, -8.738396, 0, 1.722935, 0, -0.121771395, 1.6032819, 0, 0.63086635, -56.068344, 0.10847886, 0, -1.5782906, -8.870995, 0, 1.5820142, 0, -0.121771395, 1.5782906, 0, 0.10847886, -89.925125, -1.3685453, 0, 0.62421393, -9.147279, 0, 1.5041806, 0, -0.121771395, -0.62421393, 0, -1.3685453, -75.31837, 0.71737003, 0, -1.2584256, -9.034463, 0, 1.4485353, 0, -0.121771395, 1.2584256, 0, 0.71737003, -88.80837, 1.2303723, 0, 0.7506614, -8.767729, 0, 1.441287, 0, -0.121771395, -0.7506614, 0, 1.2303723, -38.209743, -1.0736235, 0, -1.1630173, -9.156151, 0, 1.5828066, 0, -0.121771395, 1.1630173, 0, -1.0736235, -19.305492, 0.457532, 0, -1.7405118, -9.047222, 0, 1.7996435, 0, -0.121771395, 1.7405118, 0, 0.457532, -96.79536, -0.9444081, 0, -1.3303146, -8.768548, 0, 1.6314545, 0, -0.1217714, 1.3303146, 0, -0.9444081, -49.50119, 0.21846284, 0, 1.6894655, -8.990726, 0, 1.7035315, 0, -0.121771395, -1.6894655, 0, 0.21846284, -47.067356, 1.5653112, 0, -0.39618585, -9.091368, 0, 1.614671, 0, -0.121771395, 0.39618585, 0, 1.5653112, -54.445927, -1.4253088, 0, 0.1846013, -9.009343, 0, 1.4372135, 0, -0.121771395, -0.1846013, 0, -1.4253088, -5.357238, -0.06351782, 0, 1.5585098, -9.080135, 0, 1.5598036, 0, -0.121771395, -1.5585098, 0, -0.06351782, -65.53553, 0.5500387, 0, -1.6448692, -9.136657, 0, 1.7343982, 0, -0.121771395, 1.6448692, 0, 0.5500387, -37.914825, -0.42072618, 0, 1.6581812, -9.035536, 0, 1.7107236, 0, -0.121771395, -1.6581812, 0, -0.42072618, -14.279823, -1.4035041, 0, 0.44445682, -9.176688, 0, 1.4721975, 0, -0.121771395, -0.44445682, 0, -1.4035041, -82.6732, -1.4113888, 0, -0.1974919, -8.893722, 0, 1.4251391, 0, -0.121771395, 0.1974919, 0, -1.4113888, -81.11698, -0.9291476, 0, -1.2294215, -8.785307, 0, 1.5410361, 0, -0.121771395, 1.2294215, 0, -0.9291476, -25.847637, 1.6221831, 0, -0.48734424, -8.926869, 0, 1.6938071, 0, -0.121771395, 0.48734424, 0, 1.6221831, -13.480263, 0.28306574, 0, 1.4749538, -8.746071, 0, 1.5018704, 0, -0.121771395, -1.4749538, 0, 0.28306574, -96.40307, 1.4654037, 0, -0.85024863, -8.879973, 0, 1.694205, 0, -0.1217714, 0.85024863, 0, 1.4654037, -1.6580801, -1.7880348, 0, -0.06587462, -8.936613, 0, 1.7892479, 0, -0.121771395, 0.06587462, 0, -1.7880348, -35.494576, 0.94337934, 0, -1.2877297, -8.842514, 0, 1.5963122, 0, -0.121771395, 1.2877297, 0, 0.94337934, -95.42261, 1.1944544, 0, -0.8004207, -8.71203, 0, 1.4378438, 0, -0.12177139, 0.8004207, 0, 1.1944544, -61.17131, -1.6602509, 0, -0.20395407, -8.914496, 0, 1.6727314, 0, -0.121771395, 0.20395407, 0, -1.6602509, -49.657806, 1.7399278, 0, 0.008497129, -8.830521, 0, 1.7399485, 0, -0.121771395, -0.008497129, 0, 1.7399278, -31.708485, -1.0868828, 0, 0.9795724, -9.18474, 0, 1.4631734, 0, -0.121771395, -0.9795724, 0, -1.0868828, -92.891235, 1.6050465, 0, -0.7435665, -8.902287, 0, 1.7689165, 0, -0.121771395, 0.7435665, 0, 1.6050465, -66.06368, -0.7527627, 0, -1.2300379, -8.782028, 0, 1.4420974, 0, -0.121771395, 1.2300379, 0, -0.7527627, -68.51299, -0.9336518, 0, -1.1438065, -8.89243, 0, 1.4764819, 0, -0.121771395, 1.1438065, 0, -0.9336518, -98.055664, 1.7102364, 0, 0.51979977, -8.900412, 0, 1.7874844, 0, -0.121771395, -0.51979977, 0, 1.7102364, -22.35876, 1.1764637, 0, 1.3138549, -9.0089035, 0, 1.763599, 0, -0.121771395, -1.3138549, 0, 1.1764637, -35.772697, -1.0173548, 0, 1.190597, -8.944226, 0, 1.5660563, 0, -0.121771395, -1.190597, 0, -1.0173548, -9.143478, 1.3144376, 0, 0.811234, -8.902452, 0, 1.5446186, 0, -0.121771395, -0.811234, 0, 1.3144376, -16.68064, -0.6640267, 0, -1.5863432, -8.764899, 0, 1.7197139, 0, -0.121771395, 1.5863432, 0, -0.6640267, -30.686094, 1.3771588, 0, 1.023013, -8.927353, 0, 1.7155529, 0, -0.12177139, -1.023013, 0, 1.3771588, 10.027537, -0.737892, 0, -1.3418506, -8.716173, 0, 1.5313548, 0, -0.121771395, 1.3418506, 0, -0.737892, -88.525475, 1.7265913, 0, -0.017855735, -8.720688, 0, 1.7266836, 0, -0.121771395, 0.017855735, 0, 1.7265913, -28.821947, -1.5024655, 0, -0.5843486, -8.872532, 0, 1.6120999, 0, -0.121771395, 0.5843486, 0, -1.5024655, -87.14212, -1.5784534, 0, -0.0503673, -9.141463, 0, 1.5792568, 0, -0.12177139, 0.0503673, 0, -1.5784534, -91.05725, -0.113628685, 0, -1.7242749, -8.747082, 0, 1.7280148, 0, -0.121771395, 1.7242749, 0, -0.113628685, -34.291576, 1.4332577, 0, -0.5714307, -9.055725, 0, 1.5429714, 0, -0.121771395, 0.5714307, 0, 1.4332577, -33.006916, -0.91525275, 0, 1.2036952, -8.794788, 0, 1.5121408, 0, -0.121771395, -1.2036952, 0, -0.91525275, -5.971301, 1.0003337, 0, -1.2071422, -8.71676, 0, 1.5677563, 0, -0.121771395, 1.2071422, 0, 1.0003337, -47.665142, -0.90268135, 0, 1.5568641, -9.144576, 0, 1.7996277, 0, -0.121771395, -1.5568641, 0, -0.90268135, 7.5576606, -1.6410048, 0, 0.3456424, -8.7080555, 0, 1.6770109, 0, -0.121771395, -0.3456424, 0, -1.6410048, -69.20253, -0.74001396, 0, 1.3741796, -9.099104, 0, 1.5607659, 0, -0.121771395, -1.3741796, 0, -0.74001396, 0.13382721, 1.060769, 0, -1.4544095, -9.034918, 0, 1.8001493, 0, -0.121771395, 1.4544095, 0, 1.060769, 1.5157433, 1.3496816, 0, -1.1658514, -8.866948, 0, 1.7834938, 0, -0.121771395, 1.1658514, 0, 1.3496816, 6.3164268, 1.0356544, 0, 0.944867, -8.914026, 0, 1.4019108, 0, -0.121771395, -0.944867, 0, 1.0356544, -95.6951, 1.4324929, 0, -0.20570812, -9.147395, 0, 1.4471875, 0, -0.12177139, 0.20570812, 0, 1.4324929, -64.116135, 0.014845504, 0, 1.5877916, -8.851941, 0, 1.587861, 0, -0.121771395, -1.5877916, 0, 0.014845504, -68.502785, 0.9277116, 0, -1.3168783, -8.820821, 0, 1.6108437, 0, -0.121771395, 1.3168783, 0, 0.9277116, -8.536601, -0.9979915, 0, -1.3640115, -9.183001, 0, 1.6901226, 0, -0.121771395, 1.3640115, 0, -0.9979915, -15.369213, -0.38389137, 0, -1.625002, -8.786103, 0, 1.6697317, 0, -0.121771395, 1.625002, 0, -0.38389137, -29.739288, -0.6297038, 0, 1.2558877, -8.7939825, 0, 1.4049132, 0, -0.121771395, -1.2558877, 0, -0.6297038, -24.609768, -1.0483477, 0, -1.1351322, -8.735742, 0, 1.5451725, 0, -0.121771395, 1.1351322, 0, -1.0483477, -3.196618, -0.7499313, 0, 1.2459358, -9.02162, 0, 1.454219, 0, -0.121771395, -1.2459358, 0, -0.7499313, -7.2524233, 0.37447634, 0, -1.6188534, -9.10659, 0, 1.6616013, 0, -0.12177139, 1.6188534, 0, 0.37447634, -18.033577, 0.014493325, 0, -1.5821201, -8.739424, 0, 1.5821865, 0, -0.121771395, 1.5821201, 0, 0.014493325, -53.093674, -0.80932385, 0, -1.2107705, -8.787031, 0, 1.4563551, 0, -0.12177139, 1.2107705, 0, -0.80932385, -71.706024, -0.8955238, 0, 1.2814447, -8.835104, 0, 1.5633501, 0, -0.121771395, -1.2814447, 0, -0.8955238, -68.72878, 0.93044233, 0, -1.5231109, -8.902593, 0, 1.784822, 0, -0.121771395, 1.5231109, 0, 0.93044233, 2.5720234, -1.168184, 0, 1.2480034, -9.063393, 0, 1.7094345, 0, -0.121771395, -1.2480034, 0, -1.168184, -50.065598, 1.6275712, 0, 0.27561525, -9.103723, 0, 1.6507428, 0, -0.12177139, -0.27561525, 0, 1.6275712, -77.74531, 1.7482644, 0, -0.063569844, -8.918559, 0, 1.7494198, 0, -0.121771395, 0.063569844, 0, 1.7482644, -1.1523304, 1.5272429, 0, 0.58755994, -9.102852, 0, 1.6363672, 0, -0.12177139, -0.58755994, 0, 1.5272429, -95.07167, -0.5692835, 0, -1.338422, -8.716939, 0, 1.4544611, 0, -0.121771395, 1.338422, 0, -0.5692835, -29.246685, -1.7024609, 0, -0.46490493, -8.94009, 0, 1.7647973, 0, -0.121771395, 0.46490493, 0, -1.7024609, -41.879623, -0.9693135, 0, 1.0423467, -8.703177, 0, 1.4233956, 0, -0.12177139, -1.0423467, 0, -0.9693135, -77.08018, -1.3586491, 0, -1.1701332, -8.946396, 0, 1.7930809, 0, -0.121771395, 1.1701332, 0, -1.3586491, -24.02462, 1.1487067, 0, -0.9705316, -8.968096, 0, 1.5038147, 0, -0.1217714, 0.9705316, 0, 1.1487067, -73.77362, -1.4511486, 0, 0.2887339, -8.830603, 0, 1.4795943, 0, -0.121771395, -0.2887339, 0, -1.4511486, -80.64305, 0.13446568, 0, 1.6850642, -8.952221, 0, 1.6904207, 0, -0.121771395, -1.6850642, 0, 0.13446568, -18.780106, 1.4280558, 0, 0.82017684, -8.881367, 0, 1.6468252, 0, -0.1217714, -0.82017684, 0, 1.4280558, -87.37093, 1.4469112, 0, 0.9356146, -8.817429, 0, 1.7230574, 0, -0.12177139, -0.9356146, 0, 1.4469112, -48.16702, -1.143794, 0, -1.3607898, -8.857725, 0, 1.7776426, 0, -0.121771395, 1.3607898, 0, -1.143794, -84.58517, 1.511934, 0, -0.067859754, -9.134683, 0, 1.5134561, 0, -0.121771395, 0.067859754, 0, 1.511934, -94.24806, 1.6295725, 0, 0.0053735212, -8.700485, 0, 1.6295813, 0, -0.121771395, -0.0053735212, 0, 1.6295725, -85.7592, -0.11846303, 0, -1.7765921, -9.013242, 0, 1.7805374, 0, -0.121771395, 1.7765921, 0, -0.11846303, -26.503704, 1.4264896, 0, -0.349678, -9.140251, 0, 1.468723, 0, -0.1217714, 0.349678, 0, 1.4264896, -72.44142, -1.3395976, 0, -0.54233694, -8.741465, 0, 1.4452167, 0, -0.121771395, 0.54233694, 0, -1.3395976, -30.421192, 1.3320028, 0, 0.6965377, -8.988286, 0, 1.5031288, 0, -0.121771395, -0.6965377, 0, 1.3320028, -60.707596, -1.5272986, 0, 0.7253376, -8.738842, 0, 1.6907854, 0, -0.1217714, -0.7253376, 0, -1.5272986, -44.297955, -1.4769485, 0, -0.5136402, -9.0710125, 0, 1.5637146, 0, -0.121771395, 0.5136402, 0, -1.4769485, -3.0422773, 1.0669434, 0, 1.2329783, -8.893668, 0, 1.6305226, 0, -0.1217714, -1.2329783, 0, 1.0669434, -36.10753, -1.2850012, 0, 1.1607292, -9.095594, 0, 1.7316235, 0, -0.121771395, -1.1607292, 0, -1.2850012, -22.261105, -0.6783836, 0, 1.4902371, -8.828236, 0, 1.6373793, 0, -0.121771395, -1.4902371, 0, -0.6783836, -63.957546, 0.123766325, 0, -1.515643, -8.780215, 0, 1.5206879, 0, -0.121771395, 1.515643, 0, 0.123766325, 5.2466865, 1.6230721, 0, 0.41216567, -9.142097, 0, 1.6745876, 0, -0.1217714, -0.41216567, 0, 1.6230721, -70.76351, -1.1938106, 0, -1.2389705, -9.061534, 0, 1.7205324, 0, -0.121771395, 1.2389705, 0, -1.1938106, -72.22421, -0.8971263, 0, -1.1503075, -8.861252, 0, 1.4587814, 0, -0.121771395, 1.1503075, 0, -0.8971263, -81.38543, -0.8748267, 0, -1.3163196, -8.850046, 0, 1.5805123, 0, -0.121771395, 1.3163196, 0, -0.8748267, -98.60493, 1.3106892, 0, 0.63173467, -8.964664, 0, 1.4549897, 0, -0.121771395, -0.63173467, 0, 1.3106892, -38.288017, 1.6430961, 0, -0.49089667, -8.988205, 0, 1.7148598, 0, -0.121771395, 0.49089667, 0, 1.6430961, -41.71661, -1.3231254, 0, -0.69357663, -8.823362, 0, 1.4938906, 0, -0.121771395, 0.69357663, 0, -1.3231254, -65.83575, -1.3569984, 0, 0.5696912, -9.131576, 0, 1.4717312, 0, -0.12177139, -0.5696912, 0, -1.3569984, -33.749626, -1.64198, 0, 0.26734698, -9.025558, 0, 1.6636024, 0, -0.121771395, -0.26734698, 0, -1.64198, -44.606342, 1.2271394, 0, -1.0052154, -8.69292, 0, 1.5862942, 0, -0.121771395, 1.0052154, 0, 1.2271394, 10.659151, -0.58432335, 0, 1.6403937, -8.812847, 0, 1.7413573, 0, -0.121771395, -1.6403937, 0, -0.58432335, -23.020176, -1.535274, 0, 0.23898916, -9.019682, 0, 1.5537639, 0, -0.121771395, -0.23898916, 0, -1.535274, -60.039482, -1.1513513, 0, 1.2195939, -8.718427, 0, 1.6772057, 0, -0.1217714, -1.2195939, 0, -1.1513513, -94.65002, -0.985733, 0, 1.4423031, -9.052542, 0, 1.746971, 0, -0.121771395, -1.4423031, 0, -0.985733, -12.468896, -1.1917288, 0, 0.89930767, -9.143954, 0, 1.4929742, 0, -0.121771395, -0.89930767, 0, -1.1917288, -8.515128, 1.570943, 0, 0.59133446, -8.750412, 0, 1.6785525, 0, -0.121771395, -0.59133446, 0, 1.570943, -38.064857, 0.039567035, 0, -1.6823117, -8.724626, 0, 1.6827768, 0, -0.121771395, 1.6823117, 0, 0.039567035, -80.14609, -1.5061346, 0, 0.27054715, -8.813631, 0, 1.5302409, 0, -0.121771395, -0.27054715, 0, -1.5061346, -28.900402, 1.0119863, 0, 1.4048758, -8.713026, 0, 1.7314132, 0, -0.121771395, -1.4048758, 0, 1.0119863, -23.241287, -0.5880592, 0, 1.3015114, -8.884103, 0, 1.4281965, 0, -0.121771395, -1.3015114, 0, -0.5880592, -76.73942, 1.2278868, 0, 0.72656685, -9.113879, 0, 1.4267464, 0, -0.121771395, -0.72656685, 0, 1.2278868, -59.51097, 1.3282853, 0, -0.576543, -9.02314, 0, 1.4480138, 0, -0.121771395, 0.576543, 0, 1.3282853, -78.07616, -1.627724, 0, -0.28954995, -8.732268, 0, 1.6532769, 0, -0.1217714, 0.28954995, 0, -1.627724, -47.527546, 1.561065, 0, -0.61566883, -8.975472, 0, 1.6780858, 0, -0.121771395, 0.61566883, 0, 1.561065, -79.18443, 1.755368, 0, -0.010680282, -9.058457, 0, 1.7554005, 0, -0.121771395, 0.010680282, 0, 1.755368, 7.7138815, -1.5031933, 0, 0.8766234, -9.033733, 0, 1.7401319, 0, -0.121771395, -0.8766234, 0, -1.5031933, -65.19423, -0.08562855, 0, -1.604887, -8.825434, 0, 1.6071697, 0, -0.121771395, 1.604887, 0, -0.08562855, -6.328964, 1.3557554, 0, -0.37655666, -9.159825, 0, 1.4070778, 0, -0.12177139, 0.37655666, 0, 1.3557554, -88.41936, 1.0944244, 0, 1.061751, -9.024229, 0, 1.5248213, 0, -0.12177139, -1.061751, 0, 1.0944244, -11.577538, 1.6099967, 0, 0.51047134, -9.120371, 0, 1.688985, 0, -0.1217714, -0.51047134, 0, 1.6099967, -37.061077, -0.79940057, 0, -1.2992574, -8.869826, 0, 1.5254872, 0, -0.121771395, 1.2992574, 0, -0.79940057, -14.896246, -0.6170694, 0, -1.4649881, -8.691351, 0, 1.589643, 0, -0.121771395, 1.4649881, 0, -0.6170694, -48.710686, 1.0836458, 0, -0.9226941, -8.862335, 0, 1.4232543, 0, -0.121771395, 0.9226941, 0, 1.0836458, -32.765347, -1.1647084, 0, -0.8079851, -8.787931, 0, 1.417528, 0, -0.121771395, 0.8079851, 0, -1.1647084, -95.480835, 0.8961616, 0, -1.3103795, -8.896674, 0, 1.5875138, 0, -0.121771395, 1.3103795, 0, 0.8961616, -67.94033, -0.96233034, 0, 1.3167849, -9.046056, 0, 1.6309513, 0, -0.12177139, -1.3167849, 0, -0.96233034, -17.37218, 0.23675898, 0, -1.4691247, -9.121877, 0, 1.48808, 0, -0.121771395, 1.4691247, 0, 0.23675898, -1.1968031, -1.5692346, 0, -0.5680562, -8.839171, 0, 1.6688874, 0, -0.121771395, 0.5680562, 0, -1.5692346, -1.1660461, 0.97934073, 0, -1.2540215, -9.009196, 0, 1.5911249, 0, -0.121771395, 1.2540215, 0, 0.97934073, -1.4140472, 1.2943388, 0, 1.034081, -9.040276, 0, 1.6566944, 0, -0.121771395, -1.034081, 0, 1.2943388, -43.508354, -1.2114279, 0, 1.3147451, -9.079774, 0, 1.7877674, 0, -0.121771395, -1.3147451, 0, -1.2114279, -69.38484, -1.0071758, 0, 1.4859029, -8.868415, 0, 1.7950795, 0, -0.121771395, -1.4859029, 0, -1.0071758, -12.997644, 1.4160391, 0, 0.89152443, -9.039218, 0, 1.6733148, 0, -0.121771395, -0.89152443, 0, 1.4160391, -78.05001, -1.471127, 0, -0.6835709, -9.121468, 0, 1.622185, 0, -0.12177139, 0.6835709, 0, -1.471127, -27.785542, -1.5187523, 0, 0.13545547, -9.033742, 0, 1.524781, 0, -0.121771395, -0.13545547, 0, -1.5187523, -72.966034, -0.4740896, 0, 1.4279939, -8.846915, 0, 1.5046353, 0, -0.121771395, -1.4279939, 0, -0.4740896, -84.66478, 1.3369309, 0, -0.8696271, -9.183864, 0, 1.5948778, 0, -0.12177139, 0.8696271, 0, 1.3369309, -48.27215, 1.6217574, 0, -0.75820196, -8.901161, 0, 1.7902422, 0, -0.12177139, 0.75820196, 0, 1.6217574, -37.71914, 0.06965639, 0, 1.6463622, -9.164862, 0, 1.647835, 0, -0.121771395, -1.6463622, 0, 0.06965639, -93.56487, 1.5901963, 0, 0.5139454, -8.993952, 0, 1.6711864, 0, -0.121771395, -0.5139454, 0, 1.5901963, -64.23394, 0.22277682, 0, 1.7506266, -8.715133, 0, 1.7647444, 0, -0.121771395, -1.7506266, 0, 0.22277682, -8.249202, -1.4849397, 0, 0.19192982, -8.869147, 0, 1.4972919, 0, -0.121771395, -0.19192982, 0, -1.4849397, -11.790886, 1.1384059, 0, -0.94475365, -8.938887, 0, 1.4793673, 0, -0.121771395, 0.94475365, 0, 1.1384059, -26.83751, -0.42585963, 0, 1.5078638, -9.037474, 0, 1.5668471, 0, -0.121771395, -1.5078638, 0, -0.42585963, -74.02824, 1.0636696, 0, -1.4104466, -8.786649, 0, 1.7665652, 0, -0.121771395, 1.4104466, 0, 1.0636696, -52.0505, -0.20681292, 0, 1.6932718, -9.046606, 0, 1.7058549, 0, -0.121771395, -1.6932718, 0, -0.20681292, -26.87928, -0.9664659, 0, -1.4256402, -9.141365, 0, 1.7223549, 0, -0.1217714, 1.4256402, 0, -0.9664659, -73.09838, -1.200246, 0, 1.0182868, -9.022532, 0, 1.5740072, 0, -0.121771395, -1.0182868, 0, -1.200246, -82.79883, -0.0057730833, 0, 1.4599185, -9.104401, 0, 1.45993, 0, -0.121771395, -1.4599185, 0, -0.0057730833, -62.60981, -1.6511374, 0, -0.089580186, -8.739765, 0, 1.6535655, 0, -0.121771395, 0.089580186, 0, -1.6511374, -30.320114, -0.8991358, 0, 1.1441313, -8.975637, 0, 1.4551569, 0, -0.121771395, -1.1441313, 0, -0.8991358, -90.83601, -1.4060305, 0, 1.1087075, -9.041101, 0, 1.7905737, 0, -0.121771395, -1.1087075, 0, -1.4060305, -54.549866, 1.467989, 0, 0.7766824, -8.776267, 0, 1.6607912, 0, -0.121771395, -0.7766824, 0, 1.467989, -80.62543, -0.7181678, 0, 1.4757597, -8.9746475, 0, 1.6412287, 0, -0.121771395, -1.4757597, 0, -0.7181678, -27.890877, -0.8635091, 0, -1.4164556, -9.165417, 0, 1.6589136, 0, -0.1217714, 1.4164556, 0, -0.8635091, -85.58959, 1.3685818, 0, 0.49437284, -9.18356, 0, 1.455136, 0, -0.121771395, -0.49437284, 0, 1.3685818, -9.208151, 0.8485437, 0, 1.3437419, -8.740853, 0, 1.5892353, 0, -0.121771395, -1.3437419, 0, 0.8485437, -15.348574, -0.93757993, 0, -1.0559409, -8.702546, 0, 1.4121145, 0, -0.121771395, 1.0559409, 0, -0.93757993, -24.150015, -1.0273557, 0, -1.2503989, -8.72315, 0, 1.6183192, 0, -0.121771395, 1.2503989, 0, -1.0273557, -63.463997, 0.4331722, 0, 1.5400186, -8.699902, 0, 1.5997797, 0, -0.1217714, -1.5400186, 0, 0.4331722, -60.599274, -0.92543644, 0, 1.3621492, -8.789046, 0, 1.6467797, 0, -0.121771395, -1.3621492, 0, -0.92543644, -5.890071, 1.2781252, 0, -0.57890123, -9.053935, 0, 1.4031146, 0, -0.121771395, 0.57890123, 0, 1.2781252, -65.95055, -1.5700268, 0, 0.5742583, -9.1732855, 0, 1.6717526, 0, -0.121771395, -0.5742583, 0, -1.5700268, -38.487858, -1.2502226, 0, 0.7400941, -8.770951, 0, 1.4528579, 0, -0.121771395, -0.7400941, 0, -1.2502226, -17.49692, -1.541236, 0, -0.08267962, -9.132488, 0, 1.5434521, 0, -0.12177139, 0.08267962, 0, -1.541236, -36.835346, -0.40754437, 0, 1.6685663, -9.137922, 0, 1.7176164, 0, -0.121771395, -1.6685663, 0, -0.40754437, -53.49875, -0.24055064, 0, -1.7564647, -9.141403, 0, 1.77286, 0, -0.121771395, 1.7564647, 0, -0.24055064, -68.52928, -0.59911036, 0, -1.61643, -8.755802, 0, 1.7238849, 0, -0.121771395, 1.61643, 0, -0.59911036, -92.03359, 0.06965295, 0, 1.7526511, -9.037, 0, 1.7540346, 0, -0.1217714, -1.7526511, 0, 0.06965295, -40.87483, -0.30817086, 0, -1.7120079, -9.008328, 0, 1.739523, 0, -0.121771395, 1.7120079, 0, -0.30817086, -31.467127, -1.360394, 0, 0.48102662, -8.932871, 0, 1.442934, 0, -0.121771395, -0.48102662, 0, -1.360394, 6.0829635, -0.00908899, 0, -1.629872, -8.958359, 0, 1.6298974, 0, -0.121771395, 1.629872, 0, -0.00908899, -51.335667, 0.71372956, 0, -1.4876671, -8.974493, 0, 1.6500192, 0, -0.121771395, 1.4876671, 0, 0.71372956, -17.274357, 0.20918211, 0, -1.7165362, -8.774426, 0, 1.7292349, 0, -0.121771395, 1.7165362, 0, 0.20918211, -9.844429, 0.13052641, 0, -1.407, -9.142788, 0, 1.4130414, 0, -0.1217714, 1.407, 0, 0.13052641, -85.72212, -0.66185445, 0, 1.3410441, -8.744489, 0, 1.4954767, 0, -0.12177139, -1.3410441, 0, -0.66185445, 3.4712882, 0.39877403, 0, 1.4356698, -9.14939, 0, 1.490023, 0, -0.12177139, -1.4356698, 0, 0.39877403, 7.620327, 0.4890778, 0, 1.5043715, -9.0353985, 0, 1.5818757, 0, -0.121771395, -1.5043715, 0, 0.4890778, -39.478645, 0.25303122, 0, 1.515321, -8.952005, 0, 1.5363016, 0, -0.121771395, -1.515321, 0, 0.25303122, -45.51338, 1.0321065, 0, -1.2700098, -9.0618515, 0, 1.6365111, 0, -0.121771395, 1.2700098, 0, 1.0321065, -71.60678, -1.3788807, 0, -0.7870228, -9.156285, 0, 1.5876766, 0, -0.12177139, 0.7870228, 0, -1.3788807, -90.75378, -1.60474, 0, -0.0797398, -8.914497, 0, 1.60672, 0, -0.121771395, 0.0797398, 0, -1.60474, -63.88896, 1.442494, 0, -0.44706765, -9.160197, 0, 1.510185, 0, -0.121771395, 0.44706765, 0, 1.442494, -52.317707, -0.13325271, 0, -1.589206, -9.156602, 0, 1.5947827, 0, -0.121771395, 1.589206, 0, -0.13325271, -39.50028, -1.4038484, 0, -1.01337, -8.85351, 0, 1.7313894, 0, -0.121771395, 1.01337, 0, -1.4038484, -95.599846, 1.2060452, 0, 1.2122477, -8.705435, 0, 1.7099969, 0, -0.1217714, -1.2122477, 0, 1.2060452, 9.444893, -1.709059, 0, -0.45647067, -9.088815, 0, 1.7689681, 0, -0.1217714, 0.45647067, 0, -1.709059, 7.936201, 1.4503756, 0, -0.17053388, -9.056047, 0, 1.4603667, 0, -0.1217714, 0.17053388, 0, 1.4503756, -26.587437, -1.2719642, 0, 0.8058977, -8.738424, 0, 1.5057769, 0, -0.121771395, -0.8058977, 0, -1.2719642, -51.630627, -0.96193576, 0, -1.470009, -8.853739, 0, 1.7567717, 0, -0.121771395, 1.470009, 0, -0.96193576, -17.214058, -0.1917553, 0, 1.7300789, -8.975753, 0, 1.7406732, 0, -0.121771395, -1.7300789, 0, -0.1917553, -72.44588, -1.3338337, 0, 0.57854575, -9.100565, 0, 1.4539008, 0, -0.121771395, -0.57854575, 0, -1.3338337, -15.465088, -0.7741954, 0, -1.3824178, -9.086354, 0, 1.5844423, 0, -0.121771395, 1.3824178, 0, -0.7741954, -39.6476, -1.1149707, 0, -0.9392529, -8.880188, 0, 1.45786, 0, -0.121771395, 0.9392529, 0, -1.1149707, -63.412544, -0.30802214, 0, -1.5025626, -9.107507, 0, 1.5338097, 0, -0.1217714, 1.5025626, 0, -0.30802214, -26.916664, -1.6352062, 0, 0.059360433, -8.780984, 0, 1.6362834, 0, -0.121771395, -0.059360433, 0, -1.6352062, -0.8629856, 1.0041842, 0, -1.0693445, -9.03516, 0, 1.46693, 0, -0.121771395, 1.0693445, 0, 1.0041842, -54.951477, -1.2192862, 0, -0.91724646, -9.051527, 0, 1.5257784, 0, -0.121771395, 0.91724646, 0, -1.2192862, -29.784056, 1.4743805, 0, 0.035351597, -8.9788, 0, 1.4748043, 0, -0.1217714, -0.035351597, 0, 1.4743805, -39.68098, -0.32302263, 0, -1.3758641, -8.765591, 0, 1.4132748, 0, -0.121771395, 1.3758641, 0, -0.32302263, 7.731492, -0.2719699, 0, 1.7298888, -8.964436, 0, 1.7511376, 0, -0.121771395, -1.7298888, 0, -0.2719699, -72.086975, -1.4580889, 0, 0.094579555, -8.703134, 0, 1.4611531, 0, -0.121771395, -0.094579555, 0, -1.4580889, -91.69731, 1.6613033, 0, -0.3447743, -8.80283, 0, 1.6967021, 0, -0.121771395, 0.3447743, 0, 1.6613033, -80.89457, -1.5278368, 0, -0.5260621, -8.951128, 0, 1.6158671, 0, -0.121771395, 0.5260621, 0, -1.5278368, -40.491898, -1.5511549, 0, 0.5567282, -9.02723, 0, 1.6480376, 0, -0.1217714, -0.5567282, 0, -1.5511549, -4.745016, 0.08528398, 0, -1.7667627, -8.746348, 0, 1.7688199, 0, -0.12177139, 1.7667627, 0, 0.08528398, -52.284664, -1.3685249, 0, -1.1328691, -8.943961, 0, 1.7765846, 0, -0.121771395, 1.1328691, 0, -1.3685249, -69.754074, -1.5030532, 0, 0.3251, -8.819996, 0, 1.5378098, 0, -0.12177139, -0.3251, 0, -1.5030532, -8.105287, 0.10409433, 0, -1.4946634, -9.177751, 0, 1.4982837, 0, -0.121771395, 1.4946634, 0, 0.10409433, -64.88463, 1.6399255, 0, 0.050883807, -9.007984, 0, 1.6407146, 0, -0.12177139, -0.050883807, 0, 1.6399255, -93.99202, -0.89831716, 0, -1.157574, -8.968598, 0, 1.4652479, 0, -0.121771395, 1.157574, 0, -0.89831716, 10.75095, 0.20185325, 0, 1.6709707, -9.168107, 0, 1.6831185, 0, -0.12177139, -1.6709707, 0, 0.20185325, -35.543053, -1.3902977, 0, 0.8320623, -9.111504, 0, 1.6202639, 0, -0.12177139, -0.8320623, 0, -1.3902977, -31.408419, -0.37977645, 0, -1.5619045, -9.06733, 0, 1.6074128, 0, -0.1217714, 1.5619045, 0, -0.37977645, 10.846557, -0.15459834, 0, -1.572286, -9.016596, 0, 1.5798684, 0, -0.121771395, 1.572286, 0, -0.15459834, -78.13129, -0.91994613, 0, 1.15001, -8.892602, 0, 1.4726927, 0, -0.121771395, -1.15001, 0, -0.91994613, -68.97411, -1.7356644, 0, -0.1336482, -8.758654, 0, 1.7408023, 0, -0.121771395, 0.1336482, 0, -1.7356644, -5.360319, -1.0732894, 0, -1.2676723, -8.920296, 0, 1.6610067, 0, -0.121771395, 1.2676723, 0, -1.0732894, -82.48587, -1.3419544, 0, 0.445205, -8.959621, 0, 1.4138772, 0, -0.121771395, -0.445205, 0, -1.3419544, -61.160458, -1.2967521, 0, -0.83809036, -9.036412, 0, 1.5440083, 0, -0.121771395, 0.83809036, 0, -1.2967521, 7.746462, -1.4989014, 0, -0.53616446, -9.179435, 0, 1.59191, 0, -0.121771395, 0.53616446, 0, -1.4989014, -32.664692, 1.453131, 0, 0.8789444, -9.171094, 0, 1.6982735, 0, -0.121771395, -0.8789444, 0, 1.453131, 1.0300889, -1.4724225, 0, 0.10856531, -8.809479, 0, 1.4764194, 0, -0.121771395, -0.10856531, 0, -1.4724225, 0.609148, 1.5127358, 0, -0.15724716, -8.994893, 0, 1.5208868, 0, -0.121771395, 0.15724716, 0, 1.5127358, 10.277078, 0.8636953, 0, -1.176643, -8.799458, 0, 1.459609, 0, -0.121771395, 1.176643, 0, 0.8636953, -28.817331, 1.3914682, 0, 0.19598754, -8.848475, 0, 1.4052027, 0, -0.121771395, -0.19598754, 0, 1.3914682, -30.343197, 1.4032636, 0, 1.024766, -8.822958, 0, 1.7376115, 0, -0.121771395, -1.024766, 0, 1.4032636, -41.85977, 1.2478129, 0, -0.7985227, -8.799416, 0, 1.4814438, 0, -0.121771395, 0.7985227, 0, 1.2478129, -84.40654, 0.7058238, 0, -1.4695448, -8.787406, 0, 1.6302605, 0, -0.121771395, 1.4695448, 0, 0.7058238, -63.1533, 1.5216106, 0, -0.3971813, -8.866243, 0, 1.5725939, 0, -0.121771395, 0.3971813, 0, 1.5216106, -43.127506, 1.6652132, 0, -0.18826377, -8.923149, 0, 1.6758217, 0, -0.121771395, 0.18826377, 0, 1.6652132, -45.8224, 0.48256645, 0, -1.3533204, -8.740493, 0, 1.4367833, 0, -0.121771395, 1.3533204, 0, 0.48256645, -9.941799, 1.4389936, 0, 0.3018675, -8.879917, 0, 1.4703151, 0, -0.1217714, -0.3018675, 0, 1.4389936, 3.088965, -0.18208982, 0, -1.4765137, -8.836033, 0, 1.4876994, 0, -0.121771395, 1.4765137, 0, -0.18208982, -59.96674, 0.39947936, 0, 1.5562437, -8.696298, 0, 1.6066978, 0, -0.121771395, -1.5562437, 0, 0.39947936, -85.04411, 0.23224643, 0, -1.3958027, -9.045209, 0, 1.4149925, 0, -0.121771395, 1.3958027, 0, 0.23224643, -57.869102, 0.29870492, 0, 1.6919639, -8.933733, 0, 1.7181288, 0, -0.1217714, -1.6919639, 0, 0.29870492, -77.14789, -1.7478371, 0, -0.252715, -9.017989, 0, 1.7660122, 0, -0.121771395, 0.252715, 0, -1.7478371, -89.38115, 1.306416, 0, -1.2338936, -9.130579, 0, 1.7970021, 0, -0.121771395, 1.2338936, 0, 1.306416, -40.681587, -1.4533135, 0, -0.1044766, -9.141292, 0, 1.457064, 0, -0.121771395, 0.1044766, 0, -1.4533135, -83.40938, -1.7147936, 0, 0.25665805, -9.04314, 0, 1.7338946, 0, -0.121771395, -0.25665805, 0, -1.7147936, 1.5746994, 1.2934992, 0, -0.5620111, -9.116395, 0, 1.410318, 0, -0.121771395, 0.5620111, 0, 1.2934992, -81.71756, 0.028465496, 0, 1.5379446, -8.907836, 0, 1.538208, 0, -0.121771395, -1.5379446, 0, 0.028465496, -31.653677, 1.6544801, 0, -0.06210426, -8.720324, 0, 1.6556453, 0, -0.121771395, 0.06210426, 0, 1.6544801, -25.903965, -1.3307512, 0, 1.2110307, -8.708914, 0, 1.7993038, 0, -0.121771395, -1.2110307, 0, -1.3307512, -82.02425, 1.2788905, 0, 1.020269, -9.086275, 0, 1.6360042, 0, -0.121771395, -1.020269, 0, 1.2788905, -24.248596, 1.3025787, 0, -0.7853991, -9.011909, 0, 1.5210401, 0, -0.121771395, 0.7853991, 0, 1.3025787, -35.14894, 1.1968203, 0, -1.0228624, -9.031888, 0, 1.5743654, 0, -0.121771395, 1.0228624, 0, 1.1968203, -5.654896, -1.4829619, 0, 0.44391036, -8.7776165, 0, 1.5479769, 0, -0.121771395, -0.44391036, 0, -1.4829619, -58.16633, -1.4484562, 0, 0.613593, -8.71235, 0, 1.5730612, 0, -0.121771395, -0.613593, 0, -1.4484562, -79.525185, 1.7073077, 0, -0.023463098, -8.978165, 0, 1.7074689, 0, -0.121771395, 0.023463098, 0, 1.7073077, -37.786423, -1.3590747, 0, 0.75570583, -8.701693, 0, 1.5550483, 0, -0.121771395, -0.75570583, 0, -1.3590747, -73.65038, -0.17625359, 0, 1.3900545, -9.091809, 0, 1.4011841, 0, -0.121771395, -1.3900545, 0, -0.17625359, -88.87779, -0.795735, 0, -1.2275732, -8.880291, 0, 1.4629183, 0, -0.121771395, 1.2275732, 0, -0.795735, -49.24474, -0.5382391, 0, -1.5909166, -8.807139, 0, 1.679499, 0, -0.121771395, 1.5909166, 0, -0.5382391, -59.356277, 1.5623461, 0, -0.50869983, -8.895319, 0, 1.6430767, 0, -0.121771395, 0.50869983, 0, 1.5623461, 7.266786, -0.67812884, 0, -1.4351026, -8.972744, 0, 1.587255, 0, -0.121771395, 1.4351026, 0, -0.67812884, -75.30699)
+
+[sub_resource type="MultiMesh" id="MultiMesh_i8qca"]
+transform_format = 1
+instance_count = 300
+mesh = ExtResource("38_pl552")
+buffer = PackedFloat32Array(-0.2904173, 0, -0.90662456, -1.4535471, 0, 0.9520033, 0, 0, 0.90662456, 0, -0.2904173, 1.8492622, 0.37797457, 0, 1.0485121, 1.1355277, 0, 1.1145593, 0, 0, -1.0485121, 0, 0.37797457, -0.71593475, 0.35470092, 0, 0.1424777, -1.9660575, 0, 0.38224685, 0, 0, -0.1424777, 0, 0.35470092, -2.7459311, 0.40481177, 0, 0.6950688, 4.5898323, 0, 0.80435884, 0, 0, -0.6950688, 0, 0.40481177, 0.08026708, 0.5898586, 0, -1.1451049, 2.6204147, 0, 1.2880987, 0, 0, 1.1451049, 0, 0.5898586, -3.219132, -0.22252789, 0, -0.91117495, -0.08071554, 0, 0.9379544, 0, 0, 0.91117495, 0, -0.22252789, 1.3802832, 0.79642665, 0, -0.24512671, 1.9294415, 0, 0.8332962, 0, 0, 0.24512671, 0, 0.79642665, 1.5248914, -0.028863749, 0, -1.1531585, -2.812398, 0, 1.1535197, 0, 0, 1.1531585, 0, -0.028863749, 0.38146973, 0.32404923, 0, 1.0831903, 1.3285265, 0, 1.1306233, 0, 0, -1.0831903, 0, 0.32404923, -3.818741, -0.190134, 0, 0.2489502, 1.2840993, 0, 0.31325254, 0, 0, -0.2489502, 0, -0.190134, -2.0167933, 0.31966147, 0, -0.39757332, -0.5179521, 0, 0.5101451, 0, 0, 0.39757332, 0, 0.31966147, -1.5703325, 0.30326483, 0, 0.35888863, -1.3461895, 0, 0.46986246, 0, 0, -0.35888863, 0, 0.30326483, 1.9125807, -0.59527224, 0, -0.49735573, -1.716151, 0, 0.7757008, 0, 0, 0.49735573, 0, -0.59527224, -1.2579534, -0.19494964, 0, 0.72872275, 1.8745196, 0, 0.7543489, 0, 0, -0.72872275, 0, -0.19494964, 1.8381709, 0.2208753, 0, 0.8550422, 1.9869629, 0, 0.88310987, 0, 0, -0.8550422, 0, 0.2208753, -2.4968226, 0.38776657, 0, 0.11552626, 1.5127397, 0, 0.40461, 0, 0, -0.11552626, 0, 0.38776657, 2.9061034, 0.800474, 0, 0.1650136, 2.2661994, 0, 0.8173054, 0, 0, -0.1650136, 0, 0.800474, -1.5355368, -0.43802503, 0, -1.0359447, 1.1008499, 0, 1.1247432, 0, 0, 1.0359447, 0, -0.43802503, -3.0482478, -0.56497073, 0, -0.9609033, 0.6938488, 0, 1.114687, 0, 0, 0.9609033, 0, -0.56497073, -1.972026, 0.2471505, 0, 0.83274996, -1.3193268, 0, 0.8686518, 0, 0, -0.83274996, 0, 0.2471505, 0.20872179, 0.33122328, 0, 0.684084, -2.240455, 0, 0.7600527, 0, 0, -0.684084, 0, 0.33122328, -1.2863424, 0.54355305, 0, -0.76352024, -1.5615966, 0, 0.9372371, 0, 0, 0.76352024, 0, 0.54355305, 0.60532343, -0.8627252, 0, 0.5459692, 3.0192933, 0, 1.0209687, 0, 0, -0.5459692, 0, -0.8627252, 0.17972948, 0.3302692, 0, -0.54833084, -0.5026921, 0, 0.6401129, 0, 0, 0.54833084, 0, 0.3302692, -1.6697427, 0.026048442, 0, -0.3076917, -1.1701698, 0, 0.30879232, 0, 0, 0.3076917, 0, 0.026048442, -2.5471253, 0.110961325, 0, 0.5828589, 1.5907899, 0, 0.593327, 0, 0, -0.5828589, 0, 0.110961325, -2.380159, 1.1574187, 0, -0.12892517, -5.1504364, 0, 1.1645771, 0, 0, 0.12892517, 0, 1.1574187, 2.3101628, -0.25685734, 0, 0.17027982, -1.3412611, 0, 0.30817366, 0, 0, -0.17027982, 0, -0.25685734, -1.5520973, 1.0249007, 0, -0.18607663, -1.7961079, 0, 1.0416553, 0, 0, 0.18607663, 0, 1.0249007, -0.121445954, -0.71688473, 0, 0.661792, 1.6116457, 0, 0.9756502, 0, 0, -0.661792, 0, -0.71688473, -2.3925743, -0.60006, 0, -0.64708436, 2.3780632, 0, 0.8824909, 0, 0, 0.64708436, 0, -0.60006, -0.4142818, -0.6929638, 0, -0.70138973, -1.6024076, 0, 0.9859749, 0, 0, 0.70138973, 0, -0.6929638, -5.031683, 0.2924966, 0, 0.70937884, -2.7546272, 0, 0.76731515, 0, 0, -0.70937884, 0, 0.2924966, -1.2671691, 0.61815053, 0, 0.932363, -1.3409268, 0, 1.1186647, 0, 0, -0.932363, 0, 0.61815053, -1.4118867, -1.147863, 0, 0.3713977, -0.24661072, 0, 1.2064524, 0, 0, -0.3713977, 0, -1.147863, 0.8037795, 0.8761185, 0, 0.24699916, -3.0855765, 0, 0.91027045, 0, 0, -0.24699916, 0, 0.8761185, -2.4995203, 0.4574839, 0, 0.6873145, 3.1433902, 0, 0.8256469, 0, 0, -0.68731457, 0, 0.45748383, -1.9751855, -0.045615908, 0, 1.0944312, -4.458005, 0, 1.0953814, 0, 0, -1.0944312, 0, -0.045615908, -1.5476018, -0.49858817, 0, 0.48831105, 0.7237608, 0, 0.697881, 0, 0, -0.48831105, 0, -0.49858817, 2.2337031, 0.05667018, 0, -0.6189356, -2.755319, 0, 0.6215246, 0, 0, 0.6189356, 0, 0.05667018, 4.7156096, -0.5786943, 0, -0.4007106, -4.535639, 0, 0.7038865, 0, 0, 0.4007106, 0, -0.5786943, -2.3699698, 0.35003296, 0, -0.46164417, -2.503346, 0, 0.5793431, 0, 0, 0.46164417, 0, 0.35003296, 1.5580083, 0.32453766, 0, 0.79717267, 0.9652391, 0, 0.86070263, 0, 0, -0.7971727, 0, 0.3245377, -2.7527094, 0.12606904, 0, -0.40547007, 2.9202013, 0, 0.42461675, 0, 0, 0.40547007, 0, 0.12606904, -3.6048603, 0.3217542, 0, 0.28374997, -1.6465343, 0, 0.4289986, 0, 0, -0.28374997, 0, 0.3217542, 0.9162988, -0.1883919, 0, -1.2337782, 2.0378215, 0, 1.2480786, 0, 0, 1.2337782, 0, -0.1883919, 0.34284586, 0.4070304, 0, 0.2589478, 2.451713, 0, 0.4824186, 0, 0, -0.2589478, 0, 0.4070304, -1.1107447, -0.094435714, 0, 0.6865072, 0.08210461, 0, 0.69297206, 0, 0, -0.6865072, 0, -0.094435714, 2.9403539, 0.46466112, 0, -0.25391492, -0.045633785, 0, 0.5295118, 0, 0, 0.25391492, 0, 0.46466112, 0.71154404, -0.64168173, 0, 0.15211527, -0.599009, 0, 0.6594653, 0, 0, -0.15211527, 0, -0.64168173, 5.8709207, 0.016268741, 0, 0.30460852, -1.7934532, 0, 0.30504265, 0, 0, -0.30460852, 0, 0.016268741, 2.6667159, 0.6785016, 0, -0.47222918, -2.2880669, 0, 0.82665884, 0, 0, 0.47222918, 0, 0.6785016, -1.888352, 0.3752102, 0, 0.21858773, -1.51202, 0, 0.4342388, 0, 0, -0.21858773, 0, 0.3752102, -2.3620365, 0.5600715, 0, 0.7876841, 0.5830341, 0, 0.9665023, 0, 0, -0.7876841, 0, 0.5600715, 1.3109033, -0.40728766, 0, -0.25967318, -0.98599267, 0, 0.48302525, 0, 0, 0.25967318, 0, -0.40728766, -2.7905552, -0.26925537, 0, -0.1614053, -2.1598773, 0, 0.31392702, 0, 0, 0.1614053, 0, -0.26925537, 1.2704118, 0.5444023, 0, 0.9564115, 1.7116117, 0, 1.1004987, 0, 0, -0.9564115, 0, 0.5444023, -1.0997804, 0.5198594, 0, -0.13828392, -1.1065941, 0, 0.537937, 0, 0, 0.13828392, 0, 0.5198594, -2.2207432, -0.40924233, 0, -0.30326495, -1.0332263, 0, 0.50936127, 0, 0, 0.30326495, 0, -0.40924233, -1.1872663, 0.34408158, 0, -0.22921047, 2.7876267, 0, 0.4134363, 0, 0, 0.22921047, 0, 0.34408158, -2.5860915, 0.67787, 0, -0.4036411, -1.4911559, 0, 0.78894484, 0, 0, 0.4036411, 0, 0.67787, 3.822477, -0.3234861, 0, -0.32139844, 1.9293659, 0, 0.45600462, 0, 0, 0.32139844, 0, -0.3234861, 3.0582533, 0.93476355, 0, -0.27742213, -2.3234596, 0, 0.975062, 0, 0, 0.27742213, 0, 0.93476355, -2.2777162, 0.5843817, 0, 0.52647156, 1.7479869, 0, 0.7865585, 0, 0, -0.52647156, 0, 0.5843817, -2.8646379, 1.1358368, 0, -0.35659528, 2.7761998, 0, 1.190498, 0, 0, 0.35659528, 0, 1.1358368, 3.7203445, -1.2179272, 0, -0.39562124, -0.8257232, 0, 1.2805712, 0, 0, 0.39562124, 0, -1.2179272, -4.0558877, -0.11433247, 0, 0.3284379, 0.39746764, 0, 0.3477693, 0, 0, -0.3284379, 0, -0.11433247, -2.3551536, 0.58026516, 0, -0.6304007, -0.36608917, 0, 0.8568038, 0, 0, 0.6304007, 0, 0.58026516, 3.6602354, 0.17991649, 0, 0.42007717, 5.455347, 0, 0.45698443, 0, 0, -0.42007717, 0, 0.17991649, 2.3829367, 0.30052978, 0, -0.83936256, -3.547021, 0, 0.89154226, 0, 0, 0.83936256, 0, 0.30052978, 0.5704752, -1.037668, 0, 0.77186036, -1.708555, 0, 1.2932607, 0, 0, -0.77186036, 0, -1.037668, 0.5926212, -1.1803731, 0, 0.14387025, 1.2714317, 0, 1.1891086, 0, 0, -0.14387025, 0, -1.1803731, 1.0936109, 0.12754206, 0, -0.31282964, -3.3654747, 0, 0.33783036, 0, 0, 0.31282964, 0, 0.12754206, 0.014328629, 1.0474257, 0, 0.30071384, 3.2850194, 0, 1.0897382, 0, 0, -0.30071384, 0, 1.0474257, 3.7136695, -0.20744151, 0, 0.78999424, -4.8308067, 0, 0.81677586, 0, 0, -0.78999424, 0, -0.20744151, 1.0817866, 0.5904461, 0, -0.7253961, 3.1538868, 0, 0.9353214, 0, 0, 0.7253961, 0, 0.5904461, 0.69433236, 1.0925784, 0, 0.558131, 2.557502, 0, 1.2268814, 0, 0, -0.558131, 0, 1.0925784, -1.418483, -0.5519462, 0, 0.27100155, -5.050927, 0, 0.61488736, 0, 0, -0.27100155, 0, -0.5519462, -2.3971548, 0.06434819, 0, -0.6353161, 0.07903677, 0, 0.63856655, 0, 0, 0.6353161, 0, 0.06434819, -2.5011842, 0.79746747, 0, -0.27470246, 3.0752573, 0, 0.84345466, 0, 0, 0.27470246, 0, 0.79746747, -2.35505, 0.91282964, 0, -0.7277621, 1.8398566, 0, 1.1674312, 0, 0, 0.7277621, 0, 0.91282964, 2.8965073, -0.33450726, 0, -0.031073125, 1.364389, 0, 0.3359474, 0, 0, 0.031073125, 0, -0.33450726, -2.1920447, 1.0835689, 0, 0.3077671, -1.75076, 0, 1.126429, 0, 0, -0.3077671, 0, 1.0835689, 0.869437, 0.11469845, 0, -0.58374166, 0.23889567, 0, 0.59490347, 0, 0, 0.58374166, 0, 0.11469845, 1.8824784, -0.6159247, 0, -0.6073791, 0.66182417, 0, 0.8650275, 0, 0, 0.6073791, 0, -0.6159247, -1.9664686, -0.41389418, 0, 0.22259231, -2.5668325, 0, 0.46995315, 0, 0, -0.22259231, 0, -0.41389418, -1.092845, 0.9545924, 0, -0.66540366, 1.3177919, 0, 1.1636189, 0, 0, 0.66540366, 0, 0.9545924, 0.34270054, 0.4442882, 0, -0.013058234, 3.2973235, 0, 0.44448006, 0, 0, 0.013058234, 0, 0.4442882, 2.530816, -0.2537987, 0, -0.93081814, -0.48567367, 0, 0.96479857, 0, 0, 0.93081814, 0, -0.2537987, 2.3363032, 0.37580925, 0, -0.33472204, 3.9038007, 0, 0.5032608, 0, 0, 0.33472204, 0, 0.37580925, -0.9781753, -0.4040899, 0, 1.1448967, -1.4812331, 0, 1.2141159, 0, 0, -1.1448967, 0, -0.4040899, 4.497428, 0.035112966, 0, -0.7274666, -0.822867, 0, 0.7283136, 0, 0, 0.7274666, 0, 0.035112966, -3.2637637, -0.025685837, 0, -0.7985052, 3.1864388, 0, 0.7989183, 0, 0, 0.7985052, 0, -0.025685837, 4.001538, -0.1419454, 0, -0.70026606, -1.8423352, 0, 0.7145076, 0, 0, 0.70026606, 0, -0.1419454, -0.9287343, 0.8410421, 0, 0.43250683, 3.0623043, 0, 0.9457346, 0, 0, -0.43250683, 0, 0.8410421, 1.0788982, 1.0742095, 0, 0.413906, 1.7875512, 0, 1.1511924, 0, 0, -0.413906, 0, 1.0742095, -0.24721317, -0.03746094, 0, -0.33521342, 0.35609728, 0, 0.3373001, 0, 0, 0.33521342, 0, -0.03746094, -2.2500534, -0.25273064, 0, -0.66589487, -0.3102416, 0, 0.7122421, 0, 0, 0.66589487, 0, -0.25273064, -0.74280953, -0.256304, 0, -0.33384317, 0.18867637, 0, 0.4208836, 0, 0, 0.33384317, 0, -0.256304, 4.884508, -0.8387379, 0, -0.55168664, 3.5224907, 0, 1.0039121, 0, 0, 0.55168664, 0, -0.8387379, -4.406238, 0.2845875, 0, -1.0911382, -0.08831662, 0, 1.1276404, 0, 0, 1.0911382, 0, 0.2845875, -0.7868837, -0.39910132, 0, 0.67373013, -0.7701808, 0, 0.78306717, 0, 0, -0.67373013, 0, -0.39910132, -0.392501, -0.37587342, 0, -0.5933564, 1.8655428, 0, 0.7023908, 0, 0, 0.5933564, 0, -0.37587342, 0.37852132, 0.29053792, 0, -1.0529715, -0.71316534, 0, 1.0923193, 0, 0, 1.0529715, 0, 0.29053792, -0.9561354, 0.10042263, 0, -0.62210757, 0.0174278, 0, 0.6301607, 0, 0, 0.62210757, 0, 0.10042263, -2.6354659, 0.050997555, 0, 0.50823164, -0.26292798, 0, 0.5107839, 0, 0, -0.50823164, 0, 0.050997555, 0.9754443, -0.75786096, 0, 0.29688394, -3.022609, 0, 0.81393695, 0, 0, -0.29688394, 0, -0.75786096, 0.17797352, -0.16797578, 0, -1.1256182, 1.5500686, 0, 1.1380827, 0, 0, 1.1256182, 0, -0.16797578, -1.3474886, 0.21989906, 0, 0.70183, 0.8171546, 0, 0.7354733, 0, 0, -0.70183, 0, 0.21989906, -0.39127198, -0.893521, 0, -0.21086301, -0.6256663, 0, 0.9180648, 0, 0, 0.21086301, 0, -0.893521, 2.719205, -0.42660835, 0, 0.45537406, 0.8227315, 0, 0.6239877, 0, 0, -0.45537406, 0, -0.42660835, 2.495651, -0.663372, 0, -1.0323719, -2.539874, 0, 1.2271326, 0, 0, 1.0323719, 0, -0.663372, -1.9461296, -0.0066718077, 0, 0.99267584, 5.2100334, 0, 0.99269825, 0, 0, -0.99267584, 0, -0.0066718077, -1.762203, -0.72321427, 0, -1.0477179, 4.8555875, 0, 1.2730877, 0, 0, 1.0477179, 0, -0.72321427, 1.7651397, -0.32697618, 0, 0.3919846, 2.7660313, 0, 0.510456, 0, 0, -0.3919846, 0, -0.32697618, 3.1038022, 0.96654874, 0, 0.25329837, 0.13891084, 0, 0.99918795, 0, 0, -0.25329837, 0, 0.96654874, -2.5519207, 0.82102686, 0, 0.60854876, -4.552704, 0, 1.021967, 0, 0, -0.60854876, 0, 0.82102686, 0.96752244, 0.29087844, 0, 0.69638443, 0.73442817, 0, 0.75469303, 0, 0, -0.69638443, 0, 0.29087844, -0.86979645, -0.08251432, 0, 0.34035936, -1.6500326, 0, 0.35021865, 0, 0, -0.34035936, 0, -0.08251432, 3.0770307, 0.29656944, 0, 0.2726495, -0.57438433, 0, 0.4028538, 0, 0, -0.2726495, 0, 0.29656944, 2.5266309, 0.6646035, 0, 0.3492725, 1.6225693, 0, 0.7507923, 0, 0, -0.3492725, 0, 0.6646035, 3.770668, 0.37420374, 0, -0.7483908, 2.6019669, 0, 0.83673006, 0, 0, 0.7483908, 0, 0.37420374, 0.08962175, 0.26113424, 0, -0.20956334, 0.4365849, 0, 0.33482516, 0, 0, 0.20956334, 0, 0.26113424, 3.261301, 0.8923228, 0, 0.82635, -0.56245387, 0, 1.2161802, 0, 0, -0.82635, 0, 0.8923228, -0.9314035, 0.7745854, 0, 0.22636354, 1.1297802, 0, 0.8069839, 0, 0, -0.22636354, 0, 0.7745854, -1.0516261, -0.22123215, 0, 1.0849682, -3.6819978, 0, 1.1072938, 0, 0, -1.0849682, 0, -0.22123215, 1.0820549, 0.24755962, 0, -0.3877791, -0.7961015, 0, 0.46006346, 0, 0, 0.3877791, 0, 0.24755962, -0.10724006, 0.3169355, 0, -0.43850535, -2.764335, 0, 0.54104996, 0, 0, 0.43850535, 0, 0.3169355, -0.5161316, 0.89295954, 0, 0.7673896, -2.5995326, 0, 1.1773969, 0, 0, -0.7673896, 0, 0.89295954, -4.3080077, 0.008816931, 0, 0.73370326, 3.9209533, 0, 0.73375624, 0, 0, -0.73370326, 0, 0.008816931, 0.578701, -0.6747664, 0, 0.33962575, -1.6372151, 0, 0.75541735, 0, 0, -0.33962575, 0, -0.6747664, 2.6156974, -0.34192103, 0, -1.0902926, -1.0945009, 0, 1.1426495, 0, 0, 1.0902926, 0, -0.34192103, 2.8255982, -0.48360232, 0, -0.18390663, -3.0513153, 0, 0.51739043, 0, 0, 0.18390663, 0, -0.48360232, 0.046885215, -0.851663, 0, 0.55554676, -1.7666224, 0, 1.0168393, 0, 0, -0.55554676, 0, -0.851663, -1.4503328, -1.2410569, 0, 0.23029107, 0.7688298, 0, 1.262243, 0, 0, -0.23029107, 0, -1.2410569, 3.6782446, -0.2910895, 0, -0.106149085, -2.5328503, 0, 0.30983984, 0, 0, 0.106149085, 0, -0.2910895, 2.29305, -0.7872091, 0, -0.4042471, -0.047848452, 0, 0.8849372, 0, 0, 0.4042471, 0, -0.7872091, 0.73303163, -0.096706085, 0, -0.86663204, -2.6585217, 0, 0.872011, 0, 0, 0.86663204, 0, -0.096706085, 0.23627146, 0.7615401, 0, -0.2517369, -5.085604, 0, 0.80206907, 0, 0, 0.2517369, 0, 0.7615401, -2.3145428, 0.12681764, 0, 0.55392575, 1.8697522, 0, 0.56825733, 0, 0, -0.55392575, 0, 0.12681764, -2.6592064, 0.8433937, 0, -0.06463183, -2.9787579, 0, 0.8458665, 0, 0, 0.06463183, 0, 0.8433937, 0.87921816, -0.47766533, 0, 0.75856996, -0.88412255, 0, 0.89643323, 0, 0, -0.75856996, 0, -0.47766533, -0.3427346, -0.2066847, 0, -0.89457184, -1.2423599, 0, 0.9181381, 0, 0, 0.89457184, 0, -0.2066847, 1.8454317, 0.34388044, 0, 0.44985777, -3.2394361, 0, 0.5662383, 0, 0, -0.44985777, 0, 0.34388044, -1.5665003, -0.7950236, 0, -0.31289488, -1.6200545, 0, 0.8543803, 0, 0, 0.31289488, 0, -0.7950236, -0.41766086, -0.7651732, 0, 0.5283762, -3.1695218, 0, 0.9298771, 0, 0, -0.5283762, 0, -0.7651732, 0.9702018, -0.22583061, 0, 1.0509259, -1.1974344, 0, 1.0749161, 0, 0, -1.0509259, 0, -0.22583061, -0.30681565, 0.35131517, 0, 0.022015026, 1.7408898, 0, 0.35200426, 0, 0, -0.022015026, 0, 0.35131517, 1.1018672, -0.57221377, 0, -0.69032884, 1.1496451, 0, 0.8966507, 0, 0, 0.69032884, 0, -0.57221377, 1.7294974, -0.11757618, 0, 0.38250518, -0.5633091, 0, 0.40016812, 0, 0, -0.38250518, 0, -0.11757618, -2.011944, -0.30943167, 0, 0.5120865, -2.519058, 0, 0.59831476, 0, 0, -0.5120865, 0, -0.30943167, -1.4419916, 0.44266453, 0, -0.81638116, -0.42349368, 0, 0.9286712, 0, 0, 0.81638116, 0, 0.44266453, -2.4490638, -0.53136855, 0, 1.1532925, 3.2304535, 0, 1.2698174, 0, 0, -1.1532925, 0, -0.53136855, 1.5127964, 0.3581648, 0, 1.1437577, 3.517481, 0, 1.1985257, 0, 0, -1.1437577, 0, 0.3581648, 1.2947339, 0.279352, 0, 0.9924626, -0.1204716, 0, 1.0310284, 0, 0, -0.9924626, 0, 0.279352, 1.7606945, -0.04573251, 0, -0.4596232, 0.94433695, 0, 0.46189278, 0, 0, 0.4596232, 0, -0.04573251, 0.055311177, -0.26691514, 0, -0.17034784, 0.031136706, 0, 0.3166419, 0, 0, 0.17034784, 0, -0.26691514, 0.2560488, 0.21473008, 0, -0.27815208, -1.9847351, 0, 0.3513938, 0, 0, 0.27815208, 0, 0.21473008, 1.3738682, 0.06929588, 0, 0.48116985, 0.59629273, 0, 0.48613408, 0, 0, -0.48116985, 0, 0.06929588, -1.6459088, -0.077276364, 0, -0.5104358, -0.4768841, 0, 0.5162522, 0, 0, 0.5104358, 0, -0.077276364, -0.23321906, -0.28390434, 0, -0.2902674, -0.2360585, 0, 0.40602568, 0, 0, 0.2902674, 0, -0.28390434, -3.561072, -0.63127446, 0, 0.9464003, -1.3409388, 0, 1.1376214, 0, 0, -0.9464003, 0, -0.63127446, 1.4538935, 0.760262, 0, 0.86216605, 2.0926244, 0, 1.1494906, 0, 0, -0.86216605, 0, 0.760262, 0.2947052, 0.028743213, 0, -0.38347882, 0.84972, 0, 0.3845545, 0, 0, 0.38347882, 0, 0.028743213, -0.8371806, 0.47882468, 0, 0.03136406, -3.3220038, 0, 0.47985077, 0, 0, -0.03136406, 0, 0.47882468, -1.0583599, -0.46376413, 0, 1.1987976, 2.1204154, 0, 1.2853765, 0, 0, -1.1987976, 0, -0.46376413, -0.32591894, 0.46430445, 0, -0.054968707, -1.020329, 0, 0.467547, 0, 0, 0.054968707, 0, 0.46430445, 3.5261757, -0.72770923, 0, -0.31850865, -0.4549206, 0, 0.7943605, 0, 0, 0.31850865, 0, -0.72770923, 2.0774431, -0.30461732, 0, -0.58707845, 3.7918668, 0, 0.6614021, 0, 0, 0.58707845, 0, -0.30461732, 0.5758953, -1.1184889, 0, 0.13101448, 1.6868274, 0, 1.126136, 0, 0, -0.13101448, 0, -1.1184889, 0.67125726, 0.30828267, 0, -0.06923526, -1.0354816, 0, 0.3159616, 0, 0, 0.06923526, 0, 0.30828267, -2.984311, -0.29681325, 0, 1.0385791, -1.122114, 0, 1.0801601, 0, 0, -1.0385791, 0, -0.29681325, -4.4853215, 0.41935995, 0, -0.91110235, 3.178636, 0, 1.0029807, 0, 0, 0.91110235, 0, 0.41935995, 1.2267295, -0.18047827, 0, -0.7977339, 3.178197, 0, 0.81789476, 0, 0, 0.7977339, 0, -0.18047827, 4.104086, 0.7086787, 0, -0.8690847, -2.1199572, 0, 1.1213981, 0, 0, 0.8690847, 0, 0.7086787, -1.6965468, 0.57301265, 0, 0.8614927, 2.73102, 0, 1.034656, 0, 0, -0.8614927, 0, 0.57301265, 1.9998264, 0.33669642, 0, -0.18306337, -3.6275878, 0, 0.38324493, 0, 0, 0.18306337, 0, 0.33669642, -5.0460024, -0.1414471, 0, -0.31766272, -0.40926686, 0, 0.34773105, 0, 0, 0.31766272, 0, -0.1414471, -0.99404776, 0.8220535, 0, -0.30789423, -0.6946726, 0, 0.8778217, 0, 0, 0.3078942, 0, 0.8220536, -5.0067043, -0.860872, 0, 0.44853404, -1.8110727, 0, 0.9707128, 0, 0, -0.44853404, 0, -0.860872, -2.8057265, 0.2732303, 0, -0.14000519, -2.8694057, 0, 0.3070118, 0, 0, 0.14000519, 0, 0.2732303, -2.0404108, -0.2808407, 0, -0.42496386, -1.6330914, 0, 0.50937784, 0, 0, 0.42496386, 0, -0.2808407, -1.6519728, -0.49668053, 0, -0.10853207, 2.0719075, 0, 0.5084002, 0, 0, 0.10853207, 0, -0.49668053, 1.1601275, -1.2059301, 0, 0.27079502, 2.6596608, 0, 1.2359601, 0, 0, -0.27079502, 0, -1.2059301, -0.7782218, 0.8331776, 0, 0.29260197, 2.7025275, 0, 0.8830634, 0, 0, -0.29260197, 0, 0.8331776, 1.7303841, -0.35031173, 0, -1.0657072, -0.35280788, 0, 1.1218066, 0, 0, 1.0657072, 0, -0.35031173, 3.549398, -0.22769925, 0, -0.5646508, 0.88403016, 0, 0.60883284, 0, 0, 0.5646508, 0, -0.22769925, -2.4130907, 0.2957262, 0, -0.15203132, 2.5343742, 0, 0.33251694, 0, 0, 0.15203132, 0, 0.2957262, -2.3140428, 0.27543837, 0, 0.40582398, 3.8375509, 0, 0.49046853, 0, 0, -0.40582398, 0, 0.27543837, 2.5914693, 1.1198446, 0, 0.26944667, 2.7933662, 0, 1.1518044, 0, 0, -0.26944667, 0, 1.1198446, -1.8816874, -0.85745287, 0, 0.2381606, 3.2957833, 0, 0.88991344, 0, 0, -0.2381606, 0, -0.85745287, 2.4872897, 0.48562142, 0, 0.39324495, -0.97322243, 0, 0.6248758, 0, 0, -0.39324495, 0, 0.48562142, 1.1304104, -0.39208528, 0, -0.24113378, 2.1748471, 0, 0.4603003, 0, 0, 0.24113378, 0, -0.39208528, -2.739437, -0.8625896, 0, 0.37016803, 0.1927734, 0, 0.9386614, 0, 0, -0.37016803, 0, -0.8625896, -3.4109988, -0.80893207, 0, -0.27016214, 0.065673776, 0, 0.85285324, 0, 0, 0.27016214, 0, -0.80893207, 1.642286, 0.2946194, 0, -0.8193188, -2.2216442, 0, 0.8706802, 0, 0, 0.8193188, 0, 0.2946194, -3.6212385, 0.57143116, 0, -0.21716978, -0.42669356, 0, 0.611307, 0, 0, 0.21716978, 0, 0.57143116, -0.54758406, 0.6200508, 0, 0.46942854, 2.9589832, 0, 0.77770567, 0, 0, -0.46942854, 0, 0.6200508, 2.3482983, 0.8279879, 0, -0.07750617, -0.7688343, 0, 0.8316076, 0, 0, 0.07750617, 0, 0.8279879, 2.6879592, 1.0920529, 0, -0.21905246, -0.38745075, 0, 1.1138059, 0, 0, 0.21905246, 0, 1.0920529, 1.227568, -0.10853503, 0, -0.52372676, 1.9506397, 0, 0.5348547, 0, 0, 0.52372676, 0, -0.10853503, 2.9260187, -0.414074, 0, -0.9607826, 0.25706926, 0, 1.0462124, 0, 0, 0.9607826, 0, -0.414074, 1.0186865, -0.64996225, 0, 0.6391285, -4.19038, 0, 0.911557, 0, 0, -0.6391285, 0, -0.64996225, -0.21845543, 0.29746363, 0, 1.154874, -3.0849004, 0, 1.1925684, 0, 0, -1.154874, 0, 0.29746363, -0.8406255, -1.1928205, 0, 0.22439536, -1.0106819, 0, 1.2137439, 0, 0, -0.22439536, 0, -1.1928205, -0.57558906, -0.30443302, 0, 0.4518995, 0.82693255, 0, 0.54487854, 0, 0, -0.4518995, 0, -0.30443302, -2.323259, 0.020849232, 0, 0.3631377, -2.8676867, 0, 0.36373585, 0, 0, -0.3631377, 0, 0.020849232, -1.9205601, 0.44303682, 0, 0.7321329, 0.53864884, 0, 0.85574555, 0, 0, -0.7321329, 0, 0.44303682, -1.669816, -1.1422153, 0, -0.2168673, 2.8537188, 0, 1.1626208, 0, 0, 0.2168673, 0, -1.1422153, 0.14367455, -0.660643, 0, -0.3670098, 1.368299, 0, 0.7557416, 0, 0, 0.3670098, 0, -0.660643, 0.92207724, -0.17197558, 0, 1.0518833, 4.5302315, 0, 1.0658491, 0, 0, -1.0518833, 0, -0.17197558, 4.5323687, 0.051609054, 0, -1.0861964, -1.0766265, 0, 1.0874219, 0, 0, 1.0861964, 0, 0.051609054, 0.7509452, 1.0069193, 0, -0.22414199, -2.342036, 0, 1.0315648, 0, 0, 0.22414199, 0, 1.0069193, -2.015575, 0.14927688, 0, 0.4100855, 1.1850561, 0, 0.43641, 0, 0, -0.4100855, 0, 0.14927688, -1.2597382, 0.2469145, 0, -0.5498812, -4.1742034, 0, 0.60277367, 0, 0, 0.5498812, 0, 0.2469145, 1.3739853, 0.59986764, 0, -0.591045, 0.59014606, 0, 0.84212554, 0, 0, 0.591045, 0, 0.59986764, -0.60804707, 0.3255733, 0, -0.32986137, -0.22030051, 0, 0.46347222, 0, 0, 0.32986137, 0, 0.3255733, 1.9938824, 0.16419426, 0, 0.7486834, -2.0971591, 0, 0.76647675, 0, 0, -0.7486834, 0, 0.16419426, 0.81886077, 1.2279241, 0, -0.40537181, -1.8494533, 0, 1.2931063, 0, 0, 0.40537181, 0, 1.2279241, 1.5772738, 1.1146232, 0, -0.46951562, -0.054945983, 0, 1.209475, 0, 0, 0.46951562, 0, 1.1146232, -3.9447985, -0.31270862, 0, -0.47130865, -0.5444626, 0, 0.5656134, 0, 0, 0.47130865, 0, -0.31270862, 1.7968204, -1.0158557, 0, -0.35905626, 2.832907, 0, 1.0774434, 0, 0, 0.35905626, 0, -1.0158557, -0.412565, 1.0290636, 0, 0.30176285, -1.3990129, 0, 1.0723958, 0, 0, -0.30176285, 0, 1.0290636, -1.3394613, -0.077791095, 0, 1.2953315, 0.017824555, 0, 1.2976652, 0, 0, -1.2953315, 0, -0.077791095, 2.1543686, 0.39851782, 0, 0.5120901, 0.99248564, 0, 0.6488857, 0, 0, -0.5120901, 0, 0.39851782, 0.5130131, -0.5646411, 0, -0.6812382, 0.5602063, 0, 0.8848192, 0, 0, 0.6812382, 0, -0.5646411, -3.0346456, 0.37798366, 0, 0.017049398, 3.5902448, 0, 0.37836805, 0, 0, -0.017049398, 0, 0.37798366, -0.9354241, -0.29983532, 0, 0.06206757, -0.36957556, 0, 0.3061921, 0, 0, -0.06206757, 0, -0.29983532, 2.2344677, 0.60859394, 0, -0.32270634, -3.5244806, 0, 0.68885845, 0, 0, 0.32270634, 0, 0.60859394, 0.8925053, -1.0393674, 0, 0.6695802, -3.0240407, 0, 1.2363753, 0, 0, -0.6695802, 0, -1.0393674, 1.8669732, 0.1716817, 0, 0.32430688, 2.1707833, 0, 0.36694625, 0, 0, -0.32430688, 0, 0.1716817, 4.6782255, -0.16622268, 0, 1.0436321, 1.6449318, 0, 1.0567867, 0, 0, -1.0436321, 0, -0.16622268, 0.98772615, -0.51990724, 0, 0.022611547, -2.6728203, 0, 0.52039874, 0, 0, -0.022611547, 0, -0.51990724, -2.9198842, -0.5639915, 0, -0.5729049, -1.4280955, 0, 0.80393183, 0, 0, 0.5729049, 0, -0.5639915, 0.7315929, 0.39335105, 0, -0.69862044, -4.2200804, 0, 0.8017454, 0, 0, 0.69862044, 0, 0.39335105, 0.5345225, 0.048966363, 0, -0.9458804, 3.5243473, 0, 0.947147, 0, 0, 0.9458804, 0, 0.048966363, 1.714356, 0.111651026, 0, 0.63564783, -0.13256839, 0, 0.64537907, 0, 0, -0.63564783, 0, 0.111651026, 4.490484, -0.37621048, 0, -1.0918125, -5.780492, 0, 1.1548111, 0, 0, 1.0918125, 0, -0.37621048, -2.2781134, 0.7292251, 0, 0.27028283, 0.721318, 0, 0.77770305, 0, 0, -0.27028283, 0, 0.7292251, -0.03578137, 0.4519453, 0, 0.30321136, -1.2424201, 0, 0.54423493, 0, 0, -0.30321136, 0, 0.4519453, 2.2957864, 0.385705, 0, 0.8183101, -0.90523493, 0, 0.9046545, 0, 0, -0.8183101, 0, 0.385705, -0.14634182, 0.6349346, 0, -0.9011971, -4.092877, 0, 1.1024055, 0, 0, 0.9011971, 0, 0.6349346, -2.9985595, -0.82208925, 0, 0.25092652, 1.0099057, 0, 0.8595318, 0, 0, -0.25092652, 0, -0.82208925, -1.3787344, 0.6577049, 0, -0.95512575, 3.1167405, 0, 1.1596729, 0, 0, 0.95512575, 0, 0.6577049, 4.107513, -0.44372863, 0, -0.016621053, 1.5240083, 0, 0.44403982, 0, 0, 0.016621053, 0, -0.44372863, -0.2800053, 0.6749286, 0, 0.16433062, -3.7263424, 0, 0.6946461, 0, 0, -0.16433062, 0, 0.6749286, -1.053843, 1.1377752, 0, -0.5277366, -0.9776819, 0, 1.2542082, 0, 0, 0.5277366, 0, 1.1377752, -3.3891459, 0.4373896, 0, -1.1071757, -0.47274363, 0, 1.1904402, 0, 0, 1.1071757, 0, 0.4373896, 2.158417, 0.19285357, 0, -0.5792366, -2.6270735, 0, 0.61049783, 0, 0, 0.5792366, 0, 0.19285357, 0.738534, 0.4753581, 0, 0.50857365, 0.7108634, 0, 0.6961411, 0, 0, -0.50857365, 0, 0.4753581, -3.079274, -0.28705505, 0, 0.9058705, -1.9196792, 0, 0.95026416, 0, 0, -0.9058705, 0, -0.28705505, -1.8537481, -0.471109, 0, -0.1069246, -1.4665602, 0, 0.48309064, 0, 0, 0.1069246, 0, -0.471109, -0.993105, 0.6027307, 0, -0.4087842, -2.0337648, 0, 0.728278, 0, 0, 0.4087842, 0, 0.6027307, -0.43274823, 0.81167537, 0, 0.24093646, -0.9022351, 0, 0.84668016, 0, 0, -0.24093646, 0, 0.81167537, -0.36967662, -0.24811089, 0, 0.21152204, 2.8708515, 0, 0.3260377, 0, 0, -0.21152204, 0, -0.24811089, 0.50127566, -0.4899286, 0, 0.16281895, -0.66582286, 0, 0.51627517, 0, 0, -0.16281895, 0, -0.4899286, 1.5833757, 0.2647554, 0, -1.1592153, -1.4256319, 0, 1.189065, 0, 0, 1.1592153, 0, 0.2647554, 1.5955468, -0.023738839, 0, -0.69401515, 1.5141749, 0, 0.694421, 0, 0, 0.69401515, 0, -0.023738839, -2.7824278, -0.4705917, 0, 0.86212814, 1.6197463, 0, 0.98220235, 0, 0, -0.86212814, 0, -0.4705917, 2.605249, -0.40133193, 0, 0.43522778, 0.8306782, 0, 0.5920224, 0, 0, -0.43522778, 0, -0.40133193, 2.6853302, 0.90498626, 0, -0.7832283, -0.54891586, 0, 1.1968486, 0, 0, 0.7832283, 0, 0.90498626, -4.8163624, -0.40232506, 0, 0.9725954, -1.5106379, 0, 1.0525247, 0, 0, -0.9725954, 0, -0.40232506, 1.4960219, 0.66794676, 0, -0.10713541, -0.068838954, 0, 0.6764842, 0, 0, 0.10713541, 0, 0.66794676, 2.2489743, -0.91761726, 0, 0.29595366, 1.5853302, 0, 0.9641628, 0, 0, -0.29595366, 0, -0.91761726, -2.1245906, -0.89818966, 0, 0.94041413, -0.5289226, 0, 1.3004328, 0, 0, -0.94041413, 0, -0.89818966, 0.32908276, -0.014403956, 0, 0.9616454, -2.658021, 0, 0.96175367, 0, 0, -0.9616454, 0, -0.014403956, -1.5373833, -0.85396767, 0, -0.88189393, -1.6473738, 0, 1.2275987, 0, 0, 0.88189393, 0, -0.85396767, 0.7604267, 0.4083561, 0, 1.0750778, -2.4685667, 0, 1.1500204, 0, 0, -1.0750778, 0, 0.4083561, -1.637366, -0.42326486, 0, 0.97362113, -0.47644192, 0, 1.0616455, 0, 0, -0.97362113, 0, -0.42326486, -1.4810692, -1.1381011, 0, -0.35096708, 1.7714157, 0, 1.1909878, 0, 0, 0.35096708, 0, -1.1381011, 0.6080433, -0.85854375, 0, -0.75718546, 0.15440598, 0, 1.1447389, 0, 0, 0.75718546, 0, -0.85854375, -1.5525761, 0.8541411, 0, 0.008733373, 0.8682015, 0, 0.85418576, 0, 0, -0.008733373, 0, 0.8541411, -2.677268, -0.004362629, 0, -0.57090306, 0.35516274, 0, 0.57091975, 0, 0, 0.57090306, 0, -0.004362629, 4.0988803, 0.23194064, 0, -1.1536686, -0.70287496, 0, 1.176753, 0, 0, 1.1536686, 0, 0.23194064, 0.486501, 0.46805996, 0, 0.13979146, -0.8936099, 0, 0.48848927, 0, 0, -0.13979146, 0, 0.46805996, -0.369113, 0.28021646, 0, 0.86531293, -0.3926482, 0, 0.90955365, 0, 0, -0.86531293, 0, 0.28021646, -2.630627, -0.40525162, 0, -0.50861156, 3.0327413, 0, 0.65031886, 0, 0, 0.50861156, 0, -0.40525162, 0.9951904, 1.0410343, 0, -0.63306725, 4.139306, 0, 1.2184114, 0, 0, 0.63306725, 0, 1.0410343, -4.7987485, 1.0145278, 0, 0.09221335, 0.42369324, 0, 1.0187099, 0, 0, -0.09221335, 0, 1.0145278, -3.834396, 0.39893177, 0, 0.79361135, -2.5588696, 0, 0.8882373, 0, 0, -0.79361135, 0, 0.39893177, 1.1624151, -1.2030449, 0, -0.104522385, -2.5561662, 0, 1.2075769, 0, 0, 0.104522385, 0, -1.2030449, 0.47033265, 1.1082922, 0, 0.18239835, -2.1301324, 0, 1.1232011, 0, 0, -0.18239835, 0, 1.1082922, 1.2949365, 0.25443774, 0, -0.3745721, -3.563376, 0, 0.45281655, 0, 0, 0.3745721, 0, 0.25443774, 0.6989287, 0.14656466, 0, 0.51703113, -2.15318, 0, 0.5374034, 0, 0, -0.51703113, 0, 0.14656466, -1.5317572, -0.024898386, 0, 1.0800748, -0.043416448, 0, 1.0803621, 0, 0, -1.0800748, 0, -0.024898386, -0.92951524, -0.06782309, 0, -0.93604904, 1.9955772, 0, 0.93850285, 0, 0, 0.93604904, 0, -0.06782309, -0.5267361, 0.8187976, 0, -0.17255124, -0.894152, 0, 0.8367817, 0, 0, 0.17255124, 0, 0.8187976, -2.824287, -0.69988513, 0, -0.3074436, 1.912028, 0, 0.76443493, 0, 0, 0.3074436, 0, -0.69988513, -0.743163, -0.1370999, 0, 0.36493152, -3.6295953, 0, 0.3898351, 0, 0, -0.36493152, 0, -0.1370999, 2.5763474, -1.1183592, 0, 0.45137045, -2.804842, 0, 1.206011, 0, 0, -0.45137045, 0, -1.1183592, 1.6105754, 0.17792125, 0, -0.9694568, 2.8501782, 0, 0.9856483, 0, 0, 0.9694568, 0, 0.17792125, -2.5315866, -0.5025874, 0, 0.10068014, 2.3405452, 0, 0.5125725, 0, 0, -0.10068014, 0, -0.5025874, -0.33695555, 0.42126608, 0, -0.507938, -1.3174336, 0, 0.65989864, 0, 0, 0.507938, 0, 0.42126608, 1.9528936, 0.47200462, 0, -0.03260086, -0.786722, 0, 0.47312912, 0, 0, 0.03260086, 0, 0.47200462, 4.7803354, 0.5649195, 0, 0.25407857, 0.24153823, 0, 0.6194271, 0, 0, -0.25407857, 0, 0.5649195, -1.6805286, -0.39912152, 0, 0.24133694, -5.0114894, 0, 0.46641344, 0, 0, -0.24133694, 0, -0.39912152, 0.003548, -0.69221175, 0, 0.8083775, -2.46377, 0, 1.0642515, 0, 0, -0.8083775, 0, -0.69221175, -1.7320008, 0.4257738, 0, 0.9845824, -0.12292987, 0, 1.0727003, 0, 0, -0.9845824, 0, 0.4257738, -3.0691369, 0.31802845, 0, -0.94866997, 3.265665, 0, 1.0005583, 0, 0, 0.94866997, 0, 0.31802845, 0.7083379, 0.31811255, 0, 0.8207094, -2.8750715, 0, 0.8802043, 0, 0, -0.8207095, 0, 0.31811255, 2.1378527)
 
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_2kmhi")
@@ -790,7 +1030,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.00911e-07, 0, -45.6159, 0, 5.27117, 0, 6.88402, 0, -1.99394e-06, 0.08511217, -0.13224858, -106.68665)
+transform = Transform3D(-3.2142023e-07, 0, -45.6159, 0, 5.27117, 0, 7.3532147, 0, -1.99394e-06, 0.08511217, -0.13224858, -105.900536)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -803,7 +1043,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform2" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-3.7368926e-07, 0, -45.6159, 0, 7.46886, 0, 8.548971, 0, -1.99394e-06, 0.085112184, 2.5589833, -114.328125)
+transform = Transform3D(-4.153416e-07, 0, -45.6159, 0, 7.46886, 0, 9.501861, 0, -1.99394e-06, 0.085112184, 2.5589833, -114.328125)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -816,7 +1056,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform3" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(-6.06613e-07, 0, -45.6159, 0, 11.963144, 0, 13.8776, 0, -1.99394e-06, 0.08511221, 5.880872, -125.427)
+transform = Transform3D(-5.8172145e-07, 0, -45.6159, 0, 11.963144, 0, 13.30815, 0, -1.99394e-06, 0.08511221, 5.880872, -125.755646)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -891,6 +1131,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="esc" type="AnimatedSprite2D" parent="Control"]
+visible = false
+position = Vector2(4, -184)
+sprite_frames = SubResource("SpriteFrames_0mu0c")
+autoplay = "default"
+frame_progress = 0.033838987
+
 [node name="keys" type="Sprite2D" parent="Control"]
 clip_children = 1
 position = Vector2(-2, -75)
@@ -951,7 +1198,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371541, 1.55035, -50.0872)
 dialogue = SubResource("Resource_bu5na")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialRamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02432, 3.90468, 10.8725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02432, 3.90468, 7.5735807)
 shape = SubResource("BoxShape3D_so4kt")
 debug_color = Color(0, 0, 0, 1)
 
@@ -1043,17 +1290,89 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="slowmo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3469849, 5.4432364, -5.831238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3469849, 5.4432364, -6.106735)
 shape = SubResource("BoxShape3D_rmd0x")
 debug_color = Color(1, 0.45000005, 0, 1)
 
+[node name="tutorialStyleStart" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.900684, -2.2609, -167.87)
+dialogue = SubResource("Resource_ljj34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialStyleStart"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, -5.116895, 27.223606, -28.79599)
+shape = SubResource("BoxShape3D_rf3la")
+debug_color = Color(0, 0, 0, 1)
+
 [node name="tutorialStyle" parent="." instance=ExtResource("9_avars")]
-transform = Transform3D(0.999999, -0.000736505, -0.0014234, 0.000742216, 0.999992, 0.00402024, 0.00142043, -0.00402129, 0.999991, 0.900684, -2.2609, -167.87)
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 150, -167.87)
 dialogue = SubResource("Resource_0tnf1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialStyle"]
-transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, -0.133468, 15.4891, -27.042156)
-shape = SubResource("BoxShape3D_s0t66")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialStyle"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, -5.729967, 27.223618, -27.341583)
+shape = SubResource("BoxShape3D_rf3la")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="tutorialStyle2" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_b5qdc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialStyle2"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="wormNone" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_l6w2y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="wormNone"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="wormNoneHighscore" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_fh6jg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="wormNoneHighscore"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="wormSingle" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_a1ucd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="wormSingle"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="worm2-9" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_jgt6v")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="worm2-9"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="worm10-19" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_ato8c")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="worm10-19"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="worm20" parent="." instance=ExtResource("9_avars")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+dialogue = SubResource("Resource_wphou")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="worm20"]
+transform = Transform3D(1, 1.00358e-08, 0, 8.35507e-09, 1, 0, -3.29455e-08, -1.67172e-07, 1, 1.4068817, 58.599545, 106.20885)
+shape = SubResource("BoxShape3D_5l3rw")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="enemyGroup" type="Node3D" parent="."]
@@ -1100,6 +1419,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6260023, 0.889149, 8.61509
 
 [node name="funArea" type="Node3D" parent="."]
 
+[node name="cameraController" parent="funArea" instance=ExtResource("23_maxpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.562004, 44.269875, -304.3672)
+newCameraAngle = Vector3(-60, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.851715, 3.7256775, -0.2401123)
+shape = SubResource("BoxShape3D_tbpdk")
+debug_color = Color(1, 1, 0, 1)
+
 [node name="BoostRing" parent="funArea" instance=ExtResource("13_4wqju")]
 transform = Transform3D(-2.32863e-08, -3.69923e-08, -1, -0.894934, 0.446198, 4.33381e-09, 0.446198, 0.894934, -4.3496e-08, 5.05836, 3.19901, -203.145)
 strength = 12.0
@@ -1119,22 +1447,27 @@ strength = 17.0
 centerPlayer = true
 
 [node name="BoostRing6" parent="funArea" instance=ExtResource("13_4wqju")]
-transform = Transform3D(3.04686e-08, 1.54015e-09, 1, -0.717032, 0.69704, -1.81762e-08, -0.69704, -0.717032, 4.37114e-08, -17.2674, 49.9489, -304.67)
+transform = Transform3D(3.04686e-08, 1.54015e-09, 1, -0.717032, 0.69704, -1.81762e-08, -0.69704, -0.717032, 4.37114e-08, -8.162985, 48.271446, -304.67)
 strength = 20.0
 centerPlayer = true
 
 [node name="BoostRing7" parent="funArea" instance=ExtResource("13_4wqju")]
-transform = Transform3D(-4.37114e-08, 0, 1, -0.076719, 0.997053, -3.35349e-09, -0.997053, -0.076719, -4.35825e-08, -17.2674, 67.7593, -287.357)
-strength = 50.0
+transform = Transform3D(-0.11882036, -0.04599195, 0.99185, -0.3609736, 0.9325762, -1.5778634e-08, -0.9249757, -0.35803166, -0.12741089, -8.162985, 66.08185, -287.357)
+strength = 29.0
 centerPlayer = true
 
 [node name="BoostRing8" parent="funArea" instance=ExtResource("13_4wqju")]
-transform = Transform3D(-0.301325, -0.399002, -0.866025, -0.798005, 0.602651, -1.49012e-08, 0.521911, 0.691092, -0.5, -18.0434, 70.0492, -213.89)
+transform = Transform3D(4.012919e-07, 1.4350012e-07, -0.9999996, -0.6324352, 0.7746133, -5.9604716e-08, 0.7746131, 0.63243437, -2.0861626e-07, 1.7378922, 62.440563, -208.57184)
+strength = 25.0
+centerPlayer = true
+
+[node name="BoostRing11" parent="funArea" instance=ExtResource("13_4wqju")]
+transform = Transform3D(0.24508955, -0.96892893, -0.033268087, 0.9601245, 0.24733707, -0.13032584, 0.134505, -3.7252903e-09, 0.9909125, 1.737896, 68.37175, -235.46536)
 strength = 25.0
 centerPlayer = true
 
 [node name="BoostRing9" parent="funArea" instance=ExtResource("13_4wqju")]
-transform = Transform3D(0.0196951, -0.0646872, -0.997711, 0.715411, 0.69801, -0.0311333, 0.698426, -0.713161, 0.0600254, 2.70952, 88.9665, -253.35)
+transform = Transform3D(0.6687457, -0.20263168, -0.7153454, 0.3163704, 0.9482473, 0.027157016, 0.67282164, -0.24447566, 0.69824296, 2.70952, 85.50813, -253.35)
 strength = 25.0
 centerPlayer = true
 
@@ -1144,7 +1477,7 @@ strength = 16.0
 
 [node name="BoostRing3" parent="funArea" instance=ExtResource("13_4wqju")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.81764, 33.8895, -240.067)
-strength = 9.0
+strength = 11.0
 centerPlayer = true
 
 [node name="Basketballhoop" parent="funArea" instance=ExtResource("14_0tnf1")]
@@ -1427,7 +1760,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform6" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(1.72929, 5.87337, -11.0986, 2.71194, 9.73512, 6.77815, 6.08643, -6.00645, 0.133191, 14.3259, -0.981966, -207.662)
+transform = Transform3D(7.4514074, 3.1607747, -10.297752, 7.117285, 8.020348, 7.4227552, 8.451485, -9.540964, 2.8282468, 14.342388, -4.0714293, -206.26747)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -1454,44 +1787,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4803, 13.3952, -220.234)
 [node name="worm2" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0693, 13.4808, -220.234)
 
-[node name="worm17" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9781623, 5.3579698, -198.02898)
-
 [node name="worm3" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7885, 10.0102, -246.925)
 
 [node name="worm4" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9894, 3.32174, -265.904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.600504, 4.3904743, -265.904)
+forceBigHitbox = true
 
 [node name="worm5" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7632, 7.8235, -267.906)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.413748, 9.338844, -268.22455)
+forceBigHitbox = true
 
 [node name="worm6" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7359, 11.9903, -271.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.686256, 13.195068, -272.00507)
+forceBigHitbox = true
 
 [node name="worm7" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8823, 14.9159, -275.68)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.393948, 17.021294, -276.8316)
+forceBigHitbox = true
 
 [node name="worm8" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7854, 17.6275, -281.497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.376022, 3.7659106, -281.88245)
+forceBigHitbox = true
 
 [node name="worm9" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3648, 39.1783, -306.817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.309517, 39.1783, -307.0381)
 
 [node name="worm10" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4518, 39.1783, -304.718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.507084, 39.1783, -304.2481)
 
 [node name="worm11" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6435, 39.1783, -304.802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.145996, 39.1783, -304.19394)
 
 [node name="worm12" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3502, 39.1783, -302.893)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7713175, 37.5997, -304.37103)
 
 [node name="worm13" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.736897, 2.47873, -240.735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.025609, 2.47873, -240.735)
 
 [node name="worm15" parent="funArea" instance=ExtResource("14_so4kt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2445507, 2.47873, -240.735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36032, 2.47873, -240.735)
 
 [node name="worm16" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4170842, 2.47873, -240.735)
@@ -1499,15 +1834,92 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4170842, 2.47873, -240.735)
 [node name="worm14" parent="funArea" instance=ExtResource("14_so4kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79322, 23.8722, -306.1)
 
-[node name="PathFollowJellyfish" parent="funArea" instance=ExtResource("15_td8ta")]
+[node name="worm17" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9781623, 5.3579698, -198.02898)
+
+[node name="worm18" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10023934, 2.564549, -196.92409)
+
+[node name="worm19" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.550106, 2.564548, -212.73074)
+
+[node name="worm20" parent="funArea" instance=ExtResource("14_so4kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.594794, 12.915224, -279.26456)
+glow = true
+
+[node name="Jellyfish" parent="funArea" instance=ExtResource("15_td8ta")]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 5.6611514, 6.00981, -277.69415)
 hSpeedMultiplier = 0.3
 
 [node name="strike_zone" parent="funArea" instance=ExtResource("19_jbvdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2128386, 15.502571, -287.37024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0722995, 15.502571, -286.64206)
+
+[node name="cameraController2" parent="funArea" instance=ExtResource("23_maxpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.313004, 76.9473, -258.0782)
+newCameraAngle = Vector3(-90, 0, 0)
+newCameraDistance = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/cameraController2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.871074, 0.30565643, 4.1835785)
+shape = SubResource("BoxShape3D_pl552")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="tornado" parent="funArea" instance=ExtResource("30_rf3la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.987282, 1.9700003, -248.5707)
+
+[node name="tornado2" parent="funArea" instance=ExtResource("30_rf3la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.84553, 1.9716141, -243.32922)
+
+[node name="SeaweedHiding" parent="funArea" instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1.64, 0, 0, 0, 1, -16.213703, 1.9700003, -282.4625)
+multimesh = SubResource("MultiMesh_f2byx")
+
+[node name="@MeshInstance3D@56351" type="MeshInstance3D" parent="funArea/SeaweedHiding"]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 0, 0, -0.277771)
+visible = false
+mesh = ExtResource("39_ilxjc")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="funArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.309374, 15.621587, -298.41586)
+
+[node name="coral_tube" parent="funArea/Node3D" instance=ExtResource("34_f2byx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5092373, 0.5292883, -4.5426636)
+randomColorOnReady = true
+
+[node name="coral_tube2" parent="funArea/Node3D" instance=ExtResource("34_f2byx")]
+transform = Transform3D(-1.2135853, 0, -0.7935431, 0, 1.4499999, 0, 0.7935431, 0, -1.2135853, -3.5909328, 0.5292883, -6.0766296)
+randomColorOnReady = true
+
+[node name="Seaweed3" parent="funArea/Node3D" instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09367943, 0.0018730164, -0.8249512)
+
+[node name="coral_tree" parent="funArea/Node3D" instance=ExtResource("40_i8qca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.530422, 0, -0.82858276)
+color = Color(0.6322423, 0.6858959, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree3" parent="funArea/Node3D" instance=ExtResource("40_i8qca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82489014, 0, 4.154175)
+color = Color(0.6322423, 0.6858959, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree4" parent="funArea/Node3D" instance=ExtResource("40_i8qca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6649704, 0, 2.0217285)
+color = Color(0.6322423, 0.6858959, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree5" parent="funArea/Node3D" instance=ExtResource("40_i8qca")]
+color = Color(0.6322423, 0.6858959, 1, 1)
+randomColorOnReady = true
+
+[node name="coral_tree2" parent="funArea/Node3D" instance=ExtResource("40_i8qca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3168583, 0, -4.452942)
+color = Color(1, 0.46810246, 0.7039547, 1)
+randomColorOnReady = true
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236072, 17.528, -305.986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236072, 8.558931, -305.986)
 
 [node name="Pillar" parent="." instance=ExtResource("11_4wqju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22959, 15.7771, -306.125)
@@ -1538,6 +1950,7 @@ texture = ExtResource("18_p7ekk")
 
 [node name="streetsign2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.997199, -0.0622574, -0.0414619, -0.0581752, 0.993938, -0.0932854, 0.0470183, -0.090612, -0.994776, 4.43937, 1.63907, 7.73719)
+visible = false
 material_override = SubResource("StandardMaterial3D_3l68j")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("CylinderMesh_5y3ho")
@@ -2042,3 +2455,31 @@ shape = SubResource("BoxShape3D_ygkl2")
 [node name="hook" parent="." instance=ExtResource("24_ygkl2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5212053, 21.916418, -225.12483)
 lineLength = 19.14641780853271
+
+[node name="SeaweedSide" parent="." instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, -13.18, 0, 19.62)
+visible = false
+multimesh = SubResource("MultiMesh_pl552")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SeaweedSide"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.939999, -0.121771395, -43.9)
+mesh = SubResource("QuadMesh_pl552")
+
+[node name="SeaweedSide2" parent="." instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 30.890644, 0, 19.62)
+visible = false
+multimesh = SubResource("MultiMesh_ilxjc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SeaweedSide2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.939999, -0.121771395, -43.9)
+mesh = SubResource("QuadMesh_pl552")
+
+[node name="Seaweed4" parent="." instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.224264, 1.97, -219.98845)
+multimesh = SubResource("MultiMesh_i8qca")
+
+[node name="@MeshInstance3D@41004" type="MeshInstance3D" parent="Seaweed4"]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
+visible = false
+mesh = ExtResource("39_ilxjc")
+skeleton = NodePath("")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=96 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=101 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
-[ext_resource type="PackedScene" uid="uid://danbt80ck41n5" path="res://_MANAGERS/trick_panel.tscn" id="3_lv8kq"]
+[ext_resource type="PackedScene" uid="uid://danbt80ck41n5" path="res://_MANAGERS/UI/trick_panel.tscn" id="3_lv8kq"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="3_p1amj"]
-[ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/menu_button.tscn" id="3_tgkfp"]
+[ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/UI/menu_button.tscn" id="3_tgkfp"]
 [ext_resource type="Texture2D" uid="uid://hmdmgl20jrvs" path="res://Sprites/UI/transition_head.png" id="4_s0yte"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="5_06qk8"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="5_juhqs"]
@@ -16,12 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://u4qmfo5alnhi" path="res://Sprites/UI/left_arrow_tip.png" id="9_pp8og"]
 [ext_resource type="Texture2D" uid="uid://iff24ooevm5j" path="res://Sprites/UI/right_arrow_tip.png" id="10_m1dqt"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="12_o7i77"]
-[ext_resource type="PackedScene" uid="uid://u0rqprt81pas" path="res://_MANAGERS/small_button.tscn" id="13_ftyur"]
+[ext_resource type="PackedScene" uid="uid://u0rqprt81pas" path="res://_MANAGERS/UI/small_button.tscn" id="13_ftyur"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="13_wa78b"]
 [ext_resource type="AudioStream" uid="uid://qgecunu61mnb" path="res://Sounds/tricks/rare/divestart.ogg" id="14_6xlky"]
-[ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Skins/pose.png" id="14_derq4"]
-[ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/slider_manager.tscn" id="14_ftyur"]
+[ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Player/Skins/pose.png" id="14_derq4"]
+[ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/UI/slider_manager.tscn" id="14_ftyur"]
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="14_gqsjg"]
+[ext_resource type="FontFile" uid="uid://cx0yxj8ife8ms" path="res://Fonts/slimy_filled.ttf" id="14_i2psa"]
 [ext_resource type="AudioStream" uid="uid://dwnsd8h7fk6ql" path="res://Sounds/style_ranks/Splashing2.ogg" id="14_r6urg"]
 [ext_resource type="AudioStream" uid="uid://dmv3h5optlt8h" path="res://Sounds/tricks/rare/FL_hit_1.ogg" id="15_bkakf"]
 [ext_resource type="AudioStream" uid="uid://dlx5xikvttv6w" path="res://Sounds/style_ranks/Aquatic1.ogg" id="15_ftyur"]
@@ -29,10 +30,12 @@
 [ext_resource type="AudioStream" uid="uid://c6wye6lhd2i0h" path="res://Sounds/tricks/legendary/oh_the_misery.ogg" id="16_6200f"]
 [ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="16_g062r"]
 [ext_resource type="AudioStream" uid="uid://h3bt3361ccr3" path="res://Sounds/style_ranks/Buoyant2.ogg" id="16_mfo2v"]
+[ext_resource type="Texture2D" uid="uid://wd70c8b4u4o" path="res://Sprites/UI/surf_jump_meter.png" id="17_5di0n"]
 [ext_resource type="AudioStream" uid="uid://dc73ttft37818" path="res://Sounds/tricks/trick1.ogg" id="17_6f478"]
 [ext_resource type="AudioStream" uid="uid://cbjpwnpspesm" path="res://Sounds/style_ranks/Coastal2.ogg" id="17_soyml"]
 [ext_resource type="AudioStream" uid="uid://b60yp7u0psrm4" path="res://Sounds/style_ranks/Damp1.ogg" id="18_sdr3h"]
 [ext_resource type="AudioStream" uid="uid://dj271uuc65mds" path="res://Sounds/tricks/trick2.ogg" id="18_ucssa"]
+[ext_resource type="Texture2D" uid="uid://banxnie7e78w5" path="res://Sprites/UI/aim_reticle_surf.png" id="18_yh4og"]
 [ext_resource type="AudioStream" uid="uid://cu4adehe2o5ag" path="res://Sounds/tricks/trick3.ogg" id="19_3dtuq"]
 [ext_resource type="AudioStream" uid="uid://dnphskcuvtm1c" path="res://Sounds/style_ranks/PhishicSSS1.ogg" id="19_ivbfd"]
 [ext_resource type="AudioStream" uid="uid://bitbhb4x5mkdo" path="res://Sounds/tricks/rare/FL_hit_2.ogg" id="20_2m7we"]
@@ -305,6 +308,20 @@ font_size = 20
 font_color = Color(1, 0, 1, 1)
 outline_size = 8
 outline_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5di0n"]
+font = ExtResource("12_o7i77")
+font_size = 60
+font_color = Color(1, 0.733333, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yh4og"]
+font = ExtResource("14_i2psa")
+font_size = 57
+font_color = Color(0.7, 0.373333, 0, 0.996078)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1dqt"]
 resource_local_to_scene = true
@@ -895,7 +912,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 1
+current_tab = 3
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -904,10 +921,10 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3860
+scroll_vertical = 3214
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 4
+autoScroll = 80
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Mechanics"]
@@ -966,7 +983,7 @@ custom_minimum_size = Vector2(1000, 250)
 layout_mode = 2
 trickName = "Homing Dive"
 rarity = "Mechanic"
-description = "When above a targetable object, a reticle will appear around it. Once something has been locked on, press the dive button to dive towards the target at high speeds. 
+description = "When above a targetable object, a reticle will appear around it. Once something has been locked on, press the D key to dive towards the target at high speeds. 
 When multiple targets are under you, you can choose the target using the arrow keys."
 
 [node name="AimReticle" type="Sprite2D" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/homing"]
@@ -1076,30 +1093,74 @@ description2 = "The Taunt is also part of the Freshness calculations. Any other 
 [node name="spam" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
-trickName = "Spam Warning/Spam Penalty"
+trickName = "                                   /"
 rarity = "Mechanic"
 description = "If you spam an interactible, you'll first get a warning. Keep spamming it and you'll get a penalty and temporarily lose the ability to keep a combo going.
 The warning will go away if you don't interact with anything for a bit, or start playing freshly."
 
+[node name="spamWarning" type="Label" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/spam"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 6.0
+offset_right = 529.0
+offset_bottom = 88.0
+size_flags_horizontal = 4
+text = "SPAM WARNING"
+label_settings = SubResource("LabelSettings_5di0n")
+horizontal_alignment = 1
+
+[node name="spamPenalty" type="Label" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/spam"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -281.0
+offset_right = 304.0
+offset_bottom = -213.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "SPAM PENALTY"
+label_settings = SubResource("LabelSettings_yh4og")
+horizontal_alignment = 1
+
 [node name="camera" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 290)
+custom_minimum_size = Vector2(1000, 340)
 layout_mode = 2
-trickName = "Camera Button"
+trickName = "Camera Button (Static cam)"
 rarity = "Mechanic"
-description = "By holding the C key, and then pressing one of the arrow keys, you can tilt the camera, allowing you to see slightly further ahead.
+description = "In some levels, the camera is fully controlled by the game, but it can still be influenced.
+By holding the C key, and then pressing one of the arrow keys, you can tilt the camera, allowing you to see slightly further ahead.
 The camera will then stay in place as long as you keep holding C, even if you press other arrow keys."
+description2 = "
+"
+
+[node name="camera2" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 250)
+layout_mode = 2
+trickName = "Camera Button (Free cam)"
+rarity = "Mechanic"
+description = "In other levels, the camera will be able to freely turn around to follow the action.
+You can press the C key to switch between manual turning and automatic turning.
+Hold C and press an arrow key to rotate the camera in the corresponding direction."
+description2 = "
+"
 
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer"]
 layout_mode = 2
 
 [node name="Fish tricks" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3299
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 138
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1159,6 +1220,7 @@ trickName = "Speen"
 score = "depends on spinning speed"
 rarity = "Uncommon"
 description = "Gained continuously every frame that you're spinning REALLY fast."
+description2 = "starts at 10pts per frame, goes up to around 30pts per frame. This means 600-1800pts per second."
 
 [node name="fish" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1169,7 +1231,7 @@ description = "press the fish button "
 [node name="taunt" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Strike a Pose"
-score = "[altitude*500]pts + x5"
+score = "[altitude*300]pts + x5"
 rarity = "Uncommon"
 description = "Press the fish button while at the peak of your jump to perform a taunt!"
 description2 = "It won't work if you spam the fish button. You also need to be at least 4 meters off the ground."
@@ -1197,8 +1259,9 @@ description = "Taunting will also kill nearby crabs, collect nearby worms, strik
 [node name="dive" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Dive"
-score = "[altitude*100]pts"
+score = "[altitude*50]pts"
 description = "Press the dive button in the air."
+description2 = "Not awarded if performed while already diving."
 
 [node name="highdive" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1206,6 +1269,7 @@ trickName = "High Dive"
 score = "x10"
 rarity = "Rare"
 description = "Dive while REALLY high up in the air."
+description2 = "Not awarded if performed while already diving."
 
 [node name="tipspin" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1295,7 +1359,7 @@ follow_focus = true
 scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 8
+autoScroll = 21
 metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Interactibles"]
@@ -1417,7 +1481,7 @@ description = "Use a homing attack on an airborne crab."
 [node name="kaboom" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "KABOOM"
-score = "9999pts"
+score = "5000pts"
 rarity = "Uncommon"
 description = "Activate a sea mine."
 
@@ -1439,14 +1503,11 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3600
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 33
 metadata/_tab_index = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Surfing"]
@@ -1483,6 +1544,37 @@ trickName = "Surf Jump"
 score = "8x"
 rarity = "Uncommon"
 description = "Jump off of a sign during sign surf by holding down space."
+
+[node name="surfJumpMeter" type="TextureProgressBar" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer/sign2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = -89.5
+offset_right = 420.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+max_value = 20.0
+step = 0.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 4
+radial_initial_angle = 230.8
+radial_fill_degrees = 82.7
+nine_patch_stretch = true
+texture_under = ExtResource("17_5di0n")
+texture_progress = ExtResource("17_5di0n")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0.466667, 0, 1)
 
 [node name="sign3" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1549,12 +1641,14 @@ description = "Fill up the Sign Surf AirSpin Meter."
 description2 = "Further ranks will give 720°, 1080°, 1440°, 1800°, 2160°, 2520°, 2880°, and finally, 3600°"
 
 [node name="sign15" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 208)
 layout_mode = 2
 trickName = "Rail grind"
 score = "[depends*]pts + 2x"
 rarity = "Uncommon"
 description = "Touch a railling or pipe to start railgrinding."
-description2 = "*From around 80 to 350 pts per frame depending on speed. The 2x is awarded only once."
+description2 = "To railgrind faster, touch it faster!
+  *From around 80 to 350 pts per frame depending on speed. The 2x is awarded only once. "
 
 [node name="sign16" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1563,6 +1657,19 @@ score = "800pts"
 rarity = "Uncommon"
 description = "Perform any of the surf spin combo inputs while on a rail."
 description2 = "Unlike regurlar airborne combo inputs, they can be performed in any order with no penality or bonus."
+
+[node name="sign17" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+custom_minimum_size = Vector2(1000, 250)
+layout_mode = 2
+trickName = "Rail diving"
+rarity = "Mechanic"
+description = "Homing dives normally break your surf board, but there's one big exception: RAILS!
+When targetting a railgrindable object, the reticle will turn orange and black, showing you that you can safely dive without braking your board."
+
+[node name="AimReticleSurf" type="Sprite2D" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer/sign17"]
+position = Vector2(375, 47)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("18_yh4og")
 
 [node name="sign11" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2

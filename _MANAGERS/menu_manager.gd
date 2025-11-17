@@ -2,7 +2,9 @@ extends Node
 
 var transitionStart : int = 0
 var transitionEnd : int = 0
-var focus
+#0: outside tutorial | 1: waiting for player to open trick list | 2: player has opened the tricklist
+var tutorialTrickList : int = 0
+
 
 func _ready():
 	print("menu manager ready")
@@ -32,6 +34,8 @@ func _process(_delta):
 	if %Settings.visible:
 		%HelpTip.label_settings.font_size = 30
 		%HelpTip.label_settings.outline_size = 15
+	
+	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30)
 	
 	
 	#AudioServer.set_bus_mute(0, !get_window().has_focus())
@@ -167,6 +171,9 @@ func _on_tricks_pressed():
 	%trickGoBack.forceReset()
 	%movement.grab_focus()
 	$TrickList/Panel/trickTabs/Mechanics.scroll_vertical = 0
+	if tutorialTrickList == 1:
+		tutorialTrickList = 2
+		#DialogueManager.currentDialogueOwner.tutorialEvent7point5()
 	
 
 func close_tricks():

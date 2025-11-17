@@ -6,6 +6,7 @@ func _ready():
 	super()
 	$reticle.visible = false
 	$reticle/reticleAnimation.play("preset_reticle")
+	MenuManager.tutorialTrickList = 0
 	
 
 var keyFrame : int = 0
@@ -18,6 +19,7 @@ func tutorialEvent1(): #once textbox 1 is finished
 	waitingForPlayerInput = true
 	%slowKeypress.modulate.a = 1.25
 	%spammingKeys.modulate.a = 1.25
+	$Control/esc.modulate.a = 1.25
 	%slowKeypress.visible = true
 
 func _process(_delta): 
@@ -60,6 +62,8 @@ func _process(_delta):
 		Engine.time_scale = 1
 		AudioServer.get_bus_effect(4,0).pitch_scale = 1
 	
+	if MenuManager.tutorialTrickList == 2:
+		$tutorialStyle2.position.y = 0
 	
 
 func event1end():
@@ -86,3 +90,33 @@ func tutorialEvent5():
 func tutorialEvent6():
 	waitingForReticle = false
 	$reticle.visible = false
+
+func tutorialEvent7(): #start the tricks tutorial
+	$tutorialStyle.position.y = 0
+
+func show_esc(value: bool):
+	$Control/esc.visible = value
+	
+
+func tutorialEvent7point5():
+	$Control/esc.visible = false
+	DialogueManager.continue_dialogue()
+	#print("7.5 IS RUNNING")
+
+func tutorialEvent8(): #check how many worms
+	var worm = ScoreManager.counterValue
+	if worm == 0 and ScoreManager.finalScore < 100000:
+		$wormNone.position.y = 0
+	elif worm == 0 and ScoreManager.finalScore >= 100000:
+		$wormNoneHighscore.position.y = 0
+	elif worm == 1:
+		$wormSingle.position.y = 0
+	elif worm >= 2 and worm <= 9:
+		$"worm2-9".position.y = 0
+	elif worm >= 10 and worm <= 19:
+		$"worm10-19".position.y = 0
+	elif worm >= 20:
+		$worm20.position.y = 0
+
+func tutorialEvent9(): 
+	pass

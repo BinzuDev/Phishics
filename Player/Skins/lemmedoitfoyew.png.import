@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba5khi7i2ku46"
-path.s3tc="res://.godot/imported/pose.png-e1609031aa109a146d19ab149decc168.s3tc.ctex"
+uid="uid://dk1mtik2wa3wl"
+path.s3tc="res://.godot/imported/lemmedoitfoyew.png-07aa451c2bb6a293caa6235c6cb8484d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,14 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://Skins/pose.png"
-dest_files=["res://.godot/imported/pose.png-e1609031aa109a146d19ab149decc168.s3tc.ctex"]
+source_file="res://Player/Skins/lemmedoitfoyew.png"
+dest_files=["res://.godot/imported/lemmedoitfoyew.png-07aa451c2bb6a293caa6235c6cb8484d.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -26,6 +28,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

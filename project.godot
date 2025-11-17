@@ -25,7 +25,8 @@ MusicManager="*res://_MANAGERS/music_manager.tscn"
 ScoreManager="*res://_MANAGERS/score_manager.tscn"
 DialogueManager="*res://_MANAGERS/dialogue_manager.tscn"
 MenuManager="*res://_MANAGERS/menu_manager.tscn"
-PianoManager="*res://_MANAGERS/piano.tscn"
+SettingsManager="*res://_MANAGERS/settings_manager.tscn"
+PianoManager="*res://Player/piano.tscn"
 
 [debug]
 
@@ -59,9 +60,9 @@ folder_colors={
 "res://Objects/": "pink",
 "res://Particles/": "gray",
 "res://Player/": "purple",
+"res://Player/Skins/": "yellow",
 "res://Recordings/": "gray",
 "res://Shaders/": "gray",
-"res://Skins/": "gray",
 "res://Sounds/": "teal",
 "res://Sprites/": "yellow",
 "res://Textures/": "yellow",

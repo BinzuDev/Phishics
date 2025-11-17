@@ -71,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 	#ensure ragdoll death
 	if hp <= 0:
 		$CrabSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
-		$homingTarget.priority = 0 #lower the target priority of dead crabs
+		$homingTarget.priority = -1 #lower the target priority of dead crabs
 	#print("scale is2", scale)
 	
 

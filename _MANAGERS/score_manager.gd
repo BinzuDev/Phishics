@@ -49,6 +49,10 @@ var ASrankColor = []
 
 var fish #gets set automatically inside the fish script
 
+## Counter UI
+var counterValue : int = 0
+var counterTotal : int = 20
+
 
 ##Make the airspin meter follow the fish
 func _process(_delta):
@@ -603,6 +607,8 @@ func reset_everything():
 	%score.text = str("%010d" % 0)
 	combo_dict.clear()
 	%freshAnims.play("RESET")
+	counterValue = 0
+	set_counter_amount()
 	
 	
 
@@ -660,3 +666,13 @@ func set_label_settings(value : int):
 		%comboEndText.label_settings.set_stacked_outline_color(1, Color("ff69ff"))
 		%comboEndText.label_settings.set_stacked_outline_size(2, 25)
 		%comboEndText.label_settings.set_stacked_outline_color(2, Color("00ffff")) 
+
+func increase_counter():
+	counterValue += 1
+	set_counter_amount()
+
+func set_counter_amount(value:int = counterValue, total:int = counterTotal):
+	%counter.text = str(value, " / ", total)
+
+func show_counter(value:bool):
+	$UI/collectables.visible = value

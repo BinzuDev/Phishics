@@ -77,8 +77,7 @@ _data = {
 script = ExtResource("1_d73hm")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-offset = Vector2(0, 75)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.4983861, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_x31e8")

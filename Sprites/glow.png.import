@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pdyrqt81ou6p"
-path.s3tc="res://.godot/imported/pufferfish.png-bcaba6172e016986ba092c34b33f722d.s3tc.ctex"
+uid="uid://dtql60hdbytna"
+path.s3tc="res://.godot/imported/glow.png-57c1da0e6a034c6b3e66fc70903ef05f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,14 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://Skins/pufferfish.png"
-dest_files=["res://.godot/imported/pufferfish.png-bcaba6172e016986ba092c34b33f722d.s3tc.ctex"]
+source_file="res://Sprites/glow.png"
+dest_files=["res://.godot/imported/glow.png-57c1da0e6a034c6b3e66fc70903ef05f.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -26,6 +28,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

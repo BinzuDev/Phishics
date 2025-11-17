@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://danbt80ck41n5"]
 
-[ext_resource type="Script" uid="uid://rdy6ljwgotcb" path="res://_MANAGERS/trick_panel.gd" id="1_5qu7t"]
+[ext_resource type="Script" uid="uid://rdy6ljwgotcb" path="res://_MANAGERS/UI/trick_panel.gd" id="1_5qu7t"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="1_wjyya"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="2_xyjwe"]
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="3_x8feo"]

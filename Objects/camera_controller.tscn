@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://djw4ew1544rh1"]
 
 [ext_resource type="Script" uid="uid://budr7hv3mbcbu" path="res://Objects/camera_controller.gd" id="1_wukrg"]
-[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="2_hfwrq"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Player/Skins/tuna.png" id="2_hfwrq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qs3ae"]
 shading_mode = 0

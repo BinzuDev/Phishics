@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=17 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://_MANAGERS/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://camhknuxnb4ml" path="res://Sprites/UI/z_tip.png" id="3_i3ltt"]
 [ext_resource type="Texture2D" uid="uid://dmepdx1tygigg" path="res://Sprites/UI/z_tip_on.png" id="4_dp2mv"]
 [ext_resource type="Texture2D" uid="uid://b1tk3oialve3t" path="res://Sprites/UI/talk.png" id="5_bfllj"]
+[ext_resource type="FontFile" uid="uid://cvmx5ax440q2n" path="res://Fonts/segoeui_bold_italic.ttf" id="5_dp2mv"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="6_tffx4"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="8_i3ltt"]
 
@@ -32,8 +33,20 @@ font_color = Color(0.20999998, 1, 1, 1)
 line_spacing = 11.0
 font = ExtResource("6_tffx4")
 font_size = 40
-outline_size = 4
-outline_color = Color(0, 0, 0.34, 1)
+font_color = Color(1, 1, 1, 0)
+shadow_size = 0
+
+[sub_resource type="Theme" id="Theme_i3ltt"]
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0.34117648, 1)
+RichTextLabel/constants/line_separation = 11
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/constants/paragraph_separation = 11
+RichTextLabel/font_sizes/bold_font_size = 40
+RichTextLabel/font_sizes/bold_italics_font_size = 40
+RichTextLabel/font_sizes/italics_font_size = 40
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/italics_font = ExtResource("5_dp2mv")
+RichTextLabel/fonts/normal_font = ExtResource("6_tffx4")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqlrv"]
 animations = [{
@@ -130,20 +143,29 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 140
 theme_override_constants/margin_bottom = 30
 
-[node name="textBox" type="Label" parent="CanvasLayer/textBoxControl/dialogueColorRect/textMargin"]
+[node name="textBoxOld" type="Label" parent="CanvasLayer/textBoxControl/dialogueColorRect/textMargin"]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_vertical = 1
-text = "1fgdfgdfgdfgfdgdfg fgh fh gh fh fh fh fh fh fh fgh fgh fh i i i i i
-2dfgfgdfgdfgrgdgrgdfgfd
-3gfdgdfgfddfgdfdfgdfgdfgdfgdfjdnjnjkfdhjadbsak
+text = "
 "
 label_settings = SubResource("LabelSettings_k6lpl")
 autowrap_mode = 2
 clip_text = true
 visible_characters_behavior = 1
+
+[node name="textBox" type="RichTextLabel" parent="CanvasLayer/textBoxControl/dialogueColorRect/textMargin"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_i3ltt")
+bbcode_enabled = true
+text = "[color=00ea95]gdfgdfg[/color] [i]dfgdfgdfg[/i] [b][i]gfdgdfgdfg gfdgdfg[/i][/b] "
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Control" type="Control" parent="CanvasLayer/textBoxControl/dialogueColorRect/textMargin"]
 layout_mode = 2

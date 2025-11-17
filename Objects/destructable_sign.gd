@@ -64,6 +64,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			$collisionFlat.set_deferred("disabled", false)
 			$AudioStreamPlayer3D.play()
 			fellOff = true
+			$Timer.start()
 		
 		#if the fish isnt surfing and the sign isnt bent yet
 		if body.surfMode == false and not bent:
@@ -111,3 +112,8 @@ func throwAway():
 		set_collision_layer_value(3, true)  #turn it back on after 6 frames
 		$Area3D.set_deferred("monitoring", true)
 	
+
+
+func _on_timer_timeout():
+	if canRespawn:
+		throwAway()

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bvar6l55yty80" path="res://Sprites/sparkle.png" id="2_ryt78"]
 [ext_resource type="AudioStream" uid="uid://b006had3tp33d" path="res://Sounds/railgrind/start_railgrind.wav" id="3_fhqtv"]
 [ext_resource type="AudioStream" uid="uid://bsa651g3bqx66" path="res://Sounds/railgrind/rail_grind1.wav" id="4_jylvs"]
-[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Skins/tuna.png" id="4_k4saa"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Player/Skins/tuna.png" id="4_k4saa"]
 [ext_resource type="AudioStream" uid="uid://c2mb5ind4s8wb" path="res://Sounds/railgrind/rail_grind2.wav" id="5_ryt78"]
 [ext_resource type="AudioStream" uid="uid://dd31im04irmg8" path="res://Sounds/railgrind/rail_grind3.wav" id="6_k4saa"]
 

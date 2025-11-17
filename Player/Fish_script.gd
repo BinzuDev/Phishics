@@ -134,7 +134,7 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
-	if Input.is_action_just_pressed("jump") and canJump and !isRailGrinding:
+	if Input.is_action_just_pressed("jump") and (canJump or noclip) and !isRailGrinding:
 		if !%nearFloor.is_colliding() and surfMode and !noclip:
 			pass #Disable walljumps in surf mode
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
@@ -291,7 +291,7 @@ func _physics_process(_delta: float) -> void:
 	
 	%surfJumpMeter.visible = surfMode# and surfJumpHolding != 0
 	%surfJumpMeter.value = surfJumpHolding
-	if hasSurfedBefore:
+	if SettingsManager.minimalisticSurfJump:
 		%surfJumpMeter.tint_under.a = 0
 		%surfJumpMeter.modulate.a = clamp((surfJumpHolding * 0.25) - 1, 0, 1)
 	
@@ -390,7 +390,8 @@ func _physics_process(_delta: float) -> void:
 		linear_velocity.x *= 0.5
 		linear_velocity.z *= 0.5
 		#print("height: ", height, " speed: ", newSpd, " points: ", 100*height )
-		ScoreManager.give_points(100*height, 0, false, "DIVE")
+		if diving == false:
+			ScoreManager.give_points(50*height, 0, false, "DIVE")
 		if height > 10:
 			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
@@ -556,7 +557,7 @@ func _physics_process(_delta: float) -> void:
 	
 	## SPEEN
 	if angular_velocity.length() > 100:
-		ScoreManager.give_points(angular_velocity.length()*0.05,0,false, "SPEEN")
+		ScoreManager.give_points(angular_velocity.length()*0.1,0,false, "SPEEN")
 		
 	
 	
@@ -716,14 +717,14 @@ func _physics_process(_delta: float) -> void:
 				else:
 					apply_central_force(linear_velocity*-1)
 					
-					var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
-					var keyDir = get_input_axis().normalized()
-					var drift = keyDir*moveDir.length()
-					linear_velocity.x = drift.x
-					linear_velocity.z = drift.y
-					var dotProd = moveDir.normalized().dot(drift.normalized())
-					if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
-						$quickTurn.play()
+					#var moveDir = Vector2(linear_velocity.x, linear_velocity.z)
+					#var keyDir = get_input_axis().normalized()
+					#var drift = keyDir*moveDir.length()
+					#linear_velocity.x = drift.x
+					#linear_velocity.z = drift.y
+					#var dotProd = moveDir.normalized().dot(drift.normalized())
+					#if !$quickTurn.is_playing() and dotProd < 0.4: #if you turn more than 36«degrees
+						#$quickTurn.play()
 			
 		else:
 			%brakingPivot.rotation.x = 0
@@ -893,7 +894,7 @@ func _physics_process(_delta: float) -> void:
 		$recordingManager.fishPressed = true
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			GameManager.hitstop(20)
-			ScoreManager.give_points(height*500, 5, true, "POSE FOR THE CAMERA")
+			ScoreManager.give_points(height*300, 5, true, "POSE FOR THE CAMERA")
 			if ScoreManager.freshState != ScoreManager.FRESH.LOW: #if you dont have a spam penalty
 				ScoreManager.comboTimer += 80 #give you extra time
 			ScoreManager.update_freshness(self)
@@ -1377,11 +1378,12 @@ func is_in_air():
 		
 
 func set_skin(): #doesnt work yet
-	var skin = preload("res://Skins/lemmedoitfoyew.png")
-	$pivotUpper/upperBody.texture = skin
-	$pivotUpper/pivotHead/head.texture = skin
-	$pivotLower/lowerBody.texture = skin
-	$pivotLower/pivotTail/tail.texture = skin
+	pass
+	#var skin = preload("res://Skins/lemmedoitfoyew.png")
+	#$pivotUpper/upperBody.texture = skin
+	#$pivotUpper/pivotHead/head.texture = skin
+	#$pivotLower/lowerBody.texture = skin
+	#$pivotLower/pivotTail/tail.texture = skin
 	
 
 func force_position(newPos : Vector3):
@@ -1463,7 +1465,7 @@ func set_offscreen_reticle(center, posBefore, closest):
 		$reticle/icon.frame = 8
 
 func set_jump_meter_pos(newPos: Vector2):
-	$UI/airSpin.global_position = newPos
+	$UI/surfJump.global_position = newPos
 	
 
 func play_skate_anim(anim_name : String):
@@ -1472,6 +1474,8 @@ func play_skate_anim(anim_name : String):
 func play_shock_wave():
 	if !$UI/shockWaveAnim.is_playing():
 		$UI/shockWaveAnim.play("shockwave")
+		$aura.play()
+		$shockwave.play()
 
 func setJumpPreview(value : bool):
 	$UI/jumpPreview.visible = value

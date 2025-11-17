@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlombqqma6ffi" path="res://_MANAGERS/music_manager.gd" id="1_tylfe"]
 [ext_resource type="AudioStream" uid="uid://djsqi5hk8cqvp" path="res://Music/OST1/calm1.ogg" id="2_rn4ok"]
-[ext_resource type="Script" uid="uid://i7r0qecxe5aj" path="res://_MANAGERS/AdaptiveMusicTrack.gd" id="3_n58e7"]
+[ext_resource type="Script" uid="uid://i7r0qecxe5aj" path="res://Music/AdaptiveMusicTrack.gd" id="3_n58e7"]
 [ext_resource type="AudioStream" uid="uid://ceda4c52rrkek" path="res://Music/OST1/bass.ogg" id="4_l0n74"]
 [ext_resource type="AudioStream" uid="uid://bay2ajwwd0nvy" path="res://Music/OST1/drums1.ogg" id="5_6bu3j"]
 [ext_resource type="AudioStream" uid="uid://b4ilms0b4cl2w" path="res://Music/OST1/melody1.ogg" id="6_wdhd3"]

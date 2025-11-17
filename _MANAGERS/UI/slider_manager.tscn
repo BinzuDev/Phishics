@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cs7cpy7hookvc" path="res://UI_THEME.tres" id="1_8qhll"]
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="2_eayhx"]
-[ext_resource type="Script" uid="uid://c78ctoxwbm07l" path="res://_MANAGERS/slider_manager.gd" id="2_kl5ym"]
+[ext_resource type="Script" uid="uid://c78ctoxwbm07l" path="res://_MANAGERS/UI/slider_manager.gd" id="2_kl5ym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl5ym"]
 font = ExtResource("2_eayhx")

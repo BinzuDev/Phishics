@@ -22,6 +22,7 @@ func _ready():
 	jfgPosition = Vector2(1920,1080)
 	$SubViewport.size = Vector2(1920,1080)
 	$SubViewport.disable_3d = true
+	
 
 func show_prompt(state:bool = true):
 	$enterTip.visible = state
@@ -38,9 +39,8 @@ func _physics_process(_delta):
 	
 	#$SubViewport.size = DisplayServer.window_get_size() 
 	
-	
-	#put the Z icon at the end of the text
-	var finalChar = %textBox.get_character_bounds(%textBox.text.length())
+	var finalChar = %textBoxOld.get_character_bounds(%textBoxOld.text.length())
+	#print(%textBoxOld.text[%textBoxOld.text.length()-1], " : ", %textBoxOld.get_character_bounds(%textBoxOld.text.length()))
 	%confirm.position = Vector2(finalChar.position.x+45, finalChar.position.y+30) 
 	if !finished:
 		%confirm.modulate.a = 0
@@ -73,13 +73,13 @@ func _physics_process(_delta):
 		chara += 1
 		if chara == text.length():
 			finished = true
-	if finished and Input.is_action_just_pressed("confirm"):
+	if finished and Input.is_action_just_pressed("confirm") and !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if %textBoxControl.visible and isRunning:
 			textBoxIndex += 1
 			%confirm.visible = false
 			continue_dialogue()
 	#Skip text button
-	if !finished and Input.is_action_just_pressed("confirm") and chara > 3:
+	if !finished and Input.is_action_just_pressed("confirm") and chara > 3 and !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		#%textBox.text = text
 		%textBox.visible_characters = text.length()
 		chara = text.length()
@@ -100,8 +100,7 @@ func start_dialogue_sequence(dialogue: Dialogue):
 	currentDialogue = dialogue
 	
 	textBoxIndex = 0
-	print("PAUSE STYLE SYSTEM IS")
-	print(currentDialogue.pauseStyleSystem)
+	#print("PAUSE STYLE SYSTEM IS ", currentDialogue.pauseStyleSystem)
 	if currentDialogue.pauseStyleSystem:
 		ScoreManager.hide()
 	if currentDialogue.pauseGame:
@@ -160,7 +159,10 @@ func set_text(newText: String):
 	newText = newText.replace("...", "​​​​​.​​​​​.​​​​​.​​​​​") ##wait 10 frames "." wait 10 frames "."  wait 10 frames "."  wait 10 frames 
 	newText = newText.replace(". ", ". ​​​​​​​​​​​​​​​​​​​​") ##Waits 40 frames after a ". " (Adds 20 Zero width spaces) 
 	newText = newText.replace(",", ",​​​​​​​​​​") ##Waits 20 frames after a "," (Adds 10 Zero width spaces)
-	newText = newText.replace("/w", "​​​​​​​​​​") ##replaces "/w" with a 20 frame wait (Adds 10 Zero width spaces)
+	newText = newText.replace("|", "​​​​​​​​​​") ##replaces "|" with a 20 frame wait (Adds 10 Zero width spaces)
+	newText = newText.replace("[collectedWorms]", str(ScoreManager.counterValue) )
+	newText = newText.replace("[score]", str(ScoreManager.finalScore) )
+	
 	
 	text = newText
 	finished = false
@@ -168,6 +170,12 @@ func set_text(newText: String):
 	#%textBox.text = ""
 	%textBox.text = text
 	%textBox.visible_characters = 0
+	
+	#put the Z icon at the end of the text
+	%textBoxOld.text = %textBox.get_parsed_text()
+	var finalChar = %textBoxOld.get_character_bounds(%textBoxOld.text.length())
+	%confirm.position = Vector2(finalChar.position.x+45, finalChar.position.y+30) 
+	
 
 func end_textbox():
 	if currentDialogue.keepOnScreenAfterEnd:
