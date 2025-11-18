@@ -548,13 +548,13 @@ explosionRadius = 16.0
 knockbackMultiplier = 1.2000000000000002
 
 [node name="Mine7" parent="TheHills/Main/Mines" instance=ExtResource("11_takjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4681554, 21.677135, 22.966717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8119845, 21.677135, 26.559746)
 explosionStrength = 357
 explosionRadius = 11.0
 knockbackMultiplier = 1.3
 
 [node name="Mine8" parent="TheHills/Main/Mines" instance=ExtResource("11_takjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7485023, 16.676586, 15.049345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3336816, 16.676586, 12.073311)
 explosionStrength = 412
 explosionRadius = 11.0
 knockbackMultiplier = 1.5
@@ -741,7 +741,7 @@ strength = 13.0
 recenterCamera = true
 
 [node name="BoostRing3" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.13772115, 0.99047107, 0, -0.9799363, -0.13625634, 0.14546143, 0.14407533, 0.020033116, 0.9893639, 23.2898, 2.376243, 66.57339)
+transform = Transform3D(-0.18865097, 0.96338016, -0.19055043, -0.91757476, -0.10377178, 0.38378122, 0.34995356, 0.24724498, 0.90354985, 18.244795, 2.376243, 66.57339)
 strength = 13.0
 recenterCamera = true
 
@@ -751,7 +751,7 @@ strength = 15.0
 recenterCamera = true
 
 [node name="BoostRing9" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(0.16649428, 0.4068671, 0.89818656, -0.949416, -0.1798123, 0.25744328, 0.2662501, -0.8956154, 0.35634828, 6.716299, 2.376243, 75.18885)
+transform = Transform3D(0.07323915, 0.6617352, 0.74615216, -0.9432485, -0.19702922, 0.2673234, 0.32391098, -0.7233854, 0.6097503, 6.716299, 2.376243, 81.22303)
 strength = 15.0
 recenterCamera = true
 
@@ -792,8 +792,9 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 16.3
 strength = 15.0
 
 [node name="BoostRing14" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 22.348007, 21.227905, 7.493273)
+transform = Transform3D(-4.371139e-08, 1, 0, -0.9751919, -4.262699e-08, 0.22136128, 0.22136128, 9.676008e-09, 0.9751919, 22.348007, 21.227905, 7.869199)
 strength = 15.0
+recenterCamera = true
 
 [node name="BoostRing15" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
 transform = Transform3D(-4.371139e-08, 1, 0, -0.8277275, -3.618112e-08, 0.5611303, 0.5611303, 2.4527782e-08, 0.8277275, 47.424885, 40.27812, 16.686989)
@@ -1093,7 +1094,7 @@ recenterCamera = true
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.055999756, 3.4210176, 2.6615472)
 
 [node name="brick_wall" parent="Islands/island/Basketballhoop" instance=ExtResource("29_awgq2")]
-transform = Transform3D(0.8843041, 0, -0.4669114, 0, 1, 0, 0.4669114, 0, 0.8843041, 9.545734, 4.1391144, -30.693142)
+transform = Transform3D(0.8567446, 0, -0.515741, 0, 1, 0, 0.515741, 0, 0.8567446, 9.545734, 4.1391144, -34.620975)
 
 [node name="grafitti" type="Sprite3D" parent="Islands/island/Basketballhoop/brick_wall"]
 transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0.17919922, 2.7943692, 0.23405457)
@@ -1124,69 +1125,69 @@ transform = Transform3D(-0.10955304, 0, -0.06019245, 0, 0.125, 0, 0.06019245, 0,
 transform = Transform3D(-0.10955304, 0, -0.06019245, 0, 0.125, 0, 0.06019245, 0, -0.10955304, -0.04940033, 4.142643, -0.28259468)
 
 [node name="island4" parent="Islands" instance=ExtResource("27_qmqkv")]
-transform = Transform3D(6.06, 0, 0, 0, 6.06, 0, 0, 0, 6.06, -50.492863, 123.83588, -110.031906)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -50.492863, 112.54448, -110.031906)
 
 [node name="BoostRing" parent="Islands/island4" instance=ExtResource("19_21ejt")]
 transform = Transform3D(0.06565489, 0, 0.15139315, -0.13389114, 0.07702009, 0.058064766, -0.070661485, -0.14593956, 0.030643871, -0.032283783, 4.2297707, -0.43963814)
 
 [node name="island5" parent="Islands" instance=ExtResource("27_qmqkv")]
-transform = Transform3D(2.2828588, 0, -5.613569, 0, 6.06, 0, 5.613569, 0, 2.2828588, -6.59449, 121.95397, -71.08393)
+transform = Transform3D(3.013675, 0, -7.410652, 0, 8, 0, 7.410652, 0, 3.013675, -6.59449, 111.7183, -71.08393)
 
 [node name="BoostRing" parent="Islands/island5" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.068614885, -0.08231142, 0.12548816, -0.14262623, 0.078695506, -0.026366996, -0.04669259, -0.119424894, -0.103865035, -0.5153923, 4.23127, -0.49438596)
-strength = 20.0
+transform = Transform3D(-0.11556147, 0.02271171, 0.11558619, -0.041042585, 0.14401117, -0.06933081, -0.11041507, -0.07730093, -0.09520251, -0.5153923, 4.231269, -0.49438596)
+strength = 30.0
 
 [node name="brokenBits" type="Node3D" parent="Islands"]
 
 [node name="Diamond" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 52.83372, 47.192406, -62.83929)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond2" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.5140299, 0.13459088, 0, -0.13459088, 1.5140299, 0, 0, 0, 1.5200002, 32.231567, 52.954147, -62.787888)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond3" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.34, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 37.55215, 45.444626, -73.89282)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond4" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.9623835, -0.17306691, 0, 0.17306691, 1.9623835, 0, 0, 0, 1.9700003, 62.879997, 48.440075, -79.92191)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond5" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 51.292248, 39.924038, -71.58475)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond10" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 44.767693, 36.12779, -75.039444)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond6" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 29.665615, 71.80897, -137.07529)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond9" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, 1.7341919, 78.01815, -151.96921)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond7" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 32.215313, 64.02079, -145.17618)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="Diamond8" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.11, 0, 0, 0, 1.11, 0, 0, 0, 1.11, 4.412134, 65.47891, -128.93735)
 yRotation = true
-yRandom = true
+yRandomDirection = false
 
 [node name="BoostRing" parent="Islands" instance=ExtResource("19_21ejt")]
 transform = Transform3D(0.4053234, 0.9085555, 0.10119222, -0.912654, 0.40854198, -0.0124822175, -0.052682094, -0.087294176, 0.99478865, -20.829988, 122.60079, -109.32491)
@@ -1401,7 +1402,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5017715, -0.24912088, -0.8286932, -0.15702532, 0.96795285, -0.19606797, 0.85061336, 0.031731572, -0.5250355, -46.779144, 2.177444, 32.46979)
+transform = Transform3D(-0.5017715, -0.24912088, -0.82869565, -0.15702532, 0.96795285, -0.19606856, 0.85061336, 0.031731572, -0.52503705, -46.779144, 2.177444, 32.46979)
 progress = 153.23833
 loop = false
 overrideCamDistance = 15.0

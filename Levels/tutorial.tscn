@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://dkidvdubjn0p"]
+[gd_scene load_steps=150 format=3 uid="uid://dkidvdubjn0p"]
 
 [ext_resource type="Script" uid="uid://f0h5r84k4ug6" path="res://Levels/tutorial.gd" id="1_2kmhi"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_i6m5q"]
@@ -35,11 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://b5yh4ilab234p" path="res://Sprites/seadweed.png" id="20_3l68j"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="23_maxpf"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="24_ygkl2"]
+[ext_resource type="Texture2D" uid="uid://cktinvkrrfcdm" path="res://Textures/purple_stone.png" id="29_0mu0c"]
+[ext_resource type="Texture2D" uid="uid://cnvdnbsgfugxw" path="res://Textures/bricks.png" id="30_fljuj"]
 [ext_resource type="PackedScene" uid="uid://didbl7612qejr" path="res://Objects/tornado.tscn" id="30_rf3la"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/Corals/coral_tube.tscn" id="34_f2byx"]
 [ext_resource type="AudioStream" uid="uid://dk0bu6foohfoh" path="res://Sounds/reticle.ogg" id="34_rmd0x"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="35_rf3la"]
 [ext_resource type="PackedScene" uid="uid://da7lf4yqtunqv" path="res://Objects/seaweed.tscn" id="37_tbpdk"]
+[ext_resource type="PackedScene" uid="uid://o7epqkln0pgr" path="res://Models/rock_1.tscn" id="38_83ucr"]
 [ext_resource type="ArrayMesh" uid="uid://cl10mm78nouw3" path="res://Models/seaweed/seaweed_model.res" id="38_pl552"]
 [ext_resource type="ArrayMesh" uid="uid://csehhkp01tavt" path="res://Models/seaweed/seaweed_patch_generator.obj" id="39_ilxjc"]
 [ext_resource type="PackedScene" uid="uid://djiuoll4ydw1r" path="res://Objects/Corals/coral_tree.tscn" id="40_i8qca"]
@@ -81,6 +84,11 @@ left_to_right = 0.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3hhjp"]
 points = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mu0c"]
+albedo_texture = ExtResource("29_0mu0c")
+uv1_scale = Vector3(3, 3, 3)
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_maxpf"]
 size = Vector3(15.0054, 4.36108, 9.560484)
@@ -902,6 +910,10 @@ size = Vector3(27.497498, 17.77655, 6.56958)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kmhi"]
 size = Vector3(8.545486, 1.2592773, 1.9713135)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exwpa"]
+albedo_texture = ExtResource("30_fljuj")
+texture_filter = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl552"]
 size = Vector3(19.662148, 54.662636, 95.62988)
 
@@ -1082,7 +1094,7 @@ shape = SubResource("ConvexPolygonShape3D_3hhjp")
 
 [node name="slope2" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(-5.68248e-07, 0, -15, 0, 5, 0, 13, 0, -6.55671e-07, 2.33441e-08, 1.06341, -68.4205)
-material_override = ExtResource("3_gdvy0")
+material_override = SubResource("StandardMaterial3D_0mu0c")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("PrismMesh_avars")
 skeleton = NodePath("../../..")
@@ -1520,7 +1532,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31983, 2.80642, -269.331)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80977, 2.80642, -263.502)
 
 [node name="Platform22" type="MeshInstance3D" parent="funArea"]
-transform = Transform3D(98.0755, 0, 0, 0, 33, 0, 0, 0, 123.208, 0, -14.53, -252.15)
+transform = Transform3D(98.0755, 0, 0, 0, 33, 0, 0, 0, 123.208, -0.14252663, -14.53, -252.17537)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_to5w2")
@@ -1557,7 +1569,7 @@ shape = SubResource("BoxShape3D_e312d")
 
 [node name="Platform4" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(-4.11682e-07, 0, -11.7043, 0, 15.1003, 0, 9.41815, 0, -5.11611e-07, -10.0183, -2.9456306, -200.601)
-material_override = ExtResource("3_gdvy0")
+material_override = SubResource("StandardMaterial3D_0mu0c")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
 skeleton = NodePath("../../..")
@@ -1570,7 +1582,7 @@ shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform14" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(-3.6657624e-07, 0, -11.7043, 0, 15.1003, 0, 8.38626, 0, -5.11611e-07, -13.046524, -0.08848861, -204.73433)
-material_override = ExtResource("3_gdvy0")
+material_override = SubResource("StandardMaterial3D_0mu0c")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
 skeleton = NodePath("../../..")
@@ -1683,7 +1695,7 @@ shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform5" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(-3.2739828e-07, 0, -12, 0, 15.1, 0, 7.49, 0, -5.2453663e-07, -7.3378534, 2.690001, -208.40324)
-material_override = ExtResource("3_gdvy0")
+material_override = SubResource("StandardMaterial3D_0mu0c")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
 skeleton = NodePath("../../..")
@@ -1733,6 +1745,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="funArea/Platform7/StaticBody3D"]
 shape = SubResource("BoxShape3D_avars")
 
+[node name="coral_tree" parent="funArea/Platform7" instance=ExtResource("40_i8qca")]
+transform = Transform3D(0.055543326, 0, 0.13422586, 0, 1.1484576, 0, -0.02592487, 0, 0.010727846, -0.34309006, 0.7011404, 0.26881695)
+color = Color(1, 0.43787175, 0.5008137, 1)
+
+[node name="coral_tree2" parent="funArea/Platform7" instance=ExtResource("40_i8qca")]
+transform = Transform3D(0.055543326, 0, 0.13422586, 0, 1.1484576, 0, -0.025924873, 0, 0.010727846, 0.36232758, 0.5683203, 0.09252572)
+color = Color(1, 0.34527314, 0.5646653, 1)
+
 [node name="Platform19" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(2.6306448, 0, -6.357209, 0, 1, 0, 6.357209, 0, 2.6306448, -5.79, 10.75, -210.25)
 material_override = ExtResource("3_gdvy0")
@@ -1761,7 +1781,7 @@ shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform6" type="MeshInstance3D" parent="funArea"]
 transform = Transform3D(7.4514074, 3.1607747, -10.297752, 7.117285, 8.020348, 7.4227552, 8.451485, -9.540964, 2.8282468, 14.342388, -4.0714293, -206.26747)
-material_override = ExtResource("3_gdvy0")
+material_override = SubResource("StandardMaterial3D_exwpa")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
 skeleton = NodePath("../../..")
@@ -1917,6 +1937,20 @@ randomColorOnReady = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3168583, 0, -4.452942)
 color = Color(1, 0.46810246, 0.7039547, 1)
 randomColorOnReady = true
+
+[node name="rocks" type="Node3D" parent="funArea"]
+
+[node name="rock_1" parent="funArea/rocks" instance=ExtResource("38_83ucr")]
+transform = Transform3D(-0.070164025, 0, 2.2338984, 0, 2.235, 0, -2.2338984, 0, -0.070164025, -3.4304922, 1.7867637, -203.54121)
+
+[node name="rock_4" parent="funArea/rocks" instance=ExtResource("38_83ucr")]
+transform = Transform3D(-0.0941799, 0, 2.9985213, 0, 3, 0, -2.9985213, 0, -0.0941799, -16.89949, 1.7867637, -198.98451)
+
+[node name="rock_3" parent="funArea/rocks" instance=ExtResource("38_83ucr")]
+transform = Transform3D(-1.7263616, 2.1237626, -1.2285392, 1.7303433, 2.1188755, 1.231373, 1.7394218, 0, -2.444261, -7.006347, 4.1543937, -203.60374)
+
+[node name="rock_2" parent="funArea/rocks" instance=ExtResource("38_83ucr")]
+transform = Transform3D(-0.05733841, 1.2881349, 1.8255535, 0.04043881, 1.8264537, -1.2875001, -2.2338984, 0, -0.070164025, 33.8128, 1.0542169, -238.08443)
 
 [node name="Goal" parent="." instance=ExtResource("9_lojvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236072, 8.558931, -305.986)
@@ -2479,6 +2513,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.224264, 1.97, -219.98845)
 multimesh = SubResource("MultiMesh_i8qca")
 
 [node name="@MeshInstance3D@41004" type="MeshInstance3D" parent="Seaweed4"]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
+visible = false
+mesh = ExtResource("39_ilxjc")
+skeleton = NodePath("")
+
+[node name="Seaweed5" parent="." instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.460472, 1.97, -203.03354)
+multimesh = SubResource("MultiMesh_i8qca")
+
+[node name="_MeshInstance3D_41004" type="MeshInstance3D" parent="Seaweed5"]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
+visible = false
+mesh = ExtResource("39_ilxjc")
+skeleton = NodePath("")
+
+[node name="Seaweed6" parent="." instance=ExtResource("37_tbpdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6590157, 1.97, -201.31514)
+multimesh = SubResource("MultiMesh_i8qca")
+
+[node name="_MeshInstance3D_41004" type="MeshInstance3D" parent="Seaweed6"]
 transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
 visible = false
 mesh = ExtResource("39_ilxjc")
