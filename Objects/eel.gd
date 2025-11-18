@@ -33,8 +33,8 @@ func _process(delta: float) -> void:
 		fish.force_position($eel_sprite/fish_pos.global_position)
 		var yAxis = Input.get_axis("right", "left")
 		var xAxis = Input.get_axis("back", "forward")
-		$cam_anchor.rotation.y += yAxis * delta * %Camera3D.fov * 0.03
-		$cam_anchor.rotation.x += xAxis * delta * %Camera3D.fov * 0.03
+		$cam_anchor.rotation.y += yAxis * delta * %eelCam.fov * 0.03
+		$cam_anchor.rotation.x += xAxis * delta * %eelCam.fov * 0.03
 		$cam_anchor.rotation.x = clamp($cam_anchor.rotation.x, -PI/2, PI/2)
 		
 		
@@ -42,15 +42,16 @@ func _process(delta: float) -> void:
 			camZoom = clamp(camZoom - 0.5, 22, 52) #from 10.5 to 78.3
 		if Input.is_action_pressed("camera"):
 			camZoom = clamp(camZoom + 0.5, 22, 52)
-		print(camZoom)
-		%Camera3D.fov = 5 + pow(camZoom * 0.0805, 3)
+		#print(camZoom)
+		%eelCam.fov = 5 + pow(camZoom * 0.0805, 3)
 		
 		
 		
 		
 		if Input.is_action_just_pressed("cancel") and !$AnimationPlayer.is_playing():
 			$AnimationPlayer.play("lower_to_floor")
-			$cam_anchor/Camera3D.current = false
+			%eelCam.current = false
+			fish.forceMakeCameraCurrent()
 			fish.visible = true
 			fish.process_mode = Node.PROCESS_MODE_INHERIT
 			$UI.visible = false
@@ -78,13 +79,13 @@ func start_eel_ride():
 
 func _on_animation_finished(anim_name):
 	if anim_name == "raise_high":
-		$cam_anchor/Camera3D.current = true
+		%eelCam.current = true
 		fish.visible = false
 		fish.process_mode = Node.PROCESS_MODE_DISABLED
 		$UI.visible = true
 		$eel_sprite/scope.visible = false
 		ScoreManager.hide()
-		%Camera3D.fov = 60
+		%eelCam.fov = 60
 		print("RESETING THE FOV")
 	if anim_name == "lower_to_floor":
 		$AnimationPlayer.play("idle")
