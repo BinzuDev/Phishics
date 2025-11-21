@@ -912,19 +912,16 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 3
+current_tab = 0
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Mechanics" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3214
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 80
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Mechanics"]
@@ -984,7 +981,7 @@ layout_mode = 2
 trickName = "Homing Dive"
 rarity = "Mechanic"
 description = "When above a targetable object, a reticle will appear around it. Once something has been locked on, press the D key to dive towards the target at high speeds. 
-When multiple targets are under you, you can choose the target using the arrow keys."
+When multiple targets are under you, you can choose the target holding the arrow keys."
 
 [node name="AimReticle" type="Sprite2D" parent="TrickList/Panel/trickTabs/Mechanics/HBoxContainer/VBoxContainer/homing"]
 position = Vector2(456, 51)
@@ -1356,10 +1353,9 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 3595
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
-autoScroll = 21
+autoScroll = -53
 metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Interactibles"]
@@ -1385,6 +1381,13 @@ trickName = "Boost"
 score = "800pts"
 description = "Touch a boost ring bubble."
 
+[node name="boost2" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "Coral"
+score = "1000pts"
+description = "Snap off a coral tree by bumping into it."
+description2 = "Touch it again to break it into a bunch of pieces!"
+
 [node name="hook" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Hooked"
@@ -1408,7 +1411,7 @@ description2 = "Tip: Bowling pins are targetable by the homing attack."
 [node name="ring" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Ring"
-score = "500pts + 2x"
+score = "1200pts"
 description = "Pass through a white and orange striped Score Ring."
 
 [node name="tornado" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
@@ -1477,6 +1480,7 @@ trickName = "Homing Airshot"
 score = "x5"
 rarity = "Rare"
 description = "Use a homing attack on an airborne crab."
+description2 = "This won't count on crabs that became airborne from a boost ring, otherwise that'd be too easy."
 
 [node name="kaboom" parent="TrickList/Panel/trickTabs/Interactibles/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1503,6 +1507,7 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1534,14 +1539,14 @@ description = "-Touch a street sign to rip it off the pole and start using it as
 [node name="sign" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Vandalism"
-score = "2500pts + 1x"
+score = "2500pts"
 rarity = "Uncommon"
 description = "Rip a street sign off of its pole."
 
 [node name="sign2" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Surf Jump"
-score = "8x"
+score = "3x"
 rarity = "Uncommon"
 description = "Jump off of a sign during sign surf by holding down space."
 

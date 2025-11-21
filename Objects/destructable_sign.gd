@@ -59,7 +59,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		if not fellOff: #destruction points
 			if !fileName.get_file().contains("skateBoard"): #stealing isnt vandalism technically?
-				ScoreManager.give_points(2500, 1, true, "VANDALISM")
+				ScoreManager.give_points(2500, 0, true, "VANDALISM")
 				ScoreManager.play_trick_sfx("uncommon")
 			$collisionFlat.set_deferred("disabled", false)
 			$AudioStreamPlayer3D.play()

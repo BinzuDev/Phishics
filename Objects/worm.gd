@@ -1,5 +1,6 @@
 @icon("res://icons/worm.png")
 extends Area3D
+class_name Worm
 
 @export var onlyCollectByParry : bool = false
 @export var glow : bool = false
@@ -44,3 +45,4 @@ func collect():
 	ScoreManager.increase_counter()
 	$WormSFX.play()
 	$WormAnimation.play("Collected") #animation
+	

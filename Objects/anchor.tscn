@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5lcphi6a3exn"]
+[gd_scene load_steps=10 format=3 uid="uid://5lcphi6a3exn"]
 
 [ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="1_1x8o0"]
 [ext_resource type="ArrayMesh" uid="uid://c6ooq7o8nlf6u" path="res://Models/anchor/anchor_01.obj" id="2_lihhe"]
@@ -17,12 +17,18 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve" id="Curve_lihhe"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
 [sub_resource type="Curve3D" id="Curve3D_lihhe"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.15203047, 41.947693, 0, 0, 0, 0, 0, 0, 0, -0.153, 11.01, 0.414),
 "tilts": PackedFloat32Array(1.5707964, 1.5707964)
 }
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_30qiy"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [node name="Anchor" type="Node3D"]
 
@@ -47,12 +53,14 @@ curve = SubResource("Curve3D_1x8o0")
 transform = Transform3D(-0.99732924, 2.776116e-05, 0.07296065, 0.072960444, -4.623077e-07, 0.9973321, 2.7721791e-05, 0.99999154, -1.5497164e-06, 18.429787, 24.350235, -0.24075985)
 loop = false
 invisibleRail = true
+cameraYOverride = SubResource("Curve_lihhe")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.365755)
 curve = SubResource("Curve3D_lihhe")
 
 [node name="rail_grind" parent="Path3D" instance=ExtResource("3_lihhe")]
-transform = Transform3D(-0.99993527, 9.8078075e-08, 0.009854784, 0.009853746, 0.013382722, 0.9998617, -0.00013175265, 0.9998919, -0.013382318, 0.15203047, 41.947693, 0)
+transform = Transform3D(-0.99993527, 9.807808e-08, 0.009854785, 0.009853746, 0.013382723, 0.99986184, -0.00013175265, 0.99989194, -0.013382319, 0.15203047, 41.947693, 0)
 loop = false
 invisibleRail = true
+cameraYOverride = SubResource("Curve_30qiy")

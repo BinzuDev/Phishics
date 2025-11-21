@@ -108,6 +108,7 @@ transform = Transform3D(0.78249955, 0.6226513, 0, -0.6226513, 0.78249955, 0, 0, 
 [node name="SpotLight3D1" type="SpotLight3D" parent="spotLights"]
 transform = Transform3D(-4.371139e-08, 2.9802322e-08, 0.99999994, 0, 0.99999994, -2.9802322e-08, -1, 0, -4.3711392e-08, 0, 0, 15)
 light_energy = 5.5
+light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3
@@ -115,6 +116,7 @@ spot_angle_attenuation = 0.3
 [node name="SpotLight3D2" type="SpotLight3D" parent="spotLights"]
 transform = Transform3D(-4.371139e-08, 0, 0.9999999, 0, 0.9999999, 0, -1, 0, -4.3711392e-08, 0, 0, 7.5)
 light_energy = 5.5
+light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3
@@ -122,6 +124,7 @@ spot_angle_attenuation = 0.3
 [node name="SpotLight3D3" type="SpotLight3D" parent="spotLights"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 light_energy = 5.5
+light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3
@@ -129,6 +132,7 @@ spot_angle_attenuation = 0.3
 [node name="SpotLight3D4" type="SpotLight3D" parent="spotLights"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -7.5)
 light_energy = 5.5
+light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3
@@ -136,6 +140,7 @@ spot_angle_attenuation = 0.3
 [node name="SpotLight3D5" type="SpotLight3D" parent="spotLights"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -15)
 light_energy = 5.5
+light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 40.0
 spot_angle_attenuation = 0.3

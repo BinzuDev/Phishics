@@ -52,7 +52,8 @@ var fish #gets set automatically inside the fish script
 ## Counter UI
 var counterValue : int = 0
 var counterTotal : int = 20
-
+var counterTimer : int = 0
+var counterIsVisible : bool = true
 
 ##Make the airspin meter follow the fish
 func _process(_delta):
@@ -75,6 +76,12 @@ func _physics_process(_delta: float) -> void:
 		if fish.surfMode:
 			ASrequirements = ASsurfRequirements
 			ASrankColor = ASsurfRankColor
+	
+	#Worm counter
+	if counterIsVisible:
+		counterTimer += 1
+	if counterTimer == 180:
+		show_counter(false)
 	
 	
 	## Air spin
@@ -670,9 +677,23 @@ func set_label_settings(value : int):
 func increase_counter():
 	counterValue += 1
 	set_counter_amount()
+	show_counter(true)
+
 
 func set_counter_amount(value:int = counterValue, total:int = counterTotal):
 	%counter.text = str(value, " / ", total)
+	counterValue = value
+	counterTotal = total
 
 func show_counter(value:bool):
-	$UI/collectables.visible = value
+	if value == true:
+		if counterIsVisible == false: #if not visible yet
+			$UI/collectables/collectableAnim.play_backwards("go_away")
+		else:
+			$UI/collectables/collectableAnim.play_backwards("collect")
+		counterTimer = 0
+	else:
+		if counterIsVisible == true: #if not already gone
+			$UI/collectables/collectableAnim.play("go_away")
+	counterIsVisible = value
+	

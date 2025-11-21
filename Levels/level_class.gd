@@ -1,3 +1,4 @@
+@icon("res://icons/level.png")
 extends Node3D
 class_name Level
 
@@ -14,5 +15,7 @@ func _ready():
 		print(waitTime, "s long loading")
 		MenuManager.end_transition()
 	MusicManager.change_music(song)
+	var wormCount = get_tree().get_node_count_in_group("worms")
+	ScoreManager.set_counter_amount(0, wormCount)
 	
 	

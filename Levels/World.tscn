@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=155 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -51,7 +51,6 @@
 [ext_resource type="ArrayMesh" uid="uid://begvgj4h00n1y" path="res://Models/skate_mountain/skateMountain.obj" id="49_kvfdy"]
 [ext_resource type="PackedScene" uid="uid://c8j81r35bfvf7" path="res://Objects/sacabambaspis.tscn" id="50_wb77i"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="51_4ps87"]
-[ext_resource type="PackedScene" uid="uid://b8o6wso73ekvv" path="res://Objects/traffic_cone.tscn" id="52_grwv0"]
 [ext_resource type="PackedScene" uid="uid://dc52vg4b35xsw" path="res://Objects/Corals/coral_tube.tscn" id="52_pj311"]
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="53_fop6s"]
 [ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Objects/Corals/coral_flat.tscn" id="53_pj311"]
@@ -270,6 +269,9 @@ size = Vector3(1, 1.89026, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_63vwh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfmog"]
+size = Vector3(2.8632813, 9.158417, 17.243958)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myu2g"]
 albedo_color = Color(0.266667, 0, 0.172549, 1)
 albedo_texture = ExtResource("22_u27i5")
@@ -465,12 +467,18 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve" id="Curve_fcuyb"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
 [sub_resource type="Curve3D" id="Curve3D_1hfp4"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8.5, 0, 0, 5, 0, 0, 0, -2, 0, 0, 0, 0, 14, 10, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.3, 0, 0, 0, 0, 8.5, 0, 0, 5, 0, 0, 0, -2, 0, 0, 0, 0, 14, 10, 0),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="Curve" id="Curve_cxcqp"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [sub_resource type="Curve3D" id="Curve3D_71q2h"]
 _data = {
@@ -478,6 +486,12 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_71q2h"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_fop6s"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_cxcqp"]
 size = Vector3(182, 67, 19)
@@ -504,7 +518,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_v72nc")
 
 [node name="fish" parent="." instance=ExtResource("5_m3j4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 30.8907, 68.2292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6053, 29.901888, 68.2292)
 gravity_scale = 1.5
 
 [node name="FISH_SPAWN_POINT" type="Node3D" parent="."]
@@ -1002,10 +1016,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.525, 46.914, -26.0178)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, -0.309937)
 
 [node name="worm10" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 3.70373)
-
-[node name="worm11" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 7.89321)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 5.6442385)
 
 [node name="worm14" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.994, 20.8323, -25.9339)
@@ -1024,7 +1035,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.71002, 60.493813, -15.630
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.291, 20.8724, -47.5174)
 
 [node name="worm12" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 12.2016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6729, 5.1155, 11.471558)
 
 [node name="worm13" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7197, 5.1155, 27.3681)
@@ -1425,6 +1436,17 @@ texture = ExtResource("9_3y1xx")
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 72.5065, -0.16662, -4.01329)
 texture = ExtResource("9_3y1xx")
 
+[node name="seeweed9" type="Node3D" parent="intro"]
+transform = Transform3D(0.50083864, 0, -0.31186593, 0, 0.72999996, 0, 0.31186593, 0, 0.50083864, -26.6229, 20.16389, 29.0328)
+
+[node name="Seaweed" type="Sprite3D" parent="intro/seeweed9"]
+transform = Transform3D(0.9828385, 0.035703316, -0.18097791, 0, 0.9810904, 0.1935494, 0.18446606, -0.19022791, 0.96425354, 0.82356834, -1.8284283, -5.3304977)
+texture = ExtResource("9_3y1xx")
+
+[node name="Seaweed2" type="Sprite3D" parent="intro/seeweed9"]
+transform = Transform3D(0.99879605, 0.047225222, -0.013259247, -0.042121597, 0.9642804, 0.26151243, 0.025135636, -0.26063913, 0.9651089, 6.076906, -2.6738758, -4.6079483)
+texture = ExtResource("9_3y1xx")
+
 [node name="seeweed5" type="Node3D" parent="intro"]
 transform = Transform3D(0.0196645, -9.84663e-10, 0.589672, -0.278469, 0.643472, 0.00928644, -0.519777, -0.344737, 0.0173336, 14.7357, 25.5228, 40.3809)
 
@@ -1598,12 +1620,6 @@ debug_color = Color(1, 0, 0, 1)
 
 [node name="eel" parent="intro" instance=ExtResource("31_exl13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3002, 30.0136, 59.9104)
-
-[node name="cone" parent="intro" instance=ExtResource("52_grwv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.393503, 29.568691, 52.0018)
-
-[node name="cone2" parent="intro" instance=ExtResource("52_grwv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.675793, 29.568691, 52.0018)
 
 [node name="group1" type="Node3D" parent="."]
 
@@ -1803,6 +1819,15 @@ strength = 12.0
 transform = Transform3D(-1.84732e-08, -3.96159e-08, -0.999998, -0.906307, 0.422617, 0, 0.422618, 0.906306, -4.37113e-08, -12.02, 1.66, -29.327)
 strength = 16.5
 
+[node name="cameraController" parent="group1" instance=ExtResource("32_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.298148, 18.11286, -44.585423)
+newCameraAngle = Vector3(-90, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group1/cameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19726563, 3.4392853, 2.7762756)
+shape = SubResource("BoxShape3D_nfmog")
+debug_color = Color(0, 0, 1, 1)
+
 [node name="Basketballhoop2" parent="group1" instance=ExtResource("11_vbdqq")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -12.0772, 17.2844, -49.0256)
 
@@ -1882,7 +1907,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="tutoriwall" type="MeshInstance3D" parent="group1"]
-transform = Transform3D(-7.73341e-09, 0, -6.2761, 0, 3.62261, 0, 0.17692, 0, -2.74337e-07, -13.1156, 22.2604, -53.3321)
+transform = Transform3D(-7.552718e-09, 3.4030183e-08, -6.2761, 0.038021132, 3.537967, 3.5527137e-15, 0.17278622, -0.7785199, -2.74337e-07, -13.203748, 19.830486, -52.971172)
 material_override = SubResource("StandardMaterial3D_iyc8y")
 mesh = SubResource("BoxMesh_2uuim")
 skeleton = NodePath("../../..")
@@ -2907,6 +2932,7 @@ transform = Transform3D(-0.834488, -0.483735, 0.263873, -0.501511, 0.86515, 0, -
 transform = Transform3D(0.00464013, 0.0024258, 0.999986, -0.463296, 0.886202, 0, -0.886191, -0.463289, 0.00523596, 83.8049, 21.7343, -51.4284)
 strength = 29.0
 centerPlayer = true
+deactivateDive = 200
 
 [node name="BoostRing24" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(-0.653919, -0.746964, -0.120137, -0.752415, 0.658688, 0, 0.0791328, 0.0903926, -0.992757, 59.6517, 18.5475, 16.7977)
@@ -3648,7 +3674,7 @@ transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 162.
 transform = Transform3D(0.9, 0, -4.9738e-14, 0, 0.9, 0, 4.9738e-14, 0, 0.9, 164.088, 32.3458, -157.613)
 
 [node name="Worm" parent="highUpSection" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.72995, 104.40183, -158.90443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.72995, 106.7372, -158.87367)
 
 [node name="group3" type="Node3D" parent="."]
 
@@ -4397,7 +4423,7 @@ disableHoming = true
 floating = true
 
 [node name="strike_zone6" parent="group3" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.59, 19.270195, -135.593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.91983, 19.270195, -139.53653)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="group3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.465, 29.0233, -35.403)
@@ -4812,14 +4838,16 @@ curve = SubResource("Curve3D_cxcqp")
 transform = Transform3D(-0.104654245, -0.61813444, -0.7790553, -0.13030498, 0.78512317, -0.60545003, 0.9859201, 0.03815225, -0.16271561, 10.077539, 1.6278728, 0.39250007)
 progress = 10.454177
 loop = false
+cameraYOverride = SubResource("Curve_fcuyb")
 
 [node name="rightPipe" type="Path3D" parent="group4/skateCSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-4.371109e-08, 0, -0.9999933, 0, 0.9999883, 0, 0.9999932, 0, -4.3711097e-08, 0, 0, 0)
+transform = Transform3D(-1.6269605e-07, 0.059891466, -0.99819565, 3.7252645e-09, 0.9981908, 0.059891753, 0.9999932, 6.0256213e-09, -1.6262672e-07, 0, 0.3, 0)
 loop = false
+cameraYOverride = SubResource("Curve_cxcqp")
 
 [node name="Worm2" parent="group4/skateCSG" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 74.991974, 42.814972, -42.904327)
@@ -4873,7 +4901,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 19.000002, -95)
 size = Vector3(77, 2, 20)
 
 [node name="Path3D4" type="Path3D" parent="group4/skateCSG"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 24, 14.000002, -74)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 24, 12.460421, -74.51405)
 curve = SubResource("Curve3D_71q2h")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
@@ -4881,15 +4909,17 @@ debug_custom_color = Color(18.892157, 0, 0, 1)
 transform = Transform3D(-0.99999166, -6.181667e-08, -6.1817055e-08, 0, 0.70710045, -0.7071046, 8.7422045e-08, -0.70710033, -0.70710474, 0, 5.283596, 5.283596)
 progress = 7.472105
 loop = false
+cameraYOverride = SubResource("Curve_71q2h")
 
 [node name="Path3D5" type="Path3D" parent="group4/skateCSG"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 49, 14.000002, -74)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 49, 12.460421, -74.51405)
 curve = SubResource("Curve3D_71q2h")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="group4/skateCSG/Path3D5" instance=ExtResource("53_fop6s")]
 transform = Transform3D(-0.99999166, -6.181667e-08, -6.1817055e-08, 0, 0.70710045, -0.7071046, 8.7422045e-08, -0.70710033, -0.70710474, 0, 0, 0)
 loop = false
+cameraYOverride = SubResource("Curve_fop6s")
 
 [node name="BoostRing" parent="group4" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.197918, 0.171652, -1.47694, -1.00884, 1.11005, -0.00617843, 1.09228, 0.994146, 0.261912, 202.406, 44.4216, -194.615)
@@ -4920,7 +4950,7 @@ transform = Transform3D(0.927438, 0.364417, -0.0840186, -0.36135, 0.931102, 0.04
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.736, 19.8776, -137.948)
 
 [node name="destructable_sign" parent="group4" instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.278, 20.44, -149.731)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 188.67679, 19.247084, -134.36803)
 signSprite = "uid://bm74cvbdnkudp"
 canRespawn = true
 

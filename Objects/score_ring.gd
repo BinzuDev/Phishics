@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is player and cooldown > 20:
-		ScoreManager.give_points(500, 2, true, "RING", "rare")
+		ScoreManager.give_points(1200, 0, true, "RING", "rare")
 		if freshCooldown == 0:
 			ScoreManager.update_freshness(self)
 			freshCooldown = 60 #because its unfair to ruin your freshness because you go in and out

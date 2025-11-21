@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=78 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -65,6 +65,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_iixud"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfxg8"]
 albedo_color = Color(0.266667, 0, 0.172549, 1)
@@ -175,6 +178,9 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_5yavy"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
 [sub_resource type="Curve3D" id="Curve3D_650ha"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20),
@@ -182,12 +188,27 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_nggdu"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_djbud"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
 [sub_resource type="Curve3D" id="Curve3D_eej72"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_f3m4v"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_vqehh"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_og8ue"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [sub_resource type="Curve3D" id="Curve3D_gl2w4"]
 closed = true
@@ -197,12 +218,27 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Curve" id="Curve_xbmm1"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
 [sub_resource type="Curve3D" id="Curve3D_s5qhn"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, -5, 0, 0, 5, 0, 25, 5, 0, 0, 0, 0, 0, 0, 0, 20, 10, 0, 0, 0, 0, 0, 0, 0, 15, 10, 0),
 "tilts": PackedFloat32Array(0, 0, 0, -0.7853982, -1.5707964)
 }
 point_count = 5
+
+[sub_resource type="Curve" id="Curve_c7i0c"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_wvhf0"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_6h88u"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+
+[sub_resource type="Curve" id="Curve_f2mxf"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gl2w4"]
 
@@ -319,6 +355,7 @@ debug_custom_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 
 [node name="rail_grind" parent="Path3D" instance=ExtResource("7_p34o4")]
 transform = Transform3D(0.8334061, -0.20931463, -0.51148003, 7.450539e-09, 0.92549264, -0.37874642, 0.552651, 0.31564966, 0.7713196, -0.40761948, 1.435791, -0.10836792)
+cameraYOverride = SubResource("Curve_iixud")
 
 [node name="destructable_sign" parent="." instance=ExtResource("3_wstlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.972294, 119.427, 63.530895)
@@ -870,6 +907,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind1" parent="Path3D2" instance=ExtResource("7_p34o4")]
 loop = false
+cameraYOverride = SubResource("Curve_5yavy")
 
 [node name="Path3D7" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.961525, 118.64925, 67.3549)
@@ -879,6 +917,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 [node name="rail_grind1" parent="Path3D7" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-0.9999944, 0, -8.742254e-08, 0, 0.99999195, 0, 8.7422286e-08, 0, -0.9999973, 0, 0, 0)
 loop = false
+cameraYOverride = SubResource("Curve_nggdu")
 
 [node name="Path3D6" type="Path3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -44.11975, 118.64925, 19.90998)
@@ -887,6 +926,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 
 [node name="rail_grind3" parent="Path3D6" instance=ExtResource("7_p34o4")]
 loop = false
+cameraYOverride = SubResource("Curve_djbud")
 
 [node name="Path3D4" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.261734, 118.64925, 29.009876)
@@ -896,6 +936,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 [node name="rail_grind2" parent="Path3D4" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, 0, 0, 0)
 loop = false
+cameraYOverride = SubResource("Curve_f3m4v")
 
 [node name="Path3D8" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.367397, 118.64925, -83.06743)
@@ -905,6 +946,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 [node name="rail_grind2" parent="Path3D8" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, 0, 0, 0)
 loop = false
+cameraYOverride = SubResource("Curve_vqehh")
 
 [node name="Path3D5" type="Path3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -35.12465, 118.64925, 59.535225)
@@ -914,6 +956,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 [node name="rail_grind4" parent="Path3D5" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-4.3711143e-08, 0, -0.9999973, 0, 0.99999195, 0, 0.9999944, 0, -4.371127e-08, 0, 0, 0)
 loop = false
+cameraYOverride = SubResource("Curve_og8ue")
 
 [node name="Path3D3" type="Path3D" parent="."]
 transform = Transform3D(0.9999944, 0, 0, 0, 0.99999195, 0, 0, 0, 0.9999973, -31.729862, 119.66412, 53.598602)
@@ -922,6 +965,7 @@ debug_custom_color = Color(4.459082e-05, 4.459082e-05, 4.459082e-05, 1)
 
 [node name="rail_grind" parent="Path3D3" instance=ExtResource("7_p34o4")]
 transform = Transform3D(-0.9857448, 0.014073231, -0.1676444, 0, 0.9964913, 0.083652705, 0.16823396, 0.08246025, -0.98229027, -1.2627583, -0.22460175, -0.0111579895)
+cameraYOverride = SubResource("Curve_xbmm1")
 
 [node name="macaroni" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.810518, 118.64925, -108.84256)
@@ -932,6 +976,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 transform = Transform3D(4.371081e-08, -3.821291e-15, 0.99999195, -0.99998677, 1.3113142e-07, 4.3711037e-08, -1.3113242e-07, -0.9999791, 1.91067e-15, 15, 10, 0)
 progress = 40.863247
 loop = false
+cameraYOverride = SubResource("Curve_c7i0c")
 
 [node name="macaroni2" type="Path3D" parent="."]
 transform = Transform3D(-1, 7.642742e-15, 8.742278e-08, 6.181724e-08, -0.7071067, 0.7071069, 6.181723e-08, 0.7071069, 0.7071067, 5.1095457, 134.81871, -116.154495)
@@ -942,6 +987,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 transform = Transform3D(-4.3710926e-08, 0, -0.9999938, 0, 0.99998385, 0, 0.99998945, 0, -4.371112e-08, 0.51362765, 0, 0)
 progress = 0.5148769
 loop = false
+cameraYOverride = SubResource("Curve_wvhf0")
 
 [node name="macaroni3" type="Path3D" parent="."]
 transform = Transform3D(1.0000001, 0, 0, 0, -4.3711392e-08, -1, 0, 1.0000001, -4.371139e-08, -3.0329752, 132.20305, -125.92073)
@@ -952,6 +998,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 transform = Transform3D(4.3710944e-08, -3.82131e-15, 0.9999939, -0.99998987, 1.3113207e-07, 4.3711122e-08, -1.3113282e-07, -0.999984, 1.9106738e-15, 15, 10, 0)
 progress = 40.863247
 loop = false
+cameraYOverride = SubResource("Curve_6h88u")
 
 [node name="macaroni4" type="Path3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.589369, 125.68526, -131.65831)
@@ -962,6 +1009,7 @@ debug_custom_color = Color(7.546413e-05, 7.546413e-05, 7.546413e-05, 1)
 transform = Transform3D(4.371081e-08, -3.821291e-15, 0.99999195, -0.99998677, 1.3113142e-07, 4.3711037e-08, -1.3113242e-07, -0.9999791, 1.91067e-15, 15, 10, 0)
 progress = 40.863247
 loop = false
+cameraYOverride = SubResource("Curve_f2mxf")
 
 [node name="BoostRing" parent="." instance=ExtResource("13_4rq4h")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2.8142698, 118.25492, 108.68952)
@@ -1013,7 +1061,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.897705, 118.3488, 97.02364
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 98.50914, 118.3488, 93.6362)
 
 [node name="strike_zone2" parent="." instance=ExtResource("17_eej72")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.792755, 118.3488, 92.74423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.87048, 118.11119, 92.49279)
 
 [node name="strike_zone3" parent="." instance=ExtResource("17_eej72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.1871, 118.3488, 92.69693)
@@ -1172,7 +1220,7 @@ transform = Transform3D(-0.79274726, 0, -0.6095505, 0, 1, 0, 0.6095505, 0, -0.79
 billboardTexture = "uid://5aivmk2p7lrr"
 
 [node name="coral_tree11" parent="." instance=ExtResource("22_s5qhn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.685436, 118.513664, 57.12205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.996769, 118.513664, 88.30589)
 color = Color(1, 0.37806493, 0.61473095, 1)
 
 [node name="flat_coral" parent="." instance=ExtResource("26_bkvjd")]

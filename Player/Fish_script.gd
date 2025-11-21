@@ -56,7 +56,7 @@ var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
 var isRailGrinding : bool = false
-var currentRailObj : Node = null
+var currentRailObj : railGrind = null
 var targetingRail : bool = false #if the current homing target is a railgrind
 var railCooldown : int = 0 #Stops the game from fucking crashing and somehow also crashing hams's audio
 
@@ -75,6 +75,7 @@ var sfxCoolDown : int = 0
 #OTHER
 var noclip := false
 var jumpPreview : Vector2
+var deactivateDive : int = 0
 
 var trueSpeed := Vector3(0,0,0) #Keeps track of how fast you're moving in global space
 
@@ -284,7 +285,7 @@ func _physics_process(_delta: float) -> void:
 		surfJumpHolding += 1
 		if surfJumpHolding >= 20 and surfMode:
 			deactivateSurfMode()
-			ScoreManager.give_points(0, 8, true, "SURF JUMP")
+			ScoreManager.give_points(0, 3, true, "SURF JUMP")
 			apply_impulse(JUMP_STRENGTH*5)
 	else:
 		surfJumpHolding = 0
@@ -298,7 +299,7 @@ func _physics_process(_delta: float) -> void:
 	## HOMING ATTACKs
 	var closest = null
 	var coyoteTimeTarget = false
-	if (%homingArea.has_overlapping_areas() or timeSinceNoTargets < 16) and !%nearFloor.is_colliding() and !isHeld:
+	if (%homingArea.has_overlapping_areas() or timeSinceNoTargets < 16) and !%nearFloor.is_colliding() and !isHeld and deactivateDive == 0:
 		#if !coyoteTimeTarget: #dont get closest target in coyote time bcs there isnt one
 		closest = get_closest_target()
 		
@@ -381,8 +382,9 @@ func _physics_process(_delta: float) -> void:
 		height = global_position.y - %heightDetect.get_collision_point().y
 	else:
 		height = 150
-		
-	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld:
+	deactivateDive = max(deactivateDive-1, 0)
+	
+	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld and deactivateDive == 0:
 		var newSpd = clamp(height*-1.5 -10, -90, -10)
 		lastDivingSpeed = max(height, lastDivingSpeed, 10) #use max so you can't override it by diving mid dive
 		
@@ -1123,7 +1125,18 @@ func _process(_delta):
 		#Railgrind camera
 		if isRailGrinding and currentRailObj:
 			if currentRailObj.overrideCamDistance != 0:
-				defaultCameraDistance = currentRailObj.overrideCamDistance 
+				defaultCameraDistance = currentRailObj.overrideCamDistance
+			
+			#1=straight up, 0=sideways, -1=fully upside down
+			if currentRailObj.dynamicCamera:
+				var upsideDownness = $surfPivot.global_transform.basis.y.y 
+				defaultCameraAngle.x = -35 * upsideDownness
+				defaultCameraOffset.y = 0.8 * upsideDownness
+				var offset = currentRailObj.get_graph_value()
+				print("offset: ",  offset, " progress: ", currentRailObj.progress_ratio)
+				newAng += offset
+				wrap_camera(defaultCameraAngle.y, newAng, true)
+				defaultCameraAngle.y = lerp(defaultCameraAngle.y, newAng, 0.3)
 		
 	
 	
@@ -1131,6 +1144,9 @@ func _process(_delta):
 	
 	## inside camera controller areas
 	if $detectCamSwitch.has_overlapping_areas():
+		
+		
+		print($detectCamSwitch.get_overlapping_areas())
 		var area = $detectCamSwitch.get_overlapping_areas()[-1]
 		targetCamAngle = area.newCameraAngle
 		targetCamOffset = area.newCameraOffset

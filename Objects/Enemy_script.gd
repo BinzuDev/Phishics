@@ -15,6 +15,7 @@ var agro : bool = false
 var speed := 2
 var hp := 2
 var shiny :bool = false
+var airborneByBoostRing : bool = false
 
 var crackedSprite
 
@@ -60,6 +61,7 @@ func _physics_process(_delta: float) -> void:
 		#print("enemy floored")
 		$Area3D.monitoring = true
 		$CrabSprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		
 	else:
 		$Area3D.monitoring = false
 		#$CrabSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
@@ -73,6 +75,9 @@ func _physics_process(_delta: float) -> void:
 		$CrabSprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 		$homingTarget.priority = -1 #lower the target priority of dead crabs
 	#print("scale is2", scale)
+	
+	if $FloorCast.is_colliding():
+		airborneByBoostRing = false #stops the boost ring airshot nerf
 	
 
 
@@ -199,7 +204,7 @@ func _on_bump_body_entered(body: Node3D) -> void:
 			body.linear_velocity.y = 20
 			body.linear_velocity.z *= 0.4
 			
-			if $FloorCast/airshot.is_colliding():
+			if $FloorCast/airshot.is_colliding() or airborneByBoostRing: #nerfs airshot in THE PIT
 				if hp == 2:
 					ScoreManager.give_points(1000, 0, true, "HOMING ATTACK")
 				if hp == 1:

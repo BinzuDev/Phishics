@@ -27,6 +27,7 @@ func _on_area_3d_body_entered(body):
 			body.currentRailObj.mountingSpeed += 10
 		$AnimationPlayer.play("spin")
 		fishTouched = true
+		$AudioStreamPlayer3D.play()
 		ScoreManager.give_points(500, 0, true, "TORNADO")
 		ScoreManager.update_freshness(self)
 		

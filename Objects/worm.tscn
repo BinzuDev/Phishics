@@ -280,7 +280,7 @@ billboard_mode = 1
 size = Vector2(4.5, 4.5)
 orientation = 2
 
-[node name="Worm" type="Area3D"]
+[node name="Worm" type="Area3D" groups=["worms"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_rs7oq")

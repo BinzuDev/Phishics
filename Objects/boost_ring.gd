@@ -14,6 +14,7 @@ extends Area3D
 @export var affectFreshness : bool = true
 ##If free roam camera is on, turn the camera to face the launch direction upon contact
 @export var recenterCamera : bool = false 
+@export var deactivateDive : int = 0
 
 var strengthLastFrame = strength
 
@@ -74,6 +75,8 @@ func _on_body_entered(body: Node3D) -> void:
 		body.apply_torque_impulse(distance)
 		body.apply_impulse(distance*3)
 		
+		if body is enemy:
+			body.airborneByBoostRing = true #nerfs homing airshot
 		
 		if body is player:
 			ScoreManager.reset_airspin()
@@ -83,6 +86,7 @@ func _on_body_entered(body: Node3D) -> void:
 				freshCooldown = 0 
 			ScoreManager.play_trick_sfx("rare")
 			$AnimationPlayer.play("boost")
+			body.deactivateDive = deactivateDive
 			if body.isRailGrinding:
 				body.currentRailObj.mountingSpeed += 10
 			##Rotate the camera

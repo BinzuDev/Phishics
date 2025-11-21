@@ -447,6 +447,8 @@ volume_db = -4.0
 unit_size = 70.0
 panning_strength = 3.0
 bus = &"soundEffects"
+attenuation_filter_cutoff_hz = 10000.0
+attenuation_filter_db = -6.0
 
 [node name="detectFloor" type="RayCast3D" parent="."]
 target_position = Vector3(0, -47, 0)

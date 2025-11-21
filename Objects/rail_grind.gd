@@ -7,6 +7,24 @@ extends PathFollow3D
 @export var faceStraightAhead : bool = false ##Makes the surfboard point forward instead of at an angle
 @export var oneWay : bool = false ##The rail will always make you move in the FORWARD direction (in the order of the points in the curve3D)
 @export_range(0, 20, 0.1, "or_greater") var overrideCamDistance := 0.0 ##Set the camera distance, default is 6. 0 = do nothing
+@export var dynamicCamera : bool = false
+@export var cameraYOverride : Curve = make_graph()
+
+func make_graph():
+	var curve = Curve.new()
+	curve.min_value = -90
+	curve.max_value = 90
+	return curve 
+
+func get_graph_value():
+	if !cameraYOverride:
+		return 0
+	else:
+		var angle = cameraYOverride.sample(progress_ratio)
+		if direction == "backward":
+			angle *= -1
+		return angle
+		
 
 var isBeingUsed: bool = false #if the fish is currently using this rail
 var fish: player
@@ -41,7 +59,6 @@ func _ready():
 
 
 
-##TODO: jumping off of a rail thats close to the ground counts as a pogo jump?????
 ##TODO: rail tricks should do less points when going slower, maybe give you points
 
 
