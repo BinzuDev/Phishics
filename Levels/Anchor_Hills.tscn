@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://d4ct1whpu2n52"]
+[gd_scene load_steps=60 format=3 uid="uid://d4ct1whpu2n52"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_78o1s"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_o0o2q"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://igkx2qpnjl6x" path="res://Objects/Jellyfish.tscn" id="17_vcbwq"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="18_dfos0"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="19_21ejt"]
+[ext_resource type="PackedScene" uid="uid://uunlwxu4wgph" path="res://Models/stone_pillar_hole.tscn" id="19_656pr"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="21_qgejm"]
 [ext_resource type="PackedScene" uid="uid://o7epqkln0pgr" path="res://Models/rock_1.tscn" id="22_lr02x"]
 [ext_resource type="PackedScene" uid="uid://cfjrh6fec3lfx" path="res://Models/chain/chain.tscn" id="23_vf164"]
@@ -857,6 +858,9 @@ transform = Transform3D(-0.32160473, 0, -5.6358314, 0, 5.6449995, 0, 5.6358314, 
 [node name="stone_pillar3" parent="TheHills/StonePillars" instance=ExtResource("6_xkte1")]
 transform = Transform3D(-1.676788, 0, 1.1083692, 0, 2.01, 0, -1.1083692, 0, -1.676788, 36.679085, -9.159181, 46.87479)
 
+[node name="stone_pillar_hole" parent="TheHills/StonePillars" instance=ExtResource("19_656pr")]
+transform = Transform3D(-2.6614203, 0, -6.2955594, 0, 6.8349996, 0, 6.2955594, 0, -2.6614203, 94.10709, -2.1669016, -54.815086)
+
 [node name="Signs" type="Node3D" parent="TheHills"]
 
 [node name="sign" type="Node3D" parent="TheHills/Signs"]
@@ -1015,6 +1019,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.042427, 58.761578, -19.775
 [node name="Worm5" parent="worms" instance=ExtResource("18_dfos0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.24066, 50.2407, 160.18648)
 
+[node name="Worm6" parent="worms" instance=ExtResource("18_dfos0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.03291, 17.284962, -56.18082)
+
 [node name="billboard" parent="." instance=ExtResource("25_rmb8m")]
 transform = Transform3D(0.6869735, 0, -0.72668266, 0, 1, 0, 0.72668266, 0, 0.6869735, -25.996037, -0.11342603, 96.79304)
 billboardTexture = "uid://c7m5pw5cqoc16"
@@ -1039,7 +1046,7 @@ signSprite = "uid://bm74cvbdnkudp"
 canRespawn = true
 
 [node name="sign2" type="Node3D" parent="."]
-transform = Transform3D(-0.112613544, 0, -0.993639, 0, 1.0000001, 0, 0.9936387, 0, -0.11261356, 83.97023, 2.7643914, 96.68673)
+transform = Transform3D(-0.112613544, 0, -0.993639, 0, 1.0000001, 0, 0.9936387, 0, -0.11261356, 120.103004, 2.7643914, 96.68673)
 metadata/_edit_group_ = true
 
 [node name="streetsign" parent="sign2" instance=ExtResource("11_bv6eu")]
@@ -1426,7 +1433,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.8000448, -0.33600858, 0.92717755, -0.16569604, 0.79533964, 0.18514292, -0.5774631, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.8000464, -0.33600858, 0.92717755, -0.16569638, 0.79533964, 0.18514292, -0.5774643, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 autoUpDown = true
