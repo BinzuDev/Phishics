@@ -81,6 +81,8 @@ point_count = 18
 
 [sub_resource type="Curve" id="Curve_656pr"]
 _limits = [-90.0, 90.0, 0.0, 1.0]
+_data = [Vector2(0.2, 40), 0.0, 0.0, 0, 0, Vector2(0.88, 40), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_dfos0"]
 closed = true
@@ -226,6 +228,7 @@ progress = 10.571818
 loop = false
 invisibleRail = true
 overrideCamDistance = 12.0
+dynamicCamera = true
 cameraYOverride = SubResource("Curve_656pr")
 
 [node name="Chain" parent="TheHills/Chains" instance=ExtResource("23_vf164")]
@@ -1423,8 +1426,9 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.80004305, -0.33600858, 0.92717755, -0.16569568, 0.79533964, 0.18514292, -0.57746184, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.8000448, -0.33600858, 0.92717755, -0.16569604, 0.79533964, 0.18514292, -0.5774631, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
+autoUpDown = true
 dynamicCamera = true
 cameraYOverride = SubResource("Curve_lps8a")

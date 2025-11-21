@@ -1128,10 +1128,11 @@ func _process(_delta):
 				defaultCameraDistance = currentRailObj.overrideCamDistance
 			
 			#1=straight up, 0=sideways, -1=fully upside down
-			if currentRailObj.dynamicCamera:
+			if currentRailObj.autoUpDown:
 				var upsideDownness = $surfPivot.global_transform.basis.y.y 
 				defaultCameraAngle.x = -35 * upsideDownness
 				defaultCameraOffset.y = 0.8 * upsideDownness
+			if currentRailObj.dynamicCamera and autoCamTurning:
 				var offset = currentRailObj.get_graph_value()
 				print("offset: ",  offset, " progress: ", currentRailObj.progress_ratio)
 				newAng += offset

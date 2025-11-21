@@ -18,7 +18,9 @@ _data = {
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_lihhe"]
-_limits = [-90.0, 90.0, 0.0, 1.0]
+_limits = [-180.0, 90.0, 0.0, 1.0]
+_data = [Vector2(0, -180), 0.0, 0.0, 0, 0, Vector2(0.50168353, -90), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_lihhe"]
 _data = {
@@ -53,14 +55,16 @@ curve = SubResource("Curve3D_1x8o0")
 transform = Transform3D(-0.99732924, 2.776116e-05, 0.07296065, 0.072960444, -4.623077e-07, 0.9973321, 2.7721791e-05, 0.99999154, -1.5497164e-06, 18.429787, 24.350235, -0.24075985)
 loop = false
 invisibleRail = true
+dynamicCamera = true
 cameraYOverride = SubResource("Curve_lihhe")
+sameInBothDirections = true
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.365755)
 curve = SubResource("Curve3D_lihhe")
 
 [node name="rail_grind" parent="Path3D" instance=ExtResource("3_lihhe")]
-transform = Transform3D(-0.99993527, 9.80781e-08, 0.009854787, 0.009853746, 0.013382724, 0.999862, -0.00013175265, 0.99989206, -0.013382322, 0.15203047, 41.947693, 0)
+transform = Transform3D(-0.99993527, 9.807818e-08, 0.009854805, 0.009853746, 0.013382736, 0.9998638, -0.00013175265, 0.99989295, -0.013382346, 0.15203047, 41.947693, 0)
 loop = false
 invisibleRail = true
 cameraYOverride = SubResource("Curve_30qiy")

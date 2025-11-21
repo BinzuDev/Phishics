@@ -1,6 +1,6 @@
 @icon("res://icons/level.png")
 extends Node3D
-class_name Level
+class_name Levelq
 
 @export var song : String = "OST1"
 

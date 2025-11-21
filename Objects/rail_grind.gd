@@ -7,8 +7,10 @@ extends PathFollow3D
 @export var faceStraightAhead : bool = false ##Makes the surfboard point forward instead of at an angle
 @export var oneWay : bool = false ##The rail will always make you move in the FORWARD direction (in the order of the points in the curve3D)
 @export_range(0, 20, 0.1, "or_greater") var overrideCamDistance := 0.0 ##Set the camera distance, default is 6. 0 = do nothing
+@export var autoUpDown : bool = false ##Automatically move the camera up and down, use whenever the rail goes upside down.
 @export var dynamicCamera : bool = false
 @export var cameraYOverride : Curve = make_graph()
+@export var sameInBothDirections : bool = false ##Make the cam override the same regardless of movement direction
 
 func make_graph():
 	var curve = Curve.new()
@@ -22,7 +24,10 @@ func get_graph_value():
 	else:
 		var angle = cameraYOverride.sample(progress_ratio)
 		if direction == "backward":
-			angle *= -1
+			if sameInBothDirections:
+				angle += 180
+			else:
+				angle *= -1
 		return angle
 		
 
