@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d003wfuaw73ku"]
+[gd_scene load_steps=33 format=3 uid="uid://d003wfuaw73ku"]
 
 [ext_resource type="Script" uid="uid://ckayq0dd14upk" path="res://Objects/eel.gd" id="2_f2cti"]
 [ext_resource type="Texture2D" uid="uid://h7dhlu128sc" path="res://Sprites/Garden Eel/eel_head.png" id="2_kqlh1"]
@@ -8,12 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://ddlo0w70bjrgd" path="res://Sounds/scope/scope open2.ogg" id="5_cpk5w"]
 [ext_resource type="AudioStream" uid="uid://bk2u1ytejuaaw" path="res://Sounds/scope/scope close.ogg" id="5_nvi72"]
 [ext_resource type="AudioStream" uid="uid://d721sx4b04ep" path="res://Sounds/scope/scope close2.ogg" id="6_3o7ct"]
-[ext_resource type="Texture2D" uid="uid://8hmebvbh1xqp" path="res://Textures/scope_overlay.png" id="6_8q0io"]
 [ext_resource type="AudioStream" uid="uid://yq6okvtmi78h" path="res://Sounds/scope/scope close3.ogg" id="8_ujmdm"]
 [ext_resource type="Texture2D" uid="uid://omd54fh2yfyl" path="res://Sprites/Garden Eel/eel_body.png" id="9_uscsh"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="10_kqlh1"]
 [ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="11_2jba0"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="12_6fklc"]
+[ext_resource type="Texture2D" uid="uid://pmx163x35nee" path="res://Textures/scope_shine.png" id="13_j3scc"]
+[ext_resource type="Shader" uid="uid://bcp7p3opcdfeq" path="res://Shaders/fisheye_lens.gdshader" id="14_j3scc"]
+[ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="15_6fklc"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvi72"]
 random_pitch = 1.2
@@ -159,13 +161,20 @@ _data = {
 &"raise_high": SubResource("Animation_orarh")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e171u"]
+shader = ExtResource("14_j3scc")
+shader_parameter/effect_amount = 1.5000001899999997
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q0io"]
 shader = ExtResource("4_2ec3g")
-shader_parameter/circle_size = 0.5
+shader_parameter/circle_size = 0.550000026125
+shader_parameter/gradient = 0.0250000011875
+shader_parameter/opacity = 0.5000000074506
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_f2cti"]
+font = ExtResource("15_6fklc")
 font_size = 43
 
 [node name="eel" type="Node3D"]
@@ -260,12 +269,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 605.0
+offset_top = 237.0
+offset_right = 605.0
+offset_bottom = 237.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_8q0io")
-stretch_mode = 5
+mouse_filter = 2
+texture = ExtResource("13_j3scc")
+stretch_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="fisheye" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_e171u")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="scopeShader" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_8q0io")
 layout_mode = 1
@@ -274,6 +299,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.960569, 0.335203, 0.756788, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]

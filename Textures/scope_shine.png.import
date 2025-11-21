@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8hmebvbh1xqp"
-path="res://.godot/imported/scope_overlay.png-6cb18e7f7934519a704c819f2530bf3b.ctex"
+uid="uid://pmx163x35nee"
+path="res://.godot/imported/scope_shine.png-3986313ceca1add08349955b9861d90b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/scope_overlay.png"
-dest_files=["res://.godot/imported/scope_overlay.png-6cb18e7f7934519a704c819f2530bf3b.ctex"]
+source_file="res://Textures/scope_shine.png"
+dest_files=["res://.godot/imported/scope_shine.png-3986313ceca1add08349955b9861d90b.ctex"]
 
 [params]
 

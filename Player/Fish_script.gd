@@ -398,7 +398,7 @@ func _physics_process(_delta: float) -> void:
 			ScoreManager.give_points(0, 0, true) #only reset the timer if you're high up enough
 			ScoreManager.play_trick_sfx("rare")
 		if newSpd <= -75 and diving == false:
-			ScoreManager.give_points(0, 10, true, "HIGH DIVE") #diving at capped height
+			ScoreManager.give_points(0, 5, true, "HIGH DIVE") #diving at capped height
 			ScoreManager.play_trick_sfx("legendary")
 		#Put you in tipspin position if you were spinning fast enough
 		print("the transparency is ", %speedLines1.transparency)

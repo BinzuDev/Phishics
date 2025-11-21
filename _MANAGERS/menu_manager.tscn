@@ -912,11 +912,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Mechanics" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1152,10 +1153,10 @@ description2 = "
 layout_mode = 2
 
 [node name="Fish tricks" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 2798
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 1
@@ -1263,7 +1264,7 @@ description2 = "Not awarded if performed while already diving."
 [node name="highdive" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "High Dive"
-score = "x10"
+score = "x5"
 rarity = "Rare"
 description = "Dive while REALLY high up in the air."
 description2 = "Not awarded if performed while already diving."
