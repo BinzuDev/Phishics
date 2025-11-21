@@ -221,7 +221,7 @@ curve = SubResource("Curve3D_rmb8m")
 debug_custom_color = Color(18.892157, 0, 0, 1)
 
 [node name="rail_grind" parent="TheHills/Chains/Path3D2" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.026494289, -0.05805016, -0.99790704, -0.13350812, 0.98942155, -0.05402223, 0.9905229, 0.13180695, -0.033973206, 10.966238, -0.22196257, -0.19937108)
+transform = Transform3D(-0.026494289, -0.058050144, -0.99790704, -0.13350812, 0.9894213, -0.05402223, 0.9905229, 0.13180692, -0.033973206, 10.966238, -0.22196257, -0.19937108)
 progress = 10.571818
 loop = false
 invisibleRail = true
@@ -490,20 +490,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6953783, 29.614555, 48.195
 [node name="Enemy29" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.37529, 1.3554093, 32.36868)
 
+[node name="Enemy45" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.275715, 1.3554093, 27.36868)
+
 [node name="Enemy30" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.36254, 1.355408, 28.368166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.919388, 1.355408, 28.368166)
 
 [node name="Enemy31" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.88221, 1.3554093, 20.971296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.771904, 1.3554093, 20.971296)
 
 [node name="Enemy32" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1202, 1.3554093, 33.599037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.705631, 1.3554093, 28.853222)
 
 [node name="Enemy33" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.724464, 1.3554106, 15.424583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.844374, 1.3554106, 21.043102)
 
 [node name="Enemy34" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.766117, 1.3554093, 27.261578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.483274, 1.3554093, 27.261578)
 
 [node name="Enemy35" parent="TheHills/Crabs" instance=ExtResource("6_s8o57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9337, 1.3554106, 13.391247)
@@ -590,10 +593,11 @@ explosionRadius = 11.0
 knockbackMultiplier = 2.0
 
 [node name="Mine10" parent="TheHills/Main/Mines" instance=ExtResource("11_takjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.902254, 14.664072, 24.40858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.902254, 7.102045, 24.40858)
 explosionStrength = 550
 explosionRadius = 11.0
 knockbackMultiplier = 2.0
+homingTarget = false
 
 [node name="Mine12" parent="TheHills/Main/Mines" instance=ExtResource("11_takjo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.995085, 14.664072, 31.368221)
@@ -674,11 +678,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23324186, 15.938187, 65.783
 color = Color(1, 0.6159947, 0.44061524, 1)
 
 [node name="coral_tube2" parent="TheHills/Corals/tube" instance=ExtResource("11_8l0wt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5472637, 15.617584, 62.123024)
+transform = Transform3D(1.365, 0, 0, 0, 1.365, 0, 0, 0, 1.365, 0.5472637, 15.617584, 62.123024)
 color = Color(0.59299004, 0.53637326, 1, 1)
 
 [node name="coral_tube3" parent="TheHills/Corals/tube" instance=ExtResource("11_8l0wt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.762708, 15.437244, 63.82183)
+transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, 2.762708, 15.437244, 63.82183)
 color = Color(0.92843384, 0.66588056, 1, 1)
 
 [node name="coral_tube4" parent="TheHills/Corals/tube" instance=ExtResource("11_8l0wt")]
@@ -787,12 +791,12 @@ recenterCamera = true
 
 [node name="BoostRing5" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
 transform = Transform3D(0.6480902, 0.5731602, 0.67931336, -0.728724, 0.8239912, 2.581082e-10, -0.508862, -0.45002905, 0.8651782, 83.21937, 8.773006, -10.250115)
-strength = 25.0
+strength = 24.0
 centerPlayer = true
 recenterCamera = true
 
 [node name="BoostRing6" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.53073364, 1.0822663, -0.89276075, -1.018024, 0.35971013, 1.0412666, 0.9653751, 0.9743246, 0.60724187, 55.770725, 7.529662, 59.883556)
+transform = Transform3D(-0.53073364, 1.0822663, -0.89276075, -1.018024, 0.35971013, 1.0412666, 0.9653751, 0.9743246, 0.60724187, 55.770725, 9.575587, 59.883556)
 strength = 20.0
 centerPlayer = true
 recenterCamera = true
@@ -897,14 +901,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32014596, 29.219885, 132.70
 transform = Transform3D(4.7130494, 0, -0.66690606, 0, 4.7599993, 0, 0.66690606, 0, 4.7130494, -5.9462967, -0.6047945, 135.61526)
 
 [node name="coral_tube" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
-transform = Transform3D(0.20801191, 0, 0.029434107, 0, 0.21008411, 0, -0.029434107, 0, 0.20801191, -1.1695592, 6.423476, -0.8009987)
+transform = Transform3D(0.20801193, 0, 0.029434111, 0, 0.21008413, 0, -0.029434111, 0, 0.20801193, -0.9262848, 6.423476, -0.78515816)
 color = Color(0.91805243, 0.65907973, 1, 1)
 
 [node name="coral_tube2" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
-transform = Transform3D(0.20801193, 0, 0.029434111, 0, 0.21008413, 0, -0.029434111, 0, 0.20801193, -1.7525759, 6.3850865, -0.68094635)
+transform = Transform3D(0.311893, 0, 0.04413349, 0, 0.3150001, 0, -0.04413349, 0, 0.311893, -1.6268666, 6.3850865, -0.91158104)
 
 [node name="coral_tube3" parent="start/big_stone_pillar" instance=ExtResource("11_8l0wt")]
-transform = Transform3D(0.20801188, 0, 0.029434104, 0, 0.21008408, 0, -0.029434104, 0, 0.20801188, -1.359946, 6.3720217, -0.45132828)
+transform = Transform3D(0.24258344, 0, 0.03432605, 0, 0.24500003, 0, -0.03432605, 0, 0.24258344, -1.2160096, 6.372022, -0.2877388)
 color = Color(1, 0.34119028, 0.44450188, 1)
 meshToChangeColorOf = NodePath("../coral_tube/corals/coral/model")
 
@@ -1090,6 +1094,10 @@ lineLength = 13.82618625164032
 transform = Transform3D(0.10838109, 0, 0.99410945, 0, 1, 0, -0.99410945, 0, 0.10838109, 47.54686, 15.733874, 49.999107)
 lineLength = 15.008374285697936
 
+[node name="hook3" parent="." instance=ExtResource("27_kl2hu")]
+transform = Transform3D(-0.9453423, 0, 0.3260797, 0, 1, 0, -0.3260797, 0, -0.9453423, 2.991477, 22.512447, 40.040115)
+lineLength = 21.78695137500763
+
 [node name="PathFollowJellyfish" parent="." instance=ExtResource("17_vcbwq")]
 transform = Transform3D(0.99993, 0, 0, 0, 0.999915, 0, 0, 0, 0.99986, 47.71025, 52.360134, -27.650013)
 
@@ -1125,7 +1133,7 @@ transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0.17919922, 2.794
 texture = ExtResource("30_0qcaj")
 
 [node name="island2" parent="Islands" instance=ExtResource("27_qmqkv")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -82.83221, 17.208435, 157.46164)
+transform = Transform3D(1.1881366, 0, 7.9112787, 0, 8, 0, -7.9112787, 0, 1.1881366, -82.83221, 17.208435, 157.46164)
 
 [node name="island3" parent="Islands" instance=ExtResource("27_qmqkv")]
 transform = Transform3D(-7.0113945, 0, 3.8523169, 0, 8, 0, -3.8523169, 0, -7.0113945, 18.194542, 62.385254, -137.14792)
@@ -1158,8 +1166,8 @@ transform = Transform3D(0.06565489, 0, 0.15139315, -0.13389114, 0.07702009, 0.05
 transform = Transform3D(3.013675, 0, -7.410652, 0, 8, 0, 7.410652, 0, 3.013675, -6.59449, 111.7183, -71.08393)
 
 [node name="BoostRing" parent="Islands/island5" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.11556147, 0.02271171, 0.11558619, -0.041042585, 0.14401117, -0.06933081, -0.11041507, -0.07730093, -0.09520251, -0.5153923, 4.231269, -0.49438596)
-strength = 30.0
+transform = Transform3D(-0.12866624, 0.012695689, 0.10253911, -0.041042592, 0.14401117, -0.06933081, -0.09482062, -0.07956177, -0.10913028, -0.5153923, 4.231269, -0.49438596)
+strength = 35.0
 
 [node name="brokenBits" type="Node3D" parent="Islands"]
 
@@ -1415,7 +1423,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.8000419, -0.33600858, 0.92717755, -0.16569544, 0.79533964, 0.18514292, -0.577461, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.80004305, -0.33600858, 0.92717755, -0.16569568, 0.79533964, 0.18514292, -0.57746184, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 dynamicCamera = true

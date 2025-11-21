@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.365755)
 curve = SubResource("Curve3D_lihhe")
 
 [node name="rail_grind" parent="Path3D" instance=ExtResource("3_lihhe")]
-transform = Transform3D(-0.99993527, 9.807808e-08, 0.009854785, 0.009853746, 0.013382723, 0.99986184, -0.00013175265, 0.99989194, -0.013382319, 0.15203047, 41.947693, 0)
+transform = Transform3D(-0.99993527, 9.80781e-08, 0.009854787, 0.009853746, 0.013382724, 0.999862, -0.00013175265, 0.99989206, -0.013382322, 0.15203047, 41.947693, 0)
 loop = false
 invisibleRail = true
 cameraYOverride = SubResource("Curve_30qiy")

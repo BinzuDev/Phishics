@@ -10,7 +10,8 @@ func coral_spread():
 		#if child is RigidBody3D:
 			#child.set_collision_mask_value(1, true)#enables collison with the world so we can plant it in sand
 			#child.gravity_scale = 1
-	queue_free()
+	#queue_free()
+	#position.y -= 1
 	print("TUBE CORAL SPREAD FUNC")
 
 
