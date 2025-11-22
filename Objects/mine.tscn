@@ -445,6 +445,7 @@ metadata/_edit_lock_ = true
 stream = ExtResource("5_fhvvj")
 volume_db = -4.0
 unit_size = 70.0
+max_db = -1.0
 panning_strength = 3.0
 bus = &"soundEffects"
 attenuation_filter_cutoff_hz = 10000.0

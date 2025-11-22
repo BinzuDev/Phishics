@@ -104,7 +104,8 @@ func toggleMenu():
 	print("toggleMenu")
 	MusicManager.shouldMusicMuffle = GameManager.gamePaused
 	if GameManager.gamePaused:
-		ScoreManager.show_counter(true)
+		if not ScoreManager.counterIsVisible:
+			ScoreManager.show_counter(true)
 		%Continue.grab_focus()
 		%PauseList.visible = true
 		

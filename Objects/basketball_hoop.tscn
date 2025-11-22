@@ -46,6 +46,8 @@ albedo_texture = ExtResource("4_drutj")
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="SphereMesh" id="SphereMesh_vn1wo"]
+radial_segments = 6
+rings = 3
 
 [sub_resource type="Curve" id="Curve_npxaw"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.105769), 0.0, 0.0, 0, 0]
@@ -80,6 +82,8 @@ skeleton = NodePath("../DunkArea")
 
 [node name="hoopCollision" type="StaticBody3D" parent="MeshInstance3D2"]
 unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/hoopCollision"]
 shape = SubResource("ConcavePolygonShape3D_evkxb")
@@ -105,7 +109,8 @@ shape = SubResource("CylinderShape3D_vn1wo")
 
 [node name="antiCheese" type="StaticBody3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-collision_layer = 4
+visible = false
+collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="antiCheese"]
@@ -196,7 +201,7 @@ transform = Transform3D(1, 0, 0, -1.77636e-15, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_drutj")
 
 [node name="HoopPuff" type="CPUParticles3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1.7053e-13, -1.80061, 0)
+transform = Transform3D(-3.934025e-08, 0.9, 0, -0.9, -3.934025e-08, 0, 0, 0, 0.9, -1.7053e-13, -0.9032297, 0)
 emitting = false
 amount = 16
 one_shot = true

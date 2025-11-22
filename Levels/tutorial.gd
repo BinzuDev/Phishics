@@ -15,14 +15,14 @@ var timer : int = 0
 var waitingForReticle : bool = false
 
 func tutorialEvent1(): #once textbox 1 is finished
-	$fish.canMove = true
+	%fish.canMove = true
 	waitingForPlayerInput = true
 	%slowKeypress.modulate.a = 1.25
 	%spammingKeys.modulate.a = 1.25
 	$Control/esc.modulate.a = 1.25
 	%slowKeypress.visible = true
 
-func _process(_delta): 
+func _physics_process(_delta): 
 	if waitingForPlayerInput: #wait until the player touches a direction
 		if get_tree().get_first_node_in_group("player").get_input_axis() != Vector2.ZERO:
 			event1end()
@@ -41,7 +41,7 @@ func _process(_delta):
 	timer += 1
 	var newScale = sin(timer*0.157) * 0.15 + 1
 	$reticle/rotate.scale = Vector2(newScale, newScale)
-	$reticle.position = get_viewport().get_camera_3d().unproject_position($enemyGroup/RETICLETARGET.global_transform.origin)
+	$reticle.position = get_viewport().get_camera_3d().unproject_position(%RETICLETARGET.global_transform.origin)
 	if waitingForReticle:
 		if DialogueManager.chara > 96:
 			$reticle.visible = true
@@ -50,14 +50,14 @@ func _process(_delta):
 			waitingForReticle = false
 	
 	##Slowmo area
-	if $slowmo.has_overlapping_bodies():
+	if %slowmo.has_overlapping_bodies():
 		Engine.time_scale = clamp(Engine.time_scale-0.03 , 0.2, 1)
 		AudioServer.get_bus_effect(4,0).pitch_scale = Engine.time_scale #music slow down
 		print(Engine.time_scale)
-		if $fish.homing:
-			$fish.homingLookDown = true
-			$diveLookDown/CollisionShape3D.disabled = true
-			$slowmo/CollisionShape3D.disabled = true
+		if %fish.homing:
+			%fish.homingLookDown = true
+			%diveCamCollision.disabled = true
+			%slowmoCollision.disabled = true
 	else:
 		Engine.time_scale = 1
 		AudioServer.get_bus_effect(4,0).pitch_scale = 1

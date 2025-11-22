@@ -228,24 +228,24 @@ metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="enterTip"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="EnterKey" type="AnimatedSprite2D" parent="enterTip/Control"]
 texture_filter = 1
-position = Vector2(-1113.25, -801.5)
+position = Vector2(-153.25, -261.5)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tqlrv")
 autoplay = "default"
 frame_progress = 0.00853321
 
 [node name="TALK" type="Sprite2D" parent="enterTip/Control"]
-position = Vector2(-931.25, -801)
+position = Vector2(28.75, -261)
 texture = ExtResource("5_bfllj")
 
 [node name="SubViewport" type="SubViewport" parent="."]

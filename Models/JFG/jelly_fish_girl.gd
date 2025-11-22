@@ -21,7 +21,8 @@ func _ready():
 		print("JFG is in a her own scene")
 		$DirectionalLight3D.visible = true
 		$Platform.visible = true
-		play_animation("Cheering")
+		if process_mode != Node.PROCESS_MODE_DISABLED: 
+			play_animation("Cheering")
 	else:
 		print("JFG is in a different scene")
 		$DirectionalLight3D.visible = false

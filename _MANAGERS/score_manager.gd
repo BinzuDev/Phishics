@@ -54,6 +54,7 @@ var counterValue : int = 0
 var counterTotal : int = 20
 var counterTimer : int = 0
 var counterIsVisible : bool = true
+var counterMode : int = 0 ## 0: normal | 1: completely off  | 2: always visible
 
 ##Make the airspin meter follow the fish
 func _process(_delta):
@@ -78,11 +79,12 @@ func _physics_process(_delta: float) -> void:
 			ASrankColor = ASsurfRankColor
 	
 	#Worm counter
-	if counterIsVisible:
+	if counterIsVisible and counterMode == 0:
 		counterTimer += 1
 	if counterTimer == 180:
 		show_counter(false)
 	
+	#print("m: ", counterMode, " t: ", counterTimer)
 	
 	## Air spin
 	var doAirSpin = false   #look at variable list above to see requirements
@@ -126,7 +128,7 @@ func _physics_process(_delta: float) -> void:
 					give_points(5000, 10, true, "MAX AIRSPIN")
 					if fish.height <= 15:
 						give_points(0, 15, true, "CLOSE CALL")
-						comboTimer += 100
+						give_extra_combo_time(100)
 				elif airSpinRank == 9:
 					give_points(500, 5, true, "AIRSPIN")
 				elif airSpinRank >= 1 and airSpinRank <= 7:
@@ -379,11 +381,22 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 		
 	%wallShrinker.scale = Vector2(1, 1)
 	%comboText.custom_minimum_size.x = 1600.0
-	if %comboText.get_total_character_count() >= 320:
+	if %comboText.get_total_character_count() >= 300:
 		%wallShrinker.scale = Vector2(0.75, 0.75)
 		%comboText.custom_minimum_size.x = 2150.0
 	
 	
+
+## Gives the player more time on the combo timer, it gives half during spam warning and nothing during spam penalty.
+## Use this function instad of manually changing comboTimer.
+## Make sure to call it AFTER give_points so the timer reset doesnt override it
+func give_extra_combo_time(amount: float):
+	if freshState == FRESH.LOW:
+		pass
+	elif freshState == FRESH.WARN:
+		comboTimer += amount*0.5
+	else:
+		comboTimer += amount
 
 
 func end_combo():
@@ -595,6 +608,7 @@ func reset_airspin(): #also used by boost ring
 	
 
 func reset_everything():
+	print_stack()
 	reset_airspin()
 	points = 0
 	mult = 0
@@ -615,6 +629,8 @@ func reset_everything():
 	combo_dict.clear()
 	%freshAnims.play("RESET")
 	counterValue = 0
+	counterMode = 0
+	print("setting counter mode to: ", counterMode)
 	set_counter_amount()
 	
 	
@@ -686,6 +702,10 @@ func set_counter_amount(value:int = counterValue, total:int = counterTotal):
 	counterTotal = total
 
 func show_counter(value:bool):
+	if counterMode == 1:
+		$UI/collectables.visible = false
+	else:
+		$UI/collectables.visible = true
 	if value == true:
 		if counterIsVisible == false: #if not visible yet
 			$UI/collectables/collectableAnim.play_backwards("go_away")

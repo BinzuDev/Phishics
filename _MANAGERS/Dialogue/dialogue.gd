@@ -18,5 +18,8 @@ class_name Dialogue extends Resource
 ##List of all the textboxes within this dialogue sequence
 @export var messages : Array[textBoxSettings]
 ##Run code after closing the textbox. NOTICE: this code doesn't run "from" anywhere, so you don't have access to any Node functions.
-##If you want to access the parent of the DialogueArea object that started this textbox, use DialogueManager.currentDialogueOwner
+##You do still have access to all the global manager scrips. 
+##If you want to access the parent of the DialogueArea object that started this textbox, use DialogueManager.currentDialogueOwner.
+##EX: if the Dialogue area is a direct child of the root level node, it will return the level node.
+##WARNING: DO NOT USE ENTER! Seperate the lines of code with a ";" and a space.
 @export_multiline var codePostDialogue : String

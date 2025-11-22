@@ -75,7 +75,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print("SUCCESSFUL DUNK spd: ", body.linear_velocity.y)
 		#Diffrenciates between dunks
 		
-		ScoreManager.comboTimer += 80 #give you extra time
+		ScoreManager.give_extra_combo_time(80) #give you extra time
 		#print("Applying central impusle to ", body.name)
 		body.apply_central_impulse(Vector3(0, -10, 0))
 		
@@ -137,7 +137,7 @@ func _on_reset_hoop_body_exited(body):
 	if body.process_mode == Node.PROCESS_MODE_INHERIT:
 		print(body.name, " HAS EXITED THE RESET HOOP AREA")
 		%hoopCollision.collision_layer = 4 #reaply collision once fish leaves
-		$antiCheese.collision_layer = 4
+		#$antiCheese.collision_layer = 4
 		##DUPLICATED in case because SOMETIMES the fucking music slowmo doesnt end
 		var pitch = AudioServer.get_bus_effect(4,0)
 		pitch.pitch_scale = 1 

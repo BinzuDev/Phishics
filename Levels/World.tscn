@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=159 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cgpwwrh16mha1" path="res://Objects/basketball_hoop.tscn" id="11_vbdqq"]
 [ext_resource type="Texture2D" uid="uid://bbqdwespslc76" path="res://Sprites/barnicles.png" id="13_11qgy"]
 [ext_resource type="PackedScene" uid="uid://biji6soms632" path="res://Models/skate_park.tscn" id="14_63vwh"]
-[ext_resource type="PackedScene" uid="uid://b3o3bqgimbwt7" path="res://Models/car_battery.tscn" id="14_hqwgh"]
+[ext_resource type="PackedScene" uid="uid://b3o3bqgimbwt7" path="res://Models/car battery/car_battery.tscn" id="14_hqwgh"]
 [ext_resource type="PackedScene" uid="uid://bf8smqh6dbfvm" path="res://Objects/fricking_awesome_tube.tscn" id="15_myu2g"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="15_rk5xy"]
 [ext_resource type="Texture2D" uid="uid://bwjgjk84nbeei" path="res://Sprites/signs/long_arrowSign.png" id="15_wvw3a"]
@@ -270,7 +270,7 @@ size = Vector3(1, 1.89026, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_63vwh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nfmog"]
-size = Vector3(2.8632813, 9.158417, 17.243958)
+size = Vector3(2.8632813, 9.158417, 13.240433)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myu2g"]
 albedo_color = Color(0.266667, 0, 0.172549, 1)
@@ -308,6 +308,15 @@ size = Vector3(13.9896, 3.45325, 13.8298)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxv0e"]
 size = Vector3(33.92859, 7.161255, 38.162933)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jdmv"]
+size = Vector3(6.743164, 4.676773, 26.756502)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvkig"]
+size = Vector3(24.940113, 1.3530898, 10.747908)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn7vi"]
+size = Vector3(11.629236, 1.3530898, 14.83395)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ie2ey"]
 size = Vector3(12.5019, 4.38788, 8.37683)
@@ -422,6 +431,9 @@ func _ready():
 func _process(delta):
 	progress += 5 * delta
 "
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_paqbo"]
+size = Vector3(86, 19.625732, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb77i"]
 size = Vector3(9.73267, 1, 29.8836)
@@ -1212,7 +1224,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 45.1349,
 texture = ExtResource("9_3y1xx")
 
 [node name="Seaweed11" type="Sprite3D" parent="intro/seeweed2"]
-transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 50.3591, -0.16662, -3.45423)
+transform = Transform3D(1, 0, 7.4505797e-09, 0, 1, 0, -7.4505797e-09, 0, 1, 50.359097, -0.16662216, -2.2070007)
 texture = ExtResource("9_3y1xx")
 
 [node name="Seaweed12" type="Sprite3D" parent="intro/seeweed2"]
@@ -1822,9 +1834,10 @@ strength = 16.5
 [node name="cameraController" parent="group1" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.298148, 18.11286, -44.585423)
 newCameraAngle = Vector3(-90, 0, 0)
+rate = 0.08
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group1/cameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19726563, 3.4392853, 2.7762756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19726563, 3.4392853, 0.77451324)
 shape = SubResource("BoxShape3D_nfmog")
 debug_color = Color(0, 0, 1, 1)
 
@@ -2033,7 +2046,7 @@ transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 82.9125,
 speed = 3
 
 [node name="PathJF" type="Path3D" parent="group1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7901, 13.5144, 19.2387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.79, 13.51, 19.24)
 curve = SubResource("Curve3D_i76hq")
 
 [node name="Jellyfish" parent="group1/PathJF" instance=ExtResource("41_i76hq")]
@@ -2043,7 +2056,7 @@ bounceForce = 50
 hSpeedMultiplier = 0.0
 
 [node name="Path3D" type="Path3D" parent="group1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6408, 14.9438, 15.9305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.64, 14.94, 15.93)
 curve = SubResource("Curve3D_7pnea")
 
 [node name="PathFollowJellyfish" parent="group1/Path3D" instance=ExtResource("41_i76hq")]
@@ -2052,7 +2065,7 @@ speed = 4
 bounceForce = 30
 
 [node name="strike_zone2" parent="group1" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8161, 13.3117, -46.085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8161, 13.142724, -46.085)
 
 [node name="strike_zone3" parent="group1" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02036, -0.4303627, 7.07259)
@@ -2243,6 +2256,13 @@ skeleton = NodePath("../../../group1")
 [node name="destructable_sign" parent="group2/sign7" instance=ExtResource("47_bmonc")]
 transform = Transform3D(0.980677, -0.0596872, 0.186308, 0.028424, 0.985688, 0.166167, -0.193559, -0.15766, 0.968338, -0.00939941, 2.88057, 0.278519)
 
+[node name="streetsign6" type="MeshInstance3D" parent="group2"]
+transform = Transform3D(-0.48967084, 0.047549114, -0.10040332, -0.008632722, 1.9592124, 0.10009275, 0.100735, 0.399034, -0.47948, 71.048996, 24.7289, 11.555399)
+material_override = SubResource("StandardMaterial3D_11qgy")
+material_overlay = ExtResource("5_2uuim")
+mesh = SubResource("CylinderMesh_6r7q6")
+skeleton = NodePath("../../..")
+
 [node name="destructable_sign6" parent="group2" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.931722, 0.295912, 0.210546, -0.290507, -0.95518, 0.056885, 0.217942, -0.00816405, 0.975928, 71.1731, 25.4987, 12.2336)
 
@@ -2257,14 +2277,40 @@ skeleton = NodePath("../../../group1")
 [node name="destructable_sign" parent="group2/sign4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(-0.917513, -0.0599477, 0.393161, 0.118254, -0.984985, 0.12578, 0.379717, 0.161898, 0.910826, 0.0451262, 2.4402, 0.309516)
 
-[node name="cameraController3" parent="group2" instance=ExtResource("32_581hb")]
+[node name="camControl2Darea1" parent="group2" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.385475, 20.9056, -0.3609877)
 newCameraOffset = Vector3(-2, 4.5, 6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/cameraController3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/camControl2Darea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066833496, 3.0806274, 11.05397)
 shape = SubResource("BoxShape3D_bxv0e")
 debug_color = Color(0, 0.85000014, 1, 1)
+
+[node name="camControl2Darea2" parent="group2" node_paths=PackedStringArray("target") instance=ExtResource("32_581hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.32176, 33.275913, -12.832621)
+target = NodePath("Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/camControl2Darea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14190674, 5.714958, 11.444207)
+shape = SubResource("BoxShape3D_0jdmv")
+debug_color = Color(0, 0.85000014, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="group2/camControl2Darea2"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 2.9999847, 7.934498, 32.225872)
+
+[node name="homingBlocker4" type="Area3D" parent="group2"]
+transform = Transform3D(1, 1.5917294e-09, -7.450581e-09, -1.1768808e-11, 1, -3.0164873e-08, -7.450581e-09, 2.1463737e-08, 1, 60.872833, 11.845007, 14.513099)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group2/homingBlocker4"]
+transform = Transform3D(1, 4.8895003e-17, 0, -9.9129325e-20, 1, 0, 0, 0, 1, 5.475258, 1.0500822, 1.540947)
+shape = SubResource("BoxShape3D_dvkig")
+debug_color = Color(1, 0.983333, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="group2/homingBlocker4"]
+transform = Transform3D(1, 4.8895003e-17, 0, -9.9129325e-20, 1, 0, 0, 0, 1, -1.1801834, 1.0500841, -0.50207424)
+shape = SubResource("BoxShape3D_bn7vi")
+debug_color = Color(1, 0.983333, 0, 1)
 
 [node name="Platform2" type="MeshInstance3D" parent="group2"]
 transform = Transform3D(-1.44868e-06, -0.935859, -9.47233, 0, 5.26986, -1.68216, 33.1419, -4.09077e-08, -4.14049e-07, -7.3336, -0.109611, 0.210557)
@@ -2482,7 +2528,7 @@ mesh = SubResource("BoxMesh_j5go0")
 skeleton = NodePath("../..")
 
 [node name="Platform31" type="MeshInstance3D" parent="group2"]
-transform = Transform3D(26.47, 0, 0, 0, 23.9, 0, 0, 0, 41.03, 83.9962, 24.4212, 49.4809)
+transform = Transform3D(26.47, 0, 0, 0, 23.9, 0, 0, 0, 41.03, 82.64956, 24.4212, 49.4809)
 material_override = ExtResource("4_vbdqq")
 material_overlay = ExtResource("5_2uuim")
 mesh = SubResource("BoxMesh_j5go0")
@@ -2935,7 +2981,7 @@ centerPlayer = true
 deactivateDive = 200
 
 [node name="BoostRing24" parent="group2" instance=ExtResource("9_2uuim")]
-transform = Transform3D(-0.653919, -0.746964, -0.120137, -0.752415, 0.658688, 0, 0.0791328, 0.0903926, -0.992757, 59.6517, 18.5475, 16.7977)
+transform = Transform3D(-0.653919, -0.746964, -0.120137, -0.752415, 0.658688, 0, 0.0791328, 0.0903926, -0.992757, 60.802673, 18.5475, 16.7977)
 priority = 1
 strength = 20.0
 
@@ -3589,21 +3635,6 @@ centerPlayer = true
 [node name="BoostRing29" parent="highUpSection" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.661232, 0.511179, -0.54906, -0.645159, 0.760972, -0.068492, 0.382809, 0.39952, 0.83297, 192.508, 63.1383, -75.3429)
 strength = 21.0
-
-[node name="streetsign6" type="MeshInstance3D" parent="highUpSection"]
-transform = Transform3D(-0.489747, 0.0820766, -0.0986234, 4.52216e-09, 1.95807, 0.101847, 0.100735, 0.399034, -0.47948, 93.3465, 24.7289, 11.5554)
-material_override = SubResource("StandardMaterial3D_11qgy")
-material_overlay = ExtResource("5_2uuim")
-mesh = SubResource("CylinderMesh_6r7q6")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="highUpSection/streetsign6"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="highUpSection/streetsign6/StaticBody3D"]
-transform = Transform3D(1, 9.45022e-13, -3.90799e-14, -2.66454e-15, 1, -4.09461e-17, 7.10543e-15, -5.87568e-15, 1, 0, 0.0535278, 2.86102e-06)
-shape = SubResource("BoxShape3D_w578l")
 
 [node name="Enemy5" parent="highUpSection" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
@@ -4413,6 +4444,14 @@ explosionStrength = 999
 explosionRadius = 50.0
 knockbackMultiplier = 0.7999999999999999
 
+[node name="safetyCollision" type="StaticBody3D" parent="group3/THEPIT(tm)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.492012)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group3/THEPIT(tm)/safetyCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.312866, 0.7247772)
+shape = SubResource("BoxShape3D_paqbo")
+debug_color = Color(0.89, 0.32633334, 0, 1)
+
 [node name="strike_zone4" parent="group3" instance=ExtResource("41_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.727, 19.243868, -53.4845)
 disableHoming = true
@@ -4661,6 +4700,30 @@ transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 93.7152, -
 [node name="Worm2" parent="2Darea" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 4.6761e-08, 0, -4.6761e-08, 1, 0, 0, 0, 1, 103.766, -3.60636, -49.6513)
 
+[node name="2DareaArrowYellowPaint" type="Sprite3D" parent="2Darea"]
+transform = Transform3D(-0.6918871, 0.7893584, 0.026499124, -0.7892431, -0.692335, 0.016251422, 0.029690003, -0.009209643, 1.0495398, -13.872459, -9.280046, -76.21866)
+texture = ExtResource("15_wvw3a")
+
+[node name="bolt" type="MeshInstance3D" parent="2Darea/2DareaArrowYellowPaint"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, -2.00607, 0.759622, 3.8773e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt2" type="MeshInstance3D" parent="2Darea/2DareaArrowYellowPaint"]
+transform = Transform3D(-4.92993e-08, -2.12458e-09, -1, -1, -4.37114e-08, 5.1162e-08, -4.76986e-08, 1, -3.0559e-09, 2.00879, 0.759621, 3.99999e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt3" type="MeshInstance3D" parent="2Darea/2DareaArrowYellowPaint"]
+transform = Transform3D(0.29354, -2.12458e-09, -0.955947, -0.955947, -4.37114e-08, -0.29354, -4.51493e-08, 1, -1.57933e-08, 2.00879, -0.800148, 3.26532e-07)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
+[node name="bolt4" type="MeshInstance3D" parent="2Darea/2DareaArrowYellowPaint"]
+transform = Transform3D(-0.682254, -2.12458e-09, -0.731116, -0.731116, -4.37114e-08, 0.682254, -3.73948e-08, 1, 2.73376e-08, -1.9577, -0.844361, 1.08451e-06)
+material_override = SubResource("StandardMaterial3D_28m7t")
+mesh = SubResource("CylinderMesh_kvfdy")
+
 [node name="group4" type="Node3D" parent="."]
 
 [node name="backupFloor" type="MeshInstance3D" parent="group4"]
@@ -4845,7 +4908,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989146, -0.9981955, 3.7252645e-09, 0.9981907, 0.05989175, 0.9999932, 6.0256204e-09, -1.626267e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.059891317, -0.99819314, 3.7252645e-09, 0.9981883, 0.059891604, 0.9999932, 6.0256062e-09, -1.626263e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 

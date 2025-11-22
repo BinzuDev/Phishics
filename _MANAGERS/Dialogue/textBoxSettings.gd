@@ -8,5 +8,5 @@ class_name textBoxSettings extends Resource
 @export_enum("bottom", "top") var position : String = "bottom"
 ##This makes the text appear instantly instead of going letter by letter
 @export var instant : bool = false
-##Run a line of code when textbox shows up!
-@export var code : String = ""
+##Run a line of code when textbox shows up! Look at the tooltip of "Code Post Dialogue" for more info.
+@export_multiline var code : String = ""

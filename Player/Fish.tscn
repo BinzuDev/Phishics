@@ -78,8 +78,8 @@
 [ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
 [ext_resource type="AudioStream" uid="uid://db2o8qqcqpox0" path="res://Sounds/surfing/turn2.wav" id="63_0m6um"]
 [ext_resource type="AudioStream" uid="uid://kxuu5v8dn8i8" path="res://Sounds/surfing/turn3.wav" id="64_vttj7"]
-[ext_resource type="AudioStream" uid="uid://bpeq7h4tk3gnj" path="res://FISH_aura.ogg" id="69_h8lso"]
-[ext_resource type="AudioStream" uid="uid://chgdl0h5xl4nb" path="res://shockwave.ogg" id="70_jv0xx"]
+[ext_resource type="AudioStream" uid="uid://bpeq7h4tk3gnj" path="res://Sounds/FISH_aura.ogg" id="69_h8lso"]
+[ext_resource type="AudioStream" uid="uid://chgdl0h5xl4nb" path="res://Sounds/shockwave.ogg" id="70_jv0xx"]
 [ext_resource type="PackedScene" uid="uid://cy4era7oso7t8" path="res://Models/spark_crown/sparkCrown.tscn" id="80_dafiy"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Player/Skins/pose.png" id="82_jv0xx"]
 
@@ -2336,9 +2336,6 @@ unique_name_in_owner = true
 target_position = Vector3(0, 4, 0)
 collision_mask = 256
 
-[node name="camera_target" type="Node3D" parent="cameraAnchor"]
-unique_name_in_owner = true
-
 [node name="camFocus" type="Node3D" parent="cameraAnchor"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 0.58, 0)
@@ -2388,9 +2385,7 @@ collision_mask = 17
 
 [node name="heightDetect" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true
-visible = false
 target_position = Vector3(0, -150, 0)
-collision_mask = 5
 
 [node name="nearFloor" type="RayCast3D" parent="antiRotation"]
 unique_name_in_owner = true

@@ -170,7 +170,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_4autd")
 
 [node name="fish" parent="." instance=ExtResource("3_ca8kd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9828773, 29.947622, 135.88528)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.3742, 29.947622, 115.3927)
 gravity_scale = 1.5
 legacyCamera = false
 
@@ -800,7 +800,7 @@ centerPlayer = true
 recenterCamera = true
 
 [node name="BoostRing6" parent="TheHills/BoostRings" instance=ExtResource("19_21ejt")]
-transform = Transform3D(-0.53073364, 1.0822663, -0.89276075, -1.018024, 0.35971013, 1.0412666, 0.9653751, 0.9743246, 0.60724187, 55.770725, 9.575587, 59.883556)
+transform = Transform3D(-0.38329422, 1.2135508, -0.79396516, -1.0180241, 0.35971016, 1.0412667, 1.0328181, 0.8049247, 0.73169935, 55.770725, 9.575587, 59.883556)
 strength = 20.0
 centerPlayer = true
 recenterCamera = true
@@ -1031,6 +1031,11 @@ transform = Transform3D(2.3385427, 0.23176886, -1.8626451e-09, -0.231167, 2.3324
 
 [node name="scoreRing" parent="." instance=ExtResource("26_b1j38")]
 transform = Transform3D(-0.47171998, 0, -0.8817485, 0, 1, 0, 0.8817485, 0, -0.47171998, 5.992234, 36.558346, 11.291779)
+
+[node name="destructable_sign2" parent="." instance=ExtResource("12_rehwy")]
+transform = Transform3D(0.99999976, 0, 0, 0, -4.371141e-08, -1.0000005, 0, 1.0000005, -4.371141e-08, 69.36876, -0.06966531, 115.43442)
+signSprite = "uid://bm74cvbdnkudp"
+canRespawn = true
 
 [node name="sign" type="Node3D" parent="."]
 transform = Transform3D(0.7755023, 0.41756514, 0.47353494, -0.47408813, 0.8804775, -1.4901161e-08, -0.41693667, -0.22449733, 0.8807752, 35.07532, 0.520377, 97.36125)
@@ -1433,7 +1438,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.8000464, -0.33600858, 0.92717755, -0.16569638, 0.79533964, 0.18514292, -0.5774643, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.80004746, -0.33600858, 0.92717755, -0.16569659, 0.79533964, 0.18514292, -0.577465, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 autoUpDown = true

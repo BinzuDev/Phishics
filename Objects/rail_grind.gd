@@ -130,7 +130,7 @@ func real_process(delta):
 		
 		lock_fish_in_place() #put the fish above the rail
 		
-		ScoreManager.comboTimer += 0.33 #Make the combo timer go down 33% slower
+		ScoreManager.give_extra_combo_time(0.33)  #Make the combo timer go down 33% slower
 		
 		## Movement
 		if direction == "forward":

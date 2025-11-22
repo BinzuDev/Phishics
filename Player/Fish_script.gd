@@ -260,21 +260,24 @@ func _physics_process(_delta: float) -> void:
 		if linear_velocity.y > 25:
 			if !justDiveRebounded:
 				ScoreManager.give_points(5000, 5, true, "VERTICAL JUMP")
-			ScoreManager.comboTimer += 80 #give you extra time
+			ScoreManager.give_extra_combo_time(80) #give you extra time
 			ScoreManager.play_trick_sfx("legendary")
 		if height < 4: #so it doesnt do it on walljumps
 			$sparkCrown.jump(linear_velocity.y)
 			$sparkCrown.global_position = %heightDetect.get_collision_point() #place the spark crown
-			if %heightDetect.get_collision_normal() == Vector3(0,1,0):
+			print(%heightDetect.get_collision_normal())
+			if %heightDetect.get_collision_normal() == Vector3(0.0,1,0):
+				#print("its equal to 0 1 0")
 				$sparkCrown.global_rotation = Vector3(0,0,0)
 			else:
+				#print("its NOT equal to 0 1 0 its ", %heightDetect.get_collision_normal())
 				$sparkCrown.look_at($sparkCrown.global_position+%heightDetect.get_collision_normal())
 				$sparkCrown.rotation_degrees.x -= 90
 		
 		if justDiveRebounded:
 			if trueSpeed.length() > 15:
 				ScoreManager.give_points(trueSpeed.length()*200, 1, true, "DIVE REBOUND")
-				ScoreManager.comboTimer += 80 #give you extra time
+				ScoreManager.give_extra_combo_time(80) #give you extra time
 			
 			justDiveRebounded = false
 		
@@ -594,7 +597,7 @@ func _physics_process(_delta: float) -> void:
 				tiplanding = true
 				ScoreManager.give_points(999999, 200, true, "TIPLANDING HOLY SHIT")
 				ScoreManager.change_rank(8, 1)
-				ScoreManager.comboTimer += 500
+				ScoreManager.give_extra_combo_time(500)
 				ScoreManager.play_trick_sfx("legendary")
 				MusicManager.play_track(1)
 				MusicManager.play_track(2)
@@ -734,7 +737,7 @@ func _physics_process(_delta: float) -> void:
 		if $surfPivot.global_transform.basis.y.y < 0.2 and %surfRC2.is_colliding():
 			var worth = clamp(linear_velocity.length()*height, 0, 1000)
 			ScoreManager.give_points(worth, 0, false, "WALLRIDE")
-			ScoreManager.comboTimer += 0.5  #make combo timer 50% slower
+			ScoreManager.give_extra_combo_time(0.5)  #make combo timer 50% slower
 			#print(worth)
 		
 		
@@ -897,8 +900,7 @@ func _physics_process(_delta: float) -> void:
 		if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60:
 			GameManager.hitstop(20)
 			ScoreManager.give_points(height*300, 5, true, "POSE FOR THE CAMERA")
-			if ScoreManager.freshState != ScoreManager.FRESH.LOW: #if you dont have a spam penalty
-				ScoreManager.comboTimer += 80 #give you extra time
+			ScoreManager.give_extra_combo_time(80) #give you extra time
 			ScoreManager.update_freshness(self)
 			%parry.disabled = false
 			$taunt.play()
@@ -994,7 +996,7 @@ func _physics_process(_delta: float) -> void:
 	
 	%debugLabel.text = str(
 	"fov: ", %cam.fov, "\n",
-	"height: ", snapped(height, 0.01), "\n",
+	"height: ", snapped(height, 0.01), " above: ", %heightDetect.get_collider(), "\n",
 	"linear velocity: ", snapped(linear_velocity.length(), 0.1)," ",snapped(linear_velocity, Vector3(0.1,0.1,0.1)), "\n",
 	"angular velocity: ", snapped(angular_velocity.length(), 0.1), " ", snapped(angular_velocity, Vector3(0.1,0.1,0.1)), "\n",
 	"diving: ", diving, "\n",
@@ -1144,6 +1146,7 @@ func _process(_delta):
 	#print($detectCamSwitch.get_overlapping_areas())
 	
 	## inside camera controller areas
+	%camFocus.top_level = false
 	if $detectCamSwitch.has_overlapping_areas():
 		
 		
@@ -1153,9 +1156,8 @@ func _process(_delta):
 		targetCamOffset = area.newCameraOffset
 		targetCamDist = area.newCameraDistance
 		if area.target != null:
-			%camera_target.global_position = area.target.global_position
-			targetCamOffset = %camera_target.position
-			targetCamOffset += area.newCameraOffset
+			%camFocus.top_level = true
+			%camFocus.global_position = %camFocus.global_position.lerp(area.target.global_position, camSpeed)
 		camSpeed = area.rate
 		cameraOverride = true #so you cant move the cam manually in switch areas
 	elif cameraOverride == false:
@@ -1176,7 +1178,8 @@ func _process(_delta):
 	
 	##Slowly pan the camera towards the desired location
 	%camFocus.rotation_degrees = %camFocus.rotation_degrees.lerp(targetCamAngle, camSpeed) #angle of focus
-	%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed) #Position of focus
+	if %camFocus.top_level == false: #not if the controller has a custom camera
+		%camFocus.position = %camFocus.position.lerp(targetCamOffset, camSpeed) #Position of focus
 	%cam.position.z = lerp(%cam.position.z, targetCamDist, camSpeed) #Distance from focus
 	#%camFocus.global_position = camLockOnTarget.global_position
 	var targetTilt = 0.0
@@ -1228,7 +1231,9 @@ func activateSurfMode(sprite : String, signObj : Node):
 	$shadowMesh.visible = false
 	$collision.set_deferred("disabled", true)
 	$collisionSphere.set_deferred("disabled", false)
-	ScoreManager.comboTimer += 80 #give you extra time
+	if height < 0.6:
+		global_position.y += 0.6 - height
+	ScoreManager.give_extra_combo_time(80) #give you extra time
 	ScoreManager.reset_airspin()
 	ScoreManager.airSpinHighestRank = 0
 

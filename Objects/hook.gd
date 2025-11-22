@@ -61,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 		#print(actualSpeed)
 		%hookSprite.position.y += reelingSpeed * 0.6 * actualSpeed
 		fish.force_position(%hookSprite.global_position)
-		ScoreManager.comboTimer += 1 #so you dont lose your combo on long hooks
+		ScoreManager.give_extra_combo_time(1) #so you dont lose your combo on long hooks
 		
 		## When hook reached the top
 		if %hookSprite.global_position.y >= global_position.y:
