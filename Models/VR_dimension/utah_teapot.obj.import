@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b87n2d6ts2wjj"
+path="res://.godot/imported/utah_teapot.obj-a5cf0d237301e0b0041893b56884b1e3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/utah_teapot.obj-a5cf0d237301e0b0041893b56884b1e3.mesh"]
+
+source_file="res://Models/VR_dimension/utah_teapot.obj"
+dest_files=["res://.godot/imported/utah_teapot.obj-a5cf0d237301e0b0041893b56884b1e3.mesh", "res://.godot/imported/utah_teapot.obj-a5cf0d237301e0b0041893b56884b1e3.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

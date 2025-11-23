@@ -49,11 +49,10 @@ _data = {
 
 [node name="Diamond" type="Node3D"]
 script = ExtResource("3_wkyjm")
-yRandomDirection = null
 
 [node name="Rock" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.9450189, 0, -0.3270158, 0, 1, 0, 0.3270158, 0, 0.9450189, 0, 0, 0)
+transform = Transform3D(0.89994293, 0, -0.43600768, 0, 1, 0, 0.43600768, 0, 0.89994293, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kow38")
 mesh = ExtResource("3_mx73m")
 skeleton = NodePath("../..")

@@ -707,6 +707,7 @@ metadata/_edit_lock_ = true
 
 [node name="HelpTip" type="Label" parent="tips"]
 unique_name_in_owner = true
+visible = false
 z_index = 998
 custom_minimum_size = Vector2(500, 20)
 layout_mode = 2
@@ -841,7 +842,6 @@ text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -1337,13 +1337,14 @@ rarity = "Mechanic"
 description = "By holding left+up+right, you can temporarily turn off homing. Allowing you to perform regular dives even when homing targets are under you."
 
 [node name="dive3" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
-custom_minimum_size = Vector2(1000, 220)
+custom_minimum_size = Vector2(1000, 259.72)
 layout_mode = 2
 trickName = "Dive Rebound"
 score = "[speed*200]pts +1x"
 rarity = "Rare"
-description = "After performing regular dive, jumping the moment you touch the ground will convert all of your diving speed into jumping speed!"
-description2 = "Works for both high jumps and longs jumps! The \"VERTICAL JUMP\" trick doesn't score from dive rebounds."
+description = "After performing regular dive, jumping right after you touch the ground will convert all of your diving speed into jumping speed!"
+description2 = "Works for both high jumps and longs jumps! The \"VERTICAL JUMP\" trick doesn't score from dive rebounds.
+  Its more consistant if you don't spam jump. Make sure you wait until after you touch the ground, and THEN jump. "
 
 [node name="scrollSpacing" type="Control" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer"]
 layout_mode = 2

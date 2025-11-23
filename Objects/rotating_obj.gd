@@ -37,8 +37,8 @@ func _ready() -> void:
 	%AnimationPlayer.seek(randf_range(0, 7))
 	###
 	
-	
-	
+
+
 func _process(_delta: float) -> void:
 	
 	

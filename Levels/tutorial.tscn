@@ -442,7 +442,7 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_ilxjc"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_td8ta"]
-size = Vector3(19.038, 9.74719, 13.139881)
+size = Vector3(15.23, 9.75, 16.51)
 
 [sub_resource type="Resource" id="Resource_exwpa"]
 script = ExtResource("10_3hhjp")
@@ -477,7 +477,7 @@ messages = Array[ExtResource("10_3hhjp")]([SubResource("Resource_exwpa"), SubRes
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tnf1"]
-size = Vector3(45.5049, 9.74719, 11.554554)
+size = Vector3(45.5049, 9.74719, 13.448175)
 
 [sub_resource type="Resource" id="Resource_3p1xt"]
 script = ExtResource("10_3hhjp")
@@ -1156,7 +1156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 30.161304, 47.7879
 dialogue = SubResource("Resource_i8qca")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="tutorialSpamSlow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8497362, 0, -0.66082764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8497362, 0, -0.97904587)
 shape = SubResource("BoxShape3D_td8ta")
 debug_color = Color(0, 0, 0, 1)
 
@@ -1165,12 +1165,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186704, 1.55035, 28.321096
 dialogue = SubResource("Resource_emqes")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243016, 0, 5.778181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243016, 0, 3.689886)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialSpamFast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243, 0, 30.986841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114243016, 0, 33.312256)
 shape = SubResource("BoxShape3D_0tnf1")
 debug_color = Color(0, 0, 0, 1)
 
@@ -1775,7 +1775,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_avars")
 
 [node name="Platform5" type="MeshInstance3D" parent="firstHalf/LevelGeometry"]
-transform = Transform3D(-1.1111435e-06, 0, -13.63, 0, 7.47, 0, 25.42, 0, -5.957862e-07, -15.91, 2.56, -131.79)
+transform = Transform3D(-1.1111435e-06, 0, -13.63, 0, 7.47, 0, 25.42, 0, -5.957862e-07, -15.91, 2.55, -131.79)
 material_override = ExtResource("3_gdvy0")
 material_overlay = ExtResource("4_hga2d")
 mesh = SubResource("BoxMesh_lojvt")
@@ -2500,6 +2500,7 @@ transform = Transform3D(-0.05733841, 1.2881349, 1.8255535, 0.04043881, 1.8264537
 
 [node name="tutorialStyleStart" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.900684, -2.2609, -167.87)
+visible = false
 dialogue = SubResource("Resource_ljj34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialStyleStart"]
@@ -2518,6 +2519,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="tutorialStyle2" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_b5qdc")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="tutorialStyle2"]
@@ -2527,6 +2529,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="wormNone" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_l6w2y")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="wormNone"]
@@ -2536,6 +2539,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="wormNoneHighscore" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_fh6jg")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="wormNoneHighscore"]
@@ -2545,6 +2549,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="wormSingle" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_a1ucd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="wormSingle"]
@@ -2554,6 +2559,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="worm2-9" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_jgt6v")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="worm2-9"]
@@ -2563,6 +2569,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="worm10-19" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_ato8c")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="worm10-19"]
@@ -2572,6 +2579,7 @@ debug_color = Color(0, 0, 0, 1)
 
 [node name="worm20" parent="." instance=ExtResource("9_avars")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0.9, 239.49518, -246.06)
+visible = false
 dialogue = SubResource("Resource_wphou")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="worm20"]

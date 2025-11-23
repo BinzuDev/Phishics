@@ -50,7 +50,7 @@ material_override = SubResource("StandardMaterial3D_qs3ae")
 mesh = SubResource("SphereMesh_dx04q")
 
 [node name="camRotation" type="Node3D" parent="offset"]
-transform = Transform3D(1, 0, 0, 0, 0.8660252, 3, 0, -0.49999988, 5.196152, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660252, 3.5, 0, -0.49999988, 6.0621777, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="offset/camRotation"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.5)
@@ -61,7 +61,7 @@ mesh = SubResource("CylinderMesh_hfwrq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="camera" type="Node3D" parent="."]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.86600864, 0.49999395, 0, -0.4999903, 0.8660149, 0, 3.58, 5.196152)
+transform = Transform3D(0.9999993, 0, 0, 0, 0.86600864, 0.49999395, 0, -0.4999903, 0.8660149, 0, 4.08, 6.0621777)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="camera"]
 transform = Transform3D(1.3669276, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.89)

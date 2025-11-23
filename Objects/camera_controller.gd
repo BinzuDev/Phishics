@@ -10,7 +10,7 @@ extends Area3D
 @export var newCameraOffset : Vector3 = Vector3(0, 0.58, 0)
 
 ##How far away the camera is from the focus
-@export var newCameraDistance : float = 6.0
+@export var newCameraDistance : float = 7.0
 
 ##Put a node in here and the camera will lock on to it
 @export var target : Node

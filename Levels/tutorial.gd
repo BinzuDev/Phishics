@@ -68,7 +68,7 @@ func _physics_process(_delta):
 
 func event1end():
 	waitingForPlayerInput = false
-	await get_tree().create_timer(5).timeout #wait 5 seconds
+	await get_tree().create_timer(4.5).timeout #wait 5 seconds
 	$tutorialSpamSlow.position.y = 0     #make the too slow dialogue run
 	$tutorialSpamFast.position.y = -50
 

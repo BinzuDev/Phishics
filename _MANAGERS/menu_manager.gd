@@ -13,6 +13,7 @@ func _ready():
 	$splashScreen.visible = true
 	$transitionScreen.visible = true
 	$transitionScreen.position = Vector2(-99999, 0)
+	%HelpTip.visible = true
 	toggleMenu()
 	$pauseBG/AnimationPlayer.play("RESET")
 

@@ -56,8 +56,17 @@ var counterTimer : int = 0
 var counterIsVisible : bool = true
 var counterMode : int = 0 ## 0: normal | 1: completely off  | 2: always visible
 
+## Tutorial Checklist
+var tutorialChecklist : Dictionary = {
+	"highjump" : 0, "longjump" : 0, "rebound" : 0, "taunt" : 0, "walljump" : 0 
+}
+
+
+
 ##Make the airspin meter follow the fish
 func _process(_delta):
+	
+	tutorialChecklist.keys()
 	var cam = get_viewport().get_camera_3d()
 	if fish and cam:
 		var pos_3d = fish.global_position
@@ -391,12 +400,15 @@ func give_points(addPoints: int, addMult: float, resetTimer: bool = false, trick
 ## Use this function instad of manually changing comboTimer.
 ## Make sure to call it AFTER give_points so the timer reset doesnt override it
 func give_extra_combo_time(amount: float):
-	if freshState == FRESH.LOW:
+	if process_mode == Node.PROCESS_MODE_DISABLED:
+		pass #dont give extra time when style system is paused either
+	elif freshState == FRESH.LOW:
 		pass
 	elif freshState == FRESH.WARN:
 		comboTimer += amount*0.5
 	else:
 		comboTimer += amount
+	print(comboTimer)
 
 
 func end_combo():
@@ -632,7 +644,8 @@ func reset_everything():
 	counterMode = 0
 	print("setting counter mode to: ", counterMode)
 	set_counter_amount()
-	
+	for key in tutorialChecklist.keys():
+		tutorialChecklist[key] = 0
 	
 
 ## Used to add spaces between every 3rd digit of a big number (except if its just 4 digits)
@@ -693,24 +706,26 @@ func set_label_settings(value : int):
 func increase_counter():
 	counterValue += 1
 	set_counter_amount()
-	show_counter(true)
+	
 
 
 func set_counter_amount(value:int = counterValue, total:int = counterTotal):
 	%counter.text = str(value, " / ", total)
 	counterValue = value
 	counterTotal = total
+	show_counter(true)
 
 func show_counter(value:bool):
-	if counterMode == 1:
+	if counterMode == 1 or counterTotal == 0:
 		$UI/collectables.visible = false
 	else:
 		$UI/collectables.visible = true
 	if value == true:
-		if counterIsVisible == false: #if not visible yet
-			$UI/collectables/collectableAnim.play_backwards("go_away")
-		else:
-			$UI/collectables/collectableAnim.play_backwards("collect")
+		if counterValue > 0: #dont do it when the level loads
+			if counterIsVisible == false: #if not visible yet
+				$UI/collectables/collectableAnim.play_backwards("go_away")
+			else:
+				$UI/collectables/collectableAnim.play_backwards("collect")
 		counterTimer = 0
 	else:
 		if counterIsVisible == true: #if not already gone

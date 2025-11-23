@@ -200,6 +200,7 @@ func _physics_process(_delta: float) -> void:
 			if !%nearFloor.is_colliding():
 				ScoreManager.give_points(800,1, true, "WALL JUMP", "uncommon")
 				ScoreManager.reset_airspin()
+				ScoreManager.tutorialChecklist["walljump"] += 1
 				print("Airspin reset by walljump")
 				#play_trick_sfx("uncommon")
 			
@@ -220,6 +221,7 @@ func _physics_process(_delta: float) -> void:
 				
 				if linear_velocity.length() > 12: #Points
 					ScoreManager.give_points(800, 0, true, "HIGH JUMP", "uncommon")
+					ScoreManager.tutorialChecklist["highjump"] += 1
 			else:
 				var hspeed = linear_velocity #get your speed
 				hspeed.y = 0  #remove your vertical speed from the equation
@@ -227,6 +229,7 @@ func _physics_process(_delta: float) -> void:
 				#print("LONG JUMP, speed: ", hspeed)
 				if linear_velocity.length() > 12:
 					ScoreManager.give_points(600, 0, true, "LONG JUMP", "uncommon")
+					ScoreManager.tutorialChecklist["longjump"] += 1
 			
 			
 	
@@ -265,12 +268,11 @@ func _physics_process(_delta: float) -> void:
 		if height < 4: #so it doesnt do it on walljumps
 			$sparkCrown.jump(linear_velocity.y)
 			$sparkCrown.global_position = %heightDetect.get_collision_point() #place the spark crown
-			print(%heightDetect.get_collision_normal())
-			if %heightDetect.get_collision_normal() == Vector3(0.0,1,0):
-				#print("its equal to 0 1 0")
+			
+			#check if your jumping on a perfectly flat floor or else it gives you a stupid error
+			if %heightDetect.get_collision_normal().dot(Vector3(0,1,0)) >= 0.99:
 				$sparkCrown.global_rotation = Vector3(0,0,0)
 			else:
-				#print("its NOT equal to 0 1 0 its ", %heightDetect.get_collision_normal())
 				$sparkCrown.look_at($sparkCrown.global_position+%heightDetect.get_collision_normal())
 				$sparkCrown.rotation_degrees.x -= 90
 		
@@ -278,6 +280,7 @@ func _physics_process(_delta: float) -> void:
 			if trueSpeed.length() > 15:
 				ScoreManager.give_points(trueSpeed.length()*200, 1, true, "DIVE REBOUND")
 				ScoreManager.give_extra_combo_time(80) #give you extra time
+				ScoreManager.tutorialChecklist["rebound"] += 1
 			
 			justDiveRebounded = false
 		
@@ -902,6 +905,7 @@ func _physics_process(_delta: float) -> void:
 			ScoreManager.give_points(height*300, 5, true, "POSE FOR THE CAMERA")
 			ScoreManager.give_extra_combo_time(80) #give you extra time
 			ScoreManager.update_freshness(self)
+			ScoreManager.tutorialChecklist["taunt"] += 1
 			%parry.disabled = false
 			$taunt.play()
 			$pivotUpper.visible = false
@@ -1058,7 +1062,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("left"):
 		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("left"):
 			defaultCameraAngle.y += 45
-			VcameraSetting = 1
+			reset_vertical_camera()
 			autoCamTurning = false
 			if defaultCameraAngle.y >= 180: #wrap angles
 				%camFocus.rotation_degrees.y -= 360
@@ -1068,7 +1072,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("camera") and Input.is_action_pressed("right"):
 		#or Input.is_action_pressed("camera") and Input.is_action_just_pressed("right"):
 			defaultCameraAngle.y -= 45
-			VcameraSetting = 1
+			reset_vertical_camera()
 			autoCamTurning = false
 			if defaultCameraAngle.y <= -180: #wrap angles
 				%camFocus.rotation_degrees.y += 360
@@ -1122,7 +1126,7 @@ func _process(_delta):
 			defaultCameraAngle.x = -70
 			defaultCameraDistance = 8
 		else:
-			defaultCameraDistance = 6 # 0 or 1
+			defaultCameraDistance = 7# 0 or 1
 		
 		#Railgrind camera
 		if isRailGrinding and currentRailObj:
@@ -1150,7 +1154,7 @@ func _process(_delta):
 	if $detectCamSwitch.has_overlapping_areas():
 		
 		
-		print($detectCamSwitch.get_overlapping_areas())
+		#print($detectCamSwitch.get_overlapping_areas())
 		var area = $detectCamSwitch.get_overlapping_areas()[-1]
 		targetCamAngle = area.newCameraAngle
 		targetCamOffset = area.newCameraOffset
@@ -1200,6 +1204,16 @@ func wrap_camera(oldAngle:float, newAngle:float, wrapDefaultCamAngleY:bool=false
 		if wrapDefaultCamAngleY:
 			defaultCameraAngle.y -= 360
 		
+
+#reset the cam vertical position UNLESS
+#you're holding up while looking up, or holding down while looking down
+func reset_vertical_camera():
+	print("vcam: ", VcameraSetting, " y input: ", get_input_axis().y)
+	if VcameraSetting == 0 and Input.is_action_pressed("forward"):
+		return
+	if VcameraSetting == 2 and Input.is_action_pressed("back"):
+		return
+	VcameraSetting = 1
 
 
 
