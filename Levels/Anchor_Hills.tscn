@@ -1189,52 +1189,42 @@ strength = 35.0
 [node name="Diamond" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 52.83372, 47.192406, -62.83929)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond2" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.5140299, 0.13459088, 0, -0.13459088, 1.5140299, 0, 0, 0, 1.5200002, 32.231567, 52.954147, -62.787888)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond3" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.34, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 37.55215, 45.444626, -73.89282)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond4" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.9623835, -0.17306691, 0, 0.17306691, 1.9623835, 0, 0, 0, 1.9700003, 62.879997, 48.440075, -79.92191)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond5" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 51.292248, 39.924038, -71.58475)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond10" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 44.767693, 36.12779, -75.039444)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond6" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 29.665615, 71.80897, -137.07529)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond9" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, 1.7341919, 78.01815, -151.96921)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond7" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 32.215313, 64.02079, -145.17618)
 yRotation = true
-yRandomDirection = false
 
 [node name="Diamond8" parent="Islands/brokenBits" instance=ExtResource("28_pgsm2")]
 transform = Transform3D(1.11, 0, 0, 0, 1.11, 0, 0, 0, 1.11, 4.412134, 65.47891, -128.93735)
 yRotation = true
-yRandomDirection = false
 
 [node name="BoostRing" parent="Islands" instance=ExtResource("19_21ejt")]
 transform = Transform3D(0.4053234, 0.9085555, 0.10119222, -0.912654, 0.40854198, -0.0124822175, -0.052682094, -0.087294176, 0.99478865, -20.829988, 122.60079, -109.32491)
@@ -1438,7 +1428,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.8000481, -0.33600858, 0.92717755, -0.16569673, 0.79533964, 0.18514292, -0.5774655, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.8000483, -0.33600858, 0.92717755, -0.16569677, 0.79533964, 0.18514292, -0.57746565, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 autoUpDown = true
