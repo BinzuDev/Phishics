@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=160 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -516,6 +516,9 @@ size = Vector3(29, 28, 53)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_1hfp4"]
 size = Vector3(30, 1, 45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7i8g"]
+size = Vector3(99.36517, 87.930176, 11.669922)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_kvfdy")
@@ -3010,7 +3013,6 @@ strength = 18.0
 [node name="cameraController2" parent="group2" instance=ExtResource("32_581hb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.827644, 17.132416, -31.850086)
 newCameraOffset = Vector3(4, 2, 2)
-newCameraDistance = 7.0
 rate = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group2/cameraController2"]
@@ -4908,7 +4910,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.059891317, -0.99819314, 3.7252645e-09, 0.9981883, 0.059891604, 0.9999932, 6.0256062e-09, -1.626263e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.059891313, -0.9981931, 3.7252645e-09, 0.99818826, 0.0598916, 0.9999932, 6.025606e-09, -1.626263e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 
@@ -5449,5 +5451,13 @@ occluder = SubResource("BoxOccluder3D_fop6s")
 [node name="aboveBoostTunnel" type="OccluderInstance3D" parent="occlusionCulling"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 18, -33)
 occluder = SubResource("BoxOccluder3D_1hfp4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.56178, 7.6293945e-06, -268.83752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6104431, 43.465088, 26.398209)
+shape = SubResource("BoxShape3D_o7i8g")
+debug_color = Color(0.97, 0, 0.01616642, 0.41960785)
 
 [editable path="group2/frickingAwesomeTube"]

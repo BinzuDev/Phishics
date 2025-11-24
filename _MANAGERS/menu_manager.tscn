@@ -912,7 +912,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 1
+current_tab = 3
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -1153,6 +1153,7 @@ description2 = "
 layout_mode = 2
 
 [node name="Fish tricks" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1508,7 +1509,6 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
@@ -1533,7 +1533,7 @@ layout_mode = 2
 trickName = "Sign Surfing"
 rarity = "Mechanic"
 description = "-Touch a street sign to rip it off the pole and start using it as a surf board!
--In sign surfing mode, you can to slide around smoothly with very little friction. 
+-In sign surfing mode, you can slide around smoothly with very little friction. 
 -By holding space, you can disembark the sign and do a big double jump! (breaking the sign in the process)
 -During sign surf, you're unable to tipspin and wall jump, homing dive also makes you drop and break the sign."
 
