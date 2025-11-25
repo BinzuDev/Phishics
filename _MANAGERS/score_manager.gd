@@ -91,7 +91,10 @@ func _physics_process(_delta: float) -> void:
 	if counterIsVisible and counterMode == 0:
 		counterTimer += 1
 	if counterTimer == 180:
+		counterTimer += 1
 		show_counter(false)
+	
+	
 	
 	#print("m: ", counterMode, " t: ", counterTimer)
 	
@@ -642,7 +645,6 @@ func reset_everything():
 	%freshAnims.play("RESET")
 	counterValue = 0
 	counterMode = 0
-	print("setting counter mode to: ", counterMode)
 	set_counter_amount()
 	for key in tutorialChecklist.keys():
 		tutorialChecklist[key] = 0
@@ -721,11 +723,12 @@ func show_counter(value:bool):
 	else:
 		$UI/collectables.visible = true
 	if value == true:
-		if counterValue > 0: #dont do it when the level loads
-			if counterIsVisible == false: #if not visible yet
-				$UI/collectables/collectableAnim.play_backwards("go_away")
-			else:
-				$UI/collectables/collectableAnim.play_backwards("collect")
+		if counterIsVisible == false: #if not visible yet
+			$UI/collectables/collectableAnim.play_backwards("go_away")
+		elif !GameManager.gamePaused and counterValue > 0: 
+			#play a bounce animation unless you just paused the game
+			#or unless the level just loaded and the value is still 0
+			$UI/collectables/collectableAnim.play("collect")
 		counterTimer = 0
 	else:
 		if counterIsVisible == true: #if not already gone

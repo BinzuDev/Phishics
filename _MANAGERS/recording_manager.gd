@@ -52,8 +52,8 @@ func _physics_process(_delta):
 
 
 				 # 0      1      2      3      4      5      6       7         8         9        10
-				 # UP,  DOWN,  LEFT,  RIGHT,  JUMP,  DIVE, TAUNT  position   angle    velocity  ang_vel
-var save_data = [false, false, false, false, false, false, false, Vector3(),Vector3(),Vector3(),Vector3()]
+				 # UP,  DOWN,  LEFT,  RIGHT,  JUMP,  DIVE, TAUNT  position   angle    velocity  ang_vel      Z      X      C
+var save_data = [false, false, false, false, false, false, false, Vector3(),Vector3(),Vector3(),Vector3(), false, false, false]
 
 func do_record():
 	var fish = get_parent()
@@ -62,7 +62,10 @@ func do_record():
 		Input.is_action_pressed("left"), Input.is_action_pressed("right"),
 		Input.is_action_pressed("jump"),  Input.is_action_pressed("dive"),
 		fishPressed, fish.global_position, fish.global_rotation,
-		fish.linear_velocity, fish.angular_velocity]
+		fish.linear_velocity, fish.angular_velocity,
+		Input.is_action_just_pressed("confirm"),
+		Input.is_action_just_pressed("cancel"),
+		Input.is_action_just_pressed("camera")]
 	
 	fishPressed = false
 	
@@ -93,6 +96,9 @@ func do_replay():
 			Input.action_release("jump")
 			Input.action_release("dive")
 			Input.action_release("FIsh")
+			Input.action_release("confirm")
+			Input.action_release("cancel")
+			Input.action_release("camera")
 		else:
 			var setInputs = current_line
 			var fish = get_parent()
@@ -135,6 +141,18 @@ func do_replay():
 				Input.action_press("FIsh")
 			else:
 				Input.action_release("FIsh")
+			if setInputs[11]:
+				Input.action_press("confirm")
+			else:
+				Input.action_release("confirm")
+			if setInputs[12]:
+				Input.action_press("cancel")
+			else:
+				Input.action_release("cancel")
+			if setInputs[13]:
+				Input.action_press("camera")
+			else:
+				Input.action_release("camera")
 
 
 

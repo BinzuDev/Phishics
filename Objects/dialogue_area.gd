@@ -72,4 +72,5 @@ func _on_body_entered(body):
 	if body is player:
 		if body.isRailGrinding == false: #dialogues can be really weird during railgrind
 			if !dialogue.automaticStart:
-				DialogueManager.show_prompt(true)
+				print(dialogue.promptType)
+				DialogueManager.show_prompt(true, dialogue.promptType)

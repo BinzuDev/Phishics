@@ -24,8 +24,13 @@ func _ready():
 	$SubViewport.disable_3d = true
 	
 
-func show_prompt(state:bool = true):
+func show_prompt(state:bool = true, type:String = "Talk"):
 	$enterTip.visible = state
+	$enterTip/Control/TALK.visible = true
+	$enterTip/Control/READ.visible = false
+	if type == "Read":
+		$enterTip/Control/TALK.visible = false
+		$enterTip/Control/READ.visible = true
 
 
 func _physics_process(_delta):

@@ -1059,7 +1059,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7197, 5.1155, 27.3681)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.2298, 8.49199, 0.252899)
 
 [node name="worm4" parent="worms" instance=ExtResource("16_e1uki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.032429, 19.5706, -25.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.33476, 17.725376, -41.24634)
 
 [node name="worm3" parent="worms" instance=ExtResource("16_e1uki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98809, 26.7464, -5.78333)
@@ -4910,7 +4910,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.059891313, -0.9981931, 3.7252645e-09, 0.99818826, 0.0598916, 0.9999932, 6.025606e-09, -1.626263e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.9981928, 3.7252645e-09, 0.99818826, 0.05989158, 0.9999932, 6.0256053e-09, -1.6262625e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 

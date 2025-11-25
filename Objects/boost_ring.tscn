@@ -43,7 +43,7 @@ _data = [Vector2(0.159363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.55341, 0.0, 0, 
 point_count = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_iqjpu"]
-height = 0.3
+height = 0.4
 radius = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o6kl"]
@@ -147,7 +147,7 @@ collision_mask = 82
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.2236752e-07, -1.7, 2.3885212e-07, 1.5818462, -1.1942677e-07, 0.6226786, -0.6226786, 3.0370407e-07, 1.5818462, 0, 0, 0)
+transform = Transform3D(1.8050497e-07, -1.7, 3.098909e-08, 0.20523147, -8.971005e-09, -1.6875563, 1.6875563, 1.82927e-07, 0.20523147, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 
@@ -170,7 +170,7 @@ scale_amount_max = 0.4
 scale_amount_curve = SubResource("Curve_5o6kl")
 
 [node name="area" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(-1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0, 4, 0.2, 0, 0)
 shape = SubResource("CylinderShape3D_iqjpu")
 
 [node name="direction" type="Node3D" parent="."]

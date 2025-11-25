@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 		if %eelCam.fov < 60:
 			size = %eelCam.fov*0.001 + 0.45
 		
-		var fishEye = max(1, (1-%eelCam.fov * 0.0075) + 0.48 ) 
+		var fishEye = max(0.05, (1-%eelCam.fov * 0.015) + 0.4 ) 
 		
 		print("fov: ", %eelCam.fov, " camZoom: ", camZoom, " transps: ", transp, " size: ", size, " fisheye: ", fishEye)
 		%scopeShader.material.set_shader_parameter("opacity", transp )

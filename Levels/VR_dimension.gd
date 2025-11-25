@@ -21,4 +21,4 @@ func _physics_process(delta):
 	$fish2/LowPolyFish2.rotation_degrees.x += 0.02 / delta
 	$JFG_flat.position.y = sin(timer*0.01)*5 - 60
 	$blahaj.rotation_degrees.y += 0.01 / delta
-	%rotating_platform.rotation_degrees.y += 0.1
+	%rotating_platform.rotation_degrees.y += 0.2

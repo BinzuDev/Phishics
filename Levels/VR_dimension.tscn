@@ -60,83 +60,6 @@ volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
 volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
-[sub_resource type="Resource" id="Resource_3ea2m"]
-script = ExtResource("5_3ea2m")
-text = "\"The art of controlling spacing using dive rebounds\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_ibblr"]
-script = ExtResource("5_3ea2m")
-text = "\"Jump right after diving on the floor to do a dive rebound\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_i6ogh"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
-pauseStyleSystem = true
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_3ea2m"), SubResource("Resource_ibblr")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uy1cw"]
-size = Vector3(8.671875, 6.7441406, 10.540756)
-
-[sub_resource type="Resource" id="Resource_exi0s"]
-script = ExtResource("5_3ea2m")
-text = "\"The art of high jumps\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_237hn"]
-script = ExtResource("5_3ea2m")
-text = "\"Let go of the movement keys before jumping to convert your speed upwards\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_jbmx8"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_exi0s"), SubResource("Resource_237hn")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_237hn"]
-albedo_texture = ExtResource("8_i6ogh")
-
-[sub_resource type="Resource" id="Resource_4rd3e"]
-script = ExtResource("5_3ea2m")
-text = "\"FISH!\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_dssj1"]
-script = ExtResource("5_3ea2m")
-text = "\"Press F at the peak of your jump to TAUNT!\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_skxys"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_4rd3e"), SubResource("Resource_dssj1")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2brq"]
-albedo_texture = ExtResource("9_i3um2")
-
-[sub_resource type="Resource" id="Resource_m2brq"]
-script = ExtResource("5_3ea2m")
-text = "\"PRO TIP:\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_odirh"]
-script = ExtResource("5_3ea2m")
-text = "\"It's easier to turn on your side because... of... physics.\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_lvjoe"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_m2brq"), SubResource("Resource_odirh")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_713cq"]
-size = Vector3(9.463379, 7.6572876, 4.9350586)
-
 [sub_resource type="Resource" id="Resource_i3um2"]
 script = ExtResource("5_3ea2m")
 name = "Jelly Fishgirl"
@@ -177,6 +100,112 @@ runOnlyOnce = true
 pauseStyleSystem = true
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_i3um2"), SubResource("Resource_713cq"), SubResource("Resource_yvyr3"), SubResource("Resource_pn0cv"), SubResource("Resource_f5vvp")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy1cw"]
+size = Vector3(8.671875, 6.7441406, 10.540756)
+
+[sub_resource type="Resource" id="Resource_3ea2m"]
+script = ExtResource("5_3ea2m")
+text = "\"The art of controlling spacing using dive rebounds\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ibblr"]
+script = ExtResource("5_3ea2m")
+text = "\"Jump right after diving on the floor to do a dive rebound\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_i6ogh"]
+script = ExtResource("6_jmjtp")
+cameraOverride = NodePath("Camera3D")
+pauseStyleSystem = true
+promptType = "Read"
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_3ea2m"), SubResource("Resource_ibblr")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="Resource" id="Resource_sipx1"]
+script = ExtResource("5_3ea2m")
+text = "\"There are two Camera modes you can switch between by pressing the \"C\" key.\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_88pjx"]
+script = ExtResource("5_3ea2m")
+text = "\"Automatic, which rotates... well automatically.\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_xtwmy"]
+script = ExtResource("5_3ea2m")
+text = "\"And Manual which lets you move the camera by pressing the \"C\" key again while holding the arrow keys.\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_j1owp"]
+script = ExtResource("6_jmjtp")
+cameraOverride = NodePath("Camera3DCam")
+promptType = "Read"
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_sipx1"), SubResource("Resource_88pjx"), SubResource("Resource_xtwmy")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ea2m"]
+size = Vector3(10.182495, 8.533691, 5.085449)
+
+[sub_resource type="Resource" id="Resource_exi0s"]
+script = ExtResource("5_3ea2m")
+text = "\"The art of high jumps\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_237hn"]
+script = ExtResource("5_3ea2m")
+text = "\"Let go of the movement keys before jumping to convert your speed upwards\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_jbmx8"]
+script = ExtResource("6_jmjtp")
+cameraOverride = NodePath("Camera3D")
+promptType = "Read"
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_exi0s"), SubResource("Resource_237hn")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_237hn"]
+albedo_texture = ExtResource("8_i6ogh")
+
+[sub_resource type="Resource" id="Resource_4rd3e"]
+script = ExtResource("5_3ea2m")
+text = "\"FISH!\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_dssj1"]
+script = ExtResource("5_3ea2m")
+text = "\"Press F at the peak of your jump to TAUNT!\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_skxys"]
+script = ExtResource("6_jmjtp")
+cameraOverride = NodePath("Camera3D")
+promptType = "Read"
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_4rd3e"), SubResource("Resource_dssj1")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2brq"]
+albedo_texture = ExtResource("9_i3um2")
+
+[sub_resource type="Resource" id="Resource_m2brq"]
+script = ExtResource("5_3ea2m")
+text = "\"PRO TIP:\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_odirh"]
+script = ExtResource("5_3ea2m")
+text = "\"It's easier to turn on your side because... of... physics.\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_lvjoe"]
+script = ExtResource("6_jmjtp")
+cameraOverride = NodePath("Camera3D")
+promptType = "Read"
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_m2brq"), SubResource("Resource_odirh")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_713cq"]
+size = Vector3(9.463379, 7.6572876, 4.9350586)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7ga4"]
 albedo_texture = ExtResource("4_6q5y5")
@@ -434,32 +463,8 @@ metallic_specular = 1.0
 shading_mode = 0
 albedo_texture = ExtResource("27_gy5gd")
 uv1_scale = Vector3(6, 6, 6)
-uv1_offset = Vector3(-36681.21, -9170.303, 0)
+uv1_offset = Vector3(-66891.664, -16722.916, 0)
 texture_filter = 0
-
-[sub_resource type="Resource" id="Resource_sipx1"]
-script = ExtResource("5_3ea2m")
-text = "\"There are two Camera modes you can switch between by pressing the \"C\" key.\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_88pjx"]
-script = ExtResource("5_3ea2m")
-text = "\"Automatic, which rotates... well automatically.\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_xtwmy"]
-script = ExtResource("5_3ea2m")
-text = "\"And Manual which lets you move the camera by pressing the \"C\" key again while holding the arrow keys.\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_j1owp"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3DCam")
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_sipx1"), SubResource("Resource_88pjx"), SubResource("Resource_xtwmy")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3ea2m"]
-size = Vector3(10.182495, 8.533691, 5.085449)
 
 [node name="level_template" type="Node3D"]
 script = ExtResource("1_aocgl")
@@ -479,77 +484,92 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -5.1068716, 0.269733
 gravity_scale = 1.5
 legacyCamera = false
 
-[node name="sign1" parent="." instance=ExtResource("4_cj54y")]
+[node name="jfg_welcome" parent="." instance=ExtResource("4_cj54y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.879938, 0.03000021, 18.319256)
+dialogue = SubResource("Resource_jmjtp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jfg_welcome"]
+shape = SubResource("BoxShape3D_uy1cw")
+
+[node name="sign_rebound" parent="." instance=ExtResource("4_cj54y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.220258, 0.03000021, -40.01375)
 dialogue = SubResource("Resource_i6ogh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_rebound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
 
-[node name="Sprite3D" type="Sprite3D" parent="sign1"]
+[node name="Sprite3D" type="Sprite3D" parent="sign_rebound"]
 transform = Transform3D(-0.59, 0, 8.908752e-08, 0, 0.59, 0, -8.908752e-08, 0, -0.59, -3.5660715, 4.7558475, 2.1827698)
 double_sided = false
 texture = ExtResource("4_yfhxp")
 
-[node name="Camera3D" type="Camera3D" parent="sign1"]
+[node name="Camera3D" type="Camera3D" parent="sign_rebound"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
-[node name="sign2" parent="." instance=ExtResource("4_cj54y")]
+[node name="sign_camera" parent="." instance=ExtResource("4_cj54y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75807, 0.21094728, -28.148178)
+dialogue = SubResource("Resource_j1owp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9760132, 3.7668457, 1.9145317)
+shape = SubResource("BoxShape3D_3ea2m")
+
+[node name="Sprite3D" type="Sprite3D" parent="sign_camera"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.267, 4.501, 0.001)
+texture = ExtResource("35_jmjtp")
+
+[node name="Camera3DCam" type="Camera3D" parent="sign_camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0920296, 4.7753267, 6.458872)
+
+[node name="sign_highjump" parent="." instance=ExtResource("4_cj54y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.70586, 0.03000021, -40.01375)
 dialogue = SubResource("Resource_jbmx8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_highjump"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
 
-[node name="Sprite3D" type="Sprite3D" parent="sign2"]
+[node name="Sprite3D" type="Sprite3D" parent="sign_highjump"]
 transform = Transform3D(-0.59, 0, 8.908752e-08, 0, 0.59, 0, -8.908752e-08, 0, -0.59, -3.5660715, 4.7558475, 2.1827698)
 material_override = SubResource("StandardMaterial3D_237hn")
 double_sided = false
 texture = ExtResource("4_yfhxp")
 
-[node name="Camera3D" type="Camera3D" parent="sign2"]
+[node name="Camera3D" type="Camera3D" parent="sign_highjump"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
-[node name="sign3" parent="." instance=ExtResource("4_cj54y")]
+[node name="sign_taunt" parent="." instance=ExtResource("4_cj54y")]
 transform = Transform3D(0.0007155696, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0.0007155696, 33.42526, 0.03000021, -29.479338)
 dialogue = SubResource("Resource_skxys")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_taunt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
 
-[node name="Sprite3D" type="Sprite3D" parent="sign3"]
+[node name="Sprite3D" type="Sprite3D" parent="sign_taunt"]
 transform = Transform3D(-0.59, 0, 8.908752e-08, 0, 0.59, 0, -8.908752e-08, 0, -0.59, -3.5660715, 4.7558475, 2.1827698)
 material_override = SubResource("StandardMaterial3D_m2brq")
 double_sided = false
 texture = ExtResource("4_yfhxp")
 
-[node name="Camera3D" type="Camera3D" parent="sign3"]
+[node name="Camera3D" type="Camera3D" parent="sign_taunt"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
-[node name="sign4" parent="." instance=ExtResource("4_cj54y")]
+[node name="sign_flip" parent="." instance=ExtResource("4_cj54y")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.843044, 0.03000021, -36.53125)
 dialogue = SubResource("Resource_lvjoe")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_flip"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2316895, 3.3286438, -0.0748024)
 shape = SubResource("BoxShape3D_713cq")
 
-[node name="Sprite3D" type="Sprite3D" parent="sign4"]
+[node name="Sprite3D" type="Sprite3D" parent="sign_flip"]
 transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, -3.6092682, 4.040481, 2.2064762)
 texture = ExtResource("10_713cq")
 
-[node name="Camera3D" type="Camera3D" parent="sign4"]
+[node name="Camera3D" type="Camera3D" parent="sign_flip"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
-
-[node name="hello" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.879938, 0.03000021, 18.319256)
-dialogue = SubResource("Resource_jmjtp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hello"]
-shape = SubResource("BoxShape3D_uy1cw")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -558,6 +578,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="leftSide" type="Control" parent="UI"]
 layout_mode = 1
@@ -567,6 +588,7 @@ anchor_bottom = 0.5
 offset_left = 15.0
 offset_right = 15.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="checklist" type="VBoxContainer" parent="UI/leftSide"]
 layout_mode = 1
@@ -577,6 +599,7 @@ offset_top = -79.0
 offset_right = 50.0
 offset_bottom = 79.0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -741,7 +764,7 @@ transform = Transform3D(0.005, 0, 0, 0, 0.099999994, 0, 0, 0, 0.005, 0.17121273,
 
 [node name="rotating_platform" type="MeshInstance3D" parent="Boxes/Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(6.910899, 0, -15.717082, 0, 0.5014953, 0, 9.019737, 0, 12.042387, 0, 0, 0)
+transform = Transform3D(1.6671622, 0, 19.585867, 0, 0.5014953, 0, -11.239961, 0, 2.9050648, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6q5y5")
 mesh = SubResource("BoxMesh_2i2tq")
 skeleton = NodePath("../../../..")
@@ -918,7 +941,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.613689, -0.5448532, 2.6781
 
 [node name="JFG_flat" parent="." instance=ExtResource("9_3ea2m")]
 process_mode = 4
-transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -64.99991, -375.14957)
+transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -55.60255, -375.14957)
 defaultAnimation = "T-Pose"
 
 [node name="Body" parent="JFG_flat/Armature/Skeleton3D" index="0"]
@@ -994,6 +1017,9 @@ transform = Transform3D(5.5180863e-08, -4.360336e-07, 1.0000006, -0.031643778, -
 [node name="thighR2" parent="JFG_flat/Armature/Skeleton3D/skirtJiggle" index="3"]
 transform = Transform3D(5.5180863e-08, -4.360336e-07, 1.0000006, -0.031643778, -0.9994992, -3.8341386e-07, 0.9994991, -0.031643778, -1.2503006e-07, -0.12690473, 1.26873, 0.008847475)
 
+[node name="fakeFish" parent="JFG_flat" index="2"]
+transform = Transform3D(0.2958621, 0.114503555, 0.3864637, -0.37574768, -0.09514542, 0.31584904, 0.14587235, -0.47732094, 0.029749125, 0, 0.0529825, 1.30401)
+
 [node name="fishAttachment" parent="JFG_flat" index="3"]
 transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.9759591, -4.7683716e-07)
 
@@ -1028,11 +1054,11 @@ material_override = SubResource("ShaderMaterial_hd43k")
 material_override = SubResource("ShaderMaterial_oui4j")
 
 [node name="JFG_dev_anchor" type="Node3D" parent="."]
-transform = Transform3D(-63.79264, -33.163948, -35.08065, -47.76322, 51.803738, 37.88203, 7.0123863, 51.15201, -61.108906, 432.7176, 53.792248, 188.72888)
+transform = Transform3D(-62.551384, -48.12129, -13.102186, -47.768345, 51.76607, 37.92705, -14.335623, 37.47825, -69.208885, 432.7176, 53.792248, 188.72888)
 
 [node name="JFG_dev" parent="JFG_dev_anchor" instance=ExtResource("22_exi0s")]
 unique_name_in_owner = true
-transform = Transform3D(0.83581537, 4.9817775e-08, 0.549009, -5.9603693e-08, 1, -1.1102124e-15, -0.549009, -3.2723023e-08, 0.83581537, 0, 0, 0)
+transform = Transform3D(-0.10104131, -6.0224488e-09, 0.99488103, -5.9603675e-08, 1, 1.5543158e-15, -0.99488103, -5.9298706e-08, -0.10104131, 0, 0, 0)
 
 [node name="Body" parent="JFG_dev_anchor/JFG_dev/Armature/Skeleton3D" index="0"]
 material_override = SubResource("StandardMaterial3D_kf0g1")
@@ -1072,16 +1098,13 @@ material_override = SubResource("StandardMaterial3D_5dcqj")
 [node name="tentacle_hair_013" parent="JFG_dev_anchor/JFG_dev/Armature/Skeleton3D" index="11"]
 material_override = SubResource("StandardMaterial3D_k1sx7")
 
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(-179.03015, 69.25909, 56.137314, 88.670685, 151.40771, 95.98551, -9.258774, 110.81015, -166.23892, -802.99255, 60.265602, 1151.7023)
-
 [node name="BlenderMonkey" type="MeshInstance3D" parent="."]
-transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 60.42358, 1151.7023)
+transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 30.700466, 1151.7023)
 material_override = SubResource("StandardMaterial3D_xmnyd")
 mesh = ExtResource("25_4rd3e")
 
 [node name="UtahTeapot" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.658297, -2.9385002, 49.69574, -16.022377, 47.345535, 1.297653, -47.133656, -15.803984, -5.3526297, 399.62552, 84.01318, -629.45306)
+transform = Transform3D(19.586464, 5.376095, 45.688828, -16.022373, 47.345535, 1.2976478, -43.123672, -15.149201, 20.269405, 399.62552, 69.172485, -629.45306)
 material_override = SubResource("StandardMaterial3D_10lto")
 mesh = ExtResource("26_dssj1")
 
@@ -1090,7 +1113,7 @@ transform = Transform3D(-25.000004, 43.30127, 9.536744e-07, -21.650639, -12.5000
 
 [node name="LowPolyFish" type="MeshInstance3D" parent="fish1"]
 unique_name_in_owner = true
-transform = Transform3D(0.9636398, 0.26720157, 0, -0.26720157, 0.9636398, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
+transform = Transform3D(0.6057738, -0.7956354, 0, 0.7956354, 0.6057738, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
@@ -1100,29 +1123,14 @@ transform = Transform3D(-0.49054515, 0.7880842, 0.37187213, -0.12549523, -0.4861
 metadata/_edit_group_ = true
 
 [node name="LowPolyFish2" type="MeshInstance3D" parent="fish2"]
-transform = Transform3D(-71.046394, 45.765957, 53.459263, 0.00013825063, -75.96508, 65.03315, 70.373405, 46.203766, 53.97037, 0, 0, 0)
+transform = Transform3D(-75.573975, -6.410165, 65.17276, 0.00018111845, -99.51983, -9.788212, 65.487236, -7.39722, 75.21109, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
 
 [node name="blahaj" parent="." instance=ExtResource("29_6q5y5")]
-transform = Transform3D(71.84318, -64.62191, -25.740393, 67.93154, 73.140594, 5.97998, 14.962302, -21.78203, 96.445206, 106.40614, 313.2397, -539.5702)
+transform = Transform3D(-39.222267, -49.24809, 77.69327, -67.0344, 73.14101, 12.521227, -62.99209, -47.170082, -61.700756, 106.40614, 313.2397, -539.5702)
 rotation_order = 4
-
-[node name="CameraControls" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75807, 0.21094728, -28.148178)
-dialogue = SubResource("Resource_j1owp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraControls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9760132, 3.7668457, 1.9145317)
-shape = SubResource("BoxShape3D_3ea2m")
-
-[node name="Sprite3D" type="Sprite3D" parent="CameraControls"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.267, 4.501, 0.001)
-texture = ExtResource("35_jmjtp")
-
-[node name="Camera3DCam" type="Camera3D" parent="CameraControls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0920296, 4.7753267, 6.458872)
 
 [editable path="JFG_flat"]
 [editable path="JFG_dev_anchor/JFG_dev"]

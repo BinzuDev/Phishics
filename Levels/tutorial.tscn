@@ -825,7 +825,7 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 [sub_resource type="Resource" id="Resource_0mu0c"]
 script = ExtResource("10_3hhjp")
 name = "Jelly Fishgirl"
-text = "Lets see here... hmmmm...
+text = "Let's see here... hmmmm...
 How about youuuuu..."
 position = "top"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"

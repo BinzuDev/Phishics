@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="10_kqlh1"]
 [ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="11_2jba0"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="12_6fklc"]
-[ext_resource type="Texture2D" uid="uid://pmx163x35nee" path="res://Textures/scope_shine.png" id="13_j3scc"]
+[ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="13_j3scc"]
 [ext_resource type="Shader" uid="uid://bcp7p3opcdfeq" path="res://Shaders/fisheye_lens.gdshader" id="14_j3scc"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="15_6fklc"]
 
@@ -163,7 +163,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e171u"]
 shader = ExtResource("14_j3scc")
-shader_parameter/effect_amount = 1.5000001899999995
+shader_parameter/effect_amount = 0.1000001235000001
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q0io"]
 shader = ExtResource("4_2ec3g")
@@ -257,7 +257,6 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.04,
 fov = 60.0
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -265,20 +264,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 605.0
-offset_top = 237.0
-offset_right = 605.0
-offset_bottom = 237.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="ShaderPreviewScreenshot" type="Sprite2D" parent="UI"]
+visible = false
 texture = ExtResource("13_j3scc")
-stretch_mode = 2
+centered = false
 
 [node name="fisheye" type="ColorRect" parent="UI"]
 material = SubResource("ShaderMaterial_e171u")

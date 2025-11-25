@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=183 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -1379,6 +1379,16 @@ _data = {
 radius = 0.1
 height = 0.2
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_jv0xx"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pqkfo"]
+top_radius = 0.0
+bottom_radius = 0.3
+height = 0.5
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_mn8qi"]
 radius = 10.0
 
@@ -1567,6 +1577,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dafiy"]
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jv0xx"]
+font_size = 45
+outline_size = 17
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jv0xx"]
 animations = [{
@@ -2120,7 +2135,6 @@ script = ExtResource("1_8ijwk")
 
 [node name="recordingManager" type="Node" parent="."]
 script = ExtResource("2_lt56d")
-recordingMode = "record"
 recordingFile = "LATEST_RECORDING"
 replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1
@@ -2354,6 +2368,20 @@ mesh = SubResource("SphereMesh_ipqbp")
 remote_path = NodePath("../antiRotation")
 update_rotation = false
 
+[node name="longJumpPreview" type="Node3D" parent="."]
+top_level = true
+
+[node name="direction" type="Node3D" parent="longJumpPreview"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/direction"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_jv0xx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/direction/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CylinderMesh_pqkfo")
+
 [node name="antiRotation" type="Node3D" parent="."]
 top_level = true
 
@@ -2540,7 +2568,7 @@ top_level = true
 
 [node name="raycast" type="RayCast3D" parent="homing"]
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
-collision_mask = 33
+collision_mask = 37
 collide_with_areas = true
 
 [node name="smear" type="Sprite3D" parent="homing"]
@@ -2831,6 +2859,15 @@ offset_right = 87.0
 offset_bottom = 35.0
 text = "AUTO"
 label_settings = SubResource("LabelSettings_dafiy")
+
+[node name="jump" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 57.0
+offset_right = 944.0
+offset_bottom = 887.0
+text = "dfgdfgdfg"
+label_settings = SubResource("LabelSettings_jv0xx")
 
 [node name="reticle" type="Node2D" parent="."]
 

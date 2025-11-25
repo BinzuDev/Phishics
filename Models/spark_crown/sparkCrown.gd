@@ -33,8 +33,8 @@ func _process(delta):
 				$Armature/Skeleton2.set_bone_pose_scale(i, vec3_rng(i))
 				$Armature/Skeleton3.set_bone_pose_scale(i, vec3_rng(i))
 				
-		print("amp: ", snapped(amp, 0.01), " lamp: ", snapped(lerpAmp, 0.01),
-		   " scale y: ",snapped($Armature/Skeleton3D.scale.x, 0.01), "  p: ", snapped($Armature/Skeleton2.scale.x, 0.01), "  b: ", snapped($Armature/Skeleton3.scale.x, 0.01) )
+		#print("amp: ", snapped(amp, 0.01), " lamp: ", snapped(lerpAmp, 0.01),
+		#a   " scale y: ",snapped($Armature/Skeleton3D.scale.x, 0.01), "  p: ", snapped($Armature/Skeleton2.scale.x, 0.01), "  b: ", snapped($Armature/Skeleton3.scale.x, 0.01) )
 
 func lerp_scale():
 	var newScale = $Armature/Skeleton3D.scale.x

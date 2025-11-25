@@ -11,6 +11,7 @@ func _ready():
 
 var keyFrame : int = 0
 var timer : int = 0
+var hasEnteredTricksArea : bool = false
 
 var waitingForReticle : bool = false
 
@@ -58,9 +59,11 @@ func _physics_process(_delta):
 			%fish.homingLookDown = true
 			%diveCamCollision.disabled = true
 			%slowmoCollision.disabled = true
-	else:
+	elif hasEnteredTricksArea == false: #otherwise it breaks hoop slowmo
 		Engine.time_scale = 1
 		AudioServer.get_bus_effect(4,0).pitch_scale = 1
+	
+	
 	
 	if MenuManager.tutorialTrickList == 2:
 		$tutorialStyle2.position.y = 0
@@ -93,6 +96,7 @@ func tutorialEvent6():
 
 func tutorialEvent7(): #start the tricks tutorial
 	$tutorialStyle.position.y = 0
+	hasEnteredTricksArea = true
 
 func show_esc(value: bool):
 	$Control/esc.visible = value

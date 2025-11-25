@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dn0q40lsrgegb"]
+[gd_scene load_steps=18 format=3 uid="uid://dn0q40lsrgegb"]
 
 [ext_resource type="Script" uid="uid://dm2u82efb867g" path="res://_MANAGERS/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="2_iove5"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cvmx5ax440q2n" path="res://Fonts/segoeui_bold_italic.ttf" id="5_dp2mv"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="6_tffx4"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="8_i3ltt"]
+[ext_resource type="Texture2D" uid="uid://cgihnbabil2on" path="res://Sprites/UI/read.png" id="9_p10gj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffx4"]
 shader = ExtResource("2_tqlrv")
@@ -245,8 +246,13 @@ autoplay = "default"
 frame_progress = 0.00853321
 
 [node name="TALK" type="Sprite2D" parent="enterTip/Control"]
+visible = false
 position = Vector2(28.75, -261)
 texture = ExtResource("5_bfllj")
+
+[node name="READ" type="Sprite2D" parent="enterTip/Control"]
+position = Vector2(28.75, -261)
+texture = ExtResource("9_p10gj")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true

@@ -15,6 +15,8 @@ class_name Dialogue extends Resource
 @export var pauseStyleSystem : bool = false
 ##Plays this sound effect every time the dialogue progresses
 @export_node_path("AudioStreamPlayer", "AudioStreamPlayer3D") var speechSFX : NodePath
+##If the prompt should say "talk" or "read"
+@export_enum("Talk", "Read") var promptType : String = "Talk"
 ##List of all the textboxes within this dialogue sequence
 @export var messages : Array[textBoxSettings]
 ##Run code after closing the textbox. NOTICE: this code doesn't run "from" anywhere, so you don't have access to any Node functions.

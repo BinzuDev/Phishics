@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://c023evklyjypk"]
+[gd_scene load_steps=102 format=3 uid="uid://c023evklyjypk"]
 
 [ext_resource type="Script" uid="uid://by6ham0vgt4hv" path="res://_MANAGERS/menu_manager.gd" id="1_kt1dn"]
 [ext_resource type="Texture2D" uid="uid://drbikn5ifimak" path="res://Sprites/UI/image.png" id="3_4s76r"]
@@ -320,6 +320,13 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("14_i2psa")
 font_size = 57
 font_color = Color(0.7, 0.373333, 0, 0.996078)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rj5ll"]
+font = ExtResource("6_06qk8")
+font_size = 20
+font_color = Color(0.9411765, 0.5411765, 0.08235294, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
@@ -912,7 +919,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_m1dqt")
 tab_alignment = 1
-current_tab = 3
+current_tab = 1
 tab_focus_mode = 0
 metadata/_edit_lock_ = true
 
@@ -921,6 +928,7 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 676
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 0
@@ -1153,12 +1161,12 @@ description2 = "
 layout_mode = 2
 
 [node name="Fish tricks" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
+autoScroll = -38
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TrickList/Panel/trickTabs/Fish tricks"]
@@ -1210,7 +1218,7 @@ layout_mode = 2
 trickName = "Vertical Jump"
 score = "5000pts + x5"
 rarity = "Rare"
-description = "Perfom a high jump that goes REALLY high."
+description = "Perform a high jump that goes REALLY high."
 
 [node name="speen" parent="TrickList/Panel/trickTabs/Fish tricks/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
@@ -1509,9 +1517,11 @@ description = "Activate a sea mine by making a crab touch it."
 layout_mode = 2
 
 [node name="Surfing" type="ScrollContainer" parent="TrickList/Panel/trickTabs"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
+scroll_vertical = 422
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 3
@@ -1607,6 +1617,42 @@ description = "While sign surfing, the AirSpin meter works a bit differently. Ev
 By default, you won't spin just by being airborne, you now need to input a combination of 3 directional key presses to perform various types of spinning."
 description2 = "(the final rank requires two 360 spins.)"
 
+[node name="spinMeter" type="TextureProgressBar" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer/sign5"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 429.0
+offset_top = 16.0
+offset_right = 494.0
+offset_bottom = 81.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 64.0
+fill_mode = 4
+radial_initial_angle = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_juhqs")
+texture_progress = ExtResource("5_juhqs")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.9411765, 0.5411765, 0.08235294, 1)
+
+[node name="spinRank" type="Label" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer/sign5/spinMeter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -15.5
+offset_right = 6.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_rj5ll")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="sign6" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 layout_mode = 2
 trickName = "Clockwise / Counterclockwise spin"
@@ -1643,8 +1689,14 @@ layout_mode = 2
 trickName = "360°"
 score = "1x"
 rarity = "Uncommon"
-description = "Fill up the Sign Surf AirSpin Meter."
-description2 = "Further ranks will give 720°, 1080°, 1440°, 1800°, 2160°, 2520°, 2880°, and finally, 3600°"
+description = "Fill up the Sign Surf AirSpin Meter once."
+
+[node name="sign18" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+layout_mode = 2
+trickName = "3600°"
+score = "5000pts + 5x"
+rarity = "Rare"
+description = "Max out the Sign Surf AirSpin Meter."
 
 [node name="sign15" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 208)
@@ -1662,7 +1714,7 @@ trickName = "Rail input combo"
 score = "800pts"
 rarity = "Uncommon"
 description = "Perform any of the surf spin combo inputs while on a rail."
-description2 = "Unlike regurlar airborne combo inputs, they can be performed in any order with no penality or bonus."
+description2 = "Unlike regular airborne combo inputs, they can be performed in any order with no penalty or extra reward."
 
 [node name="sign17" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
 custom_minimum_size = Vector2(1000, 250)
@@ -1670,7 +1722,7 @@ layout_mode = 2
 trickName = "Rail diving"
 rarity = "Mechanic"
 description = "Homing dives normally break your surf board, but there's one big exception: RAILS!
-When targetting a railgrindable object, the reticle will turn orange and black, showing you that you can safely dive without braking your board."
+When targetting a railgrindable object, the reticle will turn orange and black, showing you that you can safely dive without breaking your board."
 
 [node name="AimReticleSurf" type="Sprite2D" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer/sign17"]
 position = Vector2(375, 47)
@@ -1691,6 +1743,7 @@ rarity = "Uncommon"
 description = "Jump while braking to perform a kickflip."
 
 [node name="sign13" parent="TrickList/Panel/trickTabs/Surfing/HBoxContainer/VBoxContainer" instance=ExtResource("3_lv8kq")]
+visible = false
 layout_mode = 2
 trickName = "Quick turn"
 score = "2500pts"

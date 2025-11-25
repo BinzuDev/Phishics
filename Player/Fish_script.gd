@@ -126,6 +126,24 @@ func _physics_process(_delta: float) -> void:
 				apply_torque_impulse(rotate_by_cam(torque_side))
 				apply_impulse(rotate_by_cam(Vector3(-accel, 0, 0)))
 	
+	#print(get_input_axis().angle())
+	
+	
+	$longJumpPreview.global_position = global_position
+	
+	$UI/jump.text = ""
+	var xVel = Vector2(linear_velocity.x, linear_velocity.z) 
+	$UI/jump.text += str("global hspeed: ", snapped(xVel.length(), 0.01), " ", snapped(xVel,Vector2(0.01,0.01)))
+	xVel = xVel.length()
+	var newVel = Vector3(0,0,-xVel)
+	newVel = rotate_by_cam(newVel)
+	$UI/jump.text += str("\nin cam direction: ", snapped(newVel.length(), 0.01), " ", snapped(newVel,Vector3(0.01,0.01,0.01)))
+	newVel = Vector2(newVel.x, newVel.z)
+	newVel = newVel.rotated(get_input_axis().angle())
+	newVel = Vector3(newVel.x, linear_velocity.y, newVel.y)
+	#print()
+	
+	#vector.rotated(Vector3(0,1,0), %cam.global_rotation.y)
 	
 	
 	diveReboundTimer -= 1
@@ -152,6 +170,7 @@ func _physics_process(_delta: float) -> void:
 			$JumpPuff.emitting = true
 			
 			
+			print("JUST JUMPED: rebound timer: ", diveReboundTimer)
 			
 			#apply vertical speed
 			apply_impulse(JUMP_STRENGTH)
@@ -166,8 +185,6 @@ func _physics_process(_delta: float) -> void:
 				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+lastDivingSpeed)
 				boost += lastDivingSpeed
 				justDiveRebounded = true
-			
-			
 			
 			
 			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
@@ -186,7 +203,10 @@ func _physics_process(_delta: float) -> void:
 				apply_impulse(rotate_by_cam(Vector3(-boost,0, 0)))
 				
 			if get_input_axis(): #if one of the keys are pressed (long jump)
-				apply_impulse(rotate_by_cam(Vector3(0, boost*0.2, 0)))
+				apply_impulse( Vector3(0, boost*0.2, 0) )
+				
+				
+				#linear_velocity = newVel
 				
 				
 			
@@ -448,10 +468,6 @@ func _physics_process(_delta: float) -> void:
 					defaultCameraAngle.y = newAng
 					
 				
-				
-				
-				
-				
 	
 	
 	#if get_contact_count() >= 1 and linear_velocity.y <= -5:
@@ -470,7 +486,11 @@ func _physics_process(_delta: float) -> void:
 		gravity_scale = 1.5
 	else:
 		gravity_scale = 0.0
-	
+	#reduce damping so you don't slow down when diving large distances
+	if homing or diving:
+		linear_damp = 0.1
+	else:
+		linear_damp = 0.6
 	
 	##Speed smear
 	if homing: 
