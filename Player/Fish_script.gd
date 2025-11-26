@@ -134,15 +134,25 @@ func _physics_process(_delta: float) -> void:
 	$UI/jump.text = ""
 	var xVel = Vector2(linear_velocity.x, linear_velocity.z) 
 	$UI/jump.text += str("global hspeed: ", snapped(xVel.length(), 0.01), " ", snapped(xVel,Vector2(0.01,0.01)))
+	#$longJumpPreview/RayCast3D.target_position = Vector3(xVel.x, 0, xVel.y)
+	$longJumpPreview/global.rotation.y = atan2(xVel.x, xVel.y)
+	$longJumpPreview/global.scale.z = xVel.length()
+	
 	xVel = xVel.length()
 	var newVel = Vector3(0,0,-xVel)
 	newVel = rotate_by_cam(newVel)
 	$UI/jump.text += str("\nin cam direction: ", snapped(newVel.length(), 0.01), " ", snapped(newVel,Vector3(0.01,0.01,0.01)))
-	newVel = Vector2(newVel.x, newVel.z)
-	newVel = newVel.rotated(get_input_axis().angle())
-	newVel = Vector3(newVel.x, linear_velocity.y, newVel.y)
-	#print()
+	$longJumpPreview/camera.rotation.y = atan2(newVel.x, newVel.z)
+	$longJumpPreview/camera.scale.z = newVel.length()
 	
+	newVel = Vector2(newVel.x, newVel.z)
+	newVel = newVel.rotated(get_input_axis().angle()+PI/2)
+	$longJumpPreview/control.rotation.y = atan2(newVel.x, newVel.y)
+	$longJumpPreview/control.scale.z = newVel.length()
+	if !get_input_axis():
+		$longJumpPreview/control.scale.z = 0
+	
+	newVel = Vector3(newVel.x, linear_velocity.y, newVel.y)
 	#vector.rotated(Vector3(0,1,0), %cam.global_rotation.y)
 	
 	
@@ -153,7 +163,7 @@ func _physics_process(_delta: float) -> void:
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
-	if Input.is_action_just_pressed("jump") and (canJump or noclip) and !isRailGrinding:
+	if Input.is_action_just_pressed("jump") and (canJump or noclip) and !isRailGrinding and !diving:
 		if !%nearFloor.is_colliding() and surfMode and !noclip:
 			pass #Disable walljumps in surf mode
 		elif (timeSinceJump > 20 and %floorDetection.is_colliding()) or noclip:
@@ -188,6 +198,7 @@ func _physics_process(_delta: float) -> void:
 			
 			
 			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
+			print("linvel before: ", linear_velocity)
 			
 			if Input.is_action_pressed("forward"):
 				apply_torque_impulse(rotate_by_cam(torque_impulse))
@@ -201,13 +212,20 @@ func _physics_process(_delta: float) -> void:
 			if Input.is_action_pressed("left"):
 				apply_torque_impulse(rotate_by_cam(torque_side))
 				apply_impulse(rotate_by_cam(Vector3(-boost,0, 0)))
-				
+			
+			print("linvel after: ", linear_velocity)
+			
 			if get_input_axis(): #if one of the keys are pressed (long jump)
 				apply_impulse( Vector3(0, boost*0.2, 0) )
 				
-				
+				#xVel = Vector2(linear_velocity.x, linear_velocity.z) 
+				#xVel = xVel.length()
+				#newVel = Vector3(0,0,-xVel)
+				#newVel = rotate_by_cam(newVel)
+				#newVel = Vector2(newVel.x, newVel.z)
+				#newVel = newVel.rotated(get_input_axis().angle()+PI/2)
+				#newVel = Vector3(newVel.x, linear_velocity.y, newVel.y)
 				#linear_velocity = newVel
-				
 				
 			
 			## Style Meter and jump related tricks
@@ -215,6 +233,7 @@ func _physics_process(_delta: float) -> void:
 			
 			if is_in_air() and %nearFloor.is_colliding():
 				ScoreManager.give_points(1000,0, true, "POGO JUMP", "uncommon")
+				angular_velocity *= 1.1
 				#play_trick_sfx("uncommon")
 			
 			if !%nearFloor.is_colliding():
@@ -1104,6 +1123,7 @@ func _process(_delta):
 		var newAng = rad_to_deg(hDir.angle())
 		if Input.is_action_just_pressed("camera") and !get_input_axis():
 			autoCamTurning = !autoCamTurning
+			VcameraSetting = 1
 			if hDir.length() > 4: #instantly turn camera at first (if not standing still)
 				wrap_camera(defaultCameraAngle.y, newAng)
 				defaultCameraAngle.y = newAng

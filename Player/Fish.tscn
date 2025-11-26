@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=185 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -1380,14 +1380,20 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jv0xx"]
-top_radius = 0.15
-bottom_radius = 0.15
-height = 1.0
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.75
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pqkfo"]
-top_radius = 0.0
-bottom_radius = 0.3
-height = 0.5
+top_radius = 0.2
+bottom_radius = 0.0
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jv0xx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ns75"]
+albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mn8qi"]
 radius = 10.0
@@ -1403,7 +1409,7 @@ height = 20.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uucyj"]
 height = 0.5
-radius = 0.65
+radius = 0.68
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_div8h"]
 transparency = 1
@@ -2140,7 +2146,7 @@ replayFile = "res://Recordings/LATEST_RECORDING.json"
 replayAccuracy = 1
 
 [node name="collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.23, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(1.2300001, 0, 0, 0, 0.16, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_j2ykt")
 
 [node name="collisionSphere" type="CollisionShape3D" parent="."]
@@ -2364,23 +2370,55 @@ fov = 85.0
 visible = false
 mesh = SubResource("SphereMesh_ipqbp")
 
-[node name="RemoteTransformGeneric" type="RemoteTransform3D" parent="."]
-remote_path = NodePath("../antiRotation")
-update_rotation = false
-
 [node name="longJumpPreview" type="Node3D" parent="."]
 top_level = true
+visible = false
 
-[node name="direction" type="Node3D" parent="longJumpPreview"]
+[node name="global" type="Node3D" parent="longJumpPreview"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/direction"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, -0.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/global"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0.38)
 mesh = SubResource("CylinderMesh_jv0xx")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/direction/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/global/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("CylinderMesh_pqkfo")
+
+[node name="camera" type="Node3D" parent="longJumpPreview"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/camera"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0.38)
+material_override = SubResource("StandardMaterial3D_jv0xx")
+mesh = SubResource("CylinderMesh_jv0xx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/camera/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_jv0xx")
+mesh = SubResource("CylinderMesh_pqkfo")
+
+[node name="control" type="Node3D" parent="longJumpPreview"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/control"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0.38)
+material_override = SubResource("StandardMaterial3D_2ns75")
+mesh = SubResource("CylinderMesh_jv0xx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="longJumpPreview/control/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_2ns75")
+mesh = SubResource("CylinderMesh_pqkfo")
+
+[node name="RayCast3D" type="RayCast3D" parent="longJumpPreview"]
+target_position = Vector3(0, 0, -5)
+debug_shape_custom_color = Color(1, 1, 1, 1)
+debug_shape_thickness = 5
+
+[node name="RemoteTransformGeneric" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../antiRotation")
+update_rotation = false
 
 [node name="antiRotation" type="Node3D" parent="."]
 top_level = true
@@ -2861,6 +2899,7 @@ text = "AUTO"
 label_settings = SubResource("LabelSettings_dafiy")
 
 [node name="jump" type="Label" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 117.0
 offset_top = 57.0
