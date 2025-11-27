@@ -2779,7 +2779,6 @@ libraries = {
 }
 
 [node name="jumpPreview" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_left = -35.0

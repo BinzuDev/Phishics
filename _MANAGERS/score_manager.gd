@@ -411,7 +411,7 @@ func give_extra_combo_time(amount: float):
 		comboTimer += amount*0.5
 	else:
 		comboTimer += amount
-	print(comboTimer)
+	#print(comboTimer)
 
 
 func end_combo():

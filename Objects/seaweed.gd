@@ -14,7 +14,7 @@ func generateNodes():
 func _ready():
 	$Timer.start()
 
-func every_one_second():
+func every_half_second():
 	var cam
 	var dist
 	if Engine.is_editor_hint():

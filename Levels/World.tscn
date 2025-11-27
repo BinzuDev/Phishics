@@ -2979,7 +2979,7 @@ transform = Transform3D(-0.834488, -0.483735, 0.263873, -0.501511, 0.86515, 0, -
 
 [node name="BoostRing21" parent="group2" instance=ExtResource("9_2uuim")]
 transform = Transform3D(0.00464013, 0.0024258, 0.999986, -0.463296, 0.886202, 0, -0.886191, -0.463289, 0.00523596, 83.8049, 21.7343, -51.4284)
-strength = 29.0
+strength = 28.0
 centerPlayer = true
 deactivateDive = 200
 
@@ -3306,6 +3306,8 @@ debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="frickingAwesomeTube" parent="group2" instance=ExtResource("15_myu2g")]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 79.96, -0.46, -14.1)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="base" parent="group2/frickingAwesomeTube" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.068, 8.76631, 6.88112)
@@ -4910,7 +4912,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989131, -0.9981928, 3.7252645e-09, 0.99818826, 0.05989158, 0.9999932, 6.0256053e-09, -1.6262625e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819267, 3.7252645e-09, 0.99818826, 0.059891578, 0.9999932, 6.0256053e-09, -1.6262624e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 

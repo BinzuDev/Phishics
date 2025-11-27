@@ -36,7 +36,7 @@ var fishCooldown : int = 0
 var diving := false
 var homing := false
 var diveReboundTimer : int = 0
-var lastDivingSpeed : float = 0
+var heightWhenDiveBegun : float = 0
 var justDiveRebounded : bool = false
 var timeSinceNoTargets := 0 ##keeps track of how many frames in a row has the homing area has been empty
 var posLastFrame = Vector3(0,0,0)
@@ -158,8 +158,8 @@ func _physics_process(_delta: float) -> void:
 	
 	diveReboundTimer -= 1
 	if diveReboundTimer == 0:
-		lastDivingSpeed = 0
-	
+		heightWhenDiveBegun = 0
+		
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
@@ -190,15 +190,13 @@ func _physics_process(_delta: float) -> void:
 			#mid Air extra control
 			var boost = (ACCEL * 3) + clamp(angular_velocity.length()*0.15, 0, 20)
 			
-			
 			if diveReboundTimer > 0 and get_input_axis():
-				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+lastDivingSpeed)
-				boost += lastDivingSpeed
+				print("DIVE LONG JUMP, boost before: ", boost, " and after: ", boost+dive_rebound_strength())
+				boost += dive_rebound_strength()
 				justDiveRebounded = true
 			
 			
 			#print("long jump boost: 4.5 + ", clamp(angular_velocity.length()*0.15, 0, 20), " = ", boost)
-			print("linvel before: ", linear_velocity)
 			
 			if Input.is_action_pressed("forward"):
 				apply_torque_impulse(rotate_by_cam(torque_impulse))
@@ -213,7 +211,6 @@ func _physics_process(_delta: float) -> void:
 				apply_torque_impulse(rotate_by_cam(torque_side))
 				apply_impulse(rotate_by_cam(Vector3(-boost,0, 0)))
 			
-			print("linvel after: ", linear_velocity)
 			
 			if get_input_axis(): #if one of the keys are pressed (long jump)
 				apply_impulse( Vector3(0, boost*0.2, 0) )
@@ -248,8 +245,8 @@ func _physics_process(_delta: float) -> void:
 				var xtraYspd = clamp(angular_velocity.length()*0.35, 0, 35)
 				
 				if diveReboundTimer > 0:
-					print("DIVE HIGH JUMP, boost before: ", xtraYspd, " and after: ",xtraYspd+lastDivingSpeed)
-					xtraYspd += lastDivingSpeed
+					print("DIVE HIGH JUMP, boost before: ", xtraYspd, " and after: ",xtraYspd+dive_rebound_strength())
+					xtraYspd += dive_rebound_strength()
 					justDiveRebounded = true
 				
 				
@@ -281,12 +278,11 @@ func _physics_process(_delta: float) -> void:
 			jumpPreview.x += Ljump
 			jumpPreview.y += Ljump*0.2
 			if diveReboundTimer > 0 or diving:
-				jumpPreview.x += lastDivingSpeed
-			
+				jumpPreview.x += dive_rebound_strength()
 		else:
 			jumpPreview.y += angular_velocity.length()*0.35
 			if diveReboundTimer > 0 or diving:
-				jumpPreview.y += lastDivingSpeed
+				jumpPreview.y += dive_rebound_strength()
 		$UI/jumpPreview/ColorRect/arrow.position.x = jumpPreview.x*10 + 35
 		$UI/jumpPreview/ColorRect/arrow.position.y = jumpPreview.y*-7
 		$UI/jumpPreview/ColorRect/Line1.points[1] = $UI/jumpPreview/ColorRect/arrow.position
@@ -422,6 +418,8 @@ func _physics_process(_delta: float) -> void:
 		homingLookDown = false
 	
 	
+	
+	
 	## Diving
 	if %heightDetect.is_colliding():
 		height = global_position.y - %heightDetect.get_collision_point().y
@@ -431,7 +429,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("dive") and !%nearFloor.is_colliding() and !isHeld and deactivateDive == 0:
 		var newSpd = clamp(height*-1.5 -10, -90, -10)
-		lastDivingSpeed = max(height, lastDivingSpeed, 10) #use max so you can't override it by diving mid dive
+		#use max so you can't override it by diving mid dive
+		heightWhenDiveBegun = max(global_position.y, heightWhenDiveBegun)
 		
 		linear_velocity.y = min(newSpd, linear_velocity.y)
 		linear_velocity.x *= 0.5
@@ -1054,7 +1053,8 @@ func _physics_process(_delta: float) -> void:
 	"CameraAngle: ", %camFocus.rotation_degrees, "\n",
 	"CameraTarget: ", defaultCameraAngle, "\n",
 	"diveReboundTimer: ", diveReboundTimer, "\n",
-	"lastDivingSpeed: ", lastDivingSpeed, "\n",
+	"dive height: ", heightWhenDiveBegun, " - gp.y: ", snapped(global_position.y, 0.1), " = ",
+	" rebound strength: ", snapped(dive_rebound_strength(), 0.1), "\n",
 	#"homeDir: ", rad_to_deg(Vector2(-$homing/raycast.target_position.z, -$homing/raycast.target_position.x).angle()) 
 	)
 	
@@ -1563,3 +1563,6 @@ func forceMakeCameraCurrent():
 func should_camera_render(value: bool):
 	%cam.set_cull_mask_value(1, value)
 	%cam.set_cull_mask_value(2, value)
+
+func dive_rebound_strength():
+	return max(heightWhenDiveBegun-global_position.y, 10)
