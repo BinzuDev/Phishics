@@ -442,7 +442,7 @@ size = Vector3(9.73267, 1, 29.8836)
 size = Vector3(9.73267, 1, 8.035489)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vok04"]
-size = Vector3(11.8297, 13.2959, 1.35788)
+size = Vector3(15.170221, 13.2959, 1.35788)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28m7t"]
 albedo_color = Color(0.35, 0.35, 0.35, 1)
@@ -4476,7 +4476,7 @@ transform = Transform3D(1, 0, 0, 0, 0.859852, -0.510543, 0, 0.510543, 0.859852, 
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/homingBlocker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69089, 7.62939e-06, -2.90917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6908875, 7.6293945e-06, -2.9091682)
 shape = SubResource("BoxShape3D_wb77i")
 debug_color = Color(1, 0.983333, 0, 1)
 
@@ -4490,7 +4490,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.494, 37.0603, 4.05824)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="group3/homingBlocker2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04852, -1.86475, -0.222722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6217346, -1.8647499, -0.22272205)
 shape = SubResource("BoxShape3D_vok04")
 debug_color = Color(1, 0.983333, 0, 1)
 
@@ -4912,7 +4912,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819267, 3.7252645e-09, 0.99818826, 0.059891578, 0.9999932, 6.0256053e-09, -1.6262624e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819136, 3.7252645e-09, 0.99818826, 0.059891496, 0.9999932, 6.0256053e-09, -1.6262602e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 

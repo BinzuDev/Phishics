@@ -810,45 +810,55 @@ alignment = 2
 
 [node name="fresh" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Fresh debug info"
 
 [node name="music" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Music debug info"
 
 [node name="fish" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Fish debug info"
 
 [node name="surf" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Surf debug info"
 
 [node name="noclip" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "noclip"
 
 [node name="style" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Style debug info"
 
 [node name="hideUI" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+action_mode = 0
 text = "Hide all UI"
 
 [node name="fps" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
 button_pressed = true
+action_mode = 0
 text = "FPS counter"
 
 [node name="mobile" type="CheckButton" parent="PauseMenu/DebugList/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../PauseList/optionList/Continue")
+action_mode = 0
 text = "Mobile mode"
 
 [node name="TrickList" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -928,7 +938,6 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 676
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 0
@@ -1521,7 +1530,6 @@ visible = false
 layout_mode = 2
 theme = SubResource("Theme_06qk8")
 follow_focus = true
-scroll_vertical = 422
 horizontal_scroll_mode = 0
 script = SubResource("GDScript_lv8kq")
 metadata/_tab_index = 3
