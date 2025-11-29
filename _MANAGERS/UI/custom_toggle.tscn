@@ -8,3 +8,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_lmk0n")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+action_mode = 0

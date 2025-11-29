@@ -2447,6 +2447,7 @@ mesh = SubResource("SphereMesh_jap5e")
 unique_name_in_owner = true
 shape = SubResource("CylinderShape3D_uucyj")
 target_position = Vector3(0, -0.7, 0)
+max_results = 16
 collision_mask = 17
 
 [node name="heightDetect" type="RayCast3D" parent="antiRotation"]
@@ -2779,6 +2780,7 @@ libraries = {
 }
 
 [node name="jumpPreview" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_left = -35.0

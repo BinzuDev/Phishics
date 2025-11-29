@@ -159,7 +159,14 @@ func _physics_process(_delta: float) -> void:
 	diveReboundTimer -= 1
 	if diveReboundTimer == 0:
 		heightWhenDiveBegun = 0
-		
+	
+	#Walljump hitbox
+	var newRadius = 0.55 + (trueSpeed.length()*0.01) + (angular_velocity.length()*0.001)
+	
+	
+	%floorDetection.shape.radius = move_toward(%floorDetection.shape.radius, newRadius, 0.01)
+	print("speed: ", snapped(linear_velocity.length()*0.01, 0.01), " ang: ", snapped(angular_velocity.length()*0.001, 0.01)," target: ", snapped(newRadius, 0.01), " radius: ", snapped(%floorDetection.shape.radius, 0.01) )
+	
 		###############
 		##  Jumping  ##
 	timeSinceJump += 1 #so you cant jump twice in a row when spamming
