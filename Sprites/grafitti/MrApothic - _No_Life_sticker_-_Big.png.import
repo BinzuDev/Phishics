@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w2v780gesuuj"
-path.s3tc="res://.godot/imported/MrApothic-_No_Life_sticker_-_Big.png-9102d69b6be03da0c3f8e82aa0c0b6c0.s3tc.ctex"
+path.s3tc="res://.godot/imported/MrApothic - _No_Life_sticker_-_Big.png-a73badacab1484842ae5fb5b445c7f97.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/grafitti/MrApothic-_No_Life_sticker_-_Big.png"
-dest_files=["res://.godot/imported/MrApothic-_No_Life_sticker_-_Big.png-9102d69b6be03da0c3f8e82aa0c0b6c0.s3tc.ctex"]
+source_file="res://Sprites/grafitti/MrApothic - _No_Life_sticker_-_Big.png"
+dest_files=["res://.godot/imported/MrApothic - _No_Life_sticker_-_Big.png-a73badacab1484842ae5fb5b445c7f97.s3tc.ctex"]
 
 [params]
 

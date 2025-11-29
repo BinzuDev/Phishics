@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://4ws01kfmuacw"]
+
+[ext_resource type="Texture2D" uid="uid://tlvayb55ox2j" path="res://Sprites/target.png" id="1_d628h"]
+[ext_resource type="Script" uid="uid://ysbs3kgsxsc" path="res://Objects/target.gd" id="1_jge0a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d628h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d628h"]
+size = Vector3(0.5566406, 1, 0.7607422)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jge0a"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jge0a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jge0a"]
+height = 0.71232605
+
+[node name="Target" type="Node3D"]
+script = ExtResource("1_jge0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(6.495021, 0, 0, 0, -6.8189765e-09, -6.456, 0, 0.156, -2.8220072e-07, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, -4.5474735e-13, 0, 3.330669e-16, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_d628h")
+
+[node name="BackupShape" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, -4.5474735e-13, 0, 4.440892e-16, 1, 0.005859372, 1.4210855e-14, -0.02294922)
+shape = SubResource("BoxShape3D_d628h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, -1.1368684e-13, 0, 1.110223e-16, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_jge0a")
+mesh = SubResource("CylinderMesh_jge0a")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D/MeshInstance3D"]
+transform = Transform3D(0.15396409, 0, 0, 0, -2.802012e-07, 6.4102564, 0, -0.15489465, -6.770661e-09, 0, 1.1467735, -1.2112499e-09)
+texture = ExtResource("1_d628h")
+
+[node name="Sprite3D2" type="Sprite3D" parent="StaticBody3D/MeshInstance3D"]
+transform = Transform3D(0.15396409, 0, 0, 0, -2.802012e-07, 6.4102564, 0, -0.15489465, -6.770661e-09, 0, -1.0414314, 1.0999828e-09)
+texture = ExtResource("1_d628h")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 33
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.7312835e-10, -0.006248474)
+shape = SubResource("CylinderShape3D_jge0a")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

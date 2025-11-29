@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://c7m7gntvtmspl"]
+[gd_scene load_steps=80 format=3 uid="uid://c7m7gntvtmspl"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_ab27v"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="1_hsesv"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="29_iixud"]
 [ext_resource type="PackedScene" uid="uid://5lcphi6a3exn" path="res://Objects/anchor.tscn" id="30_iixud"]
 [ext_resource type="PackedScene" uid="uid://bolbcm2mvvw3y" path="res://Models/tire.tscn" id="31_5yavy"]
+[ext_resource type="PackedScene" uid="uid://4ws01kfmuacw" path="res://Objects/target.tscn" id="32_nggdu"]
 [ext_resource type="PackedScene" uid="uid://dekjyfsmafh8k" path="res://Objects/worm.tscn" id="33_djbud"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5qhn"]
@@ -1332,5 +1333,8 @@ hSpeedMultiplier = 0.0
 
 [node name="tire" parent="." instance=ExtResource("31_5yavy")]
 transform = Transform3D(0.57220817, -0.17927319, -0.020951925, 0, 0.06964885, -0.59594387, 0.18049338, 0.5683399, 0.06642272, 11.084828, 119.4469, 63.811745)
+
+[node name="Target" parent="." instance=ExtResource("32_nggdu")]
+transform = Transform3D(0.012827012, 0.21884826, -0.4493784, -0.0062442403, 0.44956136, 0.21875916, 0.49979648, 0, 0.014266143, 25.133041, 131.54697, 106.83677)
 
 [connection signal="curve_changed" from="Path3D3" to="Path3D3" method="_on_curve_changed"]
