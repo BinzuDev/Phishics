@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=186 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://c3wlgqe8jicw3" path="res://icons/mine.png" id="19_dafiy"]
 [ext_resource type="Texture2D" uid="uid://cx3jri7bd8mio" path="res://icons/railGrind.png" id="20_h8lso"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="24_40mal"]
+[ext_resource type="Texture2D" uid="uid://bfka4t3pqbppm" path="res://icons/target.png" id="24_pqkfo"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
 [ext_resource type="Texture2D" uid="uid://banxnie7e78w5" path="res://Sprites/UI/aim_reticle_surf.png" id="26_ukjyi"]
@@ -1618,6 +1619,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("20_h8lso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_pqkfo")
 }],
 "loop": true,
 "name": &"default",

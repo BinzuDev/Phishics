@@ -9,7 +9,6 @@ var tutorialTrickList : int = 0
 func _ready():
 	print("menu manager ready")
 	%TrickList.visible = false
-	%Settings.visible = false
 	$splashScreen.visible = true
 	$transitionScreen.visible = true
 	$transitionScreen.position = Vector2(-99999, 0)
@@ -26,26 +25,32 @@ func _process(_delta):
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
 	
-	%HelpTip.visible = GameManager.gamePaused or GameManager.isOnTitleScreen
+	%HelpTip.visible = (GameManager.gamePaused or GameManager.isOnTitleScreen) and !GameManager.frameByFrameMode
 	if %TrickList.visible:
 		%HelpTip.visible = false
 	
 	%HelpTip.label_settings.font_size = 40
 	%HelpTip.label_settings.outline_size = 20
-	if %Settings.visible:
+	if SettingsManager.menu_is_visible():
 		%HelpTip.label_settings.font_size = 30
 		%HelpTip.label_settings.outline_size = 15
 	
 	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30)
 	
-	
-	#AudioServer.set_bus_mute(0, !get_window().has_focus())
+	##Force press continue
+	if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("pause"):
+		if GameManager.gamePaused == true and %PauseList.visible and !GameManager.frameByFrameMode:
+			if !GameManager.disableMenuControl and !GameManager.disableUnpause:
+				printerr("force press continue")
+				%Continue.grab_focus()
+				%Continue._on_button_pressed()
+				_on_continue_just_pressed()
 	
 	
 	#backup in case no option is selected
-	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
-		if get_viewport().gui_get_focus_owner() == null and GameManager.gamePaused:
-			%Continue.grab_focus()
+	#if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
+	#	if get_viewport().gui_get_focus_owner() == null and GameManager.gamePaused:
+	#		%Continue.grab_focus()
 	
 	
 	## Screen transition
@@ -100,7 +105,6 @@ func toggleMenu():
 	$PauseMenu.visible = GameManager.gamePaused
 	%TrickList.visible = false
 	%Tricks.forceReset()
-	%Settings.visible = false
 	GameManager.previousUIselection = []
 	print("toggleMenu")
 	MusicManager.shouldMusicMuffle = GameManager.gamePaused
@@ -109,8 +113,12 @@ func toggleMenu():
 		ScoreManager.show_counter(true)
 		%Continue.grab_focus()
 		%PauseList.visible = true
+		GameManager.disableUnpause = true
 		
 
+##So that you can't unpause the game during the pausing animation
+func _on_water_animation_finished(anim_name):
+	GameManager.disableUnpause = false
 
 
 func setTransition(value: float):
@@ -150,7 +158,7 @@ func resetFocus():
 	
 
 func isSubmenuOpen():
-	return %TrickList.visible or %Settings.visible
+	return %TrickList.visible or SettingsManager.menu_is_visible()
 
 
 	## Pause menu options ##
@@ -174,9 +182,8 @@ func _on_tricks_pressed():
 	%trickGoBack.forceReset()
 	%movement.grab_focus()
 	$TrickList/Panel/trickTabs/Mechanics.scroll_vertical = 0
-	if tutorialTrickList == 1:
+	if tutorialTrickList == 1: #forces you to open tricks in tutorial
 		tutorialTrickList = 2
-		#DialogueManager.currentDialogueOwner.tutorialEvent7point5()
 	
 
 func close_tricks():
@@ -191,18 +198,10 @@ func _on_settings_pressed():
 	GameManager.rememberUichoice()
 	GameManager.disableMenuControl = false
 	%PauseList.visible = false
-	%Settings.visible = true
-	%settingsTabs.current_tab = 0
-	%settingsGoBack.grab_focus()
+	SettingsManager.show_settings_menu()
 	%Options.forceReset()
 	
 
-func _on_settings_go_back():
-	GameManager.disableMenuControl = false
-	if GameManager.gamePaused:
-		%PauseList.visible = true
-	GameManager.focusPreviousUI()
-	%Settings.visible = false
 
 func _on_exit_pressed(): 
 	GameManager.change_scene("res://Levels/Title_Screen.tscn")
@@ -211,7 +210,8 @@ func _on_exit_pressed():
 func set_help_tip(newText: String):
 	%HelpTip.text = newText
 
-#Debug settings
+## Debug settings
+#region Debug settings
 func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 	$PauseMenu.visible = false
 	%TrickList.visible = false
@@ -240,7 +240,6 @@ func _on_style_debug_toggled(toggled_on):
 func _on_fresh_debug_toggled(toggled_on):
 	ScoreManager.find_child("freshDebugLabel").visible = toggled_on
 
-
 func _on_hide_ui_toggled(toggled_on):
 	%PauseList.visible = false
 	GameManager.hideUI = toggled_on
@@ -248,7 +247,6 @@ func _on_hide_ui_toggled(toggled_on):
 		ScoreManager.hide()
 	else:
 		ScoreManager.show()
-
 
 func _on_noclip_toggled(_toggled_on = true):
 	var value = $PauseMenu/DebugList/HBoxContainer/noclip.button_pressed
@@ -258,70 +256,15 @@ func _on_noclip_toggled(_toggled_on = true):
 	Player.set_collision_mask_value(3, !value)
 	
 
-
 func _on_fps_toggled(toggled_on):
 	$FPSanchor.visible = toggled_on
-
 
 func _on_mobile_toggled(toggled_on):
 	if toggled_on:
 		#DisplayServer.window_set_size(Vector2(1080, 1312), 0)
 		DisplayServer.window_set_size(Vector2(1080, 1920), 0)
+		SettingsManager.find_child("UIscale").max_value = 1.7
 	else:
 		DisplayServer.window_set_size(Vector2(1152, 648), 0)
 
-
-
-	#####################
-	##  SETTINGS MENU  ##
-	#####################
-
-## Audio
-func _on_master_volume_changed(value):
-	AudioServer.set_bus_volume_linear(0, value)
-	%masterVol.text = str(" ", int(value*100), "%")
-	print("linear: ", AudioServer.get_bus_volume_linear(0), " db: ", AudioServer.get_bus_volume_db(0))
-func _on_music_volume_changed(value):
-	AudioServer.set_bus_volume_linear(4, value) #music bus
-	%musicVol.set_percentage(int(value*100))
-func _on_voice_volume_changed(value):
-	AudioServer.set_bus_volume_linear(3, value) #rankUp bus
-	%voiceVol.set_percentage(int(value*100))
-	$Settings/settingsTabs/Audio/voicePreview.play()
-func _on_tricks_volume_changed(value):
-	AudioServer.set_bus_volume_linear(2, value*0.1) #tricks bus
-	%trickVol.set_percentage(int(value*20))
-	$Settings/settingsTabs/Audio/trickPreview.play()
-func _on_sfx_volume_changed(value):
-	AudioServer.set_bus_volume_linear(1, value) #fishsfx bus
-	AudioServer.set_bus_volume_linear(5, value) #soundEffects bus
-	%sfxVol.set_percentage(int(value*100))
-	$Settings/settingsTabs/Audio/sfxPreview.play()
-
-## Graphics
-var viewport_start_size := Vector2(
-	ProjectSettings.get_setting(&"display/window/size/viewport_width"),
-	ProjectSettings.get_setting(&"display/window/size/viewport_height")
-)
-
-
-func _on_UIscale_value_changed(value):
-	var new_size := viewport_start_size
-	new_size /= value #get in percents
-	%UIscale.set_percentage(roundi(value*100))
-	get_tree().root.set_content_scale_size(new_size)
-
-
-func _on_3d_res_scale_value_changed(value):
-	get_viewport().scaling_3d_scale = value
-	%"3DresScale".set_custom_value(str(roundi(value*100)," % ", get_resolution()   ))
-	
-
-func get_resolution():
-	var viewport_render_size = get_viewport().size * get_viewport().scaling_3d_scale
-	return "(%d × %d)" \
-			% [viewport_render_size.x, viewport_render_size.y]
-
-
-func _on_always_top_toggled(toggled_on):
-	get_window().always_on_top = toggled_on
+#endregion

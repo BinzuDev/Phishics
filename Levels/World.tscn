@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://c7ygdu4mhaem4"]
+[gd_scene load_steps=161 format=3 uid="uid://c7ygdu4mhaem4"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_hmvop"]
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_kvfdy"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://but2fghkuo68i" path="res://Objects/rail_grind.tscn" id="53_fop6s"]
 [ext_resource type="PackedScene" uid="uid://dydx5che4wr0x" path="res://Objects/Corals/coral_flat.tscn" id="53_pj311"]
 [ext_resource type="PackedScene" uid="uid://dgpdkxtjjhcdf" path="res://Objects/billboard.tscn" id="55_fcuyb"]
+[ext_resource type="PackedScene" uid="uid://4ws01kfmuacw" path="res://Objects/target.tscn" id="57_71q2h"]
 [ext_resource type="PackedScene" uid="uid://bt40ku2iol014" path="res://Objects/stone_pillar.tscn" id="57_cxcqp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53g8k"]
@@ -3647,7 +3648,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.174, 41.8371, -49.8326)
 transform = Transform3D(0.012916, 0.0140139, 1.19985, -0.882366, 0.813284, -2.79064e-08, -0.813181, -0.882255, 0.0190593, 165.147, 68.9436, -102.443)
 
 [node name="strike_zone2" parent="highUpSection" instance=ExtResource("41_rneqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.434, 59.6241, -111.121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.20474, 59.28796, -111.121)
+
+[node name="Target" parent="highUpSection" instance=ExtResource("57_71q2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.19151, 59.096077, -111.359856)
 
 [node name="ball_mode_area2" parent="highUpSection" instance=ExtResource("42_rneqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.026, 59.6679, -118.948)
@@ -4912,7 +4916,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819136, 3.7252645e-09, 0.99818826, 0.059891496, 0.9999932, 6.0256053e-09, -1.6262602e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819094, 3.7252645e-09, 0.99818826, 0.059891474, 0.9999932, 6.0256053e-09, -1.6262595e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 
@@ -5017,12 +5021,12 @@ transform = Transform3D(0.927438, 0.364417, -0.0840186, -0.36135, 0.931102, 0.04
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.736, 19.8776, -137.948)
 
 [node name="destructable_sign" parent="group4" instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 188.67679, 19.247084, -134.36803)
+transform = Transform3D(1, 0, 0, 0, 0.99717206, 0.07515277, 0, -0.07515277, 0.99717206, 190.97696, 19.977537, -150.44728)
 signSprite = "uid://bm74cvbdnkudp"
 canRespawn = true
 
 [node name="destructable_sign2" parent="group4" instance=ExtResource("47_bmonc")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 195.507, 29.2841, -179.977)
+transform = Transform3D(0.39073107, -0.92050487, -4.0236557e-08, 0, -4.37114e-08, 1, -0.92050487, -0.39073107, -1.7079401e-08, 214.48189, 29.2841, -172.40567)
 signSprite = "uid://bopnbyxyecen8"
 canRespawn = true
 
@@ -5037,6 +5041,9 @@ canRespawn = true
 [node name="signJump3" parent="group4" instance=ExtResource("47_bmonc")]
 transform = Transform3D(2.72826e-08, -1, -1.19933e-08, 0.402427, -2.66454e-15, 0.915452, -0.915452, -2.98023e-08, 0.402427, 188.315, 59.5253, -234.043)
 canRespawn = true
+
+[node name="Target" parent="group4" instance=ExtResource("57_71q2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.93742, 19.064634, -134.63234)
 
 [node name="newCoral" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)

@@ -4,9 +4,11 @@ var gamePaused : bool
 var isOnTitleScreen : bool = false
 ##Stops you from pausing/unpausing during button animations or screen transitions
 var disableMenuControl : bool = false 
+var disableUnpause : bool = false ##Disable unpausing during the pausing animation
 var previousUIselection = [] ##Stores the last buttons you were hovering before you switched menu
 var gameTimer : int = 0
 var framefwrd
+var frameByFrameMode : bool = false
 
 var freezeframe : int = 0 
 var objFreeze #freeze something else when hitstopping
@@ -85,13 +87,15 @@ func _process(_delta):
 	gameTimer += 1
 	
 	if Input.is_action_just_pressed("pause"):
-		if disableMenuControl == false:
+		if (disableMenuControl == false and gamePaused == false) or frameByFrameMode:
+			print(disableMenuControl, gamePaused, frameByFrameMode)
 			toggle_pause()
 	
 	if Input.is_action_just_pressed("frameFRWD") and get_tree().paused:
 		get_tree().paused = !get_tree().paused
 		MenuManager.hide_menu_in_FBF()
 		framefwrd = gameTimer + 1
+		frameByFrameMode = true
 	
 	if gameTimer == framefwrd:
 		get_tree().paused = !get_tree().paused

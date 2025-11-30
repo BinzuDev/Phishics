@@ -77,6 +77,7 @@ var noclip := false
 var jumpPreview : Vector2
 var deactivateDive : int = 0
 
+
 var trueSpeed := Vector3(0,0,0) #Keeps track of how fast you're moving in global space
 
 func _ready() -> void:
@@ -165,7 +166,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	%floorDetection.shape.radius = move_toward(%floorDetection.shape.radius, newRadius, 0.01)
-	print("speed: ", snapped(linear_velocity.length()*0.01, 0.01), " ang: ", snapped(angular_velocity.length()*0.001, 0.01)," target: ", snapped(newRadius, 0.01), " radius: ", snapped(%floorDetection.shape.radius, 0.01) )
+	#print("speed: ", snapped(linear_velocity.length()*0.01, 0.01), " ang: ", snapped(angular_velocity.length()*0.001, 0.01)," target: ", snapped(newRadius, 0.01), " radius: ", snapped(%floorDetection.shape.radius, 0.01) )
 	
 		###############
 		##  Jumping  ##
@@ -548,6 +549,8 @@ func _physics_process(_delta: float) -> void:
 	%pivotLower.rotation_degrees.z = sin(flopTimer * 0.3) * -3*clamp(amp, 1, 10)
 	%pivotHead.rotation_degrees.z = sin(flopTimer * 0.3) *  6*clamp(amp, 1, 10)
 	%pivotTail.rotation_degrees.z = sin(flopTimer * 0.3) *  -6*clamp(amp, 1, 10)  
+	
+	
 	
 	
 	## Particle Effects
@@ -1068,12 +1071,28 @@ func _physics_process(_delta: float) -> void:
 	
 
 
-################
-##   CAMERA   ##
-################
+
 #(I have to put the camera inside process because it needs to be synced up with the screen
 #otherwise, in physics process theres a delay, even when the cam rate is set to be instant)
 func _process(_delta):
+	
+	##Training mode flashing
+	var flashColor = Color("ffffff")
+	#taunt
+	if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60 and !isHeld:
+		flashColor = Color("ff00ff")
+	if !%nearFloor.is_colliding() and timeSinceJump > 20 and %floorDetection.is_colliding():
+		flashColor = Color("0000ff")
+	if diveReboundTimer >= 0 and timeSinceJump > 20 and %floorDetection.is_colliding():
+		flashColor = Color("ffff00")
+	$pivotUpper/upperBody.modulate = flashColor
+	$pivotUpper/pivotHead/head.modulate = flashColor
+	$pivotLower/lowerBody.modulate = flashColor
+	$pivotLower/pivotTail/tail.modulate = flashColor
+	
+	################
+	##   CAMERA   ##
+	################
 	
 	#fov
 	%cam.fov = lerp(%cam.fov, 85.0, 0.1)   
@@ -1546,6 +1565,9 @@ func set_offscreen_reticle(center, posBefore, closest):
 		$reticle/icon.frame = 7
 	if closest.get_parent() is railGrind:
 		$reticle/icon.frame = 8
+	if closest.get_parent() is Target:
+		$reticle/icon.frame = 9
+	
 
 func set_jump_meter_pos(newPos: Vector2):
 	$UI/surfJump.global_position = newPos

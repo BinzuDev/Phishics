@@ -1,16 +1,227 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg1ir3ywd26j2"]
+[gd_scene load_steps=12 format=3 uid="uid://dg1ir3ywd26j2"]
 
 [ext_resource type="Script" uid="uid://bx4av2ffhaecx" path="res://_MANAGERS/UI/custom_toggle.gd" id="1_lmk0n"]
+[ext_resource type="Texture2D" uid="uid://c0s4sdlhmuwdm" path="res://Sprites/UI/grabber.png" id="2_0fikc"]
+[ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="2_frfvo"]
 
-[node name="Control" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_r8rdf"]
+font = ExtResource("2_frfvo")
+font_size = 30
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frfvo"]
+resource_local_to_scene = true
+bg_color = Color(0, 1, 1, 0.39215687)
+border_width_left = 1
+border_width_top = 4
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0, 1, 1, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fikc"]
+resource_local_to_scene = true
+bg_color = Color(0, 1, 1, 1)
+border_width_left = 1
+border_width_top = 4
+border_width_right = 64
+border_width_bottom = 4
+border_color = Color(0, 1, 1, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8rdf"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0.22352941)
+border_width_left = 1
+border_width_top = 4
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emcip"]
+resource_local_to_scene = true
+bg_color = Color(1, 0, 1, 1)
+border_width_left = 1
+border_width_top = 4
+border_width_right = 64
+border_width_bottom = 4
+border_color = Color(1, 0, 1, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 6
+
+[sub_resource type="Animation" id="Animation_frfvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toggle/Grabber:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(29, 29)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toggle/hovered_on:theme_override_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toggle/normal_on:theme_override_styles/panel:border_width_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+
+[sub_resource type="Animation" id="Animation_0fikc"]
+resource_name = "toggle_on"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toggle/Grabber:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(29, 29), Vector2(79, 29)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toggle/hovered_on:theme_override_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [64, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toggle/normal_on:theme_override_styles/panel:border_width_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [64, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frfvo"]
+_data = {
+&"RESET": SubResource("Animation_frfvo"),
+&"toggle_on": SubResource("Animation_0fikc")
+}
+
+[node name="Toggle" type="Control"]
+custom_minimum_size = Vector2(400, 58)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+focus_mode = 2
 script = ExtResource("1_lmk0n")
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 51.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Toggle"
+label_settings = SubResource("LabelSettings_r8rdf")
+
+[node name="toggle" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -29.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="hovered_off" type="Panel" parent="toggle"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_right = 44.0
-offset_bottom = 24.0
-action_mode = 0
+offset_right = 108.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_frfvo")
+
+[node name="hovered_on" type="Panel" parent="toggle"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0fikc")
+
+[node name="normal_off" type="Panel" parent="toggle"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r8rdf")
+
+[node name="normal_on" type="Panel" parent="toggle"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_emcip")
+
+[node name="Grabber" type="Sprite2D" parent="toggle"]
+position = Vector2(29, 29)
+texture = ExtResource("2_0fikc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_frfvo")
+}
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

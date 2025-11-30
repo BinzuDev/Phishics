@@ -16,7 +16,7 @@ func _process(_delta):
 	logoTimer += 1
 	$PhishicsUnwavy.rotation_degrees.z = sin(logoTimer*0.01) * 3
 	
-	$UI.visible = !MenuManager.isSubmenuOpen()
+	$UI.visible = !MenuManager.isSubmenuOpen() ##TODO replace
 	
 	#backup in case no option is selected
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
