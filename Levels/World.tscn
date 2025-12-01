@@ -4916,7 +4916,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819094, 3.7252645e-09, 0.99818826, 0.059891474, 0.9999932, 6.0256053e-09, -1.6262595e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99819076, 3.7252645e-09, 0.99818826, 0.059891462, 0.9999932, 6.0256053e-09, -1.6262592e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 
