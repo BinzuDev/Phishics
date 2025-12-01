@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://c6hagpmk3o3nq"]
+[gd_scene load_steps=131 format=3 uid="uid://c6hagpmk3o3nq"]
 
 [ext_resource type="Script" uid="uid://fkroqqn71n5w" path="res://Levels/VR_dimension.gd" id="1_aocgl"]
 [ext_resource type="Texture2D" uid="uid://dxna7evkoe432" path="res://Textures/dev_textures/dev_skybox.png" id="2_qtqwa"]
@@ -109,6 +109,49 @@ metadata/_custom_type_script = "uid://ed5c7atitflq"
 [sub_resource type="BoxShape3D" id="BoxShape3D_uy1cw"]
 size = Vector3(8.671875, 6.7441406, 10.540756)
 
+[sub_resource type="Resource" id="Resource_f6bba"]
+script = ExtResource("5_3ea2m")
+text = "Yo check this shit"
+cam_override = -1
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_chyvi"]
+script = ExtResource("5_3ea2m")
+text = "we can now have..."
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_2p6r5"]
+script = ExtResource("5_3ea2m")
+text = "a different camera..."
+cam_override = 1
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_3ns8i"]
+script = ExtResource("5_3ea2m")
+text = "For each textbox!!!!!"
+cam_override = 2
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_k0w40"]
+script = ExtResource("5_3ea2m")
+text = "WAAAAAHHHOOOOOOOOO!!!!!"
+cam_override = 3
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_06l38"]
+script = ExtResource("5_3ea2m")
+text = "w​​a​​a​​a​​h​​o​​o​​o​​o​​o..."
+cam_override = 4
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_ww5rq"]
+script = ExtResource("6_jmjtp")
+cameraOverride = Array[NodePath]([NodePath("Camera3D"), NodePath("Camera3D2"), NodePath("Camera3D3"), NodePath("Camera3D4"), NodePath("Camera3D5")])
+pauseGame = false
+pauseStyleSystem = true
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_f6bba"), SubResource("Resource_chyvi"), SubResource("Resource_2p6r5"), SubResource("Resource_3ns8i"), SubResource("Resource_k0w40"), SubResource("Resource_06l38")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
 [sub_resource type="Resource" id="Resource_3ea2m"]
 script = ExtResource("5_3ea2m")
 text = "\"The art of controlling spacing using dive rebounds\""
@@ -121,30 +164,11 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_i6ogh"]
 script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
+cameraOverride = Array[NodePath]([NodePath("Camera3D")])
 pauseStyleSystem = true
 promptType = "Read"
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_3ea2m"), SubResource("Resource_ibblr")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="Resource" id="Resource_uqoww"]
-script = ExtResource("5_3ea2m")
-text = "\"The art of long jumps\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_77ow1"]
-script = ExtResource("5_3ea2m")
-text = "\"Hold down the movement keys while jumping to convert your speed forward.\""
-metadata/_custom_type_script = "uid://cknp7aujysf6i"
-
-[sub_resource type="Resource" id="Resource_8qptf"]
-script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3Dlong")
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_uqoww"), SubResource("Resource_77ow1")])
-metadata/_custom_type_script = "uid://ed5c7atitflq"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yvyr3"]
-size = Vector3(8.835693, 8.39563, 3.390747)
 
 [sub_resource type="Resource" id="Resource_sipx1"]
 script = ExtResource("5_3ea2m")
@@ -163,13 +187,31 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_j1owp"]
 script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3DCam")
+cameraOverride = Array[NodePath]([NodePath("Camera3DCam")])
 promptType = "Read"
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_sipx1"), SubResource("Resource_88pjx"), SubResource("Resource_xtwmy")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ea2m"]
 size = Vector3(10.182495, 8.533691, 5.085449)
+
+[sub_resource type="Resource" id="Resource_uqoww"]
+script = ExtResource("5_3ea2m")
+text = "\"The art of long jumps\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_77ow1"]
+script = ExtResource("5_3ea2m")
+text = "\"Hold down the movement keys while jumping to convert your speed forward.\""
+metadata/_custom_type_script = "uid://cknp7aujysf6i"
+
+[sub_resource type="Resource" id="Resource_8qptf"]
+script = ExtResource("6_jmjtp")
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_uqoww"), SubResource("Resource_77ow1")])
+metadata/_custom_type_script = "uid://ed5c7atitflq"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvyr3"]
+size = Vector3(8.835693, 8.39563, 3.390747)
 
 [sub_resource type="Resource" id="Resource_exi0s"]
 script = ExtResource("5_3ea2m")
@@ -183,7 +225,6 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_jbmx8"]
 script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
 promptType = "Read"
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_exi0s"), SubResource("Resource_237hn")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
@@ -203,7 +244,6 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_skxys"]
 script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
 promptType = "Read"
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_4rd3e"), SubResource("Resource_dssj1")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
@@ -223,7 +263,6 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_lvjoe"]
 script = ExtResource("6_jmjtp")
-cameraOverride = NodePath("Camera3D")
 promptType = "Read"
 messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_m2brq"), SubResource("Resource_odirh")])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
@@ -522,7 +561,7 @@ metallic_specular = 1.0
 shading_mode = 0
 albedo_texture = ExtResource("27_gy5gd")
 uv1_scale = Vector3(6, 6, 6)
-uv1_offset = Vector3(-79644.48, -19911.12, 0)
+uv1_offset = Vector3(-93878.8, -23469.7, 0)
 texture_filter = 0
 
 [node name="level_template" type="Node3D"]
@@ -539,16 +578,43 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_4autd")
 
 [node name="fish" parent="." instance=ExtResource("3_gy5gd")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -5.1068716, 0.26973307, 18.302246)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -5.1068716, 9.83118, 18.302246)
 gravity_scale = 1.5
 legacyCamera = false
 
 [node name="jfg_welcome" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.879938, 0.03000021, 18.319256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.879938, 0.61461926, 18.319256)
 dialogue = SubResource("Resource_jmjtp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jfg_welcome"]
 shape = SubResource("BoxShape3D_uy1cw")
+debug_color = Color(0, 0.9833336, 1, 1)
+
+[node name="multicamTest" parent="." instance=ExtResource("4_cj54y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.879938, 0.03000021, 18.319256)
+dialogue = SubResource("Resource_ww5rq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="multicamTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.653721, 0.89504147, -30.256441)
+shape = SubResource("BoxShape3D_uy1cw")
+debug_color = Color(0, 0.9833336, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="multicamTest"]
+transform = Transform3D(0.5019636, 0.33042067, -0.7992839, -1.4901161e-08, 0.9241465, 0.38203835, 0.8648887, -0.19176935, 0.46388793, -14.6139145, 9.5245285, 6.1159477)
+
+[node name="Camera3D2" type="Camera3D" parent="multicamTest"]
+transform = Transform3D(0.9949409, -0.020815283, 0.09828286, 0.083238184, 0.71857214, -0.69045335, -0.056251377, 0.69514096, 0.71666926, 18.29169, -0.59019756, -13.415906)
+
+[node name="Camera3D3" type="Camera3D" parent="multicamTest"]
+transform = Transform3D(0.8532783, -0.44509196, 0.2716786, 0.5138628, 0.8063021, -0.29295436, -0.088663414, 0.389577, 0.91671616, -186.84174, 95.65781, -254.08057)
+
+[node name="Camera3D4" type="Camera3D" parent="multicamTest"]
+transform = Transform3D(0.76928806, -0.32628274, 0.5493045, 1.4222397e-08, 0.8597632, 0.5106929, -0.63890207, -0.39286998, 0.6614056, 241.12921, 315.24326, 291.62265)
+fov = 85.0
+
+[node name="Camera3D5" type="Camera3D" parent="multicamTest"]
+transform = Transform3D(0.76928806, -0.32628274, 0.5493045, 1.4222397e-08, 0.8597632, 0.5106929, -0.63890207, -0.39286998, 0.6614056, 835.2395, 867.5925, 1006.978)
+fov = 105.0
 
 [node name="sign_rebound" parent="." instance=ExtResource("4_cj54y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.220258, 0.03000021, -40.01375)
@@ -557,6 +623,7 @@ dialogue = SubResource("Resource_i6ogh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sign_rebound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
+debug_color = Color(0, 0.9833336, 1, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="sign_rebound"]
 transform = Transform3D(-0.59, 0, 8.908752e-08, 0, 0.59, 0, -8.908752e-08, 0, -0.59, -3.5660715, 4.7558475, 2.1827698)
@@ -565,23 +632,6 @@ render_priority = -1
 texture = ExtResource("4_yfhxp")
 
 [node name="Camera3D" type="Camera3D" parent="sign_rebound"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
-
-[node name="sign_long_jump" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -24.15016, 0.5588198, -36.24547)
-dialogue = SubResource("Resource_8qptf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_long_jump"]
-transform = Transform3D(0.9999928, 0, -1.1368684e-13, 0, 1, 0, 1.1368684e-13, 0, 0.9999928, -3.4644775, 3.697815, 1.1953697)
-shape = SubResource("BoxShape3D_yvyr3")
-
-[node name="Sprite3D" type="Sprite3D" parent="sign_long_jump"]
-transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -3.5660715, 4.7558475, 2.1827698)
-double_sided = false
-render_priority = -1
-texture = ExtResource("8_yvyr3")
-
-[node name="Camera3Dlong" type="Camera3D" parent="sign_long_jump"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
 [node name="sign_camera" parent="." instance=ExtResource("4_cj54y")]
@@ -600,13 +650,31 @@ texture = ExtResource("35_jmjtp")
 [node name="Camera3DCam" type="Camera3D" parent="sign_camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0920296, 4.7753267, 6.458872)
 
+[node name="sign_long_jump" parent="." instance=ExtResource("4_cj54y")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -24.15016, -9.44, -36.24547)
+dialogue = SubResource("Resource_8qptf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign_long_jump"]
+transform = Transform3D(0.9999928, 0, -1.1368684e-13, 0, 1, 0, 1.1368684e-13, 0, 0.9999928, -3.4644775, 3.697815, 1.1953697)
+shape = SubResource("BoxShape3D_yvyr3")
+
+[node name="Sprite3D" type="Sprite3D" parent="sign_long_jump"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -3.5660715, 4.7558475, 2.1827698)
+double_sided = false
+render_priority = -1
+texture = ExtResource("8_yvyr3")
+
+[node name="Camera3Dlong" type="Camera3D" parent="sign_long_jump"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
+
 [node name="sign_highjump" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.70586, 0.03000021, -40.01375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.70586, -9.44, -40.01375)
 dialogue = SubResource("Resource_jbmx8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sign_highjump"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
+debug_color = Color(0, 0.9833336, 1, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="sign_highjump"]
 transform = Transform3D(-0.59, 0, 8.908752e-08, 0, 0.59, 0, -8.908752e-08, 0, -0.59, -3.5660715, 4.7558475, 2.1827698)
@@ -619,12 +687,13 @@ texture = ExtResource("4_yfhxp")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
 [node name="sign_taunt" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(0.0007155696, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0.0007155696, 33.42526, 0.03000021, -29.479338)
+transform = Transform3D(0.0007155696, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0.0007155696, 33.42526, -9.44, -29.479338)
 dialogue = SubResource("Resource_skxys")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sign_taunt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8359365, 2.8720703, -2.525383)
 shape = SubResource("BoxShape3D_uy1cw")
+debug_color = Color(0, 0.9833336, 1, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="sign_taunt"]
 transform = Transform3D(-0.5900001, 0, 8.9086825e-08, 0, 0.59, 0, -8.9086825e-08, 0, -0.5900001, -3.5562649, 4.7558475, 2.1827812)
@@ -637,7 +706,7 @@ texture = ExtResource("4_yfhxp")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.7926755, 3.710894, -4.9103966)
 
 [node name="sign_flip" parent="." instance=ExtResource("4_cj54y")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.843044, 0.03000021, -36.53125)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.843044, -9.44, -36.53125)
 dialogue = SubResource("Resource_lvjoe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sign_flip"]
@@ -936,7 +1005,7 @@ transform = Transform3D(0.005, 0, 0, 0, 0.099999994, 0, 0, 0, 0.005, 0.17121273,
 
 [node name="rotating_platform" type="MeshInstance3D" parent="Boxes/Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(-9.143156, 0, -11.756373, 0, 0.5014953, 0, 6.746765, 0, -15.932133, 0, 0, 0)
+transform = Transform3D(8.670382, 0, 12.7978115, 0, 0.5014953, 0, -7.344427, 0, 15.1083145, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6q5y5")
 mesh = SubResource("BoxMesh_2i2tq")
 skeleton = NodePath("../../../..")
@@ -1113,7 +1182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.613689, -0.5448532, 2.6781
 
 [node name="JFG_flat" parent="." instance=ExtResource("9_3ea2m")]
 process_mode = 4
-transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -55.15055, -375.14957)
+transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -55.98179, -375.14957)
 defaultAnimation = "T-Pose"
 
 [node name="Body" parent="JFG_flat/Armature/Skeleton3D" index="0"]
@@ -1230,7 +1299,7 @@ transform = Transform3D(-62.551384, -48.12129, -13.102186, -47.768345, 51.76607,
 
 [node name="JFG_dev" parent="JFG_dev_anchor" instance=ExtResource("22_exi0s")]
 unique_name_in_owner = true
-transform = Transform3D(-0.93961096, -5.6002023e-08, 0.34223998, -5.960111e-08, 1, -1.7097504e-14, -0.34223998, -2.0397962e-08, -0.93961096, 0, 0, 0)
+transform = Transform3D(0.3920742, 2.3368115e-08, -0.91993153, -5.960109e-08, 1, -2.5590625e-14, 0.91993153, 5.482914e-08, 0.3920742, 0, 0, 0)
 
 [node name="Body" parent="JFG_dev_anchor/JFG_dev/Armature/Skeleton3D" index="0"]
 material_override = SubResource("StandardMaterial3D_kf0g1")
@@ -1271,12 +1340,12 @@ material_override = SubResource("StandardMaterial3D_5dcqj")
 material_override = SubResource("StandardMaterial3D_k1sx7")
 
 [node name="BlenderMonkey" type="MeshInstance3D" parent="."]
-transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 43.46523, 1151.7023)
+transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 26.521973, 1151.7023)
 material_override = SubResource("StandardMaterial3D_xmnyd")
 mesh = ExtResource("25_4rd3e")
 
 [node name="UtahTeapot" type="MeshInstance3D" parent="."]
-transform = Transform3D(39.504795, 12.603262, 27.937916, -16.022371, 47.345535, 1.2976407, -26.127592, -9.977899, 41.446236, 399.62552, 61.911125, -629.45306)
+transform = Transform3D(41.18768, 14.604386, -24.295778, -16.022371, 47.345535, 1.2976389, 23.38493, 6.7165885, 43.681034, 399.62552, 66.60236, -629.45306)
 material_override = SubResource("StandardMaterial3D_10lto")
 mesh = ExtResource("26_dssj1")
 
@@ -1285,7 +1354,7 @@ transform = Transform3D(-25.000004, 43.30127, 9.536744e-07, -21.650639, -12.5000
 
 [node name="LowPolyFish" type="MeshInstance3D" parent="fish1"]
 unique_name_in_owner = true
-transform = Transform3D(-0.46032956, -0.8877464, 0, 0.8877464, -0.46032956, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
+transform = Transform3D(-0.30970892, 0.95082974, 0, -0.95082974, -0.30970892, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
@@ -1295,13 +1364,13 @@ transform = Transform3D(-0.49054515, 0.7880842, 0.37187213, -0.12549523, -0.4861
 metadata/_edit_group_ = true
 
 [node name="LowPolyFish2" type="MeshInstance3D" parent="fish2"]
-transform = Transform3D(15.059594, -96.11155, -23.147036, 4.2611795e-05, -23.414063, 97.22028, -98.859566, -14.640991, -3.5260203, 0, 0, 0)
+transform = Transform3D(-27.906841, 5.112571, -95.890915, -0.0001817345, 99.858185, 5.3241415, 96.027145, 1.4859741, -27.867243, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
 
 [node name="blahaj" parent="." instance=ExtResource("29_6q5y5")]
-transform = Transform3D(-54.54382, 60.77443, -57.718643, 66.7552, 73.14152, 13.930517, 50.68247, -30.931953, -80.4643, 106.40614, 313.2397, -539.5702)
+transform = Transform3D(77.560234, 57.350834, -26.368355, -33.9837, 73.141594, 59.12201, 53.193222, -36.894215, 76.21874, 106.40614, 313.2397, -539.5702)
 rotation_order = 4
 
 [node name="Target" parent="." instance=ExtResource("40_pn0cv")]

@@ -128,4 +128,8 @@ func _physics_process(delta):
 			#get_tree().paused = false
 	
 	
-	
+
+##Used by custom code inside dialogues because get_tree() 
+##is a node function and you dont have access to it
+func get_current_scene():
+	return get_tree().current_scene

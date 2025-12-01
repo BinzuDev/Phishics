@@ -1077,18 +1077,18 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta):
 	
 	##Training mode flashing
-	var flashColor = Color("ffffff")
-	#taunt
-	if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60 and !isHeld:
-		flashColor = Color("ff00ff")
-	if !%nearFloor.is_colliding() and timeSinceJump > 20 and %floorDetection.is_colliding():
-		flashColor = Color("0000ff")
-	if diveReboundTimer >= 0 and timeSinceJump > 20 and %floorDetection.is_colliding():
-		flashColor = Color("ffff00")
-	$pivotUpper/upperBody.modulate = flashColor
-	$pivotUpper/pivotHead/head.modulate = flashColor
-	$pivotLower/lowerBody.modulate = flashColor
-	$pivotLower/pivotTail/tail.modulate = flashColor
+	#var flashColor = Color("ffffff")
+	#
+	#if height > 6 and abs(linear_velocity.y) < 6 and fishCooldown > 60 and !isHeld:
+		#flashColor = Color("ff00ff") #taunt
+	#if !%nearFloor.is_colliding() and timeSinceJump > 20 and %floorDetection.is_colliding():
+		#flashColor = Color("0000ff") 
+	#if diveReboundTimer >= 0 and timeSinceJump > 20 and %floorDetection.is_colliding():
+		#flashColor = Color("ffff00")
+	#$pivotUpper/upperBody.modulate = flashColor
+	#$pivotUpper/pivotHead/head.modulate = flashColor
+	#$pivotLower/lowerBody.modulate = flashColor
+	#$pivotLower/pivotTail/tail.modulate = flashColor
 	
 	################
 	##   CAMERA   ##

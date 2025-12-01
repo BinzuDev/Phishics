@@ -26,8 +26,8 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if !DialogueManager.isRunning:
-		if dialogue.cameraOverride:
-			get_node(dialogue.cameraOverride).current = false
+		#if dialogue.cameraOverride:
+		#	get_node(dialogue.cameraOverride).current = false
 		coolDown += 1
 		if coolDown > 10 and !has_overlapping_bodies():
 			isInside = false
@@ -53,8 +53,8 @@ func _physics_process(_delta: float) -> void:
 func start_dialogue():
 	#Stops you from accidentaly restarting dialogue when spamming
 	if DialogueManager.coolDown > 20 or dialogue.automaticStart:
-		if dialogue.cameraOverride:
-			get_node(dialogue.cameraOverride).current = true
+		#if dialogue.cameraOverride:
+		#	get_node(dialogue.cameraOverride).current = true
 		DialogueManager.currentDialogueOwner = get_parent()
 		DialogueManager.currentDialogueArea = self
 		DialogueManager.start_dialogue_sequence(dialogue)

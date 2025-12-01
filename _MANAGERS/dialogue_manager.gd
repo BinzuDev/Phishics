@@ -15,6 +15,7 @@ var jfgPosition : Vector2
 var jfgInsideTextbox : bool = false
 
 func _ready():
+	get_tree().get_current_scene()
 	$CanvasLayer.visible = false
 	%textBoxControl.visible = false
 	$enterTip.visible = false
@@ -138,6 +139,20 @@ func continue_dialogue():
 	if %nameBox.text == "":
 		%nameBox.visible = false
 	set_text(currentDialogue.messages[textBoxIndex].text)
+	
+	#if thers a camera override
+	if currentDialogue.cameraOverride.size() != 0:
+		var cam_id = currentDialogue.messages[textBoxIndex].cam_override
+		if cam_id == -1:
+			currentDialogueArea.fish.forceMakeCameraCurrent()
+		else:
+			var cam_path = currentDialogue.cameraOverride[cam_id]
+			var camera = currentDialogueArea.get_node(cam_path)
+			camera.current = true
+		
+		
+	
+	
 	
 	%textBoxControl.anchor_left = 0.5
 	%textBoxControl.anchor_right = 0.5
