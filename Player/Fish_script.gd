@@ -60,6 +60,9 @@ var currentRailObj : railGrind = null
 var targetingRail : bool = false #if the current homing target is a railgrind
 var railCooldown : int = 0 #Stops the game from fucking crashing and somehow also crashing hams's audio
 
+#Bubble boost variables
+var bubbleMode : bool = false
+
 #MOVEMENT CONSTS
 const torque_impulse = Vector3(-1.5, 0, 0) #front-back rotation speed
 const torque_side = Vector3(0, 0, 1.5)     #left-right rotation speed
@@ -539,6 +542,43 @@ func _physics_process(_delta: float) -> void:
 	#%homingArea.rotation_degrees.x = 25 * Input.get_axis("back", "forward")
 	$homing/camRotation.global_rotation.y = %camFocus.global_rotation.y
 	## Diving/homing end ##
+	
+	
+	# bubble boost
+	
+	$bubbleBoost/MeshInstance3D.visible = bubbleMode
+	
+	if bubbleMode and height > 4:
+		if Input.is_action_just_pressed("jump"):
+			
+			#turn momentum
+			if get_input_axis():
+				xVel = Vector2(linear_velocity.x, linear_velocity.z) 
+				xVel = xVel.length()
+				newVel = Vector3(0,0,-xVel)
+				newVel = rotate_by_cam(newVel)
+				newVel = Vector2(newVel.x, newVel.z)
+				newVel = newVel.rotated(get_input_axis().angle()+PI/2)
+				newVel = Vector3(newVel.x,0,newVel.y)
+				linear_velocity = newVel 
+			
+			linear_velocity = linear_velocity.normalized() * 30
+			linear_velocity.y = 2
+			bubbleMode = false
+			
+			# cam turn
+			if legacyCamera == false:
+				var hDir = Vector2(-linear_velocity.z, -linear_velocity.x)
+				var oldAng = defaultCameraAngle.y
+				var newAng = rad_to_deg(hDir.angle())
+				wrap_camera(oldAng, newAng)
+				defaultCameraAngle.y = newAng
+			
+			
+	
+	
+	
+	
 	
 	
 	

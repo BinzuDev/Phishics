@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://brt650nb1bv36"]
+
+[ext_resource type="Script" uid="uid://cf5x5648wbrs0" path="res://Objects/bubble_boost.gd" id="1_0hu5y"]
+[ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="2_r2n32"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lvf6h"]
+radius = 1.0739182
+
+[sub_resource type="SphereMesh" id="SphereMesh_yahk0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cwec4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hu5y"]
+noise = SubResource("FastNoiseLite_cwec4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qo5j"]
+render_priority = 0
+shader = ExtResource("2_r2n32")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_0hu5y")
+shader_parameter/bubble_color = Color(0.29411766, 0.7607843, 0.7647059, 1)
+shader_parameter/height_multiplier = 0.135
+shader_parameter/noise_sample_size = 0.1
+shader_parameter/animation_speed = 0.1
+
+[node name="bubble_boost" type="Node3D"]
+script = ExtResource("1_0hu5y")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_lvf6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("SphereMesh_yahk0")
+surface_material_override/0 = SubResource("ShaderMaterial_1qo5j")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

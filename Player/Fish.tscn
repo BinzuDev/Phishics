@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=190 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -1376,6 +1376,22 @@ _data = {
 &"tornado": SubResource("Animation_0m6um")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_pqkfo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ns75"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_085rv"]
+noise = SubResource("FastNoiseLite_2ns75")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rp4vg"]
+render_priority = 0
+shader = ExtResource("4_ie0qp")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_085rv")
+shader_parameter/bubble_color = Color(0.29411766, 0.7607843, 0.7647059, 1)
+shader_parameter/height_multiplier = 0.135
+shader_parameter/noise_sample_size = 0.1
+shader_parameter/animation_speed = 0.1
+
 [sub_resource type="SphereMesh" id="SphereMesh_ipqbp"]
 radius = 0.1
 height = 0.2
@@ -2350,6 +2366,12 @@ libraries = {
 remote_path = NodePath("../../cameraAnchor")
 update_rotation = false
 update_scale = false
+
+[node name="bubbleBoost" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bubbleBoost"]
+mesh = SubResource("SphereMesh_pqkfo")
+surface_material_override/0 = SubResource("ShaderMaterial_rp4vg")
 
 [node name="cameraAnchor" type="Node3D" parent="."]
 unique_name_in_owner = true
