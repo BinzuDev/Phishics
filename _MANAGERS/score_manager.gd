@@ -676,6 +676,7 @@ func hide():
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func show():
+	$UI/comboScore.visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
 

@@ -15,13 +15,10 @@ var hasEnteredTricksArea : bool = false
 
 var waitingForReticle : bool = false
 
-func tutorialEvent1(): #once textbox 1 is finished
-	%fish.canMove = true
-	waitingForPlayerInput = true
-	%slowKeypress.modulate.a = 1.25
-	%spammingKeys.modulate.a = 1.25
-	$Control/esc.modulate.a = 1.25
-	%slowKeypress.visible = true
+##So JFG can remark on the player not moving while reading her dialogue
+var totalFishMovement : float = 0
+
+var canSkipTutorial : bool = true
 
 func _physics_process(_delta): 
 	if waitingForPlayerInput: #wait until the player touches a direction
@@ -63,11 +60,36 @@ func _physics_process(_delta):
 		Engine.time_scale = 1
 		AudioServer.get_bus_effect(4,0).pitch_scale = 1
 	
+	## Idling easter egg
+	if hasEnteredTricksArea:
+		totalFishMovement += %fish.linear_velocity.length()
+		#print(totalFishMovement)
+	
+	## Tutorial skip:
+	if canSkipTutorial and hasEnteredTricksArea:
+		var combo = ScoreManager.points * ScoreManager.mult
+		if combo > 5000000: #5 million
+			$jfg_ignoring_easteregg/waiting.visible = false
+			$Control/esc.visible = false
+			MenuManager.tutorialTrickList = 0
+			$tutorialSkipping.position.y = 0
+			canSkipTutorial = false
+			printerr("TIME LEFT: ", $jfg_ignoring_easteregg/Timer.time_left)
+		
 	
 	
 	if MenuManager.tutorialTrickList == 2:
-		$tutorialStyle2.position.y = 0
+		$tutorialStyle3.position.y = 0
 	
+
+
+func tutorialEvent1(): #once textbox 1 is finished
+	%fish.canMove = true
+	waitingForPlayerInput = true
+	%slowKeypress.modulate.a = 1.25
+	%spammingKeys.modulate.a = 1.25
+	$Control/esc.modulate.a = 1.25
+	%slowKeypress.visible = true
 
 func event1end():
 	waitingForPlayerInput = false
@@ -97,6 +119,31 @@ func tutorialEvent6():
 func tutorialEvent7(): #start the tricks tutorial
 	$tutorialStyle.position.y = 0
 	hasEnteredTricksArea = true
+	$jfg_ignoring_easteregg/Timer.start()
+	print("started timer")
+	
+
+func _on_easter_egg_timer_timeout():
+	canSkipTutorial = false
+	for i in range(37):
+		$jfg_ignoring_easteregg/waiting.visible_characters+=1
+		await get_tree().create_timer(0.1).timeout
+	
+
+func cancel_waiting_joke():
+	print("cancel joke")
+	$jfg_ignoring_easteregg/waiting.visible = false
+
+func idle_easter_egg():
+	print("idle easter egg")
+	if totalFishMovement < 3000:
+		$idle_easteregg.position.y = 0
+	else:
+		$tutorialStyle2.position.y = 0
+
+func idle_easter_egg_end():
+	$tutorialStyle2.position.y = 0
+
 
 func show_esc(value: bool):
 	$Control/esc.visible = value

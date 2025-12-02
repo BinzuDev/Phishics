@@ -15,7 +15,6 @@ var jfgPosition : Vector2
 var jfgInsideTextbox : bool = false
 
 func _ready():
-	get_tree().get_current_scene()
 	$CanvasLayer.visible = false
 	%textBoxControl.visible = false
 	$enterTip.visible = false
@@ -101,6 +100,7 @@ func _physics_process(_delta):
 func start_dialogue_sequence(dialogue: Dialogue):
 	$CanvasLayer.visible = true
 	%textBoxControl.visible = true
+	%confirm.visible = false
 	
 	isRunning = true
 	currentDialogue = dialogue
@@ -198,6 +198,8 @@ func set_text(newText: String):
 	
 
 func end_textbox():
+	if currentDialogue.codePostDialogue != "":
+		run_code(currentDialogue.codePostDialogue)
 	if currentDialogue.keepOnScreenAfterEnd:
 		isRunning = false 
 	else:
@@ -208,8 +210,7 @@ func end_textbox():
 	get_tree().get_first_node_in_group("player").forceMakeCameraCurrent()
 	if currentDialogue.pauseStyleSystem:
 		ScoreManager.show()
-	if currentDialogue.codePostDialogue != "":
-		run_code(currentDialogue.codePostDialogue)
+	
 
 
 func reset():
@@ -233,6 +234,16 @@ func reset():
 
 
 func run_code(newCode:String):
+	#Formats the code to replace shortcuts
+	newCode = newCode.replace("[scene]", "GameManager.get_current_scene()")
+	newCode = newCode.replace("[fish]", "GameManager.get_fish()") 
+	newCode = newCode.replace("[dialogue]", "DialogueManager.currentDialogueArea")
+	newCode = newCode.replace("[parent]", "DialogueManager.currentDialogueOwner")
+	newCode = newCode.replace("[DM]", "DialogueManager")
+	newCode = newCode.replace("[SM]", "ScoreManager")
+	
+	
+	#runs the code after the formatting
 	var script = GDScript.new()
 	script.set_source_code("func eval():" + newCode)
 	script.reload()

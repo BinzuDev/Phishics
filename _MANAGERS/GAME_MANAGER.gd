@@ -133,3 +133,5 @@ func _physics_process(delta):
 ##is a node function and you dont have access to it
 func get_current_scene():
 	return get_tree().current_scene
+func get_fish():
+	return get_tree().get_first_node_in_group("player")

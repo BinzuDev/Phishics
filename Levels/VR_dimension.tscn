@@ -70,6 +70,7 @@ script = ExtResource("5_3ea2m")
 name = "Jelly Fishgirl"
 text = "Alrighty, here we are!
 Welcome to my personal training room: the VR dimension!"
+code = "print([fish].linear_velocity)"
 metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_713cq"]
@@ -149,7 +150,7 @@ script = ExtResource("6_jmjtp")
 cameraOverride = Array[NodePath]([NodePath("Camera3D"), NodePath("Camera3D2"), NodePath("Camera3D3"), NodePath("Camera3D4"), NodePath("Camera3D5")])
 pauseGame = false
 pauseStyleSystem = true
-messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_f6bba"), SubResource("Resource_chyvi"), SubResource("Resource_2p6r5"), SubResource("Resource_3ns8i"), SubResource("Resource_k0w40"), SubResource("Resource_06l38")])
+messages = Array[ExtResource("5_3ea2m")]([SubResource("Resource_f6bba"), SubResource("Resource_chyvi"), SubResource("Resource_2p6r5"), SubResource("Resource_3ns8i"), SubResource("Resource_k0w40"), SubResource("Resource_06l38"), null])
 metadata/_custom_type_script = "uid://ed5c7atitflq"
 
 [sub_resource type="Resource" id="Resource_3ea2m"]
@@ -561,10 +562,10 @@ metallic_specular = 1.0
 shading_mode = 0
 albedo_texture = ExtResource("27_gy5gd")
 uv1_scale = Vector3(6, 6, 6)
-uv1_offset = Vector3(-94556.914, -23639.229, 0)
+uv1_offset = Vector3(-125555.96, -31388.99, 0)
 texture_filter = 0
 
-[node name="level_template" type="Node3D"]
+[node name="VR_dimension" type="Node3D"]
 script = ExtResource("1_aocgl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -1005,7 +1006,7 @@ transform = Transform3D(0.005, 0, 0, 0, 0.099999994, 0, 0, 0, 0.005, 0.17121273,
 
 [node name="rotating_platform" type="MeshInstance3D" parent="Boxes/Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(4.999596, 0, 17.780552, 0, 0.5014953, 0, -10.203929, 0, 8.711898, 0, 0, 0)
+transform = Transform3D(6.9380383, 0, 15.680722, 0, 0.5014953, 0, -8.998874, 0, 12.089674, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6q5y5")
 mesh = SubResource("BoxMesh_2i2tq")
 skeleton = NodePath("../../../..")
@@ -1182,7 +1183,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.613689, -0.5448532, 2.6781
 
 [node name="JFG_flat" parent="." instance=ExtResource("9_3ea2m")]
 process_mode = 4
-transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -58.505806, -375.14957)
+transform = Transform3D(84.870415, -48.857704, 20.246935, 52.886593, 78.29831, -32.747253, 0.14654446, 38.500633, 92.29127, -95.06303, -55.58033, -375.14957)
 defaultAnimation = "T-Pose"
 
 [node name="Body" parent="JFG_flat/Armature/Skeleton3D" index="0"]
@@ -1214,64 +1215,67 @@ material_override = SubResource("ShaderMaterial_0clpx")
 material_override = SubResource("ShaderMaterial_g478y")
 
 [node name="SpringBoneCollisionPlane3D" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="0"]
-transform = Transform3D(1.0000001, -1.7345883e-08, 1.5570549e-09, 1.792796e-08, 0.49655795, -0.86800355, 3.4924597e-09, 0.8680036, 0.49655795, 0, 1.706959, -0.0019001961)
+transform = Transform3D(1.0000001, -1.7345883e-08, 1.5570549e-09, 1.792796e-08, 0.49655795, -0.86800355, 3.4924597e-09, 0.8680036, 0.49655795, -1.1920929e-07, 1.7069591, -0.0019001961)
 
 [node name="SpringBoneCollisionSphere3D" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="1"]
-transform = Transform3D(1.0000001, 9.313226e-10, -1.0011718e-08, 1.792796e-08, 1, 0, 3.4924597e-09, -2.9802322e-08, 1, 0, 1.7031591, 0.0014998913)
+transform = Transform3D(1.0000001, 9.313226e-10, -1.0011718e-08, 1.792796e-08, 1, 0, 3.4924597e-09, -2.9802322e-08, 1, 0, 1.7031592, 0.0014998913)
 
 [node name="SpringBoneCollisionSphere3D2" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="2"]
-transform = Transform3D(1.0000001, 9.313226e-10, -1.0011718e-08, 1.792796e-08, 1, 0, 3.4924597e-09, -2.9802322e-08, 1, 0, 1.7052591, 0.0010998249)
+transform = Transform3D(1.0000001, 9.313226e-10, -1.0011718e-08, 1.792796e-08, 1, 0, 3.4924597e-09, -2.9802322e-08, 1, 0, 1.7052592, 0.0010995865)
 
 [node name="armColliderLeft" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="3"]
-transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.5735774, 1.9759591, -2.3841858e-07)
+transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57357746, 1.9759592, -2.3841858e-07)
 
 [node name="armColliderLeft2" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="4"]
-transform = Transform3D(-8.859206e-08, 0.9999994, 1.0011718e-08, 0.9999998, 1.5110709e-07, -2.9802322e-08, -2.9802322e-08, -7.683411e-09, -1, 0.21308064, 1.9759591, -2.3841858e-07)
+transform = Transform3D(-8.859206e-08, 0.9999994, 1.0011718e-08, 0.9999998, 1.5110709e-07, -2.9802322e-08, -2.9802322e-08, -7.683411e-09, -1, 0.21308064, 1.9759592, -2.3841858e-07)
 
 [node name="armColliderRight" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="5"]
-transform = Transform3D(-1.19092874e-07, -0.9999994, 9.546056e-09, -0.9999999, 5.6403223e-08, -7.748604e-07, 7.748604e-07, 1.8626451e-09, -1, -0.5735775, 1.9759591, -2.3841858e-07)
+transform = Transform3D(-1.19092874e-07, -0.9999994, 9.546056e-09, -0.9999999, 5.6403223e-08, -7.748604e-07, 7.748604e-07, 1.8626451e-09, -1, -0.57357764, 1.975959, -4.7683716e-07)
 
 [node name="armColliderRight2" parent="JFG_flat/Armature/Skeleton3D/earJiggle" index="6"]
-transform = Transform3D(-1.5000114e-07, -0.9999994, 1.0011718e-08, -0.99999994, 5.6403223e-08, 5.9604645e-08, -2.9802322e-08, 1.8626451e-09, -1, -0.21308076, 1.9759593, -2.3841858e-07)
+transform = Transform3D(-1.5000114e-07, -0.9999994, 1.0011718e-08, -0.99999994, 5.6403223e-08, 5.9604645e-08, -2.9802322e-08, 1.8626451e-09, -1, -0.21308076, 1.9759594, -2.3841858e-07)
 
 [node name="SpringBoneCollisionPlane3D" parent="JFG_flat/Armature/Skeleton3D/frontHairJiggle" index="0"]
-transform = Transform3D(0.83820236, 0.5393259, 0.080898896, 0.53932583, -0.7977527, -0.2696629, -0.08089893, 0.26966298, -0.9595505, -0.0032999516, 2.4680884, -4.7683716e-07)
+transform = Transform3D(0.83820236, 0.5393259, 0.080898896, 0.53932583, -0.7977527, -0.2696629, -0.08089893, 0.26966298, -0.9595505, -0.0032998323, 2.4680886, -4.7683716e-07)
 
 [node name="SpringBoneCollisionPlane3D2" parent="JFG_flat/Armature/Skeleton3D/frontHairJiggle" index="1"]
-transform = Transform3D(0.9615536, -0.27461752, 1.0128133e-08, -0.27461746, -0.96155345, 0, -7.450581e-09, 0, -1, 0.0030001402, 2.4677887, -2.3841858e-07)
+transform = Transform3D(0.9615536, -0.27461752, 1.0128133e-08, -0.27461746, -0.96155345, 0, -7.450581e-09, 0, -1, 0.0030001402, 2.4677887, -4.7683716e-07)
 
 [node name="SpringBoneCollisionPlane3D" parent="JFG_flat/Armature/Skeleton3D/hairJiggle" index="0"]
-transform = Transform3D(1.0000001, 1.0011718e-08, 9.313226e-10, 1.792796e-08, 0, 1, 3.4924597e-09, -1, -2.9802322e-08, -0.0038630962, 1.7034589, 0.0028345585)
+transform = Transform3D(1.0000001, 1.0011718e-08, 9.313226e-10, 1.792796e-08, 0, 1, 3.4924597e-09, -1, -2.9802322e-08, -0.0038632154, 1.703459, 0.0028345585)
 
 [node name="SpringBoneCollisionPlane3D2" parent="JFG_flat/Armature/Skeleton3D/hairJiggle" index="1"]
 transform = Transform3D(1.0000001, 8.4983185e-09, 6.0070306e-08, 1.792796e-08, -0.70414203, 0.7100591, 3.4924597e-09, -0.7100591, -0.7041422, -0.0038630962, 2.4685884, 0.0018343925)
 
 [node name="thighL2" parent="JFG_flat/Armature/Skeleton3D/skirtJiggle" index="0"]
-transform = Transform3D(7.892959e-08, 3.6862912e-07, -1.0000005, 0.031643808, -0.9994992, -4.794565e-07, -0.99949914, -0.031643808, -1.0349322e-07, 0.1269046, 1.2687297, 0.008847475)
+transform = Transform3D(7.892959e-08, 3.6862912e-07, -1.0000005, 0.031643808, -0.9994992, -4.794565e-07, -0.99949914, -0.031643808, -1.0349322e-07, 0.1269046, 1.2687297, 0.008847237)
 
 [node name="thighL1" parent="JFG_flat/Armature/Skeleton3D/skirtJiggle" index="1"]
-transform = Transform3D(7.892959e-08, 3.6862912e-07, -1.0000005, 0.031643808, -0.9994992, -4.794565e-07, -0.99949914, -0.031643808, -1.0349322e-07, 0.12550461, 1.2687297, 0.008847475)
+transform = Transform3D(7.892959e-08, 3.6862912e-07, -1.0000005, 0.031643808, -0.9994992, -4.794565e-07, -0.99949914, -0.031643808, -1.0349322e-07, 0.12550461, 1.2687297, 0.008847237)
 
 [node name="thighR1" parent="JFG_flat/Armature/Skeleton3D/skirtJiggle" index="2"]
 transform = Transform3D(5.5180863e-08, -4.360336e-07, 1.0000006, -0.031643778, -0.9994992, -3.8341386e-07, 0.9994991, -0.031643778, -1.2503006e-07, -0.12550473, 1.2687299, 0.008847237)
 
 [node name="thighR2" parent="JFG_flat/Armature/Skeleton3D/skirtJiggle" index="3"]
-transform = Transform3D(5.5180863e-08, -4.360336e-07, 1.0000006, -0.031643778, -0.9994992, -3.8341386e-07, 0.9994991, -0.031643778, -1.2503006e-07, -0.12690473, 1.2687299, 0.008847475)
+transform = Transform3D(5.5180863e-08, -4.360336e-07, 1.0000006, -0.031643778, -0.9994992, -3.8341386e-07, 0.9994991, -0.031643778, -1.2503006e-07, -0.12690473, 1.26873, 0.008847475)
+
+[node name="fakeFish" parent="JFG_flat" index="2"]
+transform = Transform3D(0.2958621, 0.114503555, 0.3864637, -0.37574768, -0.09514542, 0.31584904, 0.14587235, -0.47732094, 0.029749125, 0, 0.0529825, 1.30401)
 
 [node name="fishAttachment" parent="JFG_flat" index="3"]
-transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.975959, -2.3841858e-07)
+transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.9759591, -4.7683716e-07)
 
 [node name="blahajAttachment" parent="JFG_flat" index="4"]
-transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.975959, -2.3841858e-07)
+transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.9759591, -4.7683716e-07)
 
 [node name="hatFace" parent="JFG_flat" index="5"]
 transform = Transform3D(1.0000001, 9.313226e-10, -1.0011718e-08, 1.792796e-08, 1, 0, 3.4924597e-09, -2.9802322e-08, 1, 0, 2.4685884, -2.3841858e-07)
 
 [node name="pompom" parent="JFG_flat" index="6"]
-transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.975959, -2.3841858e-07)
+transform = Transform3D(-8.952338e-08, 0.9999994, 9.546056e-09, 0.9999998, 1.5110709e-07, -7.748604e-07, -7.748604e-07, -7.683411e-09, -1, 0.57157737, 1.9759591, -4.7683716e-07)
 
 [node name="pompom2" parent="JFG_flat" index="7"]
-transform = Transform3D(-1.19092874e-07, -0.9999994, 9.546056e-09, -0.9999999, 5.6403223e-08, -7.748604e-07, 7.748604e-07, 1.8626451e-09, -1, -0.5715773, 1.9759592, -2.3841858e-07)
+transform = Transform3D(-1.19092874e-07, -0.9999994, 9.546056e-09, -0.9999999, 5.6403223e-08, -7.748604e-07, 7.748604e-07, 1.8626451e-09, -1, -0.5715774, 1.9759592, -2.3841858e-07)
 
 [node name="face" parent="JFG_flat" index="8"]
 visible = false
@@ -1296,7 +1300,7 @@ transform = Transform3D(-62.551384, -48.12129, -13.102186, -47.768345, 51.76607,
 
 [node name="JFG_dev" parent="JFG_dev_anchor" instance=ExtResource("22_exi0s")]
 unique_name_in_owner = true
-transform = Transform3D(0.9934081, 5.9208425e-08, -0.11461475, -5.960109e-08, 1, -2.7366964e-14, 0.11461475, 6.831217e-09, 0.9934081, 0, 0, 0)
+transform = Transform3D(-0.95576525, -5.6964865e-08, 0.29412377, -5.960108e-08, 1, -2.7588856e-14, -0.29412377, -1.7530192e-08, -0.95576525, 0, 0, 0)
 
 [node name="Body" parent="JFG_dev_anchor/JFG_dev/Armature/Skeleton3D" index="0"]
 material_override = SubResource("StandardMaterial3D_kf0g1")
@@ -1337,12 +1341,12 @@ material_override = SubResource("StandardMaterial3D_5dcqj")
 material_override = SubResource("StandardMaterial3D_k1sx7")
 
 [node name="BlenderMonkey" type="MeshInstance3D" parent="."]
-transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 79.96282, 1151.7023)
+transform = Transform3D(-179.03015, 69.259056, 56.137302, 88.67068, 151.40773, 95.98548, -9.258793, 110.81014, -166.23894, -802.99255, 88.93362, 1151.7023)
 material_override = SubResource("StandardMaterial3D_xmnyd")
 mesh = ExtResource("25_4rd3e")
 
 [node name="UtahTeapot" type="MeshInstance3D" parent="."]
-transform = Transform3D(23.943733, 9.278755, -42.90225, -16.022371, 47.345535, 1.2976389, 40.86536, 13.126514, 25.645958, 399.62552, 78.79309, -629.45306)
+transform = Transform3D(41.01321, 13.183863, 25.37912, -16.022367, 47.345535, 1.2976415, -23.68957, -9.197086, 43.06063, 399.62552, 89.969185, -629.45306)
 material_override = SubResource("StandardMaterial3D_10lto")
 mesh = ExtResource("26_dssj1")
 
@@ -1351,7 +1355,7 @@ transform = Transform3D(-25.000004, 43.30127, 9.536744e-07, -21.650639, -12.5000
 
 [node name="LowPolyFish" type="MeshInstance3D" parent="fish1"]
 unique_name_in_owner = true
-transform = Transform3D(0.6738035, 0.7389084, 0, -0.7389084, 0.6738035, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
+transform = Transform3D(-0.5609212, -0.82786715, 0, 0.82786715, -0.5609212, 0, 0, 0, 1, 2.8306804, -3.784323, -0.17572698)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
@@ -1361,13 +1365,13 @@ transform = Transform3D(-0.49054515, 0.7880842, 0.37187213, -0.12549523, -0.4861
 metadata/_edit_group_ = true
 
 [node name="LowPolyFish2" type="MeshInstance3D" parent="fish2"]
-transform = Transform3D(13.3735895, -99.07233, 2.4137807, 4.4327153e-06, -2.4356606, -99.97032, 99.10173, 13.369623, -0.32573065, 0, 0, 0)
+transform = Transform3D(-97.847084, -20.377617, -3.2722077, -2.885468e-05, 15.854888, -98.735115, 20.638668, -96.60943, -15.513542, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_347fg")
 mesh = ExtResource("28_6q5y5")
 skeleton = NodePath("../..")
 
 [node name="blahaj" parent="." instance=ExtResource("29_6q5y5")]
-transform = Transform3D(51.89026, 33.98367, 78.437935, -67.01109, 73.14161, 12.641855, -53.074623, -59.12199, 60.726208, 106.40614, 313.2397, -539.5702)
+transform = Transform3D(1.3962702, -53.511913, -84.466095, -49.264412, 73.1417, -47.151936, 87.011894, 42.270084, -25.341074, 106.40614, 313.2397, -539.5702)
 rotation_order = 4
 
 [node name="Target" parent="." instance=ExtResource("40_pn0cv")]

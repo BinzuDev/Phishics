@@ -1,5 +1,5 @@
 @icon("res://icons/dialogue_area.png")
-extends Area3D
+class_name DialogueArea extends Area3D
 
 
 @export var dialogue : Dialogue

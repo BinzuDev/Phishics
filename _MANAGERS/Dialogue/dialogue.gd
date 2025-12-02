@@ -21,9 +21,15 @@ class_name Dialogue extends Resource
 @export var messages : Array[textBoxSettings]
 ##Run custom code after closing the textbox.[br] 
 ##[b]NOTICE[/b]: this code doesn't run "[i]from[/i]" anywhere, so you don't have access to any Node functions.[br]
-##Here's how to access various nodes:[br]
-##    ● Current dialogueArea node: DialogueManager.currentDialogueArea[br]
-##    ● Current dialogueArea's parent node: DialogueManager.currentDialogueOwner[br]
-##    ● Current scene: GameManager.get_current_scene()[br]
+##Here's a few shortcuts to cleanly access certain nodes:[br]
+##    ● [scene] : The current scene[br]
+##    ● [fish] : The player[br]
+##    ● [dialogue] : The current dialogueArea node[br]
+##    ● [parent] : The parent of the current dialogueArea node[br]
+##    ● [DM] : DialogueManager[br]
+##    ● [SM] : ScoreManager[br]
+##EX: [fish].global_position = [dialogue].global_position;[br]
+##(this would teleport the fish to the origin of the current dialogue)[br]
 ##[color=orange]WARNING: DO NOT USE ENTER![/color] Seperate the lines of code with a ";" and a space.
 @export_multiline var codePostDialogue : String
+@export var branch : DialogueBranch
