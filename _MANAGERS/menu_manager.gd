@@ -241,7 +241,7 @@ func _on_fresh_debug_toggled(toggled_on):
 	ScoreManager.find_child("freshDebugLabel").visible = toggled_on
 
 func _on_hide_ui_toggled(toggled_on):
-	%PauseList.visible = false
+	#%PauseList.visible = false
 	GameManager.hideUI = toggled_on
 	if toggled_on:
 		ScoreManager.hide()

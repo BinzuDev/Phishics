@@ -17,6 +17,9 @@ uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_di
 uniform float depth_bias = 0.14;
 uniform float cam_distance = 5.0;
 
+//positive depth moves toward the camera in world units
+uniform float depth_offset = 0.0;
+
 void vertex() {
 	//First solution, clip breaks after moving cam back
 	//vec4 clip = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
@@ -24,11 +27,22 @@ void vertex() {
 	//POSITION = clip;
 	
 	//Solution 2, camera needs to move further before clipping
-	vec4 clip = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
-	float scaled_bias = depth_bias / (clip.w*cam_distance); // shrink bias with distance
-	clip.z += scaled_bias*0.1 * clip.w;
-	POSITION = clip;
+	//vec4 clip = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
+	//float scaled_bias = depth_bias / (clip.w*cam_distance); // shrink bias with distance
+	//clip.z += scaled_bias*0.1 * clip.w;
+	//POSITION = clip;
 	
+	
+	//Solution 3: taken from a better shader I found:
+	//https://godotshaders.com/shader/depth-adjustment-for-clipping-protection/
+	//model(local,object) to world(global) vertex position set to world_position
+	vec3 world_position = vec4(MODEL_MATRIX * vec4(VERTEX,1)).xyz;
+	//set direction vector from vertex to camera in world space
+	vec3 dir2cam  = normalize(CAMERA_POSITION_WORLD - world_position);
+	//offset depth by world(global) units.
+	world_position += dir2cam * depth_offset;
+	//transform world_position back to model(local, object) space and set vertex position.
+	VERTEX = vec4(inverse(MODEL_MATRIX) * vec4(world_position,1)).xyz;
 	
 }
 

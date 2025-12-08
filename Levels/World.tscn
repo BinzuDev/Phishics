@@ -3222,23 +3222,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7132, 0.461199, -24.7457)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36581, -0.03832, 1.7673)
 
 [node name="Enemy3" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6967, -0.03832, 9.78709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.47005, -0.038320005, 9.983157)
 
 [node name="Enemy4" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1175, -0.03832, 4.59871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1275177, -0.038320005, 5.6636276)
 
 [node name="Enemy5" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16621, -0.03832, -0.0130386)
 enemyType = 1
 
 [node name="Enemy6" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.90884, -0.03832, 4.79181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.705868, -0.038320005, 5.4760284)
 
 [node name="Enemy7" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12829, -0.0383205, 0.894161)
 
 [node name="Enemy8" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5042, -0.0383205, 3.67641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.833347, -0.03832051, 3.7399902)
 
 [node name="Enemy9" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.68036, -0.0383209, 3.11321)
@@ -3259,7 +3259,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387009, -0.03832, 10.5272)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16087, -0.03832, 8.40506)
 
 [node name="Enemy15" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.775, -0.03832, 0.980846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.796581, -0.038320005, 0.8840599)
 
 [node name="Enemy16" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69488, -0.03832, 10.4485)
@@ -3271,7 +3271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35541, -0.0383205, 9.18967)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1549, -0.0383195, 14.8588)
 
 [node name="Enemy19" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0867, -0.0383205, 12.714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.301441, -0.038319558, 14.641823)
 
 [node name="Enemy20" parent="group2/crab cave" instance=ExtResource("21_46o8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6573, -0.0383195, 21.1497)
@@ -3381,7 +3381,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3973, 0.64544, -22.2361)
 audio_file = "uid://cv7x2xq8oskhx"
 
 [node name="Mine" parent="group2" instance=ExtResource("51_4ps87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.095886, 7.3326654, -5.270503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1, 7.33, -5.27)
 explosionStrength = 420
 explosionRadius = 12.0
 knockbackMultiplier = 1.4
@@ -4447,7 +4447,7 @@ explosionRadius = 48.0
 knockbackMultiplier = 0.7999999999999999
 
 [node name="Mine3" parent="group3/THEPIT(tm)" instance=ExtResource("51_4ps87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.414383, 12.299306, -22.37239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.52388, 12.299302, -14.901756)
 explosionStrength = 999
 explosionRadius = 50.0
 knockbackMultiplier = 0.7999999999999999
@@ -4916,7 +4916,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 11, -43)
 curve = SubResource("Curve3D_1hfp4")
 
 [node name="rail_grind" parent="group4/skateCSG/rightPipe" instance=ExtResource("53_fop6s")]
-transform = Transform3D(-1.6269605e-07, 0.05989131, -0.9981906, 3.7252645e-09, 0.99818826, 0.05989145, 0.9999932, 6.0256053e-09, -1.626259e-07, 0, 0.3, 0)
+transform = Transform3D(-1.6269605e-07, 0.05989131, -0.99818826, 3.7252645e-09, 0.99818826, 0.05989131, 0.9999932, 6.0256053e-09, -1.6262551e-07, 0, 0.3, 0)
 loop = false
 cameraYOverride = SubResource("Curve_cxcqp")
 
@@ -5303,7 +5303,6 @@ color = Color(0.62371504, 1, 0.6799432, 1)
 
 [node name="sacamb_area" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.83104, 20.355225, -250.27701)
-visible = false
 
 [node name="sphere8" type="MeshInstance3D" parent="sacamb_area"]
 transform = Transform3D(-1.00973e-06, 0, -23.1, 0, 23.1, 0, 23.1, 0, -1.00973e-06, 7.426483, -2.0618248, -21.933899)
@@ -5378,7 +5377,6 @@ color = Color(0.9279847, 0.57790357, 1, 1)
 
 [node name="stone_pillars" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.1675, -104.09499, -236.72131)
-visible = false
 
 [node name="stone_pillar" parent="stone_pillars" instance=ExtResource("57_cxcqp")]
 transform = Transform3D(4.76, 0, 0, 0, 4.76, 0, 0, 0, 4.76, 78.61679, 118.38087, -52.498924)
@@ -5437,7 +5435,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.73618, 149.01967, -57.5020
 color = Color(1, 0.4282751, 0.6571715, 1)
 
 [node name="billboard" parent="stone_pillars" instance=ExtResource("55_fcuyb")]
-transform = Transform3D(-0.8625048, 0, -0.50604886, 0, 1, 0, 0.50604886, 0, -0.8625048, 132.06683, 176.275, 6.013275)
+transform = Transform3D(-0.7541253, 0, -0.65673065, 0, 1, 0, 0.65673065, 0, -0.7541253, 132.06683, 124.52269, -64.940735)
+billboardTexture = "uid://cj6w2milgbe7v"
 
 [node name="occlusionCulling" type="Node3D" parent="."]
 

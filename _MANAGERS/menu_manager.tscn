@@ -1744,6 +1744,7 @@ hframes = 4
 vframes = 3
 
 [node name="FPSanchor" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 3
 anchors_preset = 1

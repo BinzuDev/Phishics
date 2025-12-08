@@ -2370,6 +2370,7 @@ update_scale = false
 [node name="bubbleBoost" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="bubbleBoost"]
+visible = false
 mesh = SubResource("SphereMesh_pqkfo")
 surface_material_override/0 = SubResource("ShaderMaterial_rp4vg")
 

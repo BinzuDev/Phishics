@@ -22,3 +22,6 @@ func _physics_process(delta):
 	$JFG_flat.position.y = sin(timer*0.01)*5 - 60
 	$blahaj.rotation_degrees.y += 0.01 / delta
 	%rotating_platform.rotation_degrees.y += 0.2
+	
+	if !Engine.is_editor_hint():
+		$UI/leftSide.visible = !GameManager.hideUI

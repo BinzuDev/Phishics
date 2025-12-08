@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://p3f1xaqm8id"]
+[gd_scene load_steps=89 format=4 uid="uid://p3f1xaqm8id"]
 
 [ext_resource type="PackedScene" uid="uid://c81n6rsfe13qy" path="res://Models/JFG/models/jelly_fish_girl_IK.glb" id="1_8sp2m"]
 [ext_resource type="Script" uid="uid://c0kyxugabv0la" path="res://Models/JFG/jelly_fish_girl.gd" id="2_ctkjy"]
@@ -63,7 +63,7 @@ noise = SubResource("FastNoiseLite_tvltw")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h17yl"]
-render_priority = -3
+render_priority = -8
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(0.28000003, 0.50533336, 0.8, 1)
@@ -73,7 +73,7 @@ shader_parameter/animation_speed = 0.3
 shader_parameter/transparency = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2mm5"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(1, 0.4, 0.69, 1)
@@ -83,7 +83,7 @@ shader_parameter/animation_speed = 0.3
 shader_parameter/transparency = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6y5a"]
-render_priority = -5
+render_priority = -10
 shader = ExtResource("2_vxsjo")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_45gao")
 shader_parameter/bubble_color = Color(0.48059997, 0.89, 0.89, 1)
@@ -102,7 +102,7 @@ noise = SubResource("FastNoiseLite_l7bk4")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ah0cj"]
-render_priority = -3
+render_priority = -8
 shader = ExtResource("7_l7bk4")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_sskjn")
 shader_parameter/clothes_texture = ExtResource("7_tvltw")
@@ -124,7 +124,7 @@ depth_draw_mode = 1
 albedo_texture = ExtResource("7_tvltw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tvltw"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("6_h17yl")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_m2mm5")
 shader_parameter/bubble_color = Color(1, 0.19, 0.5815, 1)
@@ -145,8 +145,14 @@ render_priority = 0
 shader = ExtResource("15_hhs3r")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("14_y4es0")
-shader_parameter/depth_bias = 0.14
-shader_parameter/cam_distance = 1.0
+shader_parameter/depth_bias = 0.23
+shader_parameter/cam_distance = 5.0
+shader_parameter/depth_offset = 0.12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok0ts"]
+render_priority = -1
+transparency = 1
+albedo_texture = ExtResource("14_y4es0")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ly033"]
 
@@ -206,7 +212,7 @@ buffer = PackedFloat32Array(-0.8031315, -0.48186037, 0.7730445, -0.083466396, 0.
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbni8"]
 resource_local_to_scene = true
-render_priority = 3
+render_priority = -2
 shader = ExtResource("4_tvltw")
 shader_parameter/Hframes = 4
 shader_parameter/Vframes = 4
@@ -651,7 +657,7 @@ bind/136/pose = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.125505, 0.0416526, 0.
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shhd1"]
 resource_local_to_scene = true
-render_priority = 1
+render_priority = -4
 shader = ExtResource("4_tvltw")
 shader_parameter/Hframes = 4
 shader_parameter/Vframes = 1
@@ -660,7 +666,7 @@ shader_parameter/texture_albedo = ExtResource("18_b6y5a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhwva"]
 resource_local_to_scene = true
-render_priority = 2
+render_priority = -3
 shader = ExtResource("13_6f1a5")
 shader_parameter/mask_tex = ExtResource("18_b6y5a")
 shader_parameter/mask_Hframes = 4
@@ -671,7 +677,7 @@ shader_parameter/pupil_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqs7x"]
 resource_local_to_scene = true
-render_priority = 2
+render_priority = -3
 shader = ExtResource("13_6f1a5")
 shader_parameter/mask_tex = ExtResource("18_b6y5a")
 shader_parameter/mask_Hframes = 4
@@ -682,7 +688,7 @@ shader_parameter/pupil_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lir32"]
 resource_local_to_scene = true
-render_priority = 2
+render_priority = -3
 shader = ExtResource("4_tvltw")
 shader_parameter/Hframes = 4
 shader_parameter/Vframes = 2
@@ -3545,7 +3551,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../Armature/Skeleton3D")
 
 [node name="fakeFish" parent="fishAttachment" index="0" instance=ExtResource("10_sskjn")]
-transform = Transform3D(0.0423524, 0.495751, -0.0493643, 0.0391184, 0.0460803, 0.496333, 0.496665, -0.0459038, -0.0348828, -0.0685423, 0.188536, -0.0112744)
+transform = Transform3D(0.042352457, 0.49575102, -0.049364094, 0.039118197, 0.046080057, 0.496333, 0.496665, -0.04590384, -0.034882594, -0.0685423, 0.188536, -0.0112744)
 
 [node name="blahajAttachment" type="BoneAttachment3D" parent="." index="4"]
 transform = Transform3D(-8.19564e-08, 0.9999994, 7.0252174e-14, 0.99999976, 9.685756e-08, -7.5896696e-07, -7.589672e-07, 1.6875393e-14, -1, 0.5715774, 1.975959, -1.5061055e-09)
@@ -3570,6 +3576,15 @@ transform = Transform3D(0.627762, 0.0193079, 0.0494113, -0.0462285, 0.486946, 0.
 material_override = SubResource("ShaderMaterial_hhs3r")
 lod_bias = 0.001
 mesh = ExtResource("15_h5a1t")
+metadata/_edit_group_ = true
+
+[node name="HatFaceSeeThrough" type="MeshInstance3D" parent="hatFace" index="1"]
+transform = Transform3D(0.627762, 0.0193079, 0.0494113, -0.0462285, 0.486946, 0.397047, -0.026023, -0.399263, 0.486633, 0.0222723, 0.137674, 0.0932445)
+visible = false
+material_override = SubResource("StandardMaterial3D_ok0ts")
+lod_bias = 0.001
+mesh = ExtResource("15_h5a1t")
+metadata/_edit_group_ = true
 
 [node name="pompom" type="BoneAttachment3D" parent="." index="6"]
 transform = Transform3D(-8.19564e-08, 0.9999994, 7.0252174e-14, 0.99999976, 9.685756e-08, -7.5896696e-07, -7.589672e-07, 1.6875393e-14, -1, 0.5715774, 1.975959, -1.5061055e-09)
@@ -3669,7 +3684,6 @@ environment = SubResource("Environment_i8tt3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="10"]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
-visible = false
 shadow_enabled = true
 shadow_normal_bias = 6.028
 directional_shadow_fade_start = 0.647

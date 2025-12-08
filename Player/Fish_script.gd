@@ -1197,6 +1197,7 @@ func _process(_delta):
 			
 		$UI/camIcon/ColorRect/manual.visible = !autoCamTurning
 		$UI/camIcon/ColorRect/auto.visible = autoCamTurning
+		$UI/camIcon/ColorRect.visible = !GameManager.hideUI
 		#Auto cam rotation
 		if autoCamTurning and hDir.length() > 4:
 			wrap_camera(defaultCameraAngle.y, newAng, true)
