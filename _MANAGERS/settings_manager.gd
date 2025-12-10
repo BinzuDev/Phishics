@@ -6,6 +6,7 @@ var muteWhenUnfocused : bool = false
 
 func _ready():
 	%Settings.visible = false
+	
 
 func menu_is_visible():
 	return %Settings.visible
@@ -90,4 +91,5 @@ func _on_focus_mute_pressed(toggle):
 
 func _master_volume_help_tip():
 	MenuManager.set_help_tip("Set the global volume of the game's audio.")
+	%masterSlider.grab_focus()
 	

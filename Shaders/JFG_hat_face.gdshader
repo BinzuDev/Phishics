@@ -14,11 +14,13 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_disable;
 
-uniform float depth_bias = 0.14;
-uniform float cam_distance = 5.0;
+//uniform float depth_bias = 0.14;
+//uniform float cam_distance = 5.0;
 
 //positive depth moves toward the camera in world units
 uniform float depth_offset = 0.0;
+uniform float offset_multiplier = 1.0;
+
 
 void vertex() {
 	//First solution, clip breaks after moving cam back
@@ -40,7 +42,7 @@ void vertex() {
 	//set direction vector from vertex to camera in world space
 	vec3 dir2cam  = normalize(CAMERA_POSITION_WORLD - world_position);
 	//offset depth by world(global) units.
-	world_position += dir2cam * depth_offset;
+	world_position += dir2cam * depth_offset * offset_multiplier;
 	//transform world_position back to model(local, object) space and set vertex position.
 	VERTEX = vec4(inverse(MODEL_MATRIX) * vec4(world_position,1)).xyz;
 	

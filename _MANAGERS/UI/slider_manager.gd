@@ -6,6 +6,7 @@ extends HSlider
 
 @export_multiline var helpText : String = ""
 
+var mouseHovered : bool = false
 
 func _ready():
 	toolShit()
@@ -35,3 +36,13 @@ func set_custom_value(newValue:String):
 
 func _on_focus_entered():
 	MenuManager.set_help_tip(helpText)
+
+
+
+func _on_mouse_entered():
+	mouseHovered = true
+	grab_focus()
+
+func _on_mouse_exited():
+	mouseHovered = false
+	

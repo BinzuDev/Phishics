@@ -158,6 +158,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 focus_mode = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("1_lmk0n")
 
 [node name="Label" type="Label" parent="."]
@@ -184,6 +185,7 @@ offset_top = -29.0
 offset_bottom = 29.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="hovered_off" type="Panel" parent="toggle"]
 unique_name_in_owner = true
@@ -191,6 +193,7 @@ visible = false
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 58.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_frfvo")
 
 [node name="hovered_on" type="Panel" parent="toggle"]
@@ -199,6 +202,7 @@ visible = false
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 58.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0fikc")
 
 [node name="normal_off" type="Panel" parent="toggle"]
@@ -206,6 +210,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 58.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r8rdf")
 
 [node name="normal_on" type="Panel" parent="toggle"]
@@ -213,9 +218,11 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 58.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_emcip")
 
 [node name="Grabber" type="Sprite2D" parent="toggle"]
+light_mask = 0
 position = Vector2(29, 29)
 texture = ExtResource("2_0fikc")
 
@@ -225,3 +232,5 @@ libraries = {
 }
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

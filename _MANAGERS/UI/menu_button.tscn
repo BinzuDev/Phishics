@@ -68,6 +68,7 @@ stream_2/stream = ExtResource("10_dti24")
 [node name="Button" type="Label"]
 focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_a5m03")
 theme_override_font_sizes/font_size = 60

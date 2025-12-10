@@ -22,7 +22,7 @@ var cameraOverride: bool = false
 var homingLookDown : bool = false ##used to make the cam tilt down when chaining homing dives
 var VcameraSetting : int = 1 ##0: looking up/forward 1: regular 2: homing looking down 3: topdown
 var autoCamTurning : bool = true
-
+var maxFOV : float = 85.0
 
 #other trick variables
 var tiplanding : bool = false
@@ -1135,9 +1135,9 @@ func _process(_delta):
 	################
 	
 	#fov
-	%cam.fov = lerp(%cam.fov, 85.0, 0.1)   
-	if %cam.fov > 84.99:
-		%cam.fov = 85
+	%cam.fov = lerp(%cam.fov, maxFOV, 0.1)   
+	if %cam.fov > maxFOV-0.01:
+		%cam.fov = maxFOV
 	
 	
 		## CONTROLS ##

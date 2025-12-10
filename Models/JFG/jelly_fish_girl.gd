@@ -3,7 +3,7 @@ extends Node3D
 
 @export var defaultAnimation : String = ""
 @export var animationPreview : bool = false
-#@export var hatFaceClipping : float = 5.0
+@export var hatFaceClipping : float = 1.0
 
 
 func _ready():
@@ -16,7 +16,8 @@ func _ready():
 	else:
 		$AnimationPlayer.play("T-Pose")
 	
-	#$hatFace/HatFaceMesh.set_instance_shader_parameter("cam_distance", hatFaceClipping)
+	
+	$hatFace/HatFaceMesh.material_override.set_shader_parameter("offset_multiplier", hatFaceClipping)
 	if get_tree().current_scene == self:
 		print("JFG is in a her own scene")
 		$DirectionalLight3D.visible = true
@@ -31,10 +32,12 @@ func _ready():
 	
 
 func _process(_delta):
-	if Engine.is_editor_hint() and animationPreview:
-		$AnimationPlayer.play("Cheering")
-		$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
+	if Engine.is_editor_hint():
+		if animationPreview:
+			$AnimationPlayer.play("Cheering")
+			$AnimationPlayer.seek($AnimationExtras.current_animation_position, true)
 		
+		$hatFace/HatFaceMesh.material_override.set_shader_parameter("offset_multiplier", hatFaceClipping)
 	
 
 

@@ -15,6 +15,8 @@ signal pressed(toggle:bool)
 
 @export_multiline var helpText : String = ""
 
+var mouseHovered : bool = false
+
 func _ready():
 	pass
 
@@ -25,7 +27,7 @@ func _process(delta):
 	%normal_on.visible = !has_focus()
 	$Label.text = toggle_name
 	
-	if has_focus() and Input.is_action_just_pressed("confirm") and !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if has_focus() and Input.is_action_just_pressed("confirm"):
 		value = !value
 		if value == true:
 			$AnimationPlayer.play("toggle_on")
@@ -37,3 +39,12 @@ func _process(delta):
 
 func _on_focus_entered():
 	MenuManager.set_help_tip(helpText)
+
+
+func _on_mouse_entered():
+	mouseHovered = true
+	grab_focus()
+
+
+func _on_mouse_exited():
+	mouseHovered = false
