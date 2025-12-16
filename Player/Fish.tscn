@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="10_ipqbp"]
 [ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="10_mf1i0"]
 [ext_resource type="AudioStream" uid="uid://diu6e6ohohx7d" path="res://Sounds/sparks/sparks_medium_intensity_28.wav" id="10_q0y68"]
-[ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Player/speed_lines.gdshader" id="10_ukjyi"]
+[ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Shaders/speed_lines.gdshader" id="10_ukjyi"]
 [ext_resource type="Texture2D" uid="uid://wd70c8b4u4o" path="res://Sprites/UI/surf_jump_meter.png" id="11_dp2w5"]
 [ext_resource type="AudioStream" uid="uid://436nxm2fmpx7" path="res://Sounds/sparks/sparks_high_intensity_06.wav" id="11_l4b1c"]
 [ext_resource type="AudioStream" uid="uid://drrw7ys5t8wyt" path="res://Sounds/impact_medium/medium1.ogg" id="11_uucyj"]

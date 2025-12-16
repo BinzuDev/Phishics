@@ -1455,7 +1455,7 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.80005425, -0.33600858, 0.92717755, -0.16569799, 0.79533964, 0.18514292, -0.5774699, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.8000547, -0.33600858, 0.92717755, -0.1656981, 0.79533964, 0.18514292, -0.57747024, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 autoUpDown = true
