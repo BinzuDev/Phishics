@@ -88,7 +88,7 @@ func _ready() -> void:
 	posLastFrame = global_position
 	ScoreManager.fish = self
 	%speedLinesShader.material.set_shader_parameter("clipPosition", 0.7)
-	$Decal.visible = false
+	$Skid_decal.visible = false
 	$surfPivot.visible = false
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if noScoreUI:
@@ -544,10 +544,9 @@ func _physics_process(_delta: float) -> void:
 	## Diving/homing end ##
 	
 	
+	
 	# bubble boost
-	
 	$bubbleBoost/MeshInstance3D.visible = bubbleMode
-	
 	if bubbleMode and height > 4:
 		if Input.is_action_just_pressed("jump"):
 			
@@ -575,9 +574,6 @@ func _physics_process(_delta: float) -> void:
 				defaultCameraAngle.y = newAng
 			
 			
-	
-	
-	
 	
 	
 	
@@ -617,7 +613,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
-	## Audio (flopping sfx) ##
+	## Audio (flop sfx) ##
 	#the cooldown gets shorter the faster you are
 	sfxCoolDown += clamp(amp, 0, 8) #caps at 8
 	
@@ -658,7 +654,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	
-	## Tipspin
+	## Tipspin ##
 	isTipSpinning = false
 	wallGrind = move_toward(wallGrind, 0, 1)
 	if get_side_count() == 1 and ($trickRC/tail.is_colliding() or $trickRC/head.is_colliding()):
@@ -698,7 +694,7 @@ func _physics_process(_delta: float) -> void:
 	if is_in_air():
 		tiplanding = false #reset tiplanding is the air so you can do it again
 	
-	#Spark Particles
+	##Spark Particles
 	$tipSpinSparks.emitting = isTipSpinning
 	%ballSpark.emitting = isTipSpinning
 	var sparkSpd = clamp(angular_velocity.length() * 0.06 +0.3, 0.8, 4)
@@ -729,7 +725,7 @@ func _physics_process(_delta: float) -> void:
 	if GameManager.gameTimer % sfxRate == 0 and isTipSpinning:
 		$grindingSparks.play()
 	
-	var trackPos
+	var trackPos #used for the position of the particles and skid marks
 	var trackAng
 	
 	if $trickRC/head.is_colliding():
@@ -744,23 +740,48 @@ func _physics_process(_delta: float) -> void:
 		trackAng = $trickRC/tail.get_collision_normal()
 	
 	
+	
 	## Tire tracks
-	if isTipSpinning: #flopTimer % 5 == 0 and
-		var newDecal = $Decal.duplicate()
+	if isTipSpinning: 
+		var newDecal = $Skid_decal.duplicate() as EnvironmentalDecal
 		add_child(newDecal)
-		newDecal.theOriginal = false
-		newDecal.global_position = trackPos
-		#set the angle with complicated math
-		newDecal.global_transform.basis.y = trackAng
-		newDecal.global_transform.basis.x = -newDecal.global_transform.basis.z.cross(trackAng)
-		newDecal.global_transform.basis = newDecal.global_transform.basis.orthonormalized()
 		#size is 0.2 at spd 16 | 0.5 at spd 50
 		var size = 0.2 + (angular_velocity.length() - 16) * 0.008
 		size = clamp(size, 0.2 , 0.5)
-		newDecal.size.x = size
-		newDecal.size.z = size
-		newDecal.visible = true
+		newDecal.setup_decal(trackPos, trackAng, size)
 		
+	
+	var decalPos = %heightDetect.get_collision_point()
+	var decalNorm = %heightDetect.get_collision_normal()
+	
+	## Footsteps
+	#if !is_in_air() and angular_velocity.length() > 30:
+		#if flopTimer % 5 == 0 and !isTipSpinning:
+			#var newDecal = $Footstep_decal.duplicate() as EnvironmentalDecal
+			#add_child(newDecal)
+			#newDecal.setup_decal(decalPos, decalNorm, 0.4)
+			#print("spawn footsteps")
+	
+	
+	if surfMode and %nearFloor.is_colliding():
+		var rate = 9999
+		if trueSpeed.length() > 5:
+			rate = 4
+		if trueSpeed.length() > 10:
+			rate = 2
+		
+		var mpf = trueSpeed.length()/60 #meters per frame
+		
+		if flopTimer % rate == 0:
+			#print("new decal")
+			$surfTrail_decal.rotation.y = $surfPivot.rotation.y
+			var newDecal = $surfTrail_decal.duplicate() as EnvironmentalDecal
+			add_child(newDecal)
+			newDecal.setup_decal(decalPos, decalNorm, 1, 100, 0)
+			newDecal.size.z = mpf * 1.5 * rate
+			
+	
+	
 	
 	
 	var surfSparkSpd
@@ -965,7 +986,7 @@ func _physics_process(_delta: float) -> void:
 		
 		
 	
-	#lose style points very quickly when not moving
+	## lose style points very quickly when not moving
 	if trueSpeed.length() < 0.1 and !tiplanding and !isHeld:
 		ScoreManager.idle = true
 	else:
@@ -1138,6 +1159,7 @@ func _process(_delta):
 	%cam.fov = lerp(%cam.fov, maxFOV, 0.1)   
 	if %cam.fov > maxFOV-0.01:
 		%cam.fov = maxFOV
+	
 	
 	
 		## CONTROLS ##
@@ -1514,11 +1536,8 @@ func get_side_count():
 
 ## Returns true when there is 0 physical contacts
 func is_in_air(): 
-	if get_contact_count() == 0:
-		return true
-	else:
-		return false
-		
+	return get_contact_count() == 0
+	
 
 func set_skin(): #doesnt work yet
 	pass

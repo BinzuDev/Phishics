@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=3 uid="uid://bwb5dddkenrbh"]
+[gd_scene load_steps=193 format=3 uid="uid://bwb5dddkenrbh"]
 
 [ext_resource type="Script" uid="uid://d08pu76ylr3bv" path="res://Player/Fish_script.gd" id="1_8ijwk"]
 [ext_resource type="Texture2D" uid="uid://cgy362847wh6a" path="res://Sprites/fish.png" id="2_dhdhv"]
@@ -79,6 +79,8 @@
 [ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
 [ext_resource type="AudioStream" uid="uid://db2o8qqcqpox0" path="res://Sounds/surfing/turn2.wav" id="63_0m6um"]
 [ext_resource type="AudioStream" uid="uid://kxuu5v8dn8i8" path="res://Sounds/surfing/turn3.wav" id="64_vttj7"]
+[ext_resource type="Texture2D" uid="uid://dd8287cftdy8e" path="res://Sprites/surf_trail.png" id="68_3dhdx"]
+[ext_resource type="Texture2D" uid="uid://cgq6ckl24jcyr" path="res://Sprites/footstep_normal.png" id="68_rp4vg"]
 [ext_resource type="AudioStream" uid="uid://bpeq7h4tk3gnj" path="res://Sounds/FISH_aura.ogg" id="69_h8lso"]
 [ext_resource type="AudioStream" uid="uid://chgdl0h5xl4nb" path="res://Sounds/shockwave.ogg" id="70_jv0xx"]
 [ext_resource type="PackedScene" uid="uid://cy4era7oso7t8" path="res://Models/spark_crown/sparkCrown.tscn" id="80_dafiy"]
@@ -2115,6 +2117,9 @@ stream_15/stream = ExtResource("10_q0y68")
 stream_16/stream = ExtResource("41_xsxx4")
 stream_17/stream = ExtResource("42_4buur")
 
+[sub_resource type="QuadMesh" id="QuadMesh_2ns75"]
+orientation = 1
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kufgg"]
 streams_count = 1
 stream_0/stream = ExtResource("6_t0nqp")
@@ -2389,7 +2394,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 0.58,
 
 [node name="cam" type="Camera3D" parent="cameraAnchor/camFocus" groups=["camera"]]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 current = true
 fov = 85.0
 
@@ -3109,13 +3114,37 @@ volume_db = -8.0
 max_polyphony = 10
 bus = &"fishsfx"
 
-[node name="Decal" type="Decal" parent="."]
+[node name="Skid_decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
 top_level = true
+visible = false
 size = Vector3(0.5, 0.1, 0.5)
 texture_albedo = ExtResource("47_3rn02")
 cull_mask = 1048573
 script = ExtResource("48_tid1w")
+
+[node name="Footstep_decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+top_level = true
+visible = false
+size = Vector3(0.5, 0.1, 0.5)
+texture_albedo = ExtResource("68_rp4vg")
+cull_mask = 1048573
+script = ExtResource("48_tid1w")
+
+[node name="surfTrail_decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+top_level = true
+size = Vector3(1, 0.1, 1)
+texture_albedo = ExtResource("68_3dhdx")
+albedo_mix = 0.1
+cull_mask = 1048573
+script = ExtResource("48_tid1w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.78)
+visible = false
+mesh = SubResource("QuadMesh_2ns75")
 
 [node name="speedWind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("48_q0y68")
