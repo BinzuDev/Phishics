@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dem8n11q3a66l"]
+
+[ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_b0r1p"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_xuup4"]
+[ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_irdpc"]
+[ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="4_jf68h"]
+[ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="5_mxeux"]
+[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="6_4gp81"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
+panorama = ExtResource("2_xuup4")
+
+[sub_resource type="Sky" id="Sky_28m7t"]
+sky_material = SubResource("PanoramaSkyMaterial_qcxce")
+
+[sub_resource type="Environment" id="Environment_4autd"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_28m7t")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2i2tq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43g2l"]
+
+[node name="level_template" type="Node3D"]
+script = ExtResource("1_b0r1p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+shadow_enabled = true
+shadow_normal_bias = 6.028
+directional_shadow_fade_start = 0.647
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4autd")
+
+[node name="fish" parent="." instance=ExtResource("3_irdpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.62143, 3.167923, 0)
+gravity_scale = 1.5
+
+[node name="Platform1" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 1.9, 0, 0, 0, 200, 0, -1.5, 0)
+material_override = ExtResource("4_jf68h")
+material_overlay = ExtResource("5_mxeux")
+mesh = SubResource("BoxMesh_2i2tq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_43g2l")
+
+[node name="Platform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1.9, 0, 0, 0, 10, 106.06174, -4.1687756, -16.280231)
+material_override = ExtResource("4_jf68h")
+material_overlay = ExtResource("5_mxeux")
+mesh = SubResource("BoxMesh_2i2tq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
+shape = SubResource("BoxShape3D_43g2l")
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.95, 0, 0, 0, 6.18, 0, 0, 0, 14.32, 105.98773, -4.6356444, 2.896574)
+material_override = ExtResource("4_jf68h")
+material_overlay = ExtResource("5_mxeux")
+mesh = SubResource("BoxMesh_2i2tq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
+shape = SubResource("BoxShape3D_43g2l")
+
+[node name="strike_zone" parent="." instance=ExtResource("6_4gp81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.997086, -2.6061893, -13.390612)

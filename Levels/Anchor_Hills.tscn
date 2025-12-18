@@ -168,7 +168,9 @@ script = ExtResource("1_78o1s")
 transform = Transform3D(-4.37114e-08, 0.9980268, 0.06279048, 0, -0.06279048, 0.9980268, 1, 4.3625146e-08, 2.7446598e-09, 0, 100.813614, 0)
 shadow_enabled = true
 shadow_normal_bias = 6.028
-directional_shadow_fade_start = 0.647
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.6
+directional_shadow_max_distance = 130.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4autd")
@@ -1455,9 +1457,17 @@ transform = Transform3D(0.027909618, 0, 0.02865402, 0, 0.04, 0, -0.02865402, 0, 
 curve = SubResource("Curve3D_w7dfq")
 
 [node name="rail_grind" parent="half_loop/Path3D" instance=ExtResource("6_cd55a")]
-transform = Transform3D(-0.5044767, -0.32566026, -0.8000616, -0.33600858, 0.92717755, -0.16569951, 0.79533964, 0.18514292, -0.5774752, -47.396965, 2.1935928, 32.10337)
+transform = Transform3D(-0.5044767, -0.32566026, -0.8000632, -0.33600858, 0.92717755, -0.16569985, 0.79533964, 0.18514292, -0.5774764, -47.396965, 2.1935928, 32.10337)
 progress = 144.87776
 loop = false
 autoUpDown = true
 dynamicCamera = true
 cameraYOverride = SubResource("Curve_lps8a")
+
+[node name="BoostRing" parent="." instance=ExtResource("19_21ejt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -130.56352, 2.2326956, -108.153595)
+strength = 60.0
+
+[node name="BoostRing2" parent="." instance=ExtResource("19_21ejt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.52313, 2.2326956, -108.153595)
+strength = 60.0

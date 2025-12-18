@@ -34,6 +34,7 @@ skeleton = NodePath("../..")
 
 [node name="IslandBottom" type="MeshInstance3D" parent="StaticBody3D/IslandTop"]
 material_override = SubResource("StandardMaterial3D_2yqx8")
+cast_shadow = 0
 mesh = ExtResource("4_0xyt7")
 skeleton = NodePath("../../..")
 

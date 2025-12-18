@@ -31,3 +31,4 @@ func setup_decal(newPosition: Vector3, surfaceNormal: Vector3, newSize : float,
 	fadeTime = fadeOutTime
 	timer = startingFade
 	visible = true
+	print("my starting albedo mix is: ", (fadeTime - timer) * (1/float(fadeTime)) )

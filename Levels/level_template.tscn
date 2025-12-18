@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnhb3jni2j0rt"]
+[gd_scene load_steps=11 format=3 uid="uid://dnhb3jni2j0rt"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_rbi8j"]
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_rshia"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_02uie"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="4_fksqx"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="5_4p0jq"]
-[ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="6_rshia"]
-[ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="7_02uie"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qcxce"]
 panorama = ExtResource("2_rshia")
@@ -45,7 +43,7 @@ directional_shadow_fade_start = 0.647
 environment = SubResource("Environment_4autd")
 
 [node name="fish" parent="." instance=ExtResource("3_02uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.62143, 3.167923, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 gravity_scale = 1.5
 
 [node name="Platform1" type="MeshInstance3D" parent="."]
@@ -59,34 +57,3 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
 shape = SubResource("BoxShape3D_43g2l")
-
-[node name="Platform2" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1.9, 0, 0, 0, 10, 106.06174, -4.1687756, -16.280231)
-material_override = ExtResource("4_fksqx")
-material_overlay = ExtResource("5_4p0jq")
-mesh = SubResource("BoxMesh_2i2tq")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
-shape = SubResource("BoxShape3D_43g2l")
-
-[node name="Platform3" type="MeshInstance3D" parent="."]
-transform = Transform3D(13.95, 0, 0, 0, 6.18, 0, 0, 0, 14.32, 105.98773, -4.6356444, 2.896574)
-material_override = ExtResource("4_fksqx")
-material_overlay = ExtResource("5_4p0jq")
-mesh = SubResource("BoxMesh_2i2tq")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
-shape = SubResource("BoxShape3D_43g2l")
-
-[node name="strike_zone" parent="." instance=ExtResource("6_rshia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.997086, -2.6061893, -13.390612)
-
-[node name="BoostRing" parent="." instance=ExtResource("7_02uie")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 95.66053, 2.857016, 8.2008095)
-strength = 100.0

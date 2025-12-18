@@ -1,4 +1,5 @@
 #@tool
+@icon("res://icons/VR_dim.png")
 extends Level
 
 

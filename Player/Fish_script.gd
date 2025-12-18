@@ -773,12 +773,14 @@ func _physics_process(_delta: float) -> void:
 		var mpf = trueSpeed.length()/60 #meters per frame
 		
 		if flopTimer % rate == 0:
-			#print("new decal")
+			
 			$surfTrail_decal.rotation.y = $surfPivot.rotation.y
 			var newDecal = $surfTrail_decal.duplicate() as EnvironmentalDecal
 			add_child(newDecal)
-			newDecal.setup_decal(decalPos, decalNorm, 1, 100, 0)
-			newDecal.size.z = mpf * 1.5 * rate
+			var prefade = 220 - (trueSpeed.length()*5.5)
+			print("new decal with fade of ", prefade, "/250, spd is: ", trueSpeed.length())
+			newDecal.setup_decal(decalPos, decalNorm, 1, 250, prefade)
+			newDecal.size.z = mpf * 1.4 * rate
 			
 	
 	
