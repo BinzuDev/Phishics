@@ -1,0 +1,179 @@
+[gd_resource type="Resource" script_class="Database" load_steps=29 format=3 uid="uid://dk481phuqmf3i"]
+
+[ext_resource type="Script" uid="uid://7cir7e3spfn6" path="res://_MANAGERS/Resources/database.gd" id="1_4lrwi"]
+[ext_resource type="Script" uid="uid://4v1cn6c1qjtq" path="res://Player/Skins/SkinData.gd" id="2_4lrwi"]
+[ext_resource type="Texture2D" uid="uid://duorbjf10kokv" path="res://Player/Skins/tuna.png" id="3_8qugu"]
+[ext_resource type="Texture2D" uid="uid://nxr56txjpkq2" path="res://Player/Skins/outlawtuna.png" id="4_wtnl3"]
+[ext_resource type="Texture2D" uid="uid://co04uonhyn8jw" path="res://Player/Skins/fancytuna.png" id="5_wtnl3"]
+[ext_resource type="Texture2D" uid="uid://d3veaiuap3uox" path="res://Player/Skins/fishybusiness.png" id="6_86epw"]
+[ext_resource type="Texture2D" uid="uid://cinc5eua8xfek" path="res://Player/Skins/invertedtuna.png" id="7_fl0dr"]
+[ext_resource type="Texture2D" uid="uid://6p3k1unabw2r" path="res://Player/Skins/starfishplat.png" id="8_ydk4j"]
+[ext_resource type="Texture2D" uid="uid://jd5xc1pe7uvc" path="res://Player/Skins/newsplash.png" id="9_a8sdb"]
+[ext_resource type="Texture2D" uid="uid://dwtgagf6x4aan" path="res://Player/Skins/cannedtuna.png" id="10_3kv67"]
+[ext_resource type="Texture2D" uid="uid://6s0adowbcwo4" path="res://Player/Skins/hamtuna.png" id="11_cy67r"]
+[ext_resource type="Texture2D" uid="uid://3xri54dht1l" path="res://Player/Skins/binzufish.png" id="12_qdvsj"]
+[ext_resource type="Texture2D" uid="uid://c5df3urb7bvhr" path="res://Player/Skins/guy.png" id="13_g68rh"]
+[ext_resource type="Texture2D" uid="uid://dxlbkpmmwafpw" path="res://Player/Skins/matrixfish.png" id="14_bqdyd"]
+[ext_resource type="Texture2D" uid="uid://dk1mtik2wa3wl" path="res://Player/Skins/lemmedoitfoyew.png" id="15_ggymt"]
+
+[sub_resource type="Resource" id="Resource_4lrwi"]
+script = ExtResource("2_4lrwi")
+name = "Tuna"
+skin = ExtResource("3_8qugu")
+unlocked = true
+description = "Bluefin tunas are warm blooded.
+"
+smell = 2
+style = 3
+moist = 4
+fishiness = 5
+silliness = 3
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_xhwhy"]
+script = ExtResource("2_4lrwi")
+name = "Outlaw"
+skin = ExtResource("4_wtnl3")
+description = "Fastest spin in the west coast."
+smell = 7
+style = 6
+moist = 2
+fishiness = 4
+silliness = 5
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_86epw"]
+script = ExtResource("2_4lrwi")
+name = "Fancy"
+skin = ExtResource("5_wtnl3")
+smell = 3
+style = 9
+moist = 4
+fishiness = 3
+silliness = 2
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_6miai"]
+script = ExtResource("2_4lrwi")
+name = "Fishy Business"
+skin = ExtResource("6_86epw")
+description = "He owns exactly 0.2% of Phishics stock."
+smell = 1
+style = 7
+moist = 3
+fishiness = 4
+silliness = 2
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_pwg8m"]
+script = ExtResource("2_4lrwi")
+name = "hsiF"
+skin = ExtResource("7_fl0dr")
+description = "Evil Fish."
+smell = -5
+style = -3
+moist = -5
+fishiness = -6
+silliness = -1
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_hw0t2"]
+script = ExtResource("2_4lrwi")
+name = "Starfish Platinum"
+skin = ExtResource("8_ydk4j")
+description = "He is exceptional at posing."
+smell = 2
+style = 10
+moist = 8
+fishiness = 8
+silliness = 2
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_00htq"]
+script = ExtResource("2_4lrwi")
+name = "News Splash"
+skin = ExtResource("9_a8sdb")
+description = "He would make a great headline."
+smell = 7
+style = 10
+moist = 4
+fishiness = 6
+silliness = 5
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_uwg5y"]
+script = ExtResource("2_4lrwi")
+name = "Canned Tuna"
+skin = ExtResource("10_3kv67")
+description = "No tuna were harmed in the making of this skin."
+smell = 3
+style = 1
+moist = 1
+fishiness = 2
+silliness = 5
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_hjcxh"]
+script = ExtResource("2_4lrwi")
+name = "Ham Tuna"
+skin = ExtResource("11_cy67r")
+description = "Unidentifiable cosmic entity."
+smell = 1
+style = 7
+moist = 3
+fishiness = 5
+silliness = 2
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_4cja2"]
+script = ExtResource("2_4lrwi")
+name = "Binzu Tuna"
+skin = ExtResource("12_qdvsj")
+description = "So simple you could draw him."
+smell = 1
+style = 3
+moist = 4
+fishiness = 2
+silliness = 6
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_r8j3u"]
+script = ExtResource("2_4lrwi")
+name = "John"
+skin = ExtResource("13_g68rh")
+description = "John."
+smell = 1
+style = 1
+moist = 1
+fishiness = 1
+silliness = 1
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_wwkvm"]
+script = ExtResource("2_4lrwi")
+name = "Matrix"
+skin = ExtResource("14_bqdyd")
+description = "He is Fishpilled."
+smell = 5
+style = 5
+moist = 5
+fishiness = 5
+silliness = 5
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[sub_resource type="Resource" id="Resource_qt122"]
+script = ExtResource("2_4lrwi")
+name = "Long"
+skin = ExtResource("15_ggymt")
+description = "Let him do it for you."
+smell = 10
+style = 8
+moist = 2
+fishiness = 3
+silliness = 10
+metadata/_custom_type_script = "uid://4v1cn6c1qjtq"
+
+[resource]
+script = ExtResource("1_4lrwi")
+skins = Array[ExtResource("2_4lrwi")]([SubResource("Resource_4lrwi"), SubResource("Resource_xhwhy"), SubResource("Resource_86epw"), SubResource("Resource_6miai"), SubResource("Resource_pwg8m"), SubResource("Resource_hw0t2"), SubResource("Resource_00htq"), SubResource("Resource_uwg5y"), SubResource("Resource_hjcxh"), SubResource("Resource_4cja2"), SubResource("Resource_r8j3u"), SubResource("Resource_wwkvm"), SubResource("Resource_qt122")])
+metadata/_custom_type_script = "uid://7cir7e3spfn6"

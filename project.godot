@@ -67,6 +67,7 @@ folder_colors={
 "res://Sprites/": "yellow",
 "res://Textures/": "yellow",
 "res://_MANAGERS/": "red",
+"res://_MANAGERS/Resources/": "green",
 "res://icons/": "gray"
 }
 
