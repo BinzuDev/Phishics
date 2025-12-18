@@ -33,10 +33,6 @@ glow_levels/5 = 0.0
 fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
-volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uoobp"]
 
@@ -191,6 +187,7 @@ environment = SubResource("Environment_b0qhh")
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
 shadow_enabled = true
 shadow_normal_bias = 6.028
+directional_shadow_mode = 0
 directional_shadow_fade_start = 0.647
 
 [node name="fish" parent="." instance=ExtResource("2_t7vd5")]
