@@ -1,6 +1,4 @@
-extends Resource
-
-class_name SkinData
+class_name SkinData extends Resource
 
 
 @export var name: String
@@ -11,9 +9,10 @@ class_name SkinData
 @export_multiline var description: String
 
 # bogus stats
-@export_group("Stats")
-@export var smell: int = 0
-@export var style: int = 0
-@export var moist: int = 0
-@export var fishiness: int = 0
-@export var silliness: int = 0
+@export var stats: Dictionary[String, String] = {
+		"Smell" : "0",
+		"Taste" : "0",
+		"Floppiness" : "0",
+		"Viscosity" : "0",
+		"Swimming" : "0",
+	}
