@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://b3m2t2vfnka6v" path="res://Sounds/sparks/sparks_medium_intensity_23.wav" id="8_tid1w"]
 [ext_resource type="AudioStream" uid="uid://upa2refreuuc" path="res://Sounds/sparks/sparks_medium_intensity_27.wav" id="9_ny41d"]
 [ext_resource type="AudioStream" uid="uid://bmhyvq1ucstr0" path="res://Sounds/impact_soft/soft4.ogg" id="9_quwx5"]
-[ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgunquiet.ogg" id="10_ipqbp"]
+[ext_resource type="AudioStream" uid="uid://4eoy8kdh6rxc" path="res://Sounds/shotgun.ogg" id="10_ipqbp"]
 [ext_resource type="AudioStream" uid="uid://bnhyl7xy6k15i" path="res://Sounds/impact_soft/soft5.ogg" id="10_mf1i0"]
 [ext_resource type="AudioStream" uid="uid://diu6e6ohohx7d" path="res://Sounds/sparks/sparks_medium_intensity_28.wav" id="10_q0y68"]
 [ext_resource type="Shader" uid="uid://bhqxo8ub78fk6" path="res://Shaders/speed_lines.gdshader" id="10_ukjyi"]
@@ -32,41 +32,41 @@
 [ext_resource type="Texture2D" uid="uid://biorl74il5l8l" path="res://Sprites/UI/aim_reticle_off_screen.png" id="12_23obf"]
 [ext_resource type="AudioStream" uid="uid://c33xu632s2u2j" path="res://Sounds/sparks/sparks_high_intensity_08.wav" id="12_dp2w5"]
 [ext_resource type="Shader" uid="uid://ewoutu00ebej" path="res://Shaders/shockwave.gdshader" id="12_jap5e"]
-[ext_resource type="Texture2D" uid="uid://d3rmwbct3cbu3" path="res://icons/crab.png" id="12_vttj7"]
+[ext_resource type="Texture2D" uid="uid://d3rmwbct3cbu3" path="res://Icons/crab.png" id="12_vttj7"]
 [ext_resource type="Texture2D" uid="uid://bj75mh4eclb6g" path="res://Shaders/shader_preview_screenshot.png" id="13_5lkdo"]
 [ext_resource type="AudioStream" uid="uid://erap2b7fnpmt" path="res://Sounds/sparks/sparks_high_intensity_11.wav" id="13_d6s4o"]
 [ext_resource type="AudioStream" uid="uid://c267enlul74gu" path="res://Sounds/impact_medium/medium3.ogg" id="13_l2vbt"]
-[ext_resource type="Texture2D" uid="uid://dyeb4smsyuvcn" path="res://icons/boost_ring.png" id="13_mn8qi"]
+[ext_resource type="Texture2D" uid="uid://dyeb4smsyuvcn" path="res://Icons/boost_ring.png" id="13_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://dmwqt72t5kd3j" path="res://Sounds/sparks/sparks_high_intensity_12.wav" id="14_3jkku"]
 [ext_resource type="AudioStream" uid="uid://hjy4niapmm7d" path="res://Sounds/impact_medium/medium4.ogg" id="14_17eip"]
 [ext_resource type="AudioStream" uid="uid://bjpjbd4agn1eq" path="res://Sounds/impact_bloody/bloody1.ogg" id="15_5m7cr"]
 [ext_resource type="AudioStream" uid="uid://by0unykljxxjg" path="res://Sounds/sparks/sparks_low_intensity_04.wav" id="15_bsrx0"]
-[ext_resource type="Texture2D" uid="uid://mdoqsqh3p6kx" path="res://icons/jellyfish_target.png" id="15_mn8qi"]
+[ext_resource type="Texture2D" uid="uid://mdoqsqh3p6kx" path="res://Icons/jellyfish_target.png" id="15_mn8qi"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="15_vxyr1"]
 [ext_resource type="AudioStream" uid="uid://blaew5gn1ol7j" path="res://Sounds/sparks/sparks_low_intensity_06.wav" id="16_3jjx5"]
 [ext_resource type="AudioStream" uid="uid://b2uje1y503456" path="res://Sounds/impact_bloody/bloody2.ogg" id="16_l2vbt"]
-[ext_resource type="Texture2D" uid="uid://bb2dcsrc2jdnh" path="res://icons/hook_target.png" id="16_mn8qi"]
+[ext_resource type="Texture2D" uid="uid://bb2dcsrc2jdnh" path="res://Icons/hook_target.png" id="16_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://bnaji0clr1j6c" path="res://Sounds/impact_bloody/bloody3.ogg" id="17_17eip"]
-[ext_resource type="Texture2D" uid="uid://cqfmsvk50uoq8" path="res://icons/bowlingPins_target.png" id="17_mn8qi"]
+[ext_resource type="Texture2D" uid="uid://cqfmsvk50uoq8" path="res://Icons/bowling_pins_target.png" id="17_mn8qi"]
 [ext_resource type="AudioStream" uid="uid://c77aqd8m0ea3d" path="res://Sounds/sparks/sparks_low_intensity_07.wav" id="17_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://bfrairy2vrx6r" path="res://Sounds/sparks/sparks_low_intensity_11.wav" id="18_4buur"]
-[ext_resource type="Texture2D" uid="uid://cdt5xohv2eypg" path="res://icons/warning_sign.png" id="18_ukjyi"]
-[ext_resource type="Texture2D" uid="uid://c3wlgqe8jicw3" path="res://icons/mine.png" id="19_dafiy"]
-[ext_resource type="Texture2D" uid="uid://cx3jri7bd8mio" path="res://icons/railGrind.png" id="20_h8lso"]
+[ext_resource type="Texture2D" uid="uid://cdt5xohv2eypg" path="res://Icons/warning_sign.png" id="18_ukjyi"]
+[ext_resource type="Texture2D" uid="uid://c3wlgqe8jicw3" path="res://Icons/mine.png" id="19_dafiy"]
+[ext_resource type="Texture2D" uid="uid://cx3jri7bd8mio" path="res://Icons/rail_grind.png" id="20_h8lso"]
 [ext_resource type="Texture2D" uid="uid://duopre52i2rui" path="res://Sprites/UI/aim_reticle.png" id="24_40mal"]
-[ext_resource type="Texture2D" uid="uid://bfka4t3pqbppm" path="res://icons/target.png" id="24_pqkfo"]
+[ext_resource type="Texture2D" uid="uid://bfka4t3pqbppm" path="res://Icons/target.png" id="24_pqkfo"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="25_dhdhv"]
 [ext_resource type="Texture2D" uid="uid://bj8oc56krqj3b" path="res://Sprites/peppino_taunt_flash.png" id="26_pqkfo"]
 [ext_resource type="Texture2D" uid="uid://banxnie7e78w5" path="res://Sprites/UI/aim_reticle_surf.png" id="26_ukjyi"]
-[ext_resource type="Texture2D" uid="uid://baga7qw4us4yf" path="res://Sprites/spark.png" id="27_div8h"]
+[ext_resource type="Texture2D" uid="uid://baga7qw4us4yf" path="res://Sprites/spark1.png" id="27_div8h"]
 [ext_resource type="Texture2D" uid="uid://cg6m3e2wndhub" path="res://Sprites/smear.png" id="27_ipqbp"]
 [ext_resource type="Texture2D" uid="uid://buk18xu7y3wjs" path="res://Sprites/spark2.png" id="28_twgm3"]
 [ext_resource type="AudioStream" uid="uid://crr8giq6rl0wd" path="res://Sounds/surfing/metal_scrape.wav" id="30_d6s4o"]
 [ext_resource type="AudioStream" uid="uid://cdobqnrswwj8v" path="res://Sounds/surfing/skateboard_rolling.ogg" id="31_4buur"]
 [ext_resource type="AudioStream" uid="uid://bk7vq8ulbxhvj" path="res://Sounds/sparks/thps_spark1.wav" id="41_xsxx4"]
 [ext_resource type="AudioStream" uid="uid://0oj8q06006yn" path="res://Sounds/sparks/thps_spark3.wav" id="42_4buur"]
-[ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speedlines.png" id="44_iujy1"]
-[ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/tireTracks.png" id="47_3rn02"]
+[ext_resource type="Texture2D" uid="uid://66jup5e61aet" path="res://Sprites/speed_lines.png" id="44_iujy1"]
+[ext_resource type="Texture2D" uid="uid://dg8ivng1j8t6u" path="res://Sprites/trail_tipspin.png" id="47_3rn02"]
 [ext_resource type="AudioStream" uid="uid://dux8rmih0nxvu" path="res://Sounds/speed_wind.wav" id="48_q0y68"]
 [ext_resource type="Script" uid="uid://dk35j3yra861k" path="res://Player/skid_marks.gd" id="48_tid1w"]
 [ext_resource type="AudioStream" uid="uid://bj14bvmj4frr" path="res://Sounds/surfing/spinning_okay.ogg" id="51_xsxx4"]
@@ -79,11 +79,11 @@
 [ext_resource type="AudioStream" uid="uid://bdlebjd5ine2a" path="res://Sounds/surfing/halfpipe.ogg" id="62_2owy6"]
 [ext_resource type="AudioStream" uid="uid://db2o8qqcqpox0" path="res://Sounds/surfing/turn2.wav" id="63_0m6um"]
 [ext_resource type="AudioStream" uid="uid://kxuu5v8dn8i8" path="res://Sounds/surfing/turn3.wav" id="64_vttj7"]
-[ext_resource type="Texture2D" uid="uid://dd8287cftdy8e" path="res://Sprites/surf_trail.png" id="68_3dhdx"]
+[ext_resource type="Texture2D" uid="uid://dd8287cftdy8e" path="res://Sprites/trail_surf.png" id="68_3dhdx"]
 [ext_resource type="Texture2D" uid="uid://cgq6ckl24jcyr" path="res://Sprites/footstep_normal.png" id="68_rp4vg"]
 [ext_resource type="AudioStream" uid="uid://bpeq7h4tk3gnj" path="res://Sounds/FISH_aura.ogg" id="69_h8lso"]
 [ext_resource type="AudioStream" uid="uid://chgdl0h5xl4nb" path="res://Sounds/shockwave.ogg" id="70_jv0xx"]
-[ext_resource type="PackedScene" uid="uid://cy4era7oso7t8" path="res://Models/spark_crown/sparkCrown.tscn" id="80_dafiy"]
+[ext_resource type="PackedScene" uid="uid://cy4era7oso7t8" path="res://Models/spark_crown/spark_crown.tscn" id="80_dafiy"]
 [ext_resource type="Texture2D" uid="uid://ba5khi7i2ku46" path="res://Player/Skins/pose.png" id="82_jv0xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2ykt"]
@@ -194,7 +194,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/0/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -206,7 +206,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/1/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -218,7 +218,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%surfSparks:emitting")
+tracks/2/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -230,7 +230,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%brakingPivot/counterPivot/animationPivot/boardPivot:rotation")
+tracks/3/path = NodePath("brakingPivot/counterPivot/animationPivot/boardPivot:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -242,7 +242,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%brakingPivot/counterPivot/animationPivot/boardPivot:position")
+tracks/4/path = NodePath("brakingPivot/counterPivot/animationPivot/boardPivot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -254,7 +254,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%fishPivot:rotation")
+tracks/5/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -266,7 +266,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%fishPivot:position")
+tracks/6/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -278,7 +278,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%fishPivot:scale")
+tracks/7/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -290,7 +290,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%surfingFish:position")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -302,7 +302,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%surfingFish:rotation")
+tracks/9/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -314,7 +314,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%surfingFish:scale")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -426,7 +426,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -438,7 +438,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%surfSparks:emitting")
+tracks/9/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -450,7 +450,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -562,7 +562,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -574,7 +574,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%surfSparks:emitting")
+tracks/9/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -586,7 +586,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -698,7 +698,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -710,7 +710,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%surfSparks:emitting")
+tracks/9/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -722,7 +722,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -834,7 +834,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -846,7 +846,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%surfSparks:emitting")
+tracks/9/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -858,7 +858,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -923,7 +923,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/4/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -935,7 +935,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/5/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -947,7 +947,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%surfingFish:position")
+tracks/6/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -959,7 +959,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%surfingFish:rotation")
+tracks/7/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -971,7 +971,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%surfingFish:scale")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1083,7 +1083,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%surfSparks:emitting")
+tracks/8/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1095,7 +1095,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/9/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1107,7 +1107,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/10/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1159,7 +1159,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/3/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1171,7 +1171,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%brakingPivot/counterPivot/animationPivot:position")
+tracks/4/path = NodePath("brakingPivot/counterPivot/animationPivot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1183,7 +1183,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%brakingPivot/counterPivot/animationPivot/boardPivot:rotation")
+tracks/5/path = NodePath("brakingPivot/counterPivot/animationPivot/boardPivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1195,7 +1195,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%brakingPivot/counterPivot/animationPivot/boardPivot:position")
+tracks/6/path = NodePath("brakingPivot/counterPivot/animationPivot/boardPivot:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1207,7 +1207,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%fishPivot:rotation")
+tracks/7/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1219,7 +1219,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%fishPivot:position")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1231,7 +1231,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%fishPivot:scale")
+tracks/9/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1243,7 +1243,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%surfSparks:emitting")
+tracks/10/path = NodePath("sparkPivot/surfSparks:emitting")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1319,7 +1319,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%brakingPivot/counterPivot/animationPivot:rotation")
+tracks/5/path = NodePath("brakingPivot/counterPivot/animationPivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1331,7 +1331,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%surfingFish:position")
+tracks/6/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1343,7 +1343,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%surfingFish:rotation")
+tracks/7/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1355,7 +1355,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%surfingFish:scale")
+tracks/8/path = NodePath("brakingPivot/counterPivot/animationPivot/fishPivot/surfingFish:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2153,7 +2153,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("52_4buur")
 
-[node name="fish" type="RigidBody3D" groups=["player"]]
+[node name="Fish" type="RigidBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 mass = 1.5

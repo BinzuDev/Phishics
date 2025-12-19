@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://da7lf4yqtunqv"]
 
 [ext_resource type="Script" uid="uid://ctxqwkuhenvue" path="res://Objects/seaweed.gd" id="2_4j6k3"]
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_gbgw0"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="2_gbgw0"]
 [ext_resource type="ArrayMesh" uid="uid://cl10mm78nouw3" path="res://Models/seaweed/seaweed_model.res" id="2_nrh3i"]
 [ext_resource type="ArrayMesh" uid="uid://csehhkp01tavt" path="res://Models/seaweed/seaweed_patch_generator.obj" id="3_nrh3i"]
 

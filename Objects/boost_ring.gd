@@ -1,7 +1,7 @@
-@icon("res://icons/boost_ring.png")
 @tool #this makes it so code can run in the editor
-class_name boostRing
-extends Area3D
+@icon("res://Icons/boost_ring.png")
+class_name BoostRing extends Area3D
+
 
 @onready var particles = $ring/CPUParticles3D
 
@@ -75,10 +75,10 @@ func _on_body_entered(body: Node3D) -> void:
 		body.apply_torque_impulse(distance)
 		body.apply_impulse(distance*3)
 		
-		if body is enemy:
+		if body is CrabEnemy:
 			body.airborneByBoostRing = true #nerfs homing airshot
 		
-		if body is player:
+		if body is Player:
 			ScoreManager.reset_airspin()
 			ScoreManager.give_points(800, 0, true, "BOOST")
 			if affectFreshness and freshCooldown >= 4:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=106 format=3 uid="uid://bf4od5ihf5y78"]
+[gd_scene load_steps=107 format=3 uid="uid://bf4od5ihf5y78"]
 
 [ext_resource type="Script" uid="uid://2quft78r0yym" path="res://_MANAGERS/score_manager.gd" id="1_vublb"]
-[ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe-ui-mono-bold.otf" id="3_sv072"]
+[ext_resource type="FontFile" uid="uid://ca1rwf0it5es2" path="res://Fonts/segoe_ui_mono_bold.otf" id="3_sv072"]
 [ext_resource type="Texture2D" uid="uid://cung8p46bqyev" path="res://Sprites/UI/spin_meter_white.png" id="3_uvms0"]
 [ext_resource type="Texture2D" uid="uid://4xfolklfvbhn" path="res://Sprites/words/fresh_bonus1.png" id="4_0wahh"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="4_bfd2b"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c6wye6lhd2i0h" path="res://Sounds/tricks/legendary/oh_the_misery.ogg" id="10_8kiqt"]
 [ext_resource type="AudioStream" uid="uid://dav807pihtf7q" path="res://Sounds/tricks/legendary/tony_hawk_trick_high.ogg" id="11_qaabf"]
 [ext_resource type="AudioStream" uid="uid://dx0jgxdjkavku" path="res://Sounds/tricks/legendary/trumpet_charge.ogg" id="12_bbtbw"]
+[ext_resource type="Texture2D" uid="uid://wt1e32cffawn" path="res://Sprites/UI/freshness_sticker.png" id="12_ipcik"]
 [ext_resource type="AudioStream" uid="uid://ks7fxvj61hh1" path="res://Sounds/tricks/legendary/goofy_ahh_horn.ogg" id="13_t84s7"]
 [ext_resource type="AudioStream" uid="uid://da1bp5ww62b2d" path="res://Sounds/tricks/legendary/nerd_piano.ogg" id="14_lhekl"]
 [ext_resource type="AudioStream" uid="uid://squlhkdekipc" path="res://Sounds/tricks/legendary/nerd_horn.ogg" id="15_43kdb"]
@@ -25,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://b7dnvusks7vwv" path="res://Sounds/tricks/rare/FL_hit_4.ogg" id="19_xcqhv"]
 [ext_resource type="AudioStream" uid="uid://cyltwf5dvuj5d" path="res://Sounds/tricks/rare/gambling.ogg" id="20_htoua"]
 [ext_resource type="AudioStream" uid="uid://cl3mngag8w3pm" path="res://Sounds/tricks/rare/scratch2.ogg" id="21_pyh75"]
-[ext_resource type="AudioStream" uid="uid://b7a85qb5hsgf2" path="res://Sounds/tricks/rare/scratch.ogg" id="22_1e1tp"]
+[ext_resource type="AudioStream" uid="uid://b7a85qb5hsgf2" path="res://Sounds/tricks/rare/scratch1.ogg" id="22_1e1tp"]
 [ext_resource type="AudioStream" uid="uid://cwbyge4sbo6ch" path="res://Sounds/tricks/rare/tony_hawk_trick_low.ogg" id="23_5wa8c"]
 [ext_resource type="AudioStream" uid="uid://dmv3h5optlt8h" path="res://Sounds/tricks/rare/FL_hit_1.ogg" id="24_d382p"]
 [ext_resource type="AudioStream" uid="uid://bitbhb4x5mkdo" path="res://Sounds/tricks/rare/FL_hit_2.ogg" id="25_6xbco"]
@@ -34,7 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://crm0oesw1kf2k" path="res://Sounds/tricks/uncommon/boing2.ogg" id="28_vuovu"]
 [ext_resource type="AudioStream" uid="uid://1vxcr8bhv5vo" path="res://Sounds/tricks/uncommon/boing3.ogg" id="29_oirct"]
 [ext_resource type="AudioStream" uid="uid://c4w36j2josbff" path="res://Sounds/tricks/uncommon/boing4.ogg" id="30_ndoie"]
-[ext_resource type="AudioStream" uid="uid://cablhoevdu3kb" path="res://Sounds/tricks/uncommon/boing.ogg" id="31_olouy"]
+[ext_resource type="AudioStream" uid="uid://cablhoevdu3kb" path="res://Sounds/tricks/uncommon/boing1.ogg" id="31_olouy"]
 [ext_resource type="AudioStream" uid="uid://dmnhb4r8cl0vh" path="res://Sounds/tricks/uncommon/dancedance.ogg" id="32_lcyq0"]
 [ext_resource type="AudioStream" uid="uid://cogiepb65bymm" path="res://Sounds/tricks/uncommon/peppino_taunt.ogg" id="33_c8ddp"]
 [ext_resource type="AudioStream" uid="uid://dpc8ldjp7cyhc" path="res://Sounds/tricks/uncommon/roland_169_Ahh.ogg" id="34_xjb6t"]
@@ -162,7 +163,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("freshBonuses/freshScale:scale")
+tracks/5/path = NodePath("freshBonuses/text:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -195,15 +196,63 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("freshBonuses/stickerBlue:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("freshBonuses/stickerBlue:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("freshBonuses/pinkTransform:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("freshBonuses/pinkTransform:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_51vah"]
 resource_name = "freshBonus"
 length = 5.0
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("freshBonuses/freshScale:scale")
+tracks/0/path = NodePath("freshBonuses/text:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -235,6 +284,54 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("freshBonuses/stickerBlue:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.1415927]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("freshBonuses/stickerBlue:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.15, 1.15), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("freshBonuses/pinkTransform:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("freshBonuses/pinkTransform:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.25, 1.25), Vector2(0.75, 0.75)]
 }
 
 [sub_resource type="Animation" id="Animation_eyaen"]
@@ -997,18 +1094,41 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="freshScale" type="Control" parent="UI/freshMargin/freshBonuses"]
+[node name="pinkTransform" type="RemoteTransform2D" parent="UI/freshMargin/freshBonuses"]
+visible = false
+remote_path = NodePath("../stickerBlue/stickerPink")
+
+[node name="stickerBlue" type="Sprite2D" parent="UI/freshMargin/freshBonuses"]
+visible = false
+self_modulate = Color(0, 1, 1, 1)
+clip_children = 2
+texture = ExtResource("12_ipcik")
+hframes = 2
+frame = 1
+
+[node name="stickerPink" type="Sprite2D" parent="UI/freshMargin/freshBonuses/stickerBlue"]
+self_modulate = Color(1, 0, 1, 1)
+texture = ExtResource("12_ipcik")
+hframes = 2
+
+[node name="stickerWhite" type="Sprite2D" parent="UI/freshMargin/freshBonuses/stickerBlue/stickerPink"]
+z_index = -1
+texture = ExtResource("12_ipcik")
+hframes = 2
+
+[node name="text" type="Control" parent="UI/freshMargin/freshBonuses"]
 anchors_preset = 0
 scale = Vector2(1e-05, 1e-05)
 
-[node name="FreshBonus1" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+[node name="FreshBonus1" type="Sprite2D" parent="UI/freshMargin/freshBonuses/text"]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(1.08, 1.08)
 texture = ExtResource("4_0wahh")
 hframes = 5
 vframes = 6
 
-[node name="FreshBonus2" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+[node name="FreshBonus2" type="Sprite2D" parent="UI/freshMargin/freshBonuses/text"]
 unique_name_in_owner = true
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("60_mvj7n")
@@ -1016,20 +1136,22 @@ hframes = 5
 vframes = 12
 frame = 59
 
-[node name="FreshBonus3" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+[node name="FreshBonus3" type="Sprite2D" parent="UI/freshMargin/freshBonuses/text"]
 unique_name_in_owner = true
+visible = false
 texture = ExtResource("61_tgdxi")
 hframes = 5
 vframes = 6
 frame = 29
 
-[node name="FreshBonus4" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+[node name="FreshBonus4" type="Sprite2D" parent="UI/freshMargin/freshBonuses/text"]
 unique_name_in_owner = true
+visible = false
 texture = ExtResource("62_tgdxi")
 hframes = 5
 vframes = 6
 
-[node name="FreshBonus5" type="Sprite2D" parent="UI/freshMargin/freshBonuses/freshScale"]
+[node name="FreshBonus5" type="Sprite2D" parent="UI/freshMargin/freshBonuses/text"]
 unique_name_in_owner = true
 visible = false
 scale = Vector2(0.75, 0.75)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://q3h66spl0ax0"]
 
 [ext_resource type="Script" uid="uid://dp8q865u1sg7n" path="res://Objects/goal.gd" id="1_rkvvu"]
-[ext_resource type="Shader" uid="uid://bk36u2ky74cec" path="res://Shaders/Goal_scroll.gdshader" id="2_gehki"]
-[ext_resource type="Texture2D" uid="uid://dd7tm8g28545" path="res://Sprites/Goal_Flag.png" id="2_jgq83"]
+[ext_resource type="Shader" uid="uid://bk36u2ky74cec" path="res://Shaders/goal_scroll.gdshader" id="2_gehki"]
+[ext_resource type="Texture2D" uid="uid://dd7tm8g28545" path="res://Sprites/goal_flag.png" id="2_jgq83"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gehki"]
 size = Vector3(7, 2, 1)

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hk63yofjjvsc" path="res://_MANAGERS/UI/checklist.tscn" id="4_347fg"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="4_cj54y"]
 [ext_resource type="Texture2D" uid="uid://dk13hbtd6bv8a" path="res://Sprites/VR_dimension/dive_rebound_spacing.png" id="4_yfhxp"]
-[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="5_3ea2m"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textbox_settings.gd" id="5_3ea2m"]
 [ext_resource type="Texture2D" uid="uid://fhycameq8xk3" path="res://Textures/dev_textures/orange_wall.png" id="5_347fg"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="6_jmjtp"]
 [ext_resource type="Texture2D" uid="uid://ga4x2r0vsc6h" path="res://Textures/dev_textures/orange_checker.png" id="6_yfhxp"]
@@ -1310,12 +1310,6 @@ material_override = SubResource("ShaderMaterial_hd43k")
 
 [node name="mouth" parent="JFG_flat/face" index="2"]
 material_override = SubResource("ShaderMaterial_oui4j")
-
-[node name="DirectionalLight3D" parent="JFG_flat" index="10"]
-visible = false
-
-[node name="Platform" parent="JFG_flat" index="11"]
-visible = false
 
 [node name="JFG_dev_anchor" type="Node3D" parent="."]
 transform = Transform3D(-62.551384, -48.12129, -13.102186, -47.768345, 51.76607, 37.92705, -14.335623, 37.47825, -69.208885, 432.7176, 53.792248, 188.72888)

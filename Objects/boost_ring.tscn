@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1b1lupixtjff" path="res://Objects/boost_ring.gd" id="1_5o6kl"]
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="2_rd0gv"]
 [ext_resource type="Texture2D" uid="uid://ds6r7bqmtuqlq" path="res://Sprites/bubble2.png" id="3_leupk"]
-[ext_resource type="AudioStream" uid="uid://ced3chei8hbe3" path="res://Sounds/ringboost.ogg" id="4_rd0gv"]
+[ext_resource type="AudioStream" uid="uid://ced3chei8hbe3" path="res://Sounds/boost_ring.ogg" id="4_rd0gv"]
 [ext_resource type="AudioStream" uid="uid://cfpescstk1e0g" path="res://Sounds/bubbling_loop.ogg" id="5_75vsp"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jhcq3"]
@@ -138,7 +138,7 @@ stream_0/stream = ExtResource("4_rd0gv")
 [sub_resource type="SphereShape3D" id="SphereShape3D_75vsp"]
 radius = 35.0
 
-[node name="BoostRing" type="Area3D"]
+[node name="boost_ring" type="Area3D"]
 process_priority = 5
 process_physics_priority = 5
 rotation_order = 3
@@ -147,7 +147,7 @@ collision_mask = 82
 script = ExtResource("1_5o6kl")
 
 [node name="ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5177214e-07, -1.7, 1.2156401e-07, 0.805082, -3.519146e-08, -1.4972672, 1.4972672, 1.9124485e-07, 0.805082, 0, 0, 0)
+transform = Transform3D(-2.414605e-07, -1.7, 1.9480957e-07, 1.2901659, -5.6395276e-08, 1.1069951, -1.1069951, 3.050814e-07, 1.2901659, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_75vsp")
 mesh = SubResource("TorusMesh_3ffwv")
 

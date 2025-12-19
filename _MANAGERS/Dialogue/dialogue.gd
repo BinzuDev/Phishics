@@ -1,4 +1,4 @@
-@icon("res://icons/dialogue.png")
+@icon("res://Icons/dialogue.png")
 class_name Dialogue extends Resource
 
 ##Temporarily switch to a new camera during the dialogue sequence
@@ -18,7 +18,7 @@ class_name Dialogue extends Resource
 ##If the prompt should say "talk" or "read"
 @export_enum("Talk", "Read") var promptType : String = "Talk"
 ##List of all the textboxes within this dialogue sequence
-@export var messages : Array[textBoxSettings]
+@export var messages : Array[TextboxSettings]
 ##Run custom code after closing the textbox.[br] 
 ##[b]NOTICE[/b]: this code doesn't run "[i]from[/i]" anywhere, so you don't have access to any Node functions.[br]
 ##Here's a few shortcuts to cleanly access certain nodes:[br]

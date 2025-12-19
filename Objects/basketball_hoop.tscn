@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fthr0wihqbf" path="res://Sprites/6packrings.png" id="2_bd8j0"]
 [ext_resource type="Texture2D" uid="uid://g1tghrh1i6o5" path="res://Textures/rust.png" id="2_hcfjh"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="4_drutj"]
-[ext_resource type="Texture2D" uid="uid://cfqinysh8s55u" path="res://Sprites/squarepaint.png" id="5_vn1wo"]
+[ext_resource type="Texture2D" uid="uid://cfqinysh8s55u" path="res://Sprites/square_paint.png" id="5_vn1wo"]
 [ext_resource type="AudioStream" uid="uid://crsont6mavx04" path="res://Sounds/tricks/slam_dunk.ogg" id="6_npxaw"]
 [ext_resource type="AudioStream" uid="uid://bgbcr5bw0mvxk" path="res://Sounds/slomo_resume_shorter.ogg" id="7_evkxb"]
 [ext_resource type="AudioStream" uid="uid://csyvaicdfvcfa" path="res://Sounds/slomo.ogg" id="8_evkxb"]
@@ -61,7 +61,7 @@ stream_0/stream = ExtResource("7_evkxb")
 streams_count = 1
 stream_0/stream = ExtResource("8_evkxb")
 
-[node name="Basketballhoop" type="Node3D"]
+[node name="Basketball_hoop" type="Node3D"]
 script = ExtResource("1_8j0dg")
 
 [node name="DunkArea" type="Area3D" parent="."]

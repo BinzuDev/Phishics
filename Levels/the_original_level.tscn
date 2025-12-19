@@ -1,12 +1,12 @@
 [gd_scene load_steps=31 format=3 uid="uid://dkd5e1qb7t675"]
 
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_5wcuw"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="1_5wcuw"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="2_48l2a"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_7llse"]
 [ext_resource type="Texture2D" uid="uid://d0lx7l3a52xjm" path="res://Textures/wood.png" id="4_tic7e"]
 [ext_resource type="Script" uid="uid://hp8av86afbj1" path="res://Objects/rotating_obj.gd" id="5_fux52"]
-[ext_resource type="Texture2D" uid="uid://381l4xlp7ybj" path="res://Models/dice_obj/dice.png" id="6_4uu2t"]
-[ext_resource type="ArrayMesh" uid="uid://dhcwipi1upvul" path="res://Models/dice_obj/dice.obj" id="7_2sejj"]
+[ext_resource type="Texture2D" uid="uid://381l4xlp7ybj" path="res://Models/dice/dice.png" id="6_4uu2t"]
+[ext_resource type="ArrayMesh" uid="uid://dhcwipi1upvul" path="res://Models/dice/dice.obj" id="7_2sejj"]
 [ext_resource type="Texture2D" uid="uid://b5uhj7jaepkyy" path="res://Sprites/coral.png" id="8_pytw8"]
 [ext_resource type="Texture2D" uid="uid://hibyuf0jiqrv" path="res://Sprites/tutorialwall.png" id="9_3yr0c"]
 

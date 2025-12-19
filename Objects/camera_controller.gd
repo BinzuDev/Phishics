@@ -1,7 +1,7 @@
 @tool
-@icon("res://icons/cam_areas.png")
-class_name CameraController
-extends Area3D
+@icon("res://Icons/cam_areas.png")
+class_name CameraController extends Area3D
+
 
 ##The angle that the fish's "camFocus" node will get
 @export var newCameraAngle : Vector3 = Vector3(-30, 0, 0)

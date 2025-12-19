@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dnhb3jni2j0rt"]
 
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_rbi8j"]
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="2_rshia"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="2_rshia"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_02uie"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="4_fksqx"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="5_4p0jq"]

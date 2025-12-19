@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://tx645n6y4nh3"]
 
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_f87w0"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="1_f87w0"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_afen0"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_w4v7x"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_mkyii"]
-[ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/Goal.tscn" id="5_afen0"]
+[ext_resource type="PackedScene" uid="uid://q3h66spl0ax0" path="res://Objects/goal.tscn" id="5_afen0"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="6_w4v7x"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ostwq"]

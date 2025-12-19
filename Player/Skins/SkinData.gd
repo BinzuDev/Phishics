@@ -11,7 +11,6 @@ class_name SkinData
 @export_multiline var description: String
 
 # bogus stats
-
 @export_group("Stats")
 @export var smell: int = 0
 @export var style: int = 0

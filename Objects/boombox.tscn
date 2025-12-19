@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://mxdvg4ow8ycl" path="res://Sprites/boombox.png" id="1_8gbqa"]
 [ext_resource type="Script" uid="uid://c5ifa3opvkrox" path="res://Objects/boombox.gd" id="2_byss4"]
-[ext_resource type="AudioStream" uid="uid://d68o86ovw7jn" path="res://Sounds/radio/crabrave.ogg" id="3_i3sl1"]
+[ext_resource type="AudioStream" uid="uid://d68o86ovw7jn" path="res://Sounds/radio/crab_rave.ogg" id="3_i3sl1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_byss4"]
 radius = 18.1561

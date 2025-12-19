@@ -250,10 +250,10 @@ func _on_hide_ui_toggled(toggled_on):
 
 func _on_noclip_toggled(_toggled_on = true):
 	var value = $PauseMenu/DebugList/HBoxContainer/noclip.button_pressed
-	var Player = get_tree().get_first_node_in_group("player")
-	Player.noclip = value
-	Player.set_collision_mask_value(1, !value)
-	Player.set_collision_mask_value(3, !value)
+	var fish = get_tree().get_first_node_in_group("player")
+	fish.noclip = value
+	fish.set_collision_mask_value(1, !value)
+	fish.set_collision_mask_value(3, !value)
 	
 
 func _on_fps_toggled(toggled_on):

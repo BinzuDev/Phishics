@@ -1,5 +1,4 @@
-extends Label
-class_name uiButton
+class_name UiButton extends Label
 
 #static means that it affects all instances globally
 static var ignoreInputs : bool = false #so that during animations you cant press anything

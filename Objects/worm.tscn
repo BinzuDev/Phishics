@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://cm0a5kd1avm50" path="res://Shaders/bubble.gdshader" id="1_14tpb"]
 [ext_resource type="Texture2D" uid="uid://qmeykmwuuucb" path="res://Sprites/worm.png" id="2_affe2"]
 [ext_resource type="Script" uid="uid://bdmescwjq652r" path="res://Objects/worm.gd" id="2_rs7oq"]
-[ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/wormsfx.ogg" id="4_77qcx"]
+[ext_resource type="AudioStream" uid="uid://eu7r75ryhiel" path="res://Sounds/worm_collect.ogg" id="4_77qcx"]
 [ext_resource type="Texture2D" uid="uid://dtql60hdbytna" path="res://Sprites/glow.png" id="5_j5b4d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_affe2"]

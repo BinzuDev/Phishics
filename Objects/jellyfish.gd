@@ -1,7 +1,5 @@
-@icon("res://icons/jellyfish.png")
-class_name jellyfish
-extends PathFollow3D
-
+@icon("res://Icons/jellyfish.png")
+class_name Jellyfish extends PathFollow3D
 
 
 @export var speed = 5
@@ -20,9 +18,9 @@ func _process(_delta: float) -> void:
 
 func _on_jellyfish_area_body_entered(body: Node3D) -> void:
 	#hopping on jellyfish
-	if body is player and !body.diving:
+	if body is Player and !body.diving:
 		print("touching jellyfish but not diving!")
-	if body is player and (body.diving or body.surfMode):
+	if body is Player and (body.diving or body.surfMode):
 		body.linear_velocity.x *= hSpeedMultiplier
 		body.linear_velocity.y = bounceForce
 		body.linear_velocity.z *= hSpeedMultiplier

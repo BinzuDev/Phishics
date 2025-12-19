@@ -1,7 +1,6 @@
 @tool
-@icon("res://icons/tubeCoral.png")
-extends Coral
-class_name coral_tube
+@icon("res://Icons/coral_tube.png")
+class_name CoralTube extends Coral
 
 
 
@@ -27,7 +26,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		
 		
-	if body is player:
+	if body is Player:
 		$corals/AnimationPlayer.play("coral_wiggle") #animation
 		$AudioStreamPlayer3D.play()
 		

@@ -1,6 +1,5 @@
-@icon("res://icons/score_ring.png")
-extends Area3D
-
+@icon("res://Icons/score_ring.png")
+class_name ScoreRing extends Area3D
 
 var cooldown := 0
 var speed : float = 1.0
@@ -14,7 +13,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is player and cooldown > 20:
+	if body is Player and cooldown > 20:
 		ScoreManager.give_points(1200, 0, true, "RING", "rare")
 		if freshCooldown == 0:
 			ScoreManager.update_freshness(self)

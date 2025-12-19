@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b01eybe7aymqc"]
 
 [ext_resource type="Texture2D" uid="uid://cktinvkrrfcdm" path="res://Textures/purple_stone.png" id="1_aa61m"]
-[ext_resource type="ArrayMesh" uid="uid://c3dsnmwue2ffc" path="res://Models/half_loop/halfloop.obj" id="2_w6xrj"]
+[ext_resource type="ArrayMesh" uid="uid://c3dsnmwue2ffc" path="res://Models/half_loop/half_loop.obj" id="2_w6xrj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkttn"]
 albedo_texture = ExtResource("1_aa61m")

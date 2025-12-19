@@ -1,5 +1,5 @@
-@icon("res://icons/baskethoop.png")
-extends Node3D
+@icon("res://Icons/basket_hoop.png")
+class_name BasketballHoop extends Node3D
 
 var coolDown = 0
 var stopSlowmo : bool = false
@@ -56,13 +56,13 @@ func _on_body_entered(body: Node3D) -> void:
 	print(body.name, " HAS ENTERED THE DUNKING AREA")
 	#get_tree().paused = !get_tree().paused
 	
-	if body is enemy:
+	if body is CrabEnemy:
 		ScoreManager.give_points(99999, 0, true, "CRAB DUNK")
 		ScoreManager.play_trick_sfx("legendary") 
 		body.apply_central_impulse(Vector3(0, -10, 0))
 	
 	stopSlowmo = true
-	if body is player and coolDown > 60: 
+	if body is Player and coolDown > 60: 
 			#$dunkList.text += str("\nENTERING AGAIN DURING COOLDOWN")
 			#print("ENTERING AGAIN DURING COOLDOWN")
 		#else:
@@ -119,14 +119,14 @@ func perform_dunk(body):
 func _on_slowmo_body_entered(body: Node3D) -> void:
 	if body.process_mode == Node.PROCESS_MODE_INHERIT:
 		print(body.name, " HAS ENTERED THE SLOMO AREA")
-		if body is player:
+		if body is Player:
 			$Slomo.play() #sound for starting slowmo
 
 
 func _on_slowmo_body_exited(body):
 	if body.process_mode == Node.PROCESS_MODE_INHERIT:
 		print(body.name, " HAS EXITED THE SLOMO AREA")
-		if body is player:
+		if body is Player:
 			Engine.time_scale = 1
 			var pitch = AudioServer.get_bus_effect(4,0)
 			pitch.pitch_scale = 1

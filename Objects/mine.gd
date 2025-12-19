@@ -1,7 +1,6 @@
-@icon("res://icons/mine.png")
 @tool
-class_name Mine
-extends Node3D
+@icon("res://Icons/mine.png")
+class_name Mine extends Node3D
 
 @export var explosionStrength : int = 600 ##Knockback force (can't be changed directly) 
 @export_range(5, 50, 1.0, "or_greater") var explosionRadius : float = 25
@@ -60,9 +59,9 @@ func _process(_delta: float) -> void:
 ## When something touches the mine
 func _on_mine_touched(body: Node3D) -> void: 
 	if body is RigidBody3D and !isExploding and $AnimationPlayer.current_animation != "click":
-		if body is enemy:
+		if body is CrabEnemy:
 			ScoreManager.give_points(0, 10, true, "SACRIFICE")
-		if body is player and body.homing:
+		if body is Player and body.homing:
 			_on_animation_finished("diving") #explode instantly when diving
 			return #skip running activate_mine()
 		activate_mine()
@@ -99,15 +98,15 @@ func _on_animation_finished(_anim_name):
 		if otherArea.get_parent() is Mine:
 			otherArea.get_parent().activate_mine(true)
 		
-		if otherArea.get_parent() is bowlingPins:
+		if otherArea.get_parent() is BowlingPins:
 			otherArea.get_parent().strike(explosionStrength * 0.05) #strikes the bowling pins
 		
-		if otherArea.get_parent().get_parent() is coral_tree:
+		if otherArea.get_parent().get_parent() is CoralTree:
 			var knockback = otherArea.global_transform.origin - $explosionOrigin.global_transform.origin
 			knockback = knockback.normalized() * getKnockBackTo(otherArea)
 			otherArea.get_parent().get_parent().explode(knockback)
 		
-		if otherArea.get_parent() is coral_tube:
+		if otherArea.get_parent() is CoralTube:
 			otherArea.get_parent().coral_spread()
 			
 
@@ -125,7 +124,7 @@ func _on_animation_finished(_anim_name):
 		victim.apply_central_impulse(direction.normalized() * getKnockBackTo(victim)) #apply force opposite of mine that gets weaker with distance
 		print("distance to ", victim.name, ": ", (victim.global_transform.origin - global_transform.origin).length(), ", knockback received: ", getKnockBackTo(victim) )
 		
-		if victim is enemy:
+		if victim is CrabEnemy:
 			victim.hp = 0 #kill crab
 			victim.change_sprite()
 			victim.apply_torque_impulse(Vector3(5, 3, 5))

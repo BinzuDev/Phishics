@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://pw7e5mau5ey5"]
 
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="1_cdwid"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="1_cdwid"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_4xlq2"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_3poln"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_vnqya"]
-[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="5_cqpc2"]
+[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/crab_enemy.tscn" id="5_cqpc2"]
 [ext_resource type="Script" uid="uid://budr7hv3mbcbu" path="res://Objects/camera_controller.gd" id="6_fbcg4"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="7_4xlq2"]
 

@@ -1,6 +1,6 @@
 @tool
-@icon("res://icons/railGrind.png")
-class_name railGrind
+@icon("res://Icons/rail_grind.png")
+class_name RailGrind
 extends PathFollow3D
 
 @export var invisibleRail : bool = false ##If you want to make a railgrind area on an existing piece of geometry, and don't need the pipe.
@@ -32,7 +32,7 @@ func get_graph_value():
 		
 
 var isBeingUsed: bool = false #if the fish is currently using this rail
-var fish: player
+var fish: Player
 var path_3d: Path3D #the parent path object of railgrind
 var mountingCooldown = 0 #cooldown after unmounting
 var mountingSpeed #How fast the fish was going when mounting
@@ -169,7 +169,7 @@ func real_process(delta):
 ## When the fish touches the path
 func _on_area_entered(body):
 	print("entering ", name, " on frame, ", Engine.get_frames_drawn())
-	if body is player and fish.surfMode and fish.railCooldown == 0:
+	if body is Player and fish.surfMode and fish.railCooldown == 0:
 		fish.railCooldown = 3 #stops crashes when mounting two railgrinds on the same frame
 		
 		if mountingCooldown > 15: #so you can't reenter this railgrind for 0.25s after leaving it

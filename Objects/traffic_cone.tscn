@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8o6wso73ekvv"]
 
-[ext_resource type="Texture2D" uid="uid://c6070bshtd75h" path="res://Models/traffic_cone/coneuv.png" id="1_mrd6r"]
-[ext_resource type="ArrayMesh" uid="uid://catgkdeehlhst" path="res://Models/traffic_cone/trafficone.obj" id="2_6sqhk"]
+[ext_resource type="Texture2D" uid="uid://c6070bshtd75h" path="res://Models/traffic_cone/cone_uv.png" id="1_mrd6r"]
+[ext_resource type="ArrayMesh" uid="uid://catgkdeehlhst" path="res://Models/traffic_cone/traffic_cone.obj" id="2_6sqhk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jnui"]
 cull_mode = 2

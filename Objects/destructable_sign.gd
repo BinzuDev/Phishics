@@ -1,7 +1,7 @@
 @tool
-@icon("res://icons/warning_sign.png")
-class_name sign
-extends RigidBody3D
+@icon("res://Icons/warning_sign.png")
+class_name SurfSign extends RigidBody3D
+
 
 var fellOff: bool = false
 var bent: bool = false
@@ -51,7 +51,7 @@ func set_sign_visuals():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is player:
+	if body is Player:
 		
 		gravity_scale = 3 #when player touches it, it falls
 		angular_velocity = body.angular_velocity

@@ -12,9 +12,9 @@ var mult : float = 0      ##Amount of multiplier in the current combo
 var styleMeter : int = 0 ##Total amount of the style meter (styleScore + points*mult)
 var styleScore : int = 0 ##Works like score used to, but goes down over time
 var styleDecreaseRate : float = 0.1 ##what makes the style bar slowly go down
-var styleRank = 0      #0    1       2       3       4       5       6        7     #extra rank so
-					   #D    C       B       A       S       Ps     Pss      Psss   #the math works
-var rankRequirements = [0, 100000, 250000, 500000, 900000, 1500000, 2350000, 3500000, 4000000]
+var styleRank = 0      #0     1        2        3        4        5          6          7      #extra rank so
+					   #D     C        B        A        S        Ps        Pss        Psss    #the math works
+var rankRequirements = [0, 100_000, 250_000, 500_000, 900_000, 1_500_000, 2_350_000, 3_500_000, 4_000_000]
 						  #+100k   +150k   +250k   +400k   +600k    +850k   +1150k
 var rankAnimTimer : float = 0 #animation timer for the rank movement
 var idle : bool = false
@@ -717,6 +717,7 @@ func set_counter_amount(value:int = counterValue, total:int = counterTotal):
 	counterValue = value
 	counterTotal = total
 	show_counter(true)
+	
 
 func show_counter(value:bool):
 	if counterMode == 1 or counterTotal == 0:

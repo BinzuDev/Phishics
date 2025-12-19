@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bodx52lopr82a"]
 
-[ext_resource type="PackedScene" uid="uid://d26yovwidbieu" path="res://Models/bowling_pin.tscn" id="1_5q7g6"]
+[ext_resource type="PackedScene" uid="uid://d26yovwidbieu" path="res://Models/bowling_pin/bowling_pin.tscn" id="1_5q7g6"]
 [ext_resource type="Script" uid="uid://tjrubtffbjgc" path="res://Objects/strike_zone.gd" id="1_p8utt"]
 [ext_resource type="AudioStream" uid="uid://fnadeg5y52e6" path="res://Sounds/bowling/STRIKE.ogg" id="3_fgkp4"]
-[ext_resource type="Texture2D" uid="uid://cswiwcixd4g52" path="res://Sprites/words/STRIKETEXT.png" id="4_wt2jt"]
+[ext_resource type="Texture2D" uid="uid://cswiwcixd4g52" path="res://Sprites/words/STRIKE.png" id="4_wt2jt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgkp4"]
 size = Vector3(1.75426, 1.36368, 2.04286)

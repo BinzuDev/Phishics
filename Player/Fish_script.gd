@@ -1,6 +1,6 @@
-@icon("res://icons/fish.png")
-class_name player 
-extends RigidBody3D
+@icon("res://Icons/fish.png")
+class_name Player extends RigidBody3D
+
 
 #jump check
 @export var canJump: bool = true
@@ -56,7 +56,7 @@ var spinBoostBonus : float = 1.0 #temporary boost of spin speed after inputing a
 var skateboardSurf : bool = false #if the "sign" used for surfing is a skateboard
 var fallSpeeds : Array = [0, 0]
 var isRailGrinding : bool = false
-var currentRailObj : railGrind = null
+var currentRailObj : RailGrind = null
 var targetingRail : bool = false #if the current homing target is a railgrind
 var railCooldown : int = 0 #Stops the game from fucking crashing and somehow also crashing hams's audio
 
@@ -369,7 +369,7 @@ func _physics_process(_delta: float) -> void:
 				closestLastFrame = closest
 				
 				#regular reticle or railgrind reticle
-				targetingRail = closest.get_parent() is railGrind and surfMode == true
+				targetingRail = closest.get_parent() is RailGrind and surfMode == true
 				for child in $reticle/rotate.get_children():
 					child.self_modulate.a = float(!targetingRail)
 					child.get_child(0).visible = targetingRail
@@ -469,7 +469,7 @@ func _physics_process(_delta: float) -> void:
 		
 		if closest != null: #Homing attack
 			var direction = global_position.direction_to(closest.global_position)
-			if closest.get_parent() is enemy:
+			if closest.get_parent() is CrabEnemy:
 				closest.get_parent().gravity_scale = 0   #makes it easier to attack falling crabs
 				closest.get_parent().linear_velocity = Vector3(0,0,0)
 			linear_velocity = direction * 80
@@ -782,6 +782,7 @@ func _physics_process(_delta: float) -> void:
 			newDecal.setup_decal(decalPos, decalNorm, 1, 250, prefade)
 			newDecal.size.z = mpf * 1.4 * rate
 			
+	
 	
 	
 	
@@ -1568,10 +1569,10 @@ func get_closest_target():
 		$homing/raycast.force_raycast_update()
 		if $homing/raycast.get_collider() == crab:
 			#Ignore railgrinds when not in surf mode
-			if crab.get_parent() is railGrind and not surfMode:
+			if crab.get_parent() is RailGrind and not surfMode:
 				continue
 			#ignore everything BUT railgrinds when in railgrinding
-			if crab.get_parent() is not railGrind and isRailGrinding:
+			if crab.get_parent() is not RailGrind and isRailGrinding:
 				continue
 			
 			detectedCrabs.append(crab)
@@ -1611,21 +1612,21 @@ func set_offscreen_reticle(center, posBefore, closest):
 	$reticle.position = center+(edge_dir*t*0.75)
 	$reticle/offScreenArrow.rotation = angle
 	$reticle/icon.frame = 0
-	if closest.get_parent() is boostRing:
+	if closest.get_parent() is BoostRing:
 		$reticle/icon.frame = 1
-	if closest.get_parent() is enemy:
+	if closest.get_parent() is CrabEnemy:
 		$reticle/icon.frame = 2
-	if closest.get_parent() is jellyfish:
+	if closest.get_parent() is Jellyfish:
 		$reticle/icon.frame = 3
-	if closest.get_parent() is hook:
+	if closest.get_parent() is FishingHook:
 		$reticle/icon.frame = 4
-	if closest.get_parent() is bowlingPins:
+	if closest.get_parent() is BowlingPins:
 		$reticle/icon.frame = 5
-	if closest.get_parent() is sign:
+	if closest.get_parent() is SurfSign:
 		$reticle/icon.frame = 6
 	if closest.get_parent() is Mine:
 		$reticle/icon.frame = 7
-	if closest.get_parent() is railGrind:
+	if closest.get_parent() is RailGrind:
 		$reticle/icon.frame = 8
 	if closest.get_parent() is Target:
 		$reticle/icon.frame = 9
@@ -1657,3 +1658,4 @@ func should_camera_render(value: bool):
 
 func dive_rebound_strength():
 	return max(heightWhenDiveBegun-global_position.y, 10)
+	

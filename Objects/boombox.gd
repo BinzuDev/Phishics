@@ -42,12 +42,12 @@ func _process(delta: float) -> void:
 
 func _on_rave_area_body_entered(body: Node3D) -> void:
 	#RAVE
-	if body is enemy and not body.agro and body.hp > 0:
+	if body is CrabEnemy and not body.agro and body.hp > 0:
 		body.animation_crab.play("RAVE")
 
 
 
 
 func _on_rave_area_body_exited(body: Node3D) -> void:
-	if body is enemy and not body.agro:
+	if body is CrabEnemy and not body.agro:
 		body.animation_crab.play("RESET")

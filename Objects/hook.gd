@@ -1,6 +1,6 @@
 @tool
-@icon("res://icons/hook.png")
-class_name hook
+@icon("res://Icons/hook.png")
+class_name FishingHook
 extends Node3D
 
 @export_tool_button("Auto set line length") var action = autoLineLength
@@ -15,7 +15,7 @@ func autoLineLength():
 
 
 
-var fish : player
+var fish : Player
 var lockFish: bool = false
 var descending: bool = false
 #Remember the fish's rotation speed to give it back to him after
@@ -95,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 
 ## When fish touches hook
 func _on_body_entered(body: Node3D) -> void:
-	if body is player:
+	if body is Player:
 		if not descending and !$AnimationPlayer.is_playing():
 			fish = body
 			lockFish = true

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="3_fhvrl"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="5_1xgab"]
 [ext_resource type="PackedScene" uid="uid://dt8qclfbagapf" path="res://Objects/hook.tscn" id="6_yovlp"]
-[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="7_5l21c"]
+[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/crab_enemy.tscn" id="7_5l21c"]
 [ext_resource type="PackedScene" uid="uid://cu87u6588tm6x" path="res://Objects/boost_ring.tscn" id="8_5l21c"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lqxcm"]

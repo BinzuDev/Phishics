@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://cheqhyt0b5ovq"]
+
+[ext_resource type="Texture2D" uid="uid://bgeyga2o4k8mo" path="res://Textures/concrete.png" id="1_sab1k"]
+[ext_resource type="ArrayMesh" uid="uid://4gq2os55uoh5" path="res://Models/pillar/pillar_half/pillar2v2smooth.obj" id="2_sab1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpdup"]
+albedo_color = Color(0.490196, 0.619608, 0.584314, 1)
+albedo_texture = ExtResource("1_sab1k")
+disable_receive_shadows = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1scxl"]
+size = Vector3(3.03467, 0.35437, 2.99866)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpdup"]
+size = Vector3(1.74059, 5.86427, 1.60579)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sab1k"]
+radius = 0.697409
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1scxl"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gpdup"]
+top_radius = 0.92
+bottom_radius = 0.92
+height = 7.5
+rings = 0
+
+[node name="PillarHalf" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_gpdup")
+mesh = ExtResource("2_sab1k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000976563, 0.00189209, 0.0518188)
+shape = SubResource("BoxShape3D_1scxl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0721139, 3.01248, 0.0821502)
+shape = SubResource("BoxShape3D_gpdup")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0995966, 5.67321, 0.0375017)
+shape = SubResource("SphereShape3D_sab1k")
+
+[node name="darkCylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.688959, 0, 0, 0, 0.92, -0.03, 3.07, 0.09)
+material_override = SubResource("StandardMaterial3D_1scxl")
+transparency = 0.8
+mesh = SubResource("CylinderMesh_gpdup")

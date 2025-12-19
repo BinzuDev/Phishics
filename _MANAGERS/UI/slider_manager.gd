@@ -1,6 +1,6 @@
 @tool
-class_name customSlider
-extends HSlider
+class_name customSlider extends HSlider
+
 
 @export var sliderName : String = "Label"
 

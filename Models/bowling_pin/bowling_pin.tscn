@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://d26yovwidbieu"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxiqfsu008vgo" path="res://Models/bowling_pin/texture_pin/bowling_pin2.obj" id="1_ulua0"]
+[ext_resource type="Texture2D" uid="uid://c284qloruu13l" path="res://Models/bowling_pin/texture_pin/pin_texture.png" id="2_01ymh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85h5f"]
+cull_mode = 1
+albedo_texture = ExtResource("2_01ymh")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_01ymh"]
+height = 0.181309
+radius = 0.12
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01ymh"]
+radius = 0.134377
+height = 1.35
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_85h5f"]
+radius = 0.275
+height = 0.8
+
+[node name="bowling_pin" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 5
+mass = 0.2
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.1, 0)
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, -0.294914, 0)
+mesh = ExtResource("1_ulua0")
+surface_material_override/0 = SubResource("StandardMaterial3D_85h5f")
+
+[node name="Collision_Bottom" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000474754, -0.399801, 0.000962237)
+shape = SubResource("CylinderShape3D_01ymh")
+
+[node name="Collision_Capsule_thin" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185086, 0)
+shape = SubResource("CapsuleShape3D_01ymh")
+
+[node name="Collision_Capsule_thick" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0849136, 0)
+shape = SubResource("CapsuleShape3D_85h5f")

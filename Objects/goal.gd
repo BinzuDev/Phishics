@@ -11,6 +11,6 @@ func _process(_delta: float) -> void:
 	
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is player:
+	if body is Player:
 		GameManager.change_scene(nextLevel)
 		

@@ -1,7 +1,6 @@
 @tool
-@icon("res://icons/coral.png")
-extends Node3D
-class_name Coral
+@icon("res://Icons/coral.png")
+class_name Coral extends Node3D
 
 @export_tool_button("Generate random color") var action = setRandColor
 func setRandColor():

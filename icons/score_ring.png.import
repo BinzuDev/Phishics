@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cecml0moy5wa3"
-path="res://.godot/imported/score_ring.png-488c766832e9923afd1a8b97377622f2.ctex"
+path="res://.godot/imported/score_ring.png-2ecf5c9e076033400906a64256a4bb30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/score_ring.png"
-dest_files=["res://.godot/imported/score_ring.png-488c766832e9923afd1a8b97377622f2.ctex"]
+source_file="res://Icons/score_ring.png"
+dest_files=["res://.godot/imported/score_ring.png-2ecf5c9e076033400906a64256a4bb30.ctex"]
 
 [params]
 

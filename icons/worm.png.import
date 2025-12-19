@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d17xp810wyaib"
-path.s3tc="res://.godot/imported/worm.png-5d1f11b57a5936c9184a2f244a9d038c.s3tc.ctex"
+path.s3tc="res://.godot/imported/worm.png-98a23fda9e3fc3cddbc52dee73f7eb80.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://icons/worm.png"
-dest_files=["res://.godot/imported/worm.png-5d1f11b57a5936c9184a2f244a9d038c.s3tc.ctex"]
+source_file="res://Icons/worm.png"
+dest_files=["res://.godot/imported/worm.png-98a23fda9e3fc3cddbc52dee73f7eb80.s3tc.ctex"]
 
 [params]
 

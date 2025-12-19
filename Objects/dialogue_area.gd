@@ -1,4 +1,4 @@
-@icon("res://icons/dialogue_area.png")
+@icon("res://Icons/dialogue_area.png")
 class_name DialogueArea extends Area3D
 
 
@@ -7,7 +7,7 @@ class_name DialogueArea extends Area3D
 var isInside := false
 var coolDown := 0
 var alreadyRan := false
-var fish : player
+var fish : Player
 
 func _ready():
 	fish = get_tree().get_first_node_in_group("player")
@@ -69,7 +69,7 @@ func _on_body_exited(body):
 
 
 func _on_body_entered(body):
-	if body is player:
+	if body is Player:
 		if body.isRailGrinding == false: #dialogues can be really weird during railgrind
 			if !dialogue.automaticStart:
 				print(dialogue.promptType)

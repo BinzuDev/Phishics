@@ -1,9 +1,9 @@
 extends Node3D
 
-var fish : player
+var fish : Player
 var lockFish : bool = false
 
-static var talkedAlready : bool = false
+static var talkedAlready : bool = false #static allows the var to be shared across instances
 
 var camZoom = 52
 

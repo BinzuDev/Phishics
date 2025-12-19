@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8j81r35bfvf7"]
+[gd_scene load_steps=14 format=3 uid="uid://c8j81r35bfvf7"]
 
-[ext_resource type="Script" uid="uid://dhm32d8gke55e" path="res://Objects/sacabambaspis.gd" id="1_2e5n4"]
 [ext_resource type="Texture2D" uid="uid://dy6r5kx1yy6m0" path="res://Sprites/sacabambaspis.png" id="1_x1x3i"]
 [ext_resource type="PackedScene" uid="uid://d1yo0gx7jo7ar" path="res://Objects/dialogue_area.tscn" id="2_cuac1"]
-[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textBoxSettings.gd" id="3_2e5n4"]
+[ext_resource type="Script" uid="uid://cknp7aujysf6i" path="res://_MANAGERS/Dialogue/textbox_settings.gd" id="3_2e5n4"]
 [ext_resource type="Script" uid="uid://ed5c7atitflq" path="res://_MANAGERS/Dialogue/dialogue.gd" id="4_jscc7"]
 [ext_resource type="AudioStream" uid="uid://foigtclqhie3" path="res://Sounds/sacabambaspis/saca1.ogg" id="6_lpxhm"]
 [ext_resource type="AudioStream" uid="uid://dcj7gjxjhb26v" path="res://Sounds/sacabambaspis/saca2.ogg" id="7_rwgdf"]
@@ -24,7 +23,6 @@ metadata/_custom_type_script = "uid://cknp7aujysf6i"
 
 [sub_resource type="Resource" id="Resource_ggwhs"]
 script = ExtResource("4_jscc7")
-cameraOverride = NodePath("Camera3D")
 pauseStyleSystem = true
 speechSFX = NodePath("AudioStreamPlayer3D")
 messages = Array[ExtResource("3_2e5n4")]([SubResource("Resource_lpxhm"), SubResource("Resource_rwgdf")])
@@ -42,7 +40,6 @@ stream_2/stream = ExtResource("8_ggwhs")
 stream_3/stream = ExtResource("9_gns0v")
 
 [node name="sacabambaspis" type="Node3D"]
-script = ExtResource("1_2e5n4")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0, 0)

@@ -1,6 +1,6 @@
-@icon("res://icons/bowlingPins.png")
+@icon("res://Icons/bowling_pins.png")
 extends Node3D
-class_name bowlingPins
+class_name BowlingPins
 
 var touched: bool = false
 var fishSpeed

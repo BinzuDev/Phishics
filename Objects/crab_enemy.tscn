@@ -1,0 +1,185 @@
+[gd_scene load_steps=16 format=3 uid="uid://dl0tegipr4hke"]
+
+[ext_resource type="Script" uid="uid://i64vykvxs4e2" path="res://Objects/crab_enemy.gd" id="1_edmjf"]
+[ext_resource type="Texture2D" uid="uid://uksyye4xv1r2" path="res://Sprites/crabs/crab.png" id="2_dnm5c"]
+[ext_resource type="AudioStream" uid="uid://bm8tigdhl3rf2" path="res://Sounds/crabbump.ogg" id="3_d3xos"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edmjf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7k104"]
+height = 3.24361
+radius = 4.55469
+
+[sub_resource type="SphereMesh" id="SphereMesh_dnm5c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d3xos"]
+
+[sub_resource type="Curve" id="Curve_yfe2k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.223301, 0.0156658), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dnm5c"]
+radius = 0.866071
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yfe2k"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("3_d3xos")
+
+[sub_resource type="Animation" id="Animation_d3xos"]
+resource_name = "RAVE"
+loop_mode = 2
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrabSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrabSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.133333, 0.933333),
+"transitions": PackedFloat32Array(1, 0.784584),
+"update": 0,
+"values": [Vector3(0.36885, 0.357478, 1), Vector3(0.494, 0.478, 1.339)]
+}
+
+[sub_resource type="Animation" id="Animation_yfe2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrabSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.36885, 0.357478, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_756aq"]
+_data = {
+&"RAVE": SubResource("Animation_d3xos"),
+&"RESET": SubResource("Animation_yfe2k")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d3xos"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d3xos"]
+radius = 1.0
+
+[node name="Enemy" type="RigidBody3D"]
+collision_layer = 16
+collision_mask = 21
+linear_damp = 2.0
+script = ExtResource("1_edmjf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_edmjf")
+
+[node name="RemoteTransformDetect" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../Area3D")
+update_rotation = false
+
+[node name="Area3D" type="Area3D" parent="."]
+top_level = true
+collision_layer = 0
+collision_mask = 130
+metadata/_edit_lock_ = true
+
+[node name="EnemeyDetect" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.28364, 0, 0, 0, 1.28364, 0, 0, 0, 1.28364, 0, 1.00005, 0)
+shape = SubResource("CylinderShape3D_7k104")
+debug_color = Color(0.901053, 0.0799822, 0.729045, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="RemoteTransformFloorCast" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../FloorCast")
+update_rotation = false
+
+[node name="FloorCast" type="RayCast3D" parent="."]
+top_level = true
+
+[node name="airshot" type="RayCast3D" parent="FloorCast"]
+target_position = Vector3(0, -4, 0)
+debug_shape_custom_color = Color(0.976938, 0.280853, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+layers = 3
+cast_shadow = 3
+mesh = SubResource("SphereMesh_dnm5c")
+
+[node name="CrabSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.36885, 0, 0, 0, 0.357478, 0, 0, 0, 1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_dnm5c")
+
+[node name="JumpPuff" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.270622, 0)
+visible = false
+emitting = false
+amount = 4
+lifetime = 0.6
+one_shot = true
+speed_scale = 0.1
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_d3xos")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(1, 0, 1)
+spread = 145.09
+gravity = Vector3(1, 9.8, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 25.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_yfe2k")
+
+[node name="Bump" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Bumpdetect" type="CollisionShape3D" parent="Bump"]
+transform = Transform3D(1.28364, 0, 0, 0, 1.28364, 0, 0, 0, 1.28364, 0, 0, 0.0267947)
+shape = SubResource("SphereShape3D_dnm5c")
+debug_color = Color(0.792157, 1, 0.729412, 0.419608)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
+stream = SubResource("AudioStreamRandomizer_yfe2k")
+bus = &"soundEffects"
+
+[node name="AnimationCrab" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_756aq")
+}
+speed_scale = 2.0
+
+[node name="homingTarget" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="homingTarget"]
+shape = SubResource("BoxShape3D_d3xos")
+
+[node name="getParriedIdiot" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="getParriedIdiot"]
+shape = SubResource("SphereShape3D_d3xos")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Bump" to="." method="_on_bump_body_entered"]
+[connection signal="area_entered" from="getParriedIdiot" to="." method="_on_getting_parried"]

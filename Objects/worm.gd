@@ -1,4 +1,4 @@
-@icon("res://icons/worm.png")
+@icon("res://Icons/worm.png")
 extends Area3D
 class_name Worm
 
@@ -21,12 +21,12 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is player and not collected and !onlyCollectByParry:
+	if body is Player and not collected and !onlyCollectByParry:
 		collect()
 
 
 func _on_air_hitbox_body_entered(body):
-	if body is player and not collected and !onlyCollectByParry:
+	if body is Player and not collected and !onlyCollectByParry:
 		#if the player enters the big hitbox while up in the air
 		if body.height > 8 or forceBigHitbox: 
 			print("COLLECTED WORM IN THE AIR")

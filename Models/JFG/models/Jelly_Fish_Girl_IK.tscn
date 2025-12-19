@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cagkue1mxc5vn" path="res://Models/JFG/textures/clothes_texture.png" id="7_tvltw"]
 [ext_resource type="Material" uid="uid://byeq4c0xycfjc" path="res://Models/JFG/materials/clothes_material.tres" id="8_m2mm5"]
 [ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="10_sskjn"]
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="11_ah0cj"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="11_ah0cj"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="12_i8tt3"]
 [ext_resource type="PackedScene" uid="uid://djw56e4742ewv" path="res://Models/blahaj/blahaj_model.tscn" id="13_2lh6a"]
 [ext_resource type="Shader" uid="uid://c60r6xqjgyjav" path="res://Shaders/JFG_eye.gdshader" id="13_6f1a5"]
@@ -3730,12 +3730,14 @@ environment = SubResource("Environment_i8tt3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="10"]
 transform = Transform3D(-4.37114e-08, 0.998027, 0.0627905, 0, -0.0627905, 0.998027, 1, 4.36251e-08, 2.74466e-09, 0, 13.966, 0)
+visible = false
 shadow_enabled = true
 shadow_normal_bias = 6.028
 directional_shadow_fade_start = 0.647
 
 [node name="Platform" type="MeshInstance3D" parent="." index="11"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 1, 0, 100, 0, -4.371139e-06, 0, -0.5, 0)
+visible = false
 material_override = ExtResource("12_i8tt3")
 material_overlay = ExtResource("13_puxw3")
 mesh = SubResource("BoxMesh_ctkjy")

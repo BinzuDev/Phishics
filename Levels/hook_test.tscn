@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://bwebjrbte5rj4" path="res://Levels/level_class.gd" id="1_expp7"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="2_03cwd"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="3_c2gnq"]
-[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skyrender.png" id="5_iyqws"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="5_iyqws"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="6_1t8kx"]
 [ext_resource type="PackedScene" uid="uid://dhurauq3rbwsc" path="res://Objects/destructable_sign.tscn" id="7_lo1g5"]
 [ext_resource type="PackedScene" uid="uid://b58npw2l2i2jo" path="res://Objects/mine.tscn" id="7_uxs7v"]
-[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/enemy.tscn" id="8_ewr2j"]
+[ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/crab_enemy.tscn" id="8_ewr2j"]
 [ext_resource type="PackedScene" uid="uid://bodx52lopr82a" path="res://Objects/strike_zone.tscn" id="9_ewr2j"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfxg8"]

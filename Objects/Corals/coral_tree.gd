@@ -1,7 +1,6 @@
 @tool
-@icon("res://icons/coral.png")
-extends Coral
-class_name coral_tree
+@icon("res://Icons/coral.png")
+class_name CoralTree extends Coral
 
 var touched : bool = false
 var gibbed : bool = false
@@ -35,7 +34,7 @@ func _on_area_3d_body_entered(body, impact = Vector3.ZERO):
 		print("cancel, don't let the corel destroy itself")
 		return
 	
-	if body is player:
+	if body is Player:
 		impact = Vector3(body.trueSpeed.x * 3, body.trueSpeed.length() * 2, body.trueSpeed.z * 3) 
 	
 	

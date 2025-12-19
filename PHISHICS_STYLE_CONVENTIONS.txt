@@ -1,0 +1,103 @@
+This is a style guide for the Phishics project so that we can have uniform code across developers
+
+Its mostly the same as godot's recommended style guide with a few differences:
+https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
+
+
+
+
+NAMING CONVENTIONS: (* means its different from Godot's Style Guide)
+
+   Code:
+* variables: camelCase 
+functions/signals: snake_case
+classes: PascalCase
+consts/enums: CAPITAL_CASE
+
+
+   Files:
+* root folder names: PascalCase
+sub-folder names: snake_case
+file names: snake_case
+* playable levels: Pascal_Snake_Case  (to tell appart from test/debug levels)
+
+
+
+Breaking these conventions is fine for obviously temporary assets,
+it lets us know that we can eventually delete it.
+
+Some very important assets are allowed exceptions so they stand out more.
+ex: GAME_MANAGER.gd and Fish.tscn/Fish.gd
+
+
+  ####>> NEVER EVER PUT SPACES IN FOLDER OR FILE NAMES!!!! <<####
+
+-> MAKE SURE THAT THE NAME OF THE ROOT NODE IS THE SAME AS THE FILE NAME <-
+Ex: root node of Anchor_Hills.tscn is called "Anchor_Hills"
+
+
+When naming variations of things, write the variation LAST
+(even if it doesnt make sense grammatically)
+
+Bad ex:
+broken_coral
+flat_coral
+tube_coral
+tree_coral
+
+Good ex:
+coral_broken
+coral_flat
+coral_tube
+coral_tree
+
+This is because files are sorted ALPHABETICALLY.
+Doing this insures variations of the same thing are grouped together.
+
+
+
+When something has multiple versions, the first one needs a 1 at the end
+(this might sound silly and obvious but this is A REAL EXAMPLE I had to fix)
+
+Bad ex:
+scope_close2
+scope_cloes3
+scope_close
+scope_open2
+scope_open
+
+Good ex:
+scope_close1
+scope_close2
+scope_close3
+scope_open1
+scope_open2
+
+This is because when sorting alphabetically, the one with no numbers gets put after the numbered ones
+
+
+
+
+Declare classes like this:
+class_name Database extends Resource
+
+not:
+extends Resource
+
+class_name Database
+
+
+
+"not" and "!" can be used interchangably.
+But typically, I'll only use "not" when it makes sense grammatically
+
+bad ex:
+if !visible:
+if not has_focus
+
+good ex:
+if not visible
+if !has_focus
+
+Always use "!" when setting a variable
+ex: value = !value

@@ -1,4 +1,4 @@
-@icon("res://icons/waveform.png")
+@icon("res://Icons/waveform.png")
 extends AudioStreamPlayer
 class_name AdaptiveMusicTrack
 

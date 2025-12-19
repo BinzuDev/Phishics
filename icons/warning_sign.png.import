@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdt5xohv2eypg"
-path.s3tc="res://.godot/imported/warning_sign.png-c7937e053e1019f234b103a17e16a701.s3tc.ctex"
+path.s3tc="res://.godot/imported/warning_sign.png-c45cf8739f5ae17812d332591356ed49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://icons/warning_sign.png"
-dest_files=["res://.godot/imported/warning_sign.png-c7937e053e1019f234b103a17e16a701.s3tc.ctex"]
+source_file="res://Icons/warning_sign.png"
+dest_files=["res://.godot/imported/warning_sign.png-c45cf8739f5ae17812d332591356ed49.s3tc.ctex"]
 
 [params]
 

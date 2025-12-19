@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwqben0gcbvxu"
-path.s3tc="res://.godot/imported/ball_area.png-83773ab2c2a85799e0142f53bdf46deb.s3tc.ctex"
+path.s3tc="res://.godot/imported/ball_area.png-3f2b331639b1cb428d8b833fc51d1f90.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://icons/ball_area.png"
-dest_files=["res://.godot/imported/ball_area.png-83773ab2c2a85799e0142f53bdf46deb.s3tc.ctex"]
+source_file="res://Icons/ball_area.png"
+dest_files=["res://.godot/imported/ball_area.png-3f2b331639b1cb428d8b833fc51d1f90.s3tc.ctex"]
 
 [params]
 
