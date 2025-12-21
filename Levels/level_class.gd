@@ -8,7 +8,7 @@ func _ready():
 	print("level is fully loaded")
 	GameManager.isOnTitleScreen = false
 	#dont do the transition when the game opens
-	if GameManager.gameTimer > 15:
+	if !GameManager.game_just_opened():
 		var waitTime = 0.6
 		await get_tree().create_timer(waitTime).timeout
 		print(waitTime, "s long loading")

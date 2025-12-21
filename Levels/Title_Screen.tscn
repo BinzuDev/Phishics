@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=41 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_4kyk8"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_68fed"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/UI/menu_button.tscn" id="6_t7vd5"]
-[ext_resource type="Texture2D" uid="uid://yh7vk0kf61t7" path="res://Sprites/words/phishics_logo.png" id="7_t7vd5"]
 [ext_resource type="Shader" uid="uid://bk36u2ky74cec" path="res://Shaders/goal_scroll.gdshader" id="7_txomp"]
 [ext_resource type="FontFile" uid="uid://06bslnyasca1" path="res://Fonts/segoeui_bold.ttf" id="8_4kyk8"]
 [ext_resource type="Texture2D" uid="uid://da7bcr7veo7gn" path="res://Sprites/words/phishics_unwavy.png" id="8_ewc74"]
@@ -34,14 +33,6 @@ fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_uoobp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qax75"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_yt0yj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1em2i"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rv3p5"]
 render_priority = 0
 shader = ExtResource("7_txomp")
@@ -50,6 +41,176 @@ shader_parameter/frequency = Vector2(0, 18.46)
 shader_parameter/amplitutde = Vector2(0, 0.3)
 shader_parameter/speed = -2.0
 shader_parameter/movement = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_ewc74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.44329, 4.30156)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraMenu:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.23003429, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraMenu/PhishicsLogo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-49.226307, 102.81551, -212.84796)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraMenu/PhishicsLogo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(25, 25.000029, 25.000029)]
+}
+
+[sub_resource type="Animation" id="Animation_txomp"]
+resource_name = "any_key_pressed"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 130, 4.3), Vector3(0, 2.44329, 4.30156)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraMenu:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0.5235988, 0, 0), Vector3(-0.23003429, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraMenu/PhishicsLogo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 30, -212.85), Vector3(-49.226307, 102.81551, -212.84796)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraMenu/PhishicsLogo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(35, 35, 35), Vector3(25, 25.000029, 25.000029)]
+}
+
+[sub_resource type="Animation" id="Animation_pyvl3"]
+resource_name = "press_any_key_screen"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 130, 4.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraMenu:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5235988, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraMenu/PhishicsLogo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, -212.85)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraMenu/PhishicsLogo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(35, 35, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv3p5"]
+_data = {
+&"RESET": SubResource("Animation_ewc74"),
+&"any_key_pressed": SubResource("Animation_txomp"),
+&"press_any_key_screen": SubResource("Animation_pyvl3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_txomp"]
+font = ExtResource("8_4kyk8")
+font_size = 60
+outline_size = 17
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bnno"]
 resource_local_to_scene = true
@@ -177,6 +338,14 @@ font_size = 42
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_uoobp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qax75"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yt0yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1em2i"]
+
 [node name="Title_Screen" type="Node3D"]
 script = ExtResource("1_5cjeb")
 
@@ -194,160 +363,22 @@ directional_shadow_fade_start = 0.647
 transform = Transform3D(0.939573, 0, 0.342348, 0, 1, 0, -0.342348, 0, 0.939573, -0.0942845, 0.206973, 1.52209)
 noScoreUI = true
 
-[node name="Platform1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -0.5, -490)
-material_override = ExtResource("3_5cjeb")
-material_overlay = ExtResource("4_4kyk8")
-mesh = SubResource("BoxMesh_uoobp")
-skeleton = NodePath("../..")
-metadata/_edit_lock_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
-shape = SubResource("BoxShape3D_qax75")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.973659, 0.228011, 0, -0.228011, 0.973659, 0, 2.44329, 4.30156)
+[node name="CameraMenu" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9736585, 0.2280109, 0, -0.2280109, 0.9736585, 0, 2.44329, 4.30156)
 current = true
 
-[node name="JFG" parent="." instance=ExtResource("6_68fed")]
-transform = Transform3D(0.764736, 0.0368805, -0.643287, 0.020872, 0.996419, 0.0819385, 0.644005, -0.076088, 0.761228, 1.12, 0, 2.92)
-
-[node name="invisWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_yt0yj")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="invisWall"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall/StaticBody3D"]
-shape = SubResource("BoxShape3D_1em2i")
-
-[node name="invisWall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.614285, 0, -789.084, 0, 200, 0, 0.789084, 0, 614.285, 11.51, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_yt0yj")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="invisWall2"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall2/StaticBody3D"]
-shape = SubResource("BoxShape3D_1em2i")
-
-[node name="invisWall3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1000, 0, 200, 0, -1, 0, -4.37114e-05, 11.51, 0, -239.905)
-visible = false
-mesh = SubResource("BoxMesh_yt0yj")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="invisWall3"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisWall3/StaticBody3D"]
-shape = SubResource("BoxShape3D_1em2i")
-
-[node name="PhishicsUnwavy" type="Sprite3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -49.226307, 54.018845, -226.38275)
+[node name="PhishicsLogo" type="Sprite3D" parent="CameraMenu"]
+unique_name_in_owner = true
+transform = Transform3D(25, 0, 0, 0, 25.000027, 0.008730888, 0, -0.008730888, 25.000027, -49.226307, 102.81551, -212.84796)
 material_override = SubResource("ShaderMaterial_rv3p5")
 texture = ExtResource("8_ewc74")
 region_enabled = true
 region_rect = Rect2(8, 16, 1456, 400)
 
-[node name="logo" type="Sprite3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 24.3395, 5.70878, 0, -5.70878, 24.3395, -38.996, 51.0354, -225.683)
-visible = false
-no_depth_test = true
-render_priority = -5
-texture = ExtResource("7_t7vd5")
-
-[node name="Funbox" parent="." instance=ExtResource("12_imy30")]
-transform = Transform3D(-0.30113176, 0, -0.58729863, 0, 0.66, 0, 0.58729863, 0, -0.30113176, -3.36764, -0.0500727, -11.7397)
-
-[node name="Corals" type="Node3D" parent="."]
-
-[node name="CoralSprite" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -0.414465, 0.377909, -4.61403)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite2" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -5.70469, 0.377909, -3.21842)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite3" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 4.174, 0.377909, -2.62891)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite4" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.00643, 0.377909, -1.94794)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite5" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.353708, 0.37790924, 2.834032)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite6" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 1.43435, 0.377909, 0.485107)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite8" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.48107, 0.377909, 1.92428)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite16" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.43447, 0.377909, -1.08612)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite17" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.2686, 0.377909, -6.97524)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite9" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -4.97296, 0.377909, 0.0738752)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite19" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -7.50427, 0.377909, 0.10357)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite20" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -10.1988, 0.377909, -1.97133)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite10" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -10.5598)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite18" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -21.4711)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite11" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.05425, 0.377909, -8.32095)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite12" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.37046, 0.377909, -6.07432)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite13" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.3226, 0.377909, -13.9841)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite14" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.5991, 0.377909, -13.9841)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite15" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.58389, 0.377909, -5.60146)
-texture = ExtResource("13_13dlr")
-
-[node name="CoralSprite7" type="Sprite3D" parent="Corals"]
-transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 2.92938, 0.377909, -7.15759)
-texture = ExtResource("13_13dlr")
+[node name="Transitions" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rv3p5")
+}
 
 [node name="UI" type="Control" parent="."]
 process_mode = 3
@@ -359,6 +390,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
+
+[node name="PressAnyKey" type="Label" parent="UI"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -150.0
+offset_right = 310.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press any key to start!"
+label_settings = SubResource("LabelSettings_txomp")
 
 [node name="MenuOptions" type="MarginContainer" parent="UI"]
 custom_minimum_size = Vector2(460, 0)
@@ -714,6 +761,148 @@ horizontal_alignment = 1
 position = Vector2(1252, 834)
 scale = Vector2(0.19, 0.19)
 texture = ExtResource("10_68fed")
+
+[node name="JFG" parent="." instance=ExtResource("6_68fed")]
+transform = Transform3D(0.764736, 0.0368805, -0.643287, 0.020872, 0.996419, 0.0819385, 0.644005, -0.076088, 0.761228, 1.12, 0, 2.92)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Platform1" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -0.5, -490)
+material_override = ExtResource("3_5cjeb")
+material_overlay = ExtResource("4_4kyk8")
+mesh = SubResource("BoxMesh_uoobp")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_qax75")
+
+[node name="invisWall" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(0.614285, 0, 789.084, 0, 200, 0, -0.789084, 0, 614.285, -11.5147, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/invisWall"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/invisWall/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="invisWall2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(0.614285, 0, -789.084, 0, 200, 0, 0.789084, 0, 614.285, 11.51, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/invisWall2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/invisWall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="invisWall3" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 0, 1000, 0, 200, 0, -1, 0, -4.37114e-05, 11.51, 0, -239.905)
+visible = false
+mesh = SubResource("BoxMesh_yt0yj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/invisWall3"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/invisWall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_1em2i")
+
+[node name="Funbox" parent="Level" instance=ExtResource("12_imy30")]
+transform = Transform3D(-0.30113176, 0, -0.58729863, 0, 0.66, 0, 0.58729863, 0, -0.30113176, -3.36764, -0.0500727, -11.7397)
+
+[node name="Corals" type="Node3D" parent="Level"]
+
+[node name="CoralSprite" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -0.414465, 0.377909, -4.61403)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite2" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -5.70469, 0.377909, -3.21842)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite3" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 4.174, 0.377909, -2.62891)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite4" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -2.00643, 0.377909, -1.94794)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite5" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -3.353708, 0.37790924, 2.834032)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite6" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 1.43435, 0.377909, 0.485107)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite8" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.48107, 0.377909, 1.92428)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite16" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.43447, 0.377909, -1.08612)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite17" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.2686, 0.377909, -6.97524)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite9" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -4.97296, 0.377909, 0.0738752)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite19" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -7.50427, 0.377909, 0.10357)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite20" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -10.1988, 0.377909, -1.97133)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite10" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -10.5598)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite18" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 6.2338, 0.377909, -21.4711)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite11" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.05425, 0.377909, -8.32095)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite12" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 7.37046, 0.377909, -6.07432)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite13" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 3.3226, 0.377909, -13.9841)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite14" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 10.5991, 0.377909, -13.9841)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite15" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, -9.58389, 0.377909, -5.60146)
+texture = ExtResource("13_13dlr")
+
+[node name="CoralSprite7" type="Sprite3D" parent="Level/Corals"]
+transform = Transform3D(0.349757, 0, -0.145578, 0, 0.362056, 0, 0.0465246, 0, 1.09441, 2.92938, 0.377909, -7.15759)
+texture = ExtResource("13_13dlr")
 
 [connection signal="on_button_hovered" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_hovered"]
 [connection signal="on_button_pressed" from="UI/MenuOptions/optionList/tutorial" to="." method="_on_tutorial_button_pressed"]

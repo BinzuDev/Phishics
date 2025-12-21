@@ -9,14 +9,25 @@ func _ready():
 	GameManager.disableMenuControl = false
 	%tutorial.grab_focus()
 	$UI/Credits.visible = false
+	if GameManager.game_just_opened():
+		$Transitions.play("press_any_key_screen")
+	
+	
 
+
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			$Transitions.play("any_key_pressed")
 
 
 func _process(_delta):
 	logoTimer += 1
-	$PhishicsUnwavy.rotation_degrees.z = sin(logoTimer*0.01) * 3
+	%PhishicsLogo.rotation_degrees.z = sin(logoTimer*0.01) * 3
 	
 	$UI.visible = !MenuManager.isSubmenuOpen() ##TODO replace
+	
+	
 	
 	#backup in case no option is selected
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):
@@ -74,7 +85,6 @@ func _on_credits_hovered():
 
 func _on_exit_hovered():
 	$JFG.play_animation("Sad")
-
 
 func _on_exit_just_pressed():
 	$JFG.play_animation("Stare")

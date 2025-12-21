@@ -1,9 +1,13 @@
 extends Node
 
+#fish transition screen
 var transitionStart : int = 0
 var transitionEnd : int = 0
+
 #0: outside tutorial | 1: waiting for player to open trick list | 2: player has opened the tricklist
 var tutorialTrickList : int = 0
+
+var stack : Array = []
 
 
 func _ready():
@@ -31,11 +35,13 @@ func _process(_delta):
 	
 	%HelpTip.label_settings.font_size = 40
 	%HelpTip.label_settings.outline_size = 20
-	if SettingsManager.menu_is_visible():
+	#make the helptip smaller in the settings cause they're generally longer
+	if SettingsManager.menu_is_visible(): 
 		%HelpTip.label_settings.font_size = 30
 		%HelpTip.label_settings.outline_size = 15
 	
-	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30)
+	#animates the surfJump icon in the trick list
+	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30) 
 	
 	##Force press continue
 	if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("pause"):
@@ -59,6 +65,7 @@ func _process(_delta):
 	#print("screen: ", $transitionScreen.size.x, " tail: ", %fishTail.size.x, " head: ", %fishHead.size.x*0.5)
 	#print("S: ", transitionStart, " C: ", $transitionScreen.position.x, " E: ", transitionEnd)
 	
+	## Loading icon
 	if Engine.get_frames_per_second() < 30:
 		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12) #every frame if less than 30 fps
 	elif GameManager.gameTimer % 2 == 0:
@@ -210,7 +217,10 @@ func _on_exit_pressed():
 func set_help_tip(newText: String):
 	%HelpTip.text = newText
 
-## Debug settings
+
+
+
+	## Debug settings ##
 #region Debug settings
 func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 	$PauseMenu.visible = false

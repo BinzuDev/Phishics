@@ -79,7 +79,7 @@ func _on_timer_timeout():
 
 func _process(_delta):
 	#things can be buggy if you click during loading, so wait 10 frames
-	if has_focus() and GameManager.gameTimer > 10:
+	if has_focus() and !GameManager.game_just_opened():
 		if Input.is_action_just_pressed("confirm") and !GameManager.disableMenuControl:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and !hovered:
 				print("CANCEL MENU INPUT")

@@ -6,6 +6,8 @@ var isOnTitleScreen : bool = false
 var disableMenuControl : bool = false 
 var disableUnpause : bool = false ##Disable unpausing during the pausing animation
 var previousUIselection = [] ##Stores the last buttons you were hovering before you switched menu
+## Counts how many frames has passed (IS AFFECTED BY LAG AND FPS)
+## Similar to Engine.get_process_frames() except that its affected by pausing
 var gameTimer : int = 0
 var framefwrd
 var frameByFrameMode : bool = false
@@ -15,12 +17,19 @@ var objFreeze #freeze something else when hitstopping
 var hideUI : bool = false
 var nextScene
 
+@onready var database = load("res://_MANAGERS/Resources/database.tres") as Database
 
+
+##Check if the game has been opened for less than 10 render frames
+func game_just_opened():
+	return gameTimer < 10
 
 
 ##Allows you to pause the game for x amount of frames, for impact and juice
 func hitstop(frames: int, objToPause: Node3D = null):
 	freezeframe = frames
+	Engine.get_physics_frames()
+	
 	#get_tree().paused = true
 	var fish = get_tree().get_first_node_in_group("player")
 	fish.process_mode = Node.PROCESS_MODE_DISABLED
@@ -125,12 +134,12 @@ func _physics_process(delta):
 			fish.process_mode = Node.PROCESS_MODE_INHERIT
 			if objFreeze:
 				objFreeze.process_mode = Node.PROCESS_MODE_INHERIT
-			#get_tree().paused = false
+			
 	
 	
 
-##Used by custom code inside dialogues because get_tree() 
-##is a node function and you dont have access to it
+## Used by custom code inside dialogues because get_tree() 
+## is a node function and you dont have access to it
 func get_current_scene():
 	return get_tree().current_scene
 func get_fish():

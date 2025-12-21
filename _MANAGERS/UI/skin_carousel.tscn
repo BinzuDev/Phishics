@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://btflqdk11nutc"]
+
+[ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="1_ca713"]
+[ext_resource type="Script" uid="uid://cehwqisdv3x72" path="res://_MANAGERS/UI/skin_carousel.gd" id="1_mkexd"]
+
+[node name="SkinCarousel" type="Node3D"]
+script = ExtResource("1_mkexd")
+length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6402674, 3.3100562)
+
+[node name="Skins" type="Node3D" parent="."]
+
+[node name="fakeFish" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -3.3333333, 0, nan)
+
+[node name="fakeFish2" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -2.6666667, 0, nan)
+
+[node name="fakeFish3" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -2, 0, -4)
+
+[node name="fakeFish4" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -1.3333334, 0, -1.0185761)
+
+[node name="fakeFish5" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -0.6666667, 0, -0.22876385)
+
+[node name="fakeFish6" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 0, 0, 0)
+
+[node name="fakeFish7" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 0.6666667, 0, -0.22876385)
+
+[node name="fakeFish8" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 1.3333334, 0, -1.0185761)
+
+[node name="fakeFish9" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 2, 0, -4)
+
+[node name="fakeFish10" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 2.6666667, 0, nan)
+
+[node name="fakeFish11" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 3.3333333, 0, nan)

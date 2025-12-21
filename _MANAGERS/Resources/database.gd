@@ -6,10 +6,10 @@ class_name Database extends Resource
 
 
 
-func get_skin(id: int):
+func get_skin(id: int) -> SkinData:
 	
 	if id > skins.size():
-		printerr("skin out of bounds")
+		printerr("Index #", id, " is out of bounds in the skin database")
 		return
 	
 	print("get skin: ", skins[id])

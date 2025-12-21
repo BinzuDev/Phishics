@@ -25,9 +25,10 @@ func _process(delta):
 		$Armature/Skeleton3D.scale = lerp_scale() * 1.0
 		$Armature/Skeleton2.scale = lerp_scale() * 1.2
 		$Armature/Skeleton3.scale = lerp_scale() * 1.4
+		Engine.get_physics_frames()
 		
 		lerpAmp = move_toward(lerpAmp, amp, 0.4)
-		if GameManager.gameTimer % (4-sparkTier) == 0:
+		if Engine.get_physics_frames() % (4-sparkTier) == 0:
 			for i in 16:
 				$Armature/Skeleton3D.set_bone_pose_scale(i, vec3_rng(i))
 				$Armature/Skeleton2.set_bone_pose_scale(i, vec3_rng(i))

@@ -14,7 +14,6 @@ func _ready():
 	pass
 
 
-
 func _process(_delta):
 	## Flop Animation
 	var amp = 0 #max(angular_velocity.length() * 0.18, linear_velocity.length())

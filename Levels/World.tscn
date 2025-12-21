@@ -73,7 +73,6 @@ glow_levels/5 = 0.0
 fog_mode = 1
 fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
 fog_density = 1.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
 volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
@@ -2414,6 +2413,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_m3j4o")
 
 [node name="FogVolume" type="FogVolume" parent="group2"]
+process_mode = 4
 transform = Transform3D(-7.18457e-07, 0, -12.464, 0, 13.1646, 0, 16.4362, 0, -5.4482e-07, 40.2039, -0.836231, -28.0708)
 size = Vector3(1.91351, 0.121948, 3.68066)
 material = SubResource("FogMaterial_u27i5")

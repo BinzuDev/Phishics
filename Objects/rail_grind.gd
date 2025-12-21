@@ -109,7 +109,7 @@ func real_process(delta):
 			%sparkle1.visible = true
 			%sparkle2.visible = true
 	
-	if GameManager.gameTimer % 3 == 0: #sparkles
+	if Engine.get_physics_frames() % 3 == 0: #sparkles
 		%sparkle1.frame = wrap(%sparkle1.frame+1, 0, 11)
 		%sparkle2.frame = wrap(%sparkle1.frame+1, 0, 11)
 	

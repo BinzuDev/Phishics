@@ -722,7 +722,7 @@ func _physics_process(_delta: float) -> void:
 	%speedLines2.transparency = transp
 	%speedLines3.transparency = transp
 	
-	if GameManager.gameTimer % sfxRate == 0 and isTipSpinning:
+	if Engine.get_physics_frames() % sfxRate == 0 and isTipSpinning:
 		$grindingSparks.play()
 	
 	var trackPos #used for the position of the particles and skid marks
