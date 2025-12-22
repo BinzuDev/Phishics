@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cs7cpy7hookvc" path="res://UI_THEME.tres" id="1_8qhll"]
 [ext_resource type="FontFile" uid="uid://vxjlxsvfng4u" path="res://Fonts/segui_semi_bold.ttf" id="2_eayhx"]
-[ext_resource type="Script" uid="uid://c78ctoxwbm07l" path="res://_MANAGERS/UI/slider_manager.gd" id="2_kl5ym"]
+[ext_resource type="Script" uid="uid://c78ctoxwbm07l" path="res://_MANAGERS/UI/custom_slider.gd" id="2_kl5ym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl5ym"]
 font = ExtResource("2_eayhx")
@@ -10,8 +10,8 @@ font_size = 30
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[node name="binzuSlider" type="HSlider"]
-custom_minimum_size = Vector2(500, 0)
+[node name="custom_slider" type="HSlider"]
+custom_minimum_size = Vector2(500.02, 0)
 offset_right = 500.0
 offset_bottom = 58.0
 size_flags_vertical = 1
@@ -21,16 +21,6 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("2_kl5ym")
-
-[node name="numberLabel" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 517.0
-offset_top = 6.0
-offset_right = 592.0
-offset_bottom = 47.0
-text = "100%"
-label_settings = SubResource("LabelSettings_kl5ym")
 
 [node name="nameLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -42,6 +32,23 @@ offset_bottom = 51.0
 text = "Label"
 label_settings = SubResource("LabelSettings_kl5ym")
 horizontal_alignment = 2
+
+[node name="numberLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 17.00003
+offset_top = -20.5
+offset_right = 92.00003
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_kl5ym")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

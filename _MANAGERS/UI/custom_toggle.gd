@@ -1,5 +1,5 @@
 @tool
-extends Control
+extends CustomUIWidget
 
 signal pressed(toggle:bool)
 
@@ -13,12 +13,7 @@ signal pressed(toggle:bool)
 		else:
 			$AnimationPlayer.play_backwards("toggle_on")
 
-@export_multiline var helpText : String = ""
 
-var mouseHovered : bool = false
-
-func _ready():
-	pass
 
 func _process(delta):
 	%hovered_off.visible = has_focus()
@@ -35,16 +30,3 @@ func _process(delta):
 			$AnimationPlayer.play_backwards("toggle_on")
 		pressed.emit(value)
 	
-
-
-func _on_focus_entered():
-	MenuManager.set_help_tip(helpText)
-
-
-func _on_mouse_entered():
-	mouseHovered = true
-	grab_focus()
-
-
-func _on_mouse_exited():
-	mouseHovered = false

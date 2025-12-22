@@ -24,7 +24,6 @@ var nextScene
 func game_just_opened():
 	return gameTimer < 10
 
-
 ##Allows you to pause the game for x amount of frames, for impact and juice
 func hitstop(frames: int, objToPause: Node3D = null):
 	freezeframe = frames
@@ -38,6 +37,21 @@ func hitstop(frames: int, objToPause: Node3D = null):
 		objToPause.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	#objToPause.process_mode = Node.PROCESS_MODE_DISABLED
 	
+
+## When used inside an if statement, it will return true every [interval] frames.[br]
+## [color=orange] THIS FUNCTION BEHAVES DIFFERENTLY DEPENDING ON IF ITS USED INSIDE
+## _PROCESS OR _PHYSICS_PROCESS:[/color] [br]
+##  ● _physics_process uses physics ticks, which is always locked to 60 per second[br]
+##  ● _process will use process frames, meaning that its speed depends on fps!
+func every_x_frames(interval: int):
+	interval = max(interval, 1) #dont let interval be 0
+	if Engine.is_in_physics_frame():
+		return Engine.get_physics_frames() % interval == 0
+	else:
+		return Engine.get_process_frames() % interval == 0
+
+
+
 
 
 func toggle_pause():

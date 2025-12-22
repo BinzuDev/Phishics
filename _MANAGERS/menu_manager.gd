@@ -14,20 +14,32 @@ func _ready():
 	print("menu manager ready")
 	%TrickList.visible = false
 	$splashScreen.visible = true
-	$transitionScreen.visible = true
 	$transitionScreen.position = Vector2(-99999, 0)
 	%HelpTip.visible = true
 	toggleMenu()
 	$pauseBG/AnimationPlayer.play("RESET")
+	#without this, the first transition screen will lag and teleport because it needs to load
+	$transitionScreen.visible = true
+	await get_tree().create_timer(0.5).timeout
+	$transitionScreen.visible = false
 
 
 func get_UI_size():
 	return $screenSizeDetect.global_position
 
-func _process(_delta):
+
+
+func _physics_process(delta):
 	#splash screen fadeout
 	if Engine.get_frames_drawn() >= 5: #skip the first couple of frames for lag
 		$splashScreen.modulate.a -= 0.05
+	
+	#animates the surfJump icon in the trick list
+	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30) 
+
+
+
+func _process(delta):
 	
 	%HelpTip.visible = (GameManager.gamePaused or GameManager.isOnTitleScreen) and !GameManager.frameByFrameMode
 	if %TrickList.visible:
@@ -40,8 +52,6 @@ func _process(_delta):
 		%HelpTip.label_settings.font_size = 30
 		%HelpTip.label_settings.outline_size = 15
 	
-	#animates the surfJump icon in the trick list
-	%surfJumpMeter.value = wrap(%surfJumpMeter.value+1, -10, 30) 
 	
 	##Force press continue
 	if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("pause"):
@@ -58,6 +68,12 @@ func _process(_delta):
 	#	if get_viewport().gui_get_focus_owner() == null and GameManager.gamePaused:
 	#		%Continue.grab_focus()
 	
+		## Trick list tab 
+	if !%trickTabs.get_tab_bar().has_focus() and %TrickList.visible:
+		if Input.is_action_just_pressed("ui_left"):
+			switch_tab(false)
+		if Input.is_action_just_pressed("ui_right"):
+			switch_tab(true)
 	
 	## Screen transition
 	transitionStart = -($transitionScreen.size.x + %fishHead.size.x*0.5) - 100
@@ -65,21 +81,24 @@ func _process(_delta):
 	#print("screen: ", $transitionScreen.size.x, " tail: ", %fishTail.size.x, " head: ", %fishHead.size.x*0.5)
 	#print("S: ", transitionStart, " C: ", $transitionScreen.position.x, " E: ", transitionEnd)
 	
+	
+	
+	
 	## Loading icon
-	if Engine.get_frames_per_second() < 30:
-		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12) #every frame if less than 30 fps
-	elif GameManager.gameTimer % 2 == 0:
-		%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12) #every 2 frames if above 30 fps
+	#Its in process so that you can see the icon slow down during lag
+	if $transitionScreen.visible:
+		var fps = 1 / delta
+		var interval = int( (fps+19) / 20 )
+		if GameManager.every_x_frames(interval):
+			%LoadingIcon.frame = wrap(%LoadingIcon.frame+1, 0, 12)
+		#print("fps is ", fps, " divided by 20 is ", int((fps+19) / 20))
+		
 	
-	
-	## Trick list tab 
-	if !%trickTabs.get_tab_bar().has_focus() and %TrickList.visible:
-		if Input.is_action_just_pressed("ui_left"):
-			switch_tab(false)
-		if Input.is_action_just_pressed("ui_right"):
-			switch_tab(true)
-			
-	
+
+
+
+
+
 
 func switch_tab(rightSide : bool = true):
 	%arrowAnim.stop()

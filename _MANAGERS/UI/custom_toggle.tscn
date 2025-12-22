@@ -152,7 +152,7 @@ _data = {
 }
 
 [node name="Toggle" type="Control"]
-custom_minimum_size = Vector2(400, 58)
+custom_minimum_size = Vector2(500, 58)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -230,7 +230,3 @@ texture = ExtResource("2_0fikc")
 libraries = {
 &"": SubResource("AnimationLibrary_frfvo")
 }
-
-[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

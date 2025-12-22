@@ -263,7 +263,7 @@ func _physics_process(_delta: float) -> void:
 	elif scoreDiff <= 50000:
 		everyXframe = 2
 	
-	if scoreBefore != scoreUI and Engine.get_physics_frames() % everyXframe == 0 and scoreBefore != 9999999999:
+	if scoreBefore != scoreUI and GameManager.every_x_frames(everyXframe) and scoreBefore != 9999999999:
 		#print(scoreDiff, " (",everyXframe, ")")
 		$tick.play()
 	var diff = rankRequirements[styleRank+1] - rankRequirements[styleRank]

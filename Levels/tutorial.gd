@@ -20,6 +20,7 @@ var totalFishMovement : float = 0
 
 var canSkipTutorial : bool = true
 
+
 func _physics_process(_delta): 
 	if waitingForPlayerInput: #wait until the player touches a direction
 		if get_tree().get_first_node_in_group("player").get_input_axis() != Vector2.ZERO:

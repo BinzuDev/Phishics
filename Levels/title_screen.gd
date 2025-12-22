@@ -1,6 +1,7 @@
 extends Level
 
 var logoTimer := 0
+var introFinished : bool = true
 
 func _ready():
 	super()
@@ -10,6 +11,7 @@ func _ready():
 	%tutorial.grab_focus()
 	$UI/Credits.visible = false
 	if GameManager.game_just_opened():
+		introFinished = false
 		$Transitions.play("press_any_key_screen")
 	
 	
@@ -17,17 +19,16 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed:
+		if event.pressed and !introFinished:
 			$Transitions.play("any_key_pressed")
+			introFinished = true
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	logoTimer += 1
 	%PhishicsLogo.rotation_degrees.z = sin(logoTimer*0.01) * 3
 	
 	$UI.visible = !MenuManager.isSubmenuOpen() ##TODO replace
-	
-	
 	
 	#backup in case no option is selected
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back"):

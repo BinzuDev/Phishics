@@ -2,7 +2,7 @@
 extends Node3D
 
 
-var length : float = 10
+@export var length : float = 50
 
 @onready var skinCount := $Skins.get_child_count()
 
@@ -22,11 +22,12 @@ func set_skin_carousel():
 		skin.position.x = (spacing * i) - radius
 		
 		var x = skin.position.x
-		skin.position.z = (sqrt(radius**2 - x**2) - radius)
+		skin.position.z = (sqrt(radius**2 - x**2) - radius)*2
 		#print(skin.position.x)
 
 
 
 func _process(delta):
-	if Engine.is_editor_hint() and Engine.get_frames_drawn() % 10:
+	if Engine.is_editor_hint() and Engine.get_frames_drawn() % 10 == 0:
+		print("update")
 		set_skin_carousel()

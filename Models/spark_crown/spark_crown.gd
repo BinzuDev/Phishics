@@ -13,7 +13,7 @@ var startingAmp : float = 1.0 #the initial amp value
 var sparkTier : int = 0
 @onready var jumpSfx = [$rebound1, $rebound2, $rebound3]
 
-func _process(delta):
+func _physics_process(delta):
 	if amp > 0.5:
 		amp = max(amp-0.11, 0)
 	else:
@@ -25,10 +25,10 @@ func _process(delta):
 		$Armature/Skeleton3D.scale = lerp_scale() * 1.0
 		$Armature/Skeleton2.scale = lerp_scale() * 1.2
 		$Armature/Skeleton3.scale = lerp_scale() * 1.4
-		Engine.get_physics_frames()
+		
 		
 		lerpAmp = move_toward(lerpAmp, amp, 0.4)
-		if Engine.get_physics_frames() % (4-sparkTier) == 0:
+		if GameManager.every_x_frames(4-sparkTier):
 			for i in 16:
 				$Armature/Skeleton3D.set_bone_pose_scale(i, vec3_rng(i))
 				$Armature/Skeleton2.set_bone_pose_scale(i, vec3_rng(i))

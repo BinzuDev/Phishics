@@ -12,6 +12,11 @@ func _ready():
 	toolShit()
 
 func toolShit():
+	
+	get_begin()
+	
+	
+	
 	%nameLabel.text = sliderName
 	if min_value == 0:
 		%numberLabel.text = str(roundi(value/max_value*100), "%")

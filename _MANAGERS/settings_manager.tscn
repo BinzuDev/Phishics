@@ -1,11 +1,12 @@
-[gd_scene load_steps=51 format=3 uid="uid://baj56lpkx6b8j"]
+[gd_scene load_steps=52 format=3 uid="uid://baj56lpkx6b8j"]
 
 [ext_resource type="Script" uid="uid://b6g4ec1xm5n8f" path="res://_MANAGERS/settings_manager.gd" id="1_po116"]
 [ext_resource type="Theme" uid="uid://cs7cpy7hookvc" path="res://UI_THEME.tres" id="2_ucd3l"]
 [ext_resource type="PackedScene" uid="uid://bt4sgsaxfg8yc" path="res://_MANAGERS/UI/menu_button.tscn" id="3_qed06"]
-[ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/UI/slider_manager.tscn" id="4_gaq74"]
+[ext_resource type="PackedScene" uid="uid://sd4cts34u7t7" path="res://_MANAGERS/UI/custom_slider.tscn" id="4_gaq74"]
 [ext_resource type="PackedScene" uid="uid://dg1ir3ywd26j2" path="res://_MANAGERS/UI/custom_toggle.tscn" id="5_gyi0d"]
 [ext_resource type="FontFile" uid="uid://hsdppwfineel" path="res://Fonts/SegoeUIBlack.ttf" id="6_iyeh8"]
+[ext_resource type="PackedScene" uid="uid://cffhymrtfoov3" path="res://_MANAGERS/UI/custom_multichoice.tscn" id="6_qed06"]
 [ext_resource type="PackedScene" uid="uid://u0rqprt81pas" path="res://_MANAGERS/UI/small_button.tscn" id="7_gg1mu"]
 [ext_resource type="AudioStream" uid="uid://dwnsd8h7fk6ql" path="res://Sounds/style_ranks/Splashing2.ogg" id="8_5c0fp"]
 [ext_resource type="AudioStream" uid="uid://dlx5xikvttv6w" path="res://Sounds/style_ranks/Aquatic1.ogg" id="9_6xmak"]
@@ -223,6 +224,9 @@ helpText = "Render the game window above anything else."
 layout_mode = 2
 toggle_name = "Fullscreen (F11)"
 helpText = "(not working yet)"
+
+[node name="Vsync" parent="Settings/settingsTabs/Graphics/MarginContainer/GridContainer" instance=ExtResource("6_qed06")]
+layout_mode = 2
 
 [node name="Audio" type="Panel" parent="Settings/settingsTabs"]
 visible = false

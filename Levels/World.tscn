@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://dl0tegipr4hke" path="res://Objects/crab_enemy.tscn" id="21_46o8p"]
 [ext_resource type="Texture2D" uid="uid://cc5pc6g1vcjvb" path="res://Textures/sand.png" id="22_u27i5"]
 [ext_resource type="Texture2D" uid="uid://cdpllqpaqnt51" path="res://Sprites/tutorialwall_dive.png" id="28_u27i5"]
-[ext_resource type="Texture2D" uid="uid://bvh653h3ktdm6" path="res://Sprites/jellyfishwarning.png" id="30_i76hq"]
+[ext_resource type="Texture2D" uid="uid://2jdkufiby1by" path="res://Sprites/signs/tri_jellyfishwarning.png" id="30_i76hq"]
 [ext_resource type="PackedScene" uid="uid://d003wfuaw73ku" path="res://Objects/eel.tscn" id="31_exl13"]
 [ext_resource type="PackedScene" uid="uid://uo7r1md5qd4y" path="res://Objects/boombox.tscn" id="31_wvw3a"]
 [ext_resource type="PackedScene" uid="uid://djw4ew1544rh1" path="res://Objects/camera_controller.tscn" id="32_581hb"]

@@ -1779,7 +1779,6 @@ texture = ExtResource("53_mfo2v")
 centered = false
 
 [node name="pauseBG" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_i2psa")
 anchors_preset = 15

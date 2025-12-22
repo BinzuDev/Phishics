@@ -37,8 +37,9 @@ func _on_settings_go_back():
 
 
 
-
- ## Graphics ##
+   ################
+   ##  Graphics  ##
+   ################
 var viewport_start_size := Vector2(
 	ProjectSettings.get_setting(&"display/window/size/viewport_width"),
 	ProjectSettings.get_setting(&"display/window/size/viewport_height")
@@ -63,7 +64,29 @@ func _on_always_top_toggled(toggled_on):
 	get_window().always_on_top = toggled_on
 
 
-	## Audio ##
+func _on_vsync_option_button_item_selected(index: int) -> void:
+	# Vsync is enabled by default.
+	# Vertical synchronization locks framerate and makes screen tearing not visible at the cost of
+	# higher input latency and stuttering when the framerate target is not met.
+	# Adaptive V-Sync automatically disables V-Sync when the framerate target is not met, and enables
+	# V-Sync otherwise. This prevents stuttering and reduces input latency when the framerate target
+	# is not met, at the cost of visible tearing.
+	if index == 0: # Disabled (default)
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	elif index == 1: # Adaptive
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ADAPTIVE)
+	elif index == 2: # Enabled
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+
+
+
+
+
+
+
+   #################
+   ##    Audio    ##
+   #################
 func _on_master_volume_changed(value):
 	AudioServer.set_bus_volume_linear(0, value)
 	%masterVol.text = str(" ", int(value*100), "%")
