@@ -1,13 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://btflqdk11nutc"]
+[gd_scene load_steps=3 format=3 uid="uid://btflqdk11nutc"]
 
 [ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="1_ca713"]
 [ext_resource type="Script" uid="uid://cehwqisdv3x72" path="res://_MANAGERS/UI/skin_carousel.gd" id="1_mkexd"]
-[ext_resource type="Resource" uid="uid://dk481phuqmf3i" path="res://_MANAGERS/Resources/database.tres" id="2_71jyy"]
 
 [node name="SkinCarousel" type="Node3D"]
 script = ExtResource("1_mkexd")
-database = ExtResource("2_71jyy")
-fakeFish = ExtResource("1_ca713")
 length = 22.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
