@@ -364,7 +364,7 @@ transform = Transform3D(0.939573, 0, 0.342348, 0, 1, 0, -0.342348, 0, 0.939573, 
 noScoreUI = true
 
 [node name="CameraMenu" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9736584, 0.22801086, 0, -0.22801086, 0.9736584, 0, 2.44329, 4.30156)
+transform = Transform3D(1, 0, 0, 0, 0.9736583, 0.22801085, 0, -0.22801085, 0.9736583, 0, 2.44329, 4.30156)
 current = true
 
 [node name="PhishicsLogo" type="Sprite3D" parent="CameraMenu"]
