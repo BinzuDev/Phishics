@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://c3e2kb32fmaeo"]
+[gd_scene load_steps=42 format=3 uid="uid://c3e2kb32fmaeo"]
 
 [ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="1_1em2i"]
 [ext_resource type="Script" uid="uid://cacbnn3ibeg0v" path="res://Levels/title_screen.gd" id="1_5cjeb"]
 [ext_resource type="PackedScene" uid="uid://bwb5dddkenrbh" path="res://Player/Fish.tscn" id="2_t7vd5"]
+[ext_resource type="AudioStream" uid="uid://dvnxtlq6r8khi" path="res://Sounds/main_menu_start_scratch.ogg" id="2_txomp"]
 [ext_resource type="Material" uid="uid://ceeuporpmp8lt" path="res://Textures/sand_material.tres" id="3_5cjeb"]
 [ext_resource type="Material" uid="uid://b8pdw50ywdhkt" path="res://Shaders/water_shader_material.tres" id="4_4kyk8"]
 [ext_resource type="PackedScene" uid="uid://p3f1xaqm8id" path="res://Models/JFG/models/Jelly_Fish_Girl_IK.tscn" id="6_68fed"]
@@ -349,6 +350,9 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Title_Screen" type="Node3D"]
 script = ExtResource("1_5cjeb")
 
+[node name="StartSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_txomp")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_b0qhh")
 
@@ -364,7 +368,7 @@ transform = Transform3D(0.939573, 0, 0.342348, 0, 1, 0, -0.342348, 0, 0.939573, 
 noScoreUI = true
 
 [node name="CameraMenu" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9736583, 0.22801085, 0, -0.22801085, 0.9736583, 0, 2.44329, 4.30156)
+transform = Transform3D(1, 0, 0, 0, 0.97365826, 0.22801083, 0, -0.22801083, 0.97365826, 0, 2.44329, 4.30156)
 current = true
 
 [node name="PhishicsLogo" type="Sprite3D" parent="CameraMenu"]

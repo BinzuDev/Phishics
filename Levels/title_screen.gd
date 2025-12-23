@@ -21,6 +21,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and !introFinished:
 			$Transitions.play("any_key_pressed")
+			$StartSfx.play()
 			introFinished = true
 
 
