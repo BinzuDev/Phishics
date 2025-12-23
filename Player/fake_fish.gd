@@ -31,4 +31,4 @@ func set_skin(image : CompressedTexture2D):
 	$pivotLower/pivotTail/tail.texture = image
 
 func quick_set_skin(id: int):
-	set_skin(GameManager.database.get_skin_data(wrap(id, 0, GameManager.database.skins.size()-1)).skin)
+	set_skin(GameManager.database.get_skin_data(wrap(id, 0, GameManager.database.skins.size())).skin)
