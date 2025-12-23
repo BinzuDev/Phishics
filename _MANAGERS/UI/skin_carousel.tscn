@@ -1,46 +1,310 @@
-[gd_scene load_steps=3 format=3 uid="uid://btflqdk11nutc"]
+[gd_scene load_steps=7 format=3 uid="uid://btflqdk11nutc"]
 
 [ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="1_ca713"]
 [ext_resource type="Script" uid="uid://cehwqisdv3x72" path="res://_MANAGERS/UI/skin_carousel.gd" id="1_mkexd"]
 
+[sub_resource type="Animation" id="Animation_g0fjp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skins/skinCenter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skins/skinLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.6, 0, -0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skins/skinFarLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4, 0, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skins/skinBehind:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skins/skinFarRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4, 0, -4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skins/skinRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.6, 0, -0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_71jyy"]
+resource_name = "move_left"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skins/skinCenter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.6, 0, -0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skins/skinLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-2.6, 0, -0.7), Vector3(-4, 0, -4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skins/skinFarLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-4, 0, -4), Vector3(0, 0, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skins/skinBehind:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, -8), Vector3(4, 0, -4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skins/skinFarRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(4, 0, -4), Vector3(2.6, 0, -0.7)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skins/skinRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(2.6, 0, -0.7), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wuxip"]
+resource_name = "move_right"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skins/skinCenter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.6, 0, -0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skins/skinLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-2.6, 0, -0.7), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skins/skinFarLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-4, 0, -4), Vector3(-2.6, 0, -0.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skins/skinBehind:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, -8), Vector3(-4, 0, -4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skins/skinFarRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(4, 0, -4), Vector3(0, 0, -8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skins/skinRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(2.6, 0, -0.7), Vector3(4, 0, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wuxip"]
+_data = {
+&"RESET": SubResource("Animation_g0fjp"),
+&"move_left": SubResource("Animation_71jyy"),
+&"move_right": SubResource("Animation_wuxip")
+}
+
 [node name="SkinCarousel" type="Node3D"]
 script = ExtResource("1_mkexd")
-length = 22.0
+length = 25.31
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 1.8416352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 1.75)
 
 [node name="Skins" type="Node3D" parent="."]
 
-[node name="fakeFish" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -9.166667, 0, -9.839044)
+[node name="skinFarLeft" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -4, 0, -4)
 
-[node name="fakeFish2" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -7.3333335, 0, -5.6021686)
+[node name="Label3D" type="Label3D" parent="Skins/skinFarLeft"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "FAR LEFT SKIN"
+vertical_alignment = 2
 
-[node name="fakeFish3" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -5.5, 0, -2.947441)
+[node name="skinLeft" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -2.6, 0, -0.7)
 
-[node name="fakeFish4" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -3.6666667, 0, -1.2582011)
+[node name="Label3D" type="Label3D" parent="Skins/skinLeft"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "LEFT SKIN"
+vertical_alignment = 2
 
-[node name="fakeFish5" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, -1.8333334, 0, -0.3077075)
-
-[node name="fakeFish6" parent="Skins" instance=ExtResource("1_ca713")]
+[node name="skinCenter" parent="Skins" instance=ExtResource("1_ca713")]
 transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 0, 0, 0)
 
-[node name="fakeFish7" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 1.8333334, 0, -0.3077075)
+[node name="Label3D" type="Label3D" parent="Skins/skinCenter"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "CENTER SKIN"
+vertical_alignment = 2
 
-[node name="fakeFish8" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 3.6666667, 0, -1.2582011)
+[node name="skinRight" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 2.6, 0, -0.7)
 
-[node name="fakeFish9" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 5.5, 0, -2.947441)
+[node name="Label3D" type="Label3D" parent="Skins/skinRight"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "RIGHT SKIN"
+vertical_alignment = 2
 
-[node name="fakeFish10" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 7.3333335, 0, -5.6021686)
+[node name="skinFarRight" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 4, 0, -4)
 
-[node name="fakeFish11" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 9.166667, 0, -9.839044)
+[node name="Label3D" type="Label3D" parent="Skins/skinFarRight"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "FAR RIGHT SKIN"
+vertical_alignment = 2
+
+[node name="skinBehind" parent="Skins" instance=ExtResource("1_ca713")]
+transform = Transform3D(0.9999837, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 0, 0, -8)
+
+[node name="Label3D" type="Label3D" parent="Skins/skinBehind"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+billboard = 1
+text = "BEHIND SKIN"
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wuxip")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

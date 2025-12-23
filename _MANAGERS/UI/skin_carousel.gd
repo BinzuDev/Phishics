@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 
@@ -6,28 +5,58 @@ extends Node3D
 
 @onready var skinCount := $Skins.get_child_count()
 
+var currentId : int = 0
 
-
+#keeps track of the ID of the last skin in the database
+var maxSkin : int = 1
 func _ready():
-	set_skin_carousel()
+	maxSkin = GameManager.database.skins.size()-1
+
+
+
+
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("left"):
+		$AnimationPlayer.play("move_left")
+		currentId = wrap(currentId-1, 0, maxSkin)
+		$Skins/skinBehind.quick_set_skin(currentId-2)
+	if Input.is_action_just_pressed("right"):
+		$AnimationPlayer.play("move_right")
+		currentId = wrap(currentId+1, 0, maxSkin)
+		$Skins/skinBehind.quick_set_skin(currentId+2)
 	
 
 
-func set_skin_carousel():
-	var i = 0
-	var radius = length/2
-	for skin in $Skins.get_children():
-		i += 1
-		var spacing = length / (skinCount+1)
-		skin.position.x = (spacing * i) - radius
-		
-		var x = skin.position.x
-		skin.position.z = (sqrt(radius**2 - x**2) - radius)*2
-		#print(skin.position.x)
+func _on_animation_finished(anim_name):
+	$Skins/skinFarLeft.position = Vector3(-4,0,-4)
+	$Skins/skinLeft.position = Vector3(-2.6,0,-0.7)
+	$Skins/skinCenter.position = Vector3(0,0,0)
+	$Skins/skinRight.position = Vector3(2.6,0,-0.7)
+	$Skins/skinFarRight.position = Vector3(4.0,0,-4.0)
+	$Skins/skinBehind.position = Vector3(0,0,-8.0)
+	$Skins/skinFarLeft.quick_set_skin(currentId+2)
+	$Skins/skinLeft.quick_set_skin(currentId+1)
+	$Skins/skinCenter.quick_set_skin(currentId)
+	$Skins/skinRight.quick_set_skin(currentId-1)
+	$Skins/skinFarRight.quick_set_skin(currentId-2)
 
 
 
-func _process(delta):
-	if Engine.is_editor_hint() and Engine.get_frames_drawn() % 10 == 0:
-		print("update")
-		set_skin_carousel()
+
+
+#func set_skin_carousel():
+	#var i = 0
+	#var radius = length/2
+	#for skin in $Skins.get_children():
+		#i += 1
+		#var spacing = length / (skinCount+1)
+		#skin.position.x = (spacing * i) - radius
+		#
+		##move_child
+		#
+		#var x = skin.global_position.x
+		#skin.position.z = (sqrt(radius**2 - x**2) - radius)
+		#if !Engine.is_editor_hint():
+			#skin.set_skin(GameManager.database.get_skin_data(i-1).skin)
+		#
