@@ -28,6 +28,12 @@ func get_UI_size():
 	return $screenSizeDetect.global_position
 
 
+## Calls fish.should_camera_render but first check if the fish exists first
+## So theres not crash on fish-less scenes
+func set_fish_cam_render(value):
+	var fish = get_tree().get_first_node_in_group("player")
+	if fish:
+		fish.should_camera_render(value)
 
 func _physics_process(delta):
 	#splash screen fadeout
@@ -125,9 +131,7 @@ func toggleMenu():
 		$pauseBG.texture = ImageTexture.create_from_image(screenshot)
 		$pauseBG/AnimationPlayer.play("start_water_effect")
 	$pauseBG.visible = GameManager.gamePaused
-	var fish = get_tree().get_first_node_in_group("player")
-	if fish:
-		fish.should_camera_render(!$pauseBG.visible)
+	set_fish_cam_render(!$pauseBG.visible)
 	$PauseMenu.visible = GameManager.gamePaused
 	%TrickList.visible = false
 	%Tricks.forceReset()
@@ -189,7 +193,7 @@ func isSubmenuOpen():
 
 	## Pause menu options ##
 func _on_continue_just_pressed():
-	get_tree().get_first_node_in_group("player").should_camera_render(true)
+	set_fish_cam_render(true)
 	$pauseBG/AnimationPlayer.play("end_water_effect")
 	MusicManager.shouldMusicMuffle = false
 func _on_continue_pressed():
@@ -246,7 +250,7 @@ func hide_menu_in_FBF(): #so the frame by frame button is actually useful
 	%TrickList.visible = false
 	%HelpTip.visible = false
 	$pauseBG.visible = false
-	get_tree().get_first_node_in_group("player").should_camera_render(true)
+	set_fish_cam_render(true)
 
 func _on_fish_debug_toggled(toggled_on):
 	get_tree().get_first_node_in_group("player").find_child("debugLabel").visible = toggled_on

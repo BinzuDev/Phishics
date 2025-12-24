@@ -104,7 +104,7 @@ func focusPreviousUI():
 	previousUIselection.pop_back().grab_focus()
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	#print("menu disabled: ", disableMenuControl, " focus: ", get_viewport().gui_get_focus_owner(), " ", previousUIselection)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	gameTimer += 1
@@ -139,8 +139,8 @@ func _process(_delta):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-
-func _physics_process(delta):
+	
+#func _physics_process(delta):
 	if freezeframe > 0:
 		freezeframe -= 1
 		if freezeframe == 0:

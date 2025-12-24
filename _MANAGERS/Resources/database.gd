@@ -12,6 +12,5 @@ func get_skin_data(id: int) -> SkinData:
 		printerr("Index #", id, " is out of bounds in the skin database")
 		return
 	
-	print("get skin: ", skins[id])
 	return skins[id]
 	
