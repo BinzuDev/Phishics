@@ -34,6 +34,7 @@ func _physics_process(delta):
 				$AnimationPlayer.speed_scale = 2   #speed up animation
 	
 	
+	
 	var mouseSpeed = get_viewport().get_mouse_position().x - mousePosLastFrame
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mouseHovered:
 		print(mouseSpeed)

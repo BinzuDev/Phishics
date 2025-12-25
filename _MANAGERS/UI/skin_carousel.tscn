@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btflqdk11nutc"]
+[gd_scene load_steps=13 format=3 uid="uid://btflqdk11nutc"]
 
 [ext_resource type="PackedScene" uid="uid://cu0225of8r2sg" path="res://Player/fake_fish.tscn" id="1_ca713"]
 [ext_resource type="Script" uid="uid://cehwqisdv3x72" path="res://_MANAGERS/UI/skin_carousel.gd" id="1_mkexd"]
+[ext_resource type="ArrayMesh" uid="uid://dkbqyv3fu1c4l" path="res://Models/w1_curtains.obj" id="3_71jyy"]
+[ext_resource type="Texture2D" uid="uid://drw6uhypyo4ey" path="res://Textures/skybox.png" id="4_g0fjp"]
 
 [sub_resource type="Animation" id="Animation_g0fjp"]
 length = 0.001
@@ -239,6 +241,28 @@ _data = {
 &"move_right": SubResource("Animation_wuxip")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0fjp"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wuxip"]
+panorama = ExtResource("4_g0fjp")
+
+[sub_resource type="Sky" id="Sky_pgsm2"]
+sky_material = SubResource("PanoramaSkyMaterial_wuxip")
+
+[sub_resource type="Environment" id="Environment_02tai"]
+background_mode = 2
+background_energy_multiplier = 1.6
+sky = SubResource("Sky_pgsm2")
+glow_levels/3 = 16.0
+glow_levels/5 = 0.0
+fog_mode = 1
+fog_light_color = Color(0.5225, 0.5795, 0.95, 1)
+fog_density = 1.0
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.307671, 0.802774, 1, 1)
+volumetric_fog_emission = Color(0.665666, 0.0532141, 0.675798, 1)
+
 [node name="SkinCarousel" type="Node3D"]
 script = ExtResource("1_mkexd")
 
@@ -268,11 +292,12 @@ text = "LEFT SKIN"
 vertical_alignment = 2
 
 [node name="skinCenter" parent="Skins" instance=ExtResource("1_ca713")]
-transform = Transform3D(0.05233512, -0.9986283, 4.3650772e-08, 0, -4.3711335e-08, -0.9999837, 0.99861324, 0.05233591, -2.2876407e-09, 0, 0, 0)
+transform = Transform3D(0.99998367, 0, 0, 0, -4.3711335e-08, -0.9999837, 0, 0.9999988, -4.3710678e-08, 0, 0, 0)
 skinPreviewMode = true
 
 [node name="Label3D" type="Label3D" parent="Skins/skinCenter"]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -7.1054274e-15, 0.9999999, 0, -5.9396257e-09, -0.13588479)
+visible = false
 billboard = 1
 text = "CENTER SKIN"
 vertical_alignment = 2
@@ -334,6 +359,7 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="debugColor" type="ColorRect" parent="MouseDetector"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,6 +368,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 0.14117648)
+
+[node name="W1Curtains" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.3113416e-09, 0, -0.03, 0, 0.060000002, 0, 0.03, 0, -1.3113416e-09, 0, 3.274747, -4.4621096)
+material_override = SubResource("StandardMaterial3D_g0fjp")
+mesh = ExtResource("3_71jyy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9251435, -0.36914423, 0.08855557, 9.313226e-10, 0.23327577, 0.97241074, -0.3796177, -0.89961946, 0.21581355, 0, 3.7610564, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_02tai")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_entered"]
