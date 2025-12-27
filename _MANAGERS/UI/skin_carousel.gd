@@ -91,9 +91,11 @@ func set_skin_carousel():
 	$Skins/skinFarRight.quick_set_skin(currentId+2)
 	$Skins/skinCenter.rotation.y = 0
 	$Skins/skinCenter.spinSpeed = $Skins/skinCenter.BASE_SPIN_SPEED
+	set_ui_info()
 	
 
-
+func set_ui_info():
+	%fishName.text = GameManager.database.skins[currentId].name
 
 func _on_mouse_entered():
 	mouseHovered = true
